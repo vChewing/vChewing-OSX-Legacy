@@ -1,0 +1,3 @@
+[submodule "DictionaryData"]
+	path = DictionaryData
+	url = https://github.com/vChewing/libvchewing-data.git
