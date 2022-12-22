@@ -64,6 +64,7 @@
 		5BACBD1329509B3D0078CAB3 /* CocoaExtension_Misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A4F0294E057F00EFA49C /* CocoaExtension_Misc.swift */; };
 		5BACBD1429509B450078CAB3 /* CocoaExtension_NSWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A4FF294E092900EFA49C /* CocoaExtension_NSWindowController.swift */; };
 		5BACBD1529509BB60078CAB3 /* SwiftExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A4F2294E058F00EFA49C /* SwiftExtension.swift */; };
+		5BCF4AB829546B5200C7FBD9 /* convdict.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5BCF4AB729546B5100C7FBD9 /* convdict.plist */; };
 		5BE5A4E5294E03C200EFA49C /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A4E4294E03C200EFA49C /* main.swift */; };
 		5BE5A4F1294E057F00EFA49C /* CocoaExtension_Misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A4F0294E057F00EFA49C /* CocoaExtension_Misc.swift */; };
 		5BE5A4F3294E058F00EFA49C /* SwiftExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A4F2294E058F00EFA49C /* SwiftExtension.swift */; };
@@ -216,6 +217,7 @@
 		5BACBD0F295099480078CAB3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		5BACBD102950994A0078CAB3 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		5BACBD112950994C0078CAB3 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		5BCF4AB729546B5100C7FBD9 /* convdict.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = convdict.plist; sourceTree = "<group>"; };
 		5BE5A4E3294E00C300EFA49C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		5BE5A4E4294E03C200EFA49C /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		5BE5A4E7294E04B000EFA49C /* MenuIcon-TCVIM@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MenuIcon-TCVIM@2x.png"; sourceTree = "<group>"; };
@@ -407,6 +409,7 @@
 		5BE5A4EB294E04BC00EFA49C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				5BCF4AB729546B5100C7FBD9 /* convdict.plist */,
 				5B751DA4294EE1B00031CF70 /* Localizable.strings */,
 				5BF5BAE2294DFFCA006011AD /* Assets.xcassets */,
 				5BE5A589294E195B00EFA49C /* DataTemplates */,
@@ -782,6 +785,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BCF4AB829546B5200C7FBD9 /* convdict.plist in Resources */,
 				5B44BAD9295047AC00E1C02D /* shortcuts.html in Resources */,
 				5BACBD0E295099290078CAB3 /* InfoPlist.strings in Resources */,
 				5BE5A583294E193600EFA49C /* data-bpmf-reverse-lookup-CNS2.plist in Resources */,
