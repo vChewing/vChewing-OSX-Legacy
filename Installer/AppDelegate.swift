@@ -126,11 +126,11 @@ class AppDelegate: NSWindowController, NSApplicationDelegate {
             if let url = URL(string: "https://vchewing.github.io/") {
               NSWorkspace.shared.open(url)
             }
-          case .alertSecondButtonReturn: break
-          default: break
+            NSApp.terminate(self)
+          case .alertSecondButtonReturn: NSApp.terminate(self)
+          default: NSApp.terminate(self)
         }
       }
-      NSApp.terminate(self)
       return
     }
   }
