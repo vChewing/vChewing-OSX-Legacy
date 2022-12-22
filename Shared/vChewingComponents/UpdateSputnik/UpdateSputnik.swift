@@ -10,7 +10,13 @@ import Cocoa
 
 public class UpdateSputnik {
   public static var shared: UpdateSputnik = .init()
-  public var varkUpdateInfoPageURLKey: String = "UpdateInfoSite"
+  public var varkUpdateInfoPageURLKey: String = {
+    if #available(macOS 10.13, *) {
+      return "UpdateInfoSite"
+    }
+    return "UpdateInfoSiteLegacy"
+  }()
+
   public var varkUpdateCheckDateKeyPrevious: String = "PreviousUpdateCheckDate"
   public var varkUpdateCheckDateKeyNext: String = "NextUpdateCheckDate"
   public var varkUpdateCheckInterval: TimeInterval = 114_514
