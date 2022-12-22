@@ -82,6 +82,7 @@ public class TooltipUI: NSWindowController {
     messageText.backgroundColor = NSColor.clear
     messageText.textColor = NSColor.textColor
     messageText.font = NSFont.systemFont(ofSize: NSFont.systemFontSize)
+    messageText.needsDisplay = true
     panel.contentView?.addSubview(messageText)
     super.init(window: panel)
   }
