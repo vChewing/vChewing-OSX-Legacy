@@ -28,10 +28,6 @@ extension SessionCtl {
       return handle(event, client: client)
     }
 
-    // 更新此時的靜態狀態標記。
-    state.isASCIIMode = isASCIIMode
-    state.isVerticalTyping = isVerticalTyping
-
     // 就這傳入的 NSEvent 都還有可能是 nil，Apple InputMethodKit 團隊到底在搞三小。
     // 只針對特定類型的 client() 進行處理。
     guard let event = event, sender is IMKTextInput else {
@@ -103,7 +99,7 @@ extension SessionCtl {
 
     // 使 NSEvent 自翻譯，這樣可以讓 Emacs NSEvent 變成標準 NSEvent。
     if eventToDeal.isEmacsKey {
-      let verticalProcessing = (state.isCandidateContainer) ? state.isVerticalCandidateWindow : state.isVerticalTyping
+      let verticalProcessing = (state.isCandidateContainer) ? isVerticalCandidateWindow : isVerticalTyping
       eventToDeal = eventToDeal.convertFromEmacsKeyEvent(isVerticalContext: verticalProcessing)
     }
 

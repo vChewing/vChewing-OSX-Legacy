@@ -53,6 +53,7 @@ extension InputHandlerProtocol {
 
 /// InputHandler 委任協定
 public protocol InputHandlerDelegate {
+  var isASCIIMode: Bool { get }
   var isVerticalTyping: Bool { get }
   var selectionKeys: String { get }
   var state: IMEStateProtocol { get set }
