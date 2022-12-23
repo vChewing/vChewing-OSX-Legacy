@@ -46,12 +46,9 @@ public struct IMEState: IMEStateProtocol {
   public var type: StateType = .ofEmpty
   public var data: IMEStateDataProtocol = IMEStateData() as IMEStateDataProtocol
   public var node: CandidateNode = .init(name: "")
-  public var isASCIIMode = false
-  public var isVerticalCandidateWindow = false
   init(_ data: IMEStateDataProtocol = IMEStateData() as IMEStateDataProtocol, type: StateType = .ofEmpty) {
     self.data = data
     self.type = type
-    isVerticalTyping = SessionCtl.isVerticalTyping
   }
 
   /// 內部專用初期化函式，僅用於生成「有輸入內容」的狀態。
@@ -173,7 +170,6 @@ extension IMEState {
     if type == .ofInputting { return self }
     var result = Self.ofInputting(displayTextSegments: data.displayTextSegments, cursor: data.cursor)
     result.tooltip = data.tooltipBackupForInputting
-    result.isVerticalTyping = isVerticalTyping
     return result
   }
 
@@ -206,11 +202,6 @@ extension IMEState {
       case .ofInputting, .ofMarking, .ofCandidates: return true
       default: return false
     }
-  }
-
-  public var isVerticalTyping: Bool {
-    get { data.isVerticalTyping }
-    set { data.isVerticalTyping = newValue }
   }
 
   public var isCandidateContainer: Bool {
