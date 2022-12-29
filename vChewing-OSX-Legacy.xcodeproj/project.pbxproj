@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5B44BAD9295047AC00E1C02D /* shortcuts.html in Resources */ = {isa = PBXBuildFile; fileRef = 5B44BADB295047AC00E1C02D /* shortcuts.html */; };
+		5B69CA6A295DDC58005211BB /* RangeParserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B69CA69295DDC58005211BB /* RangeParserAPI.swift */; };
 		5B751D90294EC66A0031CF70 /* CtlPrefWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751D8E294EC66A0031CF70 /* CtlPrefWindow.swift */; };
 		5B751D96294EDE850031CF70 /* CtlPrefWindow_PhraseEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751D95294EDE850031CF70 /* CtlPrefWindow_PhraseEditor.swift */; };
 		5B751D97294EE1730031CF70 /* frmPrefWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B751D99294EE1730031CF70 /* frmPrefWindow.xib */; };
@@ -152,6 +153,7 @@
 		5B44BADC295047AE00E1C02D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = "zh-Hans"; path = "zh-Hans.lproj/shortcuts.html"; sourceTree = "<group>"; };
 		5B44BADD295047AF00E1C02D /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = "zh-Hant"; path = "zh-Hant.lproj/shortcuts.html"; sourceTree = "<group>"; };
 		5B44BADE295047B400E1C02D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = ja; path = ja.lproj/shortcuts.html; sourceTree = "<group>"; };
+		5B69CA69295DDC58005211BB /* RangeParserAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RangeParserAPI.swift; sourceTree = "<group>"; };
 		5B751D86294EC30D0031CF70 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5B751D88294EC30E0031CF70 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		5B751D89294EC3110031CF70 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -541,11 +543,12 @@
 		5BE5A511294E0BD400EFA49C /* LMAssembly */ = {
 			isa = PBXGroup;
 			children = (
-				5BE5A531294E0C9F00EFA49C /* PinyinPhonaConverter.swift */,
 				5BE5A51B294E0BEE00EFA49C /* LMConsolidator.swift */,
 				5BE5A51C294E0BEE00EFA49C /* LMInstantiator_CassetteExtension.swift */,
 				5BE5A51E294E0BEE00EFA49C /* LMInstantiator_DateTimeExtension.swift */,
 				5BE5A51D294E0BEE00EFA49C /* LMInstantiator.swift */,
+				5BE5A531294E0C9F00EFA49C /* PinyinPhonaConverter.swift */,
+				5B69CA69295DDC58005211BB /* RangeParserAPI.swift */,
 				5BE5A51F294E0BEE00EFA49C /* vChewingLM.swift */,
 				5BE5A512294E0BDE00EFA49C /* SubLMs */,
 			);
@@ -959,6 +962,7 @@
 				5BE5A505294E097C00EFA49C /* DanielGalasko_FolderMonitor.swift in Sources */,
 				5BE5A56C294E127B00EFA49C /* PhraseEditorDelegate.swift in Sources */,
 				5BE5A564294E10F300EFA49C /* PrefMgr_Core.swift in Sources */,
+				5B69CA6A295DDC58005211BB /* RangeParserAPI.swift in Sources */,
 				5BE5A546294E0D1200EFA49C /* Tekkon_Constants.swift in Sources */,
 				5BE5A55A294E0D1E00EFA49C /* 7_LangModel.swift in Sources */,
 				5BE5A547294E0D1200EFA49C /* Tekkon_Phonabets.swift in Sources */,
