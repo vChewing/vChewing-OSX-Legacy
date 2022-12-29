@@ -43,9 +43,15 @@ extension NSApplication {
       try task.run()
     }
 
-    let data = pipe.fileHandleForReading.readDataToEndOfFile()
-    let output = String(data: data, encoding: .utf8)!
-
+    var output = ""
+    do {
+      let data = try pipe.fileHandleForReading.readToEnd()
+      if let data = data, let str = String(data: data, encoding: .utf8) {
+        output.append(str)
+      }
+    } catch {
+      return ""
+    }
     return output
   }
 }
