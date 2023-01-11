@@ -36,6 +36,9 @@ public class PrefMgr: PrefMgrProtocol {
   @AppProperty(key: UserDef.kCheckUpdateAutomatically.rawValue, defaultValue: false)
   public var checkUpdateAutomatically: Bool
 
+  @AppProperty(key: UserDef.kUseExternalFactoryDict.rawValue, defaultValue: false)
+  public var useExternalFactoryDict: Bool
+
   @AppProperty(key: UserDef.kCassettePath.rawValue, defaultValue: "")
   public var cassettePath: String
 
