@@ -20,7 +20,6 @@ extension PrefMgr {
         useIMKCandidateWindow = false
       }
       handleDefaultCandidateFontsByLangIdentifier = false
-      shiftKeyAccommodationBehavior = 0
       disableShiftTogglingAlphanumericalMode = true
       togglingAlphanumericalModeWithLShift = false
       showReverseLookupInCandidateUI = false
@@ -58,9 +57,6 @@ extension PrefMgr {
     }
     if ![0, 1, 2].contains(upperCaseLetterKeyBehavior) {
       upperCaseLetterKeyBehavior = 0
-    }
-    if ![0, 1, 2].contains(shiftKeyAccommodationBehavior) {
-      shiftKeyAccommodationBehavior = 0
     }
   }
 }
