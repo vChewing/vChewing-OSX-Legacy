@@ -22,6 +22,9 @@ extension SessionCtl {
 
     // MARK: 前置處理
 
+    // 雖然在 recognizedEvents 當中有過定義，但這裡還是再多施加一道保險。
+    if event.type != .keyDown, event.type != .flagsChanged { return false }
+
     // 如果是 deactivated 狀態的話，強制糾正其為 empty()。
     if let client = client(), state.type == .ofDeactivated {
       state = IMEState.ofEmpty()
@@ -53,15 +56,23 @@ extension SessionCtl {
       }
     }
 
-    // 用 Shift 開關半形英數模式，僅對 macOS 10.15 及之後的 macOS 有效。
-    let shouldUseShiftToggleHandle: Bool = {
-      switch PrefMgr.shared.shiftKeyAccommodationBehavior {
-        case 0: return false
-        case 1: return Shared.arrClientShiftHandlingExceptionList.contains(clientBundleIdentifier)
-        case 2: return true
-        default: return false
+    // 切換英數模式開關。
+    func toggleAlphanumericalMode() {
+      let status = "NotificationSwitchASCII".localized
+      Notifier.notify(
+        message: isASCIIMode.toggled()
+          ? NSLocalizedString("Alphanumerical Input Mode", comment: "") + "\n" + status
+          : NSLocalizedString("Chinese Input Mode", comment: "") + "\n" + status
+      )
+    }
+
+    // 用 JIS 鍵盤的英數切換鍵來切換中英文模式。
+    if event.type == .keyDown {
+      if event.isJISAlphanumericalKey {
+        toggleAlphanumericalMode()
+        return true  // Adobe Photoshop 相容：對 JIS 英數切換鍵傳入事件一律立刻返回 true。
       }
-    }()
+    }
 
     // MARK: 針對客體的具體處理
 
@@ -70,9 +81,9 @@ extension SessionCtl {
 
     /// 這裡仍舊需要判斷 flags。之前使輸入法狀態卡住無法敲漢字的問題已在 InputHandler 內修復。
     /// 這裡不判斷 flags 的話，用方向鍵前後定位光標之後，再次試圖觸發組字區時、反而會在首次按鍵時失敗。
-    /// 同時注意：必須在 event.type == .flagsChanged 結尾插入 return false，
+    /// 同時注意：必須針對 event.type == .flagsChanged 提前返回結果，
     /// 否則，每次處理這種判斷時都會因為讀取 event.characters? 而觸發 NSInternalInconsistencyException。
-    if event.type == .flagsChanged { return false }
+    if event.type == .flagsChanged { return true }
 
     /// 沒有文字輸入客體的話，就不要再往下處理了。
     guard let inputHandler = inputHandler, client() != nil else { return false }
@@ -122,7 +133,6 @@ extension SessionCtl {
 
     /// 直接交給 commonEventHandler 來處理。
     let result = inputHandler.handleEvent(eventToDeal)
-    if shouldUseShiftToggleHandle { rencentKeyHandledByInputHandlerEtc = result }
     if !result {
       // 除非是 .ofMarking 狀態，否則讓某些不用去抓的按鍵起到「取消工具提示」的作用。
       if [.ofEmpty].contains(state.type) { tooltipInstance.hide() }
