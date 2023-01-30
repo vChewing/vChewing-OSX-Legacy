@@ -121,16 +121,16 @@ extension InputHandler {
     if let keyCodeType = KeyCode(rawValue: input.keyCode) {
       switch keyCodeType {
         case .kEscape: return handleEsc()
-        case .kTab: return rotateCandidate(reverseOrder: input.isShiftHold)
+        case .kTab: return revolveCandidate(reverseOrder: input.isShiftHold)
         case .kUpArrow, .kDownArrow, .kLeftArrow, .kRightArrow:
           let rotation: Bool = input.isOptionHold && state.type == .ofInputting
           handleArrowKey: switch (keyCodeType, delegate.isVerticalTyping) {
             case (.kLeftArrow, false), (.kUpArrow, true): return handleBackward(input: input)
             case (.kRightArrow, false), (.kDownArrow, true): return handleForward(input: input)
             case (.kUpArrow, false), (.kLeftArrow, true):
-              return rotation ? rotateCandidate(reverseOrder: true) : handleClockKey()
+              return rotation ? revolveCandidate(reverseOrder: true) : handleClockKey()
             case (.kDownArrow, false), (.kRightArrow, true):
-              return rotation ? rotateCandidate(reverseOrder: false) : handleClockKey()
+              return rotation ? revolveCandidate(reverseOrder: false) : handleClockKey()
             default: break handleArrowKey  // 該情況應該不會發生，因為上面都有處理過。
           }
         case .kHome: return handleHome()
@@ -149,7 +149,7 @@ extension InputHandler {
             case .ofInputting:
               // 臉書等網站會攔截 Tab 鍵，所以用 Shift+Command+Space 對候選字詞做正向/反向輪替。
               if input.isShiftHold, !input.isControlHold, !input.isOptionHold {
-                return rotateCandidate(reverseOrder: input.isCommandHold)
+                return revolveCandidate(reverseOrder: input.isCommandHold)
               }
               if compositor.cursor < compositor.length, compositor.insertKey(" ") {
                 walk()
