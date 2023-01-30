@@ -163,7 +163,7 @@
 
 // SwiftUI Preferences
 "(Shift+)Space:" = "(Shift+)Space:";
-"⚠︎ This feature in IMK Candidate Window defects. Please consult Apple Developer Relations\nand tell them the related Radar ID: #FB11300759." = "⚠︎ この機能は IMK 候補陳列ウィンドウにサポートされておりません。\nApple Developer Relations に案件番号 #FB11300759 を教えながらクレームしてください。";
+"⚠︎ This feature in IMK Candidate Window defects. Please consult Apple Developer Relations\nand tell them the related Radar ID: #FB11300759." = "⚠︎ この機能は IMK 候補陳列ウィンドウにサポートされておりません。\nApple Developer Relations に按鍵番号 #FB11300759 を教えながらクレームしてください。";
 "⚠︎ This feature is useful ONLY WHEN the font you are using doesn't support dynamic vertical punctuations. However, typed vertical punctuations will always shown as vertical punctuations EVEN IF your editor has changed the typing direction to horizontal." = "⚠︎ 該当の組版用フォントには縦書き（引用符・括弧）変換機能が備えていない限り、この機能を使う甲斐がある。一旦使うと、入力した全ての引用符・括弧は永遠的に縦書きの様式になる。例え入力を受けているアプリ（例えばワープロソフとなど）の書写方向は横書きと変えたとしても、これらの入力済みの引用符・括弧は全て縦書きの見た目であり、削除してから入力し直す必要になる。";
 "All strokes in the composition buffer will be shown as ASCII keyboard characters unless this option is enabled. Stroke is definable in the “%keyname” section of the CIN file." = "これをチェックしないと、全ての筆画は ASCII キーネームで入力緩衝列で表示してしまうことになる。CIN ファイルの「%keyname」というところで筆画の定義はできる。";
 "Allow backspace-editing miscomposed readings" = "効かぬ音読みを BackSpace で再編集";

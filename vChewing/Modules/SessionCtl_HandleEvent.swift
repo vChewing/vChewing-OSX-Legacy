@@ -16,7 +16,7 @@ extension SessionCtl {
   /// - Parameters:
   ///   - event: 裝置操作輸入事件，可能會是 nil。
   ///   - sender: 呼叫了該函式的客體（無須使用）。
-  /// - Returns: 回「`true`」以將該案件已攔截處理的訊息傳遞給 IMK；回「`false`」則放行、不作處理。
+  /// - Returns: 回「`true`」以將該按鍵已攔截處理的訊息傳遞給 IMK；回「`false`」則放行、不作處理。
   @objc(handleEvent:client:) public override func handle(_ event: NSEvent!, client sender: Any!) -> Bool {
     _ = sender  // 防止格式整理工具毀掉與此對應的參數。
 
