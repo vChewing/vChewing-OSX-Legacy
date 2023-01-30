@@ -67,11 +67,9 @@ extension SessionCtl {
     }
 
     // 用 JIS 鍵盤的英數切換鍵來切換中英文模式。
-    if event.type == .keyDown {
-      if event.isJISAlphanumericalKey {
-        toggleAlphanumericalMode()
-        return true  // Adobe Photoshop 相容：對 JIS 英數切換鍵傳入事件一律立刻返回 true。
-      }
+    if event.type == .keyDown, event.isJISAlphanumericalKey {
+      toggleAlphanumericalMode()
+      return true  // Adobe Photoshop 相容：對 JIS 英數切換鍵傳入事件一律立刻返回 true。
     }
 
     // MARK: 針對客體的具體處理
