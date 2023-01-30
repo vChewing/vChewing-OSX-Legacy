@@ -88,7 +88,7 @@ extension InputHandler {
       if input.isControlHold, input.isCommandHold, input.isEnter,
         !input.isOptionHold, !input.isShiftHold, compositor.isEmpty
       {
-        return handleCtrlCommandEnter()
+        return handleEnter(input: input, readingOnly: true)
       }
       // 向語言模型詢問是否有對應的記錄。
       if !currentLM.hasUnigramsFor(keyArray: [readingKey]) {
@@ -237,7 +237,7 @@ extension InputHandler {
       if input.isControlHold, input.isCommandHold, input.isEnter,
         !input.isOptionHold, !input.isShiftHold, composer.isEmpty
       {
-        return handleCtrlCommandEnter()
+        return handleEnter(input: input, readingOnly: true)
       }
       // 向語言模型詢問是否有對應的記錄。
       if !currentLM.hasUnigramsFor(keyArray: [calligrapher]) {
