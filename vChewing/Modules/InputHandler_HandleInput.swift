@@ -9,6 +9,7 @@
 /// 該檔案乃輸入調度模組當中「用來規定當 IMK 接受按鍵訊號時且首次交給輸入調度模組處理時、
 /// 輸入調度模組要率先處理」的部分。據此判斷是否需要將按鍵處理委派給其它成員函式。
 
+import Carbon
 import Foundation
 
 // MARK: - § 根據狀態調度按鍵輸入 (Handle Input with States)
@@ -116,14 +117,30 @@ extension InputHandler {
       return true
     }
 
+    // MARK: Ctrl+Command+[] 輪替候選字
+
+    // Shift+Command+[] 被 Chrome 系瀏覽器佔用，所以改用 Ctrl。
+    revolveCandidateWithBrackets: if input.modifierFlags == [.control, .command] {
+      if state.type != .ofInputting { break revolveCandidateWithBrackets }
+      // 此處 JIS 鍵盤判定無法用於螢幕鍵盤。所以，螢幕鍵盤的場合，系統會依照 US 鍵盤的判定方案。
+      let isJIS: Bool = KBGetLayoutType(Int16(LMGetKbdType())) == kKeyboardJIS
+      switch (input.keyCode, isJIS) {
+        case (30, true): return revolveCandidate(reverseOrder: true)
+        case (42, true): return revolveCandidate(reverseOrder: false)
+        case (33, false): return revolveCandidate(reverseOrder: true)
+        case (30, false): return revolveCandidate(reverseOrder: false)
+        default: break
+      }
+    }
+
     // MARK: 批次集中處理某些常用功能鍵
 
     if let keyCodeType = KeyCode(rawValue: input.keyCode) {
       switch keyCodeType {
         case .kEscape: return handleEsc()
-        case .kTab: return revolveCandidate(reverseOrder: input.isShiftHold)
+        case .kTab, .kContextMenu: return revolveCandidate(reverseOrder: input.isShiftHold)
         case .kUpArrow, .kDownArrow, .kLeftArrow, .kRightArrow:
-          let rotation: Bool = input.isOptionHold && state.type == .ofInputting
+          let rotation: Bool = (input.isOptionHold || input.isShiftHold) && state.type == .ofInputting
           handleArrowKey: switch (keyCodeType, delegate.isVerticalTyping) {
             case (.kLeftArrow, false), (.kUpArrow, true): return handleBackward(input: input)
             case (.kRightArrow, false), (.kDownArrow, true): return handleForward(input: input)
