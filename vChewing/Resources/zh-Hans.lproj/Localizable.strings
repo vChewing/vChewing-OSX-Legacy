@@ -1,4 +1,8 @@
 "vChewing" = "威注音输入法";
+"You are about to uncheck this fart suppressor. You are responsible for all consequences lead by letting people nearby hear the fart sound come from your computer. We strongly advise against unchecking this in any public circumstance that prohibits NSFW netas." = "您即将取消对廉耻模式的勾选。周围的人会听到您的电脑传出放屁的声音，且您对此负全部责任。我们强烈建议您不要在任何公共场合取消对该模式的勾选。";
+"Uncheck" = "取消勾选";
+"Leave it checked" = "保持勾选";
+"Warning" = "警告";
 "User phrase folder path is not customizable in macOS 10.9 - 10.12." = "在 macOS 10.9 - 10.12 系统下无法自订使用者辞典目录。";
 "Please use “defaults write” terminal command to modify this String value:" = "请使用「defaults write」终端指令以修改 String 资料值：";
 "Please manually enter the identifier(s)." = "请手动键入唯一标帜（Bundle Identifier）。";
