@@ -1,4 +1,8 @@
 "vChewing" = "威注音入力アプリ";
+"You are about to uncheck this fart suppressor. You are responsible for all consequences lead by letting people nearby hear the fart sound come from your computer. We strongly advise against unchecking this in any public circumstance that prohibits NSFW netas." = "マナーモードのチェックの外すことになります。周りの人は貴殿のパソコンから屁音を聞いてしまい、それについての結果は全部貴殿の自己責任でございます。公的なる場所でこのチェックを外すのはお勧めできません。";
+"Uncheck" = "チェックの外す";
+"Leave it checked" = "チェックをそのままに";
+"Warning" = "警告";
 "User phrase folder path is not customizable in macOS 10.9 - 10.12." = "macOS 10.9 - 10.12 でのユーザー辞書フォルダの変更は不可能。";
 "Please use “defaults write” terminal command to modify this String value:" = "ターミナルコマンド「defaults write」で下記の String 値のご設定を：";
 "Please manually enter the identifier(s)." = "ご自分で唯一識別子（Bundle Identifier）のご入力を。";
