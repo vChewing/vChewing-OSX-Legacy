@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleShortVersionString</key>
-	<string>0.5.6</string>
+	<string>0.5.7</string>
 	<key>CFBundleVersion</key>
-	<string>1106</string>
+	<string>1107</string>
 	<key>UpdateInfoEndpoint</key>
 	<string>https://gitee.com/vchewing/vChewing-macOS/raw/main/Update-Info.plist</string>
 	<key>UpdateInfoEndpointLegacy</key>
