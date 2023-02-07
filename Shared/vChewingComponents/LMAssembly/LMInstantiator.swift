@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension vChewingLM {
+public extension vChewingLM {
   /// 語言模組副本化模組（LMInstantiator，下稱「LMI」）自身為符合天權星組字引擎內
   /// 的 LangModelProtocol 協定的模組、統籌且整理來自其它子模組的資料（包括使
   /// 用者語彙、繪文字模組、語彙濾除表、原廠語言模組等）。
@@ -26,7 +26,7 @@ extension vChewingLM {
   ///
   /// LMI 會根據需要分別載入原廠語言模組和其他個別的子語言模組。LMI 本身不會記錄這些
   /// 語言模組的相關資料的存放位置，僅藉由參數來讀取相關訊息。
-  public class LMInstantiator: LangModelProtocol {
+  class LMInstantiator: LangModelProtocol {
     // 在函式內部用以記錄狀態的開關。
     public var isCassetteEnabled = false
     public var isPhraseReplacementEnabled = false
@@ -240,8 +240,8 @@ extension vChewingLM {
       let keyChain = keyArray.joined(separator: "-")
       _ =
         isFiltering
-        ? lmFiltered.temporaryMap[keyChain, default: []].append(unigram)
-        : lmUserPhrases.temporaryMap[keyChain, default: []].append(unigram)
+          ? lmFiltered.temporaryMap[keyChain, default: []].append(unigram)
+          : lmUserPhrases.temporaryMap[keyChain, default: []].append(unigram)
     }
 
     /// 自當前記憶體取得指定使用者子語言模組內的原始資料體。
@@ -249,11 +249,11 @@ extension vChewingLM {
     ///   - targetType: 操作對象。
     public func retrieveData(from targetType: ReplacableUserDataType) -> String {
       switch targetType {
-        case .thePhrases: return lmUserPhrases.strData
-        case .theFilter: return lmFiltered.strData
-        case .theReplacements: return lmReplacements.strData
-        case .theAssociates: return lmAssociates.strData
-        case .theSymbols: return lmUserSymbols.strData
+      case .thePhrases: return lmUserPhrases.strData
+      case .theFilter: return lmFiltered.strData
+      case .theReplacements: return lmReplacements.strData
+      case .theAssociates: return lmAssociates.strData
+      case .theSymbols: return lmUserSymbols.strData
       }
     }
 
@@ -265,21 +265,21 @@ extension vChewingLM {
       var rawText = rawStrData
       LMConsolidator.consolidate(text: &rawText, pragma: true)
       switch targetType {
-        case .theAssociates:
-          lmAssociates.replaceData(textData: rawText)
-          if save { lmAssociates.saveData() }
-        case .theFilter:
-          lmFiltered.replaceData(textData: rawText)
-          if save { lmAssociates.saveData() }
-        case .theReplacements:
-          lmReplacements.replaceData(textData: rawText)
-          if save { lmAssociates.saveData() }
-        case .thePhrases:
-          lmUserPhrases.replaceData(textData: rawText)
-          if save { lmAssociates.saveData() }
-        case .theSymbols:
-          lmUserSymbols.replaceData(textData: rawText)
-          if save { lmAssociates.saveData() }
+      case .theAssociates:
+        lmAssociates.replaceData(textData: rawText)
+        if save { lmAssociates.saveData() }
+      case .theFilter:
+        lmFiltered.replaceData(textData: rawText)
+        if save { lmAssociates.saveData() }
+      case .theReplacements:
+        lmReplacements.replaceData(textData: rawText)
+        if save { lmAssociates.saveData() }
+      case .thePhrases:
+        lmUserPhrases.replaceData(textData: rawText)
+        if save { lmAssociates.saveData() }
+      case .theSymbols:
+        lmUserSymbols.replaceData(textData: rawText)
+        if save { lmAssociates.saveData() }
       }
     }
 
@@ -346,7 +346,7 @@ extension vChewingLM {
 
       // 提前處理語彙置換
       if isPhraseReplacementEnabled {
-        for i in 0..<rawAllUnigrams.count {
+        for i in 0 ..< rawAllUnigrams.count {
           let newValue = lmReplacements.valuesFor(key: rawAllUnigrams[i].value)
           guard !newValue.isEmpty else { continue }
           rawAllUnigrams[i].value = newValue

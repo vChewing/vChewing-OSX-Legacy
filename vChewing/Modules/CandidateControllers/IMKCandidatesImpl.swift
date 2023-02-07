@@ -68,13 +68,13 @@ public class CtlCandidateIMK: CtlCandidateProtocol {
   public func specifyLayout(_ layout: NSUserInterfaceLayoutOrientation = .horizontal) {
     currentLayout = layout
     switch currentLayout {
-      case .horizontal:
-        // macOS 10.13 High Sierra 的矩陣選字窗不支援選字鍵，所以只能弄成橫版單行。
-        Self.shared.setPanelType(kIMKSingleRowSteppingCandidatePanel)
-      case .vertical:
-        Self.shared.setPanelType(kIMKSingleColumnScrollingCandidatePanel)
-      @unknown default:
-        Self.shared.setPanelType(kIMKSingleRowSteppingCandidatePanel)
+    case .horizontal:
+      // macOS 10.13 High Sierra 的矩陣選字窗不支援選字鍵，所以只能弄成橫版單行。
+      Self.shared.setPanelType(kIMKSingleRowSteppingCandidatePanel)
+    case .vertical:
+      Self.shared.setPanelType(kIMKSingleColumnScrollingCandidatePanel)
+    @unknown default:
+      Self.shared.setPanelType(kIMKSingleRowSteppingCandidatePanel)
     }
   }
 
@@ -173,8 +173,8 @@ var currentTISInputSource: TISInputSource? {
 
 // MARK: - Translating NumPad KeyCodes to Default IMK Candidate Selection KeyCodes.
 
-extension CtlCandidateIMK {
-  public static func replaceNumPadKeyCodes(target event: NSEvent) -> NSEvent? {
+public extension CtlCandidateIMK {
+  static func replaceNumPadKeyCodes(target event: NSEvent) -> NSEvent? {
     let mapNumPadKeyCodeTranslation: [UInt16: UInt16] = [
       83: 18, 84: 19, 85: 20, 86: 21, 87: 23, 88: 22, 89: 26, 91: 28, 92: 25,
     ]

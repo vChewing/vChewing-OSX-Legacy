@@ -123,8 +123,8 @@ public class PopupCompositionBuffer: NSWindowController {
 
     let attrCursor: NSAttributedString =
       isTypingDirectionVertical
-      ? NSMutableAttributedString(string: "▔", attributes: cursorAttributes)
-      : NSMutableAttributedString(string: "_", attributes: cursorAttributes)
+        ? NSMutableAttributedString(string: "▔", attributes: cursorAttributes)
+        : NSMutableAttributedString(string: "_", attributes: cursorAttributes)
     attrString.insert(attrCursor, at: state.u16Cursor)
 
     textShown = attrString
