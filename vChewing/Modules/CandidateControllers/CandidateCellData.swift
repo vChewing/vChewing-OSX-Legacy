@@ -25,8 +25,8 @@ public class CandidateCellData: Hashable {
   public var displayedText: String
   public var size: Double { Self.unifiedSize }
   public var isSelected: Bool = false
-  public var whichRow: Int = 0  // 橫排選字窗專用
-  public var whichColumn: Int = 0  // 縱排選字窗專用
+  public var whichRow: Int = 0 // 橫排選字窗專用
+  public var whichColumn: Int = 0 // 縱排選字窗專用
   public var index: Int = 0
   public var subIndex: Int = 0
 

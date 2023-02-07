@@ -10,8 +10,8 @@
 
 import InputMethodKit
 
-extension PrefMgr {
-  public func fixOddPreferences() {
+public extension PrefMgr {
+  func fixOddPreferences() {
     // macOS 10.15 開始才能使用 SwiftUI 構建的田所選字窗。
     if #unavailable(macOS 10.15) {
       if #available(macOS 10.13, *) {

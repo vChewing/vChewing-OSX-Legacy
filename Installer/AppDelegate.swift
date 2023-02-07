@@ -51,7 +51,7 @@ class AppDelegate: NSWindowController, NSApplicationDelegate {
 
   var allRegisteredInstancesOfThisInputMethod: [TISInputSource] {
     guard let components = Bundle(url: imeURLInstalled)?.infoDictionary?["ComponentInputModeDict"] as? [String: Any],
-      let tsInputModeListKey = components["tsInputModeListKey"] as? [String: Any]
+          let tsInputModeListKey = components["tsInputModeListKey"] as? [String: Any]
     else {
       return []
     }
@@ -100,7 +100,7 @@ class AppDelegate: NSWindowController, NSApplicationDelegate {
       let currentVersion = currentBundle?.infoDictionary?[kCFBundleVersionKey as String] as? String
       currentVersionNumber = (currentVersion as NSString?)?.integerValue ?? 0
       if shortVersion != nil, let currentVersion = currentVersion,
-        currentVersion.compare(installingVersion, options: .numeric) == .orderedAscending
+         currentVersion.compare(installingVersion, options: .numeric) == .orderedAscending
       {
         // Upgrading confirmed.
         installButton.title = NSLocalizedString("Upgrade", comment: "")
@@ -117,18 +117,18 @@ class AppDelegate: NSWindowController, NSApplicationDelegate {
       alert.messageText = "Please use mainstream releases for the current system version.".localized
       alert.informativeText =
         "The current installer only installs version suitable for macOS 10.9 Mavericks, and it might work with macOS 10.10 - 10.12. However, it has lack of certain useful features and user-experiences comparing to the mainstream releases (which are only available for later macOS releases)."
-        .localized
+          .localized
       alert.addButton(withTitle: "Download Mainstream Releases".localized)
       alert.addButton(withTitle: "Quit Installation".localized)
       alert.beginSheetModal(for: window) { result in
         switch result {
-          case .alertFirstButtonReturn:
-            if let url = URL(string: "https://vchewing.github.io/") {
-              NSWorkspace.shared.open(url)
-            }
-            NSApp.terminate(self)
-          case .alertSecondButtonReturn: NSApp.terminate(self)
-          default: NSApp.terminate(self)
+        case .alertFirstButtonReturn:
+          if let url = URL(string: "https://vchewing.github.io/") {
+            NSWorkspace.shared.open(url)
+          }
+          NSApp.terminate(self)
+        case .alertSecondButtonReturn: NSApp.terminate(self)
+        default: NSApp.terminate(self)
         }
       }
       return

@@ -10,15 +10,15 @@ import InputMethodKit
 
 // MARK: - Facade
 
-extension SessionCtl {
+public extension SessionCtl {
   /// 接受所有鍵鼠事件為 NSEvent，讓輸入法判斷是否要處理、該怎樣處理。
   /// 然後再交給 InputHandler.handleEvent() 分診。
   /// - Parameters:
   ///   - event: 裝置操作輸入事件，可能會是 nil。
   ///   - sender: 呼叫了該函式的客體（無須使用）。
   /// - Returns: 回「`true`」以將該按鍵已攔截處理的訊息傳遞給 IMK；回「`false`」則放行、不作處理。
-  @objc(handleEvent:client:) public override func handle(_ event: NSEvent!, client sender: Any!) -> Bool {
-    _ = sender  // 防止格式整理工具毀掉與此對應的參數。
+  @objc(handleEvent:client:) override func handle(_ event: NSEvent!, client sender: Any!) -> Bool {
+    _ = sender // 防止格式整理工具毀掉與此對應的參數。
 
     // MARK: 前置處理
 
@@ -69,7 +69,7 @@ extension SessionCtl {
     // 用 JIS 鍵盤的英數切換鍵來切換中英文模式。
     if event.type == .keyDown, event.isJISAlphanumericalKey {
       toggleAlphanumericalMode()
-      return true  // Adobe Photoshop 相容：對 JIS 英數切換鍵傳入事件一律立刻返回 true。
+      return true // Adobe Photoshop 相容：對 JIS 英數切換鍵傳入事件一律立刻返回 true。
     }
 
     // MARK: 針對客體的具體處理
@@ -102,7 +102,7 @@ extension SessionCtl {
 
     // 如果是方向鍵輸入的話，就想辦法帶上標記資訊、來說明當前是縱排還是橫排。
     if event.isUp || event.isDown || event.isLeft || event.isRight {
-      updateVerticalTypingStatus()  // 檢查當前環境是否是縱排輸入。
+      updateVerticalTypingStatus() // 檢查當前環境是否是縱排輸入。
       eventToDeal = event.reinitiate(charactersIgnoringModifiers: isVerticalTyping ? "Vertical" : "Horizontal") ?? event
     }
 
@@ -121,7 +121,7 @@ extension SessionCtl {
 
     // Apple 數字小鍵盤處理
     if eventToDeal.isNumericPadKey,
-      let eventCharConverted = eventToDeal.characters?.applyingTransformFW2HW(reverse: false)
+       let eventCharConverted = eventToDeal.characters?.applyingTransformFW2HW(reverse: false)
     {
       eventToDeal = eventToDeal.reinitiate(characters: eventCharConverted) ?? eventToDeal
     }

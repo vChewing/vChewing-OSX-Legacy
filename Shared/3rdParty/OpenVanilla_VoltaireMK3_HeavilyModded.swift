@@ -18,7 +18,7 @@ private class VwrCandidateUniversal: NSView {
 
   var action: Selector?
   weak var target: AnyObject?
-  weak var delegate: CtlCandidateUniversal?  // 糾偏用 /// Shiki Suen.
+  weak var delegate: CtlCandidateUniversal? // 糾偏用 /// Shiki Suen.
   var isVerticalLayout = false
   var fractionFontSize: CGFloat = 12.0
 
@@ -32,9 +32,9 @@ private class VwrCandidateUniversal: NSView {
   private var keyLabelAttrDict: [NSAttributedString.Key: AnyObject] = [:]
   private var candidateAttrDict: [NSAttributedString.Key: AnyObject] = [:]
   private var candidateWithLabelAttrDict: [NSAttributedString.Key: AnyObject] = [:]
-  private var windowWidth: CGFloat = 0  // 縱排專用
+  private var windowWidth: CGFloat = 0 // 縱排專用
   private var elementWidths: [CGFloat] = []
-  private var elementHeights: [CGFloat] = []  // 縱排專用
+  private var elementHeights: [CGFloat] = [] // 縱排專用
   private var trackingHighlightedIndex: Int = .max {
     didSet { trackingHighlightedIndex = max(trackingHighlightedIndex, 0) }
   }
@@ -48,12 +48,12 @@ private class VwrCandidateUniversal: NSView {
 
     if !elementWidths.isEmpty {
       switch isVerticalLayout {
-        case true:
-          result.width = windowWidth
-          result.height = elementHeights.reduce(0, +)
-        case false:
-          result.width = elementWidths.reduce(0, +) + CGFloat(elementWidths.count)
-          result.height = candidateTextHeight + cellPadding
+      case true:
+        result.width = windowWidth
+        result.height = elementHeights.reduce(0, +)
+      case false:
+        result.width = elementWidths.reduce(0, +) + CGFloat(elementWidths.count)
+        result.height = candidateTextHeight + cellPadding
       }
     }
     return result
@@ -67,15 +67,15 @@ private class VwrCandidateUniversal: NSView {
     }
 
     let count = min(labels.count, candidates.count)
-    keyLabels = Array(labels[0..<count])
-    displayedCandidates = Array(candidates[0..<count])
+    keyLabels = Array(labels[0 ..< count])
+    displayedCandidates = Array(candidates[0 ..< count])
     dispCandidatesWithLabels = zip(keyLabels, displayedCandidates).map { $0 + $1 }
 
     var newWidths = [CGFloat]()
     var calculatedWindowWidth = CGFloat()
     var newHeights = [CGFloat]()
     let baseSize = NSSize(width: 10240.0, height: 10240.0)
-    for index in 0..<count {
+    for index in 0 ..< count {
       let rctCandidate = (dispCandidatesWithLabels[index] as NSString).boundingRect(
         with: baseSize, options: .usesLineFragmentOrigin,
         attributes: candidateWithLabelAttrDict
@@ -83,18 +83,18 @@ private class VwrCandidateUniversal: NSView {
       var cellWidth = rctCandidate.size.width + cellPadding
       let cellHeight = rctCandidate.size.height + cellPadding
       switch isVerticalLayout {
-        case true:
-          if calculatedWindowWidth < rctCandidate.size.width {
-            calculatedWindowWidth = rctCandidate.size.width + cellPadding * 2
-          }
-          calculatedWindowWidth = max(calculatedWindowWidth, 4 * rctCandidate.size.height)
-        case false:
-          if cellWidth < cellHeight * 1.4 {
-            cellWidth = cellHeight * 1.4
-          }
+      case true:
+        if calculatedWindowWidth < rctCandidate.size.width {
+          calculatedWindowWidth = rctCandidate.size.width + cellPadding * 2
+        }
+        calculatedWindowWidth = max(calculatedWindowWidth, 4 * rctCandidate.size.height)
+      case false:
+        if cellWidth < cellHeight * 1.4 {
+          cellWidth = cellHeight * 1.4
+        }
       }
       newWidths.append(round(cellWidth))
-      newHeights.append(round(cellHeight))  // 縱排專用
+      newHeights.append(round(cellHeight)) // 縱排專用
     }
     elementWidths = newWidths
     elementHeights = newHeights
@@ -112,7 +112,7 @@ private class VwrCandidateUniversal: NSView {
       .font: candidateFont,
       .paragraphStyle: paraStyle,
       .foregroundColor: NSColor.textColor,
-    ]  // We still need this dummy section to make sure that…
+    ] // We still need this dummy section to make sure that…
     // …the space occupations of the candidates are correct.
 
     keyLabelAttrDict = [
@@ -120,12 +120,12 @@ private class VwrCandidateUniversal: NSView {
       .paragraphStyle: paraStyle,
       .verticalGlyphForm: true as AnyObject,
       .foregroundColor: NSColor.textColor.withAlphaComponent(0.8),
-    ]  // Candidate phrase text color
+    ] // Candidate phrase text color
     candidateAttrDict = [
       .font: candidateFont,
       .paragraphStyle: paraStyle,
       .foregroundColor: NSColor.textColor,
-    ]  // Candidate index text color
+    ] // Candidate index text color
     let labelFontSize = labelFont.pointSize
     let candidateFontSize = candidateFont.pointSize
     let biggestSize = max(labelFontSize, candidateFontSize)
@@ -139,18 +139,18 @@ private class VwrCandidateUniversal: NSView {
   func ensureLangIdentifier(for attr: inout [NSAttributedString.Key: AnyObject]) {
     if PrefMgr.shared.handleDefaultCandidateFontsByLangIdentifier {
       switch IMEApp.currentInputMode {
-        case .imeModeCHS:
-          if #available(macOS 12.0, *) {
-            attr[.languageIdentifier] = "zh-Hans" as AnyObject
-          }
-        case .imeModeCHT:
-          if #available(macOS 12.0, *) {
-            attr[.languageIdentifier] =
-              (PrefMgr.shared.shiftJISShinjitaiOutputEnabled || PrefMgr.shared.chineseConversionEnabled)
+      case .imeModeCHS:
+        if #available(macOS 12.0, *) {
+          attr[.languageIdentifier] = "zh-Hans" as AnyObject
+        }
+      case .imeModeCHT:
+        if #available(macOS 12.0, *) {
+          attr[.languageIdentifier] =
+            (PrefMgr.shared.shiftJISShinjitaiOutputEnabled || PrefMgr.shared.chineseConversionEnabled)
               ? "ja" as AnyObject : "zh-Hant" as AnyObject
-          }
-        default:
-          break
+        }
+      default:
+        break
       }
     }
   }
@@ -158,87 +158,87 @@ private class VwrCandidateUniversal: NSView {
   var highlightedColor: NSColor { IMEApp.currentInputMode == .imeModeCHS ? .red : .alternateSelectedControlColor }
 
   override func draw(_: NSRect) {
-    NSColor.controlBackgroundColor.setFill()  // Candidate list panel base background
+    NSColor.controlBackgroundColor.setFill() // Candidate list panel base background
     NSBezierPath.fill(bounds)
 
     switch isVerticalLayout {
-      case true:
-        var accuHeight: CGFloat = 0
-        for (index, elementHeight) in elementHeights.enumerated() {
-          let currentHeight = elementHeight
-          let rctCandidateArea = NSRect(
-            x: 0, y: accuHeight, width: windowWidth,
-            height: candidateTextHeight + cellPadding
-          )
-          let rctLabel = NSRect(
-            x: cellPadding / 2 + 2, y: accuHeight + cellPadding / 2, width: keyLabelWidth,
-            height: keyLabelHeight * 2.0
-          )
-          let rctCandidatePhrase = NSRect(
-            x: cellPadding / 2 + 2 + keyLabelWidth, y: accuHeight + cellPadding / 2 - 1,
-            width: windowWidth - keyLabelWidth, height: candidateTextHeight
-          )
+    case true:
+      var accuHeight: CGFloat = 0
+      for (index, elementHeight) in elementHeights.enumerated() {
+        let currentHeight = elementHeight
+        let rctCandidateArea = NSRect(
+          x: 0, y: accuHeight, width: windowWidth,
+          height: candidateTextHeight + cellPadding
+        )
+        let rctLabel = NSRect(
+          x: cellPadding / 2 + 2, y: accuHeight + cellPadding / 2, width: keyLabelWidth,
+          height: keyLabelHeight * 2.0
+        )
+        let rctCandidatePhrase = NSRect(
+          x: cellPadding / 2 + 2 + keyLabelWidth, y: accuHeight + cellPadding / 2 - 1,
+          width: windowWidth - keyLabelWidth, height: candidateTextHeight
+        )
 
-          var activeCandidateIndexAttr = keyLabelAttrDict
-          var activeCandidateAttr = candidateAttrDict
-          if index == highlightedInlineIndex {
-            highlightedColor.setFill()
-            // Highlightened index text color
-            activeCandidateIndexAttr[.foregroundColor] = NSColor.alternateSelectedControlTextColor.withAlphaComponent(
-              0.8
-            )
+        var activeCandidateIndexAttr = keyLabelAttrDict
+        var activeCandidateAttr = candidateAttrDict
+        if index == highlightedInlineIndex {
+          highlightedColor.setFill()
+          // Highlightened index text color
+          activeCandidateIndexAttr[.foregroundColor] = NSColor.alternateSelectedControlTextColor.withAlphaComponent(
+            0.8
+          )
+          .withAlphaComponent(0.84)
+          // Highlightened phrase text color
+          activeCandidateAttr[.foregroundColor] = NSColor.alternateSelectedControlTextColor
+          rctCandidateArea.fill()
+        }
+        ensureLangIdentifier(for: &activeCandidateAttr)
+        (keyLabels[index] as NSString).draw(
+          in: rctLabel, withAttributes: activeCandidateIndexAttr
+        )
+        (displayedCandidates[index] as NSString).draw(
+          in: rctCandidatePhrase, withAttributes: activeCandidateAttr
+        )
+        accuHeight += currentHeight
+      }
+    case false:
+      var accuWidth: CGFloat = 0
+      for (index, elementWidth) in elementWidths.enumerated() {
+        let currentWidth = elementWidth
+        let rctCandidateArea = NSRect(
+          x: accuWidth, y: 0, width: currentWidth + 1.0,
+          height: candidateTextHeight + cellPadding
+        )
+        let rctLabel = NSRect(
+          x: accuWidth + cellPadding / 2 - 1, y: cellPadding / 2, width: keyLabelWidth,
+          height: keyLabelHeight * 2.0
+        )
+        let rctCandidatePhrase = NSRect(
+          x: accuWidth + keyLabelWidth - 1, y: cellPadding / 2 - 1,
+          width: currentWidth - keyLabelWidth,
+          height: candidateTextHeight
+        )
+
+        var activeCandidateIndexAttr = keyLabelAttrDict
+        var activeCandidateAttr = candidateAttrDict
+        if index == highlightedInlineIndex {
+          highlightedColor.setFill()
+          // Highlightened index text color
+          activeCandidateIndexAttr[.foregroundColor] = NSColor.selectedMenuItemTextColor
             .withAlphaComponent(0.84)
-            // Highlightened phrase text color
-            activeCandidateAttr[.foregroundColor] = NSColor.alternateSelectedControlTextColor
-            rctCandidateArea.fill()
-          }
-          ensureLangIdentifier(for: &activeCandidateAttr)
-          (keyLabels[index] as NSString).draw(
-            in: rctLabel, withAttributes: activeCandidateIndexAttr
-          )
-          (displayedCandidates[index] as NSString).draw(
-            in: rctCandidatePhrase, withAttributes: activeCandidateAttr
-          )
-          accuHeight += currentHeight
+          // Highlightened phrase text color
+          activeCandidateAttr[.foregroundColor] = NSColor.selectedMenuItemTextColor
+          rctCandidateArea.fill()
         }
-      case false:
-        var accuWidth: CGFloat = 0
-        for (index, elementWidth) in elementWidths.enumerated() {
-          let currentWidth = elementWidth
-          let rctCandidateArea = NSRect(
-            x: accuWidth, y: 0, width: currentWidth + 1.0,
-            height: candidateTextHeight + cellPadding
-          )
-          let rctLabel = NSRect(
-            x: accuWidth + cellPadding / 2 - 1, y: cellPadding / 2, width: keyLabelWidth,
-            height: keyLabelHeight * 2.0
-          )
-          let rctCandidatePhrase = NSRect(
-            x: accuWidth + keyLabelWidth - 1, y: cellPadding / 2 - 1,
-            width: currentWidth - keyLabelWidth,
-            height: candidateTextHeight
-          )
-
-          var activeCandidateIndexAttr = keyLabelAttrDict
-          var activeCandidateAttr = candidateAttrDict
-          if index == highlightedInlineIndex {
-            highlightedColor.setFill()
-            // Highlightened index text color
-            activeCandidateIndexAttr[.foregroundColor] = NSColor.selectedMenuItemTextColor
-              .withAlphaComponent(0.84)
-            // Highlightened phrase text color
-            activeCandidateAttr[.foregroundColor] = NSColor.selectedMenuItemTextColor
-            rctCandidateArea.fill()
-          }
-          ensureLangIdentifier(for: &activeCandidateAttr)
-          (keyLabels[index] as NSString).draw(
-            in: rctLabel, withAttributes: activeCandidateIndexAttr
-          )
-          (displayedCandidates[index] as NSString).draw(
-            in: rctCandidatePhrase, withAttributes: activeCandidateAttr
-          )
-          accuWidth += currentWidth + 1.0
-        }
+        ensureLangIdentifier(for: &activeCandidateAttr)
+        (keyLabels[index] as NSString).draw(
+          in: rctLabel, withAttributes: activeCandidateIndexAttr
+        )
+        (displayedCandidates[index] as NSString).draw(
+          in: rctCandidatePhrase, withAttributes: activeCandidateAttr
+        )
+        accuWidth += currentWidth + 1.0
+      }
     }
   }
 
@@ -248,26 +248,26 @@ private class VwrCandidateUniversal: NSView {
       return NSNotFound
     }
     switch isVerticalLayout {
-      case true:
-        var accuHeight: CGFloat = 0.0
-        for (index, elementHeight) in elementHeights.enumerated() {
-          let currentHeight = elementHeight
+    case true:
+      var accuHeight: CGFloat = 0.0
+      for (index, elementHeight) in elementHeights.enumerated() {
+        let currentHeight = elementHeight
 
-          if location.y >= accuHeight, location.y <= accuHeight + currentHeight {
-            return index
-          }
-          accuHeight += currentHeight
+        if location.y >= accuHeight, location.y <= accuHeight + currentHeight {
+          return index
         }
-      case false:
-        var accuWidth: CGFloat = 0.0
-        for (index, elementWidth) in elementWidths.enumerated() {
-          let currentWidth = elementWidth
+        accuHeight += currentHeight
+      }
+    case false:
+      var accuWidth: CGFloat = 0.0
+      for (index, elementWidth) in elementWidths.enumerated() {
+        let currentWidth = elementWidth
 
-          if location.x >= accuWidth, location.x <= accuWidth + currentWidth {
-            return index
-          }
-          accuWidth += currentWidth + 1.0
+        if location.x >= accuWidth, location.x <= accuWidth + currentWidth {
+          return index
         }
+        accuWidth += currentWidth + 1.0
+      }
     }
     return NSNotFound
   }
@@ -322,16 +322,16 @@ public class CtlCandidateUniversal: CtlCandidate {
   internal var thePool: CandidatePool {
     get {
       switch currentLayout {
-        case .horizontal: return Self.thePoolHorizontal
-        case .vertical: return Self.thePoolVertical
-        @unknown default: return .init(candidates: [], rowCapacity: 0)
+      case .horizontal: return Self.thePoolHorizontal
+      case .vertical: return Self.thePoolVertical
+      @unknown default: return .init(candidates: [], rowCapacity: 0)
       }
     }
     set {
       switch currentLayout {
-        case .horizontal: Self.thePoolHorizontal = newValue
-        case .vertical: Self.thePoolVertical = newValue
-        @unknown default: break
+      case .horizontal: Self.thePoolHorizontal = newValue
+      case .vertical: Self.thePoolVertical = newValue
+      @unknown default: break
       }
     }
   }
@@ -344,9 +344,9 @@ public class CtlCandidateUniversal: CtlCandidate {
     get { candidateView.isVerticalLayout ? .vertical : .horizontal }
     set {
       switch newValue {
-        case .vertical: candidateView.isVerticalLayout = true
-        case .horizontal: candidateView.isVerticalLayout = false
-        @unknown default: break
+      case .vertical: candidateView.isVerticalLayout = true
+      case .horizontal: candidateView.isVerticalLayout = false
+      @unknown default: break
       }
     }
   }
@@ -369,7 +369,7 @@ public class CtlCandidateUniversal: CtlCandidate {
 
     // MARK: Add Buttons
 
-    contentRect.size = NSSize(width: 20.0, height: 10.0)  // Reduce the button width
+    contentRect.size = NSSize(width: 20.0, height: 10.0) // Reduce the button width
     let buttonAttribute: [NSAttributedString.Key: Any] = [.font: NSFont.systemFont(ofSize: 9.0)]
 
     nextPageButton = .init(frame: contentRect)
@@ -382,7 +382,7 @@ public class CtlCandidateUniversal: CtlCandidate {
     nextPageButton.userInterfaceLayoutDirection = .leftToRight
     nextPageButton.attributedTitle = NSMutableAttributedString(
       string: " ", attributes: buttonAttribute
-    )  // Next Page Arrow
+    ) // Next Page Arrow
     prevPageButton = .init(frame: contentRect)
     prevPageButton.wantsLayer = true
     prevPageButton.layer?.masksToBounds = true
@@ -393,7 +393,7 @@ public class CtlCandidateUniversal: CtlCandidate {
     prevPageButton.userInterfaceLayoutDirection = .rightToLeft
     prevPageButton.attributedTitle = NSMutableAttributedString(
       string: " ", attributes: buttonAttribute
-    )  // Previous Page Arrow
+    ) // Previous Page Arrow
     panel.contentView?.addSubview(nextPageButton)
     panel.contentView?.addSubview(prevPageButton)
 
@@ -441,20 +441,20 @@ public class CtlCandidateUniversal: CtlCandidate {
     guard let delegate = delegate else { return }
 
     switch currentLayout {
-      case .horizontal:
-        Self.thePoolHorizontal = .init(
-          candidates: delegate.candidatePairs(conv: true).map(\.1), rowCapacity: 9,
-          rows: 1, selectionKeys: delegate.selectionKeys, locale: locale
-        )
-        Self.thePoolHorizontal.highlight(at: 0)
-      case .vertical:
-        Self.thePoolVertical = .init(
-          candidates: delegate.candidatePairs(conv: true).map(\.1), columnCapacity: 9,
-          columns: 1, selectionKeys: delegate.selectionKeys, locale: locale
-        )
-        Self.thePoolVertical.highlight(at: 0)
-      @unknown default:
-        return
+    case .horizontal:
+      Self.thePoolHorizontal = .init(
+        candidates: delegate.candidatePairs(conv: true).map(\.1), rowCapacity: 9,
+        rows: 1, selectionKeys: delegate.selectionKeys, locale: locale
+      )
+      Self.thePoolHorizontal.highlight(at: 0)
+    case .vertical:
+      Self.thePoolVertical = .init(
+        candidates: delegate.candidatePairs(conv: true).map(\.1), columnCapacity: 9,
+        columns: 1, selectionKeys: delegate.selectionKeys, locale: locale
+      )
+      Self.thePoolVertical.highlight(at: 0)
+    @unknown default:
+      return
     }
     thePool.maxLinesPerPage = 1
     keyLabels = thePool.selectionKeys.map(\.description)
@@ -477,7 +477,7 @@ public class CtlCandidateUniversal: CtlCandidate {
       return highlightNextCandidate()
     }
     if count <= 0 { return false }
-    for _ in 0..<min(thePool.maxLinesPerPage, count) {
+    for _ in 0 ..< min(thePool.maxLinesPerPage, count) {
       thePool.selectNewNeighborLine(isForward: true)
     }
     thePool.highlight(at: candidateAmountBeforeCurrentPage)
@@ -501,7 +501,7 @@ public class CtlCandidateUniversal: CtlCandidate {
       return highlightPreviousCandidate()
     }
     if count <= 0 { return false }
-    for _ in 0..<min(thePool.maxLinesPerPage, count) {
+    for _ in 0 ..< min(thePool.maxLinesPerPage, count) {
       thePool.selectNewNeighborLine(isForward: false)
     }
     thePool.highlight(at: candidateAmountBeforeCurrentPage)
@@ -536,7 +536,7 @@ public class CtlCandidateUniversal: CtlCandidate {
   /// Credit: Shiki Suen.
   override public func candidateIndexAtKeyLabelIndex(_ id: Int) -> Int {
     let arrCurrentLine = thePool.candidateLines[thePool.currentLineNumber]
-    if !(0..<arrCurrentLine.count).contains(id) { return -114_514 }
+    if !(0 ..< arrCurrentLine.count).contains(id) { return -114_514 }
     let actualID = max(0, min(id, arrCurrentLine.count - 1))
     return arrCurrentLine[actualID].index
   }
@@ -555,7 +555,7 @@ extension CtlCandidateUniversal {
   /// Credit: Shiki Suen.
   internal var candidateAmountBeforeCurrentPage: Int {
     var delta = 0
-    for i in 0..<thePool.currentLineNumber {
+    for i in 0 ..< thePool.currentLineNumber {
       delta += thePool.candidateLines[i].count
     }
     return delta
@@ -629,7 +629,7 @@ extension CtlCandidateUniversal {
       let attrString = NSMutableAttributedString(
         string: "\(thePool.currentLineNumber + 1)/\(thePool.candidateLines.count)",
         attributes: [
-          .font: NSFont.systemFont(ofSize: candidateView.fractionFontSize)
+          .font: NSFont.systemFont(ofSize: candidateView.fractionFontSize),
         ]
       )
       pageCounterLabel.attributedStringValue = attrString
@@ -642,8 +642,8 @@ extension CtlCandidateUniversal {
       rect.size.width += 8
       let rectOriginY: CGFloat =
         (currentLayout == .horizontal)
-        ? (newSize.height - rect.height) / 2
-        : counterHeight
+          ? (newSize.height - rect.height) / 2
+          : counterHeight
       let rectOriginX: CGFloat = newSize.width
       // PrefMgr.shared.showPageButtonsInCandidateWindow ? newSize.width : newSize.width + 4
       rect.origin = NSPoint(x: rectOriginX, y: rectOriginY)

@@ -118,47 +118,47 @@ public class TooltipUI: NSWindowController {
       red: 0.9, green: 0.9, blue: 0.9, alpha: 1.00
     )
     switch state {
-      case .normal:
-        backgroundColor = NSColor(
-          red: 0.12, green: 0.12, blue: 0.12, alpha: 1.00
-        )
-        textColor = NSColor(
-          red: 0.9, green: 0.9, blue: 0.9, alpha: 1.00
-        )
-      case .redAlert:
-        backgroundColor = NSColor(
-          red: 0.55, green: 0.00, blue: 0.00, alpha: 1.00
-        )
-        textColor = NSColor.white
-      case .warning:
-        backgroundColor = NSColor.purple
-        textColor = NSColor.white
-      case .succeeded:
-        backgroundColor = NSColor(
-          red: 0.21, green: 0.15, blue: 0.02, alpha: 1.00
-        )
-        textColor = NSColor.white
-      case .denialOverflow:
-        backgroundColor = NSColor(
-          red: 0.13, green: 0.08, blue: 0.00, alpha: 1.00
-        )
-        textColor = NSColor(
-          red: 1.00, green: 0.60, blue: 0.00, alpha: 1.00
-        )
-      case .denialInsufficiency:
-        backgroundColor = NSColor(
-          red: 0.15, green: 0.15, blue: 0.15, alpha: 1.00
-        )
-        textColor = NSColor(
-          red: 0.88, green: 0.88, blue: 0.88, alpha: 1.00
-        )
-      case .prompt:
-        backgroundColor = NSColor(
-          red: 0.09, green: 0.15, blue: 0.15, alpha: 1.00
-        )
-        textColor = NSColor(
-          red: 0.91, green: 0.95, blue: 0.92, alpha: 1.00
-        )
+    case .normal:
+      backgroundColor = NSColor(
+        red: 0.12, green: 0.12, blue: 0.12, alpha: 1.00
+      )
+      textColor = NSColor(
+        red: 0.9, green: 0.9, blue: 0.9, alpha: 1.00
+      )
+    case .redAlert:
+      backgroundColor = NSColor(
+        red: 0.55, green: 0.00, blue: 0.00, alpha: 1.00
+      )
+      textColor = NSColor.white
+    case .warning:
+      backgroundColor = NSColor.purple
+      textColor = NSColor.white
+    case .succeeded:
+      backgroundColor = NSColor(
+        red: 0.21, green: 0.15, blue: 0.02, alpha: 1.00
+      )
+      textColor = NSColor.white
+    case .denialOverflow:
+      backgroundColor = NSColor(
+        red: 0.13, green: 0.08, blue: 0.00, alpha: 1.00
+      )
+      textColor = NSColor(
+        red: 1.00, green: 0.60, blue: 0.00, alpha: 1.00
+      )
+    case .denialInsufficiency:
+      backgroundColor = NSColor(
+        red: 0.15, green: 0.15, blue: 0.15, alpha: 1.00
+      )
+      textColor = NSColor(
+        red: 0.88, green: 0.88, blue: 0.88, alpha: 1.00
+      )
+    case .prompt:
+      backgroundColor = NSColor(
+        red: 0.09, green: 0.15, blue: 0.15, alpha: 1.00
+      )
+      textColor = NSColor(
+        red: 0.91, green: 0.95, blue: 0.92, alpha: 1.00
+      )
     }
     window?.backgroundColor = backgroundColor
     messageText.backgroundColor = backgroundColor
