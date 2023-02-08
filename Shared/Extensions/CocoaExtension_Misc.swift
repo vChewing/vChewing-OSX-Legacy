@@ -133,10 +133,13 @@ public extension NSApplication {
 
 // MARK: - String.applyingTransform
 
-extension String {
-  func applyingTransformFW2HW(reverse _: Bool) -> String {
+public extension String {
+  func applyingTransformFW2HW(reverse: Bool) -> String {
+    if #available(macOS 10.11, *) {
+      return applyingTransform(.fullwidthToHalfwidth, reverse: reverse) ?? self
+    }
     let theString = NSMutableString(string: self)
-    CFStringTransform(theString, nil, kCFStringTransformFullwidthHalfwidth, true)
+    CFStringTransform(theString, nil, kCFStringTransformFullwidthHalfwidth, reverse)
     return theString as String
   }
 }
