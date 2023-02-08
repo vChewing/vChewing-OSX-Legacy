@@ -232,14 +232,9 @@ extension InputHandler {
 
     if state.type == .ofEmpty {
       if input.isMainAreaNumKey, input.modifierFlags == [.shift, .option] {
-        // NOTE: 將來棄用 macOS 10.11 El Capitan 支援的時候，把這裡由 CFStringTransform 改為 StringTransform:
-        // https://developer.apple.com/documentation/foundation/stringtransform
-        guard let stringRAW = input.mainAreaNumKeyChar else { return false }
-        let string = NSMutableString(string: stringRAW)
-        CFStringTransform(string, nil, kCFStringTransformFullwidthHalfwidth, true)
-        delegate.switchState(
-          IMEState.ofCommitting(textToCommit: prefs.halfWidthPunctuationEnabled ? stringRAW : string as String)
-        )
+        guard let strRAW = input.mainAreaNumKeyChar else { return false }
+        let newString = strRAW.applyingTransformFW2HW(reverse: !prefs.halfWidthPunctuationEnabled)
+        delegate.switchState(IMEState.ofCommitting(textToCommit: newString))
         return true
       }
     }
