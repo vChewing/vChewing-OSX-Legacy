@@ -144,9 +144,7 @@ extension InputHandler {
           let text: String = firstCandidate.1
           delegate.switchState(IMEState.ofCommitting(textToCommit: text))
 
-          if !prefs.associatedPhrasesEnabled {
-            delegate.switchState(IMEState.ofEmpty())
-          } else {
+          if prefs.associatedPhrasesEnabled {
             let associatedPhrases = generateStateOfAssociates(withPair: .init(keyArray: [reading], value: text))
             delegate.switchState(associatedPhrases.candidates.isEmpty ? IMEState.ofEmpty() : associatedPhrases)
           }
@@ -287,9 +285,7 @@ extension InputHandler {
           let text: String = firstCandidate.1
           delegate.switchState(IMEState.ofCommitting(textToCommit: text))
 
-          if !prefs.associatedPhrasesEnabled {
-            delegate.switchState(IMEState.ofEmpty())
-          } else {
+          if prefs.associatedPhrasesEnabled {
             let associatedPhrases = generateStateOfAssociates(withPair: .init(keyArray: [reading], value: text))
             delegate.switchState(associatedPhrases.candidates.isEmpty ? IMEState.ofEmpty() : associatedPhrases)
           }
