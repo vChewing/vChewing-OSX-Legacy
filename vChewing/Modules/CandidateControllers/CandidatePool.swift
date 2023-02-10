@@ -314,7 +314,7 @@ extension CandidatePool {
         }
       } else {
         for (i, neta) in candidateRow.enumerated() {
-          neta.key = selectionKeys.map { String($0) }[i]
+          neta.key = selectionKeys.map(\.description)[i]
         }
       }
     }
@@ -348,7 +348,7 @@ extension CandidatePool {
       } else {
         for (i, neta) in candidateColumn.enumerated() {
           if neta.key.isEmpty { continue }
-          neta.key = selectionKeys.map { String($0) }[i]
+          neta.key = selectionKeys.map(\.description)[i]
         }
       }
     }
