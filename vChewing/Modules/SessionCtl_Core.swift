@@ -220,10 +220,6 @@ extension SessionCtl {
       inputHandler?.delegate = self
       syncBaseLMPrefs()
 
-      if #available(macOS 10.15, *) {
-        if isASCIIMode, PrefMgr.shared.disableShiftTogglingAlphanumericalMode { isASCIIMode = false }
-      }
-
       DispatchQueue.main.async {
         UpdateSputnik.shared.checkForUpdate(forced: false, url: kUpdateInfoSourceURL)
         (NSApp.delegate as? AppDelegate)?.checkMemoryUsage()
