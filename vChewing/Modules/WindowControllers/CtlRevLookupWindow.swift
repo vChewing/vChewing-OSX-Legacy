@@ -158,7 +158,7 @@ class FrmRevLookupWindow: NSWindow {
     strBuilder.append("Char\tReading(s)\n".localized)
     strBuilder.append("==\t====\n")
     var i = 0
-    theLoop: for char in input.charComponents {
+    theLoop: for char in input.map(\.description) {
       if i == 15 {
         strBuilder.append("Maximum 15 results returnable.".localized + "\n")
         break theLoop
