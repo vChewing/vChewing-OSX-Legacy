@@ -108,6 +108,12 @@ public class InputHandler: InputHandlerProtocol {
     isCodePointInputMode = false
   }
 
+  // MARK: - Hanin Keyboard Symbol Mode.
+
+  var isHaninKeyboardSymbolMode = false
+
+  static let tooltipHaninKeyboardSymbolMode: String = "\("Hanin Keyboard Symbol Input.".localized)　　"
+
   // MARK: - Codepoint Input Buffer.
 
   var isCodePointInputMode = false {
