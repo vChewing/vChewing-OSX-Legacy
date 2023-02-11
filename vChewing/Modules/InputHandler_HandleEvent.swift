@@ -68,8 +68,26 @@ extension InputHandler {
     } else if event.isSymbolMenuPhysicalKey {
       // 符號鍵的行為是固定的，不受偏好設定影響。
       switch imkC.currentLayout {
-      case .horizontal: _ = event.isShiftHold ? imkC.imk.moveUp(self) : imkC.imk.moveDown(self)
-      case .vertical: _ = event.isShiftHold ? imkC.imk.moveLeft(self) : imkC.imk.moveRight(self)
+      case .horizontal:
+        switch event.modifierFlags {
+        case []: imkC.imk.moveDown(self)
+        case .shift,
+             .option where delegate.state.type != .ofSymbolTable:
+          imkC.imk.moveUp(self)
+        case .option where delegate.state.type == .ofSymbolTable:
+          handleHaninKeyboardSymbolModeToggle()
+        default: break
+        }
+      case .vertical:
+        switch event.modifierFlags {
+        case []: imkC.imk.moveRight(self)
+        case .shift,
+             .option where delegate.state.type != .ofSymbolTable:
+          imkC.imk.moveLeft(self)
+        case .option where delegate.state.type == .ofSymbolTable:
+          handleHaninKeyboardSymbolModeToggle()
+        default: break
+        }
       @unknown default: break
       }
       return true
