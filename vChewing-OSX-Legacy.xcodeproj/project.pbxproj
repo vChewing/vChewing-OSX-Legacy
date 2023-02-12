@@ -65,6 +65,7 @@
 		5BACBD1329509B3D0078CAB3 /* CocoaExtension_Misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A4F0294E057F00EFA49C /* CocoaExtension_Misc.swift */; };
 		5BACBD1429509B450078CAB3 /* CocoaExtension_NSWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A4FF294E092900EFA49C /* CocoaExtension_NSWindowController.swift */; };
 		5BACBD1529509BB60078CAB3 /* SwiftExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A4F2294E058F00EFA49C /* SwiftExtension.swift */; };
+		5BB1D7F22999025B00EA8D2C /* PrefUITabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB1D7F12999025B00EA8D2C /* PrefUITabs.swift */; };
 		5BCF4AB829546B5200C7FBD9 /* convdict.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5BCF4AB729546B5100C7FBD9 /* convdict.plist */; };
 		5BE5A4E5294E03C200EFA49C /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A4E4294E03C200EFA49C /* main.swift */; };
 		5BE5A4F1294E057F00EFA49C /* CocoaExtension_Misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A4F0294E057F00EFA49C /* CocoaExtension_Misc.swift */; };
@@ -219,6 +220,7 @@
 		5BACBD0F295099480078CAB3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		5BACBD102950994A0078CAB3 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		5BACBD112950994C0078CAB3 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		5BB1D7F12999025B00EA8D2C /* PrefUITabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefUITabs.swift; sourceTree = "<group>"; };
 		5BCF4AB729546B5100C7FBD9 /* convdict.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = convdict.plist; sourceTree = "<group>"; };
 		5BE5A4E3294E00C300EFA49C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		5BE5A4E4294E03C200EFA49C /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -397,6 +399,14 @@
 			path = Installer;
 			sourceTree = "<group>";
 		};
+		5BB1D7F52999028800EA8D2C /* UIModules */ = {
+			isa = PBXGroup;
+			children = (
+				5BB1D7F12999025B00EA8D2C /* PrefUITabs.swift */,
+			);
+			path = UIModules;
+			sourceTree = "<group>";
+		};
 		5BE5A4E6294E04B000EFA49C /* MenuIcons */ = {
 			isa = PBXGroup;
 			children = (
@@ -425,6 +435,7 @@
 		5BE5A4EC294E051300EFA49C /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				5BB1D7F52999028800EA8D2C /* UIModules */,
 				5B751DDE294EE77F0031CF70 /* CandidateControllers */,
 				5B751DB4294EE21D0031CF70 /* WindowControllers */,
 				5BF5BAE0294DFFC9006011AD /* AppDelegate.swift */,
@@ -954,6 +965,7 @@
 				5BE5A568294E119600EFA49C /* LMMgr.swift in Sources */,
 				5B751E04294F401A0031CF70 /* OpenVanilla_VoltaireMK3_HeavilyModded.swift in Sources */,
 				5B751DCF294EE57D0031CF70 /* SessionCtl_Core.swift in Sources */,
+				5BB1D7F22999025B00EA8D2C /* PrefUITabs.swift in Sources */,
 				5B751DD8294EE57D0031CF70 /* SessionCtl_IMKCandidatesData.swift in Sources */,
 				5BE5A558294E0D1E00EFA49C /* 8_Unigram.swift in Sources */,
 				5B751DE3294EE7A80031CF70 /* CandidateCellData.swift in Sources */,
