@@ -338,7 +338,8 @@ extension InputHandler {
         }
       }()
       guard
-        var char = "\(strCodePointBuffer)\(input.text)".parsedAsHexLiteral(encoding: encoding)
+        var char = "\(strCodePointBuffer)\(input.text)"
+        .parsedAsHexLiteral(encoding: encoding)?.first?.description
       else {
         delegate.callError("D220B880：輸入的字碼沒有對應的字元。")
         var updatedState = IMEState.ofAbortion()
