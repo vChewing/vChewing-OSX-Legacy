@@ -174,6 +174,12 @@ public class PrefMgr: PrefMgrProtocol {
   @AppProperty(key: UserDef.kHandleDefaultCandidateFontsByLangIdentifier.rawValue, defaultValue: false)
   public var handleDefaultCandidateFontsByLangIdentifier: Bool
 
+  @AppProperty(
+    key: UserDef.kDisableSegmentedThickUnderlineInMarkingModeForManagedClients.rawValue,
+    defaultValue: false
+  )
+  public var disableSegmentedThickUnderlineInMarkingModeForManagedClients: Bool
+
   // MARK: - Settings (Tier 3)
 
   @AppProperty(key: UserDef.kMaxCandidateLength.rawValue, defaultValue: 10)
