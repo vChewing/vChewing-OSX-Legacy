@@ -164,7 +164,7 @@ extension InputHandler {
         return true
       }
       var newState = generateStateOfInputting()
-      newState.tooltip = NSLocalizedString(tooltipMessage, comment: "") + "　　"
+      newState.tooltip = NSLocalizedString(tooltipMessage, comment: "")
       newState.data.tooltipColorState = tooltipColorState
       newState.tooltipDuration = 1.85
       delegate.switchState(newState)
@@ -183,7 +183,7 @@ extension InputHandler {
         return true
       }
       var newState = generateStateOfInputting()
-      newState.tooltip = NSLocalizedString(tooltipMessage, comment: "") + "　　"
+      newState.tooltip = NSLocalizedString(tooltipMessage, comment: "")
       newState.data.tooltipColorState = .warning
       newState.tooltipDuration = 1.85
       delegate.switchState(newState)
@@ -806,7 +806,6 @@ extension InputHandler {
     } else {
       newTooltip.insert((newIndex + 1).description + " / " + candidates.count.description, at: 0)
     }
-    newTooltip.append("　　")
     newState.tooltip = newTooltip.description
     vCLog(newState.tooltip)
     newState.tooltipDuration = 0
