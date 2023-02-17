@@ -78,10 +78,8 @@ public class Notifier: NSWindowController {
     let attrStringAlt = NSMutableAttributedString(string: additionalString, attributes: attrAlt)
     attrString.insert(attrStringAlt, at: attrString.length)
 
-    let textRect: NSRect = attrString.boundingRect(
-      with: NSSize(width: 1600.0, height: 1600.0), options: [.usesLineFragmentOrigin]
-    )
-    let windowWidth = Double(4) * kLargeFontSize + textRect.width
+    let textWH = attrString.boundingDimension
+    let windowWidth = Double(4) * kLargeFontSize + textWH.width
     let contentRect = NSRect(x: 0, y: 0, width: windowWidth, height: 60.0)
     var windowRect = contentRect
     windowRect.origin.x = screenRect.maxX - windowRect.width - 10
@@ -119,8 +117,8 @@ public class Notifier: NSWindowController {
     theWindow.contentView?.addSubview(lblMessage)
 
     let x = lblMessage.frame.origin.x
-    let y = ((theWindow.frame.height) - textRect.height) / 1.9
-    let newFrame = NSRect(x: x, y: y, width: theWindow.frame.width, height: textRect.height)
+    let y = ((theWindow.frame.height) - textWH.height) / 1.9
+    let newFrame = NSRect(x: x, y: y, width: theWindow.frame.width, height: textWH.height)
     lblMessage.frame = newFrame
 
     super.init(window: theWindow)

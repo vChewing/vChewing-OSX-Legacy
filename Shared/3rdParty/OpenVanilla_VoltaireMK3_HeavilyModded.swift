@@ -74,20 +74,17 @@ private class VwrCandidateUniversal: NSView {
     var newWidths = [CGFloat]()
     var calculatedWindowWidth = CGFloat()
     var newHeights = [CGFloat]()
-    let baseSize = NSSize(width: 10240.0, height: 10240.0)
     for index in 0 ..< count {
-      let rctCandidate = (dispCandidatesWithLabels[index] as NSString).boundingRect(
-        with: baseSize, options: .usesLineFragmentOrigin,
-        attributes: candidateWithLabelAttrDict
-      )
-      var cellWidth = rctCandidate.size.width + cellPadding
-      let cellHeight = rctCandidate.size.height + cellPadding
+      let attrStrKey = NSAttributedString(string: dispCandidatesWithLabels[index], attributes: candidateWithLabelAttrDict)
+      let sizeStrKey = attrStrKey.boundingDimension
+      var cellWidth = sizeStrKey.width + cellPadding
+      let cellHeight = sizeStrKey.height + cellPadding
       switch isVerticalLayout {
       case true:
-        if calculatedWindowWidth < rctCandidate.size.width {
-          calculatedWindowWidth = rctCandidate.size.width + cellPadding * 2
+        if calculatedWindowWidth < sizeStrKey.width {
+          calculatedWindowWidth = sizeStrKey.width + cellPadding * 2
         }
-        calculatedWindowWidth = max(calculatedWindowWidth, 4 * rctCandidate.size.height)
+        calculatedWindowWidth = max(calculatedWindowWidth, 4 * sizeStrKey.height)
       case false:
         if cellWidth < cellHeight * 1.4 {
           cellWidth = cellHeight * 1.4
@@ -633,10 +630,7 @@ extension CtlCandidateUniversal {
         ]
       )
       pageCounterLabel.attributedStringValue = attrString
-      var rect = attrString.boundingRect(
-        with: NSSize(width: 1600.0, height: 1600.0),
-        options: .usesLineFragmentOrigin
-      )
+      var rect = NSRect(origin: .zero, size: attrString.boundingDimension)
 
       rect.size.height += 3
       rect.size.width += 8

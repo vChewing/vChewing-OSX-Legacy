@@ -176,13 +176,13 @@ public class TooltipUI: NSWindowController {
 
   private func adjustSize() {
     let attrString = messageText.attributedStringValue
-    var rect = attrString.boundingRect(
-      with: NSSize(width: 1600.0, height: 1600.0),
-      options: [.usesLineFragmentOrigin, .usesFontLeading]
-    )
-    rect.size.width *= 1.2
+    var dimension = attrString.boundingDimension
+    dimension.width *= 1.2
     if direction == .vertical {
-      rect.size.height *= 1.1
+      dimension.height *= 1.2
+    }
+    var rect = NSRect(origin: .zero, size: dimension)
+    if direction == .vertical {
       rect = .init(x: rect.minX, y: rect.minY, width: rect.height, height: rect.width)
     }
     var bigRect = rect
