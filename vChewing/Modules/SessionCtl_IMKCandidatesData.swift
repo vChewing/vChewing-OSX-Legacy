@@ -71,7 +71,7 @@ public extension SessionCtl {
     vCLog("Current Annotation: \(annotation)")
     DispatchQueue.main.async { [self] in
       guard let imkCandidates = candidateUI as? CtlCandidateIMK else { return }
-      imkCandidates.imk.showAnnotation(.init(string: annotation))
+      imkCandidates.showAnnotation(.init(string: annotation))
     }
   }
 

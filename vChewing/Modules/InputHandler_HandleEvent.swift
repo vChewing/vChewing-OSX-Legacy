@@ -50,7 +50,7 @@ extension InputHandler {
          event.isShiftHold, delegate.state.type == .ofAssociates,
          let newEvent = event.reinitiate(modifierFlags: [], characters: newChar)
       {
-        imkCandidates.imk.interpretKeyEvents([newEvent])
+        imkCandidates.interpretKeyEvents([newEvent])
         return true
       }
 
@@ -70,20 +70,20 @@ extension InputHandler {
       switch imkC.currentLayout {
       case .horizontal:
         switch event.modifierFlags {
-        case []: imkC.imk.moveDown(self)
+        case []: imkC.moveDown(self)
         case .shift,
              .option where delegate.state.type != .ofSymbolTable:
-          imkC.imk.moveUp(self)
+          imkC.moveUp(self)
         case .option where delegate.state.type == .ofSymbolTable:
           handleHaninKeyboardSymbolModeToggle()
         default: break
         }
       case .vertical:
         switch event.modifierFlags {
-        case []: imkC.imk.moveRight(self)
+        case []: imkC.moveRight(self)
         case .shift,
              .option where delegate.state.type != .ofSymbolTable:
-          imkC.imk.moveLeft(self)
+          imkC.moveLeft(self)
         case .option where delegate.state.type == .ofSymbolTable:
           handleHaninKeyboardSymbolModeToggle()
         default: break
@@ -113,7 +113,7 @@ extension InputHandler {
             // 註：input.isShiftHold 已經在 delegate.handle() 內處理，因為在那邊處理才有效。
             return event.isShiftHold ? true : handleInput(event: event)
           } else {
-            imkC.imk.interpretKeyEvents([newEvent])
+            imkC.interpretKeyEvents([newEvent])
             return true
           }
         }
@@ -146,7 +146,7 @@ extension InputHandler {
       {
         return handleInput(event: event)
       }
-      imkC.imk.interpretKeyEvents(eventArray)
+      imkC.interpretKeyEvents(eventArray)
       return true
     }
   }
