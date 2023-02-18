@@ -55,12 +55,6 @@ P.S.: 威注音輸入法的 Shift 按鍵監測功能僅藉由對 NSEvent 訊號�
 
 - 僅供研發人員調試方便而使用的 App 版安裝程式 (by Lukhnos Liu & MJHsieh)。
 
-**威注音 Aqua 版**的專案用到下述（衍生自）小麥注音的組件。
-
-- Voltaire MK3 選字窗（有魔改，詳見程式碼內的註釋文本）。
-  - 使用 Voltaire 是因為 macOS 10.9 至 10.12 的 IMK 選字窗「徹底壞掉」。
-  - 補記：威注音主流版本目前並未使用 Voltaire MK3 選字窗，而是使用 IMK 選字窗 + SwiftUI 田所選字窗。
-
 威注音專案目前還用到如下的來自 Lukhnos Liu 的算法：
 
 - 半衰記憶模組 MK2，被 Shiki Suen 用 Swift 重寫。

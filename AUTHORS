@@ -29,9 +29,6 @@ Although there is no Lukhnos's Objective-C / C++ codes left in the current repos
         - Shiki Suen's Tekkon engine is made from scratch and has no relationship to Mandarin syllable composer.
     - Developer of the original C++ version of the User Override Module MK2.
         - Shiki Suen is trying to rewrite this module in Swift (and CSharp) with further development.
-    - Voltarie candidate window (original author, the developer of the MK1 version in Objective-C).
-- Zonble Yang:
-    - Voltaire candidate window (the developer of the MK2 version in Swift).
 
 $ Special thanks to:
 

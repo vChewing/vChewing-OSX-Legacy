@@ -9,16 +9,7 @@
 import InputMethodKit
 
 /// 威注音自用的 IMKCandidates 型別。因為有用到 bridging header，所以無法弄成 Swift Package。
-public class CtlCandidateIMK: CtlCandidateProtocol {
-  // Do not implement.
-  public func set(windowTopLeftPoint: NSPoint, bottomOutOfScreenAdjustmentHeight height: Double, useGCD _: Bool) {
-    Self.shared.set(windowTopLeftPoint: windowTopLeftPoint, bottomOutOfScreenAdjustmentHeight: height, useGCD: false)
-  }
-
-  public static var shared: IMKCandidates = .init(server: theServer, panelType: kIMKSingleRowSteppingCandidatePanel)
-
-  public var imk: IMKCandidates { Self.shared }
-
+public class CtlCandidateIMK: IMKCandidates, CtlCandidateProtocol {
   public var tooltip: String = ""
   public var reverseLookupResult: [String] = []
   public var locale: String = ""
@@ -34,13 +25,13 @@ public class CtlCandidateIMK: CtlCandidateProtocol {
   }
 
   public var visible: Bool {
-    get { Self.shared.isVisible() }
-    set { newValue ? Self.shared.show() : Self.shared.hide() }
+    get { isVisible() }
+    set { newValue ? show() : hide() }
   }
 
   public var windowTopLeftPoint: NSPoint {
     get {
-      let frameRect = Self.shared.candidateFrame()
+      let frameRect = candidateFrame()
       return NSPoint(x: frameRect.minX, y: frameRect.maxY)
     }
     set {
@@ -52,7 +43,7 @@ public class CtlCandidateIMK: CtlCandidateProtocol {
 
   public var candidateFont = NSFont.systemFont(ofSize: 16) {
     didSet {
-      var attributes = Self.shared.attributes()
+      var attributes = attributes()
       // FB11300759: Set "NSAttributedString.Key.font" doesn't work.
       attributes?[NSAttributedString.Key.font] = candidateFont
       if #available(macOS 12.0, *) {
@@ -60,8 +51,8 @@ public class CtlCandidateIMK: CtlCandidateProtocol {
           attributes?[NSAttributedString.Key.languageIdentifier] = locale as AnyObject
         }
       }
-      Self.shared.setAttributes(attributes)
-      Self.shared.update()
+      setAttributes(attributes)
+      update()
     }
   }
 
@@ -69,21 +60,26 @@ public class CtlCandidateIMK: CtlCandidateProtocol {
     currentLayout = layout
     switch currentLayout {
     case .horizontal:
-      // macOS 10.13 High Sierra 的矩陣選字窗不支援選字鍵，所以只能弄成橫版單行。
-      Self.shared.setPanelType(kIMKSingleRowSteppingCandidatePanel)
+      if #available(macOS 10.14, *) {
+        setPanelType(kIMKScrollingGridCandidatePanel)
+      } else {
+        // macOS 10.13 High Sierra 的矩陣選字窗不支援選字鍵，所以只能弄成橫版單行。
+        setPanelType(kIMKSingleRowSteppingCandidatePanel)
+      }
     case .vertical:
-      Self.shared.setPanelType(kIMKSingleColumnScrollingCandidatePanel)
+      setPanelType(kIMKSingleColumnScrollingCandidatePanel)
     @unknown default:
-      Self.shared.setPanelType(kIMKSingleRowSteppingCandidatePanel)
+      setPanelType(kIMKSingleRowSteppingCandidatePanel)
     }
   }
 
   public func updateDisplay() {}
 
   public required init(_ layout: NSUserInterfaceLayoutOrientation = .horizontal) {
+    super.init(server: theServer, panelType: kIMKScrollingGridCandidatePanel)
     specifyLayout(layout)
     // 設為 true 表示先交給 SessionCtl 處理
-    Self.shared.setAttributes([IMKCandidatesSendServerKeyEventFirst: true])
+    setAttributes([IMKCandidatesSendServerKeyEventFirst: true])
     visible = false
     // guard let currentTISInputSource = currentTISInputSource else { return }  // 下面兩句都沒用，所以註釋掉。
     // setSelectionKeys([18, 19, 20, 21, 23, 22, 26, 28, 25])  // 這句是壞的，用了反而沒有選字鍵。
@@ -100,7 +96,7 @@ public class CtlCandidateIMK: CtlCandidateProtocol {
     // 既然下述函式無效，那中間這段沒用的也都砍了。
     // setCandidateData(candidates)  // 該函式無效。
     highlightedIndex = 0
-    Self.shared.update()
+    update()
   }
 
   /// 幹話：這裡很多函式內容亂寫也都無所謂了，因為都被 IMKCandidates 代管執行。
@@ -108,37 +104,37 @@ public class CtlCandidateIMK: CtlCandidateProtocol {
 
   // 該函式會影響 IMK 選字窗。
   @discardableResult public func showNextPage() -> Bool {
-    do { currentLayout == .vertical ? Self.shared.moveRight(self) : Self.shared.moveDown(self) }
+    do { currentLayout == .vertical ? moveRight(self) : moveDown(self) }
     return true
   }
 
   // 該函式會影響 IMK 選字窗。
   @discardableResult public func showPreviousPage() -> Bool {
-    do { currentLayout == .vertical ? Self.shared.moveLeft(self) : Self.shared.moveUp(self) }
+    do { currentLayout == .vertical ? moveLeft(self) : moveUp(self) }
     return true
   }
 
   // 該函式會影響 IMK 選字窗。
   @discardableResult public func highlightNextCandidate() -> Bool {
-    do { currentLayout == .vertical ? Self.shared.moveDown(self) : Self.shared.moveRight(self) }
+    do { currentLayout == .vertical ? moveDown(self) : moveRight(self) }
     return true
   }
 
   // 該函式會影響 IMK 選字窗。
   @discardableResult public func highlightPreviousCandidate() -> Bool {
-    do { currentLayout == .vertical ? Self.shared.moveUp(self) : Self.shared.moveLeft(self) }
+    do { currentLayout == .vertical ? moveUp(self) : moveLeft(self) }
     return true
   }
 
   // 該函式會影響 IMK 選字窗。
   public func showNextLine() -> Bool {
-    do { currentLayout == .vertical ? Self.shared.moveRight(self) : Self.shared.moveDown(self) }
+    do { currentLayout == .vertical ? moveRight(self) : moveDown(self) }
     return true
   }
 
   // 該函式會影響 IMK 選字窗。
   public func showPreviousLine() -> Bool {
-    do { currentLayout == .vertical ? Self.shared.moveLeft(self) : Self.shared.moveUp(self) }
+    do { currentLayout == .vertical ? moveLeft(self) : moveUp(self) }
     return true
   }
 
@@ -146,8 +142,8 @@ public class CtlCandidateIMK: CtlCandidateProtocol {
   public func candidateIndexAtKeyLabelIndex(_: Int) -> Int? { 0 }
 
   public var highlightedIndex: Int {
-    get { Self.shared.selectedCandidate() }
-    set { Self.shared.selectCandidate(withIdentifier: newValue) }
+    get { selectedCandidate() }
+    set { selectCandidate(withIdentifier: newValue) }
   }
 }
 
