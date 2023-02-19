@@ -207,6 +207,7 @@
 "Automatically correct reading combinations when typing" = "敲字时自动纠正读音组合";
 "Automatically reload user data files if changes detected" = "自动检测并载入使用者语汇档案变更";
 "Basic Keyboard Layout:" = "基础键盘布局:";
+"By checking this, Tadokoro Candidate Window will stop using SwiftUI but using a single NSTextView instead, utilizing one single special NSAttributedString to handle the typesetting of the entire candidate view. This will make the candidate window look “old-school” with no mouse-clicking features, but it renders much faster than SwiftUI on Intel macs. This mode allows Tadokoro candidate window to work in macOS 10.09 - 10.14 versions, accommodating their lack of support for SwiftUI." = "若启用该选项，则田所选字窗会弃用 SwiftUI、且改用单个 NSTextView 处理一个特制的 NSAttributedString 的方式来实现自身的介面排版。这会让选字窗的外观美学看上去倒退二十年、且没有滑鼠点击支援，但却能在 Intel mac 电脑上换得更快速的渲染效能。因为该模式不需要 SwiftUI，所以田所选字窗得以借由该模式为 macOS 10.09 - 10.14 系统工作。";
 "Candidate Layout:" = "候选字窗布局:";
 "Candidate Size:" = "候选字窗字号:";
 "Cassette mode is similar to the CIN support of the Yahoo Kimo IME, allowing users to use their own CIN tables to implement their stroked-based input schema (e.g. Wubi, Cangjie, Boshiamy, etc.) as a plan-B in vChewing IME. However, since vChewing won't compromise its phonabet input mode experience for this cassette mode, users might not feel comfortable enough comparing to their experiences with RIME (recommended) or OpenVanilla (deprecated)." = "磁带模式类似于雅虎奇摩输入法的 CIN 支援模式，允许使用者借由 CIN 表格档案扩充自己想要的笔画输入法（比如五笔、仓颉、呒虾米，等）。然而，因为威注音不打算为了这个功能而牺牲注音输入的体验，所以这个磁带模式的体验对于已经习惯 RIME 或者 OpenVanilla 的人群而言可能会稍微麻烦一些。";
@@ -246,6 +247,7 @@
 "Emulating select-candidate-per-character mode" = "模拟 90 年代前期注音逐字选字输入风格";
 "Enable cassette mode, suppressing phonabet input" = "启用磁带模式，会停用注音输入";
 "Enable CNS11643 Support (2023-01-06)" = "启用 CNS11643 全字库支援 (2023-01-06)";
+"Enable legacy UI typesetting method" = "使用古早的介面排版方法";
 "Enable phrase replacement table" = "启用语汇置换表";
 "Enable Space key for calling candidate window" = "敲空格键以呼出候选字窗";
 "Enable symbol input support (incl. certain emoji symbols)" = "启用包括少许绘文字在内的符号输入支援";
@@ -313,11 +315,13 @@
 "Specify the behavior of intonation key when syllable composer is empty." = "指定声调键（在注拼槽为「空」状态时）的行为。";
 "Starlight" = "星光排列";
 "Stop farting (when typed phonetic combination is invalid, etc.)" = "廉耻模式 // 取消勾选的话，敲错字时会有异音";
+"Tadokoro candidate window shows 4 rows / columns by default, providing similar experiences from Microsoft New Phonetic IME and macOS bult-in Chinese IME (since macOS 10.9). However, for some users who have presbyopia, they prefer giant candidate font sizes, resulting a concern that multiple rows / columns of candidates can make the candidate window looks too big, hence this option. Note that this option will be dismissed if the typing context is vertical, forcing the candidates to be shown in only one row / column. Only one reverse-lookup result can be made available in single row / column mode due to reduced candidate window size." = "田所选字窗在预设情况下会显示四列/四行候选字，提供类似于 macOS 内建中文输入法（macOS 10.9 起算）以及微软新注音输入法那样的选字窗排版体验。然而，部分使用者受老花眼所困扰，需要以较大字号来显示候选字。这种情况下，多行/多列的选字窗可能会占用过多的萤幕空间，也就需要这么一个选项来停用这个特性。需注意：如果当前文字输入环境是纵排输入的话，田所选字窗会始终使用单列/单行来显示候选字、而无视该选项。因为单行/单列选字窗的面积不够，所以最多只会显示一笔字根反查结果。。";
 "The lookup results are supplied by the CIN cassette module." = "反查结果取自 CIN 磁带模组。";
 "The user override model only possesses memories temporarily. It won't memorize those unigrams consisting of only one Chinese character, except “你/他/妳/她/祢/衪/它/牠/再/在”. Each memory record gradually becomes ineffective within approximately less than 6 days. You can erase all memory records through the input method menu." = "半衰记忆模组仅持有临时记忆之功能，且不会记忆以这几个汉字以外的汉字组成的（单个汉字的）单元图：「你/他/妳/她/祢/衪/它/牠/再/在」。每一笔记录都会在六天之内逐渐变得彻底失效。您可以借由输入法选单清除全部的记忆记录。";
 "This conversion only affects the cassette module, converting typed contents to either Simplified Chinese or Traditional Chinese in accordance with this setting and your current input mode." = "该转换仅对磁带模式有影响，会将键入的内容根据该选项与当前的简繁体模式来转换。";
 "This feature requires macOS 10.15 and above." = "该功能要求系统版本至少 macOS 10.15。";
-"This only works with Tadokoro candidate window." = "该方法仅对田所选字窗起作用。";
+"This only works with Tadokoro candidate window." = "该选项仅对田所选字窗起作用。";
+"This will also affect the row / column capacity of the candidate window." = "该选项也会影响到选字窗每行/每列最多显示的候选字数量。";
 "This will batch-replace specified candidates." = "这将会对指定的候选字词进行整词取代。";
 "This will stop user override model from affecting how candidates get sorted." = "这将阻止半衰记忆模组影响候选字词的陈列顺序。";
 "This will use the plist files deployed by the “make install” command from libvChewing-Data if possible." = "这将会优先使用由 libvChewing-Data 的 make install 部署的原厂辞典档案。";
@@ -329,9 +333,9 @@
 "Typing Settings:" = "敲字设定:";
 "UI Language:" = "介面语言:";
 "Universal Pinyin with Numeral Intonation" = "通用拼音+数字标调";
-"Use .langIdentifier to handle UI fonts in candidate window" = "使用 .langIdentifier 来管理选字窗的预设介面字型";
 "Use ESC key to clear the entire input buffer" = "敲 ESC 键以清空整个组字缓冲区";
 "Use IMK Candidate Window instead of Tadokoro" = "启用与 macOS 内建输入法相同的 IMK 选字窗";
+"Use only one row / column in candidate window." = "仅以单行/单列来陈列候选字。";
 "Vertical" = "纵向布局";
 "Warning: This page is for testing future features. \nFeatures listed here may not work as expected." = "警告：该页面仅作未来功能测试所用。\n在此列出的功能并非处于完全可用之状态。";
 "Yale Pinyin with Numeral Intonation" = "耶鲁拼音+数字标调";
