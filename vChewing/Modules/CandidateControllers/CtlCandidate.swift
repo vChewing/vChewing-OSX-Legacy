@@ -108,7 +108,7 @@ open class CtlCandidate: NSWindowController, CtlCandidateProtocol {
     false
   }
 
-  open func candidateIndexAtKeyLabelIndex(_: Int) -> Int {
+  open func candidateIndexAtKeyLabelIndex(_: Int) -> Int? {
     Int.max
   }
 

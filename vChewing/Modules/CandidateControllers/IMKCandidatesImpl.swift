@@ -143,7 +143,7 @@ public class CtlCandidateIMK: CtlCandidateProtocol {
   }
 
   // IMK 選字窗目前無法實作該函式。威注音 IMK 選字窗目前也不需要使用該函式。
-  public func candidateIndexAtKeyLabelIndex(_: Int) -> Int { 0 }
+  public func candidateIndexAtKeyLabelIndex(_: Int) -> Int? { 0 }
 
   public var highlightedIndex: Int {
     get { Self.shared.selectedCandidate() }
