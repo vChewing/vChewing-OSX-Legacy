@@ -17,7 +17,6 @@ private let kWindowTitleHeight: Double = 78
 // It should be set as "Preferences" which correspondes to the "Preference" pref pane
 // of this build target.
 class CtlPrefWindow: NSWindowController, NSWindowDelegate {
-  @IBOutlet var fontSizePopUpButton: NSPopUpButton!
   @IBOutlet var uiLanguageButton: NSPopUpButton!
   @IBOutlet var basicKeyboardLayoutButton: NSPopUpButton!
   @IBOutlet var selectionKeyComboBox: NSComboBox!
@@ -28,6 +27,7 @@ class CtlPrefWindow: NSWindowController, NSWindowDelegate {
   @IBOutlet var cmbCandidateFontSize: NSPopUpButton!
   @IBOutlet var chkFartSuppressor: NSButton!
 
+  @IBOutlet var chkRevLookupInCandidateWindow: NSButton!
   @IBOutlet var btnBrowseFolderForUserPhrases: NSButton!
   @IBOutlet var txtUserPhrasesFolderPath: NSTextField!
   @IBOutlet var lblUserPhraseFolderChangeDescription: NSTextField!
@@ -49,7 +49,8 @@ class CtlPrefWindow: NSWindowController, NSWindowDelegate {
   }
 
   @IBOutlet var vwrGeneral: NSView!
-  @IBOutlet var vwrExperience: NSView!
+  @IBOutlet var vwrCandidates: NSView!
+  @IBOutlet var vwrBehavior: NSView!
   @IBOutlet var vwrDictionary: NSView!
   @IBOutlet var vwrPhrases: NSView!
   @IBOutlet var vwrCassette: NSView!
@@ -91,6 +92,8 @@ class CtlPrefWindow: NSWindowController, NSWindowDelegate {
     }
 
     if #unavailable(macOS 10.13) {
+      chkRevLookupInCandidateWindow.isEnabled = false
+      tglControlDevZoneIMKCandidate.isEnabled = false
       btnBrowseFolderForUserPhrases.isEnabled = false
       txtUserPhrasesFolderPath.isEnabled = false
       btnBrowseFolderForUserPhrases.toolTip =
@@ -450,12 +453,8 @@ extension CtlPrefWindow: NSToolbarDelegate {
   var toolbarIdentifiers: [NSToolbarItem.Identifier] {
     var result = [NSToolbarItem.Identifier]()
     PrefUITabs.allCases.forEach { neta in
-      if [.tabCandidates, .tabBehavior, .tabOutput].contains(neta) { return }
+      if [.tabOutput, .tabExperience].contains(neta) { return }
       if neta == .tabCassette { return } // 磁帶模式不對 macOS 10.9 - 10.12 提供。
-      if neta == .tabExperience, result.count >= 1 {
-        result.insert(neta.toolbarIdentifier, at: 1)
-        return
-      }
       result.append(neta.toolbarIdentifier)
     }
     return result
@@ -478,9 +477,14 @@ extension CtlPrefWindow: NSToolbarDelegate {
     window?.toolbar?.selectedItemIdentifier = PrefUITabs.tabGeneral.toolbarIdentifier
   }
 
-  @objc func showExperienceView(_: Any?) {
-    use(view: vwrExperience)
-    window?.toolbar?.selectedItemIdentifier = PrefUITabs.tabExperience.toolbarIdentifier
+  @objc func showCandidatesView(_: Any?) {
+    use(view: vwrCandidates)
+    window?.toolbar?.selectedItemIdentifier = PrefUITabs.tabCandidates.toolbarIdentifier
+  }
+
+  @objc func showBehaviorView(_: Any?) {
+    use(view: vwrBehavior)
+    window?.toolbar?.selectedItemIdentifier = PrefUITabs.tabBehavior.toolbarIdentifier
   }
 
   @objc func showDictionaryView(_: Any?) {
@@ -519,15 +523,15 @@ extension CtlPrefWindow: NSToolbarDelegate {
     item.label = tab.i18nTitle
     switch tab {
     case .tabGeneral: item.action = #selector(showGeneralView(_:))
-    case .tabCandidates: return nil
-    case .tabBehavior: return nil
+    case .tabCandidates: item.action = #selector(showCandidatesView(_:))
+    case .tabBehavior: item.action = #selector(showBehaviorView(_:))
     case .tabOutput: return nil
     case .tabDictionary: item.action = #selector(showDictionaryView(_:))
     case .tabPhrases: item.action = #selector(showPhrasesView(_:))
     case .tabCassette: item.action = #selector(showCassetteView(_:))
     case .tabKeyboard: item.action = #selector(showKeyboardView(_:))
     case .tabDevZone: item.action = #selector(showDevZoneView(_:))
-    case .tabExperience: item.action = #selector(showExperienceView(_:))
+    case .tabExperience: return nil
     }
     return item
   }
