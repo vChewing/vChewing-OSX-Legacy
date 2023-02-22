@@ -19,7 +19,7 @@ public extension PrefMgr {
       } else {
         useIMKCandidateWindow = false
       }
-      handleDefaultCandidateFontsByLangIdentifier = false
+      legacyCandidateViewTypesettingMethodEnabled = false
       disableShiftTogglingAlphanumericalMode = true
       togglingAlphanumericalModeWithLShift = false
       showReverseLookupInCandidateUI = false

@@ -71,7 +71,7 @@ public enum UserDef: String, CaseIterable {
   case kClassicHaninKeyboardSymbolModeShortcutEnabled = "ClassicHaninKeyboardSymbolModeShortcutEnabled"
 
   case kUseIMKCandidateWindow = "UseIMKCandidateWindow"
-  case kHandleDefaultCandidateFontsByLangIdentifier = "HandleDefaultCandidateFontsByLangIdentifier"
+  case kLegacyCandidateViewTypesettingMethodEnabled = "LegacyCandidateViewTypesettingMethodEnabled"
   case kDisableSegmentedThickUnderlineInMarkingModeForManagedClients
     = "DisableSegmentedThickUnderlineInMarkingModeForManagedClients"
 
