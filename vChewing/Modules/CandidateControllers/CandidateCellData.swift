@@ -118,7 +118,7 @@ public class CandidateCellData: Hashable {
       attrCandidate[.foregroundColor] = NSColor.textColor
     }
     if #available(macOS 12, *) {
-      if UserDefaults.standard.bool(forKey: UserDef.kHandleDefaultCandidateFontsByLangIdentifier.rawValue) {
+      if UserDefaults.standard.bool(forKey: UserDef.kLegacyCandidateViewTypesettingMethodEnabled.rawValue) {
         attrCandidate[.languageIdentifier] = self.locale as AnyObject
       }
     }
