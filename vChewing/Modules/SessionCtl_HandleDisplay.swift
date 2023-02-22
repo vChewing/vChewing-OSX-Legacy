@@ -84,28 +84,26 @@ public extension SessionCtl {
     /// 先取消既有的選字窗的內容顯示。否則可能會重複生成選字窗的 NSWindow()。
     candidateUI?.visible = false
     /// 然後再重新初期化。
-    if #available(macOS 10.15, *) {
-      candidateUI =
-        PrefMgr.shared.useIMKCandidateWindow
-          ? CtlCandidateIMK(candidateLayout) : CtlCandidateUniversal(candidateLayout)
-    } else if #available(macOS 10.13, *) {
-      candidateUI = CtlCandidateIMK(candidateLayout)
-    } else {
-      candidateUI = CtlCandidateUniversal(candidateLayout)
+    candidateUI = CtlCandidateTDK(candidateLayout)
+    if let candidateTDK = candidateUI as? CtlCandidateTDK {
+      let singleLine = isVerticalTyping || PrefMgr.shared.candidateWindowShowOnlyOneLine
+      candidateTDK.maxLinesPerPage = singleLine ? 1 : 4
     }
 
     candidateUI?.candidateFont = Self.candidateFont(
       name: PrefMgr.shared.candidateTextFontName, size: PrefMgr.shared.candidateListTextSize
     )
 
+    let singleColumn = isVerticalTyping || PrefMgr.shared.candidateWindowShowOnlyOneLine
+
     if PrefMgr.shared.cassetteEnabled {
       candidateUI?.tooltip =
-        isVerticalTyping ? "📼" : "📼 " + NSLocalizedString("CIN Cassette Mode", comment: "")
+        singleColumn ? "📼" : "📼 " + NSLocalizedString("CIN Cassette Mode", comment: "")
     }
 
     if state.type == .ofAssociates {
       candidateUI?.tooltip =
-        isVerticalTyping ? "⇧" : NSLocalizedString("Hold ⇧ to choose associates.", comment: "")
+        singleColumn ? "⇧" : NSLocalizedString("Hold ⇧ to choose associates.", comment: "")
     }
 
     candidateUI?.useLangIdentifier = PrefMgr.shared.legacyCandidateViewTypesettingMethodEnabled
@@ -121,10 +119,14 @@ public extension SessionCtl {
       }
     }()
 
+    if #available(macOS 10.15, *) {
+      if let ctlCandidateCurrent = candidateUI as? CtlCandidateTDK {
+        ctlCandidateCurrent.isLegacyMode = PrefMgr.shared.legacyCandidateViewTypesettingMethodEnabled
+      }
+    }
+
     candidateUI?.delegate = self // 會自動觸發田所選字窗的資料重載。
     candidateUI?.visible = true
-    // macOS 10.09 - 10.11 系統下，Voltaire 選字窗剛顯示時的高亮內容不主動繪製。這裡手動觸發一下。
-    candidateUI?.highlightedIndex = 0
 
     if isVerticalTyping {
       candidateUI?.set(

@@ -262,7 +262,7 @@ public extension SessionCtl {
       switchState(IMEState.ofDeactivated())
       inputHandler = nil
       // IMK 選字窗可以不用 nil，不然反而會出問題。反正 IMK 選字窗記憶體開銷可以不計。
-      if candidateUI is CtlCandidateUniversal {
+      if !(candidateUI is CtlCandidateIMK) {
         candidateUI = nil
       }
     }
