@@ -73,6 +73,7 @@
 "Iai-0X-nxi.title" = "请在此指定您想指定的 CIN 磁带档案。无效值会被忽略。";
 "iRg-wx-Nx2.title" = "变更候选字窗的字型大小。";
 "iWy-Nw-QKB.title" = "Ctrl(+Option)+Command+Enter 输出汉语拼音而非注音";
+"iyh-1K-76v.title" = "启用语汇置换表";
 "j8q-IY-UF1.title" = "该转换仅对磁带模式有影响，会将键入的内容根据该选项与当前的简繁体模式来转换。";
 "jQC-12-UuK.ibShadowedObjectValues[0]" = "Item 1";
 "jQC-12-UuK.ibShadowedObjectValues[1]" = "Item 2";
@@ -83,6 +84,7 @@
 "lblIntonationKeyBehavior.title" = "指定声调键（在注拼槽为「空」状态时）的行为。";
 "lblShiftBkspKeyBehavior.title" = "指定 Shift+BackSpace 组合键率先尝试的行为。";
 "lblUpperCaseLetterKeyBehavior.title" = "指定 Shift+字母键 的行为。";
+"lDd-rN-BSM.title" = "启用田所选字窗的滑鼠滚动支援";
 "MKJ-Q6-dLd.title" = "亦使用「\\」或「¥」键启用汉音键盘符号模式";
 "N6e-bR-mVa.title" = "针对被管理的客体，在标记模式下禁用分段式粗型下划线";
 "neb-Pz-n1h.title" = "在已经敲出最长可能码的时候自动组字";
