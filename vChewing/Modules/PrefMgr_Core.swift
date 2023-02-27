@@ -180,6 +180,9 @@ public class PrefMgr: PrefMgrProtocol {
   @AppProperty(key: UserDef.kEnableSwiftUIForTDKCandidates.rawValue, defaultValue: false)
   public var enableSwiftUIForTDKCandidates: Bool
 
+  @AppProperty(key: UserDef.kEnableMouseScrollingForTDKCandidatesCocoa.rawValue, defaultValue: false)
+  public var enableMouseScrollingForTDKCandidatesCocoa: Bool
+
   @AppProperty(
     key: UserDef.kDisableSegmentedThickUnderlineInMarkingModeForManagedClients.rawValue,
     defaultValue: false
