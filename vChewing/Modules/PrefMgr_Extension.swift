@@ -19,7 +19,7 @@ public extension PrefMgr {
       } else {
         useIMKCandidateWindow = false
       }
-      legacyCandidateViewTypesettingMethodEnabled = false
+      enableSwiftUIForTDKCandidates = false
       disableShiftTogglingAlphanumericalMode = true
       togglingAlphanumericalModeWithLShift = false
       showReverseLookupInCandidateUI = false

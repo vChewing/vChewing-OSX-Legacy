@@ -73,7 +73,7 @@ public enum UserDef: String, CaseIterable {
   case kClassicHaninKeyboardSymbolModeShortcutEnabled = "ClassicHaninKeyboardSymbolModeShortcutEnabled"
 
   case kUseIMKCandidateWindow = "UseIMKCandidateWindow"
-  case kLegacyCandidateViewTypesettingMethodEnabled = "LegacyCandidateViewTypesettingMethodEnabled"
+  case kEnableSwiftUIForTDKCandidates = "EnableSwiftUIForTDKCandidates"
   case kDisableSegmentedThickUnderlineInMarkingModeForManagedClients
     = "DisableSegmentedThickUnderlineInMarkingModeForManagedClients"
 
