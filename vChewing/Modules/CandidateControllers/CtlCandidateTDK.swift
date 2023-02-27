@@ -21,21 +21,15 @@ private extension NSUserInterfaceLayoutOrientation {
   }
 }
 
-public class CtlCandidateTDK: CtlCandidate {
+public class CtlCandidateTDK: CtlCandidate, NSWindowDelegate {
   public var maxLinesPerPage: Int = 0
-  public var isLegacyMode: Bool = false
+  public var useCocoa: Bool = false
+  public var useMouseScrolling: Bool = true
   private static var thePool: CandidatePool = .init(candidates: [])
   private static var currentView: NSView = .init()
 
-  private var theViewLegacy: NSView {
-    let textField = NSTextField()
-    textField.attributedStringValue = Self.thePool.attributedDescription
-    textField.sizeToFit()
-    textField.isSelectable = false
-    textField.allowsEditingTextAttributes = false
-    textField.preferredMaxLayoutWidth = textField.frame.width
-    textField.backgroundColor = .controlBackgroundColor
-    return textField
+  private var theViewCocoa: NSStackView {
+    VwrCandidateTDKCocoa(controller: self, thePool: Self.thePool)
   }
 
   // MARK: - Constructors
@@ -48,12 +42,12 @@ public class CtlCandidateTDK: CtlCandidate {
     )
     panel.level = NSWindow.Level(Int(max(CGShieldingWindowLevel(), kCGPopUpMenuWindowLevel)) + 2)
     panel.hasShadow = true
-    panel.isOpaque = false
     panel.backgroundColor = NSColor.clear
     contentRect.origin = NSPoint.zero
 
     super.init(layout)
     window = panel
+    window?.delegate = self
     currentLayout = layout
   }
 
@@ -84,27 +78,28 @@ public class CtlCandidateTDK: CtlCandidate {
       Self.thePool.reverseLookupResult = reverseLookupResult
     }
     DispatchQueue.main.async { [self] in
-      updateNSWindowLegacy(window)
+      window.backgroundColor = .clear
+      Self.currentView = theViewCocoa
+      window.contentView = Self.currentView
+      window.setContentSize(Self.currentView.fittingSize)
     }
   }
 
-  func updateNSWindowLegacy(_ window: NSWindow) {
-    window.isOpaque = true
-    window.backgroundColor = NSColor.controlBackgroundColor
-    let viewToDraw = theViewLegacy
-    let coreSize = viewToDraw.fittingSize
-    let padding: Double = 5
-    let outerSize: NSSize = .init(
-      width: coreSize.width + 2 * padding,
-      height: coreSize.height + 2 * padding
-    )
-    let innerOrigin: NSPoint = .init(x: padding, y: padding)
-    let outerRect: NSRect = .init(origin: .zero, size: outerSize)
-    viewToDraw.setFrameOrigin(innerOrigin)
-    Self.currentView = NSView(frame: outerRect)
-    Self.currentView.addSubview(viewToDraw)
-    window.contentView = Self.currentView
-    window.setContentSize(outerSize)
+  // TODO: 滑鼠滾輪操作的體驗不該是這個鬼樣子，今後還得再重新設計。
+  // 這裡暫時先僅實裝給單行單列模式
+  override public func scrollWheel(with event: NSEvent) {
+    guard useMouseScrolling else { return }
+    handleMouseScroll(deltaX: event.deltaX, deltaY: event.deltaY)
+  }
+
+  func handleMouseScroll(deltaX: CGFloat, deltaY: CGFloat) {
+    switch (deltaX, deltaY, Self.thePool.layout) {
+    case (1..., 0, .horizontal), (0, 1..., .vertical): highlightNextCandidate()
+    case (..<0, 0, .horizontal), (0, ..<0, .vertical): highlightPreviousCandidate()
+    case (0, 1..., .horizontal), (1..., 0, .vertical): showNextLine()
+    case (0, ..<0, .horizontal), (..<0, 0, .vertical): showPreviousLine()
+    case (_, _, _): break
+    }
   }
 
   // Already implemented in CandidatePool.

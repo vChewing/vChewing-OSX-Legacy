@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B1CA80E29AC53BA0089E95F /* VwrCandidateTDK_Cocoa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1CA80D29AC53BA0089E95F /* VwrCandidateTDK_Cocoa.swift */; };
 		5B44BAD9295047AC00E1C02D /* shortcuts.html in Resources */ = {isa = PBXBuildFile; fileRef = 5B44BADB295047AC00E1C02D /* shortcuts.html */; };
 		5B69CA6A295DDC58005211BB /* RangeParserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B69CA69295DDC58005211BB /* RangeParserAPI.swift */; };
 		5B751D90294EC66A0031CF70 /* CtlPrefWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751D8E294EC66A0031CF70 /* CtlPrefWindow.swift */; };
@@ -151,6 +152,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5B1CA80D29AC53BA0089E95F /* VwrCandidateTDK_Cocoa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VwrCandidateTDK_Cocoa.swift; sourceTree = "<group>"; };
 		5B44BADA295047AC00E1C02D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = en; path = en.lproj/shortcuts.html; sourceTree = "<group>"; };
 		5B44BADC295047AE00E1C02D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = "zh-Hans"; path = "zh-Hans.lproj/shortcuts.html"; sourceTree = "<group>"; };
 		5B44BADD295047AF00E1C02D /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = "zh-Hant"; path = "zh-Hant.lproj/shortcuts.html"; sourceTree = "<group>"; };
@@ -376,6 +378,7 @@
 				5B751DE1294EE7A80031CF70 /* CtlCandidate.swift */,
 				5BB32F0429A61AFB00B05D7B /* CtlCandidateTDK.swift */,
 				5B751DDC294EE7610031CF70 /* IMKCandidatesImpl.swift */,
+				5B1CA80D29AC53BA0089E95F /* VwrCandidateTDK_Cocoa.swift */,
 			);
 			path = CandidateControllers;
 			sourceTree = "<group>";
@@ -950,6 +953,7 @@
 				5BE5A52C294E0C2B00EFA49C /* lmRevLookup.swift in Sources */,
 				5B751D96294EDE850031CF70 /* CtlPrefWindow_PhraseEditor.swift in Sources */,
 				5B751DD2294EE57D0031CF70 /* InputHandler_HandleEvent.swift in Sources */,
+				5B1CA80E29AC53BA0089E95F /* VwrCandidateTDK_Cocoa.swift in Sources */,
 				5B751DDB294EE57D0031CF70 /* InputHandler_HandleCandidate.swift in Sources */,
 				5BE5A56A294E120500EFA49C /* SymbolMenuDefaultData.swift in Sources */,
 				5BE5A4F1294E057F00EFA49C /* CocoaExtension_Misc.swift in Sources */,
