@@ -118,8 +118,9 @@ public extension SessionCtl {
       }
     }()
 
-    if #available(macOS 10.15, *) {
-      if let ctlCandidateCurrent = candidateUI as? CtlCandidateTDK {
+    if let ctlCandidateCurrent = candidateUI as? CtlCandidateTDK {
+      ctlCandidateCurrent.useMouseScrolling = PrefMgr.shared.enableMouseScrollingForTDKCandidatesCocoa
+      if #available(macOS 10.15, *) {
         ctlCandidateCurrent.useCocoa = !PrefMgr.shared.enableSwiftUIForTDKCandidates
       }
     }
