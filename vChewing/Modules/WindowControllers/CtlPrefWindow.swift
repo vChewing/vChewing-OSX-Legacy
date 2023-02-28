@@ -92,7 +92,6 @@ class CtlPrefWindow: NSWindowController, NSWindowDelegate {
     }
 
     if #unavailable(macOS 10.13) {
-      chkRevLookupInCandidateWindow.isEnabled = false
       tglControlDevZoneIMKCandidate.isEnabled = false
       btnBrowseFolderForUserPhrases.isEnabled = false
       txtUserPhrasesFolderPath.isEnabled = false
