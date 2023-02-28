@@ -78,9 +78,10 @@ public class CtlCandidateTDK: CtlCandidate, NSWindowDelegate {
       Self.thePool.reverseLookupResult = reverseLookupResult
     }
     DispatchQueue.main.async { [self] in
-      window.backgroundColor = .clear
-      Self.currentView = theViewCocoa
+      let newView = theViewCocoa
+      Self.currentView = newView
       window.contentView = Self.currentView
+      window.backgroundColor = .init(cgColor: newView.layer?.backgroundColor ?? NSColor.textBackgroundColor.cgColor)
       window.setContentSize(Self.currentView.fittingSize)
     }
   }
