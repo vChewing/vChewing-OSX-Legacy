@@ -32,6 +32,20 @@ public class CtlCandidateTDK: CtlCandidate, NSWindowDelegate {
     VwrCandidateTDKCocoa(controller: self, thePool: Self.thePool)
   }
 
+  private var theViewLegacy: NSView {
+    let textField = NSTextField()
+    textField.isSelectable = false
+    textField.isEditable = false
+    textField.isBordered = false
+    textField.backgroundColor = .clear
+    textField.allowsEditingTextAttributes = false
+    textField.preferredMaxLayoutWidth = textField.frame.width
+    textField.attributedStringValue = Self.thePool.attributedDescription
+    textField.sizeToFit()
+    textField.backgroundColor = .clear
+    return textField
+  }
+
   // MARK: - Constructors
 
   public required init(_ layout: NSUserInterfaceLayoutOrientation = .horizontal) {
@@ -78,12 +92,34 @@ public class CtlCandidateTDK: CtlCandidate, NSWindowDelegate {
       Self.thePool.reverseLookupResult = reverseLookupResult
     }
     DispatchQueue.main.async { [self] in
+      if #unavailable(macOS 10.13), Self.thePool.maxLinesPerPage > 1 {
+        updateNSWindowLegacy(window)
+        return
+      }
       let newView = theViewCocoa
       Self.currentView = newView
       window.contentView = Self.currentView
       window.backgroundColor = .init(cgColor: newView.layer?.backgroundColor ?? NSColor.textBackgroundColor.cgColor)
       window.setContentSize(Self.currentView.fittingSize)
     }
+  }
+
+  func updateNSWindowLegacy(_ window: NSWindow) {
+    window.backgroundColor = NSColor.controlBackgroundColor
+    let viewToDraw = theViewLegacy
+    let coreSize = viewToDraw.fittingSize
+    let padding: Double = 5
+    let outerSize: NSSize = .init(
+      width: coreSize.width + 2 * padding,
+      height: coreSize.height + 2 * padding
+    )
+    let innerOrigin: NSPoint = .init(x: padding, y: padding)
+    let outerRect: NSRect = .init(origin: .zero, size: outerSize)
+    viewToDraw.setFrameOrigin(innerOrigin)
+    Self.currentView = NSView(frame: outerRect)
+    Self.currentView.addSubview(viewToDraw)
+    window.contentView = Self.currentView
+    window.setContentSize(outerSize)
   }
 
   // TODO: 滑鼠滾輪操作的體驗不該是這個鬼樣子，今後還得再重新設計。
