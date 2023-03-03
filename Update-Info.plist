@@ -13,10 +13,10 @@
 	<key>UpdateInfoSite</key>
 	<string>https://gitee.com/vChewing/vChewing-macOS/releases</string>
 	<key>UpdateInfoSiteGitHub</key>
-	<string>https://gitee.com/vChewing/vChewing-macOS/releases</string>
+	<string>https://github.com/vChewing/vChewing-macOS/releases</string>
 	<key>UpdateInfoSiteLegacy</key>
 	<string>https://gitee.com/vChewing/vChewing-OSX-Legacy/releases</string>
 	<key>UpdateInfoSiteLegacyGitHub</key>
-	<string>https://gitee.com/vChewing/vChewing-OSX-Legacy/releases</string>
+	<string>https://github.com/vChewing/vChewing-OSX-Legacy/releases</string>
 </dict>
 </plist>
