@@ -12,10 +12,8 @@ import InputMethodKit
 
 private let kWindowTitleHeight: Double = 78
 
-// Note: The "InputMethodServerPreferencesWindowControllerClass" in Info.plist
-// only works with macOS System Preference pane (like macOS built-in input methods).
-// It should be set as "Preferences" which correspondes to the "Preference" pref pane
-// of this build target.
+// InputMethodServerPreferencesWindowControllerClass 非必需。
+
 class CtlPrefWindow: NSWindowController, NSWindowDelegate {
   @IBOutlet var uiLanguageButton: NSPopUpButton!
   @IBOutlet var basicKeyboardLayoutButton: NSPopUpButton!
@@ -64,6 +62,9 @@ class CtlPrefWindow: NSWindowController, NSWindowDelegate {
     if shared == nil { shared = CtlPrefWindow(windowNibName: "frmPrefWindow") }
     guard let shared = shared, let sharedWindow = shared.window else { return }
     sharedWindow.delegate = shared
+    if !sharedWindow.isVisible {
+      shared.windowDidLoad()
+    }
     sharedWindow.setPosition(vertical: .top, horizontal: .right, padding: 20)
     sharedWindow.orderFrontRegardless() // 逼著視窗往最前方顯示
     sharedWindow.level = .statusBar
@@ -85,21 +86,8 @@ class CtlPrefWindow: NSWindowController, NSWindowDelegate {
 
     if #unavailable(macOS 10.14) {
       if PrefMgr.shared.useIMKCandidateWindow {
-        if #available(macOS 10.13, *) {
-          cmbCandidateFontSize.isEnabled = false
-        }
+        cmbCandidateFontSize.isEnabled = false
       }
-    }
-
-    if #unavailable(macOS 10.13) {
-      tglControlDevZoneIMKCandidate.isEnabled = false
-      btnBrowseFolderForUserPhrases.isEnabled = false
-      txtUserPhrasesFolderPath.isEnabled = false
-      btnBrowseFolderForUserPhrases.toolTip =
-        "User phrase folder path is not customizable in macOS 10.9 - 10.12.".localized
-      txtUserPhrasesFolderPath.toolTip = "User phrase folder path is not customizable in macOS 10.9 - 10.12.".localized
-      lblUserPhraseFolderChangeDescription.stringValue =
-        "User phrase folder path is not customizable in macOS 10.9 - 10.12.".localized
     }
 
     var preferencesTitleName = NSLocalizedString("vChewing Preferences…", comment: "")
@@ -117,7 +105,7 @@ class CtlPrefWindow: NSWindowController, NSWindowDelegate {
     }
     window?.toolbar = toolbar
     window?.title = preferencesTitleName
-    use(view: vwrGeneral)
+    use(view: vwrGeneral, animate: false)
 
     lblCurrentlySpecifiedUserDataFolder.placeholderString = LMMgr.dataFolderPath(
       isDefaultFolder: true)
@@ -312,15 +300,6 @@ class CtlPrefWindow: NSWindowController, NSWindowDelegate {
 
   @IBAction func chooseUserDataFolderToSpecify(_: Any) {
     guard let window = window else { return }
-
-    if #unavailable(macOS 10.13) {
-      window.callAlert(
-        title: Self.filePanelAlertMessageTitleForURLConfirmation,
-        text: Self.strDefaultsWriteUserFolderPath + "\n\n" + Self.filePanelAlertMessageText
-      )
-      return
-    }
-
     let dlgOpenPath = NSOpenPanel()
     dlgOpenPath.title = NSLocalizedString(
       "Choose your desired user data folder.", comment: ""
@@ -384,15 +363,6 @@ class CtlPrefWindow: NSWindowController, NSWindowDelegate {
 
   @IBAction func chooseCassettePath(_: Any) {
     guard let window = window else { return }
-
-    if #unavailable(macOS 10.13) {
-      window.callAlert(
-        title: Self.filePanelAlertMessageTitleForURLConfirmation,
-        text: Self.strDefaultsWriteCassettePath + "\n\n" + Self.filePanelAlertMessageText
-      )
-      return
-    }
-
     let dlgOpenFile = NSOpenPanel()
     dlgOpenFile.title = NSLocalizedString(
       "Choose your desired cassette file path.", comment: ""
@@ -434,29 +404,21 @@ class CtlPrefWindow: NSWindowController, NSWindowDelegate {
 // MARK: - NSToolbarDelegate Methods
 
 extension CtlPrefWindow: NSToolbarDelegate {
-  func use(view: NSView) {
-    guard let window = window else {
-      return
-    }
-    window.contentView?.subviews.first?.removeFromSuperview()
-    let viewFrame = view.frame
-    var windowRect = window.frame
-    windowRect.size.height = kWindowTitleHeight + viewFrame.height
-    windowRect.size.width = viewFrame.width
-    windowRect.origin.y = window.frame.maxY - (viewFrame.height + kWindowTitleHeight)
-    window.setFrame(windowRect, display: true, animate: true)
-    window.contentView?.frame = view.bounds
-    window.contentView?.addSubview(view)
+  func use(view newView: NSView, animate: Bool = true) {
+    guard let window = window, let existingContentView = window.contentView else { return }
+    let temporaryViewOld = NSView(frame: existingContentView.frame)
+    window.contentView = temporaryViewOld
+    var newWindowRect = NSRect(origin: window.frame.origin, size: newView.bounds.size)
+    newWindowRect.size.height += kWindowTitleHeight
+    newWindowRect.origin.y = window.frame.maxY - newWindowRect.height
+    window.setFrame(newWindowRect, display: true, animate: animate)
+    window.contentView = newView
   }
 
   var toolbarIdentifiers: [NSToolbarItem.Identifier] {
-    var result = [NSToolbarItem.Identifier]()
-    PrefUITabs.allCases.forEach { neta in
-      if [.tabOutput, .tabExperience].contains(neta) { return }
-      if neta == .tabCassette { return } // 磁帶模式不對 macOS 10.9 - 10.12 提供。
-      result.append(neta.toolbarIdentifier)
-    }
-    return result
+    PrefUITabs.allCases.filter {
+      $0 != .tabOutput
+    }.map(\.toolbarIdentifier)
   }
 
   func toolbarDefaultItemIdentifiers(_: NSToolbar) -> [NSToolbarItem.Identifier] {
@@ -471,44 +433,20 @@ extension CtlPrefWindow: NSToolbarDelegate {
     toolbarIdentifiers
   }
 
-  @objc func showGeneralView(_: Any?) {
-    use(view: vwrGeneral)
-    window?.toolbar?.selectedItemIdentifier = PrefUITabs.tabGeneral.toolbarIdentifier
-  }
-
-  @objc func showCandidatesView(_: Any?) {
-    use(view: vwrCandidates)
-    window?.toolbar?.selectedItemIdentifier = PrefUITabs.tabCandidates.toolbarIdentifier
-  }
-
-  @objc func showBehaviorView(_: Any?) {
-    use(view: vwrBehavior)
-    window?.toolbar?.selectedItemIdentifier = PrefUITabs.tabBehavior.toolbarIdentifier
-  }
-
-  @objc func showDictionaryView(_: Any?) {
-    use(view: vwrDictionary)
-    window?.toolbar?.selectedItemIdentifier = PrefUITabs.tabDictionary.toolbarIdentifier
-  }
-
-  @objc func showPhrasesView(_: Any?) {
-    use(view: vwrPhrases)
-    window?.toolbar?.selectedItemIdentifier = PrefUITabs.tabPhrases.toolbarIdentifier
-  }
-
-  @objc func showCassetteView(_: Any?) {
-    use(view: vwrCassette)
-    window?.toolbar?.selectedItemIdentifier = PrefUITabs.tabCassette.toolbarIdentifier
-  }
-
-  @objc func showKeyboardView(_: Any?) {
-    use(view: vwrKeyboard)
-    window?.toolbar?.selectedItemIdentifier = PrefUITabs.tabKeyboard.toolbarIdentifier
-  }
-
-  @objc func showDevZoneView(_: Any?) {
-    use(view: vwrDevZone)
-    window?.toolbar?.selectedItemIdentifier = PrefUITabs.tabDevZone.toolbarIdentifier
+  @objc func updateTab(_ target: NSToolbarItem) {
+    guard let tab = PrefUITabs.fromInt(target.tag) else { return }
+    switch tab {
+    case .tabGeneral: use(view: vwrGeneral)
+    case .tabCandidates: use(view: vwrCandidates)
+    case .tabBehavior: use(view: vwrBehavior)
+    case .tabOutput: return
+    case .tabDictionary: use(view: vwrDictionary)
+    case .tabPhrases: use(view: vwrPhrases)
+    case .tabCassette: use(view: vwrCassette)
+    case .tabKeyboard: use(view: vwrKeyboard)
+    case .tabDevZone: use(view: vwrDevZone)
+    }
+    window?.toolbar?.selectedItemIdentifier = tab.toolbarIdentifier
   }
 
   func toolbar(
@@ -520,51 +458,8 @@ extension CtlPrefWindow: NSToolbarDelegate {
     item.target = self
     item.image = tab.icon
     item.label = tab.i18nTitle
-    switch tab {
-    case .tabGeneral: item.action = #selector(showGeneralView(_:))
-    case .tabCandidates: item.action = #selector(showCandidatesView(_:))
-    case .tabBehavior: item.action = #selector(showBehaviorView(_:))
-    case .tabOutput: return nil
-    case .tabDictionary: item.action = #selector(showDictionaryView(_:))
-    case .tabPhrases: item.action = #selector(showPhrasesView(_:))
-    case .tabCassette: item.action = #selector(showCassetteView(_:))
-    case .tabKeyboard: item.action = #selector(showKeyboardView(_:))
-    case .tabDevZone: item.action = #selector(showDevZoneView(_:))
-    case .tabExperience: return nil
-    }
+    item.tag = tab.cocoaTag
+    item.action = #selector(updateTab(_:))
     return item
   }
-}
-
-// MARK: - Localization-Related Contents.
-
-extension CtlPrefWindow {
-  /// 由於用於頁籤標題的某些用語放在 localizable 資源內管理的話容易混亂，所以這裡單獨處理。
-  static var locPhrasesTabTitle: String {
-    switch PrefMgr.shared.appleLanguages[0] {
-    case "ja":
-      return "辞書編集"
-    default:
-      if PrefMgr.shared.appleLanguages[0].contains("zh-Hans") {
-        return "语汇编辑"
-      } else if PrefMgr.shared.appleLanguages[0].contains("zh-Hant") {
-        return "語彙編輯"
-      }
-      return "Phrases"
-    }
-  }
-
-  static var filePanelAlertMessageTitleForURLConfirmation: String =
-    "Please use “defaults write” terminal command to modify this String value:".localized
-  static var filePanelAlertMessageTitleForClientIdentifiers: String = "Please manually enter the identifier(s)."
-    .localized
-  static var filePanelAlertMessageText: String =
-    "There is a bug in macOS 10.9, preventing an input method from accessing its own file panels. Doing so will result in eternal hang-crash of not only the input method but all client apps it tries attached to, requiring SSH connection to this computer to terminate the input method process by executing “killall vChewing”. Due to possible concerns of the same possible issue in macOS 10.10 and 10.11, we completely disabled this feature."
-      .localized
-  static var strDefaultsWriteUserFolderPath: String =
-    "defaults write org.atelierInmu.inputmethod.vChewing UserDataFolderSpecified -string \"~/FolderPathEndedWithTrailingSlash/\""
-      .localized
-  static var strDefaultsWriteCassettePath: String =
-    "defaults write org.atelierInmu.inputmethod.vChewing CassettePath -string \"~/FilePathEndedWithoutTrailingSlash\""
-      .localized
 }
