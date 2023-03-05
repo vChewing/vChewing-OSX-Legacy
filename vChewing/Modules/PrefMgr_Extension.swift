@@ -25,6 +25,9 @@ public extension PrefMgr {
       showReverseLookupInCandidateUI = false
       shareAlphanumericalModeStatusAcrossClients = false
     }
+    if #unavailable(macOS 12) {
+      showNotificationsWhenTogglingCapsLock = false
+    }
     // macOS 10.13 之前的系統的沙箱互動似乎有問題，只能停用磁帶模組了。
     if #unavailable(macOS 10.13) {
       cassetteEnabled = false
