@@ -33,22 +33,21 @@ extension SessionCtl: InputHandlerDelegate {
 
   public func performUserPhraseOperation(addToFilter: Bool) -> Bool {
     guard let inputHandler = inputHandler, state.type == .ofMarking else { return false }
-    if !LMMgr.writeUserPhrase(
-      state.data.userPhraseDumped, inputMode: inputMode,
-      areWeDeleting: addToFilter
+    var succeeded = true
+
+    let kvPair = state.data.userPhraseKVPair
+    var userPhrase = LMMgr.UserPhrase(
+      keyArray: kvPair.keyArray, value: kvPair.value, inputMode: inputMode
     )
-      || !LMMgr.writeUserPhrase(
-        state.data.userPhraseDumpedConverted, inputMode: inputMode.reversed,
-        areWeDeleting: addToFilter
-      )
-    {
-      return false
+    if Self.areWeNerfing { userPhrase.weight = -114.514 }
+    LMMgr.writeUserPhrasesAtOnce(userPhrase, areWeFiltering: addToFilter) {
+      succeeded = false
     }
+    if !succeeded { return false }
 
     // 後續操作。
-    let rawPair = state.data.userPhraseKVPair
-    let valueCurrent = rawPair.1
-    let valueReversed = ChineseConverter.crossConvert(rawPair.1)
+    let valueCurrent = userPhrase.value
+    let valueReversed = ChineseConverter.crossConvert(valueCurrent)
 
     // 更新組字器內的單元圖資料。
     // 註：如果已經排除的內容是該讀音下唯一的記錄的話，
@@ -57,10 +56,10 @@ extension SessionCtl: InputHandlerDelegate {
 
     // 因為上述操作不會立即生效（除非遞交組字區），所以暫時塞入臨時資料記錄。
     // 該臨時資料記錄會在接下來的語言模組資料重載過程中被自動清除。
-    let temporaryScore: Double = SessionCtl.areWeNerfing ? -114.514 : 0
     LMMgr.currentLM.insertTemporaryData(
-      keyArray: [rawPair.0], unigram: .init(value: rawPair.1, score: temporaryScore),
-      isFiltering: SessionCtl.areWeNerfing
+      keyArray: userPhrase.keyArray,
+      unigram: .init(value: userPhrase.value, score: userPhrase.weight ?? 0),
+      isFiltering: addToFilter
     )
     // 開始針對使用者半衰模組的清詞處理
     LMMgr.bleachSpecifiedSuggestions(targets: [valueCurrent], mode: IMEApp.currentInputMode)
@@ -98,14 +97,14 @@ extension SessionCtl: CtlCandidateDelegate {
 
   public func candidatePairs(conv: Bool = false) -> [([String], String)] {
     if !state.isCandidateContainer || state.candidates.isEmpty { return [] }
-    if !conv || PrefMgr.shared.cns11643Enabled || state.candidates[0].0.joined().contains("_punctuation") {
+    if !conv || PrefMgr.shared.cns11643Enabled || state.candidates[0].keyArray.joined().contains("_punctuation") {
       return state.candidates
     }
-    let convertedCandidates: [([String], String)] = state.candidates.map { theCandidatePair -> ([String], String) in
-      let theCandidate = theCandidatePair.1
+    let convertedCandidates: [(keyArray: [String], value: String)] = state.candidates.map { theCandidatePair -> (keyArray: [String], value: String) in
+      let theCandidate = theCandidatePair.value
       let theConverted = ChineseConverter.kanjiConversionIfRequired(theCandidate)
       let result = (theCandidate == theConverted) ? theCandidate : "\(theConverted)(\(theCandidate))"
-      return (theCandidatePair.0, result)
+      return (theCandidatePair.keyArray, result)
     }
     return convertedCandidates
   }
@@ -137,10 +136,10 @@ extension SessionCtl: CtlCandidateDelegate {
 
       if PrefMgr.shared.useSCPCTypingMode {
         switchState(IMEState.ofCommitting(textToCommit: inputting.displayedText))
-        // 此時是逐字選字模式，所以「selectedValue.1」是單個字、不用追加處理。
+        // 此時是逐字選字模式，所以「selectedValue.value」是單個字、不用追加處理。
         if PrefMgr.shared.associatedPhrasesEnabled {
           let associates = inputHandler.generateStateOfAssociates(
-            withPair: .init(keyArray: selectedValue.0, value: selectedValue.1)
+            withPair: .init(keyArray: selectedValue.keyArray, value: selectedValue.value)
           )
           switchState(associates.candidates.isEmpty ? IMEState.ofEmpty() : associates)
         } else {
@@ -154,16 +153,16 @@ extension SessionCtl: CtlCandidateDelegate {
 
     if state.type == .ofAssociates {
       let selectedValue = state.candidates[index]
-      switchState(IMEState.ofCommitting(textToCommit: selectedValue.1))
-      // 此時是聯想詞選字模式，所以「selectedValue.1」必須只保留最後一個字。
+      switchState(IMEState.ofCommitting(textToCommit: selectedValue.value))
+      // 此時是聯想詞選字模式，所以「selectedValue.value」必須只保留最後一個字。
       // 不然的話，一旦你選中了由多個字組成的聯想候選詞，則連續聯想會被打斷。
-      guard let valueKept = selectedValue.1.last else {
+      guard let valueKept = selectedValue.value.last else {
         switchState(IMEState.ofEmpty())
         return
       }
       if PrefMgr.shared.associatedPhrasesEnabled {
         let associates = inputHandler.generateStateOfAssociates(
-          withPair: .init(keyArray: selectedValue.0, value: String(valueKept))
+          withPair: .init(keyArray: selectedValue.keyArray, value: String(valueKept))
         )
         if !associates.candidates.isEmpty {
           switchState(associates)
@@ -179,32 +178,24 @@ extension SessionCtl: CtlCandidateDelegate {
     var succeeded = true
 
     let rawPair = state.candidates[index]
-    let theKey = rawPair.0.joined(separator: InputHandler.keySeparator)
-    let valueCurrent = rawPair.1
-    let valueReversed = ChineseConverter.crossConvert(rawPair.1)
-    let nerfedScore = (action == .toNerf) ? " -114.514" : ""
-    let convertedMark = "#𝙃𝙪𝙢𝙖𝙣𝘾𝙝𝙚𝙘𝙠𝙍𝙚𝙦𝙪𝙞𝙧𝙚𝙙"
-
-    let userPhraseDumped = "\(valueCurrent) \(theKey)\(nerfedScore)"
-    let userPhraseDumpedConverted = "\(valueReversed) \(theKey)\(nerfedScore) \(convertedMark)"
-
-    if !LMMgr.writeUserPhrase(
-      userPhraseDumped, inputMode: inputMode,
-      areWeDeleting: action == .toFilter
+    var userPhrase = LMMgr.UserPhrase(
+      keyArray: rawPair.keyArray, value: rawPair.value, inputMode: inputMode
     )
-      || !LMMgr.writeUserPhrase(
-        userPhraseDumpedConverted, inputMode: inputMode.reversed,
-        areWeDeleting: action == .toFilter
-      )
-    {
+    if action == .toNerf { userPhrase.weight = -114.514 }
+    LMMgr.writeUserPhrasesAtOnce(userPhrase, areWeFiltering: action == .toFilter) {
       succeeded = false
     }
 
+    // 後續操作。
+    let valueCurrent = userPhrase.value
+    let valueReversed = ChineseConverter.crossConvert(valueCurrent)
+
     // 因為上述操作不會立即生效（除非遞交組字區），所以暫時塞入臨時資料記錄。
     // 該臨時資料記錄會在接下來的語言模組資料重載過程中被自動清除。
-    let temporaryScore: Double = (action == .toNerf) ? -114.514 : 0
     LMMgr.currentLM.insertTemporaryData(
-      keyArray: rawPair.0, unigram: .init(value: rawPair.1, score: temporaryScore), isFiltering: action == .toFilter
+      keyArray: userPhrase.keyArray,
+      unigram: .init(value: userPhrase.value, score: userPhrase.weight ?? 0),
+      isFiltering: action == .toFilter
     )
 
     // 開始針對使用者半衰模組的清詞處理
