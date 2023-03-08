@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		5B1CA80E29AC53BA0089E95F /* VwrCandidateTDK_Cocoa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1CA80D29AC53BA0089E95F /* VwrCandidateTDK_Cocoa.swift */; };
 		5B44BAD9295047AC00E1C02D /* shortcuts.html in Resources */ = {isa = PBXBuildFile; fileRef = 5B44BADB295047AC00E1C02D /* shortcuts.html */; };
+		5B60CEA429B8E7CA00A1AAC7 /* LMMgr_PhraseEditorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B60CEA329B8E7CA00A1AAC7 /* LMMgr_PhraseEditorDelegate.swift */; };
+		5B60CEA629B8E7D400A1AAC7 /* LMMgr_UserPhraseStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B60CEA529B8E7D400A1AAC7 /* LMMgr_UserPhraseStructure.swift */; };
+		5B60CEA829B8E7DB00A1AAC7 /* LMMgr_Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B60CEA729B8E7DB00A1AAC7 /* LMMgr_Utilities.swift */; };
 		5B69CA6A295DDC58005211BB /* RangeParserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B69CA69295DDC58005211BB /* RangeParserAPI.swift */; };
 		5B751D90294EC66A0031CF70 /* CtlPrefWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751D8E294EC66A0031CF70 /* CtlPrefWindow.swift */; };
 		5B751D96294EDE850031CF70 /* CtlPrefWindow_PhraseEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751D95294EDE850031CF70 /* CtlPrefWindow_PhraseEditor.swift */; };
@@ -120,7 +123,7 @@
 		5BE5A562294E10C800EFA49C /* Uninstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A561294E10C800EFA49C /* Uninstaller.swift */; };
 		5BE5A564294E10F300EFA49C /* PrefMgr_Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A563294E10F300EFA49C /* PrefMgr_Core.swift */; };
 		5BE5A566294E111E00EFA49C /* PrefMgr_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A565294E111E00EFA49C /* PrefMgr_Extension.swift */; };
-		5BE5A568294E119600EFA49C /* LMMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A567294E119600EFA49C /* LMMgr.swift */; };
+		5BE5A568294E119600EFA49C /* LMMgr_Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A567294E119600EFA49C /* LMMgr_Core.swift */; };
 		5BE5A56A294E120500EFA49C /* SymbolMenuDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A569294E120500EFA49C /* SymbolMenuDefaultData.swift */; };
 		5BE5A56C294E127B00EFA49C /* PhraseEditorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A56B294E127B00EFA49C /* PhraseEditorDelegate.swift */; };
 		5BE5A57D294E193600EFA49C /* data-bpmf-reverse-lookup-CNS4.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5BE5A571294E193600EFA49C /* data-bpmf-reverse-lookup-CNS4.plist */; };
@@ -157,6 +160,9 @@
 		5B44BADC295047AE00E1C02D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = "zh-Hans"; path = "zh-Hans.lproj/shortcuts.html"; sourceTree = "<group>"; };
 		5B44BADD295047AF00E1C02D /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = "zh-Hant"; path = "zh-Hant.lproj/shortcuts.html"; sourceTree = "<group>"; };
 		5B44BADE295047B400E1C02D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = ja; path = ja.lproj/shortcuts.html; sourceTree = "<group>"; };
+		5B60CEA329B8E7CA00A1AAC7 /* LMMgr_PhraseEditorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMMgr_PhraseEditorDelegate.swift; sourceTree = "<group>"; };
+		5B60CEA529B8E7D400A1AAC7 /* LMMgr_UserPhraseStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMMgr_UserPhraseStructure.swift; sourceTree = "<group>"; };
+		5B60CEA729B8E7DB00A1AAC7 /* LMMgr_Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMMgr_Utilities.swift; sourceTree = "<group>"; };
 		5B69CA69295DDC58005211BB /* RangeParserAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RangeParserAPI.swift; sourceTree = "<group>"; };
 		5B751D86294EC30D0031CF70 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5B751D88294EC30E0031CF70 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -282,7 +288,7 @@
 		5BE5A561294E10C800EFA49C /* Uninstaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Uninstaller.swift; sourceTree = "<group>"; };
 		5BE5A563294E10F300EFA49C /* PrefMgr_Core.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefMgr_Core.swift; sourceTree = "<group>"; };
 		5BE5A565294E111E00EFA49C /* PrefMgr_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefMgr_Extension.swift; sourceTree = "<group>"; };
-		5BE5A567294E119600EFA49C /* LMMgr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMMgr.swift; sourceTree = "<group>"; };
+		5BE5A567294E119600EFA49C /* LMMgr_Core.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMMgr_Core.swift; sourceTree = "<group>"; };
 		5BE5A569294E120500EFA49C /* SymbolMenuDefaultData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolMenuDefaultData.swift; sourceTree = "<group>"; };
 		5BE5A56B294E127B00EFA49C /* PhraseEditorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhraseEditorDelegate.swift; sourceTree = "<group>"; };
 		5BE5A571294E193600EFA49C /* data-bpmf-reverse-lookup-CNS4.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; name = "data-bpmf-reverse-lookup-CNS4.plist"; path = "DictionaryData/data-bpmf-reverse-lookup-CNS4.plist"; sourceTree = "<group>"; };
@@ -442,8 +448,8 @@
 		5BE5A4EC294E051300EFA49C /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				5BB1D7F52999028800EA8D2C /* UIModules */,
 				5B751DDE294EE77F0031CF70 /* CandidateControllers */,
+				5BB1D7F52999028800EA8D2C /* UIModules */,
 				5B751DB4294EE21D0031CF70 /* WindowControllers */,
 				5BF5BAE0294DFFC9006011AD /* AppDelegate.swift */,
 				5BE5A595294E1DFB00EFA49C /* ChineseConverterBridge.swift */,
@@ -455,7 +461,10 @@
 				5B751DC3294EE57C0031CF70 /* InputHandler_HandleEvent.swift */,
 				5B751DC4294EE57C0031CF70 /* InputHandler_HandleInput.swift */,
 				5B751DBF294EE57C0031CF70 /* InputHandler_HandleStates.swift */,
-				5BE5A567294E119600EFA49C /* LMMgr.swift */,
+				5BE5A567294E119600EFA49C /* LMMgr_Core.swift */,
+				5B60CEA329B8E7CA00A1AAC7 /* LMMgr_PhraseEditorDelegate.swift */,
+				5B60CEA529B8E7D400A1AAC7 /* LMMgr_UserPhraseStructure.swift */,
+				5B60CEA729B8E7DB00A1AAC7 /* LMMgr_Utilities.swift */,
 				5BE5A4E4294E03C200EFA49C /* main.swift */,
 				5BE5A563294E10F300EFA49C /* PrefMgr_Core.swift */,
 				5BE5A565294E111E00EFA49C /* PrefMgr_Extension.swift */,
@@ -915,6 +924,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5BE5A500294E092900EFA49C /* CocoaExtension_NSWindowController.swift in Sources */,
+				5B60CEA429B8E7CA00A1AAC7 /* LMMgr_PhraseEditorDelegate.swift in Sources */,
 				5B751DD4294EE57D0031CF70 /* SessionCtl_HandleDisplay.swift in Sources */,
 				5BE5A566294E111E00EFA49C /* PrefMgr_Extension.swift in Sources */,
 				5BE5A52A294E0C2B00EFA49C /* lmAssociates.swift in Sources */,
@@ -971,7 +981,8 @@
 				5BE5A55C294E0E8000EFA49C /* PopupCompositionBuffer.swift in Sources */,
 				5BE5A52F294E0C2B00EFA49C /* lmUserOverride.swift in Sources */,
 				5B751DD3294EE57D0031CF70 /* InputHandler_HandleInput.swift in Sources */,
-				5BE5A568294E119600EFA49C /* LMMgr.swift in Sources */,
+				5BE5A568294E119600EFA49C /* LMMgr_Core.swift in Sources */,
+				5B60CEA629B8E7D400A1AAC7 /* LMMgr_UserPhraseStructure.swift in Sources */,
 				5B751DCF294EE57D0031CF70 /* SessionCtl_Core.swift in Sources */,
 				5BB1D7F22999025B00EA8D2C /* PrefUITabs.swift in Sources */,
 				5B751DD8294EE57D0031CF70 /* SessionCtl_IMKCandidatesData.swift in Sources */,
@@ -996,6 +1007,7 @@
 				5BE5A53E294E0CEF00EFA49C /* Shared.swift in Sources */,
 				5B751DCD294EE57D0031CF70 /* SessionCtl_HandleEvent.swift in Sources */,
 				5BE5A52B294E0C2B00EFA49C /* lmPlainBopomofo.swift in Sources */,
+				5B60CEA829B8E7DB00A1AAC7 /* LMMgr_Utilities.swift in Sources */,
 				5B751DDA294EE57D0031CF70 /* SessionCtl_Delegates.swift in Sources */,
 				5BE5A596294E1DFB00EFA49C /* ChineseConverterBridge.swift in Sources */,
 				5B751DE2294EE7A80031CF70 /* CandidatePool.swift in Sources */,
