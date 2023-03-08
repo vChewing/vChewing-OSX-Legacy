@@ -95,16 +95,15 @@ extension SessionCtl: CtlCandidateDelegate {
     PrefMgr.shared.useIMKCandidateWindow ? "123456789" : PrefMgr.shared.candidateKeys
   }
 
-  public func candidatePairs(conv: Bool = false) -> [([String], String)] {
+  public func candidatePairs(conv: Bool = false) -> [(keyArray: [String], value: String)] {
     if !state.isCandidateContainer || state.candidates.isEmpty { return [] }
     if !conv || PrefMgr.shared.cns11643Enabled || state.candidates[0].keyArray.joined().contains("_punctuation") {
       return state.candidates
     }
-    let convertedCandidates: [(keyArray: [String], value: String)] = state.candidates.map { theCandidatePair -> (keyArray: [String], value: String) in
-      let theCandidate = theCandidatePair.value
-      let theConverted = ChineseConverter.kanjiConversionIfRequired(theCandidate)
-      let result = (theCandidate == theConverted) ? theCandidate : "\(theConverted)(\(theCandidate))"
-      return (theCandidatePair.keyArray, result)
+    let convertedCandidates = state.candidates.map { theCandidatePair -> (keyArray: [String], value: String) in
+      var theCandidatePair = theCandidatePair
+      theCandidatePair.value = ChineseConverter.kanjiConversionIfRequired(theCandidatePair.value)
+      return theCandidatePair
     }
     return convertedCandidates
   }

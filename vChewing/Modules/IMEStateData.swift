@@ -214,7 +214,7 @@ public extension IMEStateData {
         return ""
       }
 
-      let text = pair.1
+      let text = pair.value
       let readingDisplay = readingThreadForDisplay
       if markedRange.count < Self.allowedMarkLengthRange.lowerBound {
         tooltipColorState = .denialInsufficiency
