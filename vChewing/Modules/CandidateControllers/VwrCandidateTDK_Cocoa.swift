@@ -385,7 +385,7 @@ private extension VwrCandidateTDKCocoa {
 
 private extension VwrCandidateTDKCocoa {
   func didSelectCandidateAt(_ pos: Int) {
-    controller?.delegate?.candidatePairSelected(at: pos)
+    controller?.delegate?.candidatePairSelectionConfirmed(at: pos)
   }
 
   func didRightClickCandidateAt(_ pos: Int, action: CandidateContextMenuAction) {

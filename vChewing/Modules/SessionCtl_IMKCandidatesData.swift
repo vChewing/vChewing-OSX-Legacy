@@ -148,6 +148,6 @@ public extension SessionCtl {
         handleIMKCandidatesSelected(state.candidates)
       }
     }
-    candidatePairSelected(at: indexDeducted)
+    candidatePairSelectionConfirmed(at: indexDeducted)
   }
 }
