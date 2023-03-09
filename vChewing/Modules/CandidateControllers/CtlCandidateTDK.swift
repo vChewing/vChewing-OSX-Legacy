@@ -91,6 +91,7 @@ public class CtlCandidateTDK: CtlCandidate, NSWindowDelegate {
       reverseLookupResult = delegate?.reverseLookup(for: currentCandidateText) ?? []
       Self.thePool.reverseLookupResult = reverseLookupResult
     }
+    delegate?.candidatePairHighlightChanged(at: highlightedIndex)
     DispatchQueue.main.async { [self] in
       if #unavailable(macOS 10.13), Self.thePool.maxLinesPerPage > 1 {
         updateNSWindowLegacy(window)
