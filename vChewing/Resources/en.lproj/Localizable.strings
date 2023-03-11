@@ -189,10 +189,12 @@
 "⚠︎ This will reboot the vChewing IME." = "⚠︎ This will reboot the vChewing IME.";
 "All strokes in the composition buffer will be shown as ASCII keyboard characters unless this option is enabled. Stroke is definable in the “%keyname” section of the CIN file." = "All strokes in the composition buffer will be shown as ASCII keyboard characters unless this option is enabled. Stroke is definable in the “%keyname” section of the CIN file.";
 "Allow backspace-editing miscomposed readings" = "Allow backspace-editing miscomposed readings";
-"Allow boosting / excluding a candidate of single kanji through marking mode" = "Allow boosting / excluding a candidate of single kanji through marking mode";
+"Allow boosting / excluding a candidate of single kanji when marking" = "Allow boosting / excluding a candidate of single kanji when marking";
 "Allow using Enter key to confirm associated candidate selection" = "Allow using Enter key to confirm associated candidate selection";
 "Alphanumerical Layout:" = "Alphanumerical Layout:";
 "Also use “\\” or “¥” key for Hanin Keyboard Symbol Input" = "Also use “\\” or “¥” key for Hanin Keyboard Symbol Input";
+"Always directly commit lowercased letters" = "Always directly commit lowercased letters";
+"Always directly commit uppercased letters" = "Always directly commit uppercased letters";
 "Always drop the previous reading" = "Always drop the previous reading";
 "Always show tooltip texts horizontally" = "Always show tooltip texts horizontally";
 "Always type intonations to the inline composition buffer" = "Always type intonations to the inline composition buffer";
@@ -238,8 +240,8 @@
 "Debug Mode" = "Debug Mode";
 "DevZone" = "DevZone";
 "Dictionary" = "Dictionary";
-"Directly commit lowercased letters" = "Directly commit lowercased letters";
-"Directly commit uppercased letters" = "Directly commit uppercased letters";
+"Directly commit lowercased letters only if the compositor is empty" = "Directly commit lowercased letters only if the compositor is empty";
+"Directly commit uppercased letters only if the compositor is empty" = "Directly commit uppercased letters only if the compositor is empty";
 "Disable forced conversion for cassette outputs" = "Disable forced conversion for cassette outputs";
 "Disable segmented thick underline in marking mode for managed clients" = "Disable segmented thick underline in marking mode for managed clients";
 "Disassemble the previous reading, dropping its intonation" = "Disassemble the previous reading, dropping its intonation";
