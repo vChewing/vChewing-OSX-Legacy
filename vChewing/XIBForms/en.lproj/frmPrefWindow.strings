@@ -44,7 +44,7 @@
 "BSK-bH-Gct.title" = "Auto-convert traditional Chinese glyphs to KangXi characters";
 "cBw-gz-TXe.title" = "Only enforce conversion in Traditional Chinese mode";
 "cf2-se-PDO.title" = "Dictionary and Language Models";
-"chkAllowBoostingSingleKanjiAsUserPhrase.title" = "Allow boosting / excluding a candidate of single kanji through marking mode";
+"chkAllowBoostingSingleKanjiAsUserPhrase.title" = "Allow boosting / excluding a candidate of single kanji when marking";
 "chkAlsoConfirmAssociatedCandidatesByEnter.title" = "Allow using Enter key to confirm associated candidate selection";
 "chkAutoCorrectReadingCombination.title" = "Automatically correct reading combinations when typing";
 "chkConsolidateContextOnCandidateSelection.title" = "Consolidate the context on confirming candidate selection";
@@ -103,8 +103,10 @@
 "rdoShiftBkspKeyBehavior1.title" = "Clear the entire inline composition buffer like Shift+Delete";
 "rdoShiftBkspKeyBehavior2.title" = "Always drop the previous reading";
 "rdoUpperCaseLetterKeyBehavior0.title" = "Type them into inline composition buffer";
-"rdoUpperCaseLetterKeyBehavior1.title" = "Directly commit lowercased letters";
-"rdoUpperCaseLetterKeyBehavior2.title" = "Directly commit uppercased letters";
+"rdoUpperCaseLetterKeyBehavior1.title" = "Always directly commit lowercased letters";
+"rdoUpperCaseLetterKeyBehavior2.title" = "Always directly commit uppercased letters";
+"rdoUpperCaseLetterKeyBehavior3.title" = "Directly commit lowercased letters only if the compositor is empty";
+"rdoUpperCaseLetterKeyBehavior4.title" = "Directly commit uppercased letters only if the compositor is empty";
 "RQ6-MS-m4C.title" = "Choose your preferred keyboard layout and phonetic parser.";
 "RUG-ls-KyA.title" = "Push the cursor in front of the phrase after selection";
 "rVQ-Hx-cGi.title" = "Japanese";
