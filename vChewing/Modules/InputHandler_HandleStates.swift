@@ -193,9 +193,13 @@ extension InputHandler {
     // Shift + Left
     if input.isCursorBackward, input.isShiftHold {
       if compositor.marker > 0 {
-        compositor.marker -= 1
-        if isCursorCuttingChar(isMarker: true) {
+        if input.isCommandHold || input.isOptionHold {
           compositor.jumpCursorBySpan(to: .rear, isMarker: true)
+        } else {
+          compositor.marker -= 1
+          if isCursorCuttingChar(isMarker: true) {
+            compositor.jumpCursorBySpan(to: .rear, isMarker: true)
+          }
         }
         var marking = IMEState.ofMarking(
           displayTextSegments: state.displayTextSegments,
@@ -214,9 +218,13 @@ extension InputHandler {
     // Shift + Right
     if input.isCursorForward, input.isShiftHold {
       if compositor.marker < compositor.length {
-        compositor.marker += 1
-        if isCursorCuttingChar(isMarker: true) {
+        if input.isCommandHold || input.isOptionHold {
           compositor.jumpCursorBySpan(to: .front, isMarker: true)
+        } else {
+          compositor.marker += 1
+          if isCursorCuttingChar(isMarker: true) {
+            compositor.jumpCursorBySpan(to: .front, isMarker: true)
+          }
         }
         var marking = IMEState.ofMarking(
           displayTextSegments: state.displayTextSegments,
@@ -421,7 +429,7 @@ extension InputHandler {
     }
 
     // 引入 macOS 內建注音輸入法的行為，允許用 Shift+BackSpace 解構前一個漢字的讀音。
-    shiftBksp: switch prefs.specifyShiftBackSpaceKeyBehavior {
+  shiftBksp: switch prefs.specifyShiftBackSpaceKeyBehavior {
     case 0:
       if prefs.cassetteEnabled {
         guard input.isShiftHold, calligrapher.isEmpty else { break shiftBksp }
@@ -642,9 +650,14 @@ extension InputHandler {
     if input.isShiftHold {
       // Shift + Right
       if compositor.cursor < compositor.length {
-        compositor.marker = compositor.cursor + 1
-        if isCursorCuttingChar(isMarker: true) {
+        compositor.marker = compositor.cursor
+        if input.isCommandHold || input.isOptionHold {
           compositor.jumpCursorBySpan(to: .front, isMarker: true)
+        } else {
+          compositor.marker += 1
+          if isCursorCuttingChar(isMarker: true) {
+            compositor.jumpCursorBySpan(to: .front, isMarker: true)
+          }
         }
         var marking = IMEState.ofMarking(
           displayTextSegments: compositor.walkedNodes.values,
@@ -657,7 +670,7 @@ extension InputHandler {
       } else {
         delegate.callError("BB7F6DB9")
       }
-    } else if input.isOptionHold {
+    } else if input.isOptionHold, !input.isShiftHold {
       if input.isControlHold {
         return handleEnd()
       }
@@ -701,9 +714,14 @@ extension InputHandler {
     if input.isShiftHold {
       // Shift + left
       if compositor.cursor > 0 {
-        compositor.marker = compositor.cursor - 1
-        if isCursorCuttingChar(isMarker: true) {
+        compositor.marker = compositor.cursor
+        if input.isCommandHold || input.isOptionHold {
           compositor.jumpCursorBySpan(to: .rear, isMarker: true)
+        } else {
+          compositor.marker -= 1
+          if isCursorCuttingChar(isMarker: true) {
+            compositor.jumpCursorBySpan(to: .rear, isMarker: true)
+          }
         }
         var marking = IMEState.ofMarking(
           displayTextSegments: compositor.walkedNodes.values,
@@ -716,7 +734,7 @@ extension InputHandler {
       } else {
         delegate.callError("D326DEA3")
       }
-    } else if input.isOptionHold {
+    } else if input.isOptionHold, !input.isShiftHold {
       if input.isControlHold { return handleHome() }
       // 游標跳轉動作無論怎樣都會執行，但如果出了執行失敗的結果的話則觸發報錯流程。
       if !compositor.jumpCursorBySpan(to: .rear) {
