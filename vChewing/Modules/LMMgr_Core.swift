@@ -57,7 +57,7 @@ public class LMMgr {
   }
 
   public static func loadDataModelsOnAppDelegate() {
-    let globalQueue = DispatchQueue.main
+    let globalQueue = DispatchQueue(label: "vChewingLM", qos: .unspecified, attributes: .concurrent)
     var showFinishNotification = false
     let group = DispatchGroup()
     group.enter()
@@ -114,7 +114,7 @@ public class LMMgr {
   }
 
   public static func loadDataModel(_ mode: Shared.InputMode) {
-    let globalQueue = DispatchQueue.main
+    let globalQueue = DispatchQueue(label: "vChewingLM_Lazy", qos: .unspecified, attributes: .concurrent)
     var showFinishNotification = false
     let group = DispatchGroup()
     group.enter()
@@ -323,7 +323,7 @@ public class LMMgr {
   // MARK: UOM
 
   public static func saveUserOverrideModelData() {
-    let globalQueue = DispatchQueue.main
+    let globalQueue = DispatchQueue(label: "vChewingLM_UOM", qos: .unspecified, attributes: .concurrent)
     let group = DispatchGroup()
     group.enter()
     globalQueue.async {
