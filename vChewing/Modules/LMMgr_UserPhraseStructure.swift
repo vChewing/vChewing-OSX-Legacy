@@ -19,7 +19,7 @@ public extension LMMgr {
     public var weight: Double?
 
     private var isDuplicated: Bool {
-      LMMgr.checkIfUserPhraseExist(userPhrase: value, mode: inputMode, keyArray: keyArray)
+      LMMgr.checkIfPhrasePairExists(userPhrase: value, mode: inputMode, keyArray: keyArray)
     }
 
     public var description: String {

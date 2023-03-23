@@ -271,7 +271,7 @@ public class LMMgr {
     )
   }
 
-  public static func checkIfUserPhraseExist(
+  public static func checkIfPhrasePairExists(
     userPhrase: String,
     mode: Shared.InputMode,
     keyArray: [String],
@@ -287,6 +287,24 @@ public class LMMgr {
         keyArray: keyArray, value: userPhrase, factoryDictionaryOnly: factoryDictionaryOnly
       )
     case .imeModeNULL: return false
+    }
+  }
+
+  public static func countPhrasePairs(
+    keyArray: [String],
+    mode: Shared.InputMode,
+    factoryDictionaryOnly: Bool = false
+  ) -> Int {
+    switch mode {
+    case .imeModeCHS:
+      return lmCHS.countKeyValuePairs(
+        keyArray: keyArray, factoryDictionaryOnly: factoryDictionaryOnly
+      )
+    case .imeModeCHT:
+      return lmCHT.countKeyValuePairs(
+        keyArray: keyArray, factoryDictionaryOnly: factoryDictionaryOnly
+      )
+    case .imeModeNULL: return 0
     }
   }
 
