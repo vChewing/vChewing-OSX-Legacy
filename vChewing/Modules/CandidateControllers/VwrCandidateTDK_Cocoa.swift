@@ -332,6 +332,7 @@ private extension VwrCandidateTDKCocoa {
     var theMenu: NSMenu?
 
     private func prepareMenu() {
+      guard let thePool = (target as? VwrCandidateTDKCocoa)?.thePool else { return }
       let newMenu = NSMenu()
       let boostMenuItem = NSMenuItem(
         title: "↑ \(cellData.displayedText)",
@@ -349,9 +350,7 @@ private extension VwrCandidateTDKCocoa {
       nerfMenuItem.target = self
       newMenu.addItem(nerfMenuItem)
 
-      if let dataAll = (target as? VwrCandidateTDKCocoa)?.thePool.candidateDataAll,
-         dataAll.count > cellData.index, dataAll[cellData.index].spanLength > 1
-      {
+      if thePool.isFilterable(target: cellData.index) {
         let filterMenuItem = NSMenuItem(
           title: "✖︎ \(cellData.displayedText)",
           action: #selector(menuActionOfFiltering(_:)),
