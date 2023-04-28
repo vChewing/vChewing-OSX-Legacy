@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		5B1CA80E29AC53BA0089E95F /* VwrCandidateTDK_Cocoa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1CA80D29AC53BA0089E95F /* VwrCandidateTDK_Cocoa.swift */; };
 		5B44BAD9295047AC00E1C02D /* shortcuts.html in Resources */ = {isa = PBXBuildFile; fileRef = 5B44BADB295047AC00E1C02D /* shortcuts.html */; };
+		5B572A7A29FB76B900ED5066 /* LatinKeyboardMappings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B572A7929FB76B900ED5066 /* LatinKeyboardMappings.swift */; };
+		5B572A7B29FB76B900ED5066 /* LatinKeyboardMappings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B572A7929FB76B900ED5066 /* LatinKeyboardMappings.swift */; };
 		5B60CEA429B8E7CA00A1AAC7 /* LMMgr_PhraseEditorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B60CEA329B8E7CA00A1AAC7 /* LMMgr_PhraseEditorDelegate.swift */; };
 		5B60CEA629B8E7D400A1AAC7 /* LMMgr_UserPhraseStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B60CEA529B8E7D400A1AAC7 /* LMMgr_UserPhraseStructure.swift */; };
 		5B60CEA829B8E7DB00A1AAC7 /* LMMgr_Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B60CEA729B8E7DB00A1AAC7 /* LMMgr_Utilities.swift */; };
@@ -160,6 +162,7 @@
 		5B44BADC295047AE00E1C02D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = "zh-Hans"; path = "zh-Hans.lproj/shortcuts.html"; sourceTree = "<group>"; };
 		5B44BADD295047AF00E1C02D /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = "zh-Hant"; path = "zh-Hant.lproj/shortcuts.html"; sourceTree = "<group>"; };
 		5B44BADE295047B400E1C02D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = ja; path = ja.lproj/shortcuts.html; sourceTree = "<group>"; };
+		5B572A7929FB76B900ED5066 /* LatinKeyboardMappings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatinKeyboardMappings.swift; sourceTree = "<group>"; };
 		5B60CEA329B8E7CA00A1AAC7 /* LMMgr_PhraseEditorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMMgr_PhraseEditorDelegate.swift; sourceTree = "<group>"; };
 		5B60CEA529B8E7D400A1AAC7 /* LMMgr_UserPhraseStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMMgr_UserPhraseStructure.swift; sourceTree = "<group>"; };
 		5B60CEA729B8E7DB00A1AAC7 /* LMMgr_Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMMgr_Utilities.swift; sourceTree = "<group>"; };
@@ -488,6 +491,7 @@
 				5BE5A4FD294E090800EFA49C /* CocoaExtension_NSSound.swift */,
 				5BE5A4FF294E092900EFA49C /* CocoaExtension_NSWindowController.swift */,
 				5BE5A4F4294E059600EFA49C /* IMKHelper.swift */,
+				5B572A7929FB76B900ED5066 /* LatinKeyboardMappings.swift */,
 				5BE5A4F2294E058F00EFA49C /* SwiftExtension.swift */,
 				5BE5A4FB294E087B00EFA49C /* TISInputSourceExtension.swift */,
 			);
@@ -910,6 +914,7 @@
 			files = (
 				5BACBCDF295093A60078CAB3 /* AppDelegate.swift in Sources */,
 				5BACBD1529509BB60078CAB3 /* SwiftExtension.swift in Sources */,
+				5B572A7B29FB76B900ED5066 /* LatinKeyboardMappings.swift in Sources */,
 				5BACBD1329509B3D0078CAB3 /* CocoaExtension_Misc.swift in Sources */,
 				5BACBCFE295094FA0078CAB3 /* TISInputSourceExtension.swift in Sources */,
 				5BACBD002950950D0078CAB3 /* AppDelegate_Extension.swift in Sources */,
@@ -925,6 +930,7 @@
 			files = (
 				5BE5A500294E092900EFA49C /* CocoaExtension_NSWindowController.swift in Sources */,
 				5B60CEA429B8E7CA00A1AAC7 /* LMMgr_PhraseEditorDelegate.swift in Sources */,
+				5B572A7A29FB76B900ED5066 /* LatinKeyboardMappings.swift in Sources */,
 				5B751DD4294EE57D0031CF70 /* SessionCtl_HandleDisplay.swift in Sources */,
 				5BE5A566294E111E00EFA49C /* PrefMgr_Extension.swift in Sources */,
 				5BE5A52A294E0C2B00EFA49C /* lmAssociates.swift in Sources */,
