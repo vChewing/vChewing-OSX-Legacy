@@ -7,6 +7,7 @@
 // requirements defined in MIT License.
 
 import Foundation
+import InputMethodKit
 
 /// 用以呈現輸入法控制器（SessionCtl）的各種狀態。
 ///
@@ -193,6 +194,14 @@ public extension IMEState {
     case .ofMarking: return data.attributedStringMarking
     case .ofAssociates, .ofSymbolTable: return data.attributedStringPlaceholder
     default: return data.attributedStringNormal
+    }
+  }
+
+  func attributedString(for session: IMKInputController) -> NSAttributedString {
+    switch type {
+    case .ofMarking: return data.attributedStringMarking(for: session)
+    case .ofAssociates, .ofSymbolTable: return data.attributedStringPlaceholder(for: session)
+    default: return data.attributedStringNormal(for: session)
     }
   }
 
