@@ -43,7 +43,7 @@ public extension SessionCtl {
       if event.type == .flagsChanged, event.keyCode == KeyCode.kCapsLock.rawValue {
         DispatchQueue.main.async {
           let isCapsLockTurnedOn = event.modifierFlags.intersection(.deviceIndependentFlagsMask).contains(.capsLock)
-          let status = NSLocalizedString("NotificationSwitchASCII", comment: "")
+          let status = NSLocalizedString("NotificationSwitchRevolver", comment: "")
           guard PrefMgr.shared.showNotificationsWhenTogglingCapsLock else { return }
           Notifier.notify(
             message: isCapsLockTurnedOn
@@ -57,7 +57,7 @@ public extension SessionCtl {
 
     // 切換英數模式開關。
     func toggleAlphanumericalMode() {
-      let status = "NotificationSwitchASCII".localized
+      let status = "NotificationSwitchRevolver".localized
       Notifier.notify(
         message: isASCIIMode.toggled()
           ? NSLocalizedString("Alphanumerical Input Mode", comment: "") + "\n" + status
