@@ -106,6 +106,15 @@ public class SessionCtl: IMKInputController {
     }
   }
 
+  private let sharedAlertForInputModeToggling: NSAlert = {
+    let alert = NSAlert()
+    alert.alertStyle = .informational
+    alert.messageText = "Target Input Mode Activation Required".localized
+    alert.informativeText = "You are proceeding to System Preferences to enable the Input Source which corresponds to the input mode you are going to switch to.".localized
+    alert.addButton(withTitle: "OK".localized)
+    return alert
+  }()
+
   public func updateVerticalTypingStatus() {
     guard let client = client() else {
       isVerticalTyping = false
@@ -299,6 +308,38 @@ public extension SessionCtl {
       if inputMode != newMode { inputMode = newMode }
     }
     super.setValue(value, forTag: tag, client: sender)
+  }
+
+  /// 專門用來就地切換繁簡模式的函式。
+  @objc func switchInputMode(_: Any? = nil) {
+    guard let client: IMKTextInput = client() else { return }
+    let nowMode = IMEApp.currentInputMode
+    guard nowMode != .imeModeNULL else { return }
+    modeCheck: for neta in TISInputSource.allRegisteredInstancesOfThisInputMethod {
+      guard !neta.isActivated else { continue }
+      osCheck: if #unavailable(macOS 12) {
+        neta.activate()
+        if !neta.isActivated {
+          break osCheck
+        }
+        break modeCheck
+      }
+      let result = sharedAlertForInputModeToggling.runModal()
+      NSApp.activate(ignoringOtherApps: true)
+      if result == NSApplication.ModalResponse.alertFirstButtonReturn {
+        neta.activate()
+      }
+      return
+    }
+    let status = "NotificationSwitchRevolver".localized
+    DispatchQueue.main.async {
+      if LMMgr.lmCHT.isCoreLMLoaded, LMMgr.lmCHS.isCoreLMLoaded {
+        Notifier.notify(
+          message: nowMode.reversed.localizedDescription + "\n" + status
+        )
+      }
+    }
+    client.selectMode(nowMode.reversed.rawValue)
   }
 
   /// 將輸入法偏好設定同步至語言模組內。
