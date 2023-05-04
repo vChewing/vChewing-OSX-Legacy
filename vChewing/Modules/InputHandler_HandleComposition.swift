@@ -189,7 +189,6 @@ extension InputHandler {
     var wildcardKey: String { currentLM.cassetteWildcardKey } // 花牌鍵。
     let isWildcardKeyInput: Bool = (input.text == wildcardKey && !wildcardKey.isEmpty)
 
-    var keyConsumedByStrokes = false
     let skipStrokeHandling =
       input.isReservedKey || input.isNumericPadKey || input.isNonLaptopFunctionKey
         || input.isControlHold || input.isOptionHold || input.isShiftHold || input.isCommandHold
@@ -223,7 +222,6 @@ extension InputHandler {
       if isWildcardKeyInput {
         break prehandling
       }
-      keyConsumedByStrokes = true
 
       if !isStrokesFull {
         delegate.switchState(generateStateOfInputting())
@@ -308,12 +306,6 @@ extension InputHandler {
       return true
     }
 
-    /// 是說此時注拼槽並非為空、卻還沒組音。這種情況下只可能是「注拼槽內只有聲調」。
-    if keyConsumedByStrokes {
-      // 以回呼組字狀態的方式來執行 setInlineDisplayWithCursor()。
-      delegate.switchState(generateStateOfInputting())
-      return true
-    }
     return nil
   }
 
