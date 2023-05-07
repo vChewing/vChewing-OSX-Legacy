@@ -23,12 +23,14 @@ public class TooltipUI: NSWindowController {
         text = text.replacingOccurrences(of: "Command", with: "⌘")
         text = text.replacingOccurrences(of: "Delete", with: "⌦")
         text = text.replacingOccurrences(of: "BackSpace", with: "⌫")
+        text = text.replacingOccurrences(of: "Space", with: "␣")
         text = text.replacingOccurrences(of: "SHIFT", with: "⇧")
         text = text.replacingOccurrences(of: "CONTROL", with: "⌃")
         text = text.replacingOccurrences(of: "ENTER", with: "⏎")
         text = text.replacingOccurrences(of: "COMMAND", with: "⌘")
         text = text.replacingOccurrences(of: "DELETE", with: "⌦")
         text = text.replacingOccurrences(of: "BACKSPACE", with: "⌫")
+        text = text.replacingOccurrences(of: "SPACE", with: "␣")
       }
 
       let attrString: NSMutableAttributedString = .init(string: text)
