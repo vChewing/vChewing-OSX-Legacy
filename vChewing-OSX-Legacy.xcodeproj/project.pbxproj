@@ -712,8 +712,8 @@
 			isa = PBXGroup;
 			children = (
 				5BE5A4EC294E051300EFA49C /* Modules */,
-				5B751D92294EC6A60031CF70 /* XIBForms */,
 				5BE5A4EB294E04BC00EFA49C /* Resources */,
+				5B751D92294EC6A60031CF70 /* XIBForms */,
 				5BE5A4E3294E00C300EFA49C /* Info.plist */,
 				5B751D87294EC30D0031CF70 /* InfoPlist.strings */,
 				5BF5BAE4294DFFCA006011AD /* MainMenu.xib */,
