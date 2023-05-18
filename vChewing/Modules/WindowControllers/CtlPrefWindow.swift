@@ -349,7 +349,7 @@ class CtlPrefWindow: NSWindowController, NSWindowDelegate {
         newPath.ensureTrailingSlash()
         if LMMgr.checkIfSpecifiedUserDataFolderValid(newPath) {
           PrefMgr.shared.userDataFolderSpecified = newPath
-          (NSApp.delegate as? AppDelegate)?.updateDirectoryMonitorPath()
+          AppDelegate.shared.updateDirectoryMonitorPath()
         } else {
           IMEApp.buzz()
           if !bolPreviousFolderValidity {

@@ -12,6 +12,7 @@ import Cocoa
 
 @objc(AppDelegate)
 public class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDelegate {
+  public static let shared = AppDelegate()
   private var folderMonitor = FolderMonitor(
     url: URL(fileURLWithPath: LMMgr.dataFolderPath(isDefaultFolder: false))
   )
