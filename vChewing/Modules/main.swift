@@ -70,7 +70,8 @@ public let kUpdateInfoSourceURL: URL = {
   return urlUpdateInfoSourceLegacy
 }()
 
-NSApp.run()
+NSApplication.shared.delegate = AppDelegate.shared
+_ = NSApplicationMain(CommandLine.argc, CommandLine.unsafeArgv)
 
 // MARK: - Top-level Enums relating to Input Mode and Language Supports.
 
