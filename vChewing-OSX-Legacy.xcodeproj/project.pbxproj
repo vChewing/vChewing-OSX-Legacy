@@ -119,7 +119,6 @@
 		5BE5A558294E0D1E00EFA49C /* 7_Unigram.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A54F294E0D1E00EFA49C /* 7_Unigram.swift */; };
 		5BE5A559294E0D1E00EFA49C /* 3_KeyValuePaired.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A550294E0D1E00EFA49C /* 3_KeyValuePaired.swift */; };
 		5BE5A55A294E0D1E00EFA49C /* 6_LangModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A551294E0D1E00EFA49C /* 6_LangModel.swift */; };
-		5BE5A55B294E0D1E00EFA49C /* 8_SwiftImpl_Internals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A552294E0D1E00EFA49C /* 8_SwiftImpl_Internals.swift */; };
 		5BE5A55C294E0E8000EFA49C /* PopupCompositionBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A534294E0CBA00EFA49C /* PopupCompositionBuffer.swift */; };
 		5BE5A55F294E0EFE00EFA49C /* TooltipUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A55E294E0EFE00EFA49C /* TooltipUI.swift */; };
 		5BE5A562294E10C800EFA49C /* Uninstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A561294E10C800EFA49C /* Uninstaller.swift */; };
@@ -286,7 +285,6 @@
 		5BE5A54F294E0D1E00EFA49C /* 7_Unigram.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = 7_Unigram.swift; sourceTree = "<group>"; };
 		5BE5A550294E0D1E00EFA49C /* 3_KeyValuePaired.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = 3_KeyValuePaired.swift; sourceTree = "<group>"; };
 		5BE5A551294E0D1E00EFA49C /* 6_LangModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = 6_LangModel.swift; sourceTree = "<group>"; };
-		5BE5A552294E0D1E00EFA49C /* 8_SwiftImpl_Internals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = 8_SwiftImpl_Internals.swift; sourceTree = "<group>"; };
 		5BE5A55E294E0EFE00EFA49C /* TooltipUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TooltipUI.swift; sourceTree = "<group>"; };
 		5BE5A561294E10C800EFA49C /* Uninstaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Uninstaller.swift; sourceTree = "<group>"; };
 		5BE5A563294E10F300EFA49C /* PrefMgr_Core.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefMgr_Core.swift; sourceTree = "<group>"; };
@@ -509,7 +507,6 @@
 				5BE5A54D294E0D1E00EFA49C /* 5_Node.swift */,
 				5BE5A551294E0D1E00EFA49C /* 6_LangModel.swift */,
 				5BE5A54F294E0D1E00EFA49C /* 7_Unigram.swift */,
-				5BE5A552294E0D1E00EFA49C /* 8_SwiftImpl_Internals.swift */,
 			);
 			path = Megrez;
 			sourceTree = "<group>";
@@ -951,7 +948,6 @@
 				5BE5A557294E0D1E00EFA49C /* 4_SpanUnit.swift in Sources */,
 				5BE5A53D294E0CEF00EFA49C /* PrefMgrProtocol.swift in Sources */,
 				5BE5A559294E0D1E00EFA49C /* 3_KeyValuePaired.swift in Sources */,
-				5BE5A55B294E0D1E00EFA49C /* 8_SwiftImpl_Internals.swift in Sources */,
 				5BE5A52D294E0C2B00EFA49C /* lmCoreEX.swift in Sources */,
 				5BE5A503294E095D00EFA49C /* AlexisBridoux_NSWindowPositioner.swift in Sources */,
 				5BE5A4FE294E090800EFA49C /* CocoaExtension_NSSound.swift in Sources */,
