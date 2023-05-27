@@ -114,12 +114,12 @@
 		5BE5A553294E0D1E00EFA49C /* 0_Megrez.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A54A294E0D1D00EFA49C /* 0_Megrez.swift */; };
 		5BE5A554294E0D1E00EFA49C /* 1_Compositor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A54B294E0D1E00EFA49C /* 1_Compositor.swift */; };
 		5BE5A555294E0D1E00EFA49C /* 2_Walker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A54C294E0D1E00EFA49C /* 2_Walker.swift */; };
-		5BE5A556294E0D1E00EFA49C /* 6_Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A54D294E0D1E00EFA49C /* 6_Node.swift */; };
+		5BE5A556294E0D1E00EFA49C /* 5_Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A54D294E0D1E00EFA49C /* 5_Node.swift */; };
 		5BE5A557294E0D1E00EFA49C /* 4_SpanUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A54E294E0D1E00EFA49C /* 4_SpanUnit.swift */; };
-		5BE5A558294E0D1E00EFA49C /* 8_Unigram.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A54F294E0D1E00EFA49C /* 8_Unigram.swift */; };
+		5BE5A558294E0D1E00EFA49C /* 7_Unigram.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A54F294E0D1E00EFA49C /* 7_Unigram.swift */; };
 		5BE5A559294E0D1E00EFA49C /* 3_KeyValuePaired.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A550294E0D1E00EFA49C /* 3_KeyValuePaired.swift */; };
-		5BE5A55A294E0D1E00EFA49C /* 7_LangModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A551294E0D1E00EFA49C /* 7_LangModel.swift */; };
-		5BE5A55B294E0D1E00EFA49C /* 5_Vertex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A552294E0D1E00EFA49C /* 5_Vertex.swift */; };
+		5BE5A55A294E0D1E00EFA49C /* 6_LangModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A551294E0D1E00EFA49C /* 6_LangModel.swift */; };
+		5BE5A55B294E0D1E00EFA49C /* 8_SwiftImpl_Internals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A552294E0D1E00EFA49C /* 8_SwiftImpl_Internals.swift */; };
 		5BE5A55C294E0E8000EFA49C /* PopupCompositionBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A534294E0CBA00EFA49C /* PopupCompositionBuffer.swift */; };
 		5BE5A55F294E0EFE00EFA49C /* TooltipUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A55E294E0EFE00EFA49C /* TooltipUI.swift */; };
 		5BE5A562294E10C800EFA49C /* Uninstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A561294E10C800EFA49C /* Uninstaller.swift */; };
@@ -281,12 +281,12 @@
 		5BE5A54A294E0D1D00EFA49C /* 0_Megrez.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = 0_Megrez.swift; sourceTree = "<group>"; };
 		5BE5A54B294E0D1E00EFA49C /* 1_Compositor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = 1_Compositor.swift; sourceTree = "<group>"; };
 		5BE5A54C294E0D1E00EFA49C /* 2_Walker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = 2_Walker.swift; sourceTree = "<group>"; };
-		5BE5A54D294E0D1E00EFA49C /* 6_Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = 6_Node.swift; sourceTree = "<group>"; };
+		5BE5A54D294E0D1E00EFA49C /* 5_Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = 5_Node.swift; sourceTree = "<group>"; };
 		5BE5A54E294E0D1E00EFA49C /* 4_SpanUnit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = 4_SpanUnit.swift; sourceTree = "<group>"; };
-		5BE5A54F294E0D1E00EFA49C /* 8_Unigram.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = 8_Unigram.swift; sourceTree = "<group>"; };
+		5BE5A54F294E0D1E00EFA49C /* 7_Unigram.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = 7_Unigram.swift; sourceTree = "<group>"; };
 		5BE5A550294E0D1E00EFA49C /* 3_KeyValuePaired.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = 3_KeyValuePaired.swift; sourceTree = "<group>"; };
-		5BE5A551294E0D1E00EFA49C /* 7_LangModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = 7_LangModel.swift; sourceTree = "<group>"; };
-		5BE5A552294E0D1E00EFA49C /* 5_Vertex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = 5_Vertex.swift; sourceTree = "<group>"; };
+		5BE5A551294E0D1E00EFA49C /* 6_LangModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = 6_LangModel.swift; sourceTree = "<group>"; };
+		5BE5A552294E0D1E00EFA49C /* 8_SwiftImpl_Internals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = 8_SwiftImpl_Internals.swift; sourceTree = "<group>"; };
 		5BE5A55E294E0EFE00EFA49C /* TooltipUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TooltipUI.swift; sourceTree = "<group>"; };
 		5BE5A561294E10C800EFA49C /* Uninstaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Uninstaller.swift; sourceTree = "<group>"; };
 		5BE5A563294E10F300EFA49C /* PrefMgr_Core.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefMgr_Core.swift; sourceTree = "<group>"; };
@@ -506,10 +506,10 @@
 				5BE5A54C294E0D1E00EFA49C /* 2_Walker.swift */,
 				5BE5A550294E0D1E00EFA49C /* 3_KeyValuePaired.swift */,
 				5BE5A54E294E0D1E00EFA49C /* 4_SpanUnit.swift */,
-				5BE5A552294E0D1E00EFA49C /* 5_Vertex.swift */,
-				5BE5A54D294E0D1E00EFA49C /* 6_Node.swift */,
-				5BE5A551294E0D1E00EFA49C /* 7_LangModel.swift */,
-				5BE5A54F294E0D1E00EFA49C /* 8_Unigram.swift */,
+				5BE5A54D294E0D1E00EFA49C /* 5_Node.swift */,
+				5BE5A551294E0D1E00EFA49C /* 6_LangModel.swift */,
+				5BE5A54F294E0D1E00EFA49C /* 7_Unigram.swift */,
+				5BE5A552294E0D1E00EFA49C /* 8_SwiftImpl_Internals.swift */,
 			);
 			path = Megrez;
 			sourceTree = "<group>";
@@ -951,7 +951,7 @@
 				5BE5A557294E0D1E00EFA49C /* 4_SpanUnit.swift in Sources */,
 				5BE5A53D294E0CEF00EFA49C /* PrefMgrProtocol.swift in Sources */,
 				5BE5A559294E0D1E00EFA49C /* 3_KeyValuePaired.swift in Sources */,
-				5BE5A55B294E0D1E00EFA49C /* 5_Vertex.swift in Sources */,
+				5BE5A55B294E0D1E00EFA49C /* 8_SwiftImpl_Internals.swift in Sources */,
 				5BE5A52D294E0C2B00EFA49C /* lmCoreEX.swift in Sources */,
 				5BE5A503294E095D00EFA49C /* AlexisBridoux_NSWindowPositioner.swift in Sources */,
 				5BE5A4FE294E090800EFA49C /* CocoaExtension_NSSound.swift in Sources */,
@@ -981,7 +981,7 @@
 				5BE5A53C294E0CEF00EFA49C /* CtlCandidateProtocol.swift in Sources */,
 				5BE5A4FC294E087B00EFA49C /* TISInputSourceExtension.swift in Sources */,
 				5BE5A541294E0CEF00EFA49C /* InputSignalProtocol.swift in Sources */,
-				5BE5A556294E0D1E00EFA49C /* 6_Node.swift in Sources */,
+				5BE5A556294E0D1E00EFA49C /* 5_Node.swift in Sources */,
 				5BE5A527294E0C2900EFA49C /* LMInstantiator_DateTimeExtension.swift in Sources */,
 				5BB32F0329A61A3B00B05D7B /* CandidatePool_CocoaImpl.swift in Sources */,
 				5BE5A55C294E0E8000EFA49C /* PopupCompositionBuffer.swift in Sources */,
@@ -992,7 +992,7 @@
 				5B751DCF294EE57D0031CF70 /* SessionCtl_Core.swift in Sources */,
 				5BB1D7F22999025B00EA8D2C /* PrefUITabs.swift in Sources */,
 				5B751DD8294EE57D0031CF70 /* SessionCtl_IMKCandidatesData.swift in Sources */,
-				5BE5A558294E0D1E00EFA49C /* 8_Unigram.swift in Sources */,
+				5BE5A558294E0D1E00EFA49C /* 7_Unigram.swift in Sources */,
 				5B751DE3294EE7A80031CF70 /* CandidateCellData_Core.swift in Sources */,
 				5BE5A522294E0C2500EFA49C /* NotifierUI.swift in Sources */,
 				5B751DD6294EE57D0031CF70 /* IMEStateData.swift in Sources */,
@@ -1001,7 +1001,7 @@
 				5BE5A564294E10F300EFA49C /* PrefMgr_Core.swift in Sources */,
 				5B69CA6A295DDC58005211BB /* RangeParserAPI.swift in Sources */,
 				5BE5A546294E0D1200EFA49C /* Tekkon_Constants.swift in Sources */,
-				5BE5A55A294E0D1E00EFA49C /* 7_LangModel.swift in Sources */,
+				5BE5A55A294E0D1E00EFA49C /* 6_LangModel.swift in Sources */,
 				5BE5A547294E0D1200EFA49C /* Tekkon_Phonabets.swift in Sources */,
 				5BE5A555294E0D1E00EFA49C /* 2_Walker.swift in Sources */,
 				5BE5A523294E0C2900EFA49C /* LMConsolidator.swift in Sources */,
