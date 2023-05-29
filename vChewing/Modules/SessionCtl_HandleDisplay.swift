@@ -87,7 +87,7 @@ public extension SessionCtl {
     candidateUI = CtlCandidateTDK(candidateLayout)
     if let candidateTDK = candidateUI as? CtlCandidateTDK {
       let singleLine = isVerticalTyping || PrefMgr.shared.candidateWindowShowOnlyOneLine
-      candidateTDK.maxLinesPerPage = singleLine ? 1 : 4
+      candidateTDK.maxLinesPerPage = singleLine ? 1 : 3 // Intel Macs Only.
     }
 
     candidateUI?.candidateFont = Self.candidateFont(
