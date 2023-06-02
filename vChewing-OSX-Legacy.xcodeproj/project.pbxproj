@@ -73,7 +73,7 @@
 		5BB1D7F22999025B00EA8D2C /* PrefUITabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB1D7F12999025B00EA8D2C /* PrefUITabs.swift */; };
 		5BB32F0329A61A3B00B05D7B /* CandidatePool_CocoaImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB32F0229A61A3B00B05D7B /* CandidatePool_CocoaImpl.swift */; };
 		5BB32F0529A61AFB00B05D7B /* CtlCandidateTDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB32F0429A61AFB00B05D7B /* CtlCandidateTDK.swift */; };
-		5BCF4AB829546B5200C7FBD9 /* convdict.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5BCF4AB729546B5100C7FBD9 /* convdict.plist */; };
+		5BCF4AB829546B5200C7FBD9 /* convdict.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BCF4AB729546B5100C7FBD9 /* convdict.json */; };
 		5BE5A4E5294E03C200EFA49C /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A4E4294E03C200EFA49C /* main.swift */; };
 		5BE5A4F1294E057F00EFA49C /* CocoaExtension_Misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A4F0294E057F00EFA49C /* CocoaExtension_Misc.swift */; };
 		5BE5A4F3294E058F00EFA49C /* SwiftExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A4F2294E058F00EFA49C /* SwiftExtension.swift */; };
@@ -127,18 +127,18 @@
 		5BE5A568294E119600EFA49C /* LMMgr_Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A567294E119600EFA49C /* LMMgr_Core.swift */; };
 		5BE5A56A294E120500EFA49C /* SymbolMenuDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A569294E120500EFA49C /* SymbolMenuDefaultData.swift */; };
 		5BE5A56C294E127B00EFA49C /* PhraseEditorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A56B294E127B00EFA49C /* PhraseEditorDelegate.swift */; };
-		5BE5A57D294E193600EFA49C /* data-bpmf-reverse-lookup-CNS4.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5BE5A571294E193600EFA49C /* data-bpmf-reverse-lookup-CNS4.plist */; };
-		5BE5A57E294E193600EFA49C /* data-bpmf-reverse-lookup-CNS3.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5BE5A572294E193600EFA49C /* data-bpmf-reverse-lookup-CNS3.plist */; };
-		5BE5A57F294E193600EFA49C /* data-cns.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5BE5A573294E193600EFA49C /* data-cns.plist */; };
-		5BE5A580294E193600EFA49C /* data-bpmf-reverse-lookup-CNS5.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5BE5A574294E193600EFA49C /* data-bpmf-reverse-lookup-CNS5.plist */; };
-		5BE5A581294E193600EFA49C /* data-bpmf-reverse-lookup-CNS6.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5BE5A575294E193600EFA49C /* data-bpmf-reverse-lookup-CNS6.plist */; };
-		5BE5A582294E193600EFA49C /* data-chs.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5BE5A576294E193600EFA49C /* data-chs.plist */; };
-		5BE5A583294E193600EFA49C /* data-bpmf-reverse-lookup-CNS2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5BE5A577294E193600EFA49C /* data-bpmf-reverse-lookup-CNS2.plist */; };
-		5BE5A584294E193600EFA49C /* data-bpmf-reverse-lookup.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5BE5A578294E193600EFA49C /* data-bpmf-reverse-lookup.plist */; };
-		5BE5A585294E193600EFA49C /* data-cht.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5BE5A579294E193600EFA49C /* data-cht.plist */; };
-		5BE5A586294E193600EFA49C /* data-symbols.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5BE5A57A294E193600EFA49C /* data-symbols.plist */; };
-		5BE5A587294E193600EFA49C /* data-zhuyinwen.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5BE5A57B294E193600EFA49C /* data-zhuyinwen.plist */; };
-		5BE5A588294E193600EFA49C /* data-bpmf-reverse-lookup-CNS1.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5BE5A57C294E193600EFA49C /* data-bpmf-reverse-lookup-CNS1.plist */; };
+		5BE5A57D294E193600EFA49C /* data-bpmf-reverse-lookup-CNS4.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BE5A571294E193600EFA49C /* data-bpmf-reverse-lookup-CNS4.json */; };
+		5BE5A57E294E193600EFA49C /* data-bpmf-reverse-lookup-CNS3.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BE5A572294E193600EFA49C /* data-bpmf-reverse-lookup-CNS3.json */; };
+		5BE5A57F294E193600EFA49C /* data-cns.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BE5A573294E193600EFA49C /* data-cns.json */; };
+		5BE5A580294E193600EFA49C /* data-bpmf-reverse-lookup-CNS5.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BE5A574294E193600EFA49C /* data-bpmf-reverse-lookup-CNS5.json */; };
+		5BE5A581294E193600EFA49C /* data-bpmf-reverse-lookup-CNS6.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BE5A575294E193600EFA49C /* data-bpmf-reverse-lookup-CNS6.json */; };
+		5BE5A582294E193600EFA49C /* data-chs.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BE5A576294E193600EFA49C /* data-chs.json */; };
+		5BE5A583294E193600EFA49C /* data-bpmf-reverse-lookup-CNS2.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BE5A577294E193600EFA49C /* data-bpmf-reverse-lookup-CNS2.json */; };
+		5BE5A584294E193600EFA49C /* data-bpmf-reverse-lookup.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BE5A578294E193600EFA49C /* data-bpmf-reverse-lookup.json */; };
+		5BE5A585294E193600EFA49C /* data-cht.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BE5A579294E193600EFA49C /* data-cht.json */; };
+		5BE5A586294E193600EFA49C /* data-symbols.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BE5A57A294E193600EFA49C /* data-symbols.json */; };
+		5BE5A587294E193600EFA49C /* data-zhuyinwen.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BE5A57B294E193600EFA49C /* data-zhuyinwen.json */; };
+		5BE5A588294E193600EFA49C /* data-bpmf-reverse-lookup-CNS1.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BE5A57C294E193600EFA49C /* data-bpmf-reverse-lookup-CNS1.json */; };
 		5BE5A596294E1DFB00EFA49C /* ChineseConverterBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A595294E1DFB00EFA49C /* ChineseConverterBridge.swift */; };
 		5BF5BAE1294DFFC9006011AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF5BAE0294DFFC9006011AD /* AppDelegate.swift */; };
 		5BF5BAE3294DFFCA006011AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BF5BAE2294DFFCA006011AD /* Assets.xcassets */; };
@@ -233,7 +233,7 @@
 		5BB1D7F12999025B00EA8D2C /* PrefUITabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefUITabs.swift; sourceTree = "<group>"; };
 		5BB32F0229A61A3B00B05D7B /* CandidatePool_CocoaImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandidatePool_CocoaImpl.swift; sourceTree = "<group>"; };
 		5BB32F0429A61AFB00B05D7B /* CtlCandidateTDK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CtlCandidateTDK.swift; sourceTree = "<group>"; };
-		5BCF4AB729546B5100C7FBD9 /* convdict.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = convdict.plist; sourceTree = "<group>"; };
+		5BCF4AB729546B5100C7FBD9 /* convdict.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = convdict.json; sourceTree = "<group>"; };
 		5BE5A4E3294E00C300EFA49C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		5BE5A4E4294E03C200EFA49C /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		5BE5A4E7294E04B000EFA49C /* MenuIcon-TCVIM@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MenuIcon-TCVIM@2x.png"; sourceTree = "<group>"; };
@@ -292,18 +292,18 @@
 		5BE5A567294E119600EFA49C /* LMMgr_Core.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMMgr_Core.swift; sourceTree = "<group>"; };
 		5BE5A569294E120500EFA49C /* SymbolMenuDefaultData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolMenuDefaultData.swift; sourceTree = "<group>"; };
 		5BE5A56B294E127B00EFA49C /* PhraseEditorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhraseEditorDelegate.swift; sourceTree = "<group>"; };
-		5BE5A571294E193600EFA49C /* data-bpmf-reverse-lookup-CNS4.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; name = "data-bpmf-reverse-lookup-CNS4.plist"; path = "DictionaryData/data-bpmf-reverse-lookup-CNS4.plist"; sourceTree = "<group>"; };
-		5BE5A572294E193600EFA49C /* data-bpmf-reverse-lookup-CNS3.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; name = "data-bpmf-reverse-lookup-CNS3.plist"; path = "DictionaryData/data-bpmf-reverse-lookup-CNS3.plist"; sourceTree = "<group>"; };
-		5BE5A573294E193600EFA49C /* data-cns.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; name = "data-cns.plist"; path = "DictionaryData/data-cns.plist"; sourceTree = "<group>"; };
-		5BE5A574294E193600EFA49C /* data-bpmf-reverse-lookup-CNS5.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; name = "data-bpmf-reverse-lookup-CNS5.plist"; path = "DictionaryData/data-bpmf-reverse-lookup-CNS5.plist"; sourceTree = "<group>"; };
-		5BE5A575294E193600EFA49C /* data-bpmf-reverse-lookup-CNS6.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; name = "data-bpmf-reverse-lookup-CNS6.plist"; path = "DictionaryData/data-bpmf-reverse-lookup-CNS6.plist"; sourceTree = "<group>"; };
-		5BE5A576294E193600EFA49C /* data-chs.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; name = "data-chs.plist"; path = "DictionaryData/data-chs.plist"; sourceTree = "<group>"; };
-		5BE5A577294E193600EFA49C /* data-bpmf-reverse-lookup-CNS2.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; name = "data-bpmf-reverse-lookup-CNS2.plist"; path = "DictionaryData/data-bpmf-reverse-lookup-CNS2.plist"; sourceTree = "<group>"; };
-		5BE5A578294E193600EFA49C /* data-bpmf-reverse-lookup.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; name = "data-bpmf-reverse-lookup.plist"; path = "DictionaryData/data-bpmf-reverse-lookup.plist"; sourceTree = "<group>"; };
-		5BE5A579294E193600EFA49C /* data-cht.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; name = "data-cht.plist"; path = "DictionaryData/data-cht.plist"; sourceTree = "<group>"; };
-		5BE5A57A294E193600EFA49C /* data-symbols.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; name = "data-symbols.plist"; path = "DictionaryData/data-symbols.plist"; sourceTree = "<group>"; };
-		5BE5A57B294E193600EFA49C /* data-zhuyinwen.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; name = "data-zhuyinwen.plist"; path = "DictionaryData/data-zhuyinwen.plist"; sourceTree = "<group>"; };
-		5BE5A57C294E193600EFA49C /* data-bpmf-reverse-lookup-CNS1.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; name = "data-bpmf-reverse-lookup-CNS1.plist"; path = "DictionaryData/data-bpmf-reverse-lookup-CNS1.plist"; sourceTree = "<group>"; };
+		5BE5A571294E193600EFA49C /* data-bpmf-reverse-lookup-CNS4.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = "data-bpmf-reverse-lookup-CNS4.json"; path = "DictionaryData/data-bpmf-reverse-lookup-CNS4.json"; sourceTree = "<group>"; };
+		5BE5A572294E193600EFA49C /* data-bpmf-reverse-lookup-CNS3.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = "data-bpmf-reverse-lookup-CNS3.json"; path = "DictionaryData/data-bpmf-reverse-lookup-CNS3.json"; sourceTree = "<group>"; };
+		5BE5A573294E193600EFA49C /* data-cns.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = "data-cns.json"; path = "DictionaryData/data-cns.json"; sourceTree = "<group>"; };
+		5BE5A574294E193600EFA49C /* data-bpmf-reverse-lookup-CNS5.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = "data-bpmf-reverse-lookup-CNS5.json"; path = "DictionaryData/data-bpmf-reverse-lookup-CNS5.json"; sourceTree = "<group>"; };
+		5BE5A575294E193600EFA49C /* data-bpmf-reverse-lookup-CNS6.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = "data-bpmf-reverse-lookup-CNS6.json"; path = "DictionaryData/data-bpmf-reverse-lookup-CNS6.json"; sourceTree = "<group>"; };
+		5BE5A576294E193600EFA49C /* data-chs.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = "data-chs.json"; path = "DictionaryData/data-chs.json"; sourceTree = "<group>"; };
+		5BE5A577294E193600EFA49C /* data-bpmf-reverse-lookup-CNS2.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = "data-bpmf-reverse-lookup-CNS2.json"; path = "DictionaryData/data-bpmf-reverse-lookup-CNS2.json"; sourceTree = "<group>"; };
+		5BE5A578294E193600EFA49C /* data-bpmf-reverse-lookup.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = "data-bpmf-reverse-lookup.json"; path = "DictionaryData/data-bpmf-reverse-lookup.json"; sourceTree = "<group>"; };
+		5BE5A579294E193600EFA49C /* data-cht.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = "data-cht.json"; path = "DictionaryData/data-cht.json"; sourceTree = "<group>"; };
+		5BE5A57A294E193600EFA49C /* data-symbols.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = "data-symbols.json"; path = "DictionaryData/data-symbols.json"; sourceTree = "<group>"; };
+		5BE5A57B294E193600EFA49C /* data-zhuyinwen.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = "data-zhuyinwen.json"; path = "DictionaryData/data-zhuyinwen.json"; sourceTree = "<group>"; };
+		5BE5A57C294E193600EFA49C /* data-bpmf-reverse-lookup-CNS1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = "data-bpmf-reverse-lookup-CNS1.json"; path = "DictionaryData/data-bpmf-reverse-lookup-CNS1.json"; sourceTree = "<group>"; };
 		5BE5A58B294E196C00EFA49C /* Beep.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Beep.m4a; sourceTree = "<group>"; };
 		5BE5A58C294E196C00EFA49C /* Fart.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Fart.m4a; sourceTree = "<group>"; };
 		5BE5A58D294E199F00EFA49C /* template-associatedPhrases-chs.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "template-associatedPhrases-chs.txt"; path = "DictionaryData/components/chs/template-associatedPhrases-chs.txt"; sourceTree = SOURCE_ROOT; };
@@ -435,7 +435,7 @@
 		5BE5A4EB294E04BC00EFA49C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				5BCF4AB729546B5100C7FBD9 /* convdict.plist */,
+				5BCF4AB729546B5100C7FBD9 /* convdict.json */,
 				5B751DA4294EE1B00031CF70 /* Localizable.strings */,
 				5BF5BAE2294DFFCA006011AD /* Assets.xcassets */,
 				5BE5A589294E195B00EFA49C /* DataTemplates */,
@@ -646,18 +646,18 @@
 		5BE5A570294E18D100EFA49C /* DictionaryData */ = {
 			isa = PBXGroup;
 			children = (
-				5BE5A57C294E193600EFA49C /* data-bpmf-reverse-lookup-CNS1.plist */,
-				5BE5A577294E193600EFA49C /* data-bpmf-reverse-lookup-CNS2.plist */,
-				5BE5A572294E193600EFA49C /* data-bpmf-reverse-lookup-CNS3.plist */,
-				5BE5A571294E193600EFA49C /* data-bpmf-reverse-lookup-CNS4.plist */,
-				5BE5A574294E193600EFA49C /* data-bpmf-reverse-lookup-CNS5.plist */,
-				5BE5A575294E193600EFA49C /* data-bpmf-reverse-lookup-CNS6.plist */,
-				5BE5A578294E193600EFA49C /* data-bpmf-reverse-lookup.plist */,
-				5BE5A576294E193600EFA49C /* data-chs.plist */,
-				5BE5A579294E193600EFA49C /* data-cht.plist */,
-				5BE5A573294E193600EFA49C /* data-cns.plist */,
-				5BE5A57A294E193600EFA49C /* data-symbols.plist */,
-				5BE5A57B294E193600EFA49C /* data-zhuyinwen.plist */,
+				5BE5A57C294E193600EFA49C /* data-bpmf-reverse-lookup-CNS1.json */,
+				5BE5A577294E193600EFA49C /* data-bpmf-reverse-lookup-CNS2.json */,
+				5BE5A572294E193600EFA49C /* data-bpmf-reverse-lookup-CNS3.json */,
+				5BE5A571294E193600EFA49C /* data-bpmf-reverse-lookup-CNS4.json */,
+				5BE5A574294E193600EFA49C /* data-bpmf-reverse-lookup-CNS5.json */,
+				5BE5A575294E193600EFA49C /* data-bpmf-reverse-lookup-CNS6.json */,
+				5BE5A578294E193600EFA49C /* data-bpmf-reverse-lookup.json */,
+				5BE5A576294E193600EFA49C /* data-chs.json */,
+				5BE5A579294E193600EFA49C /* data-cht.json */,
+				5BE5A573294E193600EFA49C /* data-cns.json */,
+				5BE5A57A294E193600EFA49C /* data-symbols.json */,
+				5BE5A57B294E193600EFA49C /* data-zhuyinwen.json */,
 			);
 			name = DictionaryData;
 			sourceTree = "<group>";
@@ -815,36 +815,36 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5BCF4AB829546B5200C7FBD9 /* convdict.plist in Resources */,
+				5BCF4AB829546B5200C7FBD9 /* convdict.json in Resources */,
 				5B44BAD9295047AC00E1C02D /* shortcuts.html in Resources */,
 				5BACBD0E295099290078CAB3 /* InfoPlist.strings in Resources */,
-				5BE5A583294E193600EFA49C /* data-bpmf-reverse-lookup-CNS2.plist in Resources */,
-				5BE5A585294E193600EFA49C /* data-cht.plist in Resources */,
+				5BE5A583294E193600EFA49C /* data-bpmf-reverse-lookup-CNS2.json in Resources */,
+				5BE5A585294E193600EFA49C /* data-cht.json in Resources */,
 				5B751DF3294EF28C0031CF70 /* template-usersymbolphrases.txt in Resources */,
-				5BE5A57D294E193600EFA49C /* data-bpmf-reverse-lookup-CNS4.plist in Resources */,
+				5BE5A57D294E193600EFA49C /* data-bpmf-reverse-lookup-CNS4.json in Resources */,
 				5B751DE8294EF2880031CF70 /* MenuIcon-SCVIM.png in Resources */,
 				5B751DEF294EF28C0031CF70 /* template-userphrases.txt in Resources */,
-				5BE5A57E294E193600EFA49C /* data-bpmf-reverse-lookup-CNS3.plist in Resources */,
+				5BE5A57E294E193600EFA49C /* data-bpmf-reverse-lookup-CNS3.json in Resources */,
 				5BF5BAE3294DFFCA006011AD /* Assets.xcassets in Resources */,
-				5BE5A581294E193600EFA49C /* data-bpmf-reverse-lookup-CNS6.plist in Resources */,
-				5BE5A587294E193600EFA49C /* data-zhuyinwen.plist in Resources */,
+				5BE5A581294E193600EFA49C /* data-bpmf-reverse-lookup-CNS6.json in Resources */,
+				5BE5A587294E193600EFA49C /* data-zhuyinwen.json in Resources */,
 				5B751DF1294EF28C0031CF70 /* template-associatedPhrases-chs.txt in Resources */,
 				5B751DF4294EF28C0031CF70 /* template-associatedPhrases-cht.txt in Resources */,
 				5B751DF6294EF2940031CF70 /* Fart.m4a in Resources */,
 				5B751DA8294EE1DC0031CF70 /* frmAboutWindow.xib in Resources */,
 				5B751DF2294EF28C0031CF70 /* template-exclusions.txt in Resources */,
-				5BE5A588294E193600EFA49C /* data-bpmf-reverse-lookup-CNS1.plist in Resources */,
+				5BE5A588294E193600EFA49C /* data-bpmf-reverse-lookup-CNS1.json in Resources */,
 				5B751DE9294EF2880031CF70 /* MenuIcon-TCVIM@2x.png in Resources */,
-				5BE5A580294E193600EFA49C /* data-bpmf-reverse-lookup-CNS5.plist in Resources */,
+				5BE5A580294E193600EFA49C /* data-bpmf-reverse-lookup-CNS5.json in Resources */,
 				5B751DFA294F19B30031CF70 /* frmClientListMgr.xib in Resources */,
-				5BE5A582294E193600EFA49C /* data-chs.plist in Resources */,
-				5BE5A586294E193600EFA49C /* data-symbols.plist in Resources */,
+				5BE5A582294E193600EFA49C /* data-chs.json in Resources */,
+				5BE5A586294E193600EFA49C /* data-symbols.json in Resources */,
 				5B751DF5294EF2940031CF70 /* Beep.m4a in Resources */,
 				5BF5BAE6294DFFCA006011AD /* MainMenu.xib in Resources */,
 				5B751DF0294EF28C0031CF70 /* template-replacements.txt in Resources */,
-				5BE5A584294E193600EFA49C /* data-bpmf-reverse-lookup.plist in Resources */,
+				5BE5A584294E193600EFA49C /* data-bpmf-reverse-lookup.json in Resources */,
 				5B751DF7294EF29B0031CF70 /* Localizable.strings in Resources */,
-				5BE5A57F294E193600EFA49C /* data-cns.plist in Resources */,
+				5BE5A57F294E193600EFA49C /* data-cns.json in Resources */,
 				5B751DEA294EF2880031CF70 /* MenuIcon-SCVIM@2x.png in Resources */,
 				5B751D97294EE1730031CF70 /* frmPrefWindow.xib in Resources */,
 				5B751DE7294EF2880031CF70 /* MenuIcon-TCVIM.png in Resources */,
@@ -885,18 +885,18 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(SRCROOT)/DictionaryData/data-chs.plist",
-				"$(SRCROOT)/DictionaryData/data-cht.plist",
-				"$(SRCROOT)/DictionaryData/data-cns.plist",
-				"$(SRCROOT)/DictionaryData/data-zhuyinwen.plist",
-				"$(SRCROOT)/DictionaryData/data-symbols.plist",
-				"$(SRCROOT)/DictionaryData/data-bpmf-reverse-lookup.plist",
-				"$(SRCROOT)/DictionaryData/data-bpmf-reverse-lookup-CNS1.plist",
-				"$(SRCROOT)/DictionaryData/data-bpmf-reverse-lookup-CNS2.plist",
-				"$(SRCROOT)/DictionaryData/data-bpmf-reverse-lookup-CNS3.plist",
-				"$(SRCROOT)/DictionaryData/data-bpmf-reverse-lookup-CNS4.plist",
-				"$(SRCROOT)/DictionaryData/data-bpmf-reverse-lookup-CNS5.plist",
-				"$(SRCROOT)/DictionaryData/data-bpmf-reverse-lookup-CNS6.plist",
+				"$(SRCROOT)/DictionaryData/data-chs.json",
+				"$(SRCROOT)/DictionaryData/data-cht.json",
+				"$(SRCROOT)/DictionaryData/data-cns.json",
+				"$(SRCROOT)/DictionaryData/data-zhuyinwen.json",
+				"$(SRCROOT)/DictionaryData/data-symbols.json",
+				"$(SRCROOT)/DictionaryData/data-bpmf-reverse-lookup.json",
+				"$(SRCROOT)/DictionaryData/data-bpmf-reverse-lookup-CNS1.json",
+				"$(SRCROOT)/DictionaryData/data-bpmf-reverse-lookup-CNS2.json",
+				"$(SRCROOT)/DictionaryData/data-bpmf-reverse-lookup-CNS3.json",
+				"$(SRCROOT)/DictionaryData/data-bpmf-reverse-lookup-CNS4.json",
+				"$(SRCROOT)/DictionaryData/data-bpmf-reverse-lookup-CNS5.json",
+				"$(SRCROOT)/DictionaryData/data-bpmf-reverse-lookup-CNS6.json",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

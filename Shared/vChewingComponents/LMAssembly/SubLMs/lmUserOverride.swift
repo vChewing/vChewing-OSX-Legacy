@@ -197,6 +197,7 @@ public extension vChewingLM.LMUserOverride {
   }
 
   func saveData(toURL fileURL: URL? = nil) {
+    // 此處不要使用 JSONSerialization，不然執行緒會炸掉。
     let encoder = JSONEncoder()
     do {
       guard let jsonData = try? encoder.encode(mutLRUMap) else { return }
@@ -209,6 +210,7 @@ public extension vChewingLM.LMUserOverride {
   }
 
   func loadData(fromURL fileURL: URL) {
+    // 此處不要使用 JSONSerialization，不然執行緒會炸掉。
     let decoder = JSONDecoder()
     do {
       let data = try Data(contentsOf: fileURL, options: .mappedIfSafe)
