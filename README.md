@@ -10,10 +10,11 @@ P.S.: 威注音輸入法的 Shift 按鍵監測功能僅藉由對 NSEvent 訊號�
 
 ## 系統需求
 
-建置用系統需求：
+對二次開發者而言，建置用系統需求：
 
 - 任何同時支援 macOS 10.9 Mavericks 軟體建置、且支援至少 Swift 5.5 的 Xcode。
-    - 例外：macOS 13 Ventura 能用的頭幾版 Xcode 14 其實是能給 macOS 10.9 建置軟體的，雖然會亮警告說系統建置目標「超出可建置目標的版本範圍」。
+    - 例外：macOS 13 Ventura 能用的 Xcode 14.2 為止的版本其實是能給 macOS 10.9 建置軟體的，雖然會亮警告說系統建置目標「超出可建置目標的版本範圍」。
+    - Xcode 14.3 開始的版本內建的 toolchain 不包含「libarclite」，需要使用者自行在 toolchain 當中補充 libarclite 相關檔案（可藉由更舊版的 Xcode 提取出來）。
 - 作業系統：能運行上述建置環境的 macOS 作業系統（可能至少 macOS 10.15 Catalina）。
 - 請使用正式發行版 Xcode，且最小子版本號越高越好（因為 Bug 相對而言最少）。
 
