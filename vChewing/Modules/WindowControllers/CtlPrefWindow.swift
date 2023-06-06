@@ -442,9 +442,11 @@ extension CtlPrefWindow: NSToolbarDelegate {
     window.contentView = newView
   }
 
+  // 磁帶模式不對 Aqua 紀念版提供，因為 ComDlg32 視窗被輸入法叫出來就會崩掉 macOS 10.9 - 10.12 整個系統。
   var toolbarIdentifiers: [NSToolbarItem.Identifier] {
     PrefUITabs.allCases.filter {
-      $0 != .tabOutput
+      //guard #unavailable(macOS 10.13) else { return ![.tabOutput].contains($0) }
+      ![.tabOutput, .tabCassette].contains($0)
     }.map(\.toolbarIdentifier)
   }
 
