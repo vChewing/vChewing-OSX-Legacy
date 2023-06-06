@@ -6,7 +6,7 @@
 // marks, or product names of Contributor, except as required to fulfill notice
 // requirements defined in MIT License.
 
-import Cocoa
+import AppKit
 import InputMethodKit
 
 switch max(CommandLine.arguments.count - 1, 0) {

@@ -8,7 +8,7 @@
 // marks, or product names of Contributor, except as required to fulfill notice
 // requirements defined in MIT License.
 
-import Cocoa
+import AppKit
 
 @objc(AppDelegate)
 public class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDelegate {
@@ -107,7 +107,7 @@ public extension AppDelegate {
     alert.addButton(withTitle: NSLocalizedString("OK", comment: ""))
     alert.addButton(withTitle: NSLocalizedString("Not Now", comment: ""))
     let result = alert.runModal()
-    NSApp.activate(ignoringOtherApps: true)
+    NSApp.popup()
     if result == NSApplication.ModalResponse.alertFirstButtonReturn {
       NSWorkspace.shared.openFile(
         LMMgr.dataFolderPath(isDefaultFolder: true), withApplication: "Finder"
@@ -144,6 +144,6 @@ public extension AppDelegate {
   // New About Window
   @IBAction func about(_: Any) {
     CtlAboutWindow.show()
-    NSApp.activate(ignoringOtherApps: true)
+    NSApp.popup()
   }
 }

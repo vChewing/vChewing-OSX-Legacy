@@ -6,7 +6,7 @@
 // marks, or product names of Contributor, except as required to fulfill notice
 // requirements defined in MIT License.
 
-import Cocoa
+import AppKit
 
 class CtlRevLookupWindow: NSWindowController, NSWindowDelegate {
   static var shared: CtlRevLookupWindow?
@@ -20,7 +20,7 @@ class CtlRevLookupWindow: NSWindowController, NSWindowDelegate {
     window.orderFrontRegardless() // 逼著視窗往最前方顯示
     window.level = .statusBar
     shared.showWindow(shared)
-    NSApp.activate(ignoringOtherApps: true)
+    NSApp.popup()
   }
 }
 

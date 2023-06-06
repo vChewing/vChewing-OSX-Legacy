@@ -71,7 +71,7 @@ class CtlPrefWindow: NSWindowController, NSWindowDelegate {
     sharedWindow.level = .statusBar
     shared.showWindow(shared)
     if resetPhraseEditor { shared.initPhraseEditor() }
-    NSApp.activate(ignoringOtherApps: true)
+    NSApp.popup()
   }
 
   private var currentLanguageSelectItem: NSMenuItem?
@@ -80,7 +80,7 @@ class CtlPrefWindow: NSWindowController, NSWindowDelegate {
     super.windowDidLoad()
     window?.setPosition(vertical: .top, horizontal: .right, padding: 20)
 
-    chkFartSuppressor.isHidden = !Date.isTodayTheDate(from: 0401)
+    chkFartSuppressor.isHidden = !NSDate.isTodayTheDate(from: 0401)
     chkFartSuppressor.isEnabled = !chkFartSuppressor.isHidden
 
     cmbCandidateFontSize.isEnabled = true
@@ -445,7 +445,7 @@ extension CtlPrefWindow: NSToolbarDelegate {
   // 磁帶模式不對 Aqua 紀念版提供，因為 ComDlg32 視窗被輸入法叫出來就會崩掉 macOS 10.9 - 10.12 整個系統。
   var toolbarIdentifiers: [NSToolbarItem.Identifier] {
     PrefUITabs.allCases.filter {
-      //guard #unavailable(macOS 10.13) else { return ![.tabOutput].contains($0) }
+      // guard #unavailable(macOS 10.13) else { return ![.tabOutput].contains($0) }
       ![.tabOutput, .tabCassette].contains($0)
     }.map(\.toolbarIdentifier)
   }
