@@ -6,7 +6,7 @@
 // marks, or product names of Contributor, except as required to fulfill notice
 // requirements defined in MIT License.
 
-import Cocoa
+import AppKit
 
 public class UpdateSputnik {
   public static let shared: UpdateSputnik = .init()
@@ -125,7 +125,7 @@ public class UpdateSputnik {
       alert.informativeText = NSLocalizedString("You are already using the latest version.", comment: "")
       alert.addButton(withTitle: NSLocalizedString("OK", comment: ""))
       alert.runModal()
-      NSApp.activate(ignoringOtherApps: true)
+      NSApp.popup()
       return
     }
 
@@ -156,7 +156,7 @@ public class UpdateSputnik {
     }
 
     let result = alert.runModal()
-    NSApp.activate(ignoringOtherApps: true)
+    NSApp.popup()
     switch result {
     case .alertFirstButtonReturn:
       DispatchQueue.main.async {
@@ -184,6 +184,6 @@ public class UpdateSputnik {
     alert.informativeText = content
     alert.addButton(withTitle: NSLocalizedString("OK", comment: ""))
     alert.runModal()
-    NSApp.activate(ignoringOtherApps: true)
+    NSApp.popup()
   }
 }

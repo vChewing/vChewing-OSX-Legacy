@@ -8,7 +8,7 @@
 // marks, or product names of Contributor, except as required to fulfill notice
 // requirements defined in MIT License.
 
-import Cocoa
+import AppKit
 import InputMethodKit
 
 public let kTargetBin = "vChewing"
@@ -109,7 +109,7 @@ class AppDelegate: NSWindowController, NSApplicationDelegate {
 
     window.center()
     window.orderFront(self)
-    NSApp.activate(ignoringOtherApps: true)
+    NSApp.popup()
 
     if #available(macOS 10.13, *) {
       NSSound.beep()

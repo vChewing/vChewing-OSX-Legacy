@@ -41,7 +41,7 @@ public class SessionCtl: IMKInputController {
   public var clientBundleIdentifier: String = "" {
     willSet {
       if newValue.isEmpty { return }
-      Self.recentClientBundleIdentifiers[newValue] = Int(Date().timeIntervalSince1970)
+      Self.recentClientBundleIdentifiers[newValue] = Int(NSDate().timeIntervalSince1970)
     }
   }
 
@@ -249,7 +249,7 @@ public extension SessionCtl {
     }
     DispatchQueue.main.async {
       // 自動啟用肛塞（廉恥模式），除非這一天是愚人節。
-      if !Date.isTodayTheDate(from: 0401), !PrefMgr.shared.shouldNotFartInLieuOfBeep {
+      if !NSDate.isTodayTheDate(from: 0401), !PrefMgr.shared.shouldNotFartInLieuOfBeep {
         PrefMgr.shared.shouldNotFartInLieuOfBeep = true
       }
     }
@@ -326,7 +326,7 @@ public extension SessionCtl {
         break modeCheck
       }
       let result = sharedAlertForInputModeToggling.runModal()
-      NSApp.activate(ignoringOtherApps: true)
+      NSApp.popup()
       if result == NSApplication.ModalResponse.alertFirstButtonReturn {
         neta.activate()
       }

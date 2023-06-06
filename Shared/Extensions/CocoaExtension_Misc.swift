@@ -6,7 +6,7 @@
 // marks, or product names of Contributor, except as required to fulfill notice
 // requirements defined in MIT License.
 
-import Cocoa
+import AppKit
 
 // MARK: - NSSize extension
 
@@ -78,6 +78,8 @@ public extension NSApplication {
 
     if #available(macOS 10.13, *) {
       try task.run()
+    } else {
+      task.launch()
     }
 
     var output = ""
@@ -183,7 +185,7 @@ public extension String {
 
 // MARK: - Check whether current date is the given date.
 
-public extension Date {
+public extension NSDate {
   /// Check whether current date is the given date.
   /// - Parameter dateDigits: `yyyyMMdd`, 8-digit integer. If only `MMdd`, then the year will be the current year.
   /// - Returns: The result. Will return false if the given dateDigits is invalid.
@@ -213,5 +215,35 @@ public extension Date {
     let formatter = DateFormatter()
     formatter.dateFormat = "yyyy"
     return (Int(formatter.string(from: Date())) ?? 1970)
+  }
+}
+
+// MARK: - Apple Silicon Detector
+
+// Ref: https://developer.apple.com/forums/thread/678914
+
+public extension NSApplication {
+  static var isAppleSilicon: Bool {
+    var systeminfo = utsname()
+    uname(&systeminfo)
+    let machine = withUnsafeBytes(of: &systeminfo.machine) { bufPtr -> String in
+      let data = Data(bufPtr)
+      if let lastIndex = data.lastIndex(where: { $0 != 0 }) {
+        return String(data: data[0 ... lastIndex], encoding: .isoLatin1) ?? "x86_64"
+      } else {
+        return String(data: data, encoding: .isoLatin1) ?? "x86_64"
+      }
+    }
+    return machine == "arm64"
+  }
+}
+
+// MARK: - NSApp Activation Helper
+
+// This is to deal with changes brought by macOS 14.
+
+public extension NSApplication {
+  func popup() {
+    NSApp.activate(ignoringOtherApps: true)
   }
 }

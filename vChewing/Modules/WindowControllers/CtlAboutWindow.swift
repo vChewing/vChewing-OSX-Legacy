@@ -6,7 +6,7 @@
 // marks, or product names of Contributor, except as required to fulfill notice
 // requirements defined in MIT License.
 
-import Cocoa
+import AppKit
 
 class CtlAboutWindow: NSWindowController {
   @IBOutlet var appVersionLabel: NSTextField!
@@ -22,7 +22,7 @@ class CtlAboutWindow: NSWindowController {
     sharedWindow.orderFrontRegardless() // 逼著視窗往最前方顯示
     sharedWindow.level = .statusBar
     shared.showWindow(shared)
-    NSApp.activate(ignoringOtherApps: true)
+    NSApp.popup()
   }
 
   override func windowDidLoad() {

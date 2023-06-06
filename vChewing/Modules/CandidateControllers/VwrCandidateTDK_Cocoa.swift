@@ -6,7 +6,7 @@
 // marks, or product names of Contributor, except as required to fulfill notice
 // requirements defined in MIT License.
 
-import Cocoa
+import AppKit
 
 /// 田所選字窗的 Cocoa 版本，繪製效率不受 SwiftUI 的限制。
 public class VwrCandidateTDKCocoa: NSStackView {

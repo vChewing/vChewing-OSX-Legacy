@@ -6,7 +6,7 @@
 // marks, or product names of Contributor, except as required to fulfill notice
 // requirements defined in MIT License.
 
-import Cocoa
+import AppKit
 
 private extension Bool {
   var state: NSControl.StateValue {
@@ -217,7 +217,7 @@ extension SessionCtl {
 public extension SessionCtl {
   @objc override func showPreferences(_: Any? = nil) {
     CtlPrefWindow.show()
-    NSApp.activate(ignoringOtherApps: true)
+    NSApp.popup()
   }
 
   @objc func showCheatSheet(_: Any? = nil) {
@@ -229,7 +229,7 @@ public extension SessionCtl {
 
   @objc func showClientListMgr(_: Any? = nil) {
     CtlClientListMgr.show()
-    NSApp.activate(ignoringOtherApps: true)
+    NSApp.popup()
   }
 
   @objc func toggleCassetteMode(_: Any? = nil) {
@@ -242,7 +242,7 @@ public extension SessionCtl {
           "Please reconfigure the cassette path to a valid one before enabling this mode.", comment: ""
         )
         let result = alert.runModal()
-        NSApp.activate(ignoringOtherApps: true)
+        NSApp.popup()
         if result == NSApplication.ModalResponse.alertFirstButtonReturn {
           LMMgr.resetCassettePath()
           PrefMgr.shared.cassetteEnabled = false
@@ -356,7 +356,7 @@ public extension SessionCtl {
   }
 
   @objc func selfTerminate(_: Any? = nil) {
-    NSApp.activate(ignoringOtherApps: true)
+    NSApp.popup()
     NSApp.terminate(nil)
   }
 
@@ -417,6 +417,6 @@ public extension SessionCtl {
 
   @objc func showAbout(_: Any? = nil) {
     CtlAboutWindow.show()
-    NSApp.activate(ignoringOtherApps: true)
+    NSApp.popup()
   }
 }
