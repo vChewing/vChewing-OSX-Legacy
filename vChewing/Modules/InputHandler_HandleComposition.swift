@@ -12,8 +12,7 @@ import Foundation
 
 extension InputHandler {
   /// 用來處理 InputHandler.HandleInput() 當中的與組字有關的行為。
-  /// - Parameters:
-  ///   - input: 輸入訊號。
+  /// - Parameter input: 輸入訊號。
   /// - Returns: 告知 IMK「該按鍵是否已經被輸入法攔截處理」。
   func handleComposition(input: InputSignalProtocol) -> Bool? {
     // 不處理任何包含不可列印字元的訊號。
@@ -26,8 +25,7 @@ extension InputHandler {
   // MARK: 注音按鍵輸入處理 (Handle BPMF Keys)
 
   /// 用來處理 InputHandler.HandleInput() 當中的與注音输入有關的組字行為。
-  /// - Parameters:
-  ///   - input: 輸入訊號。
+  /// - Parameter input: 輸入訊號。
   /// - Returns: 告知 IMK「該按鍵是否已經被輸入法攔截處理」。
   private func handlePhonabetComposition(input: InputSignalProtocol) -> Bool? {
     guard let delegate = delegate else { return nil }
@@ -207,8 +205,7 @@ extension InputHandler {
 
 extension InputHandler {
   /// 用來處理 InputHandler.HandleInput() 當中的與磁帶模組有關的組字行為。
-  /// - Parameters:
-  ///   - input: 輸入訊號。
+  /// - Parameter input: 輸入訊號。
   /// - Returns: 告知 IMK「該按鍵是否已經被輸入法攔截處理」。
   private func handleCassetteComposition(input: InputSignalProtocol) -> Bool? {
     guard let delegate = delegate else { return nil }
@@ -338,8 +335,7 @@ extension InputHandler {
   // MARK: 區位輸入處理 (Handle Code Point Input)
 
   /// 用來處理 InputHandler.HandleInput() 當中的與區位輸入有關的組字行為。
-  /// - Parameters:
-  ///   - input: 輸入訊號。
+  /// - Parameter input: 輸入訊號。
   /// - Returns: 告知 IMK「該按鍵是否已經被輸入法攔截處理」。
   private func handleCodePointComposition(input: InputSignalProtocol) -> Bool? {
     guard !input.isReservedKey else { return nil }
