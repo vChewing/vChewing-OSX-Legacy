@@ -72,6 +72,7 @@ public extension SessionCtl {
 
   func showCandidates() {
     guard client() != nil else { return }
+    defer { keepIMKCandidatesShownUp() }
     updateVerticalTypingStatus()
     isVerticalCandidateWindow = (isVerticalTyping || !PrefMgr.shared.useHorizontalCandidateList)
 
