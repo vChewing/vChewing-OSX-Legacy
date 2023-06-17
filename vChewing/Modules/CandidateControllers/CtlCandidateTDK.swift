@@ -97,12 +97,17 @@ public class CtlCandidateTDK: CtlCandidate, NSWindowDelegate {
         updateNSWindowLegacy(window)
         return
       }
-      let newView = theViewCocoa
-      Self.currentView = newView
-      window.contentView = Self.currentView
-      window.backgroundColor = .init(cgColor: newView.layer?.backgroundColor ?? NSColor.textBackgroundColor.cgColor)
-      window.setContentSize(Self.currentView.fittingSize)
+      updateNSWindowModern(window)
     }
+  }
+
+  func updateNSWindowModern(_ window: NSWindow) {
+    let newView = theViewCocoa
+    Self.currentView = newView
+    window.contentView = Self.currentView
+    window.backgroundColor = .init(cgColor: newView.layer?.backgroundColor ?? NSColor.textBackgroundColor.cgColor)
+    window.setContentSize(Self.currentView.fittingSize)
+    delegate?.resetCandidateWindowOrigin()
   }
 
   func updateNSWindowLegacy(_ window: NSWindow) {
@@ -121,6 +126,7 @@ public class CtlCandidateTDK: CtlCandidate, NSWindowDelegate {
     Self.currentView.addSubview(viewToDraw)
     window.contentView = Self.currentView
     window.setContentSize(outerSize)
+    delegate?.resetCandidateWindowOrigin()
   }
 
   override public func scrollWheel(with event: NSEvent) {
