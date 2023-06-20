@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 53;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -460,8 +460,8 @@
 				5B751DCC294EE57D0031CF70 /* InputHandler_HandleCandidate.swift */,
 				5B751DCA294EE57D0031CF70 /* InputHandler_HandleComposition.swift */,
 				5B751DC3294EE57C0031CF70 /* InputHandler_HandleEvent.swift */,
-				5B751DC4294EE57C0031CF70 /* InputHandler_TriageInput.swift */,
 				5B751DBF294EE57C0031CF70 /* InputHandler_HandleStates.swift */,
+				5B751DC4294EE57C0031CF70 /* InputHandler_TriageInput.swift */,
 				5BE5A567294E119600EFA49C /* LMMgr_Core.swift */,
 				5B60CEA329B8E7CA00A1AAC7 /* LMMgr_PhraseEditorDelegate.swift */,
 				5B60CEA529B8E7D400A1AAC7 /* LMMgr_UserPhraseStructure.swift */,
