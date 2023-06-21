@@ -26,6 +26,10 @@ extension SessionCtl: InputHandlerDelegate {
     candidatePairSelectionConfirmed(at: index)
   }
 
+  public func callNotification(_ message: String) {
+    Notifier.notify(message: message)
+  }
+
   public func callError(_ logMessage: String) {
     vCLog(logMessage)
     IMEApp.buzz()
