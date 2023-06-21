@@ -92,6 +92,12 @@ extension InputHandler {
       }
       return true
     } else if event.isSpace {
+      if prefs.useSpaceToCommitHighlightedSCPCCandidate, prefs.useSCPCTypingMode,
+         let eventTranslated = event.reinitiate(keyCode: KeyCode.kCarriageReturn.rawValue)
+      {
+        imkC.interpretKeyEvents([eventTranslated])
+        return true
+      }
       switch prefs.specifyShiftSpaceKeyBehavior {
       case true: _ = event.isShiftHold ? imkC.highlightNextCandidate() : imkC.showNextPage()
       case false: _ = event.isShiftHold ? imkC.showNextPage() : imkC.highlightNextCandidate()
