@@ -14,7 +14,7 @@ import Foundation
 
 // MARK: - § 根據狀態調度按鍵輸入 (Handle Input with States) * Triage
 
-extension InputHandler {
+public extension InputHandler {
   func triageInput(event input: InputSignalProtocol) -> Bool {
     guard let delegate = delegate else { return false }
     var state: IMEStateProtocol { delegate.state }
