@@ -28,6 +28,7 @@ extension InputHandler {
     var cursor = cpInput
       ? displayTextSegments.joined().count
       : convertCursorForDisplay(compositor.cursor)
+    let cursorSansReading = cursor
     let reading: String = (sansReading || isCodePointInputMode) ? "" : readingForDisplay // 先提出來，減輕運算負擔。
     if !reading.isEmpty {
       var newDisplayTextSegments = [String]()
@@ -64,7 +65,7 @@ extension InputHandler {
       displayTextSegments: displayTextSegments,
       cursor: cursor, highlightAt: segHighlightedAt
     )
-    result.marker = compositor.cursor
+    result.marker = cursorSansReading
     return result
   }
 
