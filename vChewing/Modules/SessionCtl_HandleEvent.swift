@@ -27,15 +27,38 @@ public extension SessionCtl {
       return false
     }
 
+    var result = false
+    if [.keyDown, .flagsChanged].contains(event.type) {
+      result = handleKeyDown(event: event)
+      if result, event.type == .keyDown {
+        previouslyHandledEvents.append(event)
+      }
+    } else if event.type == .keyUp {
+      result = handleKeyUp(event: event)
+    }
+
+    return result
+  }
+
+  private func handleKeyUp(event: NSEvent) -> Bool {
+    guard ![.ofEmpty, .ofAbortion].contains(state.type) else { return false }
+    let codes = previouslyHandledEvents.map(\.keyCode)
+    if codes.contains(event.keyCode) {
+      previouslyHandledEvents = previouslyHandledEvents.filter { prevEvent in
+        prevEvent.keyCode != event.keyCode
+      }.deduplicated
+      return true
+    }
+    return false
+  }
+
+  private func handleKeyDown(event: NSEvent) -> Bool {
     // MARK: 前置處理
 
-    // 雖然在 recognizedEvents 當中有過定義，但這裡還是再多施加一道保險。
-    if event.type != .keyDown, event.type != .flagsChanged { return false }
-
     // 如果是 deactivated 狀態的話，強制糾正其為 empty()。
-    if let client = client(), state.type == .ofDeactivated {
+    if state.type == .ofDeactivated {
       state = IMEState.ofEmpty()
-      return handle(event, client: client)
+      return handleKeyDown(event: event)
     }
 
     // Caps Lock 通知與切換處理，要求至少 macOS 12 Monterey。
@@ -53,16 +76,6 @@ public extension SessionCtl {
           self.isASCIIMode = isCapsLockTurnedOn
         }
       }
-    }
-
-    // 切換英數模式開關。
-    func toggleAlphanumericalMode() {
-      let status = "NotificationSwitchRevolver".localized
-      Notifier.notify(
-        message: isASCIIMode.toggled()
-          ? NSLocalizedString("Alphanumerical Input Mode", comment: "") + "\n" + status
-          : NSLocalizedString("Chinese Input Mode", comment: "") + "\n" + status
-      )
     }
 
     // 用 JIS 鍵盤的英數切換鍵來切換中英文模式。
@@ -154,5 +167,15 @@ public extension SessionCtl {
     }
 
     return result
+  }
+
+  /// 切換英數模式開關。
+  private func toggleAlphanumericalMode() {
+    let status = "NotificationSwitchRevolver".localized
+    Notifier.notify(
+      message: isASCIIMode.toggled()
+        ? NSLocalizedString("Alphanumerical Input Mode", comment: "") + "\n" + status
+        : NSLocalizedString("Chinese Input Mode", comment: "") + "\n" + status
+    )
   }
 }
