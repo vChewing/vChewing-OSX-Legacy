@@ -105,7 +105,7 @@ class CtlPrefWindow: NSWindowController, NSWindowDelegate {
       window?.toolbarStyle = .preference
     }
     window?.toolbar = toolbar
-    window?.title = preferencesTitleName
+    window?.title = "\(preferencesTitleName) (\(IMEApp.appVersionLabel))"
     use(view: vwrGeneral, animate: false)
 
     lblCurrentlySpecifiedUserDataFolder.placeholderString = LMMgr.dataFolderPath(
