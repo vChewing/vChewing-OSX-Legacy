@@ -27,9 +27,11 @@ public class CtlCandidateTDK: CtlCandidate, NSWindowDelegate {
   public var useMouseScrolling: Bool = true
   private static var thePool: CandidatePool = .init(candidates: [])
   private static var currentView: NSView = .init()
+  public static var currentWindow: NSWindow?
+  public static var currentMenu: NSMenu?
 
-  private var theViewCocoa: NSStackView {
-    VwrCandidateTDKCocoa(controller: self, thePool: Self.thePool)
+  private var theViewAppKit: NSView {
+    VwrCandidateTDKAppKit(controller: self, thePool: Self.thePool)
   }
 
   private var theViewLegacy: NSView {
@@ -93,39 +95,16 @@ public class CtlCandidateTDK: CtlCandidate, NSWindowDelegate {
     }
     delegate?.candidatePairHighlightChanged(at: highlightedIndex)
     DispatchQueue.main.async { [self] in
-      if #unavailable(macOS 10.13), Self.thePool.maxLinesPerPage > 1 {
-        updateNSWindowLegacy(window)
-        return
-      }
       updateNSWindowModern(window)
     }
   }
 
   func updateNSWindowModern(_ window: NSWindow) {
-    let newView = theViewCocoa
-    Self.currentView = newView
+    Self.currentView = theViewAppKit
+    window.isOpaque = false
+    window.backgroundColor = .clear
     window.contentView = Self.currentView
-    window.backgroundColor = .init(cgColor: newView.layer?.backgroundColor ?? NSColor.textBackgroundColor.cgColor)
     window.setContentSize(Self.currentView.fittingSize)
-    delegate?.resetCandidateWindowOrigin()
-  }
-
-  func updateNSWindowLegacy(_ window: NSWindow) {
-    window.backgroundColor = NSColor.controlBackgroundColor
-    let viewToDraw = theViewLegacy
-    let coreSize = viewToDraw.fittingSize
-    let padding: Double = 5
-    let outerSize: NSSize = .init(
-      width: coreSize.width + 2 * padding,
-      height: coreSize.height + 2 * padding
-    )
-    let innerOrigin: NSPoint = .init(x: padding, y: padding)
-    let outerRect: NSRect = .init(origin: .zero, size: outerSize)
-    viewToDraw.setFrameOrigin(innerOrigin)
-    Self.currentView = NSView(frame: outerRect)
-    Self.currentView.addSubview(viewToDraw)
-    window.contentView = Self.currentView
-    window.setContentSize(outerSize)
     delegate?.resetCandidateWindowOrigin()
   }
 
