@@ -13,10 +13,14 @@ import AppKit
 /// 用來管理選字窗內顯示的候選字的單位。用 class 型別會比較方便一些。
 public class CandidateCellData: Hashable {
   public var visualDimension: CGSize = .zero
+  public var visualOrigin: CGPoint = .zero
   public var locale = ""
   public static var unifiedSize: Double = 16
+  public static var unifiedCharDimension: Double { ceil(unifiedSize * 1.0125 + 7) }
+  public static var unifiedTextHeight: Double { ceil(unifiedSize * 19 / 16) }
   public var selectionKey: String
-  public var displayedText: String
+  public let displayedText: String
+  public private(set) var textDimension: NSSize
   public var spanLength: Int
   public var size: Double { Self.unifiedSize }
   public var isHighlighted: Bool = false
@@ -26,7 +30,6 @@ public class CandidateCellData: Hashable {
   // 該候選字詞在當前行/列內的索引編號
   public var subIndex: Int = 0
 
-  public var charGlyphWidth: Double { ceil(size * 1.0125 + 7) }
   public var fontSizeCandidate: Double { size }
   public var fontSizeKey: Double { max(ceil(fontSizeCandidate * 0.6), 11) }
   public var fontColorCandidate: NSColor { isHighlighted ? .selectedMenuItemTextColor : .controlTextColor }
@@ -34,6 +37,23 @@ public class CandidateCellData: Hashable {
     isHighlighted
       ? .selectedMenuItemTextColor.withAlphaComponent(0.9)
       : .init(red: 142 / 255, green: 142 / 255, blue: 147 / 255, alpha: 1)
+  }
+
+  public var hardCopy: CandidateCellData {
+    let result = CandidateCellData(key: selectionKey, displayedText: displayedText, spanLength: spanLength, isSelected: isHighlighted)
+    result.visualDimension = visualDimension
+    result.locale = locale
+    result.whichLine = whichLine
+    result.index = index
+    result.subIndex = subIndex
+    return result
+  }
+
+  public var cleanCopy: CandidateCellData {
+    let result = hardCopy
+    result.isHighlighted = false
+    result.selectionKey = " "
+    return result
   }
 
   public init(
@@ -44,6 +64,10 @@ public class CandidateCellData: Hashable {
     self.displayedText = displayedText
     spanLength = max(spanningLength ?? displayedText.count, 1)
     isHighlighted = isSelected
+    textDimension = .init(width: ceil(Self.unifiedCharDimension * 1.4), height: Self.unifiedTextHeight)
+    if displayedText.count > 1 {
+      textDimension.width = attributedString().boundingDimension.width
+    }
   }
 
   public static func == (lhs: CandidateCellData, rhs: CandidateCellData) -> Bool {
@@ -56,9 +80,9 @@ public class CandidateCellData: Hashable {
   }
 
   public func cellLength(isMatrix: Bool = true) -> Double {
-    let minLength = ceil(charGlyphWidth * 2 + size * 1.25)
+    let minLength = ceil(Self.unifiedCharDimension * 2 + size * 1.25)
     if displayedText.count <= 2, isMatrix { return minLength }
-    return ceil(attributedStringPhrase().boundingDimension.width + charGlyphWidth)
+    return textDimension.width
   }
 
   // MARK: - Fonts and NSColors.
@@ -181,6 +205,20 @@ public class CandidateCellData: Hashable {
       let theName: String = $0.properties.name ?? ""
       return String(format: "U+%02X %@", $0.value, theName)
     }
+  }
+
+  public func updateMetrics(pool thePool: CandidatePool, origin currentOrigin: CGPoint) {
+    let padding = thePool.padding
+    var cellDimension = textDimension
+    if let givenWidth = thePool.cellWidth(self).min, displayedText.count <= 2 {
+      cellDimension.width = max(cellDimension.width + 4 * padding, givenWidth)
+    } else {
+      cellDimension.width += 4 * padding
+    }
+    cellDimension.width = ceil(cellDimension.width)
+    cellDimension.height = Self.unifiedTextHeight + 2 * padding
+    visualDimension = cellDimension
+    visualOrigin = currentOrigin
   }
 }
 
