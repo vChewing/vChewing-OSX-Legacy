@@ -177,21 +177,16 @@ public class TooltipUI: NSWindowController {
   }
 
   private func adjustSize() {
-    let attrString = messageText.attributedStringValue
-    var dimension = attrString.boundingDimension
-    dimension.width *= 1.2
+    messageText.sizeToFit()
+    var rect = messageText.frame
     if direction == .vertical {
-      dimension.height *= 1.2
-    }
-    var rect = NSRect(origin: .zero, size: dimension)
-    if direction == .vertical {
-      rect = .init(x: rect.minX, y: rect.minY, width: rect.height, height: rect.width)
+      rect = .init(x: rect.minX, y: rect.minY, width: rect.height * 1.5, height: rect.width)
     }
     var bigRect = rect
     bigRect.size.width += NSFont.systemFontSize
     bigRect.size.height += NSFont.systemFontSize
-    rect.origin.x += ceil(NSFont.systemFontSize / 2)
-    rect.origin.y += ceil(NSFont.systemFontSize / 2)
+    rect.origin.x = ceil(NSFont.systemFontSize / 2)
+    rect.origin.y = ceil(NSFont.systemFontSize / 2)
     if direction == .vertical {
       messageText.boundsRotation = 90
     } else {
