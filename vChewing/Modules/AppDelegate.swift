@@ -48,10 +48,16 @@ public extension AppDelegate {
     NSUserNotificationCenter.default.delegate = self
     PrefMgr.shared.fixOddPreferences()
 
-    // 一旦發現與使用者半衰模組的觀察行為有關的崩潰標記被開啟，就清空既有的半衰記憶資料檔案。
+    // 一旦發現與使用者半衰模組的觀察行為有關的崩潰標記被開啟：
+    // 如果有開啟 Debug 模式的話，就將既有的半衰記憶資料檔案更名＋打上當時的時間戳。
+    // 如果沒有開啟 Debug 模式的話，則將半衰記憶資料直接清空。
     if PrefMgr.shared.failureFlagForUOMObservation {
-      LMMgr.clearUserOverrideModelData(.imeModeCHS)
-      LMMgr.clearUserOverrideModelData(.imeModeCHT)
+      if PrefMgr.shared.isDebugModeEnabled {
+        LMMgr.relocateWreckedUOMData()
+      } else {
+        LMMgr.clearUserOverrideModelData(.imeModeCHS)
+        LMMgr.clearUserOverrideModelData(.imeModeCHT)
+      }
       PrefMgr.shared.failureFlagForUOMObservation = false
       let userNotification = NSUserNotification()
       userNotification.title = NSLocalizedString("vChewing", comment: "")
