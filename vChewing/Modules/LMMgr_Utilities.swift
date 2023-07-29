@@ -213,13 +213,33 @@ public extension LMMgr {
 
   static let appSupportURL = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)[0]
 
-  static func dataFolderPath(isDefaultFolder _: Bool) -> String {
-    Self.appSupportURL.appendingPathComponent("vChewing").path.expandingTildeInPath
+  static func dataFolderPath(isDefaultFolder: Bool) -> String {
+    var userDictPathSpecified = PrefMgr.shared.userDataFolderSpecified.expandingTildeInPath
+    var userDictPathDefault =
+      Self.appSupportURL.appendingPathComponent("vChewing").path.expandingTildeInPath
+
+    userDictPathDefault.ensureTrailingSlash()
+    userDictPathSpecified.ensureTrailingSlash()
+
+    if (userDictPathSpecified == userDictPathDefault)
+      || isDefaultFolder
+    {
+      return userDictPathDefault
+    }
+    if UserDefaults.standard.object(forKey: UserDef.kUserDataFolderSpecified.rawValue) != nil {
+      BookmarkManager.shared.loadBookmarks()
+      if Self.checkIfSpecifiedUserDataFolderValid(userDictPathSpecified) {
+        return userDictPathSpecified
+      }
+      UserDefaults.standard.removeObject(forKey: UserDef.kUserDataFolderSpecified.rawValue)
+    }
+    return userDictPathDefault
   }
 
   static func cassettePath() -> String {
     let rawCassettePath = PrefMgr.shared.cassettePath
     if UserDefaults.standard.object(forKey: UserDef.kCassettePath.rawValue) != nil {
+      BookmarkManager.shared.loadBookmarks()
       if Self.checkCassettePathValidity(rawCassettePath) { return rawCassettePath }
       UserDefaults.standard.removeObject(forKey: UserDef.kCassettePath.rawValue)
     }

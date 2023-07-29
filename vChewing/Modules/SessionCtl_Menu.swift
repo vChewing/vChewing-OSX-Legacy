@@ -48,15 +48,13 @@ extension SessionCtl {
     userAssociatedPhrasesItem.keyEquivalentModifierMask = [.command, .control]
     userAssociatedPhrasesItem.state = PrefMgr.shared.associatedPhrasesEnabled.state
 
-    if #available(macOS 10.13, *) {
-      let cassetteModeItem = menu.addItem(
-        withTitle: NSLocalizedString("CIN Cassette Mode", comment: ""),
-        action: #selector(toggleCassetteMode(_:)),
-        keyEquivalent: PrefMgr.shared.usingHotKeyCassette ? "I" : ""
-      )
-      cassetteModeItem.keyEquivalentModifierMask = [.command, .control]
-      cassetteModeItem.state = PrefMgr.shared.cassetteEnabled.state
-    }
+    let cassetteModeItem = menu.addItem(
+      withTitle: NSLocalizedString("CIN Cassette Mode", comment: ""),
+      action: #selector(toggleCassetteMode(_:)),
+      keyEquivalent: PrefMgr.shared.usingHotKeyCassette ? "I" : ""
+    )
+    cassetteModeItem.keyEquivalentModifierMask = [.command, .control]
+    cassetteModeItem.state = PrefMgr.shared.cassetteEnabled.state
 
     let useCNS11643SupportItem = menu.addItem(
       withTitle: NSLocalizedString("CNS11643 Mode", comment: ""),
