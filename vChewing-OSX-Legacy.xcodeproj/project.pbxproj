@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B1523B62A74E92D007D2E53 /* Jad_BookmarkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1523B52A74E92D007D2E53 /* Jad_BookmarkManager.swift */; };
 		5B1CA80E29AC53BA0089E95F /* VwrCandidateTDK_AppKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1CA80D29AC53BA0089E95F /* VwrCandidateTDK_AppKit.swift */; };
 		5B44BAD9295047AC00E1C02D /* shortcuts.html in Resources */ = {isa = PBXBuildFile; fileRef = 5B44BADB295047AC00E1C02D /* shortcuts.html */; };
 		5B572A7A29FB76B900ED5066 /* LatinKeyboardMappings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B572A7929FB76B900ED5066 /* LatinKeyboardMappings.swift */; };
@@ -155,6 +156,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5B1523B52A74E92D007D2E53 /* Jad_BookmarkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Jad_BookmarkManager.swift; sourceTree = "<group>"; };
 		5B1CA80D29AC53BA0089E95F /* VwrCandidateTDK_AppKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VwrCandidateTDK_AppKit.swift; sourceTree = "<group>"; };
 		5B44BADA295047AC00E1C02D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = en; path = en.lproj/shortcuts.html; sourceTree = "<group>"; };
 		5B44BADC295047AE00E1C02D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = "zh-Hans"; path = "zh-Hans.lproj/shortcuts.html"; sourceTree = "<group>"; };
@@ -534,6 +536,7 @@
 			children = (
 				5BE5A502294E095D00EFA49C /* AlexisBridoux_NSWindowPositioner.swift */,
 				5BE5A504294E097C00EFA49C /* DanielGalasko_FolderMonitor.swift */,
+				5B1523B52A74E92D007D2E53 /* Jad_BookmarkManager.swift */,
 				5BE5A50A294E0A1B00EFA49C /* RMJay_LineReader.swift */,
 			);
 			path = 3rdParty;
@@ -981,6 +984,7 @@
 				5B751DD3294EE57D0031CF70 /* InputHandler_TriageInput.swift in Sources */,
 				5BE5A568294E119600EFA49C /* LMMgr_Core.swift in Sources */,
 				5B60CEA629B8E7D400A1AAC7 /* LMMgr_UserPhraseStructure.swift in Sources */,
+				5B1523B62A74E92D007D2E53 /* Jad_BookmarkManager.swift in Sources */,
 				5B751DCF294EE57D0031CF70 /* SessionCtl_Core.swift in Sources */,
 				5BB1D7F22999025B00EA8D2C /* PrefUITabs.swift in Sources */,
 				5B751DD8294EE57D0031CF70 /* SessionCtl_IMKCandidatesData.swift in Sources */,
