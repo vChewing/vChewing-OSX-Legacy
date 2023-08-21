@@ -34,11 +34,9 @@
 		5B751DD5294EE57D0031CF70 /* IMEState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DC6294EE57D0031CF70 /* IMEState.swift */; };
 		5B751DD6294EE57D0031CF70 /* IMEStateData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DC7294EE57D0031CF70 /* IMEStateData.swift */; };
 		5B751DD7294EE57D0031CF70 /* SessionCtl_Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DC8294EE57D0031CF70 /* SessionCtl_Menu.swift */; };
-		5B751DD8294EE57D0031CF70 /* SessionCtl_IMKCandidatesData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DC9294EE57D0031CF70 /* SessionCtl_IMKCandidatesData.swift */; };
 		5B751DD9294EE57D0031CF70 /* InputHandler_HandleComposition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DCA294EE57D0031CF70 /* InputHandler_HandleComposition.swift */; };
 		5B751DDA294EE57D0031CF70 /* SessionCtl_Delegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DCB294EE57D0031CF70 /* SessionCtl_Delegates.swift */; };
 		5B751DDB294EE57D0031CF70 /* InputHandler_HandleCandidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DCC294EE57D0031CF70 /* InputHandler_HandleCandidate.swift */; };
-		5B751DDD294EE7610031CF70 /* IMKCandidatesImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DDC294EE7610031CF70 /* IMKCandidatesImpl.swift */; };
 		5B751DE2294EE7A80031CF70 /* CandidatePool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DE0294EE7A80031CF70 /* CandidatePool.swift */; };
 		5B751DE3294EE7A80031CF70 /* CandidateCellData_Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DDF294EE7A80031CF70 /* CandidateCellData_Core.swift */; };
 		5B751DE4294EE7A80031CF70 /* CtlCandidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DE1294EE7A80031CF70 /* CtlCandidate.swift */; };
@@ -202,11 +200,9 @@
 		5B751DC6294EE57D0031CF70 /* IMEState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IMEState.swift; sourceTree = "<group>"; };
 		5B751DC7294EE57D0031CF70 /* IMEStateData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IMEStateData.swift; sourceTree = "<group>"; };
 		5B751DC8294EE57D0031CF70 /* SessionCtl_Menu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionCtl_Menu.swift; sourceTree = "<group>"; };
-		5B751DC9294EE57D0031CF70 /* SessionCtl_IMKCandidatesData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionCtl_IMKCandidatesData.swift; sourceTree = "<group>"; };
 		5B751DCA294EE57D0031CF70 /* InputHandler_HandleComposition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputHandler_HandleComposition.swift; sourceTree = "<group>"; };
 		5B751DCB294EE57D0031CF70 /* SessionCtl_Delegates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionCtl_Delegates.swift; sourceTree = "<group>"; };
 		5B751DCC294EE57D0031CF70 /* InputHandler_HandleCandidate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputHandler_HandleCandidate.swift; sourceTree = "<group>"; };
-		5B751DDC294EE7610031CF70 /* IMKCandidatesImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMKCandidatesImpl.swift; sourceTree = "<group>"; };
 		5B751DDF294EE7A80031CF70 /* CandidateCellData_Core.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandidateCellData_Core.swift; sourceTree = "<group>"; };
 		5B751DE0294EE7A80031CF70 /* CandidatePool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandidatePool.swift; sourceTree = "<group>"; };
 		5B751DE1294EE7A80031CF70 /* CtlCandidate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CtlCandidate.swift; sourceTree = "<group>"; };
@@ -384,7 +380,6 @@
 				5B751DE0294EE7A80031CF70 /* CandidatePool.swift */,
 				5B751DE1294EE7A80031CF70 /* CtlCandidate.swift */,
 				5BB32F0429A61AFB00B05D7B /* CtlCandidateTDK.swift */,
-				5B751DDC294EE7610031CF70 /* IMKCandidatesImpl.swift */,
 				5B1CA80D29AC53BA0089E95F /* VwrCandidateTDK_AppKit.swift */,
 			);
 			path = CandidateControllers;
@@ -473,7 +468,6 @@
 				5B751DC5294EE57C0031CF70 /* SessionCtl_HandleDisplay.swift */,
 				5B751DBE294EE57C0031CF70 /* SessionCtl_HandleEvent.swift */,
 				5B751DC2294EE57C0031CF70 /* SessionCtl_HandleStates.swift */,
-				5B751DC9294EE57D0031CF70 /* SessionCtl_IMKCandidatesData.swift */,
 				5B751DC8294EE57D0031CF70 /* SessionCtl_Menu.swift */,
 				5BE5A569294E120500EFA49C /* SymbolMenuDefaultData.swift */,
 			);
@@ -987,7 +981,6 @@
 				5B1523B62A74E92D007D2E53 /* Jad_BookmarkManager.swift in Sources */,
 				5B751DCF294EE57D0031CF70 /* SessionCtl_Core.swift in Sources */,
 				5BB1D7F22999025B00EA8D2C /* PrefUITabs.swift in Sources */,
-				5B751DD8294EE57D0031CF70 /* SessionCtl_IMKCandidatesData.swift in Sources */,
 				5BE5A558294E0D1E00EFA49C /* 7_Unigram.swift in Sources */,
 				5B751DE3294EE7A80031CF70 /* CandidateCellData_Core.swift in Sources */,
 				5BE5A522294E0C2500EFA49C /* NotifierUI.swift in Sources */,
@@ -1005,7 +998,6 @@
 				5BE5A524294E0C2900EFA49C /* vChewingLM.swift in Sources */,
 				5BE5A528294E0C2B00EFA49C /* lmReplacements.swift in Sources */,
 				5BE5A548294E0D1200EFA49C /* Tekkon_SyllableComposer.swift in Sources */,
-				5B751DDD294EE7610031CF70 /* IMKCandidatesImpl.swift in Sources */,
 				5BE5A53E294E0CEF00EFA49C /* Shared.swift in Sources */,
 				5B751DCD294EE57D0031CF70 /* SessionCtl_HandleEvent.swift in Sources */,
 				5BE5A52B294E0C2B00EFA49C /* lmPlainBopomofo.swift in Sources */,

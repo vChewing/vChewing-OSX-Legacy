@@ -13,7 +13,6 @@ import Foundation
 public enum UserDef: String, CaseIterable {
   case kIsDebugModeEnabled = "_DebugMode"
   case kFailureFlagForUOMObservation = "_FailureFlag_UOMObservation"
-  case kFailureFlagForIMKCandidates = "_FailureFlag_IMKCandidates"
   case kDeltaOfCalendarYears = "DeltaOfCalendarYears"
   case kMostRecentInputMode = "MostRecentInputMode"
   case kCassettePath = "CassettePath"
@@ -74,7 +73,6 @@ public enum UserDef: String, CaseIterable {
   case kClassicHaninKeyboardSymbolModeShortcutEnabled = "ClassicHaninKeyboardSymbolModeShortcutEnabled"
 
   case kUseSpaceToCommitHighlightedSCPCCandidate = "UseSpaceToCommitHighlightedSCPCCandidate"
-  case kUseIMKCandidateWindow = "UseIMKCandidateWindow"
   case kEnableSwiftUIForTDKCandidates = "EnableSwiftUIForTDKCandidates"
   case kEnableMouseScrollingForTDKCandidatesCocoa = "EnableMouseScrollingForTDKCandidatesCocoa"
   case kDisableSegmentedThickUnderlineInMarkingModeForManagedClients

@@ -33,9 +33,6 @@ public class PrefMgr: PrefMgrProtocol {
   @AppProperty(key: UserDef.kFailureFlagForUOMObservation.rawValue, defaultValue: false)
   public var failureFlagForUOMObservation: Bool
 
-  @AppProperty(key: UserDef.kFailureFlagForIMKCandidates.rawValue, defaultValue: false)
-  public var failureFlagForIMKCandidates: Bool
-
   @AppProperty(key: UserDef.kDeltaOfCalendarYears.rawValue, defaultValue: -2000)
   public var deltaOfCalendarYears: Int
 
@@ -176,9 +173,6 @@ public class PrefMgr: PrefMgrProtocol {
 
   @AppProperty(key: UserDef.kUseSpaceToCommitHighlightedSCPCCandidate.rawValue, defaultValue: true)
   public var useSpaceToCommitHighlightedSCPCCandidate: Bool
-
-  @AppProperty(key: UserDef.kUseIMKCandidateWindow.rawValue, defaultValue: false)
-  public var useIMKCandidateWindow: Bool
 
   @AppProperty(key: UserDef.kEnableSwiftUIForTDKCandidates.rawValue, defaultValue: false)
   public var enableSwiftUIForTDKCandidates: Bool
