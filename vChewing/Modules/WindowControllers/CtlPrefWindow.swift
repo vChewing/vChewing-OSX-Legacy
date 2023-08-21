@@ -21,7 +21,6 @@ class CtlPrefWindow: NSWindowController, NSWindowDelegate {
   @IBOutlet var selectionKeyComboBox: NSComboBox!
   @IBOutlet var chkTrad2KangXi: NSButton!
   @IBOutlet var chkTrad2JISShinjitai: NSButton!
-  @IBOutlet var tglControlDevZoneIMKCandidate: NSButton!
   @IBOutlet var cmbCandidateFontSize: NSPopUpButton!
   @IBOutlet var chkFartSuppressor: NSButton!
 
@@ -94,12 +93,6 @@ class CtlPrefWindow: NSWindowController, NSWindowDelegate {
 
     cmbCandidateFontSize.isEnabled = true
 
-    if #unavailable(macOS 10.14) {
-      if PrefMgr.shared.useIMKCandidateWindow {
-        cmbCandidateFontSize.isEnabled = false
-      }
-    }
-
     var preferencesTitleName = NSLocalizedString("vChewing Preferences…", comment: "")
     preferencesTitleName.removeLast()
 
@@ -160,9 +153,6 @@ class CtlPrefWindow: NSWindowController, NSWindowDelegate {
     }
 
     selectionKeyComboBox.stringValue = candidateSelectionKeys
-    if PrefMgr.shared.useIMKCandidateWindow {
-      selectionKeyComboBox.isEnabled = false // 無法與 IMKCandidates 協作，故禁用。
-    }
 
     initPhraseEditor()
   }
@@ -266,11 +256,6 @@ class CtlPrefWindow: NSWindowController, NSWindowDelegate {
       NSLog("vChewing App self-terminated due to UI language change.")
       NSApp.terminate(nil)
     }
-  }
-
-  @IBAction func updateIMKCandidateEnableStatusAction(_: Any) {
-    // NSLog("vChewing App self-terminated due to enabling / disabling IMK candidate window.")
-    // NSApp.terminate(nil)
   }
 
   @IBAction func clickedWhetherIMEShouldNotFartToggleAction(_: Any) {

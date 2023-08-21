@@ -24,25 +24,8 @@ public class SessionCtl: IMKInputController {
   /// 上一個被處理過的鍵盤事件。
   public var previouslyHandledEvents: [NSEvent] = .init()
 
-  /// IMK 選字窗專用記憶體位址
-  private var candidateIMK: CtlCandidateProtocol?
-
-  /// 田所選字窗專用記憶體位址
-  private var candidateTDK: CtlCandidateProtocol?
-
   /// 目前在用的的選字窗副本。
-  public var candidateUI: CtlCandidateProtocol? {
-    get {
-      PrefMgr.shared.useIMKCandidateWindow ? candidateIMK : candidateTDK
-    }
-    set {
-      if PrefMgr.shared.useIMKCandidateWindow {
-        candidateIMK = newValue
-      } else {
-        candidateTDK = newValue
-      }
-    }
-  }
+  public var candidateUI: CtlCandidateProtocol?
 
   /// 工具提示視窗的副本。
   public var tooltipInstance = TooltipUI()
@@ -321,9 +304,7 @@ public extension SessionCtl {
       switchState(IMEState.ofDeactivated())
       inputHandler = nil
       // IMK 選字窗可以不用 nil，不然反而會出問題。反正 IMK 選字窗記憶體開銷可以不計。
-      if !(candidateUI is CtlCandidateIMK) {
-        candidateUI = nil
-      }
+      candidateUI = nil
     }
     super.deactivateServer(sender)
   }
