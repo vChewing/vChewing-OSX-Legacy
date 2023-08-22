@@ -10,6 +10,7 @@ import AppKit
 
 class CtlRevLookupWindow: NSWindowController, NSWindowDelegate {
   static var shared: CtlRevLookupWindow?
+  @objc var observation: NSKeyValueObservation?
 
   static func show() {
     if shared == nil { Self.shared = .init(window: FrmRevLookupWindow()) }
@@ -21,6 +22,13 @@ class CtlRevLookupWindow: NSWindowController, NSWindowDelegate {
     window.level = .statusBar
     shared.showWindow(shared)
     NSApp.popup()
+  }
+
+  override func windowDidLoad() {
+    super.windowDidLoad()
+    observation = Broadcaster.shared.observe(\.eventForReloadingRevLookupData, options: [.new]) { _, _ in
+      FrmRevLookupWindow.reloadData()
+    }
   }
 }
 
