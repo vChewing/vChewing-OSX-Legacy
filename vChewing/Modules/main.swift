@@ -53,23 +53,7 @@ else {
   exit(-1)
 }
 
-guard let mainBundleInfoDict = Bundle.main.infoDictionary,
-      let strUpdateInfoSource = mainBundleInfoDict["UpdateInfoEndpoint"] as? String,
-      let urlUpdateInfoSource = URL(string: strUpdateInfoSource),
-      let strUpdateInfoSourceLegacy = mainBundleInfoDict["UpdateInfoEndpointLegacy"] as? String,
-      let urlUpdateInfoSourceLegacy = URL(string: strUpdateInfoSourceLegacy)
-else {
-  NSLog("vChewingDebug: Fatal error: Info.plist wrecked. It needs to have correct 'UpdateInfoEndpoint' value.")
-  exit(-1)
-}
-
 public let theServer = server
-public let kUpdateInfoSourceURL: URL = {
-  if #available(macOS 10.13, *) {
-    return urlUpdateInfoSource
-  }
-  return urlUpdateInfoSourceLegacy
-}()
 
 NSApplication.shared.delegate = AppDelegate.shared
 _ = NSApplicationMain(CommandLine.argc, CommandLine.unsafeArgv)
