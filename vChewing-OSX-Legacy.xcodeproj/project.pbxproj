@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5B1523B62A74E92D007D2E53 /* Jad_BookmarkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1523B52A74E92D007D2E53 /* Jad_BookmarkManager.swift */; };
 		5B1CA80E29AC53BA0089E95F /* VwrCandidateTDK_AppKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1CA80D29AC53BA0089E95F /* VwrCandidateTDK_AppKit.swift */; };
+		5B303E7E2A979F6F002CF4E6 /* IMKUtilsImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B303E7D2A979F6F002CF4E6 /* IMKUtilsImpl.swift */; };
 		5B423A542A9516B0004CC33B /* Broadcaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B423A532A9516B0004CC33B /* Broadcaster.swift */; };
 		5B44BAD9295047AC00E1C02D /* shortcuts.html in Resources */ = {isa = PBXBuildFile; fileRef = 5B44BADB295047AC00E1C02D /* shortcuts.html */; };
 		5B572A7A29FB76B900ED5066 /* LatinKeyboardMappings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B572A7929FB76B900ED5066 /* LatinKeyboardMappings.swift */; };
@@ -157,6 +158,7 @@
 /* Begin PBXFileReference section */
 		5B1523B52A74E92D007D2E53 /* Jad_BookmarkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Jad_BookmarkManager.swift; sourceTree = "<group>"; };
 		5B1CA80D29AC53BA0089E95F /* VwrCandidateTDK_AppKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VwrCandidateTDK_AppKit.swift; sourceTree = "<group>"; };
+		5B303E7D2A979F6F002CF4E6 /* IMKUtilsImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IMKUtilsImpl.swift; sourceTree = "<group>"; };
 		5B423A532A9516B0004CC33B /* Broadcaster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Broadcaster.swift; sourceTree = "<group>"; };
 		5B44BADA295047AC00E1C02D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = en; path = en.lproj/shortcuts.html; sourceTree = "<group>"; };
 		5B44BADC295047AE00E1C02D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = "zh-Hans"; path = "zh-Hans.lproj/shortcuts.html"; sourceTree = "<group>"; };
@@ -485,6 +487,7 @@
 				5BE5A4FD294E090800EFA49C /* CocoaExtension_NSSound.swift */,
 				5BE5A4FF294E092900EFA49C /* CocoaExtension_NSWindowController.swift */,
 				5BE5A4F4294E059600EFA49C /* IMKHelper.swift */,
+				5B303E7D2A979F6F002CF4E6 /* IMKUtilsImpl.swift */,
 				5B572A7929FB76B900ED5066 /* LatinKeyboardMappings.swift */,
 				5BE5A4F2294E058F00EFA49C /* SwiftExtension.swift */,
 				5BE5A4FB294E087B00EFA49C /* TISInputSourceExtension.swift */,
@@ -1000,6 +1003,7 @@
 				5BE5A523294E0C2900EFA49C /* LMConsolidator.swift in Sources */,
 				5BE5A553294E0D1E00EFA49C /* 0_Megrez.swift in Sources */,
 				5BE5A524294E0C2900EFA49C /* vChewingLM.swift in Sources */,
+				5B303E7E2A979F6F002CF4E6 /* IMKUtilsImpl.swift in Sources */,
 				5BE5A528294E0C2B00EFA49C /* lmReplacements.swift in Sources */,
 				5BE5A548294E0D1200EFA49C /* Tekkon_SyllableComposer.swift in Sources */,
 				5BE5A53E294E0CEF00EFA49C /* Shared.swift in Sources */,

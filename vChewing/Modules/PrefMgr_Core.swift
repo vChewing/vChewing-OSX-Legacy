@@ -227,11 +227,11 @@ public class PrefMgr: PrefMgrProtocol {
       // 康熙轉換與 JIS 轉換不能同時開啟，否則會出現某些奇奇怪怪的情況
       if chineseConversionEnabled, shiftJISShinjitaiOutputEnabled {
         shiftJISShinjitaiOutputEnabled.toggle()
-        UserDefaults.standard.set(
+        UserDefaults.current.set(
           shiftJISShinjitaiOutputEnabled, forKey: UserDef.kShiftJISShinjitaiOutputEnabled.rawValue
         )
       }
-      UserDefaults.standard.set(
+      UserDefaults.current.set(
         chineseConversionEnabled, forKey: UserDef.kChineseConversionEnabled.rawValue
       )
     }
@@ -243,11 +243,11 @@ public class PrefMgr: PrefMgrProtocol {
       // 康熙轉換與 JIS 轉換不能同時開啟，否則會出現某些奇奇怪怪的情況
       if shiftJISShinjitaiOutputEnabled, chineseConversionEnabled {
         chineseConversionEnabled.toggle()
-        UserDefaults.standard.set(
+        UserDefaults.current.set(
           chineseConversionEnabled, forKey: UserDef.kChineseConversionEnabled.rawValue
         )
       }
-      UserDefaults.standard.set(
+      UserDefaults.current.set(
         shiftJISShinjitaiOutputEnabled, forKey: UserDef.kShiftJISShinjitaiOutputEnabled.rawValue
       )
     }
