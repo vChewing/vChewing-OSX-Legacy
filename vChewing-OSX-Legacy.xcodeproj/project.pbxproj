@@ -91,7 +91,7 @@
 		5BE5A526294E0C2900EFA49C /* LMInstantiator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A51D294E0BEE00EFA49C /* LMInstantiator.swift */; };
 		5BE5A527294E0C2900EFA49C /* LMInstantiator_DateTimeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A51E294E0BEE00EFA49C /* LMInstantiator_DateTimeExtension.swift */; };
 		5BE5A528294E0C2B00EFA49C /* lmReplacements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A514294E0BE800EFA49C /* lmReplacements.swift */; };
-		5BE5A529294E0C2B00EFA49C /* lmCoreNS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A519294E0BE900EFA49C /* lmCoreNS.swift */; };
+		5BE5A529294E0C2B00EFA49C /* lmCoreJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A519294E0BE900EFA49C /* lmCoreJSON.swift */; };
 		5BE5A52A294E0C2B00EFA49C /* lmAssociates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A515294E0BE800EFA49C /* lmAssociates.swift */; };
 		5BE5A52B294E0C2B00EFA49C /* lmPlainBopomofo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A516294E0BE800EFA49C /* lmPlainBopomofo.swift */; };
 		5BE5A52C294E0C2B00EFA49C /* lmRevLookup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A513294E0BE800EFA49C /* lmRevLookup.swift */; };
@@ -255,7 +255,7 @@
 		5BE5A516294E0BE800EFA49C /* lmPlainBopomofo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lmPlainBopomofo.swift; sourceTree = "<group>"; };
 		5BE5A517294E0BE800EFA49C /* lmCoreEX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lmCoreEX.swift; sourceTree = "<group>"; };
 		5BE5A518294E0BE900EFA49C /* lmCassette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lmCassette.swift; sourceTree = "<group>"; };
-		5BE5A519294E0BE900EFA49C /* lmCoreNS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lmCoreNS.swift; sourceTree = "<group>"; };
+		5BE5A519294E0BE900EFA49C /* lmCoreJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lmCoreJSON.swift; sourceTree = "<group>"; };
 		5BE5A51A294E0BE900EFA49C /* lmUserOverride.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lmUserOverride.swift; sourceTree = "<group>"; };
 		5BE5A51B294E0BEE00EFA49C /* LMConsolidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMConsolidator.swift; sourceTree = "<group>"; };
 		5BE5A51C294E0BEE00EFA49C /* LMInstantiator_CassetteExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMInstantiator_CassetteExtension.swift; sourceTree = "<group>"; };
@@ -585,7 +585,7 @@
 				5BE5A515294E0BE800EFA49C /* lmAssociates.swift */,
 				5BE5A518294E0BE900EFA49C /* lmCassette.swift */,
 				5BE5A517294E0BE800EFA49C /* lmCoreEX.swift */,
-				5BE5A519294E0BE900EFA49C /* lmCoreNS.swift */,
+				5BE5A519294E0BE900EFA49C /* lmCoreJSON.swift */,
 				5BE5A516294E0BE800EFA49C /* lmPlainBopomofo.swift */,
 				5BE5A514294E0BE800EFA49C /* lmReplacements.swift */,
 				5BE5A513294E0BE800EFA49C /* lmRevLookup.swift */,
@@ -934,7 +934,7 @@
 				5B751DD0294EE57D0031CF70 /* InputHandler_Core.swift in Sources */,
 				5B751DB8294EE27C0031CF70 /* CtlClientListMgr.swift in Sources */,
 				5BE5A4F5294E059600EFA49C /* IMKHelper.swift in Sources */,
-				5BE5A529294E0C2B00EFA49C /* lmCoreNS.swift in Sources */,
+				5BE5A529294E0C2B00EFA49C /* lmCoreJSON.swift in Sources */,
 				5B751DD7294EE57D0031CF70 /* SessionCtl_Menu.swift in Sources */,
 				5BE5A4FA294E082800EFA49C /* CocoaExtension_NSEvent.swift in Sources */,
 				5BE5A530294E0C2E00EFA49C /* HotenkaChineseConverter.swift in Sources */,
