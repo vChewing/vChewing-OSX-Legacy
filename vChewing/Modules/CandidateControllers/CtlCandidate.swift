@@ -81,7 +81,7 @@ open class CtlCandidate: NSWindowController, CtlCandidateProtocol {
   }
 
   open var candidateFont = NSFont.systemFont(
-    ofSize: min(196, max(12, Double(UserDefaults.standard.integer(forKey: "CandidateListTextSize"))))
+    ofSize: min(196, max(12, Double(UserDefaults.current.integer(forKey: "CandidateListTextSize"))))
   )
 
   @discardableResult open func showNextLine() -> Bool {
