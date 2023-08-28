@@ -63,7 +63,7 @@ public extension AppDelegate {
     true
   }
 
-  func applicationDidFinishLaunching(_: Notification) {
+  func applicationWillFinishLaunching(_: Notification) {
     NSUserNotificationCenter.default.delegate = self
     PrefMgr.shared.fixOddPreferences()
 
@@ -84,14 +84,12 @@ public extension AppDelegate {
     }
 
     if !PrefMgr.shared.onlyLoadFactoryLangModelsIfNeeded { LMMgr.loadDataModelsOnAppDelegate() }
-    DispatchQueue.main.async {
-      LMMgr.loadCassetteData()
-      LMMgr.initUserLangModels()
-      self.folderMonitor.folderDidChange = { [weak self] in
-        self?.reloadOnFolderChangeHappens()
-      }
-      if LMMgr.userDataFolderExists { self.folderMonitor.startMonitoring() }
+    LMMgr.loadCassetteData()
+    LMMgr.initUserLangModels()
+    folderMonitor.folderDidChange = { [weak self] in
+      self?.reloadOnFolderChangeHappens()
     }
+    if LMMgr.userDataFolderExists { folderMonitor.startMonitoring() }
 
     PrefMgr.shared.fixOddPreferences()
 
