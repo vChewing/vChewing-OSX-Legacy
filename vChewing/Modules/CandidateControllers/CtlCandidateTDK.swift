@@ -93,6 +93,7 @@ public class CtlCandidateTDK: CtlCandidate, NSWindowDelegate {
     if let currentCandidateText = Self.thePool.currentSelectedCandidateText {
       reverseLookupResult = delegate?.reverseLookup(for: currentCandidateText) ?? []
       Self.thePool.reverseLookupResult = reverseLookupResult
+      Self.thePool.tooltip = delegate?.candidateToolTip(shortened: !Self.thePool.isMatrix) ?? ""
     }
     delegate?.candidatePairHighlightChanged(at: highlightedIndex)
     DispatchQueue.main.async { [self] in
