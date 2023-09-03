@@ -27,6 +27,14 @@ public extension SessionCtl {
       return false
     }
 
+    // 用 Shift 開關半形英數模式，僅對 macOS 10.15 及之後的 macOS 有效。
+    // 警告：這裡的 event 必須是原始 event 且不能被 var，否則會影響 Shift 中英模式判定。
+    if Self.theShiftKeyDetector.check(event) {
+      toggleAlphanumericalMode()
+      // Shift 處理完畢之後也有必要立刻返回處理結果。
+      return true
+    }
+
     var result = false
     if [.keyDown, .flagsChanged].contains(event.type) {
       result = handleKeyDown(event: event)

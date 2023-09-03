@@ -56,6 +56,7 @@
 		5B751DF6294EF2940031CF70 /* Fart.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 5BE5A58C294E196C00EFA49C /* Fart.m4a */; };
 		5B751DF7294EF29B0031CF70 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5B751DA4294EE1B00031CF70 /* Localizable.strings */; };
 		5B751DFA294F19B30031CF70 /* frmClientListMgr.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B751DB3294EE2120031CF70 /* frmClientListMgr.xib */; };
+		5B7B4D242AA1BB7600FE6B63 /* Qwertyyb_ShiftKeyUpChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7B4D232AA1BB7600FE6B63 /* Qwertyyb_ShiftKeyUpChecker.swift */; };
 		5BACBCDF295093A60078CAB3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BACBCDE295093A60078CAB3 /* AppDelegate.swift */; };
 		5BACBCE4295093A80078CAB3 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BACBCE2295093A80078CAB3 /* MainMenu.xib */; };
 		5BACBCF9295094CB0078CAB3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5BACBCF7295094CB0078CAB3 /* InfoPlist.strings */; };
@@ -210,6 +211,7 @@
 		5B751DDF294EE7A80031CF70 /* CandidateCellData_Core.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandidateCellData_Core.swift; sourceTree = "<group>"; };
 		5B751DE0294EE7A80031CF70 /* CandidatePool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandidatePool.swift; sourceTree = "<group>"; };
 		5B751DE1294EE7A80031CF70 /* CtlCandidate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CtlCandidate.swift; sourceTree = "<group>"; };
+		5B7B4D232AA1BB7600FE6B63 /* Qwertyyb_ShiftKeyUpChecker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Qwertyyb_ShiftKeyUpChecker.swift; sourceTree = "<group>"; };
 		5BACBCC629508A5F0078CAB3 /* dataCompiler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dataCompiler.swift; sourceTree = "<group>"; };
 		5BACBCDC295093A60078CAB3 /* vChewingInstaller.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vChewingInstaller.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BACBCDE295093A60078CAB3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -537,6 +539,7 @@
 				5BE5A502294E095D00EFA49C /* AlexisBridoux_NSWindowPositioner.swift */,
 				5BE5A504294E097C00EFA49C /* DanielGalasko_FolderMonitor.swift */,
 				5B1523B52A74E92D007D2E53 /* Jad_BookmarkManager.swift */,
+				5B7B4D232AA1BB7600FE6B63 /* Qwertyyb_ShiftKeyUpChecker.swift */,
 				5BE5A50A294E0A1B00EFA49C /* RMJay_LineReader.swift */,
 			);
 			path = 3rdParty;
@@ -991,6 +994,7 @@
 				5BE5A558294E0D1E00EFA49C /* 7_Unigram.swift in Sources */,
 				5B751DE3294EE7A80031CF70 /* CandidateCellData_Core.swift in Sources */,
 				5BE5A522294E0C2500EFA49C /* NotifierUI.swift in Sources */,
+				5B7B4D242AA1BB7600FE6B63 /* Qwertyyb_ShiftKeyUpChecker.swift in Sources */,
 				5B751DD6294EE57D0031CF70 /* IMEStateData.swift in Sources */,
 				5BE5A505294E097C00EFA49C /* DanielGalasko_FolderMonitor.swift in Sources */,
 				5BE5A56C294E127B00EFA49C /* PhraseEditorDelegate.swift in Sources */,

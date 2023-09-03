@@ -125,12 +125,19 @@ import AppKit
   @AppProperty(key: UserDef.kUpperCaseLetterKeyBehavior.rawValue, defaultValue: 0)
   public dynamic var upperCaseLetterKeyBehavior: Int
 
-  /// Not available in this legacy version.
   @AppProperty(key: UserDef.kTogglingAlphanumericalModeWithLShift.rawValue, defaultValue: true)
-  public dynamic var togglingAlphanumericalModeWithLShift: Bool
+  public dynamic var togglingAlphanumericalModeWithLShift: Bool {
+    didSet {
+      SessionCtl.theShiftKeyDetector.toggleWithLShift = togglingAlphanumericalModeWithLShift
+    }
+  }
 
-  @AppProperty(key: UserDef.kDisableShiftTogglingAlphanumericalMode.rawValue, defaultValue: false)
-  public dynamic var disableShiftTogglingAlphanumericalMode: Bool
+  @AppProperty(key: UserDef.kTogglingAlphanumericalModeWithRShift.rawValue, defaultValue: true)
+  public dynamic var togglingAlphanumericalModeWithRShift: Bool {
+    didSet {
+      SessionCtl.theShiftKeyDetector.toggleWithRShift = togglingAlphanumericalModeWithRShift
+    }
+  }
 
   @AppProperty(key: UserDef.kConsolidateContextOnCandidateSelection.rawValue, defaultValue: true)
   public dynamic var consolidateContextOnCandidateSelection: Bool
