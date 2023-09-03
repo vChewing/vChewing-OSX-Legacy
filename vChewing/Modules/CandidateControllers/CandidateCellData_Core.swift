@@ -145,7 +145,8 @@ public class CandidateCellData: Hashable {
   public func attributedString(
     noSpacePadding: Bool = true, withHighlight: Bool = false, isMatrix: Bool = false
   ) -> NSAttributedString {
-    let attrSpace: [NSAttributedString.Key: AnyObject] = [
+    let attrSpace: [NSAttributedString.Key: Any] = [
+      .kern: 0,
       .font: phraseFont(size: size),
       .paragraphStyle: Self.sharedParagraphStyle,
     ]
@@ -171,7 +172,8 @@ public class CandidateCellData: Hashable {
   }
 
   public var attributedStringHeader: NSAttributedString {
-    let attrKey: [NSAttributedString.Key: AnyObject] = [
+    let attrKey: [NSAttributedString.Key: Any] = [
+      .kern: 0,
       .font: selectionKeyFont(size: fontSizeKey),
       .paragraphStyle: Self.sharedParagraphStyle,
       .foregroundColor: fontColorKey,
@@ -181,7 +183,8 @@ public class CandidateCellData: Hashable {
   }
 
   public func attributedStringPhrase(isMatrix: Bool = false) -> NSAttributedString {
-    var attrCandidate: [NSAttributedString.Key: AnyObject] = [
+    var attrCandidate: [NSAttributedString.Key: Any] = [
+      .kern: 0,
       .font: phraseFont(size: size),
       .paragraphStyle: Self.sharedParagraphStyle,
       .foregroundColor: fontColorCandidate,

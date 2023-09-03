@@ -35,6 +35,7 @@ public class TooltipUI: NSWindowController {
 
       let attrString: NSMutableAttributedString = .init(string: text)
       let verticalAttributes: [NSAttributedString.Key: Any] = [
+        .kern: 0,
         .verticalGlyphForm: true,
         .paragraphStyle: {
           let newStyle = NSMutableParagraphStyle()
@@ -45,6 +46,10 @@ public class TooltipUI: NSWindowController {
           return newStyle
         }(),
       ]
+
+      attrString.setAttributes(
+        [.kern: 0], range: NSRange(location: 0, length: attrString.length)
+      )
 
       if direction == .vertical {
         attrString.setAttributes(
