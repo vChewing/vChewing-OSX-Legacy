@@ -208,7 +208,8 @@ public class SessionCtl: IMKInputController {
 
   /// 所有建構子都會執行的共用部分，在 super.init() 之後執行。
   private func construct(client theClient: (IMKTextInput & NSObjectProtocol)? = nil) {
-    DispatchQueue.main.async { [self] in
+    DispatchQueue.main.async { [weak self] in
+      guard let self = self else { return }
       inputHandler = InputHandler(
         lm: LMMgr.currentLM, uom: LMMgr.currentUOM, pref: PrefMgr.shared
       )
@@ -230,7 +231,8 @@ public extension SessionCtl {
   func setKeyLayout() {
     guard let client = client(), !isServingIMEItself else { return }
 
-    DispatchQueue.main.async { [self] in
+    DispatchQueue.main.async { [weak self] in
+      guard let self = self else { return }
       if isASCIIMode, IMKHelper.isDynamicBasicKeyboardLayoutEnabled {
         client.overrideKeyboard(withKeyboardNamed: PrefMgr.shared.alphanumericalKeyboardLayout)
         return
@@ -263,7 +265,8 @@ public extension SessionCtl {
   override func activateServer(_ sender: Any!) {
     super.activateServer(sender)
     isBootingUp = true
-    DispatchQueue.main.async { [self] in
+    DispatchQueue.main.async { [weak self] in
+      guard let self = self else { return }
       if let senderBundleID: String = (sender as? IMKTextInput)?.bundleIdentifier() {
         vCLog("activateServer(\(senderBundleID))")
         isServingIMEItself = Bundle.main.bundleIdentifier == senderBundleID
@@ -276,12 +279,14 @@ public extension SessionCtl {
         PrefMgr.shared.shouldNotFartInLieuOfBeep = true
       }
     }
-    DispatchQueue.main.async { [self] in
+    DispatchQueue.main.async { [weak self] in
+      guard let self = self else { return }
       if inputMode != IMEApp.currentInputMode {
         inputMode = IMEApp.currentInputMode
       }
     }
-    DispatchQueue.main.async { [self] in
+    DispatchQueue.main.async { [weak self] in
+      guard let self = self else { return }
       if isActivated { return }
 
       // 這裡不需要 setValue()，因為 IMK 會在自動呼叫 activateServer() 之後自動執行 setValue()。
@@ -312,7 +317,8 @@ public extension SessionCtl {
   /// 停用輸入法時，會觸發該函式。
   /// - Parameter sender: 呼叫了該函式的客體（無須使用）。
   override func deactivateServer(_ sender: Any!) {
-    DispatchQueue.main.async { [self] in
+    DispatchQueue.main.async { [weak self] in
+      guard let self = self else { return }
       isActivated = false
       resetInputHandler() // 這條會自動搞定 Empty 狀態。
       switchState(IMEState.ofDeactivated())
@@ -331,7 +337,8 @@ public extension SessionCtl {
   ///   - tag: 標記（無須使用）。
   ///   - sender: 呼叫了該函式的客體（無須使用）。
   override func setValue(_ value: Any!, forTag tag: Int, client sender: Any!) {
-    DispatchQueue.main.async { [self] in
+    DispatchQueue.main.async { [weak self] in
+      guard let self = self else { return }
       let newMode: Shared.InputMode = .init(rawValue: value as? String ?? PrefMgr.shared.mostRecentInputMode) ?? .imeModeNULL
       if inputMode != newMode { inputMode = newMode }
     }
