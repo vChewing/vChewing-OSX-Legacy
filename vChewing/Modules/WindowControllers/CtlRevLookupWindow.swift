@@ -152,7 +152,8 @@ class FrmRevLookupWindow: NSWindow {
   @objc func keyboardConfirmed(_: Any?) {
     if inputField.stringValue.isEmpty { return }
     resultView.string = "\n" + "Loading…".localized
-    DispatchQueue.main.async { [self] in
+    DispatchQueue.main.async { [weak self] in
+      guard let self = self else { return }
       self.updateResult(with: self.inputField.stringValue)
     }
   }
