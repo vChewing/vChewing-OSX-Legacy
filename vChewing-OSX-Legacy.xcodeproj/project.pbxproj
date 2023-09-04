@@ -71,6 +71,7 @@
 		5BACBD1329509B3D0078CAB3 /* CocoaExtension_Misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A4F0294E057F00EFA49C /* CocoaExtension_Misc.swift */; };
 		5BACBD1429509B450078CAB3 /* CocoaExtension_NSWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A4FF294E092900EFA49C /* CocoaExtension_NSWindowController.swift */; };
 		5BACBD1529509BB60078CAB3 /* SwiftExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A4F2294E058F00EFA49C /* SwiftExtension.swift */; };
+		5BAF0FFB2AA63F6D00FD58A0 /* UserDef.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAF0FFA2AA63F6D00FD58A0 /* UserDef.swift */; };
 		5BB1D7F22999025B00EA8D2C /* PrefUITabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB1D7F12999025B00EA8D2C /* PrefUITabs.swift */; };
 		5BB32F0329A61A3B00B05D7B /* CandidatePool_CocoaImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB32F0229A61A3B00B05D7B /* CandidatePool_CocoaImpl.swift */; };
 		5BB32F0529A61AFB00B05D7B /* CtlCandidateTDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB32F0429A61AFB00B05D7B /* CtlCandidateTDK.swift */; };
@@ -232,6 +233,7 @@
 		5BACBD0F295099480078CAB3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		5BACBD102950994A0078CAB3 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		5BACBD112950994C0078CAB3 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		5BAF0FFA2AA63F6D00FD58A0 /* UserDef.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDef.swift; sourceTree = "<group>"; };
 		5BB1D7F12999025B00EA8D2C /* PrefUITabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefUITabs.swift; sourceTree = "<group>"; };
 		5BB32F0229A61A3B00B05D7B /* CandidatePool_CocoaImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandidatePool_CocoaImpl.swift; sourceTree = "<group>"; };
 		5BB32F0429A61AFB00B05D7B /* CtlCandidateTDK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CtlCandidateTDK.swift; sourceTree = "<group>"; };
@@ -626,6 +628,7 @@
 				5BE5A537294E0CEC00EFA49C /* PrefMgrProtocol.swift */,
 				5BE5A56B294E127B00EFA49C /* PhraseEditorDelegate.swift */,
 				5BE5A538294E0CEC00EFA49C /* Shared.swift */,
+				5BAF0FFA2AA63F6D00FD58A0 /* UserDef.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -983,6 +986,7 @@
 				5BE5A556294E0D1E00EFA49C /* 5_Node.swift in Sources */,
 				5BE5A527294E0C2900EFA49C /* LMInstantiator_DateTimeExtension.swift in Sources */,
 				5BB32F0329A61A3B00B05D7B /* CandidatePool_CocoaImpl.swift in Sources */,
+				5BAF0FFB2AA63F6D00FD58A0 /* UserDef.swift in Sources */,
 				5BE5A55C294E0E8000EFA49C /* PopupCompositionBuffer.swift in Sources */,
 				5BE5A52F294E0C2B00EFA49C /* lmUserOverride.swift in Sources */,
 				5B751DD3294EE57D0031CF70 /* InputHandler_TriageInput.swift in Sources */,
