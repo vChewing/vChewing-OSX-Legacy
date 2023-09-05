@@ -285,6 +285,16 @@ public extension SessionCtl {
         inputMode = IMEApp.currentInputMode
       }
     }
+    DispatchQueue.main.async {
+      // 清理掉上一個會話的選字窗及其選單。
+      if self.candidateUI is CtlCandidateTDK {
+        self.candidateUI = nil
+      }
+      CtlCandidateTDK.currentMenu?.cancelTracking()
+      CtlCandidateTDK.currentMenu = nil
+      CtlCandidateTDK.currentWindow?.orderOut(nil)
+      CtlCandidateTDK.currentWindow = nil
+    }
     DispatchQueue.main.async { [weak self] in
       guard let self = self else { return }
       if isActivated { return }

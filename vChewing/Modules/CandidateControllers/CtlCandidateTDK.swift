@@ -27,8 +27,12 @@ public class CtlCandidateTDK: CtlCandidate, NSWindowDelegate {
   public var useMouseScrolling: Bool = true
   private static var thePool: CandidatePool = .init(candidates: [])
   private static var currentView: NSView = .init()
-  public static var currentWindow: NSWindow?
   public static var currentMenu: NSMenu?
+  public static var currentWindow: NSWindow? {
+    willSet {
+      currentWindow?.orderOut(nil)
+    }
+  }
 
   private var theViewAppKit: NSView {
     VwrCandidateTDKAppKit(controller: self, thePool: Self.thePool)
@@ -63,6 +67,7 @@ public class CtlCandidateTDK: CtlCandidate, NSWindowDelegate {
 
     super.init(layout)
     window = panel
+    Self.currentWindow = panel
     window?.delegate = self
     currentLayout = layout
   }
