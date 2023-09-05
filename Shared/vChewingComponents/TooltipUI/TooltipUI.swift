@@ -62,6 +62,12 @@ public class TooltipUI: NSWindowController {
     }
   }
 
+  private static var currentWindow: NSWindow? {
+    willSet {
+      currentWindow?.orderOut(nil)
+    }
+  }
+
   public var direction: NSUserInterfaceLayoutOrientation = .horizontal {
     didSet {
       if #unavailable(macOS 10.14) {
@@ -91,6 +97,7 @@ public class TooltipUI: NSWindowController {
     messageText.font = NSFont.systemFont(ofSize: NSFont.systemFontSize)
     messageText.needsDisplay = true
     panel.contentView?.addSubview(messageText)
+    Self.currentWindow = panel
     super.init(window: panel)
   }
 
