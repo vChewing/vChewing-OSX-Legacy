@@ -9,6 +9,12 @@
 import AppKit
 
 public class PopupCompositionBuffer: NSWindowController {
+  private static var currentWindow: NSWindow? {
+    willSet {
+      currentWindow?.orderOut(nil)
+    }
+  }
+
   public var isTypingDirectionVertical = false {
     didSet {
       if #unavailable(macOS 10.14) {
@@ -46,6 +52,7 @@ public class PopupCompositionBuffer: NSWindowController {
     messageTextField.font = .systemFont(ofSize: 18)
     panel.contentView?.addSubview(messageTextField)
     panel.contentView?.wantsLayer = true
+    Self.currentWindow = panel
     super.init(window: panel)
   }
 
