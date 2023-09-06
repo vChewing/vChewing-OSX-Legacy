@@ -139,6 +139,13 @@ public class TooltipUI: NSWindowController {
       textColor = NSColor(
         red: 0.9, green: 0.9, blue: 0.9, alpha: 1.00
       )
+    case .information:
+      backgroundColor = NSColor(
+        red: 0.09, green: 0.14, blue: 0.16, alpha: 1.00
+      )
+      textColor = NSColor(
+        red: 0.91, green: 0.92, blue: 0.95, alpha: 1.00
+      )
     case .redAlert:
       backgroundColor = NSColor(
         red: 0.55, green: 0.00, blue: 0.00, alpha: 1.00
@@ -168,7 +175,7 @@ public class TooltipUI: NSWindowController {
       )
     case .prompt:
       backgroundColor = NSColor(
-        red: 0.09, green: 0.15, blue: 0.15, alpha: 1.00
+        red: 0.09, green: 0.16, blue: 0.14, alpha: 1.00
       )
       textColor = NSColor(
         red: 0.91, green: 0.95, blue: 0.92, alpha: 1.00
