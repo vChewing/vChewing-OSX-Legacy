@@ -9,7 +9,6 @@
 /// 該檔案乃輸入調度模組當中「用來規定在選字窗出現時的按鍵行為」的部分。
 
 import AppKit
-import Carbon
 import Foundation
 
 // MARK: - § 對選字狀態進行調度 (Handle Candidate State).
@@ -231,8 +230,7 @@ extension InputHandler {
     let ctrlShiftCMD: Bool = input.keyModifierFlags == [.control, .command, .shift]
     if ctrlShiftCMD || ctrlCMD {
       // 此處 JIS 鍵盤判定無法用於螢幕鍵盤。所以，螢幕鍵盤的場合，系統會依照 US 鍵盤的判定方案。
-      let isJIS: Bool = KBGetLayoutType(Int16(LMGetKbdType())) == kKeyboardJIS
-      switch (input.keyCode, isJIS) {
+      switch (input.keyCode, IMEApp.isKeyboardJIS) {
       case (30, true), (33, false):
         _ = ctlCandidate.highlightPreviousCandidate() ? {}() : delegate.callError("8B144DCD")
         return true

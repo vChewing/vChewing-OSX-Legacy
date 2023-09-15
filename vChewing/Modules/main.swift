@@ -7,6 +7,7 @@
 // requirements defined in MIT License.
 
 import AppKit
+import Carbon
 import InputMethodKit
 
 switch max(CommandLine.arguments.count - 1, 0) {
@@ -105,6 +106,11 @@ public enum IMEApp {
 
   public static var currentInputMode: Shared.InputMode {
     .init(rawValue: PrefMgr.shared.mostRecentInputMode) ?? .imeModeNULL
+  }
+
+  /// 當前鍵盤是否是 JIS 佈局
+  public static var isKeyboardJIS: Bool {
+    KBGetLayoutType(Int16(LMGetKbdType())) == kKeyboardJIS
   }
 
   /// Fart or Beep?

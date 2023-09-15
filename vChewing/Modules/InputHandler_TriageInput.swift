@@ -9,7 +9,6 @@
 /// 該檔案乃輸入調度模組當中「用來規定當 IMK 接受按鍵訊號時且首次交給輸入調度模組處理時、
 /// 輸入調度模組要率先處理」的部分。據此判斷是否需要將按鍵處理委派給其它成員函式。
 
-import Carbon
 import Foundation
 
 // MARK: - § 根據狀態調度按鍵輸入 (Handle Input with States) * Triage
@@ -161,8 +160,7 @@ public extension InputHandler {
       revolveCandidateWithBrackets: if ctrlShiftCMD || ctrlCMD {
         if state.type != .ofInputting { break revolveCandidateWithBrackets }
         // 此處 JIS 鍵盤判定無法用於螢幕鍵盤。所以，螢幕鍵盤的場合，系統會依照 US 鍵盤的判定方案。
-        let isJIS: Bool = KBGetLayoutType(Int16(LMGetKbdType())) == kKeyboardJIS
-        switch (input.keyCode, isJIS) {
+        switch (input.keyCode, IMEApp.isKeyboardJIS) {
         case (30, true), (33, false): return revolveCandidate(reverseOrder: true)
         case (42, true), (30, false): return revolveCandidate(reverseOrder: false)
         default: break
