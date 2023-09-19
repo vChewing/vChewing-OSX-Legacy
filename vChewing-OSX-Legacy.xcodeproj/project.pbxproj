@@ -886,6 +886,10 @@
 				"$(SRCROOT)/DictionaryData/components/common/data-zhuyinwen.txt",
 				"$(SRCROOT)/DictionaryData/components/common/phone-header.txt",
 				"$(SRCROOT)/DataCompiler/dataCompiler.swift",
+				"$(SRCROOT)/DictionaryData/components/cht/phrases-custom-genshin-cht.txt",
+				"$(SRCROOT)/DictionaryData/components/cht/phrases-custom-seikyuutetsudou-cht.txt",
+				"$(SRCROOT)/DictionaryData/components/chs/phrases-custom-genshin-chs.txt",
+				"$(SRCROOT)/DictionaryData/components/chs/phrases-custom-seikyuutetsudou-chs.txt",
 			);
 			name = "Run Script (Build Dictionary Data)";
 			outputFileListPaths = (
@@ -906,7 +910,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\ncd ${SRCROOT}\nswiftc ${SRCROOT}/DataCompiler/dataCompiler.swift -o ${SRCROOT}/DataCompiler/cook_mac.exe\nmv ${SRCROOT}/DataCompiler/cook_mac.exe ${SRCROOT}/DictionaryData/bin/cook_mac.exe\ncd ${SRCROOT}/DictionaryData/\n./bin/cook_mac.exe\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\ncd ${SRCROOT}/DictionaryData/\nswift ${SRCROOT}/DataCompiler/dataCompiler.swift\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1245,6 +1249,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1263,7 +1268,6 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = macosx12.3;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -1307,6 +1311,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -1318,7 +1323,6 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				SDKROOT = macosx12.3;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 			};
 			name = Release;

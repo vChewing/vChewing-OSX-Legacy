@@ -15,6 +15,8 @@ P.S.: 威注音輸入法的 Shift 按鍵監測功能僅藉由對 NSEvent 訊號�
 - 任何同時支援 macOS 10.9 Mavericks 軟體建置、且支援至少 Swift 5.5 的 Xcode。
     - 例外：macOS 13 Ventura 能用的 Xcode 14.2 為止的版本其實是能給 macOS 10.9 建置軟體的，雖然會亮警告說系統建置目標「超出可建置目標的版本範圍」。
     - Xcode 14.3 開始的版本內建的 toolchain 不包含「libarclite」，需要使用者自行在 toolchain 當中補充 libarclite 相關檔案（可藉由更舊版的 Xcode 提取出來）。
+    - 總之建議使用 Xcode 14.2。
+    - 技術上無法支援藉由 Xcode 15 的建置（會有與部分 CoreFoundation & TextInputService 型別有關的無法避免的運行階段錯誤），除非放棄早於 macOS 10.13 的建置目標。但這會讓這個 Aqua 紀念版失去意義。
 - 作業系統：能運行上述建置環境的 macOS 作業系統（可能至少 macOS 10.15 Catalina）。
 - 請使用正式發行版 Xcode，且最小子版本號越高越好（因為 Bug 相對而言最少）。
 
