@@ -103,7 +103,7 @@ public class CtlCandidateTDK: CtlCandidate, NSWindowDelegate {
     delegate?.candidatePairHighlightChanged(at: highlightedIndex)
     DispatchQueue.main.async { [weak self] in
       guard let self = self else { return }
-      updateNSWindowModern(window)
+      self.updateNSWindowModern(window)
     }
   }
 
