@@ -33,6 +33,9 @@ import AppKit
   @AppProperty(key: UserDef.kFailureFlagForUOMObservation.rawValue, defaultValue: false)
   public dynamic var failureFlagForUOMObservation: Bool
 
+  @AppProperty(key: UserDef.kSecurityHardenedCompositionBuffer.rawValue, defaultValue: false)
+  public dynamic var securityHardenedCompositionBuffer: Bool
+
   @AppProperty(key: UserDef.kDeltaOfCalendarYears.rawValue, defaultValue: -2000)
   public dynamic var deltaOfCalendarYears: Int
 
