@@ -63,7 +63,7 @@ public extension SessionCtl {
     // 強制重新初期化，因為有顯示滯後性。
     do {
       tooltipInstance.hide()
-      tooltipInstance = .init()
+      tooltipInstance = Self.makeTooltipUI()
       tooltipInstance.setColor(state: state.data.tooltipColorState)
     }
     // 再設定其文字顯示內容並顯示。

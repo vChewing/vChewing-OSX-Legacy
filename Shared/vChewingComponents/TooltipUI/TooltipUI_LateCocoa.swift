@@ -8,56 +8,11 @@
 
 import AppKit
 
-public class TooltipUI: NSWindowController {
-  private var messageText: NSTextField
+public class TooltipUI_LateCocoa: NSWindowController, TooltipUIProtocol {
+  private var messageText: NSAttributedTooltipTextView
   private var tooltip: String = "" {
     didSet {
-      var text = tooltip
-      if direction == .vertical {
-        text = text.replacingOccurrences(of: "˙", with: "･")
-        text = text.replacingOccurrences(of: "\u{A0}", with: "　")
-        text = text.replacingOccurrences(of: "+", with: "")
-        text = text.replacingOccurrences(of: "Shift", with: "⇧")
-        text = text.replacingOccurrences(of: "Control", with: "⌃")
-        text = text.replacingOccurrences(of: "Enter", with: "⏎")
-        text = text.replacingOccurrences(of: "Command", with: "⌘")
-        text = text.replacingOccurrences(of: "Delete", with: "⌦")
-        text = text.replacingOccurrences(of: "BackSpace", with: "⌫")
-        text = text.replacingOccurrences(of: "Space", with: "␣")
-        text = text.replacingOccurrences(of: "SHIFT", with: "⇧")
-        text = text.replacingOccurrences(of: "CONTROL", with: "⌃")
-        text = text.replacingOccurrences(of: "ENTER", with: "⏎")
-        text = text.replacingOccurrences(of: "COMMAND", with: "⌘")
-        text = text.replacingOccurrences(of: "DELETE", with: "⌦")
-        text = text.replacingOccurrences(of: "BACKSPACE", with: "⌫")
-        text = text.replacingOccurrences(of: "SPACE", with: "␣")
-      }
-
-      let attrString: NSMutableAttributedString = .init(string: text)
-      let verticalAttributes: [NSAttributedString.Key: Any] = [
-        .kern: 0,
-        .verticalGlyphForm: true,
-        .paragraphStyle: {
-          let newStyle = NSMutableParagraphStyle()
-          let fontSize = messageText.font?.pointSize ?? NSFont.systemFontSize
-          newStyle.lineSpacing = 1
-          newStyle.maximumLineHeight = fontSize
-          newStyle.minimumLineHeight = fontSize
-          return newStyle
-        }(),
-      ]
-
-      attrString.setAttributes(
-        [.kern: 0], range: NSRange(location: 0, length: attrString.length)
-      )
-
-      if direction == .vertical {
-        attrString.setAttributes(
-          verticalAttributes, range: NSRange(location: 0, length: attrString.length)
-        )
-      }
-
-      messageText.attributedStringValue = attrString
+      messageText.text = tooltip.isEmpty ? nil : tooltip
       adjustSize()
     }
   }
@@ -68,11 +23,11 @@ public class TooltipUI: NSWindowController {
     }
   }
 
-  public var direction: NSUserInterfaceLayoutOrientation = .horizontal {
+  public var direction: NSAttributedTooltipTextView.writingDirection = .horizontal {
     didSet {
-      if #unavailable(macOS 10.14) {
-        direction = .horizontal
-      }
+      if #unavailable(macOS 10.13) { direction = .horizontal }
+      if Bundle.main.preferredLocalizations[0] == "en" { direction = .horizontal }
+      messageText.direction = direction
     }
   }
 
@@ -84,17 +39,15 @@ public class TooltipUI: NSWindowController {
     )
     panel.level = NSWindow.Level(Int(max(CGShieldingWindowLevel(), kCGPopUpMenuWindowLevel)) + 2)
     panel.hasShadow = true
-    panel.backgroundColor = NSColor.controlBackgroundColor
+    panel.backgroundColor = NSColor.clear
+    panel.isOpaque = false
     panel.isMovable = false
-    messageText = NSTextField()
-    messageText.isEditable = false
-    messageText.isSelectable = false
-    messageText.isBezeled = false
-    messageText.textColor = NSColor.textColor
-    messageText.drawsBackground = true
+    panel.contentView?.wantsLayer = true
+    panel.contentView?.layer?.cornerRadius = 7
+    panel.contentView?.layer?.backgroundColor = NSColor.controlBackgroundColor.cgColor
+    messageText = NSAttributedTooltipTextView()
     messageText.backgroundColor = NSColor.clear
     messageText.textColor = NSColor.textColor
-    messageText.font = NSFont.systemFont(ofSize: NSFont.systemFontSize)
     messageText.needsDisplay = true
     panel.contentView?.addSubview(messageText)
     Self.currentWindow = panel
@@ -107,11 +60,11 @@ public class TooltipUI: NSWindowController {
   }
 
   public func show(
-    tooltip: String = "", at point: NSPoint,
+    tooltip: String, at point: NSPoint,
     bottomOutOfScreenAdjustmentHeight heightDelta: Double,
-    direction: NSUserInterfaceLayoutOrientation = .horizontal, duration: Double = 0
+    direction: NSUserInterfaceLayoutOrientation = .horizontal, duration: Double
   ) {
-    self.direction = direction
+    self.direction = direction == .horizontal ? .horizontal : .vertical
     self.tooltip = tooltip
     window?.setIsVisible(false)
     window?.orderFront(nil)
@@ -125,20 +78,14 @@ public class TooltipUI: NSWindowController {
   }
 
   public func setColor(state: TooltipColorState) {
-    var backgroundColor = NSColor(
-      red: 0.12, green: 0.12, blue: 0.12, alpha: 1.00
-    )
-    var textColor = NSColor(
-      red: 0.9, green: 0.9, blue: 0.9, alpha: 1.00
-    )
+    var backgroundColor = NSColor.controlBackgroundColor
+    var textColor = NSColor.textColor
     switch state {
     case .normal:
       backgroundColor = NSColor(
-        red: 0.12, green: 0.12, blue: 0.12, alpha: 1.00
+        red: 0.18, green: 0.18, blue: 0.18, alpha: 1.00
       )
-      textColor = NSColor(
-        red: 0.9, green: 0.9, blue: 0.9, alpha: 1.00
-      )
+      textColor = NSColor.white
     case .information:
       backgroundColor = NSColor(
         red: 0.09, green: 0.14, blue: 0.16, alpha: 1.00
@@ -181,8 +128,12 @@ public class TooltipUI: NSWindowController {
         red: 0.91, green: 0.95, blue: 0.92, alpha: 1.00
       )
     }
-    window?.backgroundColor = backgroundColor
-    messageText.backgroundColor = backgroundColor
+    if !NSApplication.isDarkMode {
+      let colorInterchange = backgroundColor
+      backgroundColor = textColor
+      textColor = colorInterchange
+    }
+    window?.contentView?.layer?.backgroundColor = backgroundColor.cgColor
     messageText.textColor = textColor
   }
 
@@ -196,22 +147,14 @@ public class TooltipUI: NSWindowController {
   }
 
   private func adjustSize() {
-    messageText.sizeToFit()
-    var rect = messageText.frame
-    if direction == .vertical {
-      rect = .init(x: rect.minX, y: rect.minY, width: rect.height * 1.5, height: rect.width)
-    }
+    var rect = messageText.shrinkFrame()
     var bigRect = rect
     bigRect.size.width += NSFont.systemFontSize
     bigRect.size.height += NSFont.systemFontSize
-    rect.origin.x = ceil(NSFont.systemFontSize / 2)
-    rect.origin.y = ceil(NSFont.systemFontSize / 2)
-    if direction == .vertical {
-      messageText.boundsRotation = 90
-    } else {
-      messageText.boundsRotation = 0
-    }
+    rect.origin.x += ceil(NSFont.systemFontSize / 2)
+    rect.origin.y += ceil(NSFont.systemFontSize / 2)
     messageText.frame = rect
     window?.setFrame(bigRect, display: true)
+    messageText.draw(messageText.frame)
   }
 }
