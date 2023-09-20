@@ -187,9 +187,6 @@ import AppKit
   @AppProperty(key: UserDef.kUseSpaceToCommitHighlightedSCPCCandidate.rawValue, defaultValue: true)
   public dynamic var useSpaceToCommitHighlightedSCPCCandidate: Bool
 
-  @AppProperty(key: UserDef.kEnableSwiftUIForTDKCandidates.rawValue, defaultValue: false)
-  public dynamic var enableSwiftUIForTDKCandidates: Bool
-
   @AppProperty(key: UserDef.kEnableMouseScrollingForTDKCandidatesCocoa.rawValue, defaultValue: false)
   public dynamic var enableMouseScrollingForTDKCandidatesCocoa: Bool
 
