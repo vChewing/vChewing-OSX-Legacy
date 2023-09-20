@@ -18,6 +18,7 @@
 "Input method may not be fully enabled. Please enable it through System Preferences > Keyboard > Input Sources." = "入力アプリの自動起動はうまく出来なかったかもしれません。ご自分で「システム環境設定→キーボード→入力ソース」で起動してください。";
 "Continue" = "続行";
 "Please use mainstream releases for the current system version." = "このアプリの主流発行版をお用い下さい。";
-"The current installer only installs version suitable for macOS 10.9 Mavericks, and it might work with macOS 10.10 - 10.12. However, it has lack of certain useful features and user-experiences comparing to the mainstream releases (which are only available for later macOS releases)." = "今の実装アプリで実装するバージョンは、macOS 10.9 のために作ったバージョンです。多分 macOS 10.10 から 10.12 までの macOS バージョンでも使えます。しかし、（そのあとの macOS バージョンのために開発した）このアプリの主流発行版と比べて、要なる機能も、使用者に与えられる体験も、多少欠けております。";
+"The current installer only installs version suitable for macOS 10.9 Mavericks, and it theoreotically works with macOS 10.10 Yosemite - macOS 12 Monterey. Meanwhile, the mainstream releases is made available for most recent macOS release." = "今の実装アプリで実装するバージョンは、macOS 10.9 のために作ったバージョンです。多分 macOS 10.10 から macOS 12 Monterey までの macOS バージョンでも使えます。一方、このアプリの主流発行版は、そのあとの macOS バージョンのために開発したものである。";
 "Download Mainstream Releases" = "主流発行版を取る";
 "Quit Installation" = "実装をやめる";
+"Continue Installation" = "このまま実装し続く";
