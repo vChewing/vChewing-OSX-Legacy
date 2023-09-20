@@ -18,6 +18,7 @@
 "Input method may not be fully enabled. Please enable it through System Preferences > Keyboard > Input Sources." = "输入法已经安装好，但可能没有完全启用。请从「系统偏好设定」 > 「键盘」 > 「输入方式」分页加入输入法。";
 "Continue" = "继续";
 "Please use mainstream releases for the current system version." = "请就您目前的系统版本使用本产品的主流发行版。";
-"The current installer only installs version suitable for macOS 10.9 Mavericks, and it might work with macOS 10.10 - 10.12. However, it has lack of certain useful features and user-experiences comparing to the mainstream releases (which are only available for later macOS releases)." = "当前的安装包所安装的版本是针对 macOS 10.9 特供的版本，或许也可以在 macOS 10.10 至 10.12 这几个版本的系统内使用。但是，相较于针对在此之后的 macOS 开发的主流版本而言，当前安装包所安装的版本缺少很多有用的功能，且使用者体验也逊色些许。";
+"The current installer only installs version suitable for macOS 10.9 Mavericks, and it theoreotically works with macOS 10.10 Yosemite - macOS 12 Monterey. Meanwhile, the mainstream releases is made available for most recent macOS release." = "当前的安装包所安装的版本是针对 macOS 10.9 特供的版本，或许也可以在 macOS 10.10 至 macOS 12 Montery 这几个版本的系统内使用。而主流版本则针对最新的几版 macOS 开发。";
 "Download Mainstream Releases" = "下载主流版本";
 "Quit Installation" = "退出安装程式";
+"Continue Installation" = "继续安装";

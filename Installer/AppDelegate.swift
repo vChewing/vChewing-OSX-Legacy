@@ -111,14 +111,15 @@ class AppDelegate: NSWindowController, NSApplicationDelegate {
     window.orderFront(self)
     NSApp.popup()
 
-    if #available(macOS 10.13, *) {
+    if #available(macOS 10.14, *) {
       NSSound.beep()
       let alert = NSAlert()
       alert.messageText = "Please use mainstream releases for the current system version.".localized
       alert.informativeText =
-        "The current installer only installs version suitable for macOS 10.9 Mavericks, and it might work with macOS 10.10 - 10.12. However, it has lack of certain useful features and user-experiences comparing to the mainstream releases (which are only available for later macOS releases)."
+        "The current installer only installs version suitable for macOS 10.9 Mavericks, and it theoreotically works with macOS 10.10 Yosemite - macOS 12 Monterey. Meanwhile, the mainstream releases is made available for most recent macOS release."
           .localized
       alert.addButton(withTitle: "Download Mainstream Releases".localized)
+      alert.addButton(withTitle: "Continue Installation".localized)
       alert.addButton(withTitle: "Quit Installation".localized)
       alert.beginSheetModal(for: window) { result in
         switch result {
@@ -127,7 +128,8 @@ class AppDelegate: NSWindowController, NSApplicationDelegate {
             NSWorkspace.shared.open(url)
           }
           NSApp.terminate(self)
-        case .alertSecondButtonReturn: NSApp.terminate(self)
+        case .alertSecondButtonReturn: return
+        case .alertThirdButtonReturn: NSApp.terminate(self)
         default: NSApp.terminate(self)
         }
       }
