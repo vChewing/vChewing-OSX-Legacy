@@ -12,6 +12,7 @@ import Foundation
 
 extension SessionCtl: InputHandlerDelegate {
   public var clientMitigationLevel: Int {
+    guard !PrefMgr.shared.securityHardenedCompositionBuffer else { return 2 }
     guard
       let result = PrefMgr.shared.clientsIMKTextInputIncapable[clientBundleIdentifier]
     else {
