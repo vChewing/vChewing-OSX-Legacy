@@ -31,8 +31,10 @@ public class UpdateSputnik {
 
   public init() {}
 
-  public func checkForUpdate(forced: Bool = false, url: URL) {
-    guard !busy else { return }
+  public func checkForUpdate(forced: Bool = false, url: URL, shouldBypass: @escaping () -> Bool) {
+    let shouldBypass = shouldBypass()
+    silentMode = shouldBypass
+    guard !shouldBypass, !busy else { return }
 
     if !forced {
       if !UserDefaults.standard.bool(forKey: kCheckUpdateAutomatically) { return }
@@ -48,7 +50,9 @@ public class UpdateSputnik {
     let task = URLSession.shared.dataTask(with: request) { data, _, error in
       if let error = error {
         DispatchQueue.main.async {
-          self.showError(message: error.localizedDescription)
+          if !self.silentMode {
+            self.showError(message: error.localizedDescription)
+          }
           self.currentTask = nil
         }
         return
@@ -61,6 +65,7 @@ public class UpdateSputnik {
 
   // MARK: - Private Properties
 
+  private var silentMode = false
   private var isCurrentCheckForced = false
   var sessionConfiguration = URLSessionConfiguration.backgroundSessionConfiguration(Bundle.main.bundleIdentifier!)
 
@@ -68,9 +73,11 @@ public class UpdateSputnik {
   private var currentTask: URLSessionDataTask?
   private var data: Data? {
     didSet {
-      if let data = data {
+      if let data = data, !silentMode {
         DispatchQueue.main.async {
-          self.dataDidSet(data: data)
+          if !self.silentMode {
+            self.dataDidSet(data: data)
+          }
           self.currentTask = nil
         }
       }
