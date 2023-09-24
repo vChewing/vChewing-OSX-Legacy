@@ -11,14 +11,14 @@ import AppKit
 public class UpdateSputnik {
   public static let shared: UpdateSputnik = .init()
   public let kUpdateInfoPageURLKey: String = {
-    if #available(macOS 10.13, *) {
+    if #available(macOS 13, *) {
       return "UpdateInfoSite"
     }
     return "UpdateInfoSiteLegacy"
   }()
 
   public let kUpdateInfoPageURLGitHubKey: String = {
-    if #available(macOS 10.13, *) {
+    if #available(macOS 13, *) {
       return "UpdateInfoSiteGitHub"
     }
     return "UpdateInfoSiteLegacyGitHub"
