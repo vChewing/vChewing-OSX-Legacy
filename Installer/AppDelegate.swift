@@ -111,7 +111,7 @@ class AppDelegate: NSWindowController, NSApplicationDelegate {
     window.orderFront(self)
     NSApp.popup()
 
-    if #available(macOS 10.14, *) {
+    if #available(macOS 13, *) {
       NSSound.beep()
       let alert = NSAlert()
       alert.messageText = "Please use mainstream releases for the current system version.".localized
