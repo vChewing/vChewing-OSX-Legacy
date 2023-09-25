@@ -8,7 +8,8 @@
 
 import AppKit
 
-enum PrefUITabs: String, CaseIterable {
+enum PrefUITabs: String, CaseIterable, Identifiable, Hashable {
+  var id: ObjectIdentifier { .init(rawValue as NSString) }
   case tabGeneral = "General"
   case tabCandidates = "Candidates"
   case tabBehavior = "Behavior"
