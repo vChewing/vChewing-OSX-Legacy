@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "5BACBCDB295093A60078CAB3"
-               BuildableName = "vChewingInstaller.app"
-               BlueprintName = "vChewingInstaller"
+               BuildableName = "vChewingInstallerLegacy.app"
+               BlueprintName = "vChewingInstallerLegacy"
                ReferencedContainer = "container:vChewing-OSX-Legacy.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,8 +45,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5BACBCDB295093A60078CAB3"
-            BuildableName = "vChewingInstaller.app"
-            BlueprintName = "vChewingInstaller"
+            BuildableName = "vChewingInstallerLegacy.app"
+            BlueprintName = "vChewingInstallerLegacy"
             ReferencedContainer = "container:vChewing-OSX-Legacy.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -62,8 +62,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5BACBCDB295093A60078CAB3"
-            BuildableName = "vChewingInstaller.app"
-            BlueprintName = "vChewingInstaller"
+            BuildableName = "vChewingInstallerLegacy.app"
+            BlueprintName = "vChewingInstallerLegacy"
             ReferencedContainer = "container:vChewing-OSX-Legacy.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

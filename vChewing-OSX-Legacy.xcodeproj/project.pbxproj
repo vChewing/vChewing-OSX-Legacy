@@ -221,7 +221,7 @@
 		5B7B4D232AA1BB7600FE6B63 /* Qwertyyb_ShiftKeyUpChecker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Qwertyyb_ShiftKeyUpChecker.swift; sourceTree = "<group>"; };
 		5B8F0A622ABB3E7400A49491 /* Fuziki_NSAttributedTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fuziki_NSAttributedTextView.swift; sourceTree = "<group>"; };
 		5BACBCC629508A5F0078CAB3 /* dataCompiler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dataCompiler.swift; sourceTree = "<group>"; };
-		5BACBCDC295093A60078CAB3 /* vChewingInstaller.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vChewingInstaller.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5BACBCDC295093A60078CAB3 /* vChewingInstallerLegacy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vChewingInstallerLegacy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BACBCDE295093A60078CAB3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5BACBCE3295093A80078CAB3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		5BACBCE5295093A80078CAB3 /* Installer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Installer.entitlements; sourceTree = "<group>"; };
@@ -715,7 +715,7 @@
 			isa = PBXGroup;
 			children = (
 				5BF5BADD294DFFC9006011AD /* vChewing.app */,
-				5BACBCDC295093A60078CAB3 /* vChewingInstaller.app */,
+				5BACBCDC295093A60078CAB3 /* vChewingInstallerLegacy.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -737,9 +737,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		5BACBCDB295093A60078CAB3 /* vChewingInstaller */ = {
+		5BACBCDB295093A60078CAB3 /* vChewingInstallerLegacy */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5BACBCE8295093A80078CAB3 /* Build configuration list for PBXNativeTarget "vChewingInstaller" */;
+			buildConfigurationList = 5BACBCE8295093A80078CAB3 /* Build configuration list for PBXNativeTarget "vChewingInstallerLegacy" */;
 			buildPhases = (
 				5BACBCD8295093A60078CAB3 /* Sources */,
 				5BACBCD9295093A60078CAB3 /* Frameworks */,
@@ -750,9 +750,9 @@
 			dependencies = (
 				5BACBD052950957F0078CAB3 /* PBXTargetDependency */,
 			);
-			name = vChewingInstaller;
+			name = vChewingInstallerLegacy;
 			productName = Installer;
-			productReference = 5BACBCDC295093A60078CAB3 /* vChewingInstaller.app */;
+			productReference = 5BACBCDC295093A60078CAB3 /* vChewingInstallerLegacy.app */;
 			productType = "com.apple.product-type.application";
 		};
 		5BF5BADC294DFFC9006011AD /* vChewing */ = {
@@ -808,7 +808,7 @@
 			projectRoot = "";
 			targets = (
 				5BF5BADC294DFFC9006011AD /* vChewing */,
-				5BACBCDB295093A60078CAB3 /* vChewingInstaller */,
+				5BACBCDB295093A60078CAB3 /* vChewingInstallerLegacy */,
 			);
 		};
 /* End PBXProject section */
@@ -1181,7 +1181,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MARKETING_VERSION = 0.5.27;
-				PRODUCT_BUNDLE_IDENTIFIER = org.atelierInmu.vChewing.vChewingInstaller;
+				PRODUCT_BUNDLE_IDENTIFIER = org.atelierInmu.vChewing.vChewingInstallerLegacy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1215,7 +1215,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MARKETING_VERSION = 0.5.27;
-				PRODUCT_BUNDLE_IDENTIFIER = org.atelierInmu.vChewing.vChewingInstaller;
+				PRODUCT_BUNDLE_IDENTIFIER = org.atelierInmu.vChewing.vChewingInstallerLegacy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1410,7 +1410,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		5BACBCE8295093A80078CAB3 /* Build configuration list for PBXNativeTarget "vChewingInstaller" */ = {
+		5BACBCE8295093A80078CAB3 /* Build configuration list for PBXNativeTarget "vChewingInstallerLegacy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5BACBCE6295093A80078CAB3 /* Debug */,
