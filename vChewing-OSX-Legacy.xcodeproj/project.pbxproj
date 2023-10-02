@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 53;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -145,6 +145,8 @@
 		5BE5A587294E193600EFA49C /* data-zhuyinwen.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BE5A57B294E193600EFA49C /* data-zhuyinwen.json */; };
 		5BE5A588294E193600EFA49C /* data-bpmf-reverse-lookup-CNS1.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BE5A57C294E193600EFA49C /* data-bpmf-reverse-lookup-CNS1.json */; };
 		5BE5A596294E1DFB00EFA49C /* ChineseConverterBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A595294E1DFB00EFA49C /* ChineseConverterBridge.swift */; };
+		5BE5D9992ACAF0EB009A732C /* sequenceDataFromEtenDOS-chs.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BE5D9972ACAF0EA009A732C /* sequenceDataFromEtenDOS-chs.json */; };
+		5BE5D99A2ACAF0EB009A732C /* sequenceDataFromEtenDOS-cht.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BE5D9982ACAF0EB009A732C /* sequenceDataFromEtenDOS-cht.json */; };
 		5BF5BAE1294DFFC9006011AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF5BAE0294DFFC9006011AD /* AppDelegate.swift */; };
 		5BF5BAE3294DFFCA006011AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BF5BAE2294DFFCA006011AD /* Assets.xcassets */; };
 		5BF5BAE6294DFFCA006011AD /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BF5BAE4294DFFCA006011AD /* MainMenu.xib */; };
@@ -323,6 +325,8 @@
 		5BE5A593294E19B300EFA49C /* template-usersymbolphrases.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "template-usersymbolphrases.txt"; sourceTree = "<group>"; };
 		5BE5A594294E19B300EFA49C /* template-exclusions.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "template-exclusions.txt"; sourceTree = "<group>"; };
 		5BE5A595294E1DFB00EFA49C /* ChineseConverterBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChineseConverterBridge.swift; sourceTree = "<group>"; };
+		5BE5D9972ACAF0EA009A732C /* sequenceDataFromEtenDOS-chs.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "sequenceDataFromEtenDOS-chs.json"; sourceTree = "<group>"; };
+		5BE5D9982ACAF0EB009A732C /* sequenceDataFromEtenDOS-cht.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "sequenceDataFromEtenDOS-cht.json"; sourceTree = "<group>"; };
 		5BF5BADD294DFFC9006011AD /* vChewing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vChewing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BF5BAE0294DFFC9006011AD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5BF5BAE2294DFFCA006011AD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -445,6 +449,8 @@
 			isa = PBXGroup;
 			children = (
 				5BCF4AB729546B5100C7FBD9 /* convdict.json */,
+				5BE5D9972ACAF0EA009A732C /* sequenceDataFromEtenDOS-chs.json */,
+				5BE5D9982ACAF0EB009A732C /* sequenceDataFromEtenDOS-cht.json */,
 				5B751DA4294EE1B00031CF70 /* Localizable.strings */,
 				5BF5BAE2294DFFCA006011AD /* Assets.xcassets */,
 				5BE5A589294E195B00EFA49C /* DataTemplates */,
@@ -832,6 +838,7 @@
 			files = (
 				5BCF4AB829546B5200C7FBD9 /* convdict.json in Resources */,
 				5B44BAD9295047AC00E1C02D /* shortcuts.html in Resources */,
+				5BE5D9992ACAF0EB009A732C /* sequenceDataFromEtenDOS-chs.json in Resources */,
 				5BACBD0E295099290078CAB3 /* InfoPlist.strings in Resources */,
 				5BE5A583294E193600EFA49C /* data-bpmf-reverse-lookup-CNS2.json in Resources */,
 				5BE5A585294E193600EFA49C /* data-cht.json in Resources */,
@@ -856,6 +863,7 @@
 				5BE5A586294E193600EFA49C /* data-symbols.json in Resources */,
 				5B751DF5294EF2940031CF70 /* Beep.m4a in Resources */,
 				5BF5BAE6294DFFCA006011AD /* MainMenu.xib in Resources */,
+				5BE5D99A2ACAF0EB009A732C /* sequenceDataFromEtenDOS-cht.json in Resources */,
 				5B751DF0294EF28C0031CF70 /* template-replacements.txt in Resources */,
 				5BE5A584294E193600EFA49C /* data-bpmf-reverse-lookup.json in Resources */,
 				5B751DF7294EF29B0031CF70 /* Localizable.strings in Resources */,
@@ -1214,8 +1222,8 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
-        MARKETING_VERSION = 3.6.0;
-        PRODUCT_BUNDLE_IDENTIFIER = org.atelierInmu.vChewing.vChewingInstallerLegacy;
+				MARKETING_VERSION = 3.6.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.atelierInmu.vChewing.vChewingInstallerLegacy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
