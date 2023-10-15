@@ -179,10 +179,15 @@ public extension SessionCtl {
   /// 切換英數模式開關。
   private func toggleAlphanumericalMode() {
     let status = "NotificationSwitchRevolver".localized
+    let oldValue = isASCIIMode
+    let newValue = isASCIIMode.toggled()
     Notifier.notify(
-      message: isASCIIMode.toggled()
+      message: newValue
         ? NSLocalizedString("Alphanumerical Input Mode", comment: "") + "\n" + status
         : NSLocalizedString("Chinese Input Mode", comment: "") + "\n" + status
     )
+    if oldValue, !newValue, Self.isCapsLocked {
+      CapsLockToggler.turnOff()
+    }
   }
 }
