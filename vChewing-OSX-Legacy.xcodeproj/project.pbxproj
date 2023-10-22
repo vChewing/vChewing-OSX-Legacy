@@ -61,6 +61,8 @@
 		5B751DF7294EF29B0031CF70 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5B751DA4294EE1B00031CF70 /* Localizable.strings */; };
 		5B751DFA294F19B30031CF70 /* frmClientListMgr.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B751DB3294EE2120031CF70 /* frmClientListMgr.xib */; };
 		5B7B4D242AA1BB7600FE6B63 /* Qwertyyb_ShiftKeyUpChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7B4D232AA1BB7600FE6B63 /* Qwertyyb_ShiftKeyUpChecker.swift */; };
+		5B7EEAE32AE5002C006C30A3 /* SecureEventInputSputnik.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7EEAE22AE5002C006C30A3 /* SecureEventInputSputnik.swift */; };
+		5B7EEAE42AE5002C006C30A3 /* SecureEventInputSputnik.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7EEAE22AE5002C006C30A3 /* SecureEventInputSputnik.swift */; };
 		5B8F0A632ABB3E7400A49491 /* Fuziki_NSAttributedTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8F0A622ABB3E7400A49491 /* Fuziki_NSAttributedTextView.swift */; };
 		5BACBCDF295093A60078CAB3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BACBCDE295093A60078CAB3 /* AppDelegate.swift */; };
 		5BACBCE4295093A80078CAB3 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BACBCE2295093A80078CAB3 /* MainMenu.xib */; };
@@ -223,6 +225,7 @@
 		5B751DE0294EE7A80031CF70 /* CandidatePool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandidatePool.swift; sourceTree = "<group>"; };
 		5B751DE1294EE7A80031CF70 /* CtlCandidate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CtlCandidate.swift; sourceTree = "<group>"; };
 		5B7B4D232AA1BB7600FE6B63 /* Qwertyyb_ShiftKeyUpChecker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Qwertyyb_ShiftKeyUpChecker.swift; sourceTree = "<group>"; };
+		5B7EEAE22AE5002C006C30A3 /* SecureEventInputSputnik.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecureEventInputSputnik.swift; sourceTree = "<group>"; };
 		5B8F0A622ABB3E7400A49491 /* Fuziki_NSAttributedTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fuziki_NSAttributedTextView.swift; sourceTree = "<group>"; };
 		5BACBCC629508A5F0078CAB3 /* dataCompiler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dataCompiler.swift; sourceTree = "<group>"; };
 		5BACBCDC295093A60078CAB3 /* vChewingInstallerLegacy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vChewingInstallerLegacy.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -516,6 +519,7 @@
 				5BE5A4F4294E059600EFA49C /* IMKHelper.swift */,
 				5B303E7D2A979F6F002CF4E6 /* IMKUtilsImpl.swift */,
 				5B572A7929FB76B900ED5066 /* LatinKeyboardMappings.swift */,
+				5B7EEAE22AE5002C006C30A3 /* SecureEventInputSputnik.swift */,
 				5BE5A4F2294E058F00EFA49C /* SwiftExtension.swift */,
 				5BE5A4FB294E087B00EFA49C /* TISInputSourceExtension.swift */,
 			);
@@ -956,6 +960,7 @@
 				5BACBCFE295094FA0078CAB3 /* TISInputSourceExtension.swift in Sources */,
 				5BACBD002950950D0078CAB3 /* AppDelegate_Extension.swift in Sources */,
 				5BACBD1429509B450078CAB3 /* CocoaExtension_NSWindowController.swift in Sources */,
+				5B7EEAE42AE5002C006C30A3 /* SecureEventInputSputnik.swift in Sources */,
 				5BACBCFD295094E90078CAB3 /* IMKHelper.swift in Sources */,
 				5BACBD022950951A0078CAB3 /* RelocationDetector.swift in Sources */,
 			);
@@ -996,6 +1001,7 @@
 				5B751DB9294EE27C0031CF70 /* CtlRevLookupWindow.swift in Sources */,
 				5BE5A4F3294E058F00EFA49C /* SwiftExtension.swift in Sources */,
 				5BE5A532294E0C9F00EFA49C /* PinyinPhonaConverter.swift in Sources */,
+				5B7EEAE32AE5002C006C30A3 /* SecureEventInputSputnik.swift in Sources */,
 				5BE5A562294E10C800EFA49C /* Uninstaller.swift in Sources */,
 				5BE5A526294E0C2900EFA49C /* LMInstantiator.swift in Sources */,
 				5BE5A52E294E0C2B00EFA49C /* lmCassette.swift in Sources */,
