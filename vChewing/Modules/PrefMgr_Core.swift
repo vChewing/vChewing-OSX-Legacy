@@ -131,6 +131,12 @@ import AppKit
   @AppProperty(key: UserDef.kUpperCaseLetterKeyBehavior.rawValue, defaultValue: 0)
   public dynamic var upperCaseLetterKeyBehavior: Int
 
+  @AppProperty(key: UserDef.kShiftEisuToggleOffTogetherWithCapsLock.rawValue, defaultValue: true)
+  public dynamic var shiftEisuToggleOffTogetherWithCapsLock: Bool
+
+  @AppProperty(key: UserDef.kBypassNonAppleCapsLockHandling.rawValue, defaultValue: false)
+  public dynamic var bypassNonAppleCapsLockHandling: Bool
+
   @AppProperty(key: UserDef.kTogglingAlphanumericalModeWithLShift.rawValue, defaultValue: true)
   public dynamic var togglingAlphanumericalModeWithLShift: Bool {
     didSet {
