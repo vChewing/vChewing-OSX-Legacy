@@ -81,6 +81,7 @@ public extension SessionCtl {
             self?.isASCIIMode.toggle()
           }
           guard PrefMgr.shared.showNotificationsWhenTogglingCapsLock else { return }
+          guard !PrefMgr.shared.bypassNonAppleCapsLockHandling else { return }
           let status = NSLocalizedString("NotificationSwitchRevolver", comment: "")
           Notifier.notify(
             message: isCapsLockTurnedOn
