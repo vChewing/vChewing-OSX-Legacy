@@ -11,14 +11,14 @@ import Foundation
 // MARK: - 使用者語彙類型定義
 
 public extension LMMgr {
-  struct UserPhrase {
+  struct UserPhrase: Hashable {
     public private(set) var keyArray: [String]
     public private(set) var value: String
     public private(set) var inputMode: Shared.InputMode
     public private(set) var isConverted: Bool = false
     public var weight: Double?
 
-    private var isDuplicated: Bool {
+    public var isDuplicated: Bool {
       LMMgr.checkIfPhrasePairExists(userPhrase: value, mode: inputMode, keyArray: keyArray)
     }
 
