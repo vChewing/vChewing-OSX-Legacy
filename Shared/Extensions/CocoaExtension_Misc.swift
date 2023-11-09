@@ -272,6 +272,49 @@ public extension NSApplication {
 
 public extension NSApplication {
   func popup() {
-    NSApp.activate(ignoringOtherApps: true)
+    #if compiler(>=5.9) && canImport(AppKit, _version: "14.0")
+      if #available(macOS 14.0, *) {
+        NSApp.activate()
+      } else {
+        NSApp.activate(ignoringOtherApps: true)
+      }
+    #else
+      NSApp.activate(ignoringOtherApps: true)
+    #endif
+  }
+}
+
+// MARK: - Reading bundle's accent color.
+
+public extension NSColor {
+  static var accentColor: NSColor {
+    guard #unavailable(macOS 10.14) else { return .controlAccentColor }
+    return .alternateSelectedControlColor
+  }
+}
+
+public extension Bundle {
+  func getAccentColor() -> NSColor {
+    let defaultResult: NSColor = .accentColor
+    let queryPhrase = localizedInfoDictionary?["NSAccentColorName"] as? String ?? infoDictionary?["NSAccentColorName"] as? String
+    guard let queryPhrase = queryPhrase, !queryPhrase.isEmpty else { return defaultResult }
+    guard #available(macOS 10.13, *) else { return defaultResult }
+    return NSColor(named: queryPhrase, bundle: self) ?? defaultResult
+  }
+}
+
+public extension NSRunningApplication {
+  private static var temporatyBundlePtr: Bundle?
+
+  static func findAccentColor(with bundleIdentifier: String) -> NSColor {
+    let matchedRunningApps = Self.runningApplications(withBundleIdentifier: bundleIdentifier)
+    guard let matchedAppURL = matchedRunningApps.first?.bundleURL else { return .accentColor }
+    Self.temporatyBundlePtr = Bundle(url: matchedAppURL)
+    defer { temporatyBundlePtr = nil }
+    let bundleColor = Self.temporatyBundlePtr?.getAccentColor().usingColorSpace(.deviceRGB)
+    guard let bundleColor = bundleColor else { return .accentColor }
+    let h = bundleColor.hueComponent
+    let s = bundleColor.saturationComponent
+    return .init(hue: h, saturation: s, brightness: 128, alpha: 1)
   }
 }
