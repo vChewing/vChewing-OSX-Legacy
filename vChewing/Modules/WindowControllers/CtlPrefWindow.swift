@@ -329,7 +329,7 @@ class CtlPrefWindow: NSWindowController, NSWindowDelegate {
   }
 
   @IBAction func toggledExternalFactoryPlistDataOnOff(_: NSButton) {
-    LMMgr.reloadFactoryDictionaryFiles()
+    LMMgr.connectCoreDB()
   }
 
   @IBAction func resetSpecifiedUserDataFolder(_: Any) {

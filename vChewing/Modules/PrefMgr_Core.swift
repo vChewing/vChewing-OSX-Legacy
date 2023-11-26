@@ -166,13 +166,6 @@ import AppKit
   @AppProperty(key: UserDef.kClientsIMKTextInputIncapable.rawValue, defaultValue: kDefaultClientsIMKTextInputIncapable)
   public dynamic var clientsIMKTextInputIncapable: [String: Bool]
 
-  @AppProperty(key: UserDef.kOnlyLoadFactoryLangModelsIfNeeded.rawValue, defaultValue: true)
-  public dynamic var onlyLoadFactoryLangModelsIfNeeded: Bool {
-    didSet {
-      if !onlyLoadFactoryLangModelsIfNeeded { LMMgr.loadDataModelsOnAppDelegate() }
-    }
-  }
-
   @AppProperty(key: UserDef.kShowTranslatedStrokesInCompositionBuffer.rawValue, defaultValue: true)
   public dynamic var showTranslatedStrokesInCompositionBuffer: Bool
 
