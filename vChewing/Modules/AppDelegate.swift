@@ -86,7 +86,7 @@ public extension AppDelegate {
       NSUserNotificationCenter.default.deliver(userNotification)
     }
 
-    if !PrefMgr.shared.onlyLoadFactoryLangModelsIfNeeded { LMMgr.loadDataModelsOnAppDelegate() }
+    LMMgr.connectCoreDB()
     LMMgr.loadCassetteData()
     LMMgr.initUserLangModels()
     folderMonitor.folderDidChange = { [weak self] in
