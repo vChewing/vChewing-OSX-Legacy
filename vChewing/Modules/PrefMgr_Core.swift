@@ -33,6 +33,9 @@ import AppKit
   @AppProperty(key: UserDef.kFailureFlagForUOMObservation.rawValue, defaultValue: false)
   public dynamic var failureFlagForUOMObservation: Bool
 
+  @AppProperty(key: UserDef.kRespectClientAccentColor.rawValue, defaultValue: true)
+  public dynamic var respectClientAccentColor: Bool
+
   @AppProperty(key: UserDef.kSecurityHardenedCompositionBuffer.rawValue, defaultValue: false)
   public dynamic var securityHardenedCompositionBuffer: Bool
 
