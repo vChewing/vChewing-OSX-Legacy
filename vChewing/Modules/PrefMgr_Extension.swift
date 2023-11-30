@@ -6,9 +6,9 @@
 // marks, or product names of Contributor, except as required to fulfill notice
 // requirements defined in MIT License.
 
-// MARK: Auto parameter fix procedures, executed everytime on SessionCtl.activateServer().
-
 import InputMethodKit
+
+// MARK: Auto parameter fix procedures, executed everytime on SessionCtl.activateServer().
 
 public extension PrefMgr {
   func fixOddPreferences() {
@@ -17,10 +17,6 @@ public extension PrefMgr {
     }
     if appleLanguages.isEmpty {
       UserDefaults.current.removeObject(forKey: UserDef.kAppleLanguages.rawValue)
-    }
-    // macOS 10.13 之前的系統的沙箱互動似乎有問題，只能停用磁帶模組了。
-    if #unavailable(macOS 10.13) {
-      cassetteEnabled = false
     }
     // 自動糾正選字鍵 (利用其 didSet 特性)
     candidateKeys = candidateKeys
@@ -55,5 +51,77 @@ public extension PrefMgr {
     if ![0, 1, 2, 3, 4].contains(upperCaseLetterKeyBehavior) {
       upperCaseLetterKeyBehavior = 0
     }
+  }
+}
+
+// MARK: Print share-safe UserDefaults into a bunch of "defaults write" commands.
+
+public extension PrefMgr {
+  @discardableResult func dumpShellScriptBackup() -> String? {
+    let mirror = Mirror(reflecting: PrefMgr.shared)
+    guard let bundleIdentifier = Bundle.main.bundleIdentifier else { return nil }
+    let strDoubleDashLine = String(String(repeating: "=", count: 70))
+    let consoleOutput = NSMutableString(string: "#!/bin/sh\n\n")
+    consoleOutput.append("# \(strDoubleDashLine)\n")
+    consoleOutput.append("# vChewing Preferences Migration Script\n")
+    consoleOutput.append("# - vChewing IME v\(IMEApp.appVersionLabel)\n")
+    consoleOutput.append("# \(strDoubleDashLine)\n\n")
+    for case let (_, value) in mirror.children {
+      // 為了讓接下來的命令抓到客體管理器的內容既存資料：
+      let rawCells = "\(value)".replacingOccurrences(of: "String, Bool", with: "String,Bool").components(separatedBy: " ")
+      guard rawCells.count >= 4 else { continue }
+      let strKeyName = rawCells[1].dropLast(2).dropFirst(1).replacingOccurrences(of: "\n", with: "\\n")
+      guard let theUserDef = UserDef(rawValue: strKeyName) else { continue }
+      var strTypeParam = String(describing: theUserDef.dataType)
+      // 忽略會被 Sandbox 擋到的選項、以及其他一些雜項。
+      let blackList: [UserDef] = [
+        .kUserDataFolderSpecified, .kCassettePath, .kAppleLanguages, .kFailureFlagForUOMObservation,
+        .kMostRecentInputMode,
+      ]
+      guard !blackList.contains(theUserDef) else { continue }
+      var strValue = rawCells[3].dropLast(1).replacingOccurrences(of: "\n", with: "")
+      typeCheck: switch theUserDef.dataType {
+      case .double: strTypeParam = strTypeParam.replacingOccurrences(of: "double", with: "float")
+      case .dictionary:
+        if let valParsed = value as? AppProperty<[String: Bool]> {
+          strTypeParam = strTypeParam.replacingOccurrences(of: "ionary", with: "")
+          let stack = NSMutableString()
+          valParsed.wrappedValue.forEach { currentPair in
+            stack.append("\(currentPair.key) \(currentPair.value) ")
+          }
+          strValue = stack.replacingOccurrences(of: "\n", with: "\\n")
+        } else {
+          continue
+        }
+      case .array:
+        if let valParsed = value as? AppProperty<[String]> {
+          strValue = valParsed.wrappedValue.joined(separator: " ")
+        } else {
+          continue
+        }
+      case .other: continue // 忽略對終端機單行輸入不友好的選項。
+      default: break typeCheck
+      }
+      if let metaData = theUserDef.metaData {
+        let strDashLine = String(String(repeating: "-", count: 70))
+        let texts: [String] = [
+          strDashLine, metaData.shortTitle,
+          strDashLine, metaData.prompt,
+          metaData.popupPrompt, metaData.description, metaData.toolTip,
+        ].compactMap { $0 }.map(\.localized)
+        texts.forEach { currentLines in
+          currentLines.split(separator: "\n").forEach { currentLine in
+            consoleOutput.append("# \(currentLine)\n")
+          }
+        }
+        metaData.options?.sorted(by: { $0.key < $1.key }).forEach { pair in
+          consoleOutput.append("# - \(pair.key): \(pair.value.localized)\n")
+        }
+      } else {
+        consoleOutput.append("# No comments supplied by the engineer.\n")
+      }
+      consoleOutput.append("\ndefaults write \(bundleIdentifier) \(strKeyName) -\(strTypeParam) \(strValue)\n\n")
+    }
+    return consoleOutput.description
   }
 }
