@@ -14,14 +14,17 @@ public class BookmarkManager {
       return
     }
 
-    if #available(macOS 10.13, *) {
-      do {
-        let data = try NSKeyedArchiver.archivedData(withRootObject: bookmarkDic, requiringSecureCoding: false)
-        try data.write(to: bookmarkURL)
-        NSLog("Did save data to url")
-      } catch {
-        NSLog("Couldn't save bookmarks")
+    do {
+      var data: Data?
+      if #unavailable(macOS 10.13) {
+        data = NSKeyedArchiver.archivedData(withRootObject: bookmarkDic)
+      } else {
+        data = try NSKeyedArchiver.archivedData(withRootObject: bookmarkDic, requiringSecureCoding: false)
       }
+      try data?.write(to: bookmarkURL)
+      NSLog("Did save data to url")
+    } catch {
+      NSLog("Couldn't save bookmarks")
     }
   }
 
@@ -96,12 +99,7 @@ public class BookmarkManager {
   }
 
   private func getBookmarkURL() -> URL? {
-    let urls = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)
-    if let appSupportURL = urls.last {
-      let url = appSupportURL.appendingPathComponent("Bookmarks.dict")
-      return url
-    }
-    return nil
+    FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).last?.appendingPathComponent("Bookmarks.dict")
   }
 
   private func fileExists(_ url: URL) -> Bool {
