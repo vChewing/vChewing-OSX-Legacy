@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 53;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -926,18 +926,6 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(SRCROOT)/DictionaryData/data-chs.json",
-				"$(SRCROOT)/DictionaryData/data-cht.json",
-				"$(SRCROOT)/DictionaryData/data-cns.json",
-				"$(SRCROOT)/DictionaryData/data-zhuyinwen.json",
-				"$(SRCROOT)/DictionaryData/data-symbols.json",
-				"$(SRCROOT)/DictionaryData/data-bpmf-reverse-lookup.json",
-				"$(SRCROOT)/DictionaryData/data-bpmf-reverse-lookup-CNS1.json",
-				"$(SRCROOT)/DictionaryData/data-bpmf-reverse-lookup-CNS2.json",
-				"$(SRCROOT)/DictionaryData/data-bpmf-reverse-lookup-CNS3.json",
-				"$(SRCROOT)/DictionaryData/data-bpmf-reverse-lookup-CNS4.json",
-				"$(SRCROOT)/DictionaryData/data-bpmf-reverse-lookup-CNS5.json",
-				"$(SRCROOT)/DictionaryData/data-bpmf-reverse-lookup-CNS6.json",
 				"$(SRCROOT)/DictionaryData/Build/Release/vChewingFactoryDatabase.sqlite",
 				"$(SRCROOT)/DictionaryData/Build/Release/vChewingFactoryDatabase.sqlite-journal",
 				"$(SRCROOT)/DictionaryData/Build/Release/",
