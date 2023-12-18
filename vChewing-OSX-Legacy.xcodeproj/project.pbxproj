@@ -67,6 +67,7 @@
 		5B7EEAE32AE5002C006C30A3 /* SecureEventInputSputnik.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7EEAE22AE5002C006C30A3 /* SecureEventInputSputnik.swift */; };
 		5B7EEAE42AE5002C006C30A3 /* SecureEventInputSputnik.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7EEAE22AE5002C006C30A3 /* SecureEventInputSputnik.swift */; };
 		5B8F0A632ABB3E7400A49491 /* Fuziki_NSAttributedTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8F0A622ABB3E7400A49491 /* Fuziki_NSAttributedTextView.swift */; };
+		5B8F94F72B3070C40071B14A /* InputToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8F94F62B3070C40071B14A /* InputToken.swift */; };
 		5BA631862B13617800974241 /* sqlite3.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA631622B135E9A00974241 /* sqlite3.m */; };
 		5BACBCDF295093A60078CAB3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BACBCDE295093A60078CAB3 /* AppDelegate.swift */; };
 		5BACBCE4295093A80078CAB3 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BACBCE2295093A80078CAB3 /* MainMenu.xib */; };
@@ -235,6 +236,7 @@
 		5B7B4D232AA1BB7600FE6B63 /* Qwertyyb_ShiftKeyUpChecker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Qwertyyb_ShiftKeyUpChecker.swift; sourceTree = "<group>"; };
 		5B7EEAE22AE5002C006C30A3 /* SecureEventInputSputnik.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecureEventInputSputnik.swift; sourceTree = "<group>"; };
 		5B8F0A622ABB3E7400A49491 /* Fuziki_NSAttributedTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fuziki_NSAttributedTextView.swift; sourceTree = "<group>"; };
+		5B8F94F62B3070C40071B14A /* InputToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputToken.swift; sourceTree = "<group>"; };
 		5BA631622B135E9A00974241 /* sqlite3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = sqlite3.m; sourceTree = "<group>"; };
 		5BA631642B135E9A00974241 /* sqlite3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sqlite3.h; sourceTree = "<group>"; };
 		5BACBCC629508A5F0078CAB3 /* dataCompiler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dataCompiler.swift; sourceTree = "<group>"; };
@@ -621,6 +623,8 @@
 		5BE5A511294E0BD400EFA49C /* LMAssembly */ = {
 			isa = PBXGroup;
 			children = (
+				5BE5A512294E0BDE00EFA49C /* SubLMs */,
+				5B8F94F62B3070C40071B14A /* InputToken.swift */,
 				5BE5A51B294E0BEE00EFA49C /* LMConsolidator.swift */,
 				5BE5A51C294E0BEE00EFA49C /* LMInstantiator_CassetteExtension.swift */,
 				5BE5A51E294E0BEE00EFA49C /* LMInstantiator_DateTimeExtension.swift */,
@@ -629,7 +633,6 @@
 				5BE5A531294E0C9F00EFA49C /* PinyinPhonaConverter.swift */,
 				5B69CA69295DDC58005211BB /* RangeParserAPI.swift */,
 				5BE5A51F294E0BEE00EFA49C /* vChewingLM.swift */,
-				5BE5A512294E0BDE00EFA49C /* SubLMs */,
 			);
 			path = LMAssembly;
 			sourceTree = "<group>";
@@ -1000,6 +1003,7 @@
 				5BE5A525294E0C2900EFA49C /* LMInstantiator_CassetteExtension.swift in Sources */,
 				5B751D90294EC66A0031CF70 /* CtlPrefWindow.swift in Sources */,
 				5BE5A52C294E0C2B00EFA49C /* lmRevLookup.swift in Sources */,
+				5B8F94F72B3070C40071B14A /* InputToken.swift in Sources */,
 				5B423A542A9516B0004CC33B /* Broadcaster.swift in Sources */,
 				5B751D96294EDE850031CF70 /* CtlPrefWindow_PhraseEditor.swift in Sources */,
 				5B1CA80E29AC53BA0089E95F /* VwrCandidateTDK_AppKit.swift in Sources */,
