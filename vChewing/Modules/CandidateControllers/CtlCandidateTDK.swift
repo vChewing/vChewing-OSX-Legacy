@@ -22,6 +22,7 @@ private extension NSUserInterfaceLayoutOrientation {
 }
 
 public class CtlCandidateTDK: CtlCandidate, NSWindowDelegate {
+  @objc var observation: NSKeyValueObservation?
   public var maxLinesPerPage: Int = 0
   public var useCocoa: Bool = false
   public var useMouseScrolling: Bool = true
@@ -70,6 +71,10 @@ public class CtlCandidateTDK: CtlCandidate, NSWindowDelegate {
     Self.currentWindow = panel
     window?.delegate = self
     currentLayout = layout
+
+    observation = Broadcaster.shared.observe(\.eventForClosingAllPanels, options: [.new]) { _, _ in
+      self.visible = false
+    }
   }
 
   @available(*, unavailable)

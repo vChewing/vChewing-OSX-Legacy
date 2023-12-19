@@ -9,6 +9,7 @@
 import AppKit
 
 public class PopupCompositionBuffer: NSWindowController {
+  @objc var observation: NSKeyValueObservation?
   private static var currentWindow: NSWindow? {
     willSet {
       currentWindow?.orderOut(nil)
@@ -54,6 +55,10 @@ public class PopupCompositionBuffer: NSWindowController {
     panel.contentView?.wantsLayer = true
     Self.currentWindow = panel
     super.init(window: panel)
+
+    observation = Broadcaster.shared.observe(\.eventForClosingAllPanels, options: [.new]) { _, _ in
+      self.hide()
+    }
   }
 
   @available(*, unavailable)

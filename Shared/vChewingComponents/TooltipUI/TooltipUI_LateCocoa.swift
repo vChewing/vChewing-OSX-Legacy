@@ -9,6 +9,7 @@
 import AppKit
 
 public class TooltipUI_LateCocoa: NSWindowController, TooltipUIProtocol {
+  @objc var observation: NSKeyValueObservation?
   private var messageText: NSAttributedTooltipTextView
   private var tooltip: String = "" {
     didSet {
@@ -52,6 +53,10 @@ public class TooltipUI_LateCocoa: NSWindowController, TooltipUIProtocol {
     panel.contentView?.addSubview(messageText)
     Self.currentWindow = panel
     super.init(window: panel)
+
+    observation = Broadcaster.shared.observe(\.eventForClosingAllPanels, options: [.new]) { _, _ in
+      self.hide()
+    }
   }
 
   @available(*, unavailable)
