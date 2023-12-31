@@ -99,7 +99,7 @@ class CtlPrefWindow: NSWindowController, NSWindowDelegate {
       chkCapsLockNotification.toolTip = "This feature requires macOS 12 and above.".localized
     }
 
-    chkFartSuppressor.isHidden = !NSDate.isTodayTheDate(from: 0401)
+    chkFartSuppressor.isHidden = !Date.isTodayTheDate(from: 0401)
     chkFartSuppressor.isEnabled = !chkFartSuppressor.isHidden
 
     pctCassetteFilePath.delegate = self

@@ -213,7 +213,7 @@ public extension String {
 
 // MARK: - Check whether current date is the given date.
 
-public extension NSDate {
+public extension Date {
   /// Check whether current date is the given date.
   /// - Parameter dateDigits: `yyyyMMdd`, 8-digit integer. If only `MMdd`, then the year will be the current year.
   /// - Returns: The result. Will return false if the given dateDigits is invalid.
