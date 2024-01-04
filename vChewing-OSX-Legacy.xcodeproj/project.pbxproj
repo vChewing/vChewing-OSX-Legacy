@@ -24,6 +24,7 @@
 		5B6420012ABB3BA600E1B7F6 /* TooltipUIProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6420002ABB3BA600E1B7F6 /* TooltipUIProtocol.swift */; };
 		5B6420022ABB3BA600E1B7F6 /* TooltipUI_EarlyCocoa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B641FFE2ABB3BA600E1B7F6 /* TooltipUI_EarlyCocoa.swift */; };
 		5B6420032ABB3BA600E1B7F6 /* TooltipUI_LateCocoa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B641FFF2ABB3BA600E1B7F6 /* TooltipUI_LateCocoa.swift */; };
+		5B6815372B46EF86004A8A1A /* SpeechSputnik.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6815362B46EF86004A8A1A /* SpeechSputnik.swift */; };
 		5B69CA6A295DDC58005211BB /* RangeParserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B69CA69295DDC58005211BB /* RangeParserAPI.swift */; };
 		5B751D90294EC66A0031CF70 /* CtlPrefWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751D8E294EC66A0031CF70 /* CtlPrefWindow.swift */; };
 		5B751D96294EDE850031CF70 /* CtlPrefWindow_PhraseEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751D95294EDE850031CF70 /* CtlPrefWindow_PhraseEditor.swift */; };
@@ -191,6 +192,7 @@
 		5B641FFE2ABB3BA600E1B7F6 /* TooltipUI_EarlyCocoa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TooltipUI_EarlyCocoa.swift; sourceTree = "<group>"; };
 		5B641FFF2ABB3BA600E1B7F6 /* TooltipUI_LateCocoa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TooltipUI_LateCocoa.swift; sourceTree = "<group>"; };
 		5B6420002ABB3BA600E1B7F6 /* TooltipUIProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TooltipUIProtocol.swift; sourceTree = "<group>"; };
+		5B6815362B46EF86004A8A1A /* SpeechSputnik.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechSputnik.swift; sourceTree = "<group>"; };
 		5B69CA69295DDC58005211BB /* RangeParserAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RangeParserAPI.swift; sourceTree = "<group>"; };
 		5B751D86294EC30D0031CF70 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5B751D88294EC30E0031CF70 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -522,6 +524,7 @@
 				5B751DBE294EE57C0031CF70 /* SessionCtl_HandleEvent.swift */,
 				5B751DC2294EE57C0031CF70 /* SessionCtl_HandleStates.swift */,
 				5B751DC8294EE57D0031CF70 /* SessionCtl_Menu.swift */,
+				5B6815362B46EF86004A8A1A /* SpeechSputnik.swift */,
 				5BE5A569294E120500EFA49C /* SymbolMenuDefaultData.swift */,
 			);
 			path = Modules;
@@ -984,6 +987,7 @@
 				5B751DCE294EE57D0031CF70 /* InputHandler_HandleStates.swift in Sources */,
 				5BE5A4E5294E03C200EFA49C /* main.swift in Sources */,
 				5B751DBA294EE27C0031CF70 /* CtlAboutWindow.swift in Sources */,
+				5B6815372B46EF86004A8A1A /* SpeechSputnik.swift in Sources */,
 				5B751DD5294EE57D0031CF70 /* IMEState.swift in Sources */,
 				5BE5A557294E0D1E00EFA49C /* 4_SpanUnit.swift in Sources */,
 				5BE5A53D294E0CEF00EFA49C /* PrefMgrProtocol.swift in Sources */,
