@@ -126,7 +126,11 @@ import AppKit
   public dynamic var autoCorrectReadingCombination: Bool
 
   @AppProperty(key: UserDef.kReadingNarrationCoverage.rawValue, defaultValue: 0)
-  public dynamic var readingNarrationCoverage: Int
+  public dynamic var readingNarrationCoverage: Int {
+    didSet {
+      SpeechSputnik.shared.refreshStatus()
+    }
+  }
 
   @AppProperty(key: UserDef.kAlsoConfirmAssociatedCandidatesByEnter.rawValue, defaultValue: false)
   public dynamic var alsoConfirmAssociatedCandidatesByEnter: Bool
