@@ -94,7 +94,22 @@ extension InputHandler {
           delegate.switchState(IMEState.ofAbortion())
           return true
         }
+        let highlightedCandidate = state.candidates[ctlCandidate.highlightedIndex] // 關聯詞語功能專用。
+        var handleAssociates = !prefs.useSCPCTypingMode && prefs.associatedPhrasesEnabled // 關聯詞語功能專用。
+        handleAssociates = handleAssociates && compositor.cursor == compositor.length // 關聯詞語功能專用。
         confirmHighlightedCandidate()
+        // 關聯詞語。
+        associatedPhrases: if handleAssociates {
+          guard handleAssociates else { break associatedPhrases }
+          guard input.keyModifierFlags == .shift else { break associatedPhrases }
+          let pair = Megrez.KeyValuePaired(
+            keyArray: highlightedCandidate.keyArray, value: highlightedCandidate.value
+          )
+          let associatedCandidates = generateArrayOfAssociates(withPair: pair)
+          guard !associatedCandidates.isEmpty else { break associatedPhrases }
+          delegate.switchState(IMEState.ofCommitting(textToCommit: state.displayedText))
+          delegate.switchState(IMEState.ofAssociates(candidates: associatedCandidates))
+        }
         return true
       case .kTab:
         let updated: Bool =
@@ -156,7 +171,7 @@ extension InputHandler {
       }
     }
 
-    // MARK: 聯想詞處理 (Associated Phrases) 以及標準選字處理
+    // MARK: 關聯詞語處理 (Associated Phrases) 以及標準選字處理
 
     if state.type == .ofAssociates, !input.isShiftHold { return false }
 
