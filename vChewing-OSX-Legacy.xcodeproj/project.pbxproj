@@ -16,6 +16,8 @@
 		5B423A542A9516B0004CC33B /* Broadcaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B423A532A9516B0004CC33B /* Broadcaster.swift */; };
 		5B44BAD9295047AC00E1C02D /* shortcuts.html in Resources */ = {isa = PBXBuildFile; fileRef = 5B44BADB295047AC00E1C02D /* shortcuts.html */; };
 		5B4C81812ADABB60008507B1 /* HangarRash_SwiftyCapsLockToggler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4C81802ADABB60008507B1 /* HangarRash_SwiftyCapsLockToggler.swift */; };
+		5B55ACAD2B5A254F009E2F54 /* KBEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B55ACAC2B5A254F009E2F54 /* KBEvent.swift */; };
+		5B55ACAF2B5A255F009E2F54 /* NSEventImpl_Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B55ACAE2B5A255F009E2F54 /* NSEventImpl_Shared.swift */; };
 		5B572A7A29FB76B900ED5066 /* LatinKeyboardMappings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B572A7929FB76B900ED5066 /* LatinKeyboardMappings.swift */; };
 		5B572A7B29FB76B900ED5066 /* LatinKeyboardMappings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B572A7929FB76B900ED5066 /* LatinKeyboardMappings.swift */; };
 		5B60CEA429B8E7CA00A1AAC7 /* LMMgr_PhraseEditorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B60CEA329B8E7CA00A1AAC7 /* LMMgr_PhraseEditorDelegate.swift */; };
@@ -94,7 +96,7 @@
 		5BE5A4F1294E057F00EFA49C /* CocoaExtension_Misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A4F0294E057F00EFA49C /* CocoaExtension_Misc.swift */; };
 		5BE5A4F3294E058F00EFA49C /* SwiftExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A4F2294E058F00EFA49C /* SwiftExtension.swift */; };
 		5BE5A4F5294E059600EFA49C /* IMKHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A4F4294E059600EFA49C /* IMKHelper.swift */; };
-		5BE5A4FA294E082800EFA49C /* CocoaExtension_NSEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A4F9294E082800EFA49C /* CocoaExtension_NSEvent.swift */; };
+		5BE5A4FA294E082800EFA49C /* NSEventImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A4F9294E082800EFA49C /* NSEventImpl.swift */; };
 		5BE5A4FC294E087B00EFA49C /* TISInputSourceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A4FB294E087B00EFA49C /* TISInputSourceExtension.swift */; };
 		5BE5A4FE294E090800EFA49C /* CocoaExtension_NSSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A4FD294E090800EFA49C /* CocoaExtension_NSSound.swift */; };
 		5BE5A500294E092900EFA49C /* CocoaExtension_NSWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A4FF294E092900EFA49C /* CocoaExtension_NSWindowController.swift */; };
@@ -185,6 +187,8 @@
 		5B44BADD295047AF00E1C02D /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = "zh-Hant"; path = "zh-Hant.lproj/shortcuts.html"; sourceTree = "<group>"; };
 		5B44BADE295047B400E1C02D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = ja; path = ja.lproj/shortcuts.html; sourceTree = "<group>"; };
 		5B4C81802ADABB60008507B1 /* HangarRash_SwiftyCapsLockToggler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HangarRash_SwiftyCapsLockToggler.swift; sourceTree = "<group>"; };
+		5B55ACAC2B5A254F009E2F54 /* KBEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBEvent.swift; sourceTree = "<group>"; };
+		5B55ACAE2B5A255F009E2F54 /* NSEventImpl_Shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSEventImpl_Shared.swift; sourceTree = "<group>"; };
 		5B572A7929FB76B900ED5066 /* LatinKeyboardMappings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatinKeyboardMappings.swift; sourceTree = "<group>"; };
 		5B60CEA329B8E7CA00A1AAC7 /* LMMgr_PhraseEditorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMMgr_PhraseEditorDelegate.swift; sourceTree = "<group>"; };
 		5B60CEA529B8E7D400A1AAC7 /* LMMgr_UserPhraseStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMMgr_UserPhraseStructure.swift; sourceTree = "<group>"; };
@@ -277,7 +281,7 @@
 		5BE5A4F0294E057F00EFA49C /* CocoaExtension_Misc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocoaExtension_Misc.swift; sourceTree = "<group>"; };
 		5BE5A4F2294E058F00EFA49C /* SwiftExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftExtension.swift; sourceTree = "<group>"; };
 		5BE5A4F4294E059600EFA49C /* IMKHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMKHelper.swift; sourceTree = "<group>"; };
-		5BE5A4F9294E082800EFA49C /* CocoaExtension_NSEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocoaExtension_NSEvent.swift; sourceTree = "<group>"; };
+		5BE5A4F9294E082800EFA49C /* NSEventImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSEventImpl.swift; sourceTree = "<group>"; };
 		5BE5A4FB294E087B00EFA49C /* TISInputSourceExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TISInputSourceExtension.swift; sourceTree = "<group>"; };
 		5BE5A4FD294E090800EFA49C /* CocoaExtension_NSSound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocoaExtension_NSSound.swift; sourceTree = "<group>"; };
 		5BE5A4FF294E092900EFA49C /* CocoaExtension_NSWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocoaExtension_NSWindowController.swift; sourceTree = "<group>"; };
@@ -534,12 +538,12 @@
 			isa = PBXGroup;
 			children = (
 				5BE5A4F0294E057F00EFA49C /* CocoaExtension_Misc.swift */,
-				5BE5A4F9294E082800EFA49C /* CocoaExtension_NSEvent.swift */,
 				5BE5A4FD294E090800EFA49C /* CocoaExtension_NSSound.swift */,
 				5BE5A4FF294E092900EFA49C /* CocoaExtension_NSWindowController.swift */,
 				5BE5A4F4294E059600EFA49C /* IMKHelper.swift */,
 				5B303E7D2A979F6F002CF4E6 /* IMKUtilsImpl.swift */,
 				5B572A7929FB76B900ED5066 /* LatinKeyboardMappings.swift */,
+				5BE5A4F9294E082800EFA49C /* NSEventImpl.swift */,
 				5B7EEAE22AE5002C006C30A3 /* SecureEventInputSputnik.swift */,
 				5BE5A4F2294E058F00EFA49C /* SwiftExtension.swift */,
 				5BE5A4FB294E087B00EFA49C /* TISInputSourceExtension.swift */,
@@ -677,6 +681,8 @@
 				5BE5A53B294E0CEC00EFA49C /* CtlCandidateProtocol.swift */,
 				5BE5A539294E0CEC00EFA49C /* IMEStateProtocol.swift */,
 				5BE5A536294E0CEC00EFA49C /* InputSignalProtocol.swift */,
+				5B55ACAC2B5A254F009E2F54 /* KBEvent.swift */,
+				5B55ACAE2B5A255F009E2F54 /* NSEventImpl_Shared.swift */,
 				5BE5A537294E0CEC00EFA49C /* PrefMgrProtocol.swift */,
 				5BE5A56B294E127B00EFA49C /* PhraseEditorDelegate.swift */,
 				5BE5A538294E0CEC00EFA49C /* Shared.swift */,
@@ -982,7 +988,7 @@
 				5B751DB8294EE27C0031CF70 /* CtlClientListMgr.swift in Sources */,
 				5BE5A4F5294E059600EFA49C /* IMKHelper.swift in Sources */,
 				5B751DD7294EE57D0031CF70 /* SessionCtl_Menu.swift in Sources */,
-				5BE5A4FA294E082800EFA49C /* CocoaExtension_NSEvent.swift in Sources */,
+				5BE5A4FA294E082800EFA49C /* NSEventImpl.swift in Sources */,
 				5BE5A530294E0C2E00EFA49C /* HotenkaChineseConverter.swift in Sources */,
 				5B751DCE294EE57D0031CF70 /* InputHandler_HandleStates.swift in Sources */,
 				5BE5A4E5294E03C200EFA49C /* main.swift in Sources */,
@@ -1018,11 +1024,13 @@
 				5B751DD1294EE57D0031CF70 /* SessionCtl_HandleStates.swift in Sources */,
 				5BE5A540294E0CEF00EFA49C /* IMEStateProtocol.swift in Sources */,
 				5BE5A53F294E0CEF00EFA49C /* CandidateNode.swift in Sources */,
+				5B55ACAF2B5A255F009E2F54 /* NSEventImpl_Shared.swift in Sources */,
 				5BF5BAE1294DFFC9006011AD /* AppDelegate.swift in Sources */,
 				5B751DE4294EE7A80031CF70 /* CtlCandidate.swift in Sources */,
 				5BE5A53C294E0CEF00EFA49C /* CtlCandidateProtocol.swift in Sources */,
 				5BE5A4FC294E087B00EFA49C /* TISInputSourceExtension.swift in Sources */,
 				5BE5A541294E0CEF00EFA49C /* InputSignalProtocol.swift in Sources */,
+				5B55ACAD2B5A254F009E2F54 /* KBEvent.swift in Sources */,
 				5BE5A556294E0D1E00EFA49C /* 5_Node.swift in Sources */,
 				5BE5A527294E0C2900EFA49C /* LMInstantiator_DateTimeExtension.swift in Sources */,
 				5BB32F0329A61A3B00B05D7B /* CandidatePool_CocoaImpl.swift in Sources */,
