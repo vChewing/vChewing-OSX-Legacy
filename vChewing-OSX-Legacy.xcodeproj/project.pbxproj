@@ -10,6 +10,7 @@
 		5B09126C2B134927000166DB /* LMInstantiator_SQLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B09126B2B134927000166DB /* LMInstantiator_SQLExtension.swift */; };
 		5B1523B62A74E92D007D2E53 /* Jad_BookmarkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1523B52A74E92D007D2E53 /* Jad_BookmarkManager.swift */; };
 		5B1CA80E29AC53BA0089E95F /* VwrCandidateTDK_AppKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1CA80D29AC53BA0089E95F /* VwrCandidateTDK_AppKit.swift */; };
+		5B1E6C2C2B65694100B977B5 /* LMInstantiator_NumPadExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1E6C2B2B65694100B977B5 /* LMInstantiator_NumPadExtension.swift */; };
 		5B2F3B522AF24FD500225501 /* LMMgr_KimoDataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2F3B512AF24FD500225501 /* LMMgr_KimoDataParser.swift */; };
 		5B303E7E2A979F6F002CF4E6 /* IMKUtilsImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B303E7D2A979F6F002CF4E6 /* IMKUtilsImpl.swift */; };
 		5B3C0D5F2B13555400C87B27 /* vChewingFactoryDatabase.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 5B3C0D5E2B13555000C87B27 /* vChewingFactoryDatabase.sqlite */; };
@@ -178,6 +179,7 @@
 		5B09126B2B134927000166DB /* LMInstantiator_SQLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMInstantiator_SQLExtension.swift; sourceTree = "<group>"; };
 		5B1523B52A74E92D007D2E53 /* Jad_BookmarkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Jad_BookmarkManager.swift; sourceTree = "<group>"; };
 		5B1CA80D29AC53BA0089E95F /* VwrCandidateTDK_AppKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VwrCandidateTDK_AppKit.swift; sourceTree = "<group>"; };
+		5B1E6C2B2B65694100B977B5 /* LMInstantiator_NumPadExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMInstantiator_NumPadExtension.swift; sourceTree = "<group>"; };
 		5B2F3B512AF24FD500225501 /* LMMgr_KimoDataParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMMgr_KimoDataParser.swift; sourceTree = "<group>"; };
 		5B303E7D2A979F6F002CF4E6 /* IMKUtilsImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IMKUtilsImpl.swift; sourceTree = "<group>"; };
 		5B3C0D5E2B13555000C87B27 /* vChewingFactoryDatabase.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = vChewingFactoryDatabase.sqlite; path = DictionaryData/Build/Release/vChewingFactoryDatabase.sqlite; sourceTree = "<group>"; };
@@ -635,6 +637,7 @@
 				5BE5A51B294E0BEE00EFA49C /* LMConsolidator.swift */,
 				5BE5A51C294E0BEE00EFA49C /* LMInstantiator_CassetteExtension.swift */,
 				5BE5A51E294E0BEE00EFA49C /* LMInstantiator_DateTimeExtension.swift */,
+				5B1E6C2B2B65694100B977B5 /* LMInstantiator_NumPadExtension.swift */,
 				5B09126B2B134927000166DB /* LMInstantiator_SQLExtension.swift */,
 				5BE5A51D294E0BEE00EFA49C /* LMInstantiator.swift */,
 				5BE5A531294E0C9F00EFA49C /* PinyinPhonaConverter.swift */,
@@ -1013,6 +1016,7 @@
 				5BE5A525294E0C2900EFA49C /* LMInstantiator_CassetteExtension.swift in Sources */,
 				5B751D90294EC66A0031CF70 /* CtlPrefWindow.swift in Sources */,
 				5BE5A52C294E0C2B00EFA49C /* lmRevLookup.swift in Sources */,
+				5B1E6C2C2B65694100B977B5 /* LMInstantiator_NumPadExtension.swift in Sources */,
 				5B8F94F72B3070C40071B14A /* InputToken.swift in Sources */,
 				5B423A542A9516B0004CC33B /* Broadcaster.swift in Sources */,
 				5B751D96294EDE850031CF70 /* CtlPrefWindow_PhraseEditor.swift in Sources */,
