@@ -261,7 +261,7 @@ public extension SessionCtl {
           ? "NotificationSwitchON".localized
           : "NotificationSwitchOFF".localized)
     )
-    if !LMMgr.currentLM.isCassetteDataLoaded {
+    if !inputMode.langModel.isCassetteDataLoaded {
       LMMgr.loadCassetteData()
     }
   }
