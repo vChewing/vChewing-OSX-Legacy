@@ -50,7 +50,7 @@
         <window title="vChewing Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" animationBehavior="default" titlebarAppearsTransparent="YES" id="1" userLabel="frmPrefWindow">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <rect key="contentRect" x="401" y="295" width="577" height="406"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="2048" height="1127"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1055"/>
             <view key="contentView" id="2">
                 <rect key="frame" x="0.0" y="0.0" width="577" height="406"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1332,15 +1332,15 @@
                             </view>
                         </tabViewItem>
                         <tabViewItem label="B" identifier="" id="ZkQ-yN-6Op">
-                            <view key="view" ambiguous="YES" id="zBQ-e0-37m">
+                            <view key="view" id="zBQ-e0-37m">
                                 <rect key="frame" x="10" y="33" width="531" height="462"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j9R-fB-ttM">
-                                        <rect key="frame" x="17" y="77" width="449" height="382"/>
+                                    <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" translatesAutoresizingMaskIntoConstraints="NO" id="j9R-fB-ttM">
+                                        <rect key="frame" x="17" y="189" width="381" height="270"/>
                                         <subviews>
                                             <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" translatesAutoresizingMaskIntoConstraints="NO" id="fO5-4y-X0y">
-                                                <rect key="frame" x="0.0" y="344" width="365" height="38"/>
+                                                <rect key="frame" x="0.0" y="232" width="365" height="38"/>
                                                 <subviews>
                                                     <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TMn-LX-3Ub">
                                                         <rect key="frame" x="-2" y="23" width="369" height="15"/>
@@ -1388,149 +1388,36 @@
                                                 </customSpacing>
                                             </stackView>
                                             <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" translatesAutoresizingMaskIntoConstraints="NO" id="EOx-os-rU9">
-                                                <rect key="frame" x="0.0" y="262" width="381" height="74"/>
+                                                <rect key="frame" x="0.0" y="185" width="381" height="39"/>
                                                 <subviews>
                                                     <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sjl-L6-qdY">
-                                                        <rect key="frame" x="-2" y="59" width="385" height="15"/>
+                                                        <rect key="frame" x="-2" y="24" width="385" height="15"/>
                                                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Specify what intonation key does when syllable composer is empty." id="lblIntonationKeyBehavior">
                                                             <font key="font" metaFont="cellTitle"/>
                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                     </textField>
-                                                    <matrix wantsLayer="YES" verticalHuggingPriority="750" allowsEmptySelection="NO" translatesAutoresizingMaskIntoConstraints="NO" id="15D-3C-qwe">
-                                                        <rect key="frame" x="0.0" y="0.0" width="380" height="51"/>
-                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                        <size key="cellSize" width="380" height="15"/>
-                                                        <size key="intercellSpacing" width="4" height="3"/>
-                                                        <buttonCell key="prototype" type="radio" title="Radio" imagePosition="left" alignment="left" controlSize="small" inset="2" id="kct-wG-rSl">
-                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                            <font key="font" metaFont="cellTitle"/>
-                                                        </buttonCell>
-                                                        <cells>
-                                                            <column>
-                                                                <buttonCell type="radio" title="Override the previous reading's intonation with candidate-reset" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="rdoIntonationKeyBehavior0">
-                                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                                    <font key="font" metaFont="cellTitle"/>
-                                                                </buttonCell>
-                                                                <buttonCell type="radio" title="Only override the intonation of the previous reading if different" imagePosition="left" alignment="left" controlSize="small" tag="1" inset="2" id="rdoIntonationKeyBehavior1">
-                                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                                    <font key="font" metaFont="cellTitle"/>
-                                                                </buttonCell>
-                                                                <buttonCell type="radio" title="Always type intonations to the inline composition buffer" imagePosition="left" alignment="left" controlSize="small" tag="2" inset="2" id="rdoIntonationKeyBehavior2">
-                                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                                    <font key="font" metaFont="cellTitle"/>
-                                                                </buttonCell>
-                                                            </column>
-                                                        </cells>
+                                                    <popUpButton wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="CmN-HG-HE5">
+                                                        <rect key="frame" x="-4" y="-4" width="365" height="22"/>
+                                                        <popUpButtonCell key="cell" type="push" title="Override the previous reading's intonation with candidate-reset" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="rdoIntonationKeyBehavior0" id="bJp-xX-tXa">
+                                                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" metaFont="smallSystem"/>
+                                                            <menu key="menu" id="Xal-hJ-F9K">
+                                                                <items>
+                                                                    <menuItem title="Override the previous reading's intonation with candidate-reset" state="on" id="rdoIntonationKeyBehavior0"/>
+                                                                    <menuItem title="Only override the intonation of the previous reading if different" tag="1" id="rdoIntonationKeyBehavior1"/>
+                                                                    <menuItem title="Always type intonations to the inline composition buffer" tag="2" id="rdoIntonationKeyBehavior2"/>
+                                                                </items>
+                                                            </menu>
+                                                        </popUpButtonCell>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="180" id="KR3-OQ-v9v"/>
+                                                        </constraints>
                                                         <connections>
-                                                            <binding destination="32" name="selectedTag" keyPath="values.SpecifyIntonationKeyBehavior" id="k3O-tW-1Zy"/>
+                                                            <binding destination="32" name="selectedTag" keyPath="values.SpecifyIntonationKeyBehavior" id="Cse-Tf-V44"/>
                                                         </connections>
-                                                    </matrix>
-                                                </subviews>
-                                                <visibilityPriorities>
-                                                    <integer value="1000"/>
-                                                    <integer value="1000"/>
-                                                </visibilityPriorities>
-                                                <customSpacing>
-                                                    <real value="3.4028234663852886e+38"/>
-                                                    <real value="3.4028234663852886e+38"/>
-                                                </customSpacing>
-                                            </stackView>
-                                            <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="7" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" translatesAutoresizingMaskIntoConstraints="NO" id="L1h-Ce-g4Z">
-                                                <rect key="frame" x="0.0" y="145" width="449" height="109"/>
-                                                <subviews>
-                                                    <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6q5-OP-iEb">
-                                                        <rect key="frame" x="-2" y="94" width="332" height="15"/>
-                                                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Choose the behavior of Shift+Letter key with letter inputs." id="lblUpperCaseLetterKeyBehavior">
-                                                            <font key="font" metaFont="cellTitle"/>
-                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                        </textFieldCell>
-                                                    </textField>
-                                                    <matrix wantsLayer="YES" verticalHuggingPriority="750" allowsEmptySelection="NO" translatesAutoresizingMaskIntoConstraints="NO" id="veW-XM-HGs">
-                                                        <rect key="frame" x="0.0" y="0.0" width="449" height="87"/>
-                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                        <size key="cellSize" width="449" height="15"/>
-                                                        <size key="intercellSpacing" width="4" height="3"/>
-                                                        <buttonCell key="prototype" type="radio" title="Radio" imagePosition="left" alignment="left" controlSize="small" inset="2" id="Fxk-tK-cP7">
-                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                            <font key="font" metaFont="cellTitle"/>
-                                                        </buttonCell>
-                                                        <cells>
-                                                            <column>
-                                                                <buttonCell type="radio" title="Type them into inline composition buffer" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="rdoUpperCaseLetterKeyBehavior0">
-                                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                                    <font key="font" metaFont="cellTitle"/>
-                                                                </buttonCell>
-                                                                <buttonCell type="radio" title="Always directly commit lowercased letters" imagePosition="left" alignment="left" controlSize="small" tag="1" inset="2" id="rdoUpperCaseLetterKeyBehavior1">
-                                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                                    <font key="font" metaFont="cellTitle"/>
-                                                                </buttonCell>
-                                                                <buttonCell type="radio" title="Always directly commit uppercased letters" imagePosition="left" alignment="left" controlSize="small" tag="2" inset="2" id="rdoUpperCaseLetterKeyBehavior2">
-                                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                                    <font key="font" metaFont="cellTitle"/>
-                                                                </buttonCell>
-                                                                <buttonCell type="radio" title="Directly commit lowercased letters only if the compositor is empty" imagePosition="left" alignment="left" controlSize="small" tag="3" inset="2" id="rdoUpperCaseLetterKeyBehavior3">
-                                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                                    <font key="font" metaFont="cellTitle"/>
-                                                                </buttonCell>
-                                                                <buttonCell type="radio" title="Directly commit uppercased letters only if the compositor is empty" imagePosition="left" alignment="left" controlSize="small" tag="4" inset="2" id="rdoUpperCaseLetterKeyBehavior4">
-                                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                                    <font key="font" metaFont="cellTitle"/>
-                                                                </buttonCell>
-                                                            </column>
-                                                        </cells>
-                                                        <connections>
-                                                            <binding destination="32" name="selectedTag" keyPath="values.UpperCaseLetterKeyBehavior" id="fCQ-Ru-Fuq"/>
-                                                        </connections>
-                                                    </matrix>
-                                                </subviews>
-                                                <visibilityPriorities>
-                                                    <integer value="1000"/>
-                                                    <integer value="1000"/>
-                                                </visibilityPriorities>
-                                                <customSpacing>
-                                                    <real value="3.4028234663852886e+38"/>
-                                                    <real value="3.4028234663852886e+38"/>
-                                                </customSpacing>
-                                            </stackView>
-                                            <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" translatesAutoresizingMaskIntoConstraints="NO" id="NOW-jd-XBh">
-                                                <rect key="frame" x="0.0" y="81" width="358" height="56"/>
-                                                <subviews>
-                                                    <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="J0f-Aw-dxC">
-                                                        <rect key="frame" x="-2" y="41" width="336" height="15"/>
-                                                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Choose the behavior of (Shift+)Space key with candidates." id="Pg5-G9-pY5">
-                                                            <font key="font" metaFont="cellTitle"/>
-                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                        </textFieldCell>
-                                                    </textField>
-                                                    <matrix wantsLayer="YES" verticalHuggingPriority="750" allowsEmptySelection="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YkJ-lr-EP6">
-                                                        <rect key="frame" x="0.0" y="0.0" width="358" height="33"/>
-                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                        <size key="cellSize" width="358" height="15"/>
-                                                        <size key="intercellSpacing" width="4" height="3"/>
-                                                        <buttonCell key="prototype" type="radio" title="Radio" imagePosition="left" alignment="left" controlSize="small" inset="2" id="8V2-DR-rwL">
-                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                            <font key="font" metaFont="cellTitle"/>
-                                                        </buttonCell>
-                                                        <cells>
-                                                            <column>
-                                                                <buttonCell type="radio" title="Space to +revolve candidates, Shift+Space t+revolve pages" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="dIN-TZ-67g">
-                                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                                    <font key="font" metaFont="cellTitle"/>
-                                                                </buttonCell>
-                                                                <buttonCell type="radio" title="Space to +revolve pages, Shift+Space t+revolve candidates" imagePosition="left" alignment="left" controlSize="small" tag="1" inset="2" id="XqL-rf-X6d">
-                                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                                    <font key="font" metaFont="cellTitle"/>
-                                                                </buttonCell>
-                                                            </column>
-                                                        </cells>
-                                                        <connections>
-                                                            <binding destination="32" name="selectedTag" keyPath="values.SpecifyShiftSpaceKeyBehavior" id="Ajq-3d-Lh1"/>
-                                                        </connections>
-                                                    </matrix>
+                                                    </popUpButton>
                                                 </subviews>
                                                 <visibilityPriorities>
                                                     <integer value="1000"/>
@@ -1542,45 +1429,163 @@
                                                 </customSpacing>
                                             </stackView>
                                             <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="7" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" translatesAutoresizingMaskIntoConstraints="NO" id="s47-wG-vKA">
-                                                <rect key="frame" x="0.0" y="0.0" width="348" height="73"/>
+                                                <rect key="frame" x="0.0" y="139" width="328" height="38"/>
                                                 <subviews>
                                                     <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iCL-n8-VTP">
-                                                        <rect key="frame" x="-2" y="58" width="323" height="15"/>
+                                                        <rect key="frame" x="-2" y="23" width="323" height="15"/>
                                                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Choose the attempted behavior of Shift+BackSpace key." id="lblShiftBkspKeyBehavior">
                                                             <font key="font" metaFont="cellTitle"/>
                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                     </textField>
-                                                    <matrix wantsLayer="YES" verticalHuggingPriority="750" allowsEmptySelection="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pKb-qa-Tku">
-                                                        <rect key="frame" x="0.0" y="0.0" width="348" height="51"/>
-                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                        <size key="cellSize" width="348" height="15"/>
-                                                        <size key="intercellSpacing" width="4" height="3"/>
-                                                        <buttonCell key="prototype" type="radio" title="Radio" imagePosition="left" alignment="left" controlSize="small" inset="2" id="Bqo-H8-c8p">
-                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                            <font key="font" metaFont="cellTitle"/>
-                                                        </buttonCell>
-                                                        <cells>
-                                                            <column>
-                                                                <buttonCell type="radio" title="Disassemble the previous reading, dropping its intonation" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="rdoShiftBkspKeyBehavior0">
-                                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                                    <font key="font" metaFont="cellTitle"/>
-                                                                </buttonCell>
-                                                                <buttonCell type="radio" title="Clear the entire inline composition buffer like Shift+Delete" imagePosition="left" alignment="left" controlSize="small" tag="1" inset="2" id="rdoShiftBkspKeyBehavior1">
-                                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                                    <font key="font" metaFont="cellTitle"/>
-                                                                </buttonCell>
-                                                                <buttonCell type="radio" title="Always drop the previous reading" imagePosition="left" alignment="left" controlSize="small" tag="2" inset="2" id="rdoShiftBkspKeyBehavior2">
-                                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                                    <font key="font" metaFont="cellTitle"/>
-                                                                </buttonCell>
-                                                            </column>
-                                                        </cells>
+                                                    <popUpButton wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yB1-Yo-MEG">
+                                                        <rect key="frame" x="-4" y="-4" width="336" height="22"/>
+                                                        <popUpButtonCell key="cell" type="push" title="Disassemble the previous reading, dropping its intonation" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="rdoShiftBkspKeyBehavior0" id="vc0-ee-eYU">
+                                                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" metaFont="smallSystem"/>
+                                                            <menu key="menu" id="H7s-fg-jJe">
+                                                                <items>
+                                                                    <menuItem title="Disassemble the previous reading, dropping its intonation" state="on" id="rdoShiftBkspKeyBehavior0"/>
+                                                                    <menuItem title="Clear the entire inline composition buffer like Shift+Delete" tag="1" id="rdoShiftBkspKeyBehavior1"/>
+                                                                    <menuItem title="Always drop the previous reading" tag="2" id="rdoShiftBkspKeyBehavior2"/>
+                                                                </items>
+                                                            </menu>
+                                                        </popUpButtonCell>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="180" id="wFq-BL-mjM"/>
+                                                        </constraints>
                                                         <connections>
-                                                            <binding destination="32" name="selectedTag" keyPath="values.SpecifyShiftBackSpaceKeyBehavior" id="6Bn-Sh-hiE"/>
+                                                            <binding destination="32" name="selectedTag" keyPath="values.SpecifyShiftBackSpaceKeyBehavior" id="qFC-5E-OtT"/>
                                                         </connections>
-                                                    </matrix>
+                                                    </popUpButton>
+                                                </subviews>
+                                                <visibilityPriorities>
+                                                    <integer value="1000"/>
+                                                    <integer value="1000"/>
+                                                </visibilityPriorities>
+                                                <customSpacing>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                </customSpacing>
+                                            </stackView>
+                                            <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" translatesAutoresizingMaskIntoConstraints="NO" id="NOW-jd-XBh">
+                                                <rect key="frame" x="0.0" y="92" width="346" height="39"/>
+                                                <subviews>
+                                                    <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="J0f-Aw-dxC">
+                                                        <rect key="frame" x="-2" y="24" width="336" height="15"/>
+                                                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Choose the behavior of (Shift+)Space key with candidates." id="Pg5-G9-pY5">
+                                                            <font key="font" metaFont="cellTitle"/>
+                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                    <popUpButton wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SrR-R7-RLm">
+                                                        <rect key="frame" x="-4" y="-4" width="354" height="22"/>
+                                                        <popUpButtonCell key="cell" type="push" title="Space to +revolve candidates, Shift+Space to +revolve pages" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="dIN-TZ-67g" id="qry-Tx-tan">
+                                                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" metaFont="smallSystem"/>
+                                                            <menu key="menu" id="zLc-ZA-TdO">
+                                                                <items>
+                                                                    <menuItem title="Space to +revolve candidates, Shift+Space to +revolve pages" state="on" id="dIN-TZ-67g"/>
+                                                                    <menuItem title="Space to +revolve pages, Shift+Space to +revolve candidates" tag="1" id="XqL-rf-X6d"/>
+                                                                </items>
+                                                            </menu>
+                                                        </popUpButtonCell>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="180" id="XZw-SW-hRQ"/>
+                                                        </constraints>
+                                                        <connections>
+                                                            <binding destination="32" name="selectedTag" keyPath="values.SpecifyShiftSpaceKeyBehavior" id="tgo-8E-wye"/>
+                                                        </connections>
+                                                    </popUpButton>
+                                                </subviews>
+                                                <visibilityPriorities>
+                                                    <integer value="1000"/>
+                                                    <integer value="1000"/>
+                                                </visibilityPriorities>
+                                                <customSpacing>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                </customSpacing>
+                                            </stackView>
+                                            <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="7" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" translatesAutoresizingMaskIntoConstraints="NO" id="L1h-Ce-g4Z">
+                                                <rect key="frame" x="0.0" y="46" width="374" height="38"/>
+                                                <subviews>
+                                                    <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6q5-OP-iEb">
+                                                        <rect key="frame" x="-2" y="23" width="332" height="15"/>
+                                                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Choose the behavior of Shift+Letter key with letter inputs." id="lblUpperCaseLetterKeyBehavior">
+                                                            <font key="font" metaFont="cellTitle"/>
+                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                    <popUpButton wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1zO-Ft-Ksa">
+                                                        <rect key="frame" x="-4" y="-4" width="382" height="22"/>
+                                                        <popUpButtonCell key="cell" type="push" title="Type them into inline composition buffer" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="rdoUpperCaseLetterKeyBehavior0" id="qgY-dw-nk4">
+                                                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" metaFont="smallSystem"/>
+                                                            <menu key="menu" id="GH1-h3-cwO">
+                                                                <items>
+                                                                    <menuItem title="Type them into inline composition buffer" state="on" id="rdoUpperCaseLetterKeyBehavior0"/>
+                                                                    <menuItem title="Always directly commit lowercased letters" tag="1" id="rdoUpperCaseLetterKeyBehavior1"/>
+                                                                    <menuItem title="Always directly commit uppercased letters" tag="2" id="rdoUpperCaseLetterKeyBehavior2"/>
+                                                                    <menuItem title="Directly commit lowercased letters only if the compositor is empty" tag="3" id="rdoUpperCaseLetterKeyBehavior3"/>
+                                                                    <menuItem title="Directly commit uppercased letters only if the compositor is empty" tag="4" id="rdoUpperCaseLetterKeyBehavior4"/>
+                                                                </items>
+                                                            </menu>
+                                                        </popUpButtonCell>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="180" id="No2-bq-b61"/>
+                                                        </constraints>
+                                                        <connections>
+                                                            <binding destination="32" name="selectedTag" keyPath="values.UpperCaseLetterKeyBehavior" id="Our-cq-Ik3"/>
+                                                        </connections>
+                                                    </popUpButton>
+                                                </subviews>
+                                                <visibilityPriorities>
+                                                    <integer value="1000"/>
+                                                    <integer value="1000"/>
+                                                </visibilityPriorities>
+                                                <customSpacing>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                </customSpacing>
+                                            </stackView>
+                                            <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="7" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" translatesAutoresizingMaskIntoConstraints="NO" id="oMK-b0-l4w">
+                                                <rect key="frame" x="0.0" y="0.0" width="361" height="38"/>
+                                                <subviews>
+                                                    <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PN9-ew-nUY">
+                                                        <rect key="frame" x="-2" y="23" width="251" height="15"/>
+                                                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Choose the behavior of numeric pad inputs." id="NumPadCharInputBehavior-description">
+                                                            <font key="font" metaFont="cellTitle"/>
+                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                    <popUpButton wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6zG-AL-hNk">
+                                                        <rect key="frame" x="-4" y="-4" width="369" height="22"/>
+                                                        <popUpButtonCell key="cell" type="push" title="Always directly commit half-width chars" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="NumPadCharInputBehavior-option-0" id="zw7-O5-dBV">
+                                                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" metaFont="smallSystem"/>
+                                                            <menu key="menu" id="iy6-sg-xeT">
+                                                                <items>
+                                                                    <menuItem title="Always directly commit half-width chars" state="on" id="NumPadCharInputBehavior-option-0"/>
+                                                                    <menuItem title="Always directly commit full-width chars" tag="1" id="NumPadCharInputBehavior-option-1"/>
+                                                                    <menuItem title="Insert into composition buffer (half-width)" tag="2" id="NumPadCharInputBehavior-option-2"/>
+                                                                    <menuItem title="Insert into composition buffer (full-width)" tag="3" id="NumPadCharInputBehavior-option-3"/>
+                                                                    <menuItem title="Directly commit half-width chars only if the compositor is empty" tag="4" id="NumPadCharInputBehavior-option-4"/>
+                                                                    <menuItem title="Directly commit full-width chars only if the compositor is empty" tag="5" id="NumPadCharInputBehavior-option-5"/>
+                                                                </items>
+                                                            </menu>
+                                                        </popUpButtonCell>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="180" id="9fY-mC-euB"/>
+                                                        </constraints>
+                                                        <connections>
+                                                            <binding destination="32" name="selectedTag" keyPath="values.NumPadCharInputBehavior" id="IqU-Xp-X4x"/>
+                                                        </connections>
+                                                    </popUpButton>
                                                 </subviews>
                                                 <visibilityPriorities>
                                                     <integer value="1000"/>
@@ -1598,8 +1603,10 @@
                                             <integer value="1000"/>
                                             <integer value="1000"/>
                                             <integer value="1000"/>
+                                            <integer value="1000"/>
                                         </visibilityPriorities>
                                         <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
                                             <real value="3.4028234663852886e+38"/>
                                             <real value="3.4028234663852886e+38"/>
                                             <real value="3.4028234663852886e+38"/>
@@ -1972,15 +1979,15 @@
                         <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZiP-iJ-C99">
                             <rect key="frame" x="0.0" y="71" width="538" height="370"/>
                             <clipView key="contentView" drawsBackground="NO" id="x8s-wo-bxi">
-                                <rect key="frame" x="0.0" y="0.0" width="538" height="370"/>
+                                <rect key="frame" x="0.0" y="0.0" width="523" height="370"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <subviews>
                                     <textView wantsLayer="YES" importsGraphics="NO" richText="NO" verticallyResizable="YES" allowsUndo="YES" smartInsertDelete="YES" id="kSG-dz-P2N">
-                                        <rect key="frame" x="0.0" y="0.0" width="538" height="370"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="523" height="370"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        <size key="minSize" width="538" height="370"/>
+                                        <size key="minSize" width="523" height="370"/>
                                         <size key="maxSize" width="549" height="10000000"/>
                                         <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     </textView>
@@ -1995,7 +2002,7 @@
                                 <autoresizingMask key="autoresizingMask"/>
                             </scroller>
                             <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="XaH-Hh-3mG">
-                                <rect key="frame" x="522" y="0.0" width="16" height="370"/>
+                                <rect key="frame" x="523" y="0.0" width="15" height="370"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </scroller>
                         </scrollView>
