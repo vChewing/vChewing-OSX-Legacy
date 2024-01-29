@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5B09126C2B134927000166DB /* LMInstantiator_SQLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B09126B2B134927000166DB /* LMInstantiator_SQLExtension.swift */; };
+		5B0E4EEF2B67933E00BE3440 /* OSVersionComparer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0E4EEE2B67933E00BE3440 /* OSVersionComparer.swift */; };
 		5B1523B62A74E92D007D2E53 /* Jad_BookmarkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1523B52A74E92D007D2E53 /* Jad_BookmarkManager.swift */; };
 		5B1CA80E29AC53BA0089E95F /* VwrCandidateTDK_AppKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1CA80D29AC53BA0089E95F /* VwrCandidateTDK_AppKit.swift */; };
 		5B1E6C2C2B65694100B977B5 /* LMInstantiator_NumPadExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1E6C2B2B65694100B977B5 /* LMInstantiator_NumPadExtension.swift */; };
@@ -177,6 +178,7 @@
 
 /* Begin PBXFileReference section */
 		5B09126B2B134927000166DB /* LMInstantiator_SQLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMInstantiator_SQLExtension.swift; sourceTree = "<group>"; };
+		5B0E4EEE2B67933E00BE3440 /* OSVersionComparer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSVersionComparer.swift; sourceTree = "<group>"; };
 		5B1523B52A74E92D007D2E53 /* Jad_BookmarkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Jad_BookmarkManager.swift; sourceTree = "<group>"; };
 		5B1CA80D29AC53BA0089E95F /* VwrCandidateTDK_AppKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VwrCandidateTDK_AppKit.swift; sourceTree = "<group>"; };
 		5B1E6C2B2B65694100B977B5 /* LMInstantiator_NumPadExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMInstantiator_NumPadExtension.swift; sourceTree = "<group>"; };
@@ -690,6 +692,7 @@
 				5BE5A56B294E127B00EFA49C /* PhraseEditorDelegate.swift */,
 				5BE5A538294E0CEC00EFA49C /* Shared.swift */,
 				5BAF0FFA2AA63F6D00FD58A0 /* UserDef.swift */,
+				5B0E4EEE2B67933E00BE3440 /* OSVersionComparer.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -1066,6 +1069,7 @@
 				5BE5A555294E0D1E00EFA49C /* 2_Walker.swift in Sources */,
 				5BE5A523294E0C2900EFA49C /* LMConsolidator.swift in Sources */,
 				5BE5A553294E0D1E00EFA49C /* 0_Megrez.swift in Sources */,
+				5B0E4EEF2B67933E00BE3440 /* OSVersionComparer.swift in Sources */,
 				5BE5A524294E0C2900EFA49C /* vChewingLM.swift in Sources */,
 				5B303E7E2A979F6F002CF4E6 /* IMKUtilsImpl.swift in Sources */,
 				5BE5A528294E0C2B00EFA49C /* lmReplacements.swift in Sources */,
