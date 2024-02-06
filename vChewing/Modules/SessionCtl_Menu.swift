@@ -222,7 +222,7 @@ extension SessionCtl {
 
 public extension SessionCtl {
   @objc override func showPreferences(_: Any? = nil) {
-    CtlPrefWindow.show()
+    CtlSettingsCocoa.show()
     NSApp.popup()
   }
 
