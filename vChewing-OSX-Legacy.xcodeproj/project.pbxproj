@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 53;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -21,7 +21,6 @@
 		5B55ACAD2B5A254F009E2F54 /* KBEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B55ACAC2B5A254F009E2F54 /* KBEvent.swift */; };
 		5B55ACAF2B5A255F009E2F54 /* NSEventImpl_Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B55ACAE2B5A255F009E2F54 /* NSEventImpl_Shared.swift */; };
 		5B572A7A29FB76B900ED5066 /* LatinKeyboardMappings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B572A7929FB76B900ED5066 /* LatinKeyboardMappings.swift */; };
-		5B572A7B29FB76B900ED5066 /* LatinKeyboardMappings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B572A7929FB76B900ED5066 /* LatinKeyboardMappings.swift */; };
 		5B60CEA429B8E7CA00A1AAC7 /* LMMgr_PhraseEditorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B60CEA329B8E7CA00A1AAC7 /* LMMgr_PhraseEditorDelegate.swift */; };
 		5B60CEA629B8E7D400A1AAC7 /* LMMgr_UserPhraseStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B60CEA529B8E7D400A1AAC7 /* LMMgr_UserPhraseStructure.swift */; };
 		5B60CEA829B8E7DB00A1AAC7 /* LMMgr_Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B60CEA729B8E7DB00A1AAC7 /* LMMgr_Utilities.swift */; };
@@ -70,7 +69,6 @@
 		5B751DFA294F19B30031CF70 /* frmClientListMgr.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B751DB3294EE2120031CF70 /* frmClientListMgr.xib */; };
 		5B7B4D242AA1BB7600FE6B63 /* Qwertyyb_ShiftKeyUpChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7B4D232AA1BB7600FE6B63 /* Qwertyyb_ShiftKeyUpChecker.swift */; };
 		5B7EEAE32AE5002C006C30A3 /* SecureEventInputSputnik.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7EEAE22AE5002C006C30A3 /* SecureEventInputSputnik.swift */; };
-		5B7EEAE42AE5002C006C30A3 /* SecureEventInputSputnik.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7EEAE22AE5002C006C30A3 /* SecureEventInputSputnik.swift */; };
 		5B8F0A632ABB3E7400A49491 /* Fuziki_NSAttributedTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8F0A622ABB3E7400A49491 /* Fuziki_NSAttributedTextView.swift */; };
 		5B8F94F72B3070C40071B14A /* InputToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8F94F62B3070C40071B14A /* InputToken.swift */; };
 		5BA631862B13617800974241 /* sqlite3.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA631622B135E9A00974241 /* sqlite3.m */; };
@@ -85,14 +83,13 @@
 		5BACBD09295098F50078CAB3 /* vChewing.app in Resources */ = {isa = PBXBuildFile; fileRef = 5BF5BADD294DFFC9006011AD /* vChewing.app */; };
 		5BACBD0C2950991D0078CAB3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5BACBD0A2950991D0078CAB3 /* Localizable.strings */; };
 		5BACBD0E295099290078CAB3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5B751D87294EC30D0031CF70 /* InfoPlist.strings */; };
-		5BACBD1329509B3D0078CAB3 /* CocoaExtension_Misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A4F0294E057F00EFA49C /* CocoaExtension_Misc.swift */; };
-		5BACBD1429509B450078CAB3 /* CocoaExtension_NSWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A4FF294E092900EFA49C /* CocoaExtension_NSWindowController.swift */; };
-		5BACBD1529509BB60078CAB3 /* SwiftExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A4F2294E058F00EFA49C /* SwiftExtension.swift */; };
 		5BAE70112AE54F67002E673A /* SecurityAgentHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAE70102AE54F67002E673A /* SecurityAgentHelper.swift */; };
 		5BAF0FFB2AA63F6D00FD58A0 /* UserDef.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAF0FFA2AA63F6D00FD58A0 /* UserDef.swift */; };
 		5BB1D7F22999025B00EA8D2C /* PrefUITabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB1D7F12999025B00EA8D2C /* PrefUITabs.swift */; };
 		5BB32F0329A61A3B00B05D7B /* CandidatePool_CocoaImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB32F0229A61A3B00B05D7B /* CandidatePool_CocoaImpl.swift */; };
 		5BB32F0529A61AFB00B05D7B /* CtlCandidateTDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB32F0429A61AFB00B05D7B /* CtlCandidateTDK.swift */; };
+		5BB5158D2B729E7800874257 /* CocoaExtension_Misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A4F0294E057F00EFA49C /* CocoaExtension_Misc.swift */; };
+		5BB5158E2B729E9D00874257 /* SwiftExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A4F2294E058F00EFA49C /* SwiftExtension.swift */; };
 		5BCF4AB829546B5200C7FBD9 /* convdict.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 5BCF4AB729546B5100C7FBD9 /* convdict.sqlite */; };
 		5BE5A4E5294E03C200EFA49C /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A4E4294E03C200EFA49C /* main.swift */; };
 		5BE5A4F1294E057F00EFA49C /* CocoaExtension_Misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A4F0294E057F00EFA49C /* CocoaExtension_Misc.swift */; };
@@ -961,14 +958,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BB5158E2B729E9D00874257 /* SwiftExtension.swift in Sources */,
 				5BACBCDF295093A60078CAB3 /* AppDelegate.swift in Sources */,
-				5BACBD1529509BB60078CAB3 /* SwiftExtension.swift in Sources */,
-				5B572A7B29FB76B900ED5066 /* LatinKeyboardMappings.swift in Sources */,
-				5BACBD1329509B3D0078CAB3 /* CocoaExtension_Misc.swift in Sources */,
+				5BB5158D2B729E7800874257 /* CocoaExtension_Misc.swift in Sources */,
 				5BACBCFE295094FA0078CAB3 /* TISInputSourceExtension.swift in Sources */,
 				5BACBD002950950D0078CAB3 /* AppDelegate_Extension.swift in Sources */,
-				5BACBD1429509B450078CAB3 /* CocoaExtension_NSWindowController.swift in Sources */,
-				5B7EEAE42AE5002C006C30A3 /* SecureEventInputSputnik.swift in Sources */,
 				5BACBCFD295094E90078CAB3 /* IMKHelper.swift in Sources */,
 				5BACBD022950951A0078CAB3 /* RelocationDetector.swift in Sources */,
 			);
