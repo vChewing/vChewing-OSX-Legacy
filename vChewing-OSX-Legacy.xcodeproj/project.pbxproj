@@ -69,6 +69,8 @@
 		5B751DFA294F19B30031CF70 /* frmClientListMgr.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B751DB3294EE2120031CF70 /* frmClientListMgr.xib */; };
 		5B7B4D242AA1BB7600FE6B63 /* Qwertyyb_ShiftKeyUpChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7B4D232AA1BB7600FE6B63 /* Qwertyyb_ShiftKeyUpChecker.swift */; };
 		5B7EEAE32AE5002C006C30A3 /* SecureEventInputSputnik.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7EEAE22AE5002C006C30A3 /* SecureEventInputSputnik.swift */; };
+		5B81BD102B7297A70092819A /* CocoaExtension_NSView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B81BD0F2B7297A70092819A /* CocoaExtension_NSView.swift */; };
+		5B81BD132B72984E0092819A /* UserDefRenderableCocoa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B81BD122B72984E0092819A /* UserDefRenderableCocoa.swift */; };
 		5B8F0A632ABB3E7400A49491 /* Fuziki_NSAttributedTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8F0A622ABB3E7400A49491 /* Fuziki_NSAttributedTextView.swift */; };
 		5B8F94F72B3070C40071B14A /* InputToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8F94F62B3070C40071B14A /* InputToken.swift */; };
 		5BA631862B13617800974241 /* sqlite3.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA631622B135E9A00974241 /* sqlite3.m */; };
@@ -242,6 +244,8 @@
 		5B751DE1294EE7A80031CF70 /* CtlCandidate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CtlCandidate.swift; sourceTree = "<group>"; };
 		5B7B4D232AA1BB7600FE6B63 /* Qwertyyb_ShiftKeyUpChecker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Qwertyyb_ShiftKeyUpChecker.swift; sourceTree = "<group>"; };
 		5B7EEAE22AE5002C006C30A3 /* SecureEventInputSputnik.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecureEventInputSputnik.swift; sourceTree = "<group>"; };
+		5B81BD0F2B7297A70092819A /* CocoaExtension_NSView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocoaExtension_NSView.swift; sourceTree = "<group>"; };
+		5B81BD122B72984E0092819A /* UserDefRenderableCocoa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefRenderableCocoa.swift; sourceTree = "<group>"; };
 		5B8F0A622ABB3E7400A49491 /* Fuziki_NSAttributedTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fuziki_NSAttributedTextView.swift; sourceTree = "<group>"; };
 		5B8F94F62B3070C40071B14A /* InputToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputToken.swift; sourceTree = "<group>"; };
 		5BA631622B135E9A00974241 /* sqlite3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = sqlite3.m; sourceTree = "<group>"; };
@@ -540,6 +544,7 @@
 			children = (
 				5BE5A4F0294E057F00EFA49C /* CocoaExtension_Misc.swift */,
 				5BE5A4FD294E090800EFA49C /* CocoaExtension_NSSound.swift */,
+				5B81BD0F2B7297A70092819A /* CocoaExtension_NSView.swift */,
 				5BE5A4FF294E092900EFA49C /* CocoaExtension_NSWindowController.swift */,
 				5BE5A4F4294E059600EFA49C /* IMKHelper.swift */,
 				5B303E7D2A979F6F002CF4E6 /* IMKUtilsImpl.swift */,
@@ -688,6 +693,7 @@
 				5BE5A537294E0CEC00EFA49C /* PrefMgrProtocol.swift */,
 				5BE5A56B294E127B00EFA49C /* PhraseEditorDelegate.swift */,
 				5BE5A538294E0CEC00EFA49C /* Shared.swift */,
+				5B81BD122B72984E0092819A /* UserDefRenderableCocoa.swift */,
 				5BAF0FFA2AA63F6D00FD58A0 /* UserDef.swift */,
 				5B0E4EEE2B67933E00BE3440 /* OSVersionComparer.swift */,
 			);
@@ -1029,6 +1035,7 @@
 				5BF5BAE1294DFFC9006011AD /* AppDelegate.swift in Sources */,
 				5B751DE4294EE7A80031CF70 /* CtlCandidate.swift in Sources */,
 				5BE5A53C294E0CEF00EFA49C /* CtlCandidateProtocol.swift in Sources */,
+				5B81BD132B72984E0092819A /* UserDefRenderableCocoa.swift in Sources */,
 				5BE5A4FC294E087B00EFA49C /* TISInputSourceExtension.swift in Sources */,
 				5BE5A541294E0CEF00EFA49C /* InputSignalProtocol.swift in Sources */,
 				5B55ACAD2B5A254F009E2F54 /* KBEvent.swift in Sources */,
@@ -1039,6 +1046,7 @@
 				5B8F0A632ABB3E7400A49491 /* Fuziki_NSAttributedTextView.swift in Sources */,
 				5BE5A55C294E0E8000EFA49C /* PopupCompositionBuffer.swift in Sources */,
 				5BE5A52F294E0C2B00EFA49C /* lmUserOverride.swift in Sources */,
+				5B81BD102B7297A70092819A /* CocoaExtension_NSView.swift in Sources */,
 				5B6420022ABB3BA600E1B7F6 /* TooltipUI_EarlyCocoa.swift in Sources */,
 				5B751DD3294EE57D0031CF70 /* InputHandler_TriageInput.swift in Sources */,
 				5BE5A568294E119600EFA49C /* LMMgr_Core.swift in Sources */,
