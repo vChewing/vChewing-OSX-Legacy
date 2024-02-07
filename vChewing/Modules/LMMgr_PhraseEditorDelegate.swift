@@ -13,8 +13,8 @@ import AppKit
 extension LMMgr: PhraseEditorDelegate {
   public var currentInputMode: Shared.InputMode { IMEApp.currentInputMode }
 
-  public func openPhraseFile(mode: Shared.InputMode, type: vChewingLM.ReplacableUserDataType, app: String) {
-    Self.openPhraseFile(fromURL: Self.userDictDataURL(mode: mode, type: type), app: app)
+  public func openPhraseFile(mode: Shared.InputMode, type: vChewingLM.ReplacableUserDataType, using app: FileOpenMethod) {
+    Self.openPhraseFile(fromURL: Self.userDictDataURL(mode: mode, type: type), using: app)
   }
 
   public func consolidate(text strProcessed: inout String, pragma shouldCheckPragma: Bool) {
