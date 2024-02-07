@@ -28,6 +28,7 @@
 		5B6420022ABB3BA600E1B7F6 /* TooltipUI_EarlyCocoa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B641FFE2ABB3BA600E1B7F6 /* TooltipUI_EarlyCocoa.swift */; };
 		5B6420032ABB3BA600E1B7F6 /* TooltipUI_LateCocoa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B641FFF2ABB3BA600E1B7F6 /* TooltipUI_LateCocoa.swift */; };
 		5B6815372B46EF86004A8A1A /* SpeechSputnik.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6815362B46EF86004A8A1A /* SpeechSputnik.swift */; };
+		5B69C36B2B7406DC006FBD09 /* VwrClientListMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B69C36A2B7406DC006FBD09 /* VwrClientListMgr.swift */; };
 		5B69CA6A295DDC58005211BB /* RangeParserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B69CA69295DDC58005211BB /* RangeParserAPI.swift */; };
 		5B751DA8294EE1DC0031CF70 /* frmAboutWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B751DAA294EE1DC0031CF70 /* frmAboutWindow.xib */; };
 		5B751DB8294EE27C0031CF70 /* CtlClientListMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DB7294EE27C0031CF70 /* CtlClientListMgr.swift */; };
@@ -63,7 +64,6 @@
 		5B751DF5294EF2940031CF70 /* Beep.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 5BE5A58B294E196C00EFA49C /* Beep.m4a */; };
 		5B751DF6294EF2940031CF70 /* Fart.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 5BE5A58C294E196C00EFA49C /* Fart.m4a */; };
 		5B751DF7294EF29B0031CF70 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5B751DA4294EE1B00031CF70 /* Localizable.strings */; };
-		5B751DFA294F19B30031CF70 /* frmClientListMgr.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B751DB3294EE2120031CF70 /* frmClientListMgr.xib */; };
 		5B7B4D242AA1BB7600FE6B63 /* Qwertyyb_ShiftKeyUpChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7B4D232AA1BB7600FE6B63 /* Qwertyyb_ShiftKeyUpChecker.swift */; };
 		5B7EEAE32AE5002C006C30A3 /* SecureEventInputSputnik.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7EEAE22AE5002C006C30A3 /* SecureEventInputSputnik.swift */; };
 		5B81BD102B7297A70092819A /* CocoaExtension_NSView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B81BD0F2B7297A70092819A /* CocoaExtension_NSView.swift */; };
@@ -208,6 +208,7 @@
 		5B641FFF2ABB3BA600E1B7F6 /* TooltipUI_LateCocoa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TooltipUI_LateCocoa.swift; sourceTree = "<group>"; };
 		5B6420002ABB3BA600E1B7F6 /* TooltipUIProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TooltipUIProtocol.swift; sourceTree = "<group>"; };
 		5B6815362B46EF86004A8A1A /* SpeechSputnik.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechSputnik.swift; sourceTree = "<group>"; };
+		5B69C36A2B7406DC006FBD09 /* VwrClientListMgr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VwrClientListMgr.swift; sourceTree = "<group>"; };
 		5B69CA69295DDC58005211BB /* RangeParserAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RangeParserAPI.swift; sourceTree = "<group>"; };
 		5B751D86294EC30D0031CF70 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5B751D88294EC30E0031CF70 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -222,7 +223,6 @@
 		5B751DAE294EE1E00031CF70 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/frmAboutWindow.strings"; sourceTree = "<group>"; };
 		5B751DB0294EE1E10031CF70 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/frmAboutWindow.strings"; sourceTree = "<group>"; };
 		5B751DB2294EE1E10031CF70 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/frmAboutWindow.strings; sourceTree = "<group>"; };
-		5B751DB3294EE2120031CF70 /* frmClientListMgr.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = frmClientListMgr.xib; sourceTree = "<group>"; };
 		5B751DB5294EE27C0031CF70 /* CtlRevLookupWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CtlRevLookupWindow.swift; sourceTree = "<group>"; };
 		5B751DB6294EE27C0031CF70 /* CtlAboutWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CtlAboutWindow.swift; sourceTree = "<group>"; };
 		5B751DB7294EE27C0031CF70 /* CtlClientListMgr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CtlClientListMgr.swift; sourceTree = "<group>"; };
@@ -392,7 +392,6 @@
 		5B751D92294EC6A60031CF70 /* XIBForms */ = {
 			isa = PBXGroup;
 			children = (
-				5B751DB3294EE2120031CF70 /* frmClientListMgr.xib */,
 				5B751DAA294EE1DC0031CF70 /* frmAboutWindow.xib */,
 			);
 			path = XIBForms;
@@ -404,6 +403,7 @@
 				5B751DB6294EE27C0031CF70 /* CtlAboutWindow.swift */,
 				5B751DB7294EE27C0031CF70 /* CtlClientListMgr.swift */,
 				5B751DB5294EE27C0031CF70 /* CtlRevLookupWindow.swift */,
+				5B69C36A2B7406DC006FBD09 /* VwrClientListMgr.swift */,
 			);
 			path = WindowControllers;
 			sourceTree = "<group>";
@@ -924,7 +924,6 @@
 				5B751DA8294EE1DC0031CF70 /* frmAboutWindow.xib in Resources */,
 				5B751DF2294EF28C0031CF70 /* template-exclusions.txt in Resources */,
 				5B751DE9294EF2880031CF70 /* MenuIcon-TCVIM@2x.png in Resources */,
-				5B751DFA294F19B30031CF70 /* frmClientListMgr.xib in Resources */,
 				5B751DF5294EF2940031CF70 /* Beep.m4a in Resources */,
 				5BF5BAE6294DFFCA006011AD /* MainMenu.xib in Resources */,
 				5BE5D99A2ACAF0EB009A732C /* sequenceDataFromEtenDOS-cht.json in Resources */,
@@ -1097,6 +1096,7 @@
 				5B751DD6294EE57D0031CF70 /* IMEStateData.swift in Sources */,
 				5BE5A505294E097C00EFA49C /* DanielGalasko_FolderMonitor.swift in Sources */,
 				5BE5A56C294E127B00EFA49C /* PhraseEditorDelegate.swift in Sources */,
+				5B69C36B2B7406DC006FBD09 /* VwrClientListMgr.swift in Sources */,
 				5BE5A564294E10F300EFA49C /* PrefMgr_Core.swift in Sources */,
 				5B69CA6A295DDC58005211BB /* RangeParserAPI.swift in Sources */,
 				5BE5A546294E0D1200EFA49C /* Tekkon_Constants.swift in Sources */,
