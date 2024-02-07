@@ -123,17 +123,20 @@ public extension AppDelegate {
     alert.messageText = NSLocalizedString("Uninstallation", comment: "")
     alert.informativeText = content
     alert.addButton(withTitle: NSLocalizedString("OK", comment: ""))
+    if #available(macOS 11, *) {
+      alert.buttons.forEach { button in
+        button.hasDestructiveAction = true
+      }
+    }
     alert.addButton(withTitle: NSLocalizedString("Not Now", comment: ""))
     let result = alert.runModal()
     NSApp.popup()
-    if result == NSApplication.ModalResponse.alertFirstButtonReturn {
-      NSWorkspace.shared.openFile(
-        LMMgr.dataFolderPath(isDefaultFolder: true), withApplication: "Finder"
-      )
-      Uninstaller.uninstall(
-        isSudo: false, selfKill: true, defaultDataFolderPath: LMMgr.dataFolderPath(isDefaultFolder: true)
-      )
-    }
+    guard result == NSApplication.ModalResponse.alertFirstButtonReturn else { return }
+    let url = URL(fileURLWithPath: LMMgr.dataFolderPath(isDefaultFolder: true))
+    FileOpenMethod.finder.open(url: url)
+    Uninstaller.uninstall(
+      isSudo: false, selfKill: true, defaultDataFolderPath: LMMgr.dataFolderPath(isDefaultFolder: true)
+    )
   }
 
   /// 檢查該程式本身的記憶體佔用量。

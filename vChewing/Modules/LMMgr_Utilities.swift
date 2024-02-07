@@ -269,28 +269,20 @@ public extension LMMgr {
   }
 
   static func openUserDictFile(type: vChewingLM.ReplacableUserDataType, dual: Bool = false, alt: Bool) {
-    let app: String = alt ? "" : "Finder"
-    openPhraseFile(fromURL: userDictDataURL(mode: IMEApp.currentInputMode, type: type), app: app)
+    let app: FileOpenMethod = alt ? .textEdit : .finder
+    openPhraseFile(fromURL: userDictDataURL(mode: IMEApp.currentInputMode, type: type), using: app)
     guard dual else { return }
-    openPhraseFile(fromURL: userDictDataURL(mode: IMEApp.currentInputMode.reversed, type: type), app: app)
+    openPhraseFile(fromURL: userDictDataURL(mode: IMEApp.currentInputMode.reversed, type: type), using: app)
   }
 
   /// 用指定應用開啟指定檔案。
-  /// - Remark: 如果你的 App 有 Sandbox 處理過的話，請勿給 app 傳入 "vim" 參數，因為 Sandbox 會阻止之。
   /// - Parameters:
   ///   - url: 檔案 URL。
-  ///   - app: 指定 App 應用的 binary 檔案名稱。
-  static func openPhraseFile(fromURL url: URL, app: String = "") {
+  ///   - FileOpenMethod: 指定 App 應用。
+  static func openPhraseFile(fromURL url: URL, using app: FileOpenMethod) {
     if !Self.checkIfUserFilesExistBeforeOpening() { return }
     DispatchQueue.main.async {
-      switch app {
-      case "Finder":
-        NSWorkspace.shared.activateFileViewerSelecting([url])
-      default:
-        if !NSWorkspace.shared.openFile(url.path, withApplication: app) {
-          NSWorkspace.shared.openFile(url.path, withApplication: "TextEdit")
-        }
-      }
+      app.open(url: url)
     }
   }
 
