@@ -30,7 +30,6 @@
 		5B6815372B46EF86004A8A1A /* SpeechSputnik.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6815362B46EF86004A8A1A /* SpeechSputnik.swift */; };
 		5B69C36B2B7406DC006FBD09 /* VwrClientListMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B69C36A2B7406DC006FBD09 /* VwrClientListMgr.swift */; };
 		5B69CA6A295DDC58005211BB /* RangeParserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B69CA69295DDC58005211BB /* RangeParserAPI.swift */; };
-		5B751DA8294EE1DC0031CF70 /* frmAboutWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B751DAA294EE1DC0031CF70 /* frmAboutWindow.xib */; };
 		5B751DB8294EE27C0031CF70 /* CtlClientListMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DB7294EE27C0031CF70 /* CtlClientListMgr.swift */; };
 		5B751DB9294EE27C0031CF70 /* CtlRevLookupWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DB5294EE27C0031CF70 /* CtlRevLookupWindow.swift */; };
 		5B751DBA294EE27C0031CF70 /* CtlAboutWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DB6294EE27C0031CF70 /* CtlAboutWindow.swift */; };
@@ -218,11 +217,6 @@
 		5B751DA5294EE1B30031CF70 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		5B751DA6294EE1B50031CF70 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		5B751DA7294EE1B60031CF70 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
-		5B751DA9294EE1DC0031CF70 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/frmAboutWindow.xib; sourceTree = "<group>"; };
-		5B751DAC294EE1E00031CF70 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/frmAboutWindow.strings; sourceTree = "<group>"; };
-		5B751DAE294EE1E00031CF70 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/frmAboutWindow.strings"; sourceTree = "<group>"; };
-		5B751DB0294EE1E10031CF70 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/frmAboutWindow.strings"; sourceTree = "<group>"; };
-		5B751DB2294EE1E10031CF70 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/frmAboutWindow.strings; sourceTree = "<group>"; };
 		5B751DB5294EE27C0031CF70 /* CtlRevLookupWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CtlRevLookupWindow.swift; sourceTree = "<group>"; };
 		5B751DB6294EE27C0031CF70 /* CtlAboutWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CtlAboutWindow.swift; sourceTree = "<group>"; };
 		5B751DB7294EE27C0031CF70 /* CtlClientListMgr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CtlClientListMgr.swift; sourceTree = "<group>"; };
@@ -392,7 +386,6 @@
 		5B751D92294EC6A60031CF70 /* XIBForms */ = {
 			isa = PBXGroup;
 			children = (
-				5B751DAA294EE1DC0031CF70 /* frmAboutWindow.xib */,
 			);
 			path = XIBForms;
 			sourceTree = "<group>";
@@ -921,7 +914,6 @@
 				5B751DF1294EF28C0031CF70 /* template-associatedPhrases-chs.txt in Resources */,
 				5B751DF4294EF28C0031CF70 /* template-associatedPhrases-cht.txt in Resources */,
 				5B751DF6294EF2940031CF70 /* Fart.m4a in Resources */,
-				5B751DA8294EE1DC0031CF70 /* frmAboutWindow.xib in Resources */,
 				5B751DF2294EF28C0031CF70 /* template-exclusions.txt in Resources */,
 				5B751DE9294EF2880031CF70 /* MenuIcon-TCVIM@2x.png in Resources */,
 				5B751DF5294EF2940031CF70 /* Beep.m4a in Resources */,
@@ -1166,18 +1158,6 @@
 				5B751DA7294EE1B60031CF70 /* ja */,
 			);
 			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
-		5B751DAA294EE1DC0031CF70 /* frmAboutWindow.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5B751DA9294EE1DC0031CF70 /* Base */,
-				5B751DAC294EE1E00031CF70 /* en */,
-				5B751DAE294EE1E00031CF70 /* zh-Hans */,
-				5B751DB0294EE1E10031CF70 /* zh-Hant */,
-				5B751DB2294EE1E10031CF70 /* ja */,
-			);
-			name = frmAboutWindow.xib;
 			sourceTree = "<group>";
 		};
 		5BACBCE2295093A80078CAB3 /* MainMenu.xib */ = {
