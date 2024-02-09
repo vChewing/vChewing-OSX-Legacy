@@ -39,7 +39,7 @@ public class UserDefRenderableCocoa: NSObject, Identifiable {
     checkDef: switch def {
     case .kAlphanumericalKeyboardLayout:
       IMKHelper.allowedAlphanumericalTISInputSources.forEach { currentTIS in
-        objOptions.append((currentTIS.identifier, currentTIS.vChewingLocalizedName))
+        objOptions.append((currentTIS.id, currentTIS.titleLocalized))
       }
       optionsLocalizedAsIdentifiables = objOptions
     case .kBasicKeyboardLayout:
@@ -48,7 +48,7 @@ public class UserDefRenderableCocoa: NSObject, Identifiable {
           objOptions.append(nil)
           return
         }
-        objOptions.append((currentTIS.identifier, currentTIS.vChewingLocalizedName))
+        objOptions.append((currentTIS.id, currentTIS.titleLocalized))
       }
       optionsLocalizedAsIdentifiables = objOptions
     case .kKeyboardParser:
