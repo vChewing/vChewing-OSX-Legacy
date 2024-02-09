@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 53;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -29,9 +29,6 @@
 		5B6420032ABB3BA600E1B7F6 /* TooltipUI_LateCocoa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B641FFF2ABB3BA600E1B7F6 /* TooltipUI_LateCocoa.swift */; };
 		5B6815372B46EF86004A8A1A /* SpeechSputnik.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6815362B46EF86004A8A1A /* SpeechSputnik.swift */; };
 		5B69CA6A295DDC58005211BB /* RangeParserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B69CA69295DDC58005211BB /* RangeParserAPI.swift */; };
-		5B751D90294EC66A0031CF70 /* CtlPrefWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751D8E294EC66A0031CF70 /* CtlPrefWindow.swift */; };
-		5B751D96294EDE850031CF70 /* CtlPrefWindow_PhraseEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751D95294EDE850031CF70 /* CtlPrefWindow_PhraseEditor.swift */; };
-		5B751D97294EE1730031CF70 /* frmPrefWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B751D99294EE1730031CF70 /* frmPrefWindow.xib */; };
 		5B751DA8294EE1DC0031CF70 /* frmAboutWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B751DAA294EE1DC0031CF70 /* frmAboutWindow.xib */; };
 		5B751DB8294EE27C0031CF70 /* CtlClientListMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DB7294EE27C0031CF70 /* CtlClientListMgr.swift */; };
 		5B751DB9294EE27C0031CF70 /* CtlRevLookupWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DB5294EE27C0031CF70 /* CtlRevLookupWindow.swift */; };
@@ -216,13 +213,6 @@
 		5B751D88294EC30E0031CF70 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		5B751D89294EC3110031CF70 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		5B751D8A294EC3580031CF70 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		5B751D8E294EC66A0031CF70 /* CtlPrefWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CtlPrefWindow.swift; path = vChewing/Modules/WindowControllers/CtlPrefWindow.swift; sourceTree = SOURCE_ROOT; };
-		5B751D95294EDE850031CF70 /* CtlPrefWindow_PhraseEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CtlPrefWindow_PhraseEditor.swift; sourceTree = "<group>"; };
-		5B751D98294EE1730031CF70 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/frmPrefWindow.xib; sourceTree = "<group>"; };
-		5B751D9B294EE1790031CF70 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/frmPrefWindow.strings; sourceTree = "<group>"; };
-		5B751D9D294EE17C0031CF70 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/frmPrefWindow.strings"; sourceTree = "<group>"; };
-		5B751D9F294EE17D0031CF70 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/frmPrefWindow.strings"; sourceTree = "<group>"; };
-		5B751DA1294EE17D0031CF70 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/frmPrefWindow.strings; sourceTree = "<group>"; };
 		5B751DA3294EE1B00031CF70 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5B751DA5294EE1B30031CF70 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		5B751DA6294EE1B50031CF70 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -404,7 +394,6 @@
 			children = (
 				5B751DB3294EE2120031CF70 /* frmClientListMgr.xib */,
 				5B751DAA294EE1DC0031CF70 /* frmAboutWindow.xib */,
-				5B751D99294EE1730031CF70 /* frmPrefWindow.xib */,
 			);
 			path = XIBForms;
 			sourceTree = "<group>";
@@ -415,8 +404,6 @@
 				5B751DB6294EE27C0031CF70 /* CtlAboutWindow.swift */,
 				5B751DB7294EE27C0031CF70 /* CtlClientListMgr.swift */,
 				5B751DB5294EE27C0031CF70 /* CtlRevLookupWindow.swift */,
-				5B751D8E294EC66A0031CF70 /* CtlPrefWindow.swift */,
-				5B751D95294EDE850031CF70 /* CtlPrefWindow_PhraseEditor.swift */,
 			);
 			path = WindowControllers;
 			sourceTree = "<group>";
@@ -944,7 +931,6 @@
 				5B751DF0294EF28C0031CF70 /* template-replacements.txt in Resources */,
 				5B751DF7294EF29B0031CF70 /* Localizable.strings in Resources */,
 				5B751DEA294EF2880031CF70 /* MenuIcon-SCVIM@2x.png in Resources */,
-				5B751D97294EE1730031CF70 /* frmPrefWindow.xib in Resources */,
 				5B3C0D5F2B13555400C87B27 /* vChewingFactoryDatabase.sqlite in Resources */,
 				5B751DE7294EF2880031CF70 /* MenuIcon-TCVIM.png in Resources */,
 			);
@@ -1061,13 +1047,11 @@
 				5BE5A52E294E0C2B00EFA49C /* lmCassette.swift in Sources */,
 				5BE5A549294E0D1200EFA49C /* Tekkon_Utilities.swift in Sources */,
 				5BE5A525294E0C2900EFA49C /* LMInstantiator_CassetteExtension.swift in Sources */,
-				5B751D90294EC66A0031CF70 /* CtlPrefWindow.swift in Sources */,
 				5BE5A52C294E0C2B00EFA49C /* lmRevLookup.swift in Sources */,
 				5B1E6C2C2B65694100B977B5 /* LMInstantiator_NumPadExtension.swift in Sources */,
 				5B8F94F72B3070C40071B14A /* InputToken.swift in Sources */,
 				5B423A542A9516B0004CC33B /* Broadcaster.swift in Sources */,
 				5B81BD262B729AE90092819A /* VwrSettingsPaneCocoaDevZone.swift in Sources */,
-				5B751D96294EDE850031CF70 /* CtlPrefWindow_PhraseEditor.swift in Sources */,
 				5B1CA80E29AC53BA0089E95F /* VwrCandidateTDK_AppKit.swift in Sources */,
 				5B751DDB294EE57D0031CF70 /* InputHandler_HandleCandidate.swift in Sources */,
 				5BE5A56A294E120500EFA49C /* SymbolMenuDefaultData.swift in Sources */,
@@ -1172,19 +1156,6 @@
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
-		};
-		5B751D99294EE1730031CF70 /* frmPrefWindow.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5B751D98294EE1730031CF70 /* Base */,
-				5B751D9B294EE1790031CF70 /* en */,
-				5B751D9D294EE17C0031CF70 /* zh-Hans */,
-				5B751D9F294EE17D0031CF70 /* zh-Hant */,
-				5B751DA1294EE17D0031CF70 /* ja */,
-			);
-			name = frmPrefWindow.xib;
-			path = vChewing/XIBForms;
-			sourceTree = SOURCE_ROOT;
 		};
 		5B751DA4294EE1B00031CF70 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
