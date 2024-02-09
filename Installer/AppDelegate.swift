@@ -55,7 +55,7 @@ class AppDelegate: NSWindowController, NSApplicationDelegate {
     else {
       return []
     }
-    return tsInputModeListKey.keys.compactMap { TISInputSource.generate(from: $0) }
+    return TISInputSource.match(modeIDs: tsInputModeListKey.keys.map(\.description))
   }
 
   func runAlertPanel(title: String, message: String, buttonTitle: String) {
