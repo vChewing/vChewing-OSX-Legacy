@@ -422,6 +422,43 @@
 			path = CandidateControllers;
 			sourceTree = "<group>";
 		};
+		5B7C02062B77AFAA00B7DBAA /* InputHandler */ = {
+			isa = PBXGroup;
+			children = (
+				5B751DC1294EE57C0031CF70 /* InputHandler_Core.swift */,
+				5B751DCC294EE57D0031CF70 /* InputHandler_HandleCandidate.swift */,
+				5B751DCA294EE57D0031CF70 /* InputHandler_HandleComposition.swift */,
+				5B751DBF294EE57C0031CF70 /* InputHandler_HandleStates.swift */,
+				5B751DC4294EE57C0031CF70 /* InputHandler_TriageInput.swift */,
+			);
+			path = InputHandler;
+			sourceTree = "<group>";
+		};
+		5B7C02072B77AFB000B7DBAA /* LangModelManager */ = {
+			isa = PBXGroup;
+			children = (
+				5BE5A567294E119600EFA49C /* LMMgr_Core.swift */,
+				5B2F3B512AF24FD500225501 /* LMMgr_KimoDataParser.swift */,
+				5B60CEA329B8E7CA00A1AAC7 /* LMMgr_PhraseEditorDelegate.swift */,
+				5B60CEA529B8E7D400A1AAC7 /* LMMgr_UserPhraseStructure.swift */,
+				5B60CEA729B8E7DB00A1AAC7 /* LMMgr_Utilities.swift */,
+			);
+			path = LangModelManager;
+			sourceTree = "<group>";
+		};
+		5B7C02082B77AFBA00B7DBAA /* SessionController */ = {
+			isa = PBXGroup;
+			children = (
+				5B751DC0294EE57C0031CF70 /* SessionCtl_Core.swift */,
+				5B751DCB294EE57D0031CF70 /* SessionCtl_Delegates.swift */,
+				5B751DC5294EE57C0031CF70 /* SessionCtl_HandleDisplay.swift */,
+				5B751DBE294EE57C0031CF70 /* SessionCtl_HandleEvent.swift */,
+				5B751DC2294EE57C0031CF70 /* SessionCtl_HandleStates.swift */,
+				5B751DC8294EE57D0031CF70 /* SessionCtl_Menu.swift */,
+			);
+			path = SessionController;
+			sourceTree = "<group>";
+		};
 		5B81BD152B729AD60092819A /* SettingsCocoa */ = {
 			isa = PBXGroup;
 			children = (
@@ -527,6 +564,9 @@
 			isa = PBXGroup;
 			children = (
 				5B751DDE294EE77F0031CF70 /* CandidateControllers */,
+				5B7C02062B77AFAA00B7DBAA /* InputHandler */,
+				5B7C02072B77AFB000B7DBAA /* LangModelManager */,
+				5B7C02082B77AFBA00B7DBAA /* SessionController */,
 				5BB1D7F52999028800EA8D2C /* UIModules */,
 				5B751DB4294EE21D0031CF70 /* WindowControllers */,
 				5BF5BAE0294DFFC9006011AD /* AppDelegate.swift */,
@@ -534,26 +574,10 @@
 				5BE5A595294E1DFB00EFA49C /* ChineseConverterBridge.swift */,
 				5B751DC6294EE57D0031CF70 /* IMEState.swift */,
 				5B751DC7294EE57D0031CF70 /* IMEStateData.swift */,
-				5B751DC1294EE57C0031CF70 /* InputHandler_Core.swift */,
-				5B751DCC294EE57D0031CF70 /* InputHandler_HandleCandidate.swift */,
-				5B751DCA294EE57D0031CF70 /* InputHandler_HandleComposition.swift */,
-				5B751DBF294EE57C0031CF70 /* InputHandler_HandleStates.swift */,
-				5B751DC4294EE57C0031CF70 /* InputHandler_TriageInput.swift */,
-				5BE5A567294E119600EFA49C /* LMMgr_Core.swift */,
-				5B2F3B512AF24FD500225501 /* LMMgr_KimoDataParser.swift */,
-				5B60CEA329B8E7CA00A1AAC7 /* LMMgr_PhraseEditorDelegate.swift */,
-				5B60CEA529B8E7D400A1AAC7 /* LMMgr_UserPhraseStructure.swift */,
-				5B60CEA729B8E7DB00A1AAC7 /* LMMgr_Utilities.swift */,
 				5BE5A4E4294E03C200EFA49C /* main.swift */,
 				5BE5A563294E10F300EFA49C /* PrefMgr_Core.swift */,
 				5BE5A565294E111E00EFA49C /* PrefMgr_Extension.swift */,
 				5BAE70102AE54F67002E673A /* SecurityAgentHelper.swift */,
-				5B751DC0294EE57C0031CF70 /* SessionCtl_Core.swift */,
-				5B751DCB294EE57D0031CF70 /* SessionCtl_Delegates.swift */,
-				5B751DC5294EE57C0031CF70 /* SessionCtl_HandleDisplay.swift */,
-				5B751DBE294EE57C0031CF70 /* SessionCtl_HandleEvent.swift */,
-				5B751DC2294EE57C0031CF70 /* SessionCtl_HandleStates.swift */,
-				5B751DC8294EE57D0031CF70 /* SessionCtl_Menu.swift */,
 				5B6815362B46EF86004A8A1A /* SpeechSputnik.swift */,
 				5BE5A569294E120500EFA49C /* SymbolMenuDefaultData.swift */,
 			);
