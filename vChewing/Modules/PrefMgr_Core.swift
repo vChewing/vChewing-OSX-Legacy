@@ -104,6 +104,9 @@ import AppKit
   @AppProperty(key: UserDef.kMoveCursorAfterSelectingCandidate.rawValue, defaultValue: true)
   public dynamic var moveCursorAfterSelectingCandidate: Bool
 
+  @AppProperty(key: UserDef.kDodgeInvalidEdgeCandidateCursorPosition.rawValue, defaultValue: true)
+  public dynamic var dodgeInvalidEdgeCandidateCursorPosition: Bool
+
   @AppProperty(key: UserDef.kUseDynamicCandidateWindowOrigin.rawValue, defaultValue: true)
   public dynamic var useDynamicCandidateWindowOrigin: Bool
 

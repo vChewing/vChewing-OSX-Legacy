@@ -279,7 +279,7 @@ extension SessionCtl: CtlCandidateDelegate {
     // 清詞完畢
 
     var newState: IMEStateProtocol = updateResult
-      ? inputHandler.generateStateOfCandidates()
+      ? inputHandler.generateStateOfCandidates(dodge: false)
       : IMEState.ofCommitting(textToCommit: state.displayedText)
     newState.tooltipDuration = 1.85
     var tooltipMessage = ""
