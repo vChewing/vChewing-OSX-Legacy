@@ -321,7 +321,7 @@ import AppKit
     didSet {
       let optimized = candidateKeys.lowercased().deduplicated
       if candidateKeys != optimized { candidateKeys = optimized }
-      if CandidateKey.validate(keys: candidateKeys) != nil {
+      if validate(candidateKeys: candidateKeys) != nil {
         candidateKeys = Self.kDefaultCandidateKeys
       }
     }

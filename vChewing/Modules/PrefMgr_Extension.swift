@@ -8,6 +8,15 @@
 
 import InputMethodKit
 
+// MARK: Guarded Method for Validating Candidate Keys.
+
+public extension PrefMgr {
+  func validate(candidateKeys: String) -> String? {
+    let excluded = useJKtoMoveCompositorCursorInCandidateState ? "jk" : ""
+    return CandidateKey.validate(keys: candidateKeys, excluding: excluded)
+  }
+}
+
 // MARK: Auto parameter fix procedures, executed everytime on SessionCtl.activateServer().
 
 public extension PrefMgr {
