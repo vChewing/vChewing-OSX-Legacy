@@ -63,6 +63,7 @@
 		5B751DF5294EF2940031CF70 /* Beep.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 5BE5A58B294E196C00EFA49C /* Beep.m4a */; };
 		5B751DF6294EF2940031CF70 /* Fart.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 5BE5A58C294E196C00EFA49C /* Fart.m4a */; };
 		5B751DF7294EF29B0031CF70 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5B751DA4294EE1B00031CF70 /* Localizable.strings */; };
+		5B785EEB2B78FC680006413D /* InputHandler_TypingMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B785EEA2B78FC680006413D /* InputHandler_TypingMethod.swift */; };
 		5B7B4D242AA1BB7600FE6B63 /* Qwertyyb_ShiftKeyUpChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7B4D232AA1BB7600FE6B63 /* Qwertyyb_ShiftKeyUpChecker.swift */; };
 		5B7EEAE32AE5002C006C30A3 /* SecureEventInputSputnik.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7EEAE22AE5002C006C30A3 /* SecureEventInputSputnik.swift */; };
 		5B81BD102B7297A70092819A /* CocoaExtension_NSView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B81BD0F2B7297A70092819A /* CocoaExtension_NSView.swift */; };
@@ -237,6 +238,7 @@
 		5B751DDF294EE7A80031CF70 /* CandidateCellData_Core.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandidateCellData_Core.swift; sourceTree = "<group>"; };
 		5B751DE0294EE7A80031CF70 /* CandidatePool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandidatePool.swift; sourceTree = "<group>"; };
 		5B751DE1294EE7A80031CF70 /* CtlCandidate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CtlCandidate.swift; sourceTree = "<group>"; };
+		5B785EEA2B78FC680006413D /* InputHandler_TypingMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputHandler_TypingMethod.swift; sourceTree = "<group>"; };
 		5B7B4D232AA1BB7600FE6B63 /* Qwertyyb_ShiftKeyUpChecker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Qwertyyb_ShiftKeyUpChecker.swift; sourceTree = "<group>"; };
 		5B7EEAE22AE5002C006C30A3 /* SecureEventInputSputnik.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecureEventInputSputnik.swift; sourceTree = "<group>"; };
 		5B81BD0F2B7297A70092819A /* CocoaExtension_NSView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocoaExtension_NSView.swift; sourceTree = "<group>"; };
@@ -430,6 +432,7 @@
 				5B751DCA294EE57D0031CF70 /* InputHandler_HandleComposition.swift */,
 				5B751DBF294EE57C0031CF70 /* InputHandler_HandleStates.swift */,
 				5B751DC4294EE57C0031CF70 /* InputHandler_TriageInput.swift */,
+				5B785EEA2B78FC680006413D /* InputHandler_TypingMethod.swift */,
 			);
 			path = InputHandler;
 			sourceTree = "<group>";
@@ -1087,6 +1090,7 @@
 				5B81BD2B2B729AE90092819A /* VwrSettingsPaneCocoaOutput.swift in Sources */,
 				5B55ACAD2B5A254F009E2F54 /* KBEvent.swift in Sources */,
 				5BE5A556294E0D1E00EFA49C /* 5_Node.swift in Sources */,
+				5B785EEB2B78FC680006413D /* InputHandler_TypingMethod.swift in Sources */,
 				5BE5A527294E0C2900EFA49C /* LMInstantiator_DateTimeExtension.swift in Sources */,
 				5BB32F0329A61A3B00B05D7B /* CandidatePool_CocoaImpl.swift in Sources */,
 				5BAF0FFB2AA63F6D00FD58A0 /* UserDef.swift in Sources */,
