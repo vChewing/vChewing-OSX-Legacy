@@ -58,14 +58,16 @@ public extension SettingsPanesCocoa {
         }?.boxed()
         NSStackView.buildSection(width: contentWidth) {
           UserDef.kAllowBoostingSingleKanjiAsUserPhrase.render(fixWidth: contentWidth)
-          NSStackView.build(.horizontal) {
-            "i18n:settings.importFromKimoTxt.buttonText".makeNSLabel(fixWidth: contentWidth)
-            NSView()
-            NSButton(
-              verbatim: "...",
-              target: self,
-              action: #selector(importYahooKeyKeyUserDictionaryData(_:))
-            )
+          if #available(macOS 10.13, *) {
+            NSStackView.build(.horizontal) {
+              "i18n:settings.importFromKimoTxt.buttonText".makeNSLabel(fixWidth: contentWidth)
+              NSView()
+              NSButton(
+                verbatim: "...",
+                target: self,
+                action: #selector(importYahooKeyKeyUserDictionaryData(_:))
+              )
+            }
           }
         }?.boxed()
         NSView().makeSimpleConstraint(.height, relation: .equal, value: NSFont.systemFontSize)
