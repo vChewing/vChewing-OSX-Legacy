@@ -28,7 +28,7 @@ public extension SettingsPanesCocoa {
           NSTabView.TabPage(title: "Ａ") {
             NSStackView.buildSection(width: contentWidth) {
               UserDef.kUseHorizontalCandidateList.render(fixWidth: contentWidth)
-              UserDef.kCandidateListTextSize.render { renderable in
+              UserDef.kCandidateListTextSize.render(fixWidth: contentWidth) { renderable in
                 renderable.currentControl?.target = self
                 renderable.currentControl?.action = #selector(self.candidateFontSizeDidSet(_:))
               }
@@ -40,7 +40,7 @@ public extension SettingsPanesCocoa {
           }
           NSTabView.TabPage(title: "Ｂ") {
             NSStackView.buildSection(width: contentWidth) {
-              UserDef.kCandidateKeys.render { renderable in
+              UserDef.kCandidateKeys.render(fixWidth: contentWidth) { renderable in
                 renderable.currentControl?.target = self
                 renderable.currentControl?.action = #selector(self.candidateKeysDidSet(_:))
                 renderable.currentControl?.alignment = .right
