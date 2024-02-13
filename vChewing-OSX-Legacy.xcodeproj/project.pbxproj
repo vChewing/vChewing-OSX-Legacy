@@ -101,6 +101,7 @@
 		5BB5158D2B729E7800874257 /* CocoaExtension_Misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A4F0294E057F00EFA49C /* CocoaExtension_Misc.swift */; };
 		5BB5158E2B729E9D00874257 /* SwiftExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A4F2294E058F00EFA49C /* SwiftExtension.swift */; };
 		5BCF4AB829546B5200C7FBD9 /* convdict.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 5BCF4AB729546B5100C7FBD9 /* convdict.sqlite */; };
+		5BD289E42B7B48AE00D3E41A /* LatinKeyboardMappings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B572A7929FB76B900ED5066 /* LatinKeyboardMappings.swift */; };
 		5BE5A4E5294E03C200EFA49C /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A4E4294E03C200EFA49C /* main.swift */; };
 		5BE5A4F1294E057F00EFA49C /* CocoaExtension_Misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A4F0294E057F00EFA49C /* CocoaExtension_Misc.swift */; };
 		5BE5A4F3294E058F00EFA49C /* SwiftExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A4F2294E058F00EFA49C /* SwiftExtension.swift */; };
@@ -1015,6 +1016,7 @@
 				5BACBCFE295094FA0078CAB3 /* TISInputSourceExtension.swift in Sources */,
 				5BACBD002950950D0078CAB3 /* AppDelegate_Extension.swift in Sources */,
 				5BACBCFD295094E90078CAB3 /* IMKHelper.swift in Sources */,
+				5BD289E42B7B48AE00D3E41A /* LatinKeyboardMappings.swift in Sources */,
 				5BACBD022950951A0078CAB3 /* RelocationDetector.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
