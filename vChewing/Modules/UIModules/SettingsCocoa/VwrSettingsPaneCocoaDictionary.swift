@@ -14,6 +14,7 @@ public extension SettingsPanesCocoa {
     let windowWidth: CGFloat = 577
     let contentWidth: CGFloat = 512
     let pctUserDictionaryFolder: NSPathControl = .init()
+    let dragRetrieverKimo: NSFileDragRetrieverButton = .init()
 
     override public func loadView() {
       prepareUserDictionaryFolderPathControl(pctUserDictionaryFolder)
@@ -58,20 +59,28 @@ public extension SettingsPanesCocoa {
         }?.boxed()
         NSStackView.buildSection(width: contentWidth) {
           UserDef.kAllowBoostingSingleKanjiAsUserPhrase.render(fixWidth: contentWidth)
-          if #available(macOS 10.13, *) {
-            NSStackView.build(.horizontal) {
-              "i18n:settings.importFromKimoTxt.buttonText".makeNSLabel(fixWidth: contentWidth)
-              NSView()
-              NSButton(
-                verbatim: "...",
-                target: self,
-                action: #selector(importYahooKeyKeyUserDictionaryData(_:))
-              )
-            }
+          NSStackView.build(.horizontal) {
+            "i18n:settings.importFromKimoTxt.buttonText".makeNSLabel(fixWidth: contentWidth)
+            NSView()
+            importKimoDragButton()
           }
         }?.boxed()
         NSView().makeSimpleConstraint(.height, relation: .equal, value: NSFont.systemFontSize)
       }
+    }
+
+    func importKimoDragButton() -> NSFileDragRetrieverButton {
+      dragRetrieverKimo.postDragHandler = { url in
+        guard var rawString = try? String(contentsOf: url) else { return }
+        let count = LMMgr.importYahooKeyKeyUserDictionary(text: &rawString)
+        CtlSettingsCocoa.shared?.window.callAlert(
+          title: String(format: "i18n:settings.importFromKimoTxt.finishedCount:%@".localized, count.description)
+        )
+      }
+      dragRetrieverKimo.title = "i18n:kimoImportButton.DragFileToHere".localized
+      dragRetrieverKimo.target = self
+      dragRetrieverKimo.action = #selector(importYahooKeyKeyUserDictionaryData(_:))
+      return dragRetrieverKimo
     }
 
     func pathControlMainView() -> NSView? {
@@ -123,6 +132,10 @@ public extension SettingsPanesCocoa {
     }
 
     @IBAction func importYahooKeyKeyUserDictionaryData(_: NSButton) {
+      guard #available(macOS 10.13, *) else {
+        SettingsPanesCocoa.warnAboutComDlg32Inavailability()
+        return
+      }
       let dlgOpenFile = NSOpenPanel()
       dlgOpenFile.title = NSLocalizedString(
         "i18n:settings.importFromKimoTxt.buttonText", comment: ""
