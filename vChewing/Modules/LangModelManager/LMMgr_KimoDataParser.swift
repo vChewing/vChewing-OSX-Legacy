@@ -62,6 +62,10 @@ public extension LMMgr {
     fileHandlerCHT.seekToEndOfFile()
     fileHandlerCHT.write(outputDataCHT)
 
+    let result = allPhrasesCHT.count
+    if result > 0 {
+      Broadcaster.shared.eventForReloadingPhraseEditor = .init()
+    }
     return allPhrasesCHT.count
   }
 }
