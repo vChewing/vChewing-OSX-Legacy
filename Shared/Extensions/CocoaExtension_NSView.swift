@@ -147,6 +147,7 @@ public extension NSStackView {
 
   static func buildSection(
     _ orientation: NSUserInterfaceLayoutOrientation = .vertical,
+    spacing: CGFloat? = nil,
     width: CGFloat? = nil,
     withDividers: Bool = true,
     @ArrayBuilder<NSView?> views: () -> [NSView?]
@@ -165,7 +166,7 @@ public extension NSStackView {
       itemWidth = (width - splitterDelta) / CGFloat(viewsRendered.count) - 6
     }
     func giveViews() -> [NSView?] { viewsRendered }
-    let result = build(orientation, divider: withDividers, width: itemWidth, views: giveViews)?
+    let result = build(orientation, divider: withDividers, spacing: spacing, width: itemWidth, views: giveViews)?
       .withInsets(.new(all: 4))
     return result
   }
@@ -173,6 +174,7 @@ public extension NSStackView {
   static func build(
     _ orientation: NSUserInterfaceLayoutOrientation,
     divider: Bool = false,
+    spacing: CGFloat? = nil,
     width: CGFloat? = nil,
     height: CGFloat? = nil,
     insets: NSEdgeInsets? = nil,
@@ -184,7 +186,7 @@ public extension NSStackView {
         .makeSimpleConstraint(.height, relation: .equal, value: height)
     }
     guard !result.isEmpty else { return nil }
-    return result.stack(orientation, divider: divider)?.withInsets(insets)
+    return result.stack(orientation, divider: divider, spacing: spacing)?.withInsets(insets)
   }
 
   func withInsets(_ newValue: NSEdgeInsets?) -> NSStackView {
@@ -197,6 +199,7 @@ public extension Array where Element == NSView {
   func stack(
     _ orientation: NSUserInterfaceLayoutOrientation,
     divider: Bool = false,
+    spacing: CGFloat? = nil,
     insets: NSEdgeInsets? = nil
   ) -> NSStackView? {
     guard !isEmpty else { return nil }
@@ -211,6 +214,7 @@ public extension Array where Element == NSView {
     if #unavailable(macOS 10.10) {
       outerStack.spacing = Swift.max(1, outerStack.spacing) - 1
     }
+    outerStack.spacing = spacing ?? outerStack.spacing
 
     outerStack.setHuggingPriority(.fittingSizeCompression, for: .horizontal)
     outerStack.setHuggingPriority(.fittingSizeCompression, for: .vertical)
