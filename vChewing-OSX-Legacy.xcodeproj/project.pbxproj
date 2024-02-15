@@ -100,6 +100,8 @@
 		5BB32F0529A61AFB00B05D7B /* CtlCandidateTDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB32F0429A61AFB00B05D7B /* CtlCandidateTDK.swift */; };
 		5BB5158D2B729E7800874257 /* CocoaExtension_Misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A4F0294E057F00EFA49C /* CocoaExtension_Misc.swift */; };
 		5BB5158E2B729E9D00874257 /* SwiftExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A4F2294E058F00EFA49C /* SwiftExtension.swift */; };
+		5BCC80CE2B7E6511005D689C /* KimoCommunicatorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCC80CD2B7E6511005D689C /* KimoCommunicatorImpl.swift */; };
+		5BCC80D12B7E6521005D689C /* KimoCommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BCC80D02B7E6521005D689C /* KimoCommunicator.m */; };
 		5BCF4AB829546B5200C7FBD9 /* convdict.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 5BCF4AB729546B5100C7FBD9 /* convdict.sqlite */; };
 		5BD289E42B7B48AE00D3E41A /* LatinKeyboardMappings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B572A7929FB76B900ED5066 /* LatinKeyboardMappings.swift */; };
 		5BE5A4E5294E03C200EFA49C /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A4E4294E03C200EFA49C /* main.swift */; };
@@ -285,6 +287,9 @@
 		5BB1D7F12999025B00EA8D2C /* PrefUITabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefUITabs.swift; sourceTree = "<group>"; };
 		5BB32F0229A61A3B00B05D7B /* CandidatePool_CocoaImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandidatePool_CocoaImpl.swift; sourceTree = "<group>"; };
 		5BB32F0429A61AFB00B05D7B /* CtlCandidateTDK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CtlCandidateTDK.swift; sourceTree = "<group>"; };
+		5BCC80CD2B7E6511005D689C /* KimoCommunicatorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KimoCommunicatorImpl.swift; sourceTree = "<group>"; };
+		5BCC80CF2B7E6521005D689C /* KimoCommunicator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KimoCommunicator.h; sourceTree = "<group>"; };
+		5BCC80D02B7E6521005D689C /* KimoCommunicator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KimoCommunicator.m; sourceTree = "<group>"; };
 		5BCF4AB729546B5100C7FBD9 /* convdict.sqlite */ = {isa = PBXFileReference; lastKnownFileType = text; path = convdict.sqlite; sourceTree = "<group>"; };
 		5BE5A4E3294E00C300EFA49C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		5BE5A4E4294E03C200EFA49C /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -537,6 +542,16 @@
 			path = UIModules;
 			sourceTree = "<group>";
 		};
+		5BCC80CC2B7E64FA005D689C /* KimoDataReader */ = {
+			isa = PBXGroup;
+			children = (
+				5BCC80CD2B7E6511005D689C /* KimoCommunicatorImpl.swift */,
+				5BCC80CF2B7E6521005D689C /* KimoCommunicator.h */,
+				5BCC80D02B7E6521005D689C /* KimoCommunicator.m */,
+			);
+			path = KimoDataReader;
+			sourceTree = "<group>";
+		};
 		5BE5A4E6294E04B000EFA49C /* MenuIcons */ = {
 			isa = PBXGroup;
 			children = (
@@ -660,6 +675,7 @@
 		5BE5A50E294E0B8700EFA49C /* vChewingComponents */ = {
 			isa = PBXGroup;
 			children = (
+				5BCC80CC2B7E64FA005D689C /* KimoDataReader */,
 				5B751DBB294EE4310031CF70 /* UpdateSputnik */,
 				5BE5A50F294E0BB400EFA49C /* Hotenka */,
 				5BE5A511294E0BD400EFA49C /* LMAssembly */,
@@ -1112,6 +1128,7 @@
 				5B751DE3294EE7A80031CF70 /* CandidateCellData_Core.swift in Sources */,
 				5BAE70112AE54F67002E673A /* SecurityAgentHelper.swift in Sources */,
 				5B81BD252B729AE90092819A /* VwrSettingsCocoaPanes.swift in Sources */,
+				5BCC80CE2B7E6511005D689C /* KimoCommunicatorImpl.swift in Sources */,
 				5B4C81812ADABB60008507B1 /* HangarRash_SwiftyCapsLockToggler.swift in Sources */,
 				5BE5A522294E0C2500EFA49C /* NotifierUI.swift in Sources */,
 				5B7B4D242AA1BB7600FE6B63 /* Qwertyyb_ShiftKeyUpChecker.swift in Sources */,
@@ -1126,6 +1143,7 @@
 				5BE5A547294E0D1200EFA49C /* Tekkon_Phonabets.swift in Sources */,
 				5BE5A555294E0D1E00EFA49C /* 2_Walker.swift in Sources */,
 				5B81BD232B729AE90092819A /* VwrSettingsPaneCocoaGeneral.swift in Sources */,
+				5BCC80D12B7E6521005D689C /* KimoCommunicator.m in Sources */,
 				5BE5A523294E0C2900EFA49C /* LMConsolidator.swift in Sources */,
 				5BE5A553294E0D1E00EFA49C /* 0_Megrez.swift in Sources */,
 				5B0E4EEF2B67933E00BE3440 /* OSVersionComparer.swift in Sources */,
