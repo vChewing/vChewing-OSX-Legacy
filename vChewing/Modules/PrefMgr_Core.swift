@@ -194,6 +194,9 @@ import AppKit
   @AppProperty(key: UserDef.kShowReverseLookupInCandidateUI.rawValue, defaultValue: true)
   public dynamic var showReverseLookupInCandidateUI: Bool
 
+  @AppProperty(key: UserDef.kShowCodePointInCandidateUI.rawValue, defaultValue: true)
+  public dynamic var showCodePointInCandidateUI: Bool
+
   @AppProperty(key: UserDef.kAutoCompositeWithLongestPossibleCassetteKey.rawValue, defaultValue: true)
   public dynamic var autoCompositeWithLongestPossibleCassetteKey: Bool
 

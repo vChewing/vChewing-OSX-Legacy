@@ -63,6 +63,7 @@ public extension SettingsPanesCocoa {
           }
           NSTabView.TabPage(title: "Ｃ") {
             NSStackView.buildSection(width: innerContentWidth) {
+              UserDef.kShowCodePointInCandidateUI.render(fixWidth: innerContentWidth)
               UserDef.kShowReverseLookupInCandidateUI.render(fixWidth: innerContentWidth)
               UserDef.kUseFixedCandidateOrderOnSelection.render(fixWidth: innerContentWidth)
               UserDef.kConsolidateContextOnCandidateSelection.render(fixWidth: innerContentWidth)
