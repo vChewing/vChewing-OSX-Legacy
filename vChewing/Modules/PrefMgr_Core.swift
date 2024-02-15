@@ -237,6 +237,9 @@ import AppKit
   @AppProperty(key: UserDef.kInlineDumpPinyinInLieuOfZhuyin.rawValue, defaultValue: false)
   public dynamic var inlineDumpPinyinInLieuOfZhuyin: Bool
 
+  @AppProperty(key: UserDef.kFilterNonCNSReadingsForCHTInput.rawValue, defaultValue: false)
+  public dynamic var filterNonCNSReadingsForCHTInput: Bool
+
   @AppProperty(key: UserDef.kCNS11643Enabled.rawValue, defaultValue: false)
   public dynamic var cns11643Enabled: Bool {
     didSet {
