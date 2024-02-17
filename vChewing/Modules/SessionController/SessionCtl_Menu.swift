@@ -126,7 +126,7 @@ extension SessionCtl {
         .nulled(silentMode)
       NSMenu.Item("About vChewing…")?
         .act(#selector(showAbout(_:)))
-        .alternated()
+        .nulled(silentMode)
       NSMenu.Item("Uninstall vChewing…")?
         .act(#selector(selfUninstall(_:)))
         .nulled(silentMode || !optionKeyPressed)
