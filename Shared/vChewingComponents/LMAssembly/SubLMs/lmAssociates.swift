@@ -6,8 +6,8 @@
 // marks, or product names of Contributor, except as required to fulfill notice
 // requirements defined in MIT License.
 
-public extension vChewingLM {
-  @frozen struct LMAssociates {
+extension LMAssembly {
+  struct LMAssociates {
     public private(set) var filePath: String?
     var rangeMap: [String: [(Range<String.Index>, Int)]] = [:]
     var strData: String = ""

@@ -8,7 +8,7 @@
 
 import Foundation
 
-public extension vChewingLM.LMInstantiator {
+public extension LMAssembly.LMInstantiator {
   func supplyNumPadUnigrams(key: String) -> [Megrez.Unigram] {
     guard let status = config.numPadFWHWStatus else { return [] }
     let initials = "_NumPad_"

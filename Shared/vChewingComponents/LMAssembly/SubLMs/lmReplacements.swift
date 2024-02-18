@@ -8,8 +8,8 @@
 
 import Foundation
 
-public extension vChewingLM {
-  @frozen struct LMReplacements {
+extension LMAssembly {
+  struct LMReplacements {
     public private(set) var filePath: String?
     var rangeMap: [String: Range<String.Index>] = [:]
     var strData: String = ""

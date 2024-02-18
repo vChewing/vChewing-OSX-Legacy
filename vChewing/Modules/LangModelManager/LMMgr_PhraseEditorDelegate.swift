@@ -13,23 +13,23 @@ import AppKit
 extension LMMgr: PhraseEditorDelegate {
   public var currentInputMode: Shared.InputMode { IMEApp.currentInputMode }
 
-  public func openPhraseFile(mode: Shared.InputMode, type: vChewingLM.ReplacableUserDataType, using app: FileOpenMethod) {
+  public func openPhraseFile(mode: Shared.InputMode, type: LMAssembly.ReplacableUserDataType, using app: FileOpenMethod) {
     Self.openPhraseFile(fromURL: Self.userDictDataURL(mode: mode, type: type), using: app)
   }
 
   public func consolidate(text strProcessed: inout String, pragma shouldCheckPragma: Bool) {
-    vChewingLM.LMConsolidator.consolidate(text: &strProcessed, pragma: shouldCheckPragma)
+    LMAssembly.LMConsolidator.consolidate(text: &strProcessed, pragma: shouldCheckPragma)
   }
 
   public func checkIfPhrasePairExists(userPhrase: String, mode: Shared.InputMode, key unigramKey: String) -> Bool {
     Self.checkIfPhrasePairExists(userPhrase: userPhrase, mode: mode, keyArray: [unigramKey])
   }
 
-  public func retrieveData(mode: Shared.InputMode, type: vChewingLM.ReplacableUserDataType) -> String {
+  public func retrieveData(mode: Shared.InputMode, type: LMAssembly.ReplacableUserDataType) -> String {
     Self.retrieveData(mode: mode, type: type)
   }
 
-  public static func retrieveData(mode: Shared.InputMode, type: vChewingLM.ReplacableUserDataType) -> String {
+  public static func retrieveData(mode: Shared.InputMode, type: LMAssembly.ReplacableUserDataType) -> String {
     vCLog("Retrieving data. Mode: \(mode.localizedDescription), type: \(type.localizedDescription)")
     let theURL = Self.userDictDataURL(mode: mode, type: type)
     do {
@@ -40,12 +40,12 @@ extension LMMgr: PhraseEditorDelegate {
     }
   }
 
-  public func saveData(mode: Shared.InputMode, type: vChewingLM.ReplacableUserDataType, data: String) -> String {
+  public func saveData(mode: Shared.InputMode, type: LMAssembly.ReplacableUserDataType, data: String) -> String {
     Self.saveData(mode: mode, type: type, data: data)
   }
 
   @discardableResult public static func saveData(
-    mode: Shared.InputMode, type: vChewingLM.ReplacableUserDataType, data: String
+    mode: Shared.InputMode, type: LMAssembly.ReplacableUserDataType, data: String
   ) -> String {
     DispatchQueue.main.async {
       let theURL = Self.userDictDataURL(mode: mode, type: type)

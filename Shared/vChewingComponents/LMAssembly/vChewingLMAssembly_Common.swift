@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum vChewingLM {
+public enum LMAssembly {
   enum FileErrors: Error {
     case fileHandleError(String)
   }
