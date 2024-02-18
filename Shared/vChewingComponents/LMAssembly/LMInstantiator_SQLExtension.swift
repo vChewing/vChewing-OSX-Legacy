@@ -28,30 +28,32 @@ import Foundation
    ) WITHOUT ROWID;
  */
 
-enum CoreColumn: Int32 {
-  case theDataCHS = 1 // 簡體中文
-  case theDataCHT = 2 // 繁體中文
-  case theDataCNS = 3 // 全字庫
-  case theDataMISC = 4 // 待辦
-  case theDataSYMB = 5 // 符號圖
-  case theDataCHEW = 6 // 注音文
+extension LMAssembly.LMInstantiator {
+  enum CoreColumn: Int32 {
+    case theDataCHS = 1 // 簡體中文
+    case theDataCHT = 2 // 繁體中文
+    case theDataCNS = 3 // 全字庫
+    case theDataMISC = 4 // 待辦
+    case theDataSYMB = 5 // 符號圖
+    case theDataCHEW = 6 // 注音文
 
-  var name: String { String(describing: self) }
+    var name: String { String(describing: self) }
 
-  var id: Int32 { rawValue }
+    var id: Int32 { rawValue }
 
-  var defaultScore: Double {
-    switch self {
-    case .theDataCHEW: return -1
-    case .theDataCNS: return -11
-    case .theDataSYMB: return -13
-    case .theDataMISC: return -10
-    default: return -9.9
+    var defaultScore: Double {
+      switch self {
+      case .theDataCHEW: return -1
+      case .theDataCNS: return -11
+      case .theDataSYMB: return -13
+      case .theDataMISC: return -10
+      default: return -9.9
+      }
     }
   }
 }
 
-extension vChewingLM.LMInstantiator {
+extension LMAssembly.LMInstantiator {
   fileprivate static func querySQL(strStmt sqlQuery: String, coreColumn column: CoreColumn, handler: (String) -> Void) {
     guard Self.ptrSQL != nil else { return }
     performStatementSansResult { ptrStatement in
@@ -131,7 +133,9 @@ extension vChewingLM.LMInstantiator {
   /// - parameters:
   ///   - key: 讀音索引鍵。
   ///   - column: 資料欄位。
-  func factoryUnigramsFor(key: String, column: CoreColumn) -> [Megrez.Unigram] {
+  func factoryUnigramsFor(
+    key: String, column: LMAssembly.LMInstantiator.CoreColumn
+  ) -> [Megrez.Unigram] {
     if key == "_punctuation_list" { return [] }
     var grams: [Megrez.Unigram] = []
     var gramsHW: [Megrez.Unigram] = []
@@ -207,7 +211,7 @@ extension vChewingLM.LMInstantiator {
   }
 }
 
-private extension vChewingLM.LMInstantiator {
+private extension LMAssembly.LMInstantiator {
   /// 內部函式，用以將注音讀音索引鍵進行加密。
   ///
   /// 使用這種加密字串作為索引鍵，可以增加對 json 資料庫的存取速度。
