@@ -30,6 +30,7 @@
 		5B6815372B46EF86004A8A1A /* SpeechSputnik.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6815362B46EF86004A8A1A /* SpeechSputnik.swift */; };
 		5B69C36B2B7406DC006FBD09 /* VwrClientListMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B69C36A2B7406DC006FBD09 /* VwrClientListMgr.swift */; };
 		5B69CA6A295DDC58005211BB /* RangeParserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B69CA69295DDC58005211BB /* RangeParserAPI.swift */; };
+		5B72F6672B885AF00051B7A9 /* lmPlainBopomopo_RawData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B72F6662B885AF00051B7A9 /* lmPlainBopomopo_RawData.swift */; };
 		5B751DB8294EE27C0031CF70 /* CtlClientListMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DB7294EE27C0031CF70 /* CtlClientListMgr.swift */; };
 		5B751DB9294EE27C0031CF70 /* CtlRevLookupWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DB5294EE27C0031CF70 /* CtlRevLookupWindow.swift */; };
 		5B751DBA294EE27C0031CF70 /* CtlAboutWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DB6294EE27C0031CF70 /* CtlAboutWindow.swift */; };
@@ -156,8 +157,6 @@
 		5BE5A56A294E120500EFA49C /* SymbolMenuDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A569294E120500EFA49C /* SymbolMenuDefaultData.swift */; };
 		5BE5A56C294E127B00EFA49C /* PhraseEditorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A56B294E127B00EFA49C /* PhraseEditorDelegate.swift */; };
 		5BE5A596294E1DFB00EFA49C /* ChineseConverterBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A595294E1DFB00EFA49C /* ChineseConverterBridge.swift */; };
-		5BE5D9992ACAF0EB009A732C /* sequenceDataFromEtenDOS-chs.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BE5D9972ACAF0EA009A732C /* sequenceDataFromEtenDOS-chs.json */; };
-		5BE5D99A2ACAF0EB009A732C /* sequenceDataFromEtenDOS-cht.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BE5D9982ACAF0EB009A732C /* sequenceDataFromEtenDOS-cht.json */; };
 		5BF5BAE1294DFFC9006011AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF5BAE0294DFFC9006011AD /* AppDelegate.swift */; };
 		5BF5BAE3294DFFCA006011AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BF5BAE2294DFFCA006011AD /* Assets.xcassets */; };
 		5BF5BAE6294DFFCA006011AD /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BF5BAE4294DFFCA006011AD /* MainMenu.xib */; };
@@ -213,6 +212,7 @@
 		5B6815362B46EF86004A8A1A /* SpeechSputnik.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechSputnik.swift; sourceTree = "<group>"; };
 		5B69C36A2B7406DC006FBD09 /* VwrClientListMgr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VwrClientListMgr.swift; sourceTree = "<group>"; };
 		5B69CA69295DDC58005211BB /* RangeParserAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RangeParserAPI.swift; sourceTree = "<group>"; };
+		5B72F6662B885AF00051B7A9 /* lmPlainBopomopo_RawData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lmPlainBopomopo_RawData.swift; sourceTree = "<group>"; };
 		5B751D86294EC30D0031CF70 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5B751D88294EC30E0031CF70 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		5B751D89294EC3110031CF70 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -356,8 +356,6 @@
 		5BE5A593294E19B300EFA49C /* template-usersymbolphrases.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "template-usersymbolphrases.txt"; sourceTree = "<group>"; };
 		5BE5A594294E19B300EFA49C /* template-exclusions.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "template-exclusions.txt"; sourceTree = "<group>"; };
 		5BE5A595294E1DFB00EFA49C /* ChineseConverterBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChineseConverterBridge.swift; sourceTree = "<group>"; };
-		5BE5D9972ACAF0EA009A732C /* sequenceDataFromEtenDOS-chs.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "sequenceDataFromEtenDOS-chs.json"; sourceTree = "<group>"; };
-		5BE5D9982ACAF0EB009A732C /* sequenceDataFromEtenDOS-cht.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "sequenceDataFromEtenDOS-cht.json"; sourceTree = "<group>"; };
 		5BF5BADD294DFFC9006011AD /* vChewing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vChewing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BF5BAE0294DFFC9006011AD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5BF5BAE2294DFFCA006011AD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -567,8 +565,6 @@
 			isa = PBXGroup;
 			children = (
 				5BCF4AB729546B5100C7FBD9 /* convdict.sqlite */,
-				5BE5D9972ACAF0EA009A732C /* sequenceDataFromEtenDOS-chs.json */,
-				5BE5D9982ACAF0EB009A732C /* sequenceDataFromEtenDOS-cht.json */,
 				5B751DA4294EE1B00031CF70 /* Localizable.strings */,
 				5BF5BAE2294DFFCA006011AD /* Assets.xcassets */,
 				5BE5A589294E195B00EFA49C /* DataTemplates */,
@@ -723,6 +719,7 @@
 				5BE5A515294E0BE800EFA49C /* lmAssociates.swift */,
 				5BE5A518294E0BE900EFA49C /* lmCassette.swift */,
 				5BE5A517294E0BE800EFA49C /* lmCoreEX.swift */,
+				5B72F6662B885AF00051B7A9 /* lmPlainBopomopo_RawData.swift */,
 				5BE5A516294E0BE800EFA49C /* lmPlainBopomofo.swift */,
 				5BE5A514294E0BE800EFA49C /* lmReplacements.swift */,
 				5BE5A51A294E0BE900EFA49C /* lmUserOverride.swift */,
@@ -949,7 +946,6 @@
 			files = (
 				5BCF4AB829546B5200C7FBD9 /* convdict.sqlite in Resources */,
 				5B44BAD9295047AC00E1C02D /* shortcuts.html in Resources */,
-				5BE5D9992ACAF0EB009A732C /* sequenceDataFromEtenDOS-chs.json in Resources */,
 				5BACBD0E295099290078CAB3 /* InfoPlist.strings in Resources */,
 				5B751DF3294EF28C0031CF70 /* template-usersymbolphrases.txt in Resources */,
 				5B751DE8294EF2880031CF70 /* MenuIcon-SCVIM.png in Resources */,
@@ -962,7 +958,6 @@
 				5B751DE9294EF2880031CF70 /* MenuIcon-TCVIM@2x.png in Resources */,
 				5B751DF5294EF2940031CF70 /* Beep.m4a in Resources */,
 				5BF5BAE6294DFFCA006011AD /* MainMenu.xib in Resources */,
-				5BE5D99A2ACAF0EB009A732C /* sequenceDataFromEtenDOS-cht.json in Resources */,
 				5B751DF0294EF28C0031CF70 /* template-replacements.txt in Resources */,
 				5B751DF7294EF29B0031CF70 /* Localizable.strings in Resources */,
 				5B751DEA294EF2880031CF70 /* MenuIcon-SCVIM@2x.png in Resources */,
@@ -1131,6 +1126,7 @@
 				5B4C81812ADABB60008507B1 /* HangarRash_SwiftyCapsLockToggler.swift in Sources */,
 				5BE5A522294E0C2500EFA49C /* NotifierUI.swift in Sources */,
 				5B7B4D242AA1BB7600FE6B63 /* Qwertyyb_ShiftKeyUpChecker.swift in Sources */,
+				5B72F6672B885AF00051B7A9 /* lmPlainBopomopo_RawData.swift in Sources */,
 				5B751DD6294EE57D0031CF70 /* IMEStateData.swift in Sources */,
 				5BE5A505294E097C00EFA49C /* DanielGalasko_FolderMonitor.swift in Sources */,
 				5BE5A56C294E127B00EFA49C /* PhraseEditorDelegate.swift in Sources */,
