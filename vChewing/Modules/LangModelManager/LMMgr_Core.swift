@@ -77,7 +77,6 @@ public class LMMgr {
 
       if PrefMgr.shared.associatedPhrasesEnabled { Self.loadUserAssociatesData() }
       if PrefMgr.shared.phraseReplacementEnabled { Self.loadUserPhraseReplacement() }
-      if PrefMgr.shared.useSCPCTypingMode { Self.loadSCPCSequencesData() }
 
       CandidateNode.load(url: Self.userSymbolMenuDataURL())
       return
@@ -118,12 +117,6 @@ public class LMMgr {
       mode.langModel.loadReplacementsData(
         path: Self.userDictDataURL(mode: mode, type: .theReplacements).path
       )
-    }
-  }
-
-  public static func loadSCPCSequencesData() {
-    Shared.InputMode.validCases.forEach { mode in
-      mode.langModel.loadSCPCSequencesData()
     }
   }
 

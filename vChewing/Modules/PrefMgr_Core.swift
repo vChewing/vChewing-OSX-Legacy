@@ -335,18 +335,17 @@ import AppKit
 
   @AppProperty(key: UserDef.kUseSCPCTypingMode.rawValue, defaultValue: false)
   public dynamic var useSCPCTypingMode: Bool {
-    willSet {
-      if newValue {
-        LMMgr.loadSCPCSequencesData()
-        LMMgr.syncLMPrefs()
-      }
+    didSet {
+      LMMgr.syncLMPrefs()
     }
   }
 
   @AppProperty(key: UserDef.kPhraseReplacementEnabled.rawValue, defaultValue: false)
   public dynamic var phraseReplacementEnabled: Bool {
-    willSet {
+    didSet {
       LMMgr.syncLMPrefs()
+    }
+    willSet {
       if newValue {
         LMMgr.loadUserPhraseReplacement()
       }
@@ -355,6 +354,9 @@ import AppKit
 
   @AppProperty(key: UserDef.kAssociatedPhrasesEnabled.rawValue, defaultValue: false)
   public dynamic var associatedPhrasesEnabled: Bool {
+    didSet {
+      LMMgr.syncLMPrefs()
+    }
     willSet {
       if newValue {
         LMMgr.loadUserAssociatesData()
