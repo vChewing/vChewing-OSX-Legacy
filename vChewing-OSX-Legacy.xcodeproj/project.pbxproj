@@ -82,6 +82,8 @@
 		5B81BD2B2B729AE90092819A /* VwrSettingsPaneCocoaOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B81BD202B729AE90092819A /* VwrSettingsPaneCocoaOutput.swift */; };
 		5B8F0A632ABB3E7400A49491 /* Fuziki_NSAttributedTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8F0A622ABB3E7400A49491 /* Fuziki_NSAttributedTextView.swift */; };
 		5B8F94F72B3070C40071B14A /* InputToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8F94F62B3070C40071B14A /* InputToken.swift */; };
+		5B9939EA2B8B08EF00979BBC /* BrailleEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9939E82B8B085100979BBC /* BrailleEnums.swift */; };
+		5B9939EB2B8B08F100979BBC /* BrailleSputnik.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9939E92B8B085100979BBC /* BrailleSputnik.swift */; };
 		5BA379B72B8278DA00D82E16 /* LMInstantiator_UOMRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA379B62B8278DA00D82E16 /* LMInstantiator_UOMRepresentable.swift */; };
 		5BA631862B13617800974241 /* sqlite3.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA631622B135E9A00974241 /* sqlite3.m */; };
 		5BACBCDF295093A60078CAB3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BACBCDE295093A60078CAB3 /* AppDelegate.swift */; };
@@ -259,6 +261,8 @@
 		5B81BD202B729AE90092819A /* VwrSettingsPaneCocoaOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VwrSettingsPaneCocoaOutput.swift; sourceTree = "<group>"; };
 		5B8F0A622ABB3E7400A49491 /* Fuziki_NSAttributedTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fuziki_NSAttributedTextView.swift; sourceTree = "<group>"; };
 		5B8F94F62B3070C40071B14A /* InputToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputToken.swift; sourceTree = "<group>"; };
+		5B9939E82B8B085100979BBC /* BrailleEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrailleEnums.swift; sourceTree = "<group>"; };
+		5B9939E92B8B085100979BBC /* BrailleSputnik.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrailleSputnik.swift; sourceTree = "<group>"; };
 		5BA379B62B8278DA00D82E16 /* LMInstantiator_UOMRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMInstantiator_UOMRepresentable.swift; sourceTree = "<group>"; };
 		5BA631622B135E9A00974241 /* sqlite3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = sqlite3.m; sourceTree = "<group>"; };
 		5BA631642B135E9A00974241 /* sqlite3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sqlite3.h; sourceTree = "<group>"; };
@@ -484,6 +488,15 @@
 			path = SettingsCocoa;
 			sourceTree = "<group>";
 		};
+		5B9939E72B8B083D00979BBC /* BrailleSputnik */ = {
+			isa = PBXGroup;
+			children = (
+				5B9939E82B8B085100979BBC /* BrailleEnums.swift */,
+				5B9939E92B8B085100979BBC /* BrailleSputnik.swift */,
+			);
+			path = BrailleSputnik;
+			sourceTree = "<group>";
+		};
 		5BA631612B135E9A00974241 /* sqlite-amalgamation-3440200 */ = {
 			isa = PBXGroup;
 			children = (
@@ -671,6 +684,7 @@
 		5BE5A50E294E0B8700EFA49C /* vChewingComponents */ = {
 			isa = PBXGroup;
 			children = (
+				5B9939E72B8B083D00979BBC /* BrailleSputnik */,
 				5BCC80CC2B7E64FA005D689C /* KimoDataReader */,
 				5B751DBB294EE4310031CF70 /* UpdateSputnik */,
 				5BE5A50F294E0BB400EFA49C /* Hotenka */,
@@ -1036,6 +1050,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B9939EA2B8B08EF00979BBC /* BrailleEnums.swift in Sources */,
 				5BE5A500294E092900EFA49C /* CocoaExtension_NSWindowController.swift in Sources */,
 				5B09126C2B134927000166DB /* LMInstantiator_SQLExtension.swift in Sources */,
 				5B6420032ABB3BA600E1B7F6 /* TooltipUI_LateCocoa.swift in Sources */,
@@ -1064,6 +1079,7 @@
 				5BE5A557294E0D1E00EFA49C /* 4_SpanUnit.swift in Sources */,
 				5BE5A53D294E0CEF00EFA49C /* PrefMgrProtocol.swift in Sources */,
 				5BE5A559294E0D1E00EFA49C /* 3_KeyValuePaired.swift in Sources */,
+				5B9939EB2B8B08F100979BBC /* BrailleSputnik.swift in Sources */,
 				5BE5A52D294E0C2B00EFA49C /* lmCoreEX.swift in Sources */,
 				5BE5A503294E095D00EFA49C /* AlexisBridoux_NSWindowPositioner.swift in Sources */,
 				5BE5A4FE294E090800EFA49C /* CocoaExtension_NSSound.swift in Sources */,
