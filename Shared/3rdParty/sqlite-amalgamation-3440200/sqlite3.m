@@ -160677,7 +160677,7 @@ static WhereTerm *whereScanNext(WhereScan *pScan){
               }
             }
             if( (pTerm->eOperator & (WO_EQ|WO_IS))!=0
-             && (pX = pTerm->pExpr->pRight, ALWAYS(pX!=0))
+             && ((void)(pX = pTerm->pExpr->pRight), ALWAYS(pX!=0))
              && pX->op==TK_COLUMN
              && pX->iTable==pScan->aiCur[0]
              && pX->iColumn==pScan->aiColumn[0]
@@ -173960,6 +173960,7 @@ static YYACTIONTYPE yy_reduce(
   (void)yyLookaheadToken;
   yymsp = yypParser->yytos;
 
+  YYMINORTYPE yylhsminor;
   switch( yyruleno ){
   /* Beginning here are the reduction cases.  A typical example
   ** follows:
@@ -173970,7 +173971,6 @@ static YYACTIONTYPE yy_reduce(
   **     break;
   */
 /********** Begin reduce actions **********************************************/
-        YYMINORTYPE yylhsminor;
       case 0: /* explain ::= EXPLAIN */
 { if( pParse->pReprepare==0 ) pParse->explain = 1; }
         break;
