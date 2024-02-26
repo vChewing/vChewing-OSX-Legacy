@@ -6,12 +6,11 @@
 // marks, or product names of Contributor, except as required to fulfill notice
 // requirements defined in MIT License.
 
-import AppKit
+import Foundation
 
 // MARK: -
 
 @objcMembers public class PrefMgr: NSObject, PrefMgrProtocol {
-  public static let shared = PrefMgr()
   public static let kDefaultCandidateKeys = "123456"
   public static let kDefaultBasicKeyboardLayout = "com.apple.keylayout.ZhuyinBopomofo"
   public static let kDefaultAlphanumericalKeyboardLayout = {
@@ -24,6 +23,10 @@ import AppKit
   public static let kDefaultClientsIMKTextInputIncapable: [String: Bool] = [
     "com.valvesoftware.steam": true, "jp.naver.line.mac": true,
   ]
+
+  public var didAskForSyncingLMPrefs: (() -> Void)?
+  public var didAskForRefreshingSpeechSputnik: (() -> Void)?
+  public var didAskForSyncingShiftKeyDetectorPrefs: (() -> Void)?
 
   // MARK: - Settings (Tier 1)
 
@@ -133,9 +136,7 @@ import AppKit
 
   @AppProperty(key: UserDef.kReadingNarrationCoverage.rawValue, defaultValue: 0)
   public dynamic var readingNarrationCoverage: Int {
-    didSet {
-      SpeechSputnik.shared.refreshStatus()
-    }
+    didSet { didAskForRefreshingSpeechSputnik?() }
   }
 
   @AppProperty(key: UserDef.kAlsoConfirmAssociatedCandidatesByEnter.rawValue, defaultValue: false)
@@ -158,16 +159,12 @@ import AppKit
 
   @AppProperty(key: UserDef.kTogglingAlphanumericalModeWithLShift.rawValue, defaultValue: true)
   public dynamic var togglingAlphanumericalModeWithLShift: Bool {
-    didSet {
-      SessionCtl.theShiftKeyDetector.toggleWithLShift = togglingAlphanumericalModeWithLShift
-    }
+    didSet { didAskForSyncingShiftKeyDetectorPrefs?() }
   }
 
   @AppProperty(key: UserDef.kTogglingAlphanumericalModeWithRShift.rawValue, defaultValue: true)
   public dynamic var togglingAlphanumericalModeWithRShift: Bool {
-    didSet {
-      SessionCtl.theShiftKeyDetector.toggleWithRShift = togglingAlphanumericalModeWithRShift
-    }
+    didSet { didAskForSyncingShiftKeyDetectorPrefs?() }
   }
 
   @AppProperty(key: UserDef.kConsolidateContextOnCandidateSelection.rawValue, defaultValue: true)
@@ -242,23 +239,17 @@ import AppKit
 
   @AppProperty(key: UserDef.kCNS11643Enabled.rawValue, defaultValue: false)
   public dynamic var cns11643Enabled: Bool {
-    didSet {
-      LMMgr.syncLMPrefs()
-    }
+    didSet { didAskForSyncingLMPrefs?() }
   }
 
   @AppProperty(key: UserDef.kSymbolInputEnabled.rawValue, defaultValue: true)
   public dynamic var symbolInputEnabled: Bool {
-    didSet {
-      LMMgr.syncLMPrefs()
-    }
+    didSet { didAskForSyncingLMPrefs?() }
   }
 
   @AppProperty(key: UserDef.kCassetteEnabled.rawValue, defaultValue: false)
   public dynamic var cassetteEnabled: Bool {
-    didSet {
-      LMMgr.syncLMPrefs()
-    }
+    didSet { didAskForSyncingLMPrefs?() }
   }
 
   @AppProperty(key: UserDef.kChineseConversionEnabled.rawValue, defaultValue: false)
@@ -338,33 +329,17 @@ import AppKit
 
   @AppProperty(key: UserDef.kUseSCPCTypingMode.rawValue, defaultValue: false)
   public dynamic var useSCPCTypingMode: Bool {
-    didSet {
-      LMMgr.syncLMPrefs()
-    }
+    didSet { didAskForSyncingLMPrefs?() }
   }
 
   @AppProperty(key: UserDef.kPhraseReplacementEnabled.rawValue, defaultValue: false)
   public dynamic var phraseReplacementEnabled: Bool {
-    didSet {
-      LMMgr.syncLMPrefs()
-    }
-    willSet {
-      if newValue {
-        LMMgr.loadUserPhraseReplacement()
-      }
-    }
+    didSet { didAskForSyncingLMPrefs?() }
   }
 
   @AppProperty(key: UserDef.kAssociatedPhrasesEnabled.rawValue, defaultValue: false)
   public dynamic var associatedPhrasesEnabled: Bool {
-    didSet {
-      LMMgr.syncLMPrefs()
-    }
-    willSet {
-      if newValue {
-        LMMgr.loadUserAssociatesData()
-      }
-    }
+    didSet { didAskForSyncingLMPrefs?() }
   }
 
   // MARK: - Keyboard HotKey Enable / Disable

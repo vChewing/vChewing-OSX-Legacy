@@ -155,11 +155,13 @@
 		5BE5A55C294E0E8000EFA49C /* PopupCompositionBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A534294E0CBA00EFA49C /* PopupCompositionBuffer.swift */; };
 		5BE5A562294E10C800EFA49C /* Uninstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A561294E10C800EFA49C /* Uninstaller.swift */; };
 		5BE5A564294E10F300EFA49C /* PrefMgr_Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A563294E10F300EFA49C /* PrefMgr_Core.swift */; };
-		5BE5A566294E111E00EFA49C /* PrefMgr_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A565294E111E00EFA49C /* PrefMgr_Extension.swift */; };
+		5BE5A566294E111E00EFA49C /* PrefMgr_Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A565294E111E00EFA49C /* PrefMgr_Utilities.swift */; };
 		5BE5A568294E119600EFA49C /* LMMgr_Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A567294E119600EFA49C /* LMMgr_Core.swift */; };
 		5BE5A56A294E120500EFA49C /* SymbolMenuDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A569294E120500EFA49C /* SymbolMenuDefaultData.swift */; };
 		5BE5A56C294E127B00EFA49C /* PhraseEditorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A56B294E127B00EFA49C /* PhraseEditorDelegate.swift */; };
 		5BE5A596294E1DFB00EFA49C /* ChineseConverterBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A595294E1DFB00EFA49C /* ChineseConverterBridge.swift */; };
+		5BF1209F2B8C8D7E00C83A24 /* PrefMgr_Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF1209E2B8C8D7E00C83A24 /* PrefMgr_Singleton.swift */; };
+		5BF120A12B8C8E1700C83A24 /* IMEApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF120A02B8C8E1700C83A24 /* IMEApp.swift */; };
 		5BF5BAE1294DFFC9006011AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF5BAE0294DFFC9006011AD /* AppDelegate.swift */; };
 		5BF5BAE3294DFFCA006011AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BF5BAE2294DFFCA006011AD /* Assets.xcassets */; };
 		5BF5BAE6294DFFCA006011AD /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BF5BAE4294DFFCA006011AD /* MainMenu.xib */; };
@@ -349,7 +351,7 @@
 		5BE5A551294E0D1E00EFA49C /* 6_LangModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = 6_LangModel.swift; sourceTree = "<group>"; };
 		5BE5A561294E10C800EFA49C /* Uninstaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Uninstaller.swift; sourceTree = "<group>"; };
 		5BE5A563294E10F300EFA49C /* PrefMgr_Core.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefMgr_Core.swift; sourceTree = "<group>"; };
-		5BE5A565294E111E00EFA49C /* PrefMgr_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefMgr_Extension.swift; sourceTree = "<group>"; };
+		5BE5A565294E111E00EFA49C /* PrefMgr_Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefMgr_Utilities.swift; sourceTree = "<group>"; };
 		5BE5A567294E119600EFA49C /* LMMgr_Core.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMMgr_Core.swift; sourceTree = "<group>"; };
 		5BE5A569294E120500EFA49C /* SymbolMenuDefaultData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolMenuDefaultData.swift; sourceTree = "<group>"; };
 		5BE5A56B294E127B00EFA49C /* PhraseEditorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhraseEditorDelegate.swift; sourceTree = "<group>"; };
@@ -362,6 +364,8 @@
 		5BE5A593294E19B300EFA49C /* template-usersymbolphrases.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "template-usersymbolphrases.txt"; sourceTree = "<group>"; };
 		5BE5A594294E19B300EFA49C /* template-exclusions.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "template-exclusions.txt"; sourceTree = "<group>"; };
 		5BE5A595294E1DFB00EFA49C /* ChineseConverterBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChineseConverterBridge.swift; sourceTree = "<group>"; };
+		5BF1209E2B8C8D7E00C83A24 /* PrefMgr_Singleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefMgr_Singleton.swift; sourceTree = "<group>"; };
+		5BF120A02B8C8E1700C83A24 /* IMEApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMEApp.swift; sourceTree = "<group>"; };
 		5BF5BADD294DFFC9006011AD /* vChewing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vChewing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BF5BAE0294DFFC9006011AD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5BF5BAE2294DFFCA006011AD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -606,8 +610,7 @@
 				5B751DC6294EE57D0031CF70 /* IMEState.swift */,
 				5B751DC7294EE57D0031CF70 /* IMEStateData.swift */,
 				5BE5A4E4294E03C200EFA49C /* main.swift */,
-				5BE5A563294E10F300EFA49C /* PrefMgr_Core.swift */,
-				5BE5A565294E111E00EFA49C /* PrefMgr_Extension.swift */,
+				5BF1209E2B8C8D7E00C83A24 /* PrefMgr_Singleton.swift */,
 				5BAE70102AE54F67002E673A /* SecurityAgentHelper.swift */,
 				5B6815362B46EF86004A8A1A /* SpeechSputnik.swift */,
 				5BE5A569294E120500EFA49C /* SymbolMenuDefaultData.swift */,
@@ -765,16 +768,19 @@
 			children = (
 				5BE5A53A294E0CEC00EFA49C /* CandidateNode.swift */,
 				5BE5A53B294E0CEC00EFA49C /* CtlCandidateProtocol.swift */,
+				5BF120A02B8C8E1700C83A24 /* IMEApp.swift */,
 				5BE5A539294E0CEC00EFA49C /* IMEStateProtocol.swift */,
 				5BE5A536294E0CEC00EFA49C /* InputSignalProtocol.swift */,
 				5B55ACAC2B5A254F009E2F54 /* KBEvent.swift */,
 				5B55ACAE2B5A255F009E2F54 /* NSEventImpl_Shared.swift */,
-				5BE5A537294E0CEC00EFA49C /* PrefMgrProtocol.swift */,
-				5BE5A56B294E127B00EFA49C /* PhraseEditorDelegate.swift */,
-				5BE5A538294E0CEC00EFA49C /* Shared.swift */,
-				5B81BD122B72984E0092819A /* UserDefRenderableCocoa.swift */,
-				5BAF0FFA2AA63F6D00FD58A0 /* UserDef.swift */,
 				5B0E4EEE2B67933E00BE3440 /* OSVersionComparer.swift */,
+				5BE5A56B294E127B00EFA49C /* PhraseEditorDelegate.swift */,
+				5BE5A563294E10F300EFA49C /* PrefMgr_Core.swift */,
+				5BE5A565294E111E00EFA49C /* PrefMgr_Utilities.swift */,
+				5BE5A537294E0CEC00EFA49C /* PrefMgrProtocol.swift */,
+				5BE5A538294E0CEC00EFA49C /* Shared.swift */,
+				5BAF0FFA2AA63F6D00FD58A0 /* UserDef.swift */,
+				5B81BD122B72984E0092819A /* UserDefRenderableCocoa.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -1062,7 +1068,7 @@
 				5B81BD292B729AE90092819A /* VwrSettingsPaneCocoaPhrases.swift in Sources */,
 				5B572A7A29FB76B900ED5066 /* LatinKeyboardMappings.swift in Sources */,
 				5B751DD4294EE57D0031CF70 /* SessionCtl_HandleDisplay.swift in Sources */,
-				5BE5A566294E111E00EFA49C /* PrefMgr_Extension.swift in Sources */,
+				5BE5A566294E111E00EFA49C /* PrefMgr_Utilities.swift in Sources */,
 				5BE5A52A294E0C2B00EFA49C /* lmAssociates.swift in Sources */,
 				5BE5A554294E0D1E00EFA49C /* 1_Compositor.swift in Sources */,
 				5BB32F0529A61AFB00B05D7B /* CtlCandidateTDK.swift in Sources */,
@@ -1071,6 +1077,7 @@
 				5B751DB8294EE27C0031CF70 /* CtlClientListMgr.swift in Sources */,
 				5B81BD212B729AE90092819A /* VwrSettingsPaneCocoaCassette.swift in Sources */,
 				5BE5A4F5294E059600EFA49C /* IMKHelper.swift in Sources */,
+				5BF120A12B8C8E1700C83A24 /* IMEApp.swift in Sources */,
 				5B751DD7294EE57D0031CF70 /* SessionCtl_Menu.swift in Sources */,
 				5BE5A4FA294E082800EFA49C /* NSEventImpl.swift in Sources */,
 				5BE5A530294E0C2E00EFA49C /* HotenkaChineseConverter.swift in Sources */,
@@ -1133,6 +1140,7 @@
 				5B81BD102B7297A70092819A /* CocoaExtension_NSView.swift in Sources */,
 				5B6420022ABB3BA600E1B7F6 /* TooltipUI_EarlyCocoa.swift in Sources */,
 				5B751DD3294EE57D0031CF70 /* InputHandler_TriageInput.swift in Sources */,
+				5BF1209F2B8C8D7E00C83A24 /* PrefMgr_Singleton.swift in Sources */,
 				5BE5A568294E119600EFA49C /* LMMgr_Core.swift in Sources */,
 				5B60CEA629B8E7D400A1AAC7 /* LMMgr_UserPhraseStructure.swift in Sources */,
 				5B1523B62A74E92D007D2E53 /* Jad_BookmarkManager.swift in Sources */,
