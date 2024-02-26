@@ -74,7 +74,7 @@ public extension PrefMgr {
 
 public extension PrefMgr {
   @discardableResult func dumpShellScriptBackup() -> String? {
-    let mirror = Mirror(reflecting: PrefMgr.shared)
+    let mirror = Mirror(reflecting: self)
     guard let bundleIdentifier = Bundle.main.bundleIdentifier else { return nil }
     let strDoubleDashLine = String(String(repeating: "=", count: 70))
     let consoleOutput = NSMutableString(string: "#!/bin/sh\n\n")
