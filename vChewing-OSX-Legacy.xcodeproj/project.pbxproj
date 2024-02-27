@@ -84,6 +84,7 @@
 		5B81BD2B2B729AE90092819A /* VwrSettingsPaneCocoaOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B81BD202B729AE90092819A /* VwrSettingsPaneCocoaOutput.swift */; };
 		5B8F0A632ABB3E7400A49491 /* Fuziki_NSAttributedTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8F0A622ABB3E7400A49491 /* Fuziki_NSAttributedTextView.swift */; };
 		5B8F94F72B3070C40071B14A /* InputToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8F94F62B3070C40071B14A /* InputToken.swift */; };
+		5B98203E2B8D9A4200E183D8 /* CandidateNode_ServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B98203D2B8D9A4200E183D8 /* CandidateNode_ServiceImpl.swift */; };
 		5B9939EA2B8B08EF00979BBC /* BrailleEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9939E82B8B085100979BBC /* BrailleEnums.swift */; };
 		5B9939EB2B8B08F100979BBC /* BrailleSputnik.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9939E92B8B085100979BBC /* BrailleSputnik.swift */; };
 		5B9939ED2B8B44B000979BBC /* InputHandler_MiscCommissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9939EC2B8B44B000979BBC /* InputHandler_MiscCommissions.swift */; };
@@ -268,6 +269,7 @@
 		5B81BD202B729AE90092819A /* VwrSettingsPaneCocoaOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VwrSettingsPaneCocoaOutput.swift; sourceTree = "<group>"; };
 		5B8F0A622ABB3E7400A49491 /* Fuziki_NSAttributedTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fuziki_NSAttributedTextView.swift; sourceTree = "<group>"; };
 		5B8F94F62B3070C40071B14A /* InputToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputToken.swift; sourceTree = "<group>"; };
+		5B98203D2B8D9A4200E183D8 /* CandidateNode_ServiceImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CandidateNode_ServiceImpl.swift; sourceTree = "<group>"; };
 		5B9939E82B8B085100979BBC /* BrailleEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrailleEnums.swift; sourceTree = "<group>"; };
 		5B9939E92B8B085100979BBC /* BrailleSputnik.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrailleSputnik.swift; sourceTree = "<group>"; };
 		5B9939EC2B8B44B000979BBC /* InputHandler_MiscCommissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputHandler_MiscCommissions.swift; sourceTree = "<group>"; };
@@ -771,6 +773,7 @@
 		5BE5A535294E0CDC00EFA49C /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				5B98203D2B8D9A4200E183D8 /* CandidateNode_ServiceImpl.swift */,
 				5BE5A53A294E0CEC00EFA49C /* CandidateNode.swift */,
 				5B6F7ADC2B8CEC72001596AF /* CandidateTextService.swift */,
 				5BE5A53B294E0CEC00EFA49C /* CtlCandidateProtocol.swift */,
@@ -1128,6 +1131,7 @@
 				5BF5BAE1294DFFC9006011AD /* AppDelegate.swift in Sources */,
 				5B751DE4294EE7A80031CF70 /* CtlCandidate.swift in Sources */,
 				5BE5A53C294E0CEF00EFA49C /* CtlCandidateProtocol.swift in Sources */,
+				5B98203E2B8D9A4200E183D8 /* CandidateNode_ServiceImpl.swift in Sources */,
 				5B81BD132B72984E0092819A /* UserDefRenderableCocoa.swift in Sources */,
 				5B81BD222B729AE90092819A /* VwrSettingsPaneCocoaDictionary.swift in Sources */,
 				5BE5A4FC294E087B00EFA49C /* TISInputSourceExtension.swift in Sources */,
