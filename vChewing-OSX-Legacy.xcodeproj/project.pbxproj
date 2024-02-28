@@ -10,6 +10,7 @@
 		5B09126C2B134927000166DB /* LMInstantiator_SQLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B09126B2B134927000166DB /* LMInstantiator_SQLExtension.swift */; };
 		5B0E4EEF2B67933E00BE3440 /* OSVersionComparer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0E4EEE2B67933E00BE3440 /* OSVersionComparer.swift */; };
 		5B1523B62A74E92D007D2E53 /* Jad_BookmarkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1523B52A74E92D007D2E53 /* Jad_BookmarkManager.swift */; };
+		5B1C28E12B8F09DF00968E74 /* CandidateTextService_SelectorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1C28E02B8F09DF00968E74 /* CandidateTextService_SelectorImpl.swift */; };
 		5B1CA80E29AC53BA0089E95F /* VwrCandidateTDK_AppKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1CA80D29AC53BA0089E95F /* VwrCandidateTDK_AppKit.swift */; };
 		5B1E6C2C2B65694100B977B5 /* LMInstantiator_NumPadExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1E6C2B2B65694100B977B5 /* LMInstantiator_NumPadExtension.swift */; };
 		5B2F3B522AF24FD500225501 /* LMMgr_KimoDataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2F3B512AF24FD500225501 /* LMMgr_KimoDataParser.swift */; };
@@ -30,6 +31,7 @@
 		5B6815372B46EF86004A8A1A /* SpeechSputnik.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6815362B46EF86004A8A1A /* SpeechSputnik.swift */; };
 		5B69C36B2B7406DC006FBD09 /* VwrClientListMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B69C36A2B7406DC006FBD09 /* VwrClientListMgr.swift */; };
 		5B69CA6A295DDC58005211BB /* RangeParserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B69CA69295DDC58005211BB /* RangeParserAPI.swift */; };
+		5B6F7ADD2B8CEC72001596AF /* CandidateTextService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6F7ADC2B8CEC72001596AF /* CandidateTextService.swift */; };
 		5B72F6672B885AF00051B7A9 /* lmPlainBopomopo_RawData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B72F6662B885AF00051B7A9 /* lmPlainBopomopo_RawData.swift */; };
 		5B751DB8294EE27C0031CF70 /* CtlClientListMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DB7294EE27C0031CF70 /* CtlClientListMgr.swift */; };
 		5B751DB9294EE27C0031CF70 /* CtlRevLookupWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DB5294EE27C0031CF70 /* CtlRevLookupWindow.swift */; };
@@ -194,6 +196,7 @@
 		5B09126B2B134927000166DB /* LMInstantiator_SQLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMInstantiator_SQLExtension.swift; sourceTree = "<group>"; };
 		5B0E4EEE2B67933E00BE3440 /* OSVersionComparer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSVersionComparer.swift; sourceTree = "<group>"; };
 		5B1523B52A74E92D007D2E53 /* Jad_BookmarkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Jad_BookmarkManager.swift; sourceTree = "<group>"; };
+		5B1C28E02B8F09DF00968E74 /* CandidateTextService_SelectorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandidateTextService_SelectorImpl.swift; sourceTree = "<group>"; };
 		5B1CA80D29AC53BA0089E95F /* VwrCandidateTDK_AppKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VwrCandidateTDK_AppKit.swift; sourceTree = "<group>"; };
 		5B1E6C2B2B65694100B977B5 /* LMInstantiator_NumPadExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMInstantiator_NumPadExtension.swift; sourceTree = "<group>"; };
 		5B2F3B512AF24FD500225501 /* LMMgr_KimoDataParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMMgr_KimoDataParser.swift; sourceTree = "<group>"; };
@@ -217,6 +220,7 @@
 		5B6815362B46EF86004A8A1A /* SpeechSputnik.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechSputnik.swift; sourceTree = "<group>"; };
 		5B69C36A2B7406DC006FBD09 /* VwrClientListMgr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VwrClientListMgr.swift; sourceTree = "<group>"; };
 		5B69CA69295DDC58005211BB /* RangeParserAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RangeParserAPI.swift; sourceTree = "<group>"; };
+		5B6F7ADC2B8CEC72001596AF /* CandidateTextService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandidateTextService.swift; sourceTree = "<group>"; };
 		5B72F6662B885AF00051B7A9 /* lmPlainBopomopo_RawData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lmPlainBopomopo_RawData.swift; sourceTree = "<group>"; };
 		5B751D86294EC30D0031CF70 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5B751D88294EC30E0031CF70 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -606,6 +610,7 @@
 				5B751DB4294EE21D0031CF70 /* WindowControllers */,
 				5BF5BAE0294DFFC9006011AD /* AppDelegate.swift */,
 				5B423A532A9516B0004CC33B /* Broadcaster.swift */,
+				5B1C28E02B8F09DF00968E74 /* CandidateTextService_SelectorImpl.swift */,
 				5BE5A595294E1DFB00EFA49C /* ChineseConverterBridge.swift */,
 				5B751DC6294EE57D0031CF70 /* IMEState.swift */,
 				5B751DC7294EE57D0031CF70 /* IMEStateData.swift */,
@@ -767,6 +772,7 @@
 			isa = PBXGroup;
 			children = (
 				5BE5A53A294E0CEC00EFA49C /* CandidateNode.swift */,
+				5B6F7ADC2B8CEC72001596AF /* CandidateTextService.swift */,
 				5BE5A53B294E0CEC00EFA49C /* CtlCandidateProtocol.swift */,
 				5BF120A02B8C8E1700C83A24 /* IMEApp.swift */,
 				5BE5A539294E0CEC00EFA49C /* IMEStateProtocol.swift */,
@@ -1062,6 +1068,7 @@
 				5B9939EA2B8B08EF00979BBC /* BrailleEnums.swift in Sources */,
 				5BE5A500294E092900EFA49C /* CocoaExtension_NSWindowController.swift in Sources */,
 				5B09126C2B134927000166DB /* LMInstantiator_SQLExtension.swift in Sources */,
+				5B6F7ADD2B8CEC72001596AF /* CandidateTextService.swift in Sources */,
 				5B6420032ABB3BA600E1B7F6 /* TooltipUI_LateCocoa.swift in Sources */,
 				5B2F3B522AF24FD500225501 /* LMMgr_KimoDataParser.swift in Sources */,
 				5B60CEA429B8E7CA00A1AAC7 /* LMMgr_PhraseEditorDelegate.swift in Sources */,
@@ -1179,6 +1186,7 @@
 				5B751DCD294EE57D0031CF70 /* SessionCtl_HandleEvent.swift in Sources */,
 				5B6420012ABB3BA600E1B7F6 /* TooltipUIProtocol.swift in Sources */,
 				5BE5A52B294E0C2B00EFA49C /* lmPlainBopomofo.swift in Sources */,
+				5B1C28E12B8F09DF00968E74 /* CandidateTextService_SelectorImpl.swift in Sources */,
 				5B60CEA829B8E7DB00A1AAC7 /* LMMgr_Utilities.swift in Sources */,
 				5B81BD282B729AE90092819A /* VwrSettingsPaneCocoaKeyboard.swift in Sources */,
 				5B751DDA294EE57D0031CF70 /* SessionCtl_Delegates.swift in Sources */,
