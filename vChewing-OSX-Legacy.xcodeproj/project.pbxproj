@@ -1405,6 +1405,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				SDKROOT = macosx13.1;
+				STRIP_SWIFT_SYMBOLS = NO;
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -1452,6 +1453,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				SDKROOT = macosx13.1;
+				STRIP_SWIFT_SYMBOLS = NO;
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
