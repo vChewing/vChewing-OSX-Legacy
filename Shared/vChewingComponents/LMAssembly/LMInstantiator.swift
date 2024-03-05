@@ -44,7 +44,7 @@ public extension LMAssembly {
     static var ptrSQL: OpaquePointer?
 
     // SQLite 連線是否已經建立。
-    public private(set) static var isSQLDBConnected: Bool = false
+    public internal(set) static var isSQLDBConnected: Bool = false
 
     // 簡體中文模型？
     public let isCHS: Bool
@@ -64,23 +64,6 @@ public extension LMAssembly {
     @discardableResult public func setOptions(handler: (inout Config) -> Void) -> LMInstantiator {
       handler(&config)
       return self
-    }
-
-    @discardableResult public static func connectSQLDB(dbPath: String, dropPreviousConnection: Bool = true) -> Bool {
-      if dropPreviousConnection { disconnectSQLDB() }
-      vCLog("Establishing SQLite connection to: \(dbPath)")
-      guard sqlite3_open(dbPath, &Self.ptrSQL) == SQLITE_OK else { return false }
-      guard "PRAGMA journal_mode = OFF;".runAsSQLExec(dbPointer: &ptrSQL) else { return false }
-      isSQLDBConnected = true
-      return true
-    }
-
-    public static func disconnectSQLDB() {
-      if Self.ptrSQL != nil {
-        sqlite3_close_v2(Self.ptrSQL)
-        Self.ptrSQL = nil
-      }
-      isSQLDBConnected = false
     }
 
     /// 介紹一下幾個通用的語言模組型別：
