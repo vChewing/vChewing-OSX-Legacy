@@ -50,7 +50,7 @@ public extension LMAssembly {
     public let isCHS: Bool
 
     // 在函式內部用以記錄狀態的開關。
-    public var config = Config()
+    public private(set) var config = Config()
 
     // 這句需要留著，不然無法被 package 外界存取。
     public init(
@@ -64,6 +64,10 @@ public extension LMAssembly {
     @discardableResult public func setOptions(handler: (inout Config) -> Void) -> LMInstantiator {
       handler(&config)
       return self
+    }
+
+    public static func setCassetCandidateKeyValidator(_ validator: @escaping (String) -> Bool) {
+      Self.lmCassette.candidateKeysValidator = validator
     }
 
     /// 介紹一下幾個通用的語言模組型別：
@@ -106,9 +110,9 @@ public extension LMAssembly {
         if FileManager.default.isReadableFile(atPath: path) {
           self.lmUserPhrases.clear()
           self.lmUserPhrases.open(path)
-          vCLog("lmUserPhrases: \(self.lmUserPhrases.count) entries of data loaded from: \(path)")
+          vCLMLog("lmUserPhrases: \(self.lmUserPhrases.count) entries of data loaded from: \(path)")
         } else {
-          vCLog("lmUserPhrases: File access failure: \(path)")
+          vCLMLog("lmUserPhrases: File access failure: \(path)")
         }
       }
       guard let filterPath = filterPath else { return }
@@ -116,9 +120,9 @@ public extension LMAssembly {
         if FileManager.default.isReadableFile(atPath: filterPath) {
           self.lmFiltered.clear()
           self.lmFiltered.open(filterPath)
-          vCLog("lmFiltered: \(self.lmFiltered.count) entries of data loaded from: \(path)")
+          vCLMLog("lmFiltered: \(self.lmFiltered.count) entries of data loaded from: \(path)")
         } else {
-          vCLog("lmFiltered: File access failure: \(path)")
+          vCLMLog("lmFiltered: File access failure: \(path)")
         }
       }
     }
@@ -128,9 +132,9 @@ public extension LMAssembly {
       if FileManager.default.isReadableFile(atPath: path) {
         lmFiltered.clear()
         lmFiltered.open(path)
-        vCLog("lmFiltered: \(lmFiltered.count) entries of data loaded from: \(path)")
+        vCLMLog("lmFiltered: \(lmFiltered.count) entries of data loaded from: \(path)")
       } else {
-        vCLog("lmFiltered: File access failure: \(path)")
+        vCLMLog("lmFiltered: File access failure: \(path)")
       }
     }
 
@@ -139,9 +143,9 @@ public extension LMAssembly {
         if FileManager.default.isReadableFile(atPath: path) {
           self.lmUserSymbols.clear()
           self.lmUserSymbols.open(path)
-          vCLog("lmUserSymbol: \(self.lmUserSymbols.count) entries of data loaded from: \(path)")
+          vCLMLog("lmUserSymbol: \(self.lmUserSymbols.count) entries of data loaded from: \(path)")
         } else {
-          vCLog("lmUserSymbol: File access failure: \(path)")
+          vCLMLog("lmUserSymbol: File access failure: \(path)")
         }
       }
     }
@@ -151,9 +155,9 @@ public extension LMAssembly {
         if FileManager.default.isReadableFile(atPath: path) {
           self.lmAssociates.clear()
           self.lmAssociates.open(path)
-          vCLog("lmAssociates: \(self.lmAssociates.count) entries of data loaded from: \(path)")
+          vCLMLog("lmAssociates: \(self.lmAssociates.count) entries of data loaded from: \(path)")
         } else {
-          vCLog("lmAssociates: File access failure: \(path)")
+          vCLMLog("lmAssociates: File access failure: \(path)")
         }
       }
     }
@@ -163,9 +167,9 @@ public extension LMAssembly {
         if FileManager.default.isReadableFile(atPath: path) {
           self.lmReplacements.clear()
           self.lmReplacements.open(path)
-          vCLog("lmReplacements: \(self.lmReplacements.count) entries of data loaded from: \(path)")
+          vCLMLog("lmReplacements: \(self.lmReplacements.count) entries of data loaded from: \(path)")
         } else {
-          vCLog("lmReplacements: File access failure: \(path)")
+          vCLMLog("lmReplacements: File access failure: \(path)")
         }
       }
     }
@@ -176,9 +180,9 @@ public extension LMAssembly {
         if FileManager.default.isReadableFile(atPath: path) {
           Self.lmCassette.clear()
           Self.lmCassette.open(path)
-          vCLog("lmCassette: \(Self.lmCassette.count) entries of data loaded from: \(path)")
+          vCLMLog("lmCassette: \(Self.lmCassette.count) entries of data loaded from: \(path)")
         } else {
-          vCLog("lmCassette: File access failure: \(path)")
+          vCLMLog("lmCassette: File access failure: \(path)")
         }
       }
     }

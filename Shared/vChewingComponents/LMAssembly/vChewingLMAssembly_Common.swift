@@ -54,7 +54,7 @@ extension Array where Element == String {
         sqlite3_prepare_v2(ptrDB, strStmt, -1, &ptrStmt, nil) == SQLITE_OK && sqlite3_step(ptrStmt) == SQLITE_DONE
       }
       guard thisResult else {
-        vCLog("SQL Query Error. Statement: \(strStmt)")
+        vCLMLog("SQL Query Error. Statement: \(strStmt)")
         return false
       }
     }
@@ -80,4 +80,14 @@ func performStatementSansResult(_ handler: (inout OpaquePointer?) -> Void) {
     ptrStmt = nil
   }
   handler(&ptrStmt)
+}
+
+func vCLMLog(_ strPrint: StringLiteralType) {
+  guard let toLog = UserDefaults.standard.object(forKey: "_DebugMode") as? Bool else {
+    NSLog("vChewingDebug: %@", strPrint)
+    return
+  }
+  if toLog {
+    NSLog("vChewingDebug: %@", strPrint)
+  }
 }
