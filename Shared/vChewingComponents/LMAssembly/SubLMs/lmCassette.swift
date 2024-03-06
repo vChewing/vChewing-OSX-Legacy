@@ -37,6 +37,7 @@ extension LMAssembly {
     public private(set) var areCandidateKeysShiftHeld: Bool = false
     public private(set) var supplyQuickResults: Bool = false
     public private(set) var supplyPartiallyMatchedResults: Bool = false
+    public var candidateKeysValidator: (String) -> Bool = { _ in false }
     /// 計算頻率時要用到的東西 - NORM
     private var norm = 0.0
   }
@@ -192,7 +193,7 @@ extension LMAssembly.LMCassette {
         // Post process.
         // 備註：因為 Package 層級嵌套的現狀，此處不太方便檢查是否需要篩掉 J / K 鍵。
         // 因此只能在其他地方做篩檢。
-        if CandidateKey.validate(keys: selectionKeys) != nil { selectionKeys = "1234567890" }
+        if !candidateKeysValidator(selectionKeys) { selectionKeys = "1234567890" }
         if !keysUsedInCharDef.intersection(selectionKeys.map(\.description)).isEmpty {
           areCandidateKeysShiftHeld = true
         }
@@ -201,10 +202,10 @@ extension LMAssembly.LMCassette {
         filePath = path
         return true
       } catch {
-        vCLog("CIN Loading Failed: File Access Error.")
+        vCLMLog("CIN Loading Failed: File Access Error.")
       }
     } else {
-      vCLog("CIN Loading Failed: File Missing.")
+      vCLMLog("CIN Loading Failed: File Missing.")
     }
     filePath = oldPath
     return false

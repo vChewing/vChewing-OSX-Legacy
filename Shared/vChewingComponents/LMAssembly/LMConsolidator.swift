@@ -24,19 +24,19 @@ public extension LMAssembly {
           let lineReader = try LineReader(file: fileHandle)
           for strLine in lineReader { // 不需要 i=0，因為第一遍迴圈就出結果。
             if strLine != kPragmaHeader {
-              vCLog("Header Mismatch, Starting In-Place Consolidation.")
+              vCLMLog("Header Mismatch, Starting In-Place Consolidation.")
               return false
             } else {
-              vCLog("Header Verification Succeeded: \(strLine).")
+              vCLMLog("Header Verification Succeeded: \(strLine).")
               return true
             }
           }
         } catch {
-          vCLog("Header Verification Failed: File Access Error.")
+          vCLMLog("Header Verification Failed: File Access Error.")
           return false
         }
       }
-      vCLog("Header Verification Failed: File Missing.")
+      vCLMLog("Header Verification Failed: File Missing.")
       return false
     }
 
@@ -49,12 +49,12 @@ public extension LMAssembly {
         let dict = try FileManager.default.attributesOfItem(atPath: path)
         if let value = dict[FileAttributeKey.size] as? UInt64 { fileSize = value }
       } catch {
-        vCLog("EOF Fix Failed: File Missing at \(path).")
+        vCLMLog("EOF Fix Failed: File Missing at \(path).")
         return false
       }
       guard let fileSize = fileSize else { return false }
       guard let writeFile = FileHandle(forUpdatingAtPath: path) else {
-        vCLog("EOF Fix Failed: File Not Writable at \(path).")
+        vCLMLog("EOF Fix Failed: File Not Writable at \(path).")
         return false
       }
       defer { writeFile.closeFile() }
@@ -62,11 +62,11 @@ public extension LMAssembly {
       /// 但這個函式執行完之後往往就會 consolidate() 整理格式，所以不會有差。
       writeFile.seek(toFileOffset: fileSize - 1)
       if writeFile.readDataToEndOfFile().first != 0x0A {
-        vCLog("EOF Missing Confirmed, Start Fixing.")
+        vCLMLog("EOF Missing Confirmed, Start Fixing.")
         var newData = Data()
         newData.append(0x0A)
         writeFile.write(newData)
-        vCLog("EOF Successfully Assured.")
+        vCLMLog("EOF Successfully Assured.")
       }
       return false
     }
@@ -140,13 +140,13 @@ public extension LMAssembly {
           // Write consolidated file contents.
           try strProcessed.write(to: urlPath, atomically: false, encoding: .utf8)
         } catch {
-          vCLog("Consolidation Failed w/ File: \(path), error: \(error)")
+          vCLMLog("Consolidation Failed w/ File: \(path), error: \(error)")
           return false
         }
-        vCLog("Either Consolidation Successful Or No-Need-To-Consolidate.")
+        vCLMLog("Either Consolidation Successful Or No-Need-To-Consolidate.")
         return true
       }
-      vCLog("Consolidation Failed: File Missing at \(path).")
+      vCLMLog("Consolidation Failed: File Missing at \(path).")
       return false
     }
   }

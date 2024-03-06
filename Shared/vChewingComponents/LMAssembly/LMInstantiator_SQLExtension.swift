@@ -56,7 +56,7 @@ extension LMAssembly.LMInstantiator {
 extension LMAssembly.LMInstantiator {
   @discardableResult public static func connectSQLDB(dbPath: String, dropPreviousConnection: Bool = true) -> Bool {
     if dropPreviousConnection { disconnectSQLDB() }
-    vCLog("Establishing SQLite connection to: \(dbPath)")
+    vCLMLog("Establishing SQLite connection to: \(dbPath)")
     guard sqlite3_open(dbPath, &Self.ptrSQL) == SQLITE_OK else { return false }
     guard "PRAGMA journal_mode = OFF;".runAsSQLExec(dbPointer: &ptrSQL) else { return false }
     isSQLDBConnected = true

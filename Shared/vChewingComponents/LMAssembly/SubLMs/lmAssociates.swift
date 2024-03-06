@@ -44,8 +44,8 @@ extension LMAssembly {
         replaceData(textData: rawStrData)
       } catch {
         filePath = oldPath
-        vCLog("\(error)")
-        vCLog("↑ Exception happened when reading data at: \(path).")
+        vCLMLog("\(error)")
+        vCLMLog("↑ Exception happened when reading data at: \(path).")
         return false
       }
 
@@ -89,7 +89,7 @@ extension LMAssembly {
       do {
         try strData.write(toFile: filePath, atomically: true, encoding: .utf8)
       } catch {
-        vCLog("Failed to save current database to: \(filePath)")
+        vCLMLog("Failed to save current database to: \(filePath)")
       }
     }
 
@@ -109,8 +109,7 @@ extension LMAssembly {
           pairs.append(theValue)
         }
       }
-      var set = Set<String>()
-      return pairs.filter { set.insert($0).inserted }
+      return pairs.deduplicated
     }
 
     public func hasValuesFor(pair: Megrez.KeyValuePaired) -> Bool {

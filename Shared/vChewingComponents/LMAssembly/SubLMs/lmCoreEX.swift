@@ -77,8 +77,8 @@ extension LMAssembly {
         replaceData(textData: rawStrData)
       } catch {
         filePath = oldPath
-        vCLog("\(error)")
-        vCLog("↑ Exception happened when reading data at: \(path).")
+        vCLMLog("\(error)")
+        vCLMLog("↑ Exception happened when reading data at: \(path).")
         return false
       }
 
@@ -129,7 +129,7 @@ extension LMAssembly {
         }
         try dataToWrite.write(toFile: filePath, atomically: true, encoding: .utf8)
       } catch {
-        vCLog("Failed to save current database to: \(filePath)")
+        vCLMLog("Failed to save current database to: \(filePath)")
       }
     }
 
@@ -146,7 +146,7 @@ extension LMAssembly {
           strDump += addline
         }
       }
-      vCLog(strDump)
+      vCLMLog(strDump)
     }
 
     /// 根據給定的讀音索引鍵，來獲取資料庫辭典內的對應資料陣列的字串首尾範圍資料、據此自 strData 取得字串形式的資料、生成單元圖陣列。
