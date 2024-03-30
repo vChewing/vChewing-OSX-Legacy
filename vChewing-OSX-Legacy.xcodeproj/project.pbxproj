@@ -71,6 +71,7 @@
 		5B751DF6294EF2940031CF70 /* Fart.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 5BE5A58C294E196C00EFA49C /* Fart.m4a */; };
 		5B751DF7294EF29B0031CF70 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5B751DA4294EE1B00031CF70 /* Localizable.strings */; };
 		5B785EEB2B78FC680006413D /* InputHandler_TypingMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B785EEA2B78FC680006413D /* InputHandler_TypingMethod.swift */; };
+		5B79A3FC2BB850E6003F449E /* LMInstantiator_UserDictionarySummarized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B79A3FB2BB850E6003F449E /* LMInstantiator_UserDictionarySummarized.swift */; };
 		5B7B4D242AA1BB7600FE6B63 /* Qwertyyb_ShiftKeyUpChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7B4D232AA1BB7600FE6B63 /* Qwertyyb_ShiftKeyUpChecker.swift */; };
 		5B7EEAE32AE5002C006C30A3 /* SecureEventInputSputnik.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7EEAE22AE5002C006C30A3 /* SecureEventInputSputnik.swift */; };
 		5B81BD102B7297A70092819A /* AppKitImpl_NSView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B81BD0F2B7297A70092819A /* AppKitImpl_NSView.swift */; };
@@ -259,6 +260,7 @@
 		5B751DE0294EE7A80031CF70 /* CandidatePool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandidatePool.swift; sourceTree = "<group>"; };
 		5B751DE1294EE7A80031CF70 /* CtlCandidate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CtlCandidate.swift; sourceTree = "<group>"; };
 		5B785EEA2B78FC680006413D /* InputHandler_TypingMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputHandler_TypingMethod.swift; sourceTree = "<group>"; };
+		5B79A3FB2BB850E6003F449E /* LMInstantiator_UserDictionarySummarized.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LMInstantiator_UserDictionarySummarized.swift; sourceTree = "<group>"; };
 		5B7B4D232AA1BB7600FE6B63 /* Qwertyyb_ShiftKeyUpChecker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Qwertyyb_ShiftKeyUpChecker.swift; sourceTree = "<group>"; };
 		5B7EEAE22AE5002C006C30A3 /* SecureEventInputSputnik.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecureEventInputSputnik.swift; sourceTree = "<group>"; };
 		5B81BD0F2B7297A70092819A /* AppKitImpl_NSView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppKitImpl_NSView.swift; sourceTree = "<group>"; };
@@ -758,6 +760,7 @@
 				5B1E6C2B2B65694100B977B5 /* LMInstantiator_NumPadExtension.swift */,
 				5B09126B2B134927000166DB /* LMInstantiator_SQLExtension.swift */,
 				5BA379B62B8278DA00D82E16 /* LMInstantiator_UOMRepresentable.swift */,
+				5B79A3FB2BB850E6003F449E /* LMInstantiator_UserDictionarySummarized.swift */,
 				5BE5A51D294E0BEE00EFA49C /* LMInstantiator.swift */,
 				5BE5A531294E0C9F00EFA49C /* PinyinPhonaConverter.swift */,
 				5B69CA69295DDC58005211BB /* RangeParserAPI.swift */,
@@ -1167,6 +1170,7 @@
 				5BE5A541294E0CEF00EFA49C /* InputSignalProtocol.swift in Sources */,
 				5B81BD242B729AE90092819A /* VwrSettingsPaneCocoaBehavior.swift in Sources */,
 				5B81BD2B2B729AE90092819A /* VwrSettingsPaneCocoaOutput.swift in Sources */,
+				5B79A3FC2BB850E6003F449E /* LMInstantiator_UserDictionarySummarized.swift in Sources */,
 				5B55ACAD2B5A254F009E2F54 /* KBEvent.swift in Sources */,
 				5BE5A556294E0D1E00EFA49C /* 5_Node.swift in Sources */,
 				5B785EEB2B78FC680006413D /* InputHandler_TypingMethod.swift in Sources */,

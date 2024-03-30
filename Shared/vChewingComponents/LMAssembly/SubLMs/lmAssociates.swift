@@ -118,3 +118,17 @@ extension LMAssembly {
     }
   }
 }
+
+extension LMAssembly.LMAssociates {
+  var dictRepresented: [String: [String]] {
+    var result = [String: [String]]()
+    rangeMap.forEach { key, arrRangeRecords in
+      arrRangeRecords.forEach { netaRange, index in
+        let neta = strData[netaRange].split(separator: " ")
+        let theValue: String = .init(neta[index])
+        result[key, default: []].append(theValue)
+      }
+    }
+    return result
+  }
+}
