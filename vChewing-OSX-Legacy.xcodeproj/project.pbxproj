@@ -1070,10 +1070,11 @@
 				"$(SRCROOT)/DictionaryData/Build/Release/",
 				"$(SRCROOT)/DictionaryData/data-chs.txt",
 				"$(SRCROOT)/DictionaryData/data-cht.txt",
+				"$(SRCROOT)/DictionaryData/Build/Release/vChewingFactoryDatabase.sql",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\ncd ${SRCROOT}/DictionaryData/\nswift ${SRCROOT}/DataCompiler/dataCompiler.swift\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\ncd ${SRCROOT}/DictionaryData/\nswift ${SRCROOT}/DataCompiler/dataCompiler.swift\nsqlite3 ${SRCROOT}/DictionaryData/Build/Release/vChewingFactoryDatabase.sqlite < ${SRCROOT}/DictionaryData/Build/Release/vChewingFactoryDatabase.sql\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
