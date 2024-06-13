@@ -142,10 +142,6 @@ public class Notifier: NSWindowController {
     DispatchQueue.main.async { Self.message = message }
   }
 
-  override public func close() {
-    super.close()
-  }
-
   // MARK: Internal
 
   static var message: String = "" {
