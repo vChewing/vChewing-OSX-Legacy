@@ -172,7 +172,7 @@ class AppDelegate: NSWindowController, NSApplicationDelegate {
   }
 
   func endAppWithDelay() {
-    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
+    asyncOnMain(after: 0.1) {
       NSApp.terminate(self)
     }
   }

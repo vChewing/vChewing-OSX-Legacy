@@ -51,7 +51,7 @@ extension NSWindowController {
       window.setFrameTopLeftPoint(adjustedPoint)
     }
 
-    if !useGCD { doSet() } else { DispatchQueue.main.async { doSet() } }
+    if !useGCD { doSet() } else { asyncOnMain { doSet() } }
   }
 }
 

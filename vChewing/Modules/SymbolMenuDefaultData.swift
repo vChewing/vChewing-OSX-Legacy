@@ -10,7 +10,7 @@ import AppKit
 
 extension CandidateNode {
   public static func load(url: URL) {
-    DispatchQueue.main.async {
+    asyncOnMain {
       // 這兩個變數單獨拿出來，省得每次都重建還要浪費算力。
       var arrLines = [String.SubSequence]()
       var fieldSlice = [Substring.SubSequence]()

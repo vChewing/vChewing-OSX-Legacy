@@ -173,7 +173,7 @@ extension SettingsPanesCocoa.Phrases: NSTextViewDelegate, NSTextFieldDelegate {
     clearAllFields()
     isLoading = true
     tfdPETextEditor.string = NSLocalizedString("Loading…", comment: "")
-    DispatchQueue.main.async { [weak self] in
+    asyncOnMain { [weak self] in
       guard let self = self else { return }
       self.tfdPETextEditor.string = LMMgr.retrieveData(
         mode: self.selInputMode,
@@ -370,7 +370,7 @@ extension SettingsPanesCocoa.Phrases: NSTextViewDelegate, NSTextFieldDelegate {
 
   @IBAction
   func consolidatePEButtonClicked(_: NSButton) {
-    DispatchQueue.main.async { [weak self] in
+    asyncOnMain { [weak self] in
       guard let self = self else { return }
       self.isLoading = true
       LMAssembly.LMConsolidator.consolidate(text: &self.tfdPETextEditor.string, pragma: false)
@@ -393,7 +393,7 @@ extension SettingsPanesCocoa.Phrases: NSTextViewDelegate, NSTextFieldDelegate {
 
   @IBAction
   func openExternallyPEButtonClicked(_: NSButton) {
-    DispatchQueue.main.async { [weak self] in
+    asyncOnMain { [weak self] in
       guard let self = self else { return }
       let app: FileOpenMethod = NSEvent.keyModifierFlags.contains(.option) ? .textEdit : .finder
       LMMgr.shared.openPhraseFile(mode: self.selInputMode, type: self.selUserDataType, using: app)
@@ -402,7 +402,7 @@ extension SettingsPanesCocoa.Phrases: NSTextViewDelegate, NSTextFieldDelegate {
 
   @IBAction
   func addPEButtonClicked(_: NSButton) {
-    DispatchQueue.main.async { [weak self] in
+    asyncOnMain { [weak self] in
       guard let self = self else { return }
       self.txtPEField1.stringValue.removeAll { "　 \t\n\r".contains($0) }
       if self.selUserDataType != .theAssociates {

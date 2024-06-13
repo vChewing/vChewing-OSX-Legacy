@@ -71,6 +71,7 @@ extension LMAssembly {
     }
 
     public static func loadCassetteData(path: String) {
+      @Sendable
       func load() {
         if FileManager.default.isReadableFile(atPath: path) {
           Self.lmCassette.clear()
@@ -83,7 +84,7 @@ extension LMAssembly {
       if !Self.asyncLoadingUserData {
         load()
       } else {
-        DispatchQueue.main.async {
+        asyncOnMain {
           load()
         }
       }
@@ -100,6 +101,7 @@ extension LMAssembly {
     public func resetFactoryJSONModels() {}
 
     public func loadUserPhrasesData(path: String, filterPath: String?) {
+      @Sendable
       func loadMain() {
         if FileManager.default.isReadableFile(atPath: path) {
           lmUserPhrases.clear()
@@ -112,11 +114,12 @@ extension LMAssembly {
       if !Self.asyncLoadingUserData {
         loadMain()
       } else {
-        DispatchQueue.main.async {
+        asyncOnMain {
           loadMain()
         }
       }
       guard let filterPath = filterPath else { return }
+      @Sendable
       func loadFilter() {
         if FileManager.default.isReadableFile(atPath: filterPath) {
           lmFiltered.clear()
@@ -129,7 +132,7 @@ extension LMAssembly {
       if !Self.asyncLoadingUserData {
         loadFilter()
       } else {
-        DispatchQueue.main.async {
+        asyncOnMain {
           loadFilter()
         }
       }
@@ -147,6 +150,7 @@ extension LMAssembly {
     }
 
     public func loadUserSymbolData(path: String) {
+      @Sendable
       func load() {
         if FileManager.default.isReadableFile(atPath: path) {
           lmUserSymbols.clear()
@@ -159,13 +163,14 @@ extension LMAssembly {
       if !Self.asyncLoadingUserData {
         load()
       } else {
-        DispatchQueue.main.async {
+        asyncOnMain {
           load()
         }
       }
     }
 
     public func loadUserAssociatesData(path: String) {
+      @Sendable
       func load() {
         if FileManager.default.isReadableFile(atPath: path) {
           lmAssociates.clear()
@@ -178,13 +183,14 @@ extension LMAssembly {
       if !Self.asyncLoadingUserData {
         load()
       } else {
-        DispatchQueue.main.async {
+        asyncOnMain {
           load()
         }
       }
     }
 
     public func loadReplacementsData(path: String) {
+      @Sendable
       func load() {
         if FileManager.default.isReadableFile(atPath: path) {
           lmReplacements.clear()
@@ -197,7 +203,7 @@ extension LMAssembly {
       if !Self.asyncLoadingUserData {
         load()
       } else {
-        DispatchQueue.main.async {
+        asyncOnMain {
           load()
         }
       }
