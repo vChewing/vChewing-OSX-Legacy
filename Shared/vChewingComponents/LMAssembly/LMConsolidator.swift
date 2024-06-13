@@ -8,9 +8,10 @@
 
 import Foundation
 
-public extension LMAssembly {
-  enum LMConsolidator {
-    public static let kPragmaHeader = "# 𝙵𝙾𝚁𝙼𝙰𝚃 𝚘𝚛𝚐.𝚊𝚝𝚎𝚕𝚒𝚎𝚛𝙸𝚗𝚖𝚞.𝚟𝚌𝚑𝚎𝚠𝚒𝚗𝚐.𝚞𝚜𝚎𝚛𝙻𝚊𝚗𝚐𝚞𝚊𝚐𝚎𝙼𝚘𝚍𝚎𝚕𝙳𝚊𝚝𝚊.𝚏𝚘𝚛𝚖𝚊𝚝𝚝𝚎𝚍"
+extension LMAssembly {
+  public enum LMConsolidator {
+    public static let kPragmaHeader =
+      "# 𝙵𝙾𝚁𝙼𝙰𝚃 𝚘𝚛𝚐.𝚊𝚝𝚎𝚕𝚒𝚎𝚛𝙸𝚗𝚖𝚞.𝚟𝚌𝚑𝚎𝚠𝚒𝚗𝚐.𝚞𝚜𝚎𝚛𝙻𝚊𝚗𝚐𝚞𝚊𝚐𝚎𝙼𝚘𝚍𝚎𝚕𝙳𝚊𝚝𝚊.𝚏𝚘𝚛𝚖𝚊𝚝𝚝𝚎𝚍"
 
     /// 檢查給定檔案的標頭是否正常。
     /// - Parameter path: 給定檔案路徑。
@@ -43,7 +44,8 @@ public extension LMAssembly {
     /// 檢查檔案是否以空行結尾，如果缺失則補充之。
     /// - Parameter path: 給定檔案路徑。
     /// - Returns: 結果正常或修復順利則為真，其餘為假。
-    @discardableResult public static func fixEOF(path: String) -> Bool {
+    @discardableResult
+    public static func fixEOF(path: String) -> Bool {
       var fileSize: UInt64?
       do {
         let dict = try FileManager.default.attributesOfItem(atPath: path)
@@ -75,7 +77,10 @@ public extension LMAssembly {
     /// - Parameters:
     ///   - text: 操作對象。
     ///   - shouldCheckPragma: 是否在檔案標頭完好無損的情況下略過對格式的整理。
-    public static func consolidate(text strProcessed: inout String, pragma shouldCheckPragma: Bool) {
+    public static func consolidate(
+      text strProcessed: inout String,
+      pragma shouldCheckPragma: Bool
+    ) {
       var pragmaResult: Bool {
         let realPragmaHeader = kPragmaHeader + "\n"
         if strProcessed.count <= kPragmaHeader.count { return false }
@@ -124,7 +129,12 @@ public extension LMAssembly {
     ///   - path: 給定檔案路徑。
     ///   - shouldCheckPragma: 是否在檔案標頭完好無損的情況下略過對格式的整理。
     /// - Returns: 若整理順利或無須整理，則為真；反之為假。
-    @discardableResult public static func consolidate(path: String, pragma shouldCheckPragma: Bool) -> Bool {
+    @discardableResult
+    public static func consolidate(
+      path: String,
+      pragma shouldCheckPragma: Bool
+    )
+      -> Bool {
       let pragmaResult = checkPragma(path: path)
       if shouldCheckPragma {
         if pragmaResult {

@@ -8,6 +8,8 @@
 
 import Foundation
 
+// MARK: - LMAssembly.LMInstantiator.CoreColumn
+
 /* ==============
  因應 Apple 對 8GB 運行記憶體的病態偏執，威注音的原廠辭典格式更換為 SQLite、以圖減少對記憶體的佔用。
  資料結構如下：
@@ -37,6 +39,8 @@ extension LMAssembly.LMInstantiator {
     case theDataSYMB = 5 // 符號圖
     case theDataCHEW = 6 // 注音文
 
+    // MARK: Internal
+
     var name: String { String(describing: self) }
 
     var id: Int32 { rawValue }
@@ -54,7 +58,12 @@ extension LMAssembly.LMInstantiator {
 }
 
 extension LMAssembly.LMInstantiator {
-  @discardableResult public static func connectSQLDB(dbPath: String, dropPreviousConnection: Bool = true) -> Bool {
+  @discardableResult
+  public static func connectSQLDB(
+    dbPath: String,
+    dropPreviousConnection: Bool = true
+  )
+    -> Bool {
     if dropPreviousConnection { disconnectSQLDB() }
     vCLMLog("Establishing SQLite connection to: \(dbPath)")
     guard sqlite3_open(dbPath, &Self.ptrSQL) == SQLITE_OK else { return false }
@@ -71,7 +80,11 @@ extension LMAssembly.LMInstantiator {
     isSQLDBConnected = false
   }
 
-  fileprivate static func querySQL(strStmt sqlQuery: String, coreColumn column: CoreColumn, handler: (String) -> Void) {
+  fileprivate static func querySQL(
+    strStmt sqlQuery: String,
+    coreColumn column: CoreColumn,
+    handler: (String) -> ()
+  ) {
     guard Self.ptrSQL != nil else { return }
     performStatementSansResult { ptrStatement in
       sqlite3_prepare_v2(Self.ptrSQL, sqlQuery, -1, &ptrStatement, nil)
@@ -123,7 +136,10 @@ extension LMAssembly.LMInstantiator {
     Self.querySQL(strStmt: sqlQuery, coreColumn: column) { currentResult in
       let arrRangeRecords = currentResult.split(separator: "\t")
       for strNetaSet in arrRangeRecords {
-        let neta = Array(strNetaSet.trimmingCharacters(in: .newlines).split(separator: " ").reversed())
+        let neta = Array(
+          strNetaSet.trimmingCharacters(in: .newlines).split(separator: " ")
+            .reversed()
+        )
         let theValue: String = .init(neta[0])
         var theScore = column.defaultScore
         if neta.count >= 2, let thisScore = Double(String(neta[1])) {
@@ -153,7 +169,8 @@ extension LMAssembly.LMInstantiator {
   ///   - column: 資料欄位。
   func factoryUnigramsFor(
     key: String, column: LMAssembly.LMInstantiator.CoreColumn
-  ) -> [Megrez.Unigram] {
+  )
+    -> [Megrez.Unigram] {
     if key == "_punctuation_list" { return [] }
     var grams: [Megrez.Unigram] = []
     var gramsHW: [Megrez.Unigram] = []
@@ -165,7 +182,10 @@ extension LMAssembly.LMInstantiator {
       var previousScore: Double?
       currentResult.split(separator: "\t").forEach { strNetaSet in
         // 這裡假定原廠資料已經經過對權重的 stable sort 排序。
-        let neta = Array(strNetaSet.trimmingCharacters(in: .newlines).split(separator: " ").reversed())
+        let neta = Array(
+          strNetaSet.trimmingCharacters(in: .newlines).split(separator: " ")
+            .reversed()
+        )
         let theValue: String = .init(neta[0])
         var theScore = column.defaultScore
         if neta.count >= 2, let thisScore = Double(String(neta[1])) {
@@ -218,9 +238,11 @@ extension LMAssembly.LMInstantiator {
   func hasFactoryCoreUnigramsFor(keyArray: [String]) -> Bool {
     let column: CoreColumn = isCHS ? .theDataCHS : .theDataCHT
     // 此處需要把 ASCII 單引號換成連續兩個單引號，否則會有 SQLite 語句查詢故障。
-    let encryptedKey = Self.cnvPhonabetToASCII(keyArray.joined(separator: "-").replacingOccurrences(of: "'", with: "''"))
+    let encryptedKey = Self
+      .cnvPhonabetToASCII(keyArray.joined(separator: "-").replacingOccurrences(of: "'", with: "''"))
     // 此處為特例，無須以分號結尾。回頭整句塞到「SELECT EXISTS();」當中執行。
-    let sqlQuery = "SELECT * FROM DATA_MAIN WHERE theKey='\(encryptedKey)' AND \(column.name) IS NOT NULL"
+    let sqlQuery =
+      "SELECT * FROM DATA_MAIN WHERE theKey='\(encryptedKey)' AND \(column.name) IS NOT NULL"
     return Self.hasSQLResult(strStmt: sqlQuery)
   }
 
@@ -238,7 +260,7 @@ extension LMAssembly.LMInstantiator {
   }
 }
 
-private extension LMAssembly.LMInstantiator {
+extension LMAssembly.LMInstantiator {
   /// 內部函式，用以將注音讀音索引鍵進行加密。
   ///
   /// 使用這種加密字串作為索引鍵，可以增加對 json 資料庫的存取速度。
@@ -246,7 +268,7 @@ private extension LMAssembly.LMInstantiator {
   /// 如果傳入的字串當中包含 ASCII 下畫線符號的話，則表明該字串並非注音讀音字串，會被忽略處理。
   /// - parameters:
   ///   - incoming: 傳入的未加密注音讀音字串。
-  static func cnvPhonabetToASCII(_ incoming: String) -> String {
+  fileprivate static func cnvPhonabetToASCII(_ incoming: String) -> String {
     var strOutput = incoming
     if !strOutput.contains("_") {
       for entry in Self.dicPhonabet2ASCII {
@@ -256,10 +278,13 @@ private extension LMAssembly.LMInstantiator {
     return strOutput
   }
 
-  static let dicPhonabet2ASCII: [String: String] = [
-    "ㄅ": "b", "ㄆ": "p", "ㄇ": "m", "ㄈ": "f", "ㄉ": "d", "ㄊ": "t", "ㄋ": "n", "ㄌ": "l", "ㄍ": "g", "ㄎ": "k", "ㄏ": "h",
-    "ㄐ": "j", "ㄑ": "q", "ㄒ": "x", "ㄓ": "Z", "ㄔ": "C", "ㄕ": "S", "ㄖ": "r", "ㄗ": "z", "ㄘ": "c", "ㄙ": "s", "ㄧ": "i",
-    "ㄨ": "u", "ㄩ": "v", "ㄚ": "a", "ㄛ": "o", "ㄜ": "e", "ㄝ": "E", "ㄞ": "B", "ㄟ": "P", "ㄠ": "M", "ㄡ": "F", "ㄢ": "D",
+  fileprivate static let dicPhonabet2ASCII: [String: String] = [
+    "ㄅ": "b", "ㄆ": "p", "ㄇ": "m", "ㄈ": "f", "ㄉ": "d", "ㄊ": "t", "ㄋ": "n", "ㄌ": "l", "ㄍ": "g",
+    "ㄎ": "k", "ㄏ": "h",
+    "ㄐ": "j", "ㄑ": "q", "ㄒ": "x", "ㄓ": "Z", "ㄔ": "C", "ㄕ": "S", "ㄖ": "r", "ㄗ": "z", "ㄘ": "c",
+    "ㄙ": "s", "ㄧ": "i",
+    "ㄨ": "u", "ㄩ": "v", "ㄚ": "a", "ㄛ": "o", "ㄜ": "e", "ㄝ": "E", "ㄞ": "B", "ㄟ": "P", "ㄠ": "M",
+    "ㄡ": "F", "ㄢ": "D",
     "ㄣ": "T", "ㄤ": "N", "ㄥ": "L", "ㄦ": "R", "ˊ": "2", "ˇ": "3", "ˋ": "4", "˙": "5",
   ]
 
@@ -268,7 +293,7 @@ private extension LMAssembly.LMInstantiator {
   /// 如果傳入的字串當中包含 ASCII 下畫線符號的話，則表明該字串並非注音讀音字串，會被忽略處理。
   /// - parameters:
   ///   - incoming: 傳入的已加密注音讀音字串。
-  static func restorePhonabetFromASCII(_ incoming: String) -> String {
+  fileprivate static func restorePhonabetFromASCII(_ incoming: String) -> String {
     var strOutput = incoming
     if !strOutput.contains("_") {
       for entry in Self.dicPhonabet4ASCII {
@@ -278,10 +303,13 @@ private extension LMAssembly.LMInstantiator {
     return strOutput
   }
 
-  static let dicPhonabet4ASCII: [String: String] = [
-    "b": "ㄅ", "p": "ㄆ", "m": "ㄇ", "f": "ㄈ", "d": "ㄉ", "t": "ㄊ", "n": "ㄋ", "l": "ㄌ", "g": "ㄍ", "k": "ㄎ", "h": "ㄏ",
-    "j": "ㄐ", "q": "ㄑ", "x": "ㄒ", "Z": "ㄓ", "C": "ㄔ", "S": "ㄕ", "r": "ㄖ", "z": "ㄗ", "c": "ㄘ", "s": "ㄙ", "i": "ㄧ",
-    "u": "ㄨ", "v": "ㄩ", "a": "ㄚ", "o": "ㄛ", "e": "ㄜ", "E": "ㄝ", "B": "ㄞ", "P": "ㄟ", "M": "ㄠ", "F": "ㄡ", "D": "ㄢ",
+  fileprivate static let dicPhonabet4ASCII: [String: String] = [
+    "b": "ㄅ", "p": "ㄆ", "m": "ㄇ", "f": "ㄈ", "d": "ㄉ", "t": "ㄊ", "n": "ㄋ", "l": "ㄌ", "g": "ㄍ",
+    "k": "ㄎ", "h": "ㄏ",
+    "j": "ㄐ", "q": "ㄑ", "x": "ㄒ", "Z": "ㄓ", "C": "ㄔ", "S": "ㄕ", "r": "ㄖ", "z": "ㄗ", "c": "ㄘ",
+    "s": "ㄙ", "i": "ㄧ",
+    "u": "ㄨ", "v": "ㄩ", "a": "ㄚ", "o": "ㄛ", "e": "ㄜ", "E": "ㄝ", "B": "ㄞ", "P": "ㄟ", "M": "ㄠ",
+    "F": "ㄡ", "D": "ㄢ",
     "T": "ㄣ", "N": "ㄤ", "L": "ㄥ", "R": "ㄦ", "2": "ˊ", "3": "ˇ", "4": "ˋ", "5": "˙",
   ]
 }

@@ -11,7 +11,7 @@ import Foundation
 public class KimoCommunicator: ObjcKimoCommunicator {
   public static let shared: KimoCommunicator = .init()
 
-  public func prepareData(handler: @escaping (_ key: String, _ value: String) -> Void) {
+  public func prepareData(handler: @escaping (_ key: String, _ value: String) -> ()) {
     guard KimoCommunicator.shared.establishConnection() else { return }
     assert(KimoCommunicator.shared.hasValidConnection())
     let loopAmount = KimoCommunicator.shared.userPhraseDBTotalAmountOfRows()

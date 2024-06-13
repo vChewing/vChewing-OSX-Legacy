@@ -9,9 +9,7 @@
 import Foundation
 
 open class CandidateNode {
-  public var name: String
-  public var members: [CandidateNode]
-  public var previous: CandidateNode?
+  // MARK: Lifecycle
 
   public init(name: String, members: [CandidateNode] = [], previous: CandidateNode? = nil) {
     self.name = name
@@ -22,9 +20,15 @@ open class CandidateNode {
 
   public init(name: String, symbols: [String]) {
     self.name = name
-    members = symbols.map { CandidateNode(name: $0, symbols: []) }
+    self.members = symbols.map { CandidateNode(name: $0, symbols: []) }
     members.forEach { $0.previous = self }
   }
 
+  // MARK: Public
+
   public static var root: CandidateNode = .init(name: "/")
+
+  public var name: String
+  public var members: [CandidateNode]
+  public var previous: CandidateNode?
 }

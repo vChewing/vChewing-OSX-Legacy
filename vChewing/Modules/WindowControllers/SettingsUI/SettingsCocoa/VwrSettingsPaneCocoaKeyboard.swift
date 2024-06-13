@@ -9,19 +9,23 @@
 import AppKit
 import Foundation
 
-public extension SettingsPanesCocoa {
-  class Keyboard: NSViewController {
-    var windowWidth: CGFloat { SettingsPanesCocoa.windowWidth }
-    var contentWidth: CGFloat { SettingsPanesCocoa.contentWidth }
-    var innerContentWidth: CGFloat { SettingsPanesCocoa.innerContentWidth }
-    var tabContainerWidth: CGFloat { SettingsPanesCocoa.tabContainerWidth }
-    var contentHalfWidth: CGFloat { SettingsPanesCocoa.contentHalfWidth }
+extension SettingsPanesCocoa {
+  public class Keyboard: NSViewController {
+    // MARK: Public
 
     override public func loadView() {
       view = body ?? .init()
       (view as? NSStackView)?.alignment = .centerX
       view.makeSimpleConstraint(.width, relation: .equal, value: windowWidth)
     }
+
+    // MARK: Internal
+
+    var windowWidth: CGFloat { SettingsPanesCocoa.windowWidth }
+    var contentWidth: CGFloat { SettingsPanesCocoa.contentWidth }
+    var innerContentWidth: CGFloat { SettingsPanesCocoa.innerContentWidth }
+    var tabContainerWidth: CGFloat { SettingsPanesCocoa.tabContainerWidth }
+    var contentHalfWidth: CGFloat { SettingsPanesCocoa.contentHalfWidth }
 
     var body: NSView? {
       NSStackView.build(.vertical, insets: .new(all: 14)) {
@@ -72,17 +76,20 @@ public extension SettingsPanesCocoa {
       }
     }
 
-    @IBAction func quickSetupButtonDachen(_: NSControl) {
+    @IBAction
+    func quickSetupButtonDachen(_: NSControl) {
       PrefMgr.shared.keyboardParser = 0
       PrefMgr.shared.basicKeyboardLayout = "com.apple.keylayout.ZhuyinBopomofo"
     }
 
-    @IBAction func quickSetupButtonEtenTraditional(_: NSControl) {
+    @IBAction
+    func quickSetupButtonEtenTraditional(_: NSControl) {
       PrefMgr.shared.keyboardParser = 1
       PrefMgr.shared.basicKeyboardLayout = "com.apple.keylayout.ZhuyinEten"
     }
 
-    @IBAction func quickSetupButtonHanyuPinyin(_: NSControl) {
+    @IBAction
+    func quickSetupButtonHanyuPinyin(_: NSControl) {
       PrefMgr.shared.keyboardParser = 100
       PrefMgr.shared.basicKeyboardLayout = "com.apple.keylayout.ABC"
     }

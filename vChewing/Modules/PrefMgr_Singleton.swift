@@ -6,8 +6,8 @@
 // marks, or product names of Contributor, except as required to fulfill notice
 // requirements defined in MIT License.
 
-public extension PrefMgr {
-  static let shared: PrefMgr = {
+extension PrefMgr {
+  public static let shared: PrefMgr = {
     let result = PrefMgr()
     result.assignDidSetActions()
     return result
@@ -27,8 +27,10 @@ public extension PrefMgr {
       SpeechSputnik.shared.refreshStatus()
     }
     didAskForSyncingShiftKeyDetectorPrefs = {
-      SessionCtl.theShiftKeyDetector.toggleWithLShift = PrefMgr.shared.togglingAlphanumericalModeWithLShift
-      SessionCtl.theShiftKeyDetector.toggleWithRShift = PrefMgr.shared.togglingAlphanumericalModeWithRShift
+      SessionCtl.theShiftKeyDetector.toggleWithLShift = PrefMgr.shared
+        .togglingAlphanumericalModeWithLShift
+      SessionCtl.theShiftKeyDetector.toggleWithRShift = PrefMgr.shared
+        .togglingAlphanumericalModeWithRShift
     }
   }
 }

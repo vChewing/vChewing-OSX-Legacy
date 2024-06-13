@@ -10,12 +10,13 @@ import AppKit
 
 // MARK: - IMKHelper Extension
 
-public extension IMKHelper {
-  static var currentBasicKeyboardLayout: String {
+extension IMKHelper {
+  public static var currentBasicKeyboardLayout: String {
     UserDefaults.current.string(forKey: "BasicKeyboardLayout") ?? ""
   }
 
-  static var isDynamicBasicKeyboardLayoutEnabled: Bool {
-    Self.arrDynamicBasicKeyLayouts.contains(currentBasicKeyboardLayout) || !currentBasicKeyboardLayout.isEmpty
+  public static var isDynamicBasicKeyboardLayoutEnabled: Bool {
+    Self.arrDynamicBasicKeyLayouts
+      .contains(currentBasicKeyboardLayout) || !currentBasicKeyboardLayout.isEmpty
   }
 }

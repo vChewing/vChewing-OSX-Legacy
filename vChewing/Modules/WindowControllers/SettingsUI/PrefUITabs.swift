@@ -8,8 +8,9 @@
 
 import AppKit
 
+// MARK: - PrefUITabs
+
 enum PrefUITabs: String, CaseIterable, Identifiable, Hashable {
-  var id: ObjectIdentifier { .init(rawValue as NSString) }
   case tabGeneral = "General"
   case tabCandidates = "Candidates"
   case tabBehavior = "Behavior"
@@ -19,6 +20,10 @@ enum PrefUITabs: String, CaseIterable, Identifiable, Hashable {
   case tabCassette = "Cassette"
   case tabKeyboard = "Keyboard"
   case tabDevZone = "DevZone"
+
+  // MARK: Internal
+
+  var id: ObjectIdentifier { .init(rawValue as NSString) }
 }
 
 extension PrefUITabs {

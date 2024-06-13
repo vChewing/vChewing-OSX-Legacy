@@ -8,9 +8,10 @@
 
 import AppKit
 
+// MARK: - CtlAboutWindow
+
 public class CtlAboutWindow: NSWindowController, NSWindowDelegate {
-  public static var shared: CtlAboutWindow?
-  private var viewController: NSViewController = VwrAboutCocoa()
+  // MARK: Lifecycle
 
   public init() {
     let newWindow = NSWindow(
@@ -25,6 +26,10 @@ public class CtlAboutWindow: NSWindowController, NSWindowDelegate {
   required init?(coder: NSCoder) {
     super.init(coder: coder)
   }
+
+  // MARK: Public
+
+  public static var shared: CtlAboutWindow?
 
   public static func show() {
     if shared == nil {
@@ -56,28 +61,45 @@ public class CtlAboutWindow: NSWindowController, NSWindowDelegate {
     if #available(macOS 10.10, *) {
       window.titlebarAppearsTransparent = true
     }
-    window.title = "i18n:aboutWindow.ABOUT_APP_TITLE_FULL".localized + " (v\(IMEApp.appMainVersionLabel.joined(separator: " Build ")))"
+    window.title = "i18n:aboutWindow.ABOUT_APP_TITLE_FULL"
+      .localized + " (v\(IMEApp.appMainVersionLabel.joined(separator: " Build ")))"
   }
+
+  // MARK: Private
+
+  private var viewController: NSViewController = VwrAboutCocoa()
 }
 
 // MARK: - View.
 
-public extension VwrAboutCocoa {
-  static let copyrightLabel = "Aqua Special build. " + (Bundle.main.localizedInfoDictionary?["NSHumanReadableCopyright"] as? String ?? "BAD_COPYRIGHT_LABEL")
-  static let eulaContent = Bundle.main.localizedInfoDictionary?["CFEULAContent"] as? String ?? "BAD_EULA_CONTENT"
-  static let eulaContentUpstream = Bundle.main.infoDictionary?["CFUpstreamEULAContent"] as? String ?? "BAD_EULA_UPSTREAM"
+extension VwrAboutCocoa {
+  public static let copyrightLabel = "Aqua Special build. " +
+    (
+      Bundle.main
+        .localizedInfoDictionary?["NSHumanReadableCopyright"] as? String ?? "BAD_COPYRIGHT_LABEL"
+    )
+  public static let eulaContent = Bundle.main
+    .localizedInfoDictionary?["CFEULAContent"] as? String ?? "BAD_EULA_CONTENT"
+  public static let eulaContentUpstream = Bundle.main
+    .infoDictionary?["CFUpstreamEULAContent"] as? String ?? "BAD_EULA_UPSTREAM"
 }
 
+// MARK: - VwrAboutCocoa
+
 public class VwrAboutCocoa: NSViewController {
-  let windowWidth: CGFloat = 533
-  let contentWidth: CGFloat = 510
-  let imgWidth: CGFloat = 63
+  // MARK: Public
 
   override public func loadView() {
     view = body ?? .init()
     (view as? NSStackView)?.alignment = .centerX
     view.makeSimpleConstraint(.width, relation: .equal, value: windowWidth)
   }
+
+  // MARK: Internal
+
+  let windowWidth: CGFloat = 533
+  let contentWidth: CGFloat = 510
+  let imgWidth: CGFloat = 63
 
   var appNameAndVersionString: NSAttributedString {
     let strResult = NSMutableAttributedString(string: "i18n:aboutWindow.APP_NAME".localized)
@@ -190,32 +212,6 @@ public class VwrAboutCocoa: NSViewController {
     return result
   }
 
-  func makeFormattedLabel(
-    verbatim: String,
-    size: CGFloat = 12,
-    isBold: Bool = false,
-    fixWidth: CGFloat? = nil
-  ) -> NSTextField {
-    let attrStr = NSMutableAttributedString(string: verbatim)
-    attrStr.addAttribute(
-      .kern,
-      value: 0,
-      range: .init(location: 0, length: attrStr.length)
-    )
-    attrStr.addAttribute(
-      .font,
-      value: {
-        guard isBold else { return NSFont.systemFont(ofSize: size) }
-        if #available(macOS 10.11, *) {
-          return NSFont.systemFont(ofSize: size, weight: .bold)
-        }
-        return NSFont.boldSystemFont(ofSize: size)
-      }(),
-      range: .init(location: 0, length: attrStr.length)
-    )
-    return attrStr.makeNSLabel(fixWidth: fixWidth)
-  }
-
   var eulaBox: NSScrollView {
     let textView = NSTextView()
     let clipView = NSClipView()
@@ -239,22 +235,53 @@ public class VwrAboutCocoa: NSViewController {
     return scrollView
   }
 
-  @discardableResult func addKeyEquivalent(_ button: NSButton) -> NSButton {
+  func makeFormattedLabel(
+    verbatim: String,
+    size: CGFloat = 12,
+    isBold: Bool = false,
+    fixWidth: CGFloat? = nil
+  )
+    -> NSTextField {
+    let attrStr = NSMutableAttributedString(string: verbatim)
+    attrStr.addAttribute(
+      .kern,
+      value: 0,
+      range: .init(location: 0, length: attrStr.length)
+    )
+    attrStr.addAttribute(
+      .font,
+      value: {
+        guard isBold else { return NSFont.systemFont(ofSize: size) }
+        if #available(macOS 10.11, *) {
+          return NSFont.systemFont(ofSize: size, weight: .bold)
+        }
+        return NSFont.boldSystemFont(ofSize: size)
+      }(),
+      range: .init(location: 0, length: attrStr.length)
+    )
+    return attrStr.makeNSLabel(fixWidth: fixWidth)
+  }
+
+  @discardableResult
+  func addKeyEquivalent(_ button: NSButton) -> NSButton {
     button.keyEquivalent = String(NSEvent.SpecialKey.carriageReturn.unicodeScalar)
     return button
   }
 
-  @objc func btnOKAction(_: NSControl) {
+  @objc
+  func btnOKAction(_: NSControl) {
     CtlAboutWindow.shared?.window?.close()
   }
 
-  @objc func btnWebSiteAction(_: NSControl) {
+  @objc
+  func btnWebSiteAction(_: NSControl) {
     if let url = URL(string: "https://vchewing.github.io/") {
       NSWorkspace.shared.open(url)
     }
   }
 
-  @objc func btnBugReportAction(_: NSControl) {
+  @objc
+  func btnBugReportAction(_: NSControl) {
     if let url = URL(string: "https://vchewing.github.io/BUGREPORT.html") {
       NSWorkspace.shared.open(url)
     }
