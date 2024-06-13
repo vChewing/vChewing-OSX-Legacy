@@ -51,7 +51,13 @@ extension String {
 
 // MARK: - String + LocalizedError
 
-extension String: LocalizedError {
+#if hasFeature(RetroactiveAttribute)
+  extension String: @retroactive LocalizedError {}
+#else
+  extension String: LocalizedError {}
+#endif
+
+extension String {
   public var errorDescription: String? {
     self
   }
