@@ -94,7 +94,7 @@ public class LMMgr {
           filterPath: nil
         )
       case .theFilter:
-        DispatchQueue.main.async {
+        asyncOnMain {
           Self.reloadUserFilterDirectly(mode: mode)
         }
       case .theReplacements:

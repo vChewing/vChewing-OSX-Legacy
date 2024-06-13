@@ -190,7 +190,7 @@ extension CandidatePool {
 
   public func update() {
     if #available(macOS 10.15, *) {
-      DispatchQueue.main.async {
+      asyncOnMain {
         self.objectWillChange.send()
       }
     }

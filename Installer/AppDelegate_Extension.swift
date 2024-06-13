@@ -60,7 +60,7 @@ extension AppDelegate {
     if shouldWaitForTranslocationRemoval {
       progressIndicator.startAnimation(self)
       window.beginSheet(progressSheet) { returnCode in
-        DispatchQueue.main.async {
+        asyncOnMain {
           if returnCode == .continue {
             self.installInputMethod(
               previousExists: true,
