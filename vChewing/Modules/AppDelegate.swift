@@ -10,13 +10,13 @@
 
 import AppKit
 
+// MARK: - AppDelegate
+
 @objc(AppDelegate)
 public class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDelegate {
-  public static let shared = AppDelegate()
+  // MARK: Public
 
-  private var folderMonitor = FolderMonitor(
-    url: URL(fileURLWithPath: LMMgr.dataFolderPath(isDefaultFolder: false))
-  )
+  public static let shared = AppDelegate()
 
   public static var updateInfoSourceURL: URL? {
     let keyUpdateURL: String = {
@@ -26,7 +26,9 @@ public class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCen
       return "UpdateInfoEndpointLegacy"
     }()
     guard let urlText = Bundle.main.infoDictionary?[keyUpdateURL] as? String else {
-      NSLog("vChewingDebug: Fatal error: Info.plist wrecked. It needs to have correct '\(keyUpdateURL)' value.")
+      NSLog(
+        "vChewingDebug: Fatal error: Info.plist wrecked. It needs to have correct '\(keyUpdateURL)' value."
+      )
       return nil
     }
     return .init(string: urlText)
@@ -36,6 +38,12 @@ public class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCen
     guard let url = Self.updateInfoSourceURL else { return }
     UpdateSputnik.shared.checkForUpdate(forced: forced, url: url) { shouldBypass() }
   }
+
+  // MARK: Private
+
+  private var folderMonitor = FolderMonitor(
+    url: URL(fileURLWithPath: LMMgr.dataFolderPath(isDefaultFolder: false))
+  )
 }
 
 // MARK: - Private Functions
@@ -58,12 +66,16 @@ extension AppDelegate {
 
 // MARK: - Public Functions
 
-public extension AppDelegate {
-  func userNotificationCenter(_: NSUserNotificationCenter, shouldPresent _: NSUserNotification) -> Bool {
+extension AppDelegate {
+  public func userNotificationCenter(
+    _: NSUserNotificationCenter,
+    shouldPresent _: NSUserNotification
+  )
+    -> Bool {
     true
   }
 
-  func applicationWillFinishLaunching(_: Notification) {
+  public func applicationWillFinishLaunching(_: Notification) {
     NSUserNotificationCenter.default.delegate = self
     PrefMgr.shared.fixOddPreferences()
 
@@ -100,7 +112,7 @@ public extension AppDelegate {
     PrefMgr.shared.fixOddPreferences()
   }
 
-  func updateDirectoryMonitorPath() {
+  public func updateDirectoryMonitorPath() {
     folderMonitor.stopMonitoring()
     folderMonitor = FolderMonitor(
       url: URL(fileURLWithPath: LMMgr.dataFolderPath(isDefaultFolder: false))
@@ -114,12 +126,13 @@ public extension AppDelegate {
     }
   }
 
-  func selfUninstall() {
+  public func selfUninstall() {
     let content = String(
       format: NSLocalizedString(
         "This will remove vChewing Input Method from this user account, requiring your confirmation.",
         comment: ""
-      ))
+      )
+    )
     let alert = NSAlert()
     alert.messageText = NSLocalizedString("Uninstallation", comment: "")
     alert.informativeText = content
@@ -142,9 +155,11 @@ public extension AppDelegate {
 
   /// 檢查該程式本身的記憶體佔用量。
   /// - Returns: 記憶體佔用量（MiB）。
-  @discardableResult func checkMemoryUsage() -> Double {
+  @discardableResult
+  public func checkMemoryUsage() -> Double {
     guard let currentMemorySizeInBytes = NSApplication.memoryFootprint else { return 0 }
-    let currentMemorySize: Double = (Double(currentMemorySizeInBytes) / 1024 / 1024).rounded(toPlaces: 1)
+    let currentMemorySize: Double = (Double(currentMemorySizeInBytes) / 1024 / 1024)
+      .rounded(toPlaces: 1)
     switch currentMemorySize {
     case 1024...:
       vCLog("WARNING: EXCESSIVE MEMORY FOOTPRINT (\(currentMemorySize)MB).")
@@ -164,7 +179,8 @@ public extension AppDelegate {
   }
 
   // New About Window
-  @IBAction func about(_: Any) {
+  @IBAction
+  public func about(_: Any) {
     CtlAboutWindow.show()
     NSApp.popup()
   }

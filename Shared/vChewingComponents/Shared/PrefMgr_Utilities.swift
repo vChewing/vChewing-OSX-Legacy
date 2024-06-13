@@ -10,8 +10,8 @@ import InputMethodKit
 
 // MARK: Guarded Method for Validating Candidate Keys.
 
-public extension PrefMgr {
-  func validate(candidateKeys: String) -> String? {
+extension PrefMgr {
+  public func validate(candidateKeys: String) -> String? {
     var excluded = ""
     if useJKtoMoveCompositorCursorInCandidateState { excluded.append("jk") }
     if useShiftQuestionToCallServiceMenu { excluded.append("?") }
@@ -22,8 +22,8 @@ public extension PrefMgr {
 
 // MARK: Auto parameter fix procedures, executed everytime on SessionCtl.activateServer().
 
-public extension PrefMgr {
-  func fixOddPreferences() {
+extension PrefMgr {
+  public func fixOddPreferences() {
     if #unavailable(macOS 12) {
       showNotificationsWhenTogglingCapsLock = false
     }
@@ -47,7 +47,10 @@ public extension PrefMgr {
       keyboardParser = 0
     }
     // 基礎鍵盤排列選項糾錯。
-    let matchedResults = TISInputSource.match(identifiers: [basicKeyboardLayout, alphanumericalKeyboardLayout])
+    let matchedResults = TISInputSource.match(identifiers: [
+      basicKeyboardLayout,
+      alphanumericalKeyboardLayout,
+    ])
     if !matchedResults.contains(where: { $0.identifier == basicKeyboardLayout }) {
       basicKeyboardLayout = Self.kDefaultBasicKeyboardLayout
     }
@@ -75,8 +78,9 @@ public extension PrefMgr {
 
 // MARK: Print share-safe UserDefaults into a bunch of "defaults write" commands.
 
-public extension PrefMgr {
-  @discardableResult func dumpShellScriptBackup() -> String? {
+extension PrefMgr {
+  @discardableResult
+  public func dumpShellScriptBackup() -> String? {
     let mirror = Mirror(reflecting: self)
     guard let bundleIdentifier = Bundle.main.bundleIdentifier else { return nil }
     let strDoubleDashLine = String(String(repeating: "=", count: 70))
@@ -87,9 +91,13 @@ public extension PrefMgr {
     consoleOutput.append("# \(strDoubleDashLine)\n\n")
     for case let (_, value) in mirror.children {
       // 為了讓接下來的命令抓到客體管理器的內容既存資料：
-      let rawCells = "\(value)".replacingOccurrences(of: "String, Bool", with: "String,Bool").components(separatedBy: " ")
+      let rawCells = "\(value)".replacingOccurrences(of: "String, Bool", with: "String,Bool")
+        .components(separatedBy: " ")
       guard rawCells.count >= 4 else { continue }
-      let strKeyName = rawCells[1].dropLast(2).dropFirst(1).replacingOccurrences(of: "\n", with: "\\n")
+      let strKeyName = rawCells[1].dropLast(2).dropFirst(1).replacingOccurrences(
+        of: "\n",
+        with: "\\n"
+      )
       guard let theUserDef = UserDef(rawValue: strKeyName) else { continue }
       var strTypeParam = String(describing: theUserDef.dataType)
       // 忽略會被 Sandbox 擋到的選項、以及其他一些雜項。
@@ -139,7 +147,10 @@ public extension PrefMgr {
       } else {
         consoleOutput.append("# No comments supplied by the engineer.\n")
       }
-      consoleOutput.append("\ndefaults write \(bundleIdentifier) \(strKeyName) -\(strTypeParam) \(strValue)\n\n")
+      consoleOutput
+        .append(
+          "\ndefaults write \(bundleIdentifier) \(strKeyName) -\(strTypeParam) \(strValue)\n\n"
+        )
     }
     return consoleOutput.description
   }

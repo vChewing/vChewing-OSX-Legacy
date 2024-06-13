@@ -9,13 +9,66 @@
 import AppKit
 import Foundation
 
-public extension SettingsPanesCocoa {
-  class Phrases: NSViewController {
-    var windowWidth: CGFloat { SettingsPanesCocoa.windowWidth }
-    var contentWidth: CGFloat { SettingsPanesCocoa.contentWidth }
-    var innerContentWidth: CGFloat { SettingsPanesCocoa.innerContentWidth }
-    var tabContainerWidth: CGFloat { SettingsPanesCocoa.tabContainerWidth }
-    var contentHalfWidth: CGFloat { SettingsPanesCocoa.contentHalfWidth }
+// MARK: - SettingsPanesCocoa.Phrases
+
+extension SettingsPanesCocoa {
+  public class Phrases: NSViewController {
+    // MARK: Public
+
+    override public func loadView() {
+      observation = Broadcaster.shared
+        .observe(\.eventForReloadingPhraseEditor, options: [.new]) { _, _ in
+          self.updatePhraseEditor()
+        }
+      initPhraseEditor()
+      view = body ?? .init()
+      (view as? NSStackView)?.alignment = .centerX
+      view.makeSimpleConstraint(.width, relation: .equal, value: windowWidth)
+    }
+
+    public func createTextViewStack() -> NSScrollView {
+      let contentSize = scrollview.contentSize
+
+      if let n = tfdPETextEditor.textContainer {
+        n.containerSize = CGSize(width: contentSize.width, height: CGFloat.greatestFiniteMagnitude)
+        n.widthTracksTextView = true
+      }
+
+      tfdPETextEditor.minSize = CGSize(width: 0, height: 0)
+      tfdPETextEditor.maxSize = CGSize(
+        width: CGFloat.greatestFiniteMagnitude,
+        height: CGFloat.greatestFiniteMagnitude
+      )
+      tfdPETextEditor.isVerticallyResizable = true
+      tfdPETextEditor.frame = CGRect(
+        x: 0,
+        y: 0,
+        width: contentSize.width,
+        height: contentSize.height
+      )
+      tfdPETextEditor.autoresizingMask = [.width]
+      tfdPETextEditor.delegate = self
+
+      scrollview.borderType = .noBorder
+      scrollview.hasVerticalScroller = true
+      scrollview.hasHorizontalScroller = true
+      scrollview.documentView = tfdPETextEditor
+      scrollview.scrollerStyle = .legacy
+      scrollview.autohidesScrollers = true
+
+      return scrollview
+    }
+
+    override public func viewWillAppear() {
+      initPhraseEditor()
+    }
+
+    override public func viewWillDisappear() {
+      tfdPETextEditor.string.removeAll()
+    }
+
+    // MARK: Internal
+
     let cmbPEInputModeMenu = NSPopUpButton()
     let cmbPEDataTypeMenu = NSPopUpButton()
     let btnPEReload = NSButton()
@@ -43,20 +96,16 @@ public extension SettingsPanesCocoa {
       return result
     }()
 
-    @objc var observation: NSKeyValueObservation?
+    @objc
+    var observation: NSKeyValueObservation?
 
+    var windowWidth: CGFloat { SettingsPanesCocoa.windowWidth }
+    var contentWidth: CGFloat { SettingsPanesCocoa.contentWidth }
+    var innerContentWidth: CGFloat { SettingsPanesCocoa.innerContentWidth }
+    var tabContainerWidth: CGFloat { SettingsPanesCocoa.tabContainerWidth }
+    var contentHalfWidth: CGFloat { SettingsPanesCocoa.contentHalfWidth }
     var isLoading = false {
       didSet { setPEUIControlAvailability() }
-    }
-
-    override public func loadView() {
-      observation = Broadcaster.shared.observe(\.eventForReloadingPhraseEditor, options: [.new]) { _, _ in
-        self.updatePhraseEditor()
-      }
-      initPhraseEditor()
-      view = body ?? .init()
-      (view as? NSStackView)?.alignment = .centerX
-      view.makeSimpleConstraint(.width, relation: .equal, value: windowWidth)
     }
 
     var body: NSView? {
@@ -92,42 +141,12 @@ public extension SettingsPanesCocoa {
       }
     }
 
-    public func createTextViewStack() -> NSScrollView {
-      let contentSize = scrollview.contentSize
-
-      if let n = tfdPETextEditor.textContainer {
-        n.containerSize = CGSize(width: contentSize.width, height: CGFloat.greatestFiniteMagnitude)
-        n.widthTracksTextView = true
-      }
-
-      tfdPETextEditor.minSize = CGSize(width: 0, height: 0)
-      tfdPETextEditor.maxSize = CGSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude)
-      tfdPETextEditor.isVerticallyResizable = true
-      tfdPETextEditor.frame = CGRect(x: 0, y: 0, width: contentSize.width, height: contentSize.height)
-      tfdPETextEditor.autoresizingMask = [.width]
-      tfdPETextEditor.delegate = self
-
-      scrollview.borderType = .noBorder
-      scrollview.hasVerticalScroller = true
-      scrollview.hasHorizontalScroller = true
-      scrollview.documentView = tfdPETextEditor
-      scrollview.scrollerStyle = .legacy
-      scrollview.autohidesScrollers = true
-
-      return scrollview
-    }
-
-    override public func viewWillAppear() {
-      initPhraseEditor()
-    }
-
-    override public func viewWillDisappear() {
-      tfdPETextEditor.string.removeAll()
-    }
-
-    @IBAction func sanityCheck(_: NSControl) {}
+    @IBAction
+    func sanityCheck(_: NSControl) {}
   }
 }
+
+// MARK: - SettingsPanesCocoa.Phrases + NSTextViewDelegate, NSTextFieldDelegate
 
 extension SettingsPanesCocoa.Phrases: NSTextViewDelegate, NSTextFieldDelegate {
   var selInputMode: Shared.InputMode {
@@ -156,8 +175,12 @@ extension SettingsPanesCocoa.Phrases: NSTextViewDelegate, NSTextFieldDelegate {
     tfdPETextEditor.string = NSLocalizedString("Loading…", comment: "")
     DispatchQueue.main.async { [weak self] in
       guard let self = self else { return }
-      self.tfdPETextEditor.string = LMMgr.retrieveData(mode: self.selInputMode, type: self.selUserDataType)
-      self.tfdPETextEditor.toolTip = PETerminology.TooltipTexts.sampleDictionaryContent(for: self.selUserDataType)
+      self.tfdPETextEditor.string = LMMgr.retrieveData(
+        mode: self.selInputMode,
+        type: self.selUserDataType
+      )
+      self.tfdPETextEditor.toolTip = PETerminology.TooltipTexts
+        .sampleDictionaryContent(for: self.selUserDataType)
       self.isLoading = false
     }
   }
@@ -167,7 +190,8 @@ extension SettingsPanesCocoa.Phrases: NSTextViewDelegate, NSTextFieldDelegate {
     btnPEConsolidate.isEnabled = selInputMode != .imeModeNULL && !isLoading
     btnPESave.isEnabled = true // 暫時沒辦法捕捉到 TextView 的內容變更事件，故作罷。
     btnPEAdd.isEnabled =
-      !txtPEField1.stringValue.isEmpty && !txtPEField2.stringValue.isEmpty && selInputMode != .imeModeNULL && !isLoading
+      !txtPEField1.stringValue.isEmpty && !txtPEField2.stringValue
+        .isEmpty && selInputMode != .imeModeNULL && !isLoading
     tfdPETextEditor.isEditable = selInputMode != .imeModeNULL && !isLoading
     txtPEField1.isEnabled = selInputMode != .imeModeNULL && !isLoading
     txtPEField2.isEnabled = selInputMode != .imeModeNULL && !isLoading
@@ -180,22 +204,33 @@ extension SettingsPanesCocoa.Phrases: NSTextViewDelegate, NSTextFieldDelegate {
     clearAllFields()
     switch selUserDataType {
     case .thePhrases:
-      (txtPEField1.cell as? NSTextFieldCell)?.placeholderString = PETerminology.AddPhrases.locPhrase.localized.0
-      (txtPEField2.cell as? NSTextFieldCell)?.placeholderString = PETerminology.AddPhrases.locReadingOrStroke.localized.0
-      (txtPEField3.cell as? NSTextFieldCell)?.placeholderString = PETerminology.AddPhrases.locWeight.localized.0
-      (txtPECommentField.cell as? NSTextFieldCell)?.placeholderString = PETerminology.AddPhrases.locComment.localized.0
+      (txtPEField1.cell as? NSTextFieldCell)?.placeholderString = PETerminology.AddPhrases.locPhrase
+        .localized.0
+      (txtPEField2.cell as? NSTextFieldCell)?.placeholderString = PETerminology.AddPhrases
+        .locReadingOrStroke.localized.0
+      (txtPEField3.cell as? NSTextFieldCell)?.placeholderString = PETerminology.AddPhrases.locWeight
+        .localized.0
+      (txtPECommentField.cell as? NSTextFieldCell)?.placeholderString = PETerminology.AddPhrases
+        .locComment.localized.0
     case .theFilter:
-      (txtPEField1.cell as? NSTextFieldCell)?.placeholderString = PETerminology.AddPhrases.locPhrase.localized.0
-      (txtPEField2.cell as? NSTextFieldCell)?.placeholderString = PETerminology.AddPhrases.locReadingOrStroke.localized.0
+      (txtPEField1.cell as? NSTextFieldCell)?.placeholderString = PETerminology.AddPhrases.locPhrase
+        .localized.0
+      (txtPEField2.cell as? NSTextFieldCell)?.placeholderString = PETerminology.AddPhrases
+        .locReadingOrStroke.localized.0
       (txtPEField3.cell as? NSTextFieldCell)?.placeholderString = ""
-      (txtPECommentField.cell as? NSTextFieldCell)?.placeholderString = PETerminology.AddPhrases.locComment.localized.0
+      (txtPECommentField.cell as? NSTextFieldCell)?.placeholderString = PETerminology.AddPhrases
+        .locComment.localized.0
     case .theReplacements:
-      (txtPEField1.cell as? NSTextFieldCell)?.placeholderString = PETerminology.AddPhrases.locReplaceTo.localized.0
-      (txtPEField2.cell as? NSTextFieldCell)?.placeholderString = PETerminology.AddPhrases.locReplaceTo.localized.1
+      (txtPEField1.cell as? NSTextFieldCell)?.placeholderString = PETerminology.AddPhrases
+        .locReplaceTo.localized.0
+      (txtPEField2.cell as? NSTextFieldCell)?.placeholderString = PETerminology.AddPhrases
+        .locReplaceTo.localized.1
       (txtPEField3.cell as? NSTextFieldCell)?.placeholderString = ""
-      (txtPECommentField.cell as? NSTextFieldCell)?.placeholderString = PETerminology.AddPhrases.locComment.localized.0
+      (txtPECommentField.cell as? NSTextFieldCell)?.placeholderString = PETerminology.AddPhrases
+        .locComment.localized.0
     case .theAssociates:
-      (txtPEField1.cell as? NSTextFieldCell)?.placeholderString = PETerminology.AddPhrases.locInitial.localized.0
+      (txtPEField1.cell as? NSTextFieldCell)?.placeholderString = PETerminology.AddPhrases
+        .locInitial.localized.0
       (txtPEField2.cell as? NSTextFieldCell)?.placeholderString = {
         let result = PETerminology.AddPhrases.locPhrase.localized.0
         return (result == "Phrase") ? "Phrases" : result
@@ -205,10 +240,13 @@ extension SettingsPanesCocoa.Phrases: NSTextViewDelegate, NSTextFieldDelegate {
         "Inline comments are not supported in associated phrases.", comment: ""
       )
     case .theSymbols:
-      (txtPEField1.cell as? NSTextFieldCell)?.placeholderString = PETerminology.AddPhrases.locPhrase.localized.0
-      (txtPEField2.cell as? NSTextFieldCell)?.placeholderString = PETerminology.AddPhrases.locReadingOrStroke.localized.0
+      (txtPEField1.cell as? NSTextFieldCell)?.placeholderString = PETerminology.AddPhrases.locPhrase
+        .localized.0
+      (txtPEField2.cell as? NSTextFieldCell)?.placeholderString = PETerminology.AddPhrases
+        .locReadingOrStroke.localized.0
       (txtPEField3.cell as? NSTextFieldCell)?.placeholderString = ""
-      (txtPECommentField.cell as? NSTextFieldCell)?.placeholderString = PETerminology.AddPhrases.locComment.localized.0
+      (txtPECommentField.cell as? NSTextFieldCell)?.placeholderString = PETerminology.AddPhrases
+        .locComment.localized.0
     }
   }
 
@@ -273,7 +311,8 @@ extension SettingsPanesCocoa.Phrases: NSTextViewDelegate, NSTextFieldDelegate {
 
     // Tooltip.
     txtPEField3.toolTip = PETerminology.TooltipTexts.weightInputBox.localized
-    tfdPETextEditor.toolTip = PETerminology.TooltipTexts.sampleDictionaryContent(for: selUserDataType)
+    tfdPETextEditor.toolTip = PETerminology.TooltipTexts
+      .sampleDictionaryContent(for: selUserDataType)
 
     // Appearance and Constraints.
     btnPEAdd.bezelStyle = .rounded
@@ -320,13 +359,17 @@ extension SettingsPanesCocoa.Phrases: NSTextViewDelegate, NSTextFieldDelegate {
 
   public func controlTextDidChange(_: Notification) { setPEUIControlAvailability() }
 
-  @IBAction func inputModePEMenuDidChange(_: NSPopUpButton) { updatePhraseEditor() }
+  @IBAction
+  func inputModePEMenuDidChange(_: NSPopUpButton) { updatePhraseEditor() }
 
-  @IBAction func dataTypePEMenuDidChange(_: NSPopUpButton) { updatePhraseEditor() }
+  @IBAction
+  func dataTypePEMenuDidChange(_: NSPopUpButton) { updatePhraseEditor() }
 
-  @IBAction func reloadPEButtonClicked(_: NSButton) { updatePhraseEditor() }
+  @IBAction
+  func reloadPEButtonClicked(_: NSButton) { updatePhraseEditor() }
 
-  @IBAction func consolidatePEButtonClicked(_: NSButton) {
+  @IBAction
+  func consolidatePEButtonClicked(_: NSButton) {
     DispatchQueue.main.async { [weak self] in
       guard let self = self else { return }
       self.isLoading = true
@@ -338,7 +381,8 @@ extension SettingsPanesCocoa.Phrases: NSTextViewDelegate, NSTextFieldDelegate {
     }
   }
 
-  @IBAction func savePEButtonClicked(_: NSButton) {
+  @IBAction
+  func savePEButtonClicked(_: NSButton) {
     let toSave = tfdPETextEditor.string
     isLoading = true
     tfdPETextEditor.string = NSLocalizedString("Loading…", comment: "")
@@ -347,7 +391,8 @@ extension SettingsPanesCocoa.Phrases: NSTextViewDelegate, NSTextFieldDelegate {
     isLoading = false
   }
 
-  @IBAction func openExternallyPEButtonClicked(_: NSButton) {
+  @IBAction
+  func openExternallyPEButtonClicked(_: NSButton) {
     DispatchQueue.main.async { [weak self] in
       guard let self = self else { return }
       let app: FileOpenMethod = NSEvent.keyModifierFlags.contains(.option) ? .textEdit : .finder
@@ -355,7 +400,8 @@ extension SettingsPanesCocoa.Phrases: NSTextViewDelegate, NSTextFieldDelegate {
     }
   }
 
-  @IBAction func addPEButtonClicked(_: NSButton) {
+  @IBAction
+  func addPEButtonClicked(_: NSButton) {
     DispatchQueue.main.async { [weak self] in
       guard let self = self else { return }
       self.txtPEField1.stringValue.removeAll { "　 \t\n\r".contains($0) }
@@ -367,14 +413,17 @@ extension SettingsPanesCocoa.Phrases: NSTextViewDelegate, NSTextFieldDelegate {
       }
       self.txtPEField3.stringValue.removeAll { !"0123456789.-".contains($0) }
       self.txtPECommentField.stringValue.removeAll { "\n\r".contains($0) }
-      guard !self.txtPEField1.stringValue.isEmpty, !self.txtPEField2.stringValue.isEmpty else { return }
+      guard !self.txtPEField1.stringValue.isEmpty,
+            !self.txtPEField2.stringValue.isEmpty else { return }
       var arrResult: [String] = [self.txtPEField1.stringValue, self.txtPEField2.stringValue]
       if let weightVal = Double(self.txtPEField3.stringValue), weightVal < 0 {
         arrResult.append(weightVal.description)
       }
-      if !self.txtPECommentField.stringValue.isEmpty { arrResult.append("#" + self.txtPECommentField.stringValue) }
+      if !self.txtPECommentField.stringValue
+        .isEmpty { arrResult.append("#" + self.txtPECommentField.stringValue) }
       if LMMgr.shared.checkIfPhrasePairExists(
-        userPhrase: self.txtPEField1.stringValue, mode: self.selInputMode, key: self.txtPEField2.stringValue
+        userPhrase: self.txtPEField1.stringValue, mode: self.selInputMode,
+        key: self.txtPEField2.stringValue
       ) {
         arrResult.append(" #𝙾𝚟𝚎𝚛𝚛𝚒𝚍𝚎")
       }
@@ -387,6 +436,8 @@ extension SettingsPanesCocoa.Phrases: NSTextViewDelegate, NSTextFieldDelegate {
   }
 }
 
+// MARK: - PETerminology
+
 private enum PETerminology {
   public enum AddPhrases: String {
     case locPhrase = "Phrase"
@@ -397,12 +448,14 @@ private enum PETerminology {
     case locAdd = "Add"
     case locInitial = "Initial"
 
+    // MARK: Public
+
     public var localized: (String, String) {
       if self == .locAdd {
         let loc = PrefMgr.shared.appleLanguages[0]
         return loc.prefix(2) == "zh" ? ("添入", "") : loc.prefix(2) == "ja" ? ("記入", "") : ("Add", "")
       }
-      let rawArray = NSLocalizedString(self.rawValue, comment: "").components(separatedBy: " ")
+      let rawArray = NSLocalizedString(rawValue, comment: "").components(separatedBy: " ")
       if rawArray.isEmpty { return ("N/A", "N/A") }
       let val1: String = rawArray[0]
       let val2: String = (rawArray.count >= 2) ? rawArray[1] : ""
@@ -414,22 +467,30 @@ private enum PETerminology {
     case weightInputBox =
       "If not filling the weight, it will be 0.0, the maximum one. An ideal weight situates in [-9.5, 0], making itself can be captured by the walking algorithm. The exception is -114.514, the disciplinary weight. The walking algorithm will ignore it unless it is the unique result."
 
-    public static func sampleDictionaryContent(for type: LMAssembly.ReplacableUserDataType) -> String {
+    // MARK: Public
+
+    public var localized: String { rawValue.localized }
+
+    public static func sampleDictionaryContent(
+      for type: LMAssembly
+        .ReplacableUserDataType
+    )
+      -> String {
       var result = ""
       switch type {
       case .thePhrases:
         result =
-          "Example:\nCandidate Reading-Reading Weight #Comment\nCandidate Reading-Reading #Comment".localized + "\n\n"
+          "Example:\nCandidate Reading-Reading Weight #Comment\nCandidate Reading-Reading #Comment"
+            .localized + "\n\n"
             + weightInputBox.localized
       case .theFilter: result = "Example:\nCandidate Reading-Reading #Comment".localized
       case .theReplacements: result = "Example:\nOldPhrase NewPhrase #Comment".localized
       case .theAssociates:
-        result = "Example:\nInitial RestPhrase\nInitial RestPhrase1 RestPhrase2 RestPhrase3...".localized
+        result = "Example:\nInitial RestPhrase\nInitial RestPhrase1 RestPhrase2 RestPhrase3..."
+          .localized
       case .theSymbols: result = "Example:\nCandidate Reading-Reading #Comment".localized
       }
       return result
     }
-
-    public var localized: String { rawValue.localized }
   }
 }

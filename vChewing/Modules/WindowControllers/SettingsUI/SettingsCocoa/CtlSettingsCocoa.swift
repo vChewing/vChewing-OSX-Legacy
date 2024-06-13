@@ -10,15 +10,12 @@ import AppKit
 
 private let kWindowTitleHeight: Double = 78
 
+// MARK: - CtlSettingsCocoa
+
 // InputMethodServerPreferencesWindowControllerClass 非必需。
 
 public class CtlSettingsCocoa: NSWindowController, NSWindowDelegate {
-  let panes = SettingsPanesCocoa()
-  var previousView: NSView?
-
-  public static var shared: CtlSettingsCocoa?
-
-  @objc var observation: NSKeyValueObservation?
+  // MARK: Lifecycle
 
   public init() {
     super.init(
@@ -36,6 +33,10 @@ public class CtlSettingsCocoa: NSWindowController, NSWindowDelegate {
     super.init(coder: coder)
   }
 
+  // MARK: Public
+
+  public static var shared: CtlSettingsCocoa?
+
   public static func show() {
     if shared == nil {
       shared = CtlSettingsCocoa()
@@ -51,8 +52,6 @@ public class CtlSettingsCocoa: NSWindowController, NSWindowDelegate {
     shared.showWindow(shared)
     NSApp.popup()
   }
-
-  private var currentLanguageSelectItem: NSMenuItem?
 
   override public func windowDidLoad() {
     super.windowDidLoad()
@@ -83,9 +82,21 @@ public class CtlSettingsCocoa: NSWindowController, NSWindowDelegate {
 
     use(view: panes.ctlPageGeneral.view, animate: false)
   }
+
+  // MARK: Internal
+
+  let panes = SettingsPanesCocoa()
+  var previousView: NSView?
+
+  @objc
+  var observation: NSKeyValueObservation?
+
+  // MARK: Private
+
+  private var currentLanguageSelectItem: NSMenuItem?
 }
 
-// MARK: - NSToolbarDelegate Methods
+// MARK: NSToolbarDelegate
 
 extension CtlSettingsCocoa: NSToolbarDelegate {
   func use(view newView: NSView, animate: Bool = true) {
@@ -124,7 +135,8 @@ extension CtlSettingsCocoa: NSToolbarDelegate {
     toolbarIdentifiers
   }
 
-  @objc func updateTab(_ target: NSToolbarItem) {
+  @objc
+  func updateTab(_ target: NSToolbarItem) {
     guard let tab = PrefUITabs.fromInt(target.tag) else { return }
     switch tab {
     case .tabGeneral: use(view: panes.ctlPageGeneral.view)
@@ -143,7 +155,8 @@ extension CtlSettingsCocoa: NSToolbarDelegate {
   public func toolbar(
     _: NSToolbar, itemForItemIdentifier itemIdentifier: NSToolbarItem.Identifier,
     willBeInsertedIntoToolbar _: Bool
-  ) -> NSToolbarItem? {
+  )
+    -> NSToolbarItem? {
     guard let tab = PrefUITabs(rawValue: itemIdentifier.rawValue) else { return nil }
     let item = NSToolbarItem(itemIdentifier: itemIdentifier)
     item.target = self

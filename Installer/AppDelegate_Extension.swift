@@ -90,8 +90,7 @@ extension AppDelegate {
   func installInputMethod(
     previousExists _: Bool, previousVersionNotFullyDeactivatedWarning warning: Bool
   ) {
-    guard
-      let targetBundle = Bundle.main.path(forResource: kTargetBin, ofType: kTargetType)
+    guard let targetBundle = Bundle.main.path(forResource: kTargetBin, ofType: kTargetType)
     else {
       return
     }
