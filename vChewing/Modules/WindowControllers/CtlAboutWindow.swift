@@ -31,23 +31,6 @@ public class CtlAboutWindow: NSWindowController, NSWindowDelegate {
 
   public static var shared: CtlAboutWindow?
 
-  public static func show() {
-    if shared == nil {
-      let newInstance = CtlAboutWindow()
-      shared = newInstance
-    }
-    guard let shared = shared, let sharedWindow = shared.window else { return }
-    sharedWindow.delegate = shared
-    if !sharedWindow.isVisible {
-      shared.windowDidLoad()
-    }
-    sharedWindow.setPosition(vertical: .top, horizontal: .left, padding: 20)
-    sharedWindow.orderFrontRegardless() // 逼著視窗往最前方顯示
-    sharedWindow.level = .statusBar
-    shared.showWindow(shared)
-    NSApp.popup()
-  }
-
   override public func windowDidLoad() {
     super.windowDidLoad()
     guard let window = window else { return }
@@ -63,6 +46,23 @@ public class CtlAboutWindow: NSWindowController, NSWindowDelegate {
     }
     window.title = "i18n:aboutWindow.ABOUT_APP_TITLE_FULL"
       .localized + " (v\(IMEApp.appMainVersionLabel.joined(separator: " Build ")))"
+  }
+
+  public static func show() {
+    if shared == nil {
+      let newInstance = CtlAboutWindow()
+      shared = newInstance
+    }
+    guard let shared = shared, let sharedWindow = shared.window else { return }
+    sharedWindow.delegate = shared
+    if !sharedWindow.isVisible {
+      shared.windowDidLoad()
+    }
+    sharedWindow.setPosition(vertical: .top, horizontal: .left, padding: 20)
+    sharedWindow.orderFrontRegardless() // 逼著視窗往最前方顯示
+    sharedWindow.level = .statusBar
+    shared.showWindow(shared)
+    NSApp.popup()
   }
 
   // MARK: Private

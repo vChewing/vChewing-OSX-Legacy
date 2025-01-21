@@ -26,6 +26,14 @@ extension SettingsPanesCocoa {
       view.makeSimpleConstraint(.width, relation: .equal, value: windowWidth)
     }
 
+    override public func viewWillAppear() {
+      initPhraseEditor()
+    }
+
+    override public func viewWillDisappear() {
+      tfdPETextEditor.string.removeAll()
+    }
+
     public func createTextViewStack() -> NSScrollView {
       let contentSize = scrollview.contentSize
 
@@ -57,14 +65,6 @@ extension SettingsPanesCocoa {
       scrollview.autohidesScrollers = true
 
       return scrollview
-    }
-
-    override public func viewWillAppear() {
-      initPhraseEditor()
-    }
-
-    override public func viewWillDisappear() {
-      tfdPETextEditor.string.removeAll()
     }
 
     // MARK: Internal
