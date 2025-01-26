@@ -11,8 +11,15 @@
 P.S.: 如果您用的是 Xcode 15 開始的版本的話，還請另將系統 SDK 換成 macOS 13.1 或 13.3 的 SDK。
 - macOS 13.1 的 SDK 可取自 Xcode 14.2，正好可以與 LibARCLite 一起取出來。
 - macOS 13.3 的 SDK 可取自 Xcode 14.3.1，也可以前往此處這裡下載：
+
 ```
 https://github.com/alexey-lysiuk/macos-sdk/releases/tag/13.3
+```
+
+如果您用的是 Xcode 16 開始的版本的話，還請額外下載 Swift 5.10.1 的 Toolchain：
+
+```
+https://download.swift.org/swift-5.10.1-release/xcode/swift-5.10.1-RELEASE/swift-5.10.1-RELEASE-osx.pkg
 ```
 
 $ EOF.
