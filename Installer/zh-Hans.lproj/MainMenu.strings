@@ -56,8 +56,8 @@
 /* Class = "NSTextFieldCell"; title = "Was derived from OpenVanilla McBopopmofo Project (MIT-License)."; ObjectID = "QYf-Nf-hoi"; */
 "QYf-Nf-hoi.title" = "该专案曾由 OpenVanilla 小麦注音专案 (MIT-License) 衍生而来。";
 
-/* Class = "NSTextFieldCell"; title = "vChewing macOS Development: Shiki Suen, Isaac Xen, Hiraku Wang, etc.\nvChewing Phrase Database Maintained by Shiki Suen.\nWalking algorithm by Lukhnos Liu (from Gramambular 2, MIT-License)."; ObjectID = "VW8-s5-Wpn"; */
-"VW8-s5-Wpn.title" = "威注音 macOS 程式研发：Shiki Suen, Isaac Xen, Hiraku Wang, 等。\n威注音词库维护：Shiki Suen。\n爬轨算法：Lukhnos Liu (Gramambular 2, MIT-License)。\nApp 格式的安装程式继承自 OpenVanilla (MIT-License)。";
+/* Class = "NSTextFieldCell"; title = "vChewing macOS Development: Shiki Suen, Isaac Xen, Hiraku Wang, etc.\nvChewing Phrase Database Maintained by Shiki Suen.\nWalking algorithm (Dijkstra) implemented by Shiki Suen."; ObjectID = "VW8-s5-Wpn"; */
+"VW8-s5-Wpn.title" = "威注音 macOS 程式研发：Shiki Suen, Isaac Xen, Hiraku Wang, 等。\n威注音词库维护：Shiki Suen。\nDijkstra 爬轨算法实作：Shiki Suen。\nApp 格式的安装程式继承自 OpenVanilla (MIT-License)。";
 
 /* Class = "NSTextFieldCell"; title = "Placeholder for showing copyright information."; ObjectID = "eo3-TK-0rB"; */
 // "eo3-TK-0rB.title" = "Placeholder for showing copyright information.";
