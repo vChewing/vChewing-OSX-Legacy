@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B0422082D4F7F2B00DFAA15 /* IMKTextInputImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0422062D4F7F2600DFAA15 /* IMKTextInputImpl.swift */; };
 		5B09126C2B134927000166DB /* LMInstantiator_SQLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B09126B2B134927000166DB /* LMInstantiator_SQLExtension.swift */; };
 		5B0E4EEF2B67933E00BE3440 /* OSVersionComparer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0E4EEE2B67933E00BE3440 /* OSVersionComparer.swift */; };
 		5B1523B62A74E92D007D2E53 /* Jad_BookmarkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1523B52A74E92D007D2E53 /* Jad_BookmarkManager.swift */; };
@@ -200,6 +201,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5B0422062D4F7F2600DFAA15 /* IMKTextInputImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMKTextInputImpl.swift; sourceTree = "<group>"; };
 		5B09126B2B134927000166DB /* LMInstantiator_SQLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMInstantiator_SQLExtension.swift; sourceTree = "<group>"; };
 		5B0E4EEE2B67933E00BE3440 /* OSVersionComparer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSVersionComparer.swift; sourceTree = "<group>"; };
 		5B1523B52A74E92D007D2E53 /* Jad_BookmarkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Jad_BookmarkManager.swift; sourceTree = "<group>"; };
@@ -662,6 +664,7 @@
 				5B81BD0F2B7297A70092819A /* AppKitImpl_NSView.swift */,
 				5BE5A4FF294E092900EFA49C /* AppKitImpl_NSWindowController.swift */,
 				5BE5A4F4294E059600EFA49C /* IMKHelper.swift */,
+				5B0422062D4F7F2600DFAA15 /* IMKTextInputImpl.swift */,
 				5B303E7D2A979F6F002CF4E6 /* IMKUtilsImpl.swift */,
 				5B572A7929FB76B900ED5066 /* LatinKeyboardMappings.swift */,
 				5BE5A4F9294E082800EFA49C /* NSEventImpl.swift */,
@@ -1226,6 +1229,7 @@
 				5BE5A548294E0D1200EFA49C /* Tekkon_SyllableComposer.swift in Sources */,
 				5BE5A53E294E0CEF00EFA49C /* Shared.swift in Sources */,
 				5B751DCD294EE57D0031CF70 /* SessionCtl_HandleEvent.swift in Sources */,
+				5B0422082D4F7F2B00DFAA15 /* IMKTextInputImpl.swift in Sources */,
 				5B6420012ABB3BA600E1B7F6 /* TooltipUIProtocol.swift in Sources */,
 				5BE5A52B294E0C2B00EFA49C /* lmPlainBopomofo.swift in Sources */,
 				5B1C28E12B8F09DF00968E74 /* CandidateTextService_SelectorImpl.swift in Sources */,
