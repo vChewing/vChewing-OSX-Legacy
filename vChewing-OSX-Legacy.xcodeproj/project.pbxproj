@@ -42,18 +42,14 @@
 		5B751DB9294EE27C0031CF70 /* CtlRevLookupWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DB5294EE27C0031CF70 /* CtlRevLookupWindow.swift */; };
 		5B751DBA294EE27C0031CF70 /* CtlAboutWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DB6294EE27C0031CF70 /* CtlAboutWindow.swift */; };
 		5B751DBD294EE44F0031CF70 /* UpdateSputnik.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DBC294EE44F0031CF70 /* UpdateSputnik.swift */; };
-		5B751DCD294EE57D0031CF70 /* SessionCtl_HandleEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DBE294EE57C0031CF70 /* SessionCtl_HandleEvent.swift */; };
 		5B751DCE294EE57D0031CF70 /* InputHandler_HandleStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DBF294EE57C0031CF70 /* InputHandler_HandleStates.swift */; };
-		5B751DCF294EE57D0031CF70 /* SessionCtl_Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DC0294EE57C0031CF70 /* SessionCtl_Core.swift */; };
-		5B751DD0294EE57D0031CF70 /* InputHandler_Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DC1294EE57C0031CF70 /* InputHandler_Core.swift */; };
-		5B751DD1294EE57D0031CF70 /* SessionCtl_HandleStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DC2294EE57C0031CF70 /* SessionCtl_HandleStates.swift */; };
+		5B751DCF294EE57D0031CF70 /* SessionCtl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DC0294EE57C0031CF70 /* SessionCtl.swift */; };
+		5B751DD0294EE57D0031CF70 /* InputHandler_CoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DC1294EE57C0031CF70 /* InputHandler_CoreProtocol.swift */; };
 		5B751DD3294EE57D0031CF70 /* InputHandler_TriageInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DC4294EE57C0031CF70 /* InputHandler_TriageInput.swift */; };
-		5B751DD4294EE57D0031CF70 /* SessionCtl_HandleDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DC5294EE57C0031CF70 /* SessionCtl_HandleDisplay.swift */; };
 		5B751DD5294EE57D0031CF70 /* IMEState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DC6294EE57D0031CF70 /* IMEState.swift */; };
 		5B751DD6294EE57D0031CF70 /* IMEStateData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DC7294EE57D0031CF70 /* IMEStateData.swift */; };
 		5B751DD7294EE57D0031CF70 /* SessionCtl_Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DC8294EE57D0031CF70 /* SessionCtl_Menu.swift */; };
 		5B751DD9294EE57D0031CF70 /* InputHandler_HandleComposition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DCA294EE57D0031CF70 /* InputHandler_HandleComposition.swift */; };
-		5B751DDA294EE57D0031CF70 /* SessionCtl_Delegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DCB294EE57D0031CF70 /* SessionCtl_Delegates.swift */; };
 		5B751DDB294EE57D0031CF70 /* InputHandler_HandleCandidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DCC294EE57D0031CF70 /* InputHandler_HandleCandidate.swift */; };
 		5B751DE2294EE7A80031CF70 /* CandidatePool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DE0294EE7A80031CF70 /* CandidatePool.swift */; };
 		5B751DE3294EE7A80031CF70 /* CandidateCellData_Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DDF294EE7A80031CF70 /* CandidateCellData_Core.swift */; };
@@ -116,6 +112,14 @@
 		5BB5158E2B729E9D00874257 /* SwiftExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A4F2294E058F00EFA49C /* SwiftExtension.swift */; };
 		5BCC80CE2B7E6511005D689C /* KimoCommunicatorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCC80CD2B7E6511005D689C /* KimoCommunicatorImpl.swift */; };
 		5BCC80D12B7E6521005D689C /* KimoCommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BCC80D02B7E6521005D689C /* KimoCommunicator.m */; };
+		5BCDA50D2D50C2D200571961 /* IMKInputControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCDA50C2D50C2D200571961 /* IMKInputControllerProtocol.swift */; };
+		5BCDA50F2D50C3DC00571961 /* InputHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCDA50E2D50C3DC00571961 /* InputHandler.swift */; };
+		5BCDA5162D50C45500571961 /* InputSession_CoreInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCDA5102D50C45500571961 /* InputSession_CoreInstance.swift */; };
+		5BCDA5172D50C45500571961 /* InputSession_Delegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCDA5112D50C45500571961 /* InputSession_Delegates.swift */; };
+		5BCDA5182D50C45500571961 /* InputSession_HandleEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCDA5132D50C45500571961 /* InputSession_HandleEvent.swift */; };
+		5BCDA5192D50C45500571961 /* InputSession_HandleStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCDA5142D50C45500571961 /* InputSession_HandleStates.swift */; };
+		5BCDA51A2D50C45500571961 /* InputSession_Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCDA5152D50C45500571961 /* InputSession_Protocol.swift */; };
+		5BCDA51B2D50C45500571961 /* InputSession_HandleDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCDA5122D50C45500571961 /* InputSession_HandleDisplay.swift */; };
 		5BCF4AB829546B5200C7FBD9 /* convdict.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 5BCF4AB729546B5100C7FBD9 /* convdict.sqlite */; };
 		5BD289E42B7B48AE00D3E41A /* LatinKeyboardMappings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B572A7929FB76B900ED5066 /* LatinKeyboardMappings.swift */; };
 		5BE5A4E5294E03C200EFA49C /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A4E4294E03C200EFA49C /* main.swift */; };
@@ -246,18 +250,14 @@
 		5B751DB6294EE27C0031CF70 /* CtlAboutWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CtlAboutWindow.swift; sourceTree = "<group>"; };
 		5B751DB7294EE27C0031CF70 /* CtlClientListMgr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CtlClientListMgr.swift; sourceTree = "<group>"; };
 		5B751DBC294EE44F0031CF70 /* UpdateSputnik.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateSputnik.swift; sourceTree = "<group>"; };
-		5B751DBE294EE57C0031CF70 /* SessionCtl_HandleEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionCtl_HandleEvent.swift; sourceTree = "<group>"; };
 		5B751DBF294EE57C0031CF70 /* InputHandler_HandleStates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputHandler_HandleStates.swift; sourceTree = "<group>"; };
-		5B751DC0294EE57C0031CF70 /* SessionCtl_Core.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionCtl_Core.swift; sourceTree = "<group>"; };
-		5B751DC1294EE57C0031CF70 /* InputHandler_Core.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputHandler_Core.swift; sourceTree = "<group>"; };
-		5B751DC2294EE57C0031CF70 /* SessionCtl_HandleStates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionCtl_HandleStates.swift; sourceTree = "<group>"; };
+		5B751DC0294EE57C0031CF70 /* SessionCtl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionCtl.swift; sourceTree = "<group>"; };
+		5B751DC1294EE57C0031CF70 /* InputHandler_CoreProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputHandler_CoreProtocol.swift; sourceTree = "<group>"; };
 		5B751DC4294EE57C0031CF70 /* InputHandler_TriageInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputHandler_TriageInput.swift; sourceTree = "<group>"; };
-		5B751DC5294EE57C0031CF70 /* SessionCtl_HandleDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionCtl_HandleDisplay.swift; sourceTree = "<group>"; };
 		5B751DC6294EE57D0031CF70 /* IMEState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IMEState.swift; sourceTree = "<group>"; };
 		5B751DC7294EE57D0031CF70 /* IMEStateData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IMEStateData.swift; sourceTree = "<group>"; };
 		5B751DC8294EE57D0031CF70 /* SessionCtl_Menu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionCtl_Menu.swift; sourceTree = "<group>"; };
 		5B751DCA294EE57D0031CF70 /* InputHandler_HandleComposition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputHandler_HandleComposition.swift; sourceTree = "<group>"; };
-		5B751DCB294EE57D0031CF70 /* SessionCtl_Delegates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionCtl_Delegates.swift; sourceTree = "<group>"; };
 		5B751DCC294EE57D0031CF70 /* InputHandler_HandleCandidate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputHandler_HandleCandidate.swift; sourceTree = "<group>"; };
 		5B751DDF294EE7A80031CF70 /* CandidateCellData_Core.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandidateCellData_Core.swift; sourceTree = "<group>"; };
 		5B751DE0294EE7A80031CF70 /* CandidatePool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandidatePool.swift; sourceTree = "<group>"; };
@@ -317,6 +317,14 @@
 		5BCC80CD2B7E6511005D689C /* KimoCommunicatorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KimoCommunicatorImpl.swift; sourceTree = "<group>"; };
 		5BCC80CF2B7E6521005D689C /* KimoCommunicator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KimoCommunicator.h; sourceTree = "<group>"; };
 		5BCC80D02B7E6521005D689C /* KimoCommunicator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KimoCommunicator.m; sourceTree = "<group>"; };
+		5BCDA50C2D50C2D200571961 /* IMKInputControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMKInputControllerProtocol.swift; sourceTree = "<group>"; };
+		5BCDA50E2D50C3DC00571961 /* InputHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputHandler.swift; sourceTree = "<group>"; };
+		5BCDA5102D50C45500571961 /* InputSession_CoreInstance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputSession_CoreInstance.swift; sourceTree = "<group>"; };
+		5BCDA5112D50C45500571961 /* InputSession_Delegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputSession_Delegates.swift; sourceTree = "<group>"; };
+		5BCDA5122D50C45500571961 /* InputSession_HandleDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputSession_HandleDisplay.swift; sourceTree = "<group>"; };
+		5BCDA5132D50C45500571961 /* InputSession_HandleEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputSession_HandleEvent.swift; sourceTree = "<group>"; };
+		5BCDA5142D50C45500571961 /* InputSession_HandleStates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputSession_HandleStates.swift; sourceTree = "<group>"; };
+		5BCDA5152D50C45500571961 /* InputSession_Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputSession_Protocol.swift; sourceTree = "<group>"; };
 		5BCF4AB729546B5100C7FBD9 /* convdict.sqlite */ = {isa = PBXFileReference; lastKnownFileType = text; path = convdict.sqlite; sourceTree = "<group>"; };
 		5BE5A4E3294E00C300EFA49C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		5BE5A4E4294E03C200EFA49C /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -479,7 +487,8 @@
 		5B7C02062B77AFAA00B7DBAA /* InputHandler */ = {
 			isa = PBXGroup;
 			children = (
-				5B751DC1294EE57C0031CF70 /* InputHandler_Core.swift */,
+				5BCDA50E2D50C3DC00571961 /* InputHandler.swift */,
+				5B751DC1294EE57C0031CF70 /* InputHandler_CoreProtocol.swift */,
 				5B751DCC294EE57D0031CF70 /* InputHandler_HandleCandidate.swift */,
 				5B751DCA294EE57D0031CF70 /* InputHandler_HandleComposition.swift */,
 				5B751DBF294EE57C0031CF70 /* InputHandler_HandleStates.swift */,
@@ -505,11 +514,13 @@
 		5B7C02082B77AFBA00B7DBAA /* SessionController */ = {
 			isa = PBXGroup;
 			children = (
-				5B751DC0294EE57C0031CF70 /* SessionCtl_Core.swift */,
-				5B751DCB294EE57D0031CF70 /* SessionCtl_Delegates.swift */,
-				5B751DC5294EE57C0031CF70 /* SessionCtl_HandleDisplay.swift */,
-				5B751DBE294EE57C0031CF70 /* SessionCtl_HandleEvent.swift */,
-				5B751DC2294EE57C0031CF70 /* SessionCtl_HandleStates.swift */,
+				5BCDA5102D50C45500571961 /* InputSession_CoreInstance.swift */,
+				5BCDA5112D50C45500571961 /* InputSession_Delegates.swift */,
+				5BCDA5122D50C45500571961 /* InputSession_HandleDisplay.swift */,
+				5BCDA5132D50C45500571961 /* InputSession_HandleEvent.swift */,
+				5BCDA5142D50C45500571961 /* InputSession_HandleStates.swift */,
+				5BCDA5152D50C45500571961 /* InputSession_Protocol.swift */,
+				5B751DC0294EE57C0031CF70 /* SessionCtl.swift */,
 				5B751DC8294EE57D0031CF70 /* SessionCtl_Menu.swift */,
 			);
 			path = SessionController;
@@ -664,6 +675,7 @@
 				5B81BD0F2B7297A70092819A /* AppKitImpl_NSView.swift */,
 				5BE5A4FF294E092900EFA49C /* AppKitImpl_NSWindowController.swift */,
 				5BE5A4F4294E059600EFA49C /* IMKHelper.swift */,
+				5BCDA50C2D50C2D200571961 /* IMKInputControllerProtocol.swift */,
 				5B0422062D4F7F2600DFAA15 /* IMKTextInputImpl.swift */,
 				5B303E7D2A979F6F002CF4E6 /* IMKUtilsImpl.swift */,
 				5B572A7929FB76B900ED5066 /* LatinKeyboardMappings.swift */,
@@ -1114,13 +1126,13 @@
 				5B60CEA429B8E7CA00A1AAC7 /* LMMgr_PhraseEditorDelegate.swift in Sources */,
 				5B81BD292B729AE90092819A /* VwrSettingsPaneCocoaPhrases.swift in Sources */,
 				5B572A7A29FB76B900ED5066 /* LatinKeyboardMappings.swift in Sources */,
-				5B751DD4294EE57D0031CF70 /* SessionCtl_HandleDisplay.swift in Sources */,
 				5BE5A566294E111E00EFA49C /* PrefMgr_Utilities.swift in Sources */,
 				5BE5A52A294E0C2B00EFA49C /* lmAssociates.swift in Sources */,
+				5BCDA50D2D50C2D200571961 /* IMKInputControllerProtocol.swift in Sources */,
 				5BE5A554294E0D1E00EFA49C /* 1_Compositor.swift in Sources */,
 				5BB32F0529A61AFB00B05D7B /* CtlCandidateTDK.swift in Sources */,
 				5B751DD9294EE57D0031CF70 /* InputHandler_HandleComposition.swift in Sources */,
-				5B751DD0294EE57D0031CF70 /* InputHandler_Core.swift in Sources */,
+				5B751DD0294EE57D0031CF70 /* InputHandler_CoreProtocol.swift in Sources */,
 				5B751DB8294EE27C0031CF70 /* CtlClientListMgr.swift in Sources */,
 				5B81BD212B729AE90092819A /* VwrSettingsPaneCocoaCassette.swift in Sources */,
 				5BE5A4F5294E059600EFA49C /* IMKHelper.swift in Sources */,
@@ -1145,6 +1157,12 @@
 				5B751DB9294EE27C0031CF70 /* CtlRevLookupWindow.swift in Sources */,
 				5BE5A4F3294E058F00EFA49C /* SwiftExtension.swift in Sources */,
 				5B4BEE712B8F8A530044A4EE /* CtlServiceMenuEditor.swift in Sources */,
+				5BCDA5162D50C45500571961 /* InputSession_CoreInstance.swift in Sources */,
+				5BCDA5172D50C45500571961 /* InputSession_Delegates.swift in Sources */,
+				5BCDA5182D50C45500571961 /* InputSession_HandleEvent.swift in Sources */,
+				5BCDA5192D50C45500571961 /* InputSession_HandleStates.swift in Sources */,
+				5BCDA51A2D50C45500571961 /* InputSession_Protocol.swift in Sources */,
+				5BCDA51B2D50C45500571961 /* InputSession_HandleDisplay.swift in Sources */,
 				5BE5A532294E0C9F00EFA49C /* PinyinPhonaConverter.swift in Sources */,
 				5B7EEAE32AE5002C006C30A3 /* SecureEventInputSputnik.swift in Sources */,
 				5BE5A562294E10C800EFA49C /* Uninstaller.swift in Sources */,
@@ -1162,7 +1180,6 @@
 				5BE5A56A294E120500EFA49C /* SymbolMenuDefaultData.swift in Sources */,
 				5BE5A4F1294E057F00EFA49C /* AppKitImpl_Misc.swift in Sources */,
 				5BA631862B13617800974241 /* sqlite3.m in Sources */,
-				5B751DD1294EE57D0031CF70 /* SessionCtl_HandleStates.swift in Sources */,
 				5BE5A540294E0CEF00EFA49C /* IMEStateProtocol.swift in Sources */,
 				5BE5A53F294E0CEF00EFA49C /* CandidateNode.swift in Sources */,
 				5B55ACAF2B5A255F009E2F54 /* NSEventImpl_Shared.swift in Sources */,
@@ -1196,7 +1213,7 @@
 				5B60CEA629B8E7D400A1AAC7 /* LMMgr_UserPhraseStructure.swift in Sources */,
 				5BEE11F92D46755F0001EF09 /* 8_SwiftImpl_Internals.swift in Sources */,
 				5B1523B62A74E92D007D2E53 /* Jad_BookmarkManager.swift in Sources */,
-				5B751DCF294EE57D0031CF70 /* SessionCtl_Core.swift in Sources */,
+				5B751DCF294EE57D0031CF70 /* SessionCtl.swift in Sources */,
 				5BB1D7F22999025B00EA8D2C /* PrefUITabs.swift in Sources */,
 				5BE5A558294E0D1E00EFA49C /* 7_Unigram.swift in Sources */,
 				5B751DE3294EE7A80031CF70 /* CandidateCellData_Core.swift in Sources */,
@@ -1228,7 +1245,7 @@
 				5BE5A528294E0C2B00EFA49C /* lmReplacements.swift in Sources */,
 				5BE5A548294E0D1200EFA49C /* Tekkon_SyllableComposer.swift in Sources */,
 				5BE5A53E294E0CEF00EFA49C /* Shared.swift in Sources */,
-				5B751DCD294EE57D0031CF70 /* SessionCtl_HandleEvent.swift in Sources */,
+				5BCDA50F2D50C3DC00571961 /* InputHandler.swift in Sources */,
 				5B0422082D4F7F2B00DFAA15 /* IMKTextInputImpl.swift in Sources */,
 				5B6420012ABB3BA600E1B7F6 /* TooltipUIProtocol.swift in Sources */,
 				5BE5A52B294E0C2B00EFA49C /* lmPlainBopomofo.swift in Sources */,
@@ -1236,7 +1253,6 @@
 				5B4BEE702B8F8A510044A4EE /* VwrServiceMenuEditor.swift in Sources */,
 				5B60CEA829B8E7DB00A1AAC7 /* LMMgr_Utilities.swift in Sources */,
 				5B81BD282B729AE90092819A /* VwrSettingsPaneCocoaKeyboard.swift in Sources */,
-				5B751DDA294EE57D0031CF70 /* SessionCtl_Delegates.swift in Sources */,
 				5BE5A596294E1DFB00EFA49C /* ChineseConverterBridge.swift in Sources */,
 				5B751DE2294EE7A80031CF70 /* CandidatePool.swift in Sources */,
 				5B751DBD294EE44F0031CF70 /* UpdateSputnik.swift in Sources */,

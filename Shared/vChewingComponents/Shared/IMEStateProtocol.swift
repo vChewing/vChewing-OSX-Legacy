@@ -35,7 +35,7 @@ public protocol IMEStateProtocol {
   var u16Cursor: Int { get }
   var cursor: Int { get set }
   var marker: Int { get set }
-  func attributedString(for session: IMKInputController) -> NSAttributedString
+  func attributedString(for session: IMKInputControllerProtocol) -> NSAttributedString
 }
 
 // MARK: - IMEStateDataProtocol
@@ -62,7 +62,7 @@ public protocol IMEStateDataProtocol {
   var userPhraseKVPair: (keyArray: [String], value: String) { get }
   var tooltipColorState: TooltipColorState { get set }
   mutating func updateTooltipForMarking()
-  func attributedStringNormal(for session: IMKInputController) -> NSAttributedString
-  func attributedStringMarking(for session: IMKInputController) -> NSAttributedString
-  func attributedStringPlaceholder(for session: IMKInputController) -> NSAttributedString
+  func attributedStringNormal(for session: IMKInputControllerProtocol) -> NSAttributedString
+  func attributedStringMarking(for session: IMKInputControllerProtocol) -> NSAttributedString
+  func attributedStringPlaceholder(for session: IMKInputControllerProtocol) -> NSAttributedString
 }
