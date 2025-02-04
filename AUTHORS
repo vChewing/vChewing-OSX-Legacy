@@ -8,6 +8,7 @@ $ Main contributors and volunteers of this repository (vChewing for macOS):
 
 $ 3rd-Party Modules Used:
 
+- ShiftKeyUpChecker: (c) 2019 and onwards Qwertyyb (March Yang) (MIT License).
 - LineReader: (c) 2019 and onwards Robert Muckle-Jones (Apache 2.0 License).
 - SwiftUI Preferences UI Framework: (c) 2018 and onwards Sindre Sorhus (MIT License).
 - SwiftUI VDKComboBox: (c) 2022 and onwards Bryan Jones (CC BY-SA 4.0)
@@ -25,6 +26,7 @@ Although there is no Lukhnos's Objective-C / C++ codes left in the current repos
     - App-style installer (only preserved for developer purposes).
     - Developer of Gramambular 2 language engine (removed since vChewing 1.5.4).
         - Shiki Suen's Megrez engine (MIT License) is basically a Swift-rewritten version of Gramambular 2 with further development.
+        - Lukhnos Liu's DAG walking algorithm implementation is deprecated from Megrez engine on January 2025. The successor is Shiki Suen's Dijkstra walking algorithm implementation.
     - Developer of Mandarin syllable composer (removed since vChewing 1.5.7).
         - Shiki Suen's Tekkon engine is made from scratch and has no relationship to Mandarin syllable composer.
     - Developer of the original C++ version of the User Override Module MK2.
