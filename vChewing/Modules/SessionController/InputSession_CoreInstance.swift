@@ -14,11 +14,11 @@ public final class InputSession: SessionProtocol {
   // MARK: Lifecycle
 
   public init(
-    controller inputController: IMKInputController?,
+    controller inputController: SessionCtl?,
     client inputClient: @escaping (() -> ClientObj?)
   ) {
     self.theClient = inputClient
-    construct(client: theClient())
+    self.inputControllerAssigned = inputController
   }
 
   // MARK: Public
@@ -103,8 +103,10 @@ public final class InputSession: SessionProtocol {
   public var theClient: () -> ClientObj?
 
   /// IMKInputController 副本。
+  public unowned var inputControllerAssigned: SessionCtl?
+
   public var inputController: SessionCtl? {
-    SessionCtl.currentInputController
+    inputControllerAssigned ?? SessionCtl.currentInputController
   }
 
   /// 用以存儲客體的 bundleIdentifier。
