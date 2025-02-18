@@ -8,6 +8,7 @@
 
 import AppKit
 
+
 // MARK: - InputHandlerProtocol
 
 /// 該檔案乃輸入調度模組的核心部分，主要承接型別初期化內容、協定內容、以及
@@ -147,7 +148,7 @@ extension InputHandlerProtocol {
     else {
       return
     }
-    let gridBackup = compositor.hardCopy
+    let gridBackup = compositor.copy
     defer { compositor = gridBackup }
     var theState = session.state
     let highlightedPair = theState.candidates[index]
@@ -373,7 +374,7 @@ extension InputHandlerProtocol {
   /// - Returns: 邊界距離。
   func getStepsToNearbyNodeBorder(direction: Megrez.Compositor.TypingDirection) -> Int {
     let currentCursor = compositor.cursor
-    var testCompositor = compositor // 只是影響到 Compositor 內部的游標位置記錄器，故不需要 hardCopy。
+    let testCompositor = compositor.copy
     testCompositor.jumpCursorBySpan(to: direction)
     return abs(testCompositor.cursor - currentCursor)
   }
@@ -393,7 +394,7 @@ extension InputHandlerProtocol {
   /// 該修正必須搭配至少天權星組字引擎 v2.0.2 版方可生效。算法可能比較囉唆，但至少在常用情形下不會再發生該問題。
   /// - Parameter theCandidate: 要拿來覆寫的詞音配對。
   func consolidateCursorContext(with theCandidate: Megrez.KeyValuePaired) {
-    var grid = compositor.hardCopy // 因為會影響到 Node 自身的權重覆寫狀態，所以必須用 hardCopy。
+    let grid = compositor.copy // 因為會影響到 Node 自身的權重覆寫狀態，所以必須用 hardCopy。
     var frontBoundaryEX = actualNodeCursorPosition + 1
     var rearBoundaryEX = actualNodeCursorPosition
     var debugIntelToPrint = ""
