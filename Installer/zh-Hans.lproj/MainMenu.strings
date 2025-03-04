@@ -50,8 +50,8 @@
 /* Class = "NSTextFieldCell"; title = "version_placeholder"; ObjectID = "JRP-At-H9q"; */
 // "JRP-At-H9q.title" = "version_placeholder";
 
-/* Class = "NSTextFieldCell"; title = "DISCLAIMER: The vChewing project, having no relationship of cooperation or affiliation with the OpenVanilla project, is not responsible for the phrase database shipped in the original McBopomofo project. Certain geopolitical and ideological contents, which are potentially harmful to the global spread of this software, are not included in vChewing official phrase database."; ObjectID = "Q9M-ni-kUM"; */
-"Q9M-ni-kUM.title" = "免责声明：威注音专案对小麦注音官方专案内赠的小麦注音原版词库内容不负任何责任。威注音输入法专用的威注音官方词库不包含任何「会在法理上妨碍威注音在全球传播」的「与地缘政治及政治意识形态有关的」内容。威注音专案与 OpenVanilla 专案之间无合作关系、无隶属关系。";
+/* Class = "NSTextFieldCell"; title = "NOTE: 1) Megrez Compositor since v4 uses LGPLv3 license with exceptions for static linking in Swift projects. 2) vChewing IME uses Vanguard Corpus which consists of data from multiple external resources which are credited in its GitHub repository (`vChewing/libvchewing-data` repository). The data compiler of Vanguard Corpus is licensed using 3-Clause BSD License."; ObjectID = "Q9M-ni-kUM"; */
+"Q9M-ni-kUM.title" = "补记：1) Megrez Compositor (天权星组字引擎) 自 v4 起使用 LGPLv3 授权，但对于 Swift 专案中的静态链接之情形有额外准许。2) 威注音输入法使用了《先锋语料库 (Vanguard Corpus)》，该语料库由多个外部资源数据组成，这些数据的来源在其 GitHub 储存库 (`vChewing/libvchewing-data`) 中有列出。先锋语料库的资料建置程式借由 3-Clause BSD 授权释出。";
 
 /* Class = "NSTextFieldCell"; title = "Was derived from OpenVanilla McBopopmofo Project (MIT-License)."; ObjectID = "QYf-Nf-hoi"; */
 "QYf-Nf-hoi.title" = "该专案曾由 OpenVanilla 小麦注音专案 (MIT-License) 衍生而来。";

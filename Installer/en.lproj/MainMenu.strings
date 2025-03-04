@@ -50,8 +50,8 @@
 /* Class = "NSTextFieldCell"; title = "version_placeholder"; ObjectID = "JRP-At-H9q"; */
 // "JRP-At-H9q.title" = "version_placeholder";
 
-/* Class = "NSTextFieldCell"; title = "DISCLAIMER: The vChewing project, having no relationship of cooperation or affiliation with the OpenVanilla project, is not responsible for the phrase database shipped in the original McBopomofo project. Certain geopolitical and ideological contents, which are potentially harmful to the global spread of this software, are not included in vChewing official phrase database."; ObjectID = "Q9M-ni-kUM"; */
-"Q9M-ni-kUM.title" = "DISCLAIMER: The vChewing project, having no relationship of cooperation or affiliation with the OpenVanilla project, is not responsible for the phrase database shipped in the original McBopomofo project. Certain geopolitical and ideological contents, which are potentially harmful to the global spread of this software, are not included in vChewing official phrase database.";
+/* Class = "NSTextFieldCell"; title = "NOTE: 1) Megrez Compositor since v4 uses LGPLv3 license with exceptions for static linking in Swift projects. 2) vChewing IME uses Vanguard Corpus which consists of data from multiple external resources which are credited in its GitHub repository (`vChewing/libvchewing-data` repository). The data compiler of Vanguard Corpus is licensed using 3-Clause BSD License."; ObjectID = "Q9M-ni-kUM"; */
+"Q9M-ni-kUM.title" = "NOTE: 1) Megrez Compositor since v4 uses LGPLv3 license with exceptions for static linking in Swift projects. 2) vChewing IME uses Vanguard Corpus which consists of data from multiple external resources which are credited in its GitHub repository (`vChewing/libvchewing-data` repository). The data compiler of Vanguard Corpus is licensed using 3-Clause BSD License.";
 
 /* Class = "NSTextFieldCell"; title = "Was derived from OpenVanilla McBopopmofo Project (MIT-License)."; ObjectID = "QYf-Nf-hoi"; */
 "QYf-Nf-hoi.title" = "Was derived from OpenVanilla McBopopmofo Project (MIT-License).";

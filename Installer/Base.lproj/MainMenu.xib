@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21507" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="23504" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21507"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="23504"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -118,11 +118,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="533" height="457"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button verticalHuggingPriority="750" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="575">
+                    <button imageHugsTitle="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="575">
                         <rect key="frame" x="378" y="101" width="147" height="32"/>
-                        <constraints>
-                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="133" id="S4F-Qe-xuk"/>
-                        </constraints>
                         <buttonCell key="cell" type="push" title="I Accept" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="576">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" size="13" name="Tahoma-Bold"/>
@@ -130,6 +127,9 @@
 DQ
 </string>
                         </buttonCell>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="133" id="S4F-Qe-xuk"/>
+                        </constraints>
                         <connections>
                             <action selector="agreeAndInstallAction:" target="494" id="708"/>
                         </connections>
@@ -137,15 +137,15 @@ DQ
                     <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" findBarPosition="belowContent" translatesAutoresizingMaskIntoConstraints="NO" id="YCR-wo-M5a">
                         <rect key="frame" x="91" y="165" width="427" height="196"/>
                         <clipView key="contentView" drawsBackground="NO" id="NrY-FL-PVu" userLabel="appEULAContentClip">
-                            <rect key="frame" x="1" y="1" width="425" height="194"/>
-                            <autoresizingMask key="autoresizingMask"/>
+                            <rect key="frame" x="1" y="1" width="414" height="194"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <textView editable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="bar" smartInsertDelete="YES" id="47J-tO-8TZ" userLabel="appEULAContent">
-                                    <rect key="frame" x="0.0" y="-2" width="425" height="194"/>
+                                    <rect key="frame" x="0.0" y="-2" width="414" height="194"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                    <size key="minSize" width="425" height="194"/>
+                                    <size key="minSize" width="414" height="194"/>
                                     <size key="maxSize" width="427" height="10000000"/>
                                     <attributedString key="textStorage">
                                         <fragment content="Placeholder for EULA Texts.">
@@ -165,7 +165,7 @@ DQ
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                         <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" controlSize="mini" horizontal="NO" id="E5B-3B-faV">
-                            <rect key="frame" x="412" y="1" width="14" height="194"/>
+                            <rect key="frame" x="415" y="1" width="11" height="194"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
@@ -222,7 +222,7 @@ DQ
                         </constraints>
                         <textFieldCell key="cell" id="Q9M-ni-kUM">
                             <font key="font" size="12" name="Tahoma"/>
-                            <string key="title">DISCLAIMER: The vChewing project, having no relationship of cooperation or affiliation with the OpenVanilla project, is not responsible for the phrase database shipped in the original McBopomofo project. Certain geopolitical and ideological contents, which are potentially harmful to the global spread of this software, are not included in vChewing official phrase database.</string>
+                            <string key="title">NOTE: 1) Megrez Compositor since v4 uses LGPLv3 license with exceptions for static linking in Swift projects. 2) vChewing IME uses Vanguard Corpus which consists of data from multiple external resources which are credited in its GitHub repository (`vChewing/libvchewing-data` repository). The data compiler of Vanguard Corpus is licensed using 3-Clause BSD License.</string>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
@@ -253,7 +253,7 @@ DQ
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <button verticalHuggingPriority="750" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="592">
+                    <button imageHugsTitle="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="592">
                         <rect key="frame" x="378" y="74" width="147" height="32"/>
                         <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="593">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>

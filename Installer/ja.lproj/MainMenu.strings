@@ -50,8 +50,8 @@
 /* Class = "NSTextFieldCell"; title = "version_placeholder"; ObjectID = "JRP-At-H9q"; */
 "JRP-At-H9q.title" = "version_placeholder";
 
-/* Class = "NSTextFieldCell"; title = "DISCLAIMER: The vChewing project, having no relationship of cooperation or affiliation with the OpenVanilla project, is not responsible for the phrase database shipped in the original McBopomofo project. Certain geopolitical and ideological contents, which are potentially harmful to the global spread of this software, are not included in vChewing official phrase database."; ObjectID = "Q9M-ni-kUM"; */
-"Q9M-ni-kUM.title" = "免責事項：vChewing Project は、OpenVanilla と協力関係や提携関係にあるわけではなく、OpenVanilla が小麦注音プロジェクトに同梱した辞書データについて、vChewing Project は一切責任負い兼ねる。特定な地政学的・観念形態的な内容は、vChewing アプリの世界的な普及に妨害する恐れがあるため、vChewing 公式辞書データに不収録。";
+/* Class = "NSTextFieldCell"; title = "NOTE: 1) Megrez Compositor since v4 uses LGPLv3 license with exceptions for static linking in Swift projects. 2) vChewing IME uses Vanguard Corpus which consists of data from multiple external resources which are credited in its GitHub repository (`vChewing/libvchewing-data` repository). The data compiler of Vanguard Corpus is licensed using 3-Clause BSD License."; ObjectID = "Q9M-ni-kUM"; */
+"Q9M-ni-kUM.title" = "補記：1) Megrez Compositor はバージョン4以降、LGPLv3ライセンスを使用していますが、Swift プロジェクトでの静的リンクは例外として許容します。2) 威注音入力アプリは、複数の外部リソースからのデータで構成される Vanguard Corpus を使用しており、これらのリソースはGitHubリポジトリ（`vChewing/libvchewing-data`）にクレジットされています。Vanguard Corpusのデータコンパイラは、3-Clause BSDライセンスでリリースします。";
 
 /* Class = "NSTextFieldCell"; title = "Was derived from OpenVanilla McBopopmofo Project (MIT-License)."; ObjectID = "QYf-Nf-hoi"; */
 "QYf-Nf-hoi.title" = "曾て OpenVanilla 小麦注音プロジェクト (MIT-License) から派生。";
