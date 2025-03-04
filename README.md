@@ -20,6 +20,7 @@ P.S.: 威注音輸入法的 Shift 按鍵監測功能僅藉由對 NSEvent 訊號�
     - macOS 10.13.1 SDK：可以從 Xcode 14.2 取得。
     - 不補裝上述元件的話，您只能建置給 macOS 10.13 High Sierra 開始的系統。
 - 作業系統：能運行上述建置環境的 macOS 作業系統。
+- Swift 5.10.1 Open-Source Toolchain 是最低條件，否則原廠辭典無法正常建置。
 
 ### 對二次開發者而言，建置用最低系統需求：
 
