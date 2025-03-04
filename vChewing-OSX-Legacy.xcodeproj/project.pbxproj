@@ -215,7 +215,7 @@
 		5B2F3B512AF24FD500225501 /* LMMgr_KimoDataParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMMgr_KimoDataParser.swift; sourceTree = "<group>"; };
 		5B303E7D2A979F6F002CF4E6 /* IMKUtilsImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IMKUtilsImpl.swift; sourceTree = "<group>"; };
 		5B3B0ED12B981579000B2A25 /* SwiftFoundationImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftFoundationImpl.swift; sourceTree = "<group>"; };
-		5B3C0D5E2B13555000C87B27 /* vChewingFactoryDatabase.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = vChewingFactoryDatabase.sqlite; path = DictionaryData/Build/Release/vChewingFactoryDatabase.sqlite; sourceTree = "<group>"; };
+		5B3C0D5E2B13555000C87B27 /* vChewingFactoryDatabase.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = vChewingFactoryDatabase.sqlite; path = "DictionaryData/Build/Release/vanguardSQL-Legacy/vChewingFactoryDatabase.sqlite"; sourceTree = "<group>"; };
 		5B423A532A9516B0004CC33B /* Broadcaster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Broadcaster.swift; sourceTree = "<group>"; };
 		5B44BADA295047AC00E1C02D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = en; path = en.lproj/shortcuts.html; sourceTree = "<group>"; };
 		5B44BADC295047AE00E1C02D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = "zh-Hans"; path = "zh-Hans.lproj/shortcuts.html"; sourceTree = "<group>"; };
@@ -288,7 +288,6 @@
 		5BA379B62B8278DA00D82E16 /* LMInstantiator_UOMRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMInstantiator_UOMRepresentable.swift; sourceTree = "<group>"; };
 		5BA631622B135E9A00974241 /* sqlite3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = sqlite3.m; sourceTree = "<group>"; };
 		5BA631642B135E9A00974241 /* sqlite3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sqlite3.h; sourceTree = "<group>"; };
-		5BACBCC629508A5F0078CAB3 /* dataCompiler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dataCompiler.swift; sourceTree = "<group>"; };
 		5BACBCDC295093A60078CAB3 /* vChewingInstallerLegacy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vChewingInstallerLegacy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BACBCDE295093A60078CAB3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5BACBCE3295093A80078CAB3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
@@ -383,8 +382,8 @@
 		5BE5A56B294E127B00EFA49C /* PhraseEditorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhraseEditorDelegate.swift; sourceTree = "<group>"; };
 		5BE5A58B294E196C00EFA49C /* Beep.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Beep.m4a; sourceTree = "<group>"; };
 		5BE5A58C294E196C00EFA49C /* Fart.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Fart.m4a; sourceTree = "<group>"; };
-		5BE5A58D294E199F00EFA49C /* template-associatedPhrases-chs.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "template-associatedPhrases-chs.txt"; path = "DictionaryData/components/chs/template-associatedPhrases-chs.txt"; sourceTree = SOURCE_ROOT; };
-		5BE5A58F294E19A900EFA49C /* template-associatedPhrases-cht.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "template-associatedPhrases-cht.txt"; path = "DictionaryData/components/cht/template-associatedPhrases-cht.txt"; sourceTree = SOURCE_ROOT; };
+		5BE5A58D294E199F00EFA49C /* template-associatedPhrases-chs.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "template-associatedPhrases-chs.txt"; path = "DictionaryData/Sources/LibVanguardChewingData/Resources/components/chs/template-associatedPhrases-chs.txt"; sourceTree = SOURCE_ROOT; };
+		5BE5A58F294E19A900EFA49C /* template-associatedPhrases-cht.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "template-associatedPhrases-cht.txt"; path = "DictionaryData/Sources/LibVanguardChewingData/Resources/components/cht/template-associatedPhrases-cht.txt"; sourceTree = SOURCE_ROOT; };
 		5BE5A591294E19B300EFA49C /* template-replacements.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "template-replacements.txt"; sourceTree = "<group>"; };
 		5BE5A592294E19B300EFA49C /* template-userphrases.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "template-userphrases.txt"; sourceTree = "<group>"; };
 		5BE5A593294E19B300EFA49C /* template-usersymbolphrases.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "template-usersymbolphrases.txt"; sourceTree = "<group>"; };
@@ -567,14 +566,6 @@
 			children = (
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		5BACBCC529508A520078CAB3 /* DataCompiler */ = {
-			isa = PBXGroup;
-			children = (
-				5BACBCC629508A5F0078CAB3 /* dataCompiler.swift */,
-			);
-			path = DataCompiler;
 			sourceTree = "<group>";
 		};
 		5BACBCDD295093A60078CAB3 /* Installer */ = {
@@ -892,7 +883,6 @@
 		5BF5BAD4294DFFC9006011AD = {
 			isa = PBXGroup;
 			children = (
-				5BACBCC529508A520078CAB3 /* DataCompiler */,
 				5BE5A570294E18D100EFA49C /* DictionaryData */,
 				5BACBCDD295093A60078CAB3 /* Installer */,
 				5BF5BADE294DFFC9006011AD /* Products */,
@@ -1056,43 +1046,17 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/DictionaryData/components/chs/phrases-custom-chs.txt",
-				"$(SRCROOT)/DictionaryData/components/chs/phrases-moe-chs.txt",
-				"$(SRCROOT)/DictionaryData/components/chs/phrases-tabe-chs.txt",
-				"$(SRCROOT)/DictionaryData/components/chs/phrases-vchewing-chs.txt",
-				"$(SRCROOT)/DictionaryData/components/cht/phrases-custom-cht.txt",
-				"$(SRCROOT)/DictionaryData/components/cht/phrases-moe-cht.txt",
-				"$(SRCROOT)/DictionaryData/components/cht/phrases-tabe-cht.txt",
-				"$(SRCROOT)/DictionaryData/components/cht/phrases-vchewing-cht.txt",
-				"$(SRCROOT)/DictionaryData/components/common/char-kanji-cns.txt",
-				"$(SRCROOT)/DictionaryData/components/common/char-kanji-core.txt",
-				"$(SRCROOT)/DictionaryData/components/common/char-kanji-phrasesonly.txt",
-				"$(SRCROOT)/DictionaryData/components/common/char-misc-bpmf.txt",
-				"$(SRCROOT)/DictionaryData/components/common/char-misc-nonkanji.txt",
-				"$(SRCROOT)/DictionaryData/components/common/data-punctuations.txt",
-				"$(SRCROOT)/DictionaryData/components/common/data-symbols.txt",
-				"$(SRCROOT)/DictionaryData/components/common/data-zhuyinwen.txt",
-				"$(SRCROOT)/DictionaryData/components/common/phone-header.txt",
-				"$(SRCROOT)/DataCompiler/dataCompiler.swift",
-				"$(SRCROOT)/DictionaryData/components/cht/phrases-custom-genshin-cht.txt",
-				"$(SRCROOT)/DictionaryData/components/cht/phrases-custom-seikyuutetsudou-cht.txt",
-				"$(SRCROOT)/DictionaryData/components/chs/phrases-custom-genshin-chs.txt",
-				"$(SRCROOT)/DictionaryData/components/chs/phrases-custom-seikyuutetsudou-chs.txt",
+				"$(SRCROOT)/DictionaryData/",
 			);
 			name = "Run Script (Build Dictionary Data)";
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(SRCROOT)/DictionaryData/Build/Release/vChewingFactoryDatabase.sqlite",
-				"$(SRCROOT)/DictionaryData/Build/Release/vChewingFactoryDatabase.sqlite-journal",
 				"$(SRCROOT)/DictionaryData/Build/Release/",
-				"$(SRCROOT)/DictionaryData/data-chs.txt",
-				"$(SRCROOT)/DictionaryData/data-cht.txt",
-				"$(SRCROOT)/DictionaryData/Build/Release/vChewingFactoryDatabase.sql",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\ncd ${SRCROOT}/DictionaryData/\nswift ${SRCROOT}/DataCompiler/dataCompiler.swift\nsqlite3 ${SRCROOT}/DictionaryData/Build/Release/vChewingFactoryDatabase.sqlite < ${SRCROOT}/DictionaryData/Build/Release/vChewingFactoryDatabase.sql\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\ncd ${SRCROOT}/DictionaryData/\nswift run VCDataBuilder vanguardSQLLegacy\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
