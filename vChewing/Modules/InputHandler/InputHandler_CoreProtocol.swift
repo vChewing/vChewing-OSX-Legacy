@@ -8,7 +8,6 @@
 
 import AppKit
 
-
 // MARK: - InputHandlerProtocol
 
 /// 該檔案乃輸入調度模組的核心部分，主要承接型別初期化內容、協定內容、以及
