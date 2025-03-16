@@ -28,7 +28,7 @@ private enum CommitableMarkupType: Int {
   }
 
   static func match(rawValue: Int) -> Self {
-    CommitableMarkupType(rawValue: rawValue) ?? .textWithBracketedAnnotations
+    Self(rawValue: rawValue) ?? .textWithBracketedAnnotations
   }
 }
 

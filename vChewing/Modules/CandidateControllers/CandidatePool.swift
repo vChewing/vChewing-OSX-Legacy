@@ -39,7 +39,7 @@ public class CandidatePool {
   // MARK: Public
 
   public struct UIMetrics {
-    static var allZeroed: UIMetrics {
+    static var allZeroed: Self {
       .init(
         fittingSize: .zero,
         highlightedLine: .zero,
@@ -260,7 +260,7 @@ extension CandidatePool {
   ///   - count: 翻幾行。
   /// - Returns: 操作是否順利。
   @discardableResult
-  public func consecutivelyFlipLines(isBackward: Bool, count: Int) -> Bool {
+  public func consecutivelyFlipLines(isBackward: Bool, count givenCount: Int) -> Bool {
     expandIfNeeded(isBackward: isBackward)
     switch isBackward {
     case false where currentLineNumber == candidateLines.count - 1:
@@ -268,8 +268,8 @@ extension CandidatePool {
     case true where currentLineNumber == 0:
       return highlightNeighborCandidate(isBackward: true)
     default:
-      if count <= 0 { return false }
-      for _ in 0 ..< min(maxLinesPerPage, count) {
+      if givenCount <= 0 { return false }
+      for _ in 0 ..< min(maxLinesPerPage, givenCount) {
         selectNewNeighborLine(isBackward: isBackward)
       }
       return true

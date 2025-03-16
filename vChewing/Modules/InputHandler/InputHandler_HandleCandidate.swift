@@ -275,7 +275,8 @@ extension InputHandlerProtocol {
     let allowMovingCompositorCursorByHL = allowMovingCompositorCursor && prefs
       .useHLtoMoveCompositorCursorInCandidateState
 
-    checkMovingCompositorCursorByJKHL: if allowMovingCompositorCursorByJK || allowMovingCompositorCursorByHL {
+    checkMovingCompositorCursorByJKHL: if allowMovingCompositorCursorByJK ||
+      allowMovingCompositorCursorByHL {
       guard input.keyModifierFlags.isEmpty else { break checkMovingCompositorCursorByJKHL }
       // keycode: 38 = J, 40 = K, 4 = H, 37 = L.
       switch input.keyCode {
