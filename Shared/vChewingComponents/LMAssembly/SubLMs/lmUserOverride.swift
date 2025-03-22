@@ -118,6 +118,10 @@ extension LMAssembly.LMUserOverride {
     var key: String
     var observation: Observation
 
+    var latestTimeStamp: Double {
+      observation.overrides.values.map(\.timestamp).max() ?? 0
+    }
+
     static func == (lhs: Self, rhs: Self) -> Bool {
       lhs.key == rhs.key && lhs.observation == rhs.observation
     }
@@ -185,7 +189,6 @@ extension LMAssembly.LMUserOverride {
     let scopeChanged = currentNodeScope != prevNodeScope
     let forceHighScoreOverride: Bool = currentNode.spanLength > prevNode.spanLength
     let targetNodeIndex = scopeChanged ? currentNodeScope.upperBound : prevNodeScope.upperBound
-    let breakingUp = currentNode.spanLength == 1 && prevNode.spanLength > 1
     let key: String = LMAssembly.LMUserOverride.formObservationKey(
       walkedNodes: walkedAfter, headIndex: targetNodeIndex
     )
@@ -220,7 +223,7 @@ extension LMAssembly.LMUserOverride {
         }
       }
     }
-    resetMRUList()
+    resetLRUList()
     saveCallback?() ?? saveData()
   }
 
@@ -230,13 +233,16 @@ extension LMAssembly.LMUserOverride {
       if !key.contains("(),()") { continue }
       mutLRUMap.removeValue(forKey: key)
     }
-    resetMRUList()
+    resetLRUList()
     saveCallback?() ?? saveData()
   }
 
-  func resetMRUList() {
+  func resetLRUList() {
     mutLRUList.removeAll()
-    for neta in mutLRUMap.reversed() {
+    let lruListSorted = mutLRUMap.sorted {
+      $0.value.latestTimeStamp > $1.value.latestTimeStamp
+    }
+    for neta in lruListSorted {
       mutLRUList.append(neta.value)
     }
   }
@@ -288,7 +294,7 @@ extension LMAssembly.LMUserOverride {
         return
       }
       mutLRUMap = jsonResult
-      resetMRUList()
+      resetLRUList()
     } catch {
       vCLMLog("UOM Error: Unable to read file or parse the data, abort loading. Details: \(error)")
       return
