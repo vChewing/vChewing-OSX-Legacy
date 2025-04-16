@@ -1,5 +1,10 @@
 +.PHONY: all
 
+# 定义共享常量
+XCODEBUILD := /Applications/Xcode-15.app/Contents/Developer/usr/bin/xcodebuild
+SDK := /Applications/Xcode-15.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk
+TOOLCHAIN := /Applications/Xcode-15.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain
+
 # 定义日期和时间变量
 DATE_DIR := $(shell date +%Y-%m-%d)
 DATE_FILE := $(shell date +%Y-%-m-%-d)
@@ -23,17 +28,23 @@ release:
 	@echo "Creating directory: $(ARCHIVE_DIR)"
 	@mkdir -p "$(ARCHIVE_DIR)"
 	@echo "Archiving to: $(ARCHIVE_PATH)"
-	/Applications/Xcode-15.app/Contents/Developer/usr/bin/xcodebuild archive \
+	$(XCODEBUILD) archive \
 	-project vChewing-OSX-Legacy.xcodeproj \
 	-scheme vChewingInstallerLegacy \
 	-configuration Release \
 	-archivePath "$(ARCHIVE_PATH)" \
-	-sdk /Applications/Xcode-15.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk \
+	-sdk $(SDK) \
 	-allowProvisioningUpdates \
-	TOOLCHAINS=/Applications/Xcode-15.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain
+	TOOLCHAINS=$(TOOLCHAIN)
 
 debug: 
-	xcodebuild -project vChewing-OSX-Legacy.xcodeproj -scheme vChewingInstaller -configuration Debug $(BUILD_SETTINGS) build
+	@echo "Building debug configuration"
+	$(XCODEBUILD) build \
+	-project vChewing-OSX-Legacy.xcodeproj \
+	-scheme vChewingInstallerLegacy \
+	-configuration Debug \
+	-sdk $(SDK) \
+	TOOLCHAINS=$(TOOLCHAIN)
 
 DSTROOT = /Library/Input Methods
 VC_APP_ROOT = $(DSTROOT)/vChewing.app
