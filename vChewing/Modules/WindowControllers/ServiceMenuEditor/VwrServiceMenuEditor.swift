@@ -100,6 +100,11 @@ public class VwrServiceMenuEditor: NSViewController {
     scrollContainer.documentView = tblServices
     scrollContainer.hasVerticalScroller = true
     scrollContainer.hasHorizontalScroller = true
+
+    if #available(macOS 26, *) {
+      scrollContainer.borderType = .lineBorder
+    }
+
     if #available(macOS 11.0, *) {
       tblServices.style = .inset
     }
