@@ -23,7 +23,7 @@ enum PrefUITabs: String, CaseIterable, Identifiable, Hashable {
 
   // MARK: Internal
 
-  var id: ObjectIdentifier { .init(rawValue as NSString) }
+  var id: String { rawValue }
 }
 
 extension PrefUITabs {
