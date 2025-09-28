@@ -1,0 +1,59 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"sweetpad.swift.toolchainPath": "/Applications/Xcode-15.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain",
+		"sweetpad.swift.sdkPath": "/Applications/Xcode-15.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk",
+		"sweetpad.swift.target": "x86_64-apple-macosx10.9",
+		"sweetpad.swift.additionalSwiftcFlags": [
+			"-sdk",
+			"/Applications/Xcode-15.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk",
+			"-target",
+			"x86_64-apple-macosx10.9"
+		],
+		"sweetpad.environment": {
+			"DEVELOPER_DIR": "/Applications/Xcode-15.app/Contents/Developer",
+			"SDKROOT": "/Applications/Xcode-15.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk",
+			"MACOSX_DEPLOYMENT_TARGET": "10.9",
+			"SWIFT_TOOLCHAIN": "/Applications/Xcode-15.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain",
+			"TOOLCHAINS": "com.apple.dt.toolchain.XcodeDefault",
+			"PATH": "/Applications/Xcode-15.app/Contents/Developer/usr/bin:${env:PATH}",
+			"XCODEBUILD": "/Applications/Xcode-15.app/Contents/Developer/usr/bin/xcodebuild"
+		},
+		"swift.SDK": "/Applications/Xcode-15.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk",
+		"swift.runtimePath": "/Applications/Xcode-15.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/",
+		"makefile.configureOnOpen": false,
+		"swift.buildArguments": [
+			"build",
+			"-Xswiftc",
+			"-sdk",
+			"-Xswiftc",
+			"/Applications/Xcode-15.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk",
+			"-Xswiftc",
+			"-target",
+			"-Xswiftc",
+			"x86_64-apple-macosx10.9"
+		],
+		"swift.additionalCompilerFlags": [
+			"-sdk",
+			"/Applications/Xcode-15.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk",
+			"-target",
+			"x86_64-apple-macosx10.9"
+		],
+		"terminal.integrated.env.osx": {
+			"DEVELOPER_DIR": "/Applications/Xcode-15.app/Contents/Developer",
+			"SDKROOT": "/Applications/Xcode-15.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk",
+			"MACOSX_DEPLOYMENT_TARGET": "10.9",
+			"SWIFT_TOOLCHAIN": "/Applications/Xcode-15.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain",
+			"TOOLCHAINS": "com.apple.dt.toolchain.XcodeDefault"
+		},
+		"sweetpad.build.args": [
+			"-sdk",
+			"/Applications/Xcode-15.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk",
+			"TOOLCHAINS=/Applications/Xcode-15.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain"
+		]
+	}
+}
