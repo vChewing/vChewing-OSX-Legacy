@@ -98,11 +98,9 @@ func performStatementSansResult(_ handler: (inout OpaquePointer?) -> ()) {
 }
 
 func vCLMLog(_ strPrint: StringLiteralType) {
-  guard let toLog = UserDefaults.standard.object(forKey: "_DebugMode") as? Bool else {
-    NSLog("vChewingDebug: %@", strPrint)
-    return
-  }
+  let toLog = UserDefaults.standard.object(forKey: "_DebugMode") as? Bool ?? true
+
   if toLog {
-    NSLog("vChewingDebug: %@", strPrint)
+    Process.consoleLog("vChewingDebug: \(strPrint)")
   }
 }

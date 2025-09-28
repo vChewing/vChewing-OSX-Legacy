@@ -35,17 +35,17 @@ extension TISInputSource {
     let instances = TISInputSource.allRegisteredInstancesOfThisInputMethod
     if instances.isEmpty {
       // 有實例尚未登記。執行登記手續。
-      NSLog("Registering input source.")
+      Process.consoleLog("Registering input source.")
       if !TISInputSource.registerInputSource() {
-        NSLog("Input source registration failed.")
+        Process.consoleLog("Input source registration failed.")
         return false
       }
     }
     var succeeded = true
     instances.forEach {
-      NSLog("Enabling input source: \($0.identifier)")
+      Process.consoleLog("Enabling input source: \($0.identifier)")
       if !$0.activate() {
-        NSLog("Failed from enabling input source: \($0.identifier)")
+        Process.consoleLog("Failed from enabling input source: \($0.identifier)")
         succeeded = false
       }
     }
@@ -65,11 +65,11 @@ extension TISInputSource {
   @discardableResult
   public func select() -> Bool {
     if !isSelectable {
-      NSLog("Non-selectable: \(identifier)")
+      Process.consoleLog("Non-selectable: \(identifier)")
       return false
     }
     if TISSelectInputSource(self) != noErr {
-      NSLog("Failed from switching to \(identifier)")
+      Process.consoleLog("Failed from switching to \(identifier)")
       return false
     }
     return true

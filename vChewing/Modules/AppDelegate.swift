@@ -24,7 +24,7 @@ public class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCen
       return "UpdateInfoEndpointLegacy"
     }()
     guard let urlText = Bundle.main.infoDictionary?[keyUpdateURL] as? String else {
-      NSLog(
+      Process.consoleLog(
         "vChewingDebug: Fatal error: Info.plist wrecked. It needs to have correct '\(keyUpdateURL)' value."
       )
       return nil

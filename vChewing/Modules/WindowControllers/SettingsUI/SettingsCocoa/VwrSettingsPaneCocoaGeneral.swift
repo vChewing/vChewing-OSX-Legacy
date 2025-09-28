@@ -106,7 +106,7 @@ extension SettingsPanesCocoa {
       } else {
         UserDefaults.standard.removeObject(forKey: "AppleLanguages")
       }
-      NSLog("vChewing App self-terminated due to UI language change.")
+      Process.consoleLog("vChewing App self-terminated due to UI language change.")
       NSApp.terminate(nil)
     }
   }

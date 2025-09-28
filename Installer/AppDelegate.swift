@@ -90,7 +90,7 @@ class AppDelegate: NSWindowController, NSApplicationDelegate {
           let eulaContentUpstream = Bundle.main.infoDictionary?["CFUpstreamEULAContent"] as? String
     else {
       NSSound.beep()
-      NSLog(
+      Process.consoleLog(
         "The vChewing App Installer failed its initial guard-let process on appDidFinishLaunching()."
       )
       return

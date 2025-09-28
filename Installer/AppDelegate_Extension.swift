@@ -38,11 +38,11 @@ extension AppDelegate {
         // 塞入垃圾桶
         try fileManager.trashItem(at: fileURL, resultingItemURL: nil)
       } else {
-        NSLog("File does not exist")
+        Process.consoleLog("File does not exist")
       }
 
     } catch let error as NSError {
-      NSLog("An error took place: \(error)")
+      Process.consoleLog("An error took place: \(error)")
     }
 
     let killTask = Process()
@@ -124,7 +124,8 @@ extension AppDelegate {
     let imeBundleURL = theBundle.bundleURL
 
     if allRegisteredInstancesOfThisInputMethod.isEmpty {
-      NSLog("Registering input source \(imeIdentifier) at \(imeBundleURL.absoluteString).")
+      Process
+        .consoleLog("Registering input source \(imeIdentifier) at \(imeBundleURL.absoluteString).")
       let status = (TISRegisterInputSource(imeBundleURL as CFURL) == noErr)
       if !status {
         let message = String(
@@ -148,7 +149,7 @@ extension AppDelegate {
           ) + "(#D41J0U8U)",
           imeIdentifier
         )
-        NSLog(message)
+        Process.consoleLog(message)
       }
     }
 
@@ -164,9 +165,9 @@ extension AppDelegate {
       if isActivated { return }
       // WARNING: macOS 12 may return false positives, hence forced activation.
       if neta.activate() {
-        NSLog("Input method enabled: \(imeIdentifier)")
+        Process.consoleLog("Input method enabled: \(imeIdentifier)")
       } else {
-        NSLog("Failed to enable input method: \(imeIdentifier)")
+        Process.consoleLog("Failed to enable input method: \(imeIdentifier)")
       }
     }
 

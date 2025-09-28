@@ -9,6 +9,15 @@
 import AppKit
 import Foundation
 
+#if canImport(OSLog)
+  import OSLog
+#endif
+
+public func vCLog(forced: Bool = false, _ strPrint: StringLiteralType) {
+  guard forced || UserDefaults.current.bool(forKey: "_DebugMode") else { return }
+  Process.consoleLog("vChewingDebug: \(strPrint)")
+}
+
 // MARK: - TooltipColorState
 
 public enum TooltipColorState {
@@ -217,12 +226,6 @@ public enum CandidateKey {
   }
 }
 
-public func vCLog(_ strPrint: StringLiteralType) {
-  if UserDefaults.current.bool(forKey: "_DebugMode") {
-    NSLog("vChewingDebug: %@", strPrint)
-  }
-}
-
 // MARK: - Shared
 
 public enum Shared {
@@ -239,6 +242,7 @@ public enum Shared {
     }
 
     public var id: String { rawValue }
+
     public var reversed: Shared.InputMode {
       switch self {
       case .imeModeCHS:
