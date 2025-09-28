@@ -20,7 +20,9 @@ public class CtlAboutWindow: NSWindowController, NSWindowDelegate {
       backing: .buffered, defer: true
     )
     super.init(window: newWindow)
-    viewController.loadView()
+    autoreleasepool {
+      viewController.loadView()
+    }
   }
 
   required init?(coder: NSCoder) {
@@ -32,37 +34,41 @@ public class CtlAboutWindow: NSWindowController, NSWindowDelegate {
   public static var shared: CtlAboutWindow?
 
   override public func windowDidLoad() {
-    super.windowDidLoad()
-    guard let window = window else { return }
-    window.contentView = viewController.view
-    let size = viewController.view.fittingSize
-    window.setPosition(vertical: .top, horizontal: .left, padding: 20)
-    window.setFrame(.init(origin: window.frame.origin, size: size), display: true)
-    window.standardWindowButton(.closeButton)?.isHidden = true
-    window.standardWindowButton(.miniaturizeButton)?.isHidden = true
-    window.standardWindowButton(.zoomButton)?.isHidden = true
-    if #available(macOS 10.10, *) {
-      window.titlebarAppearsTransparent = true
+    autoreleasepool {
+      super.windowDidLoad()
+      guard let window = window else { return }
+      window.contentView = viewController.view
+      let size = viewController.view.fittingSize
+      window.setPosition(vertical: .top, horizontal: .left, padding: 20)
+      window.setFrame(.init(origin: window.frame.origin, size: size), display: true)
+      window.standardWindowButton(.closeButton)?.isHidden = true
+      window.standardWindowButton(.miniaturizeButton)?.isHidden = true
+      window.standardWindowButton(.zoomButton)?.isHidden = true
+      if #available(macOS 10.10, *) {
+        window.titlebarAppearsTransparent = true
+      }
+      window.title = "i18n:aboutWindow.ABOUT_APP_TITLE_FULL"
+        .localized + " (v\(IMEApp.appMainVersionLabel.joined(separator: " Build ")))"
     }
-    window.title = "i18n:aboutWindow.ABOUT_APP_TITLE_FULL"
-      .localized + " (v\(IMEApp.appMainVersionLabel.joined(separator: " Build ")))"
   }
 
   public static func show() {
-    if shared == nil {
-      let newInstance = CtlAboutWindow()
-      shared = newInstance
+    autoreleasepool {
+      if shared == nil {
+        let newInstance = CtlAboutWindow()
+        shared = newInstance
+      }
+      guard let shared = shared, let sharedWindow = shared.window else { return }
+      sharedWindow.delegate = shared
+      if !sharedWindow.isVisible {
+        shared.windowDidLoad()
+      }
+      sharedWindow.setPosition(vertical: .top, horizontal: .left, padding: 20)
+      sharedWindow.orderFrontRegardless() // 逼著視窗往最前方顯示
+      sharedWindow.level = .statusBar
+      shared.showWindow(shared)
+      NSApp.popup()
     }
-    guard let shared = shared, let sharedWindow = shared.window else { return }
-    sharedWindow.delegate = shared
-    if !sharedWindow.isVisible {
-      shared.windowDidLoad()
-    }
-    sharedWindow.setPosition(vertical: .top, horizontal: .left, padding: 20)
-    sharedWindow.orderFrontRegardless() // 逼著視窗往最前方顯示
-    sharedWindow.level = .statusBar
-    shared.showWindow(shared)
-    NSApp.popup()
   }
 
   // MARK: Private
