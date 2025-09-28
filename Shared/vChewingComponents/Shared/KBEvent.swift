@@ -167,7 +167,7 @@ extension KBEvent {
 
   public var isEmacsKey: Bool {
     // 這裡不能只用 isControlHold，因為這裡對修飾鍵的要求有排他性。
-    [6, 2, 1, 5, 4, 22].contains(charCode) && keyModifierFlags == .control
+    [6, 2, 1, 5, 4, 22, 14, 16].contains(charCode) && keyModifierFlags == .control
   }
 
   // 摁 Alt+Shift+主鍵盤區域數字鍵 的話，根據不同的 macOS 鍵盤佈局種類，會出現不同的符號結果。
@@ -583,6 +583,8 @@ public enum EmacsKey {
     5: 119,
     4: 117,
     22: 121,
+    14: 125,
+    16: 126,
   ]
   static let charKeyMapVertical: [UInt16: UInt16] = [
     6: 125,
@@ -591,6 +593,8 @@ public enum EmacsKey {
     5: 119,
     4: 117,
     22: 121,
+    14: 123,
+    16: 124,
   ]
 }
 
