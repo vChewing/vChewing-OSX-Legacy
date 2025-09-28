@@ -46,6 +46,15 @@ debug:
 	-sdk $(SDK) \
 	TOOLCHAINS=$(TOOLCHAIN)
 
+debug-core: 
+	@echo "Building debug configuration"
+	$(XCODEBUILD) build \
+	-project vChewing-OSX-Legacy.xcodeproj \
+	-scheme vChewing \
+	-configuration Debug \
+	-sdk $(SDK) \
+	TOOLCHAINS=$(TOOLCHAIN)
+
 DSTROOT = /Library/Input Methods
 VC_APP_ROOT = $(DSTROOT)/vChewing.app
 
@@ -63,16 +72,16 @@ permission-check:
 	[ -w "$(DSTROOT)" ] && [ -w "$(VC_APP_ROOT)" ] || sudo chown -R ${USER} "$(DSTROOT)"
 
 install-debug: permission-check
-	open Build/Products/Debug/vChewingInstaller.app
+	open Build/Products/Debug/vChewingInstallerLegacy.app
 
 install-release: permission-check
-	open Build/Products/Release/vChewingInstaller.app
+	open Build/Products/Release/vChewingInstallerLegacy.app
 
 .PHONY: clean
 
 clean:
-	xcodebuild -scheme vChewingInstaller -configuration Debug $(BUILD_SETTINGS)  clean
-	xcodebuild -scheme vChewingInstaller -configuration Release $(BUILD_SETTINGS) clean
+	xcodebuild -scheme vChewingInstallerLegacy -configuration Debug $(BUILD_SETTINGS)  clean
+	xcodebuild -scheme vChewingInstallerLegacy -configuration Release $(BUILD_SETTINGS) clean
 	make clean --file=./Source/Data/Makefile || true
 
 clean-spm:
