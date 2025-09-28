@@ -302,7 +302,10 @@ extension InputHandlerProtocol {
   /// 檢測是否出現游標切斷組字區內字符的情況
   func isCursorCuttingChar(isMarker: Bool = false) -> Bool {
     let index = isMarker ? compositor.marker : compositor.cursor
-    var isBound = (index == compositor.assembledSentence.contextRange(ofGivenCursor: index).lowerBound)
+    var isBound = (
+      index == compositor.assembledSentence.contextRange(ofGivenCursor: index)
+        .lowerBound
+    )
     if index == compositor.length { isBound = true }
     let rawResult = compositor.assembledSentence.findGram(
       at: index
@@ -399,89 +402,6 @@ extension InputHandlerProtocol {
     compositor.marker = currentMarker
     return result
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   /// 獲取候選字詞（包含讀音）陣列資料內容。
   func generateArrayOfCandidates(fixOrder: Bool = true) -> [(keyArray: [String], value: String)] {
@@ -708,7 +628,8 @@ extension InputHandlerProtocol {
     }
 
     // 獲取初始範圍
-    let initialRange = currentAssembledSentence.contextRange(ofGivenCursor: actualNodeCursorPosition)
+    let initialRange = currentAssembledSentence
+      .contextRange(ofGivenCursor: actualNodeCursorPosition)
     var rearBoundary = min(initialRange.lowerBound, rearBoundaryEX)
     var frontBoundary = max(initialRange.upperBound, frontBoundaryEX)
 
