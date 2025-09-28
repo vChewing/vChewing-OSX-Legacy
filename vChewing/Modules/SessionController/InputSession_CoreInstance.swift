@@ -19,6 +19,7 @@ public final class InputSession: SessionProtocol {
   ) {
     self.theClient = inputClient
     self.inputControllerAssigned = inputController
+    construct(client: theClient())
   }
 
   // MARK: Public
@@ -56,16 +57,18 @@ public final class InputSession: SessionProtocol {
 
   public let prefs: any PrefMgrProtocol = PrefMgr.shared
 
-  public let sharedAlertForInputModeToggling: NSAlert = {
-    let alert = NSAlert()
-    alert.alertStyle = .informational
-    alert.messageText = "Target Input Mode Activation Required".localized
-    alert
-      .informativeText =
-      "You are proceeding to System Preferences to enable the Input Source which corresponds to the input mode you are going to switch to."
-        .localized
-    alert.addButton(withTitle: "OK".localized)
-    return alert
+  public private(set) lazy var sharedAlertForInputModeToggling: NSAlert = {
+    autoreleasepool {
+      let alert = NSAlert()
+      alert.alertStyle = .informational
+      alert.messageText = "Target Input Mode Activation Required".localized
+      alert
+        .informativeText =
+        "You are proceeding to System Preferences to enable the Input Source which corresponds to the input mode you are going to switch to."
+          .localized
+      alert.addButton(withTitle: "OK".localized)
+      return alert
+    }
   }()
 
   /// 上一個被處理過的鍵盤事件。
@@ -75,10 +78,18 @@ public final class InputSession: SessionProtocol {
   public var candidateUI: (any CtlCandidateProtocol)?
 
   /// 工具提示視窗的副本。
-  public var tooltipInstance: any TooltipUIProtocol = makeTooltipUI()
+  public lazy var tooltipInstance: any TooltipUIProtocol = {
+    autoreleasepool {
+      InputSession.makeTooltipUI()
+    }
+  }()
 
   /// 浮動組字窗的副本。
-  public var popupCompositionBuffer: PopupCompositionBuffer = .init()
+  public lazy var popupCompositionBuffer: PopupCompositionBuffer = {
+    autoreleasepool {
+      PopupCompositionBuffer()
+    }
+  }()
 
   /// 用來標記當前副本是否已處於活動狀態。
   public var isActivated: Bool = false
@@ -103,10 +114,12 @@ public final class InputSession: SessionProtocol {
   public var theClient: () -> ClientObj?
 
   /// IMKInputController 副本。
-  public unowned var inputControllerAssigned: SessionCtl?
+  public weak var inputControllerAssigned: SessionCtl?
 
   public var inputController: SessionCtl? {
-    inputControllerAssigned ?? SessionCtl.currentInputController
+    autoreleasepool {
+      inputControllerAssigned ?? SessionCtl.currentInputController
+    }
   }
 
   /// 用以存儲客體的 bundleIdentifier。

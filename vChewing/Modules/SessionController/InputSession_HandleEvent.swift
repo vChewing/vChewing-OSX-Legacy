@@ -122,7 +122,7 @@ extension SessionProtocol {
       newState.tooltipDuration = 1.85
       newState.data.tooltipColorState = .redAlert
       switchState(newState)
-      callError("CoreLM not loaded yet.")
+      Self.callError("CoreLM not loaded yet.")
       return true
     }
 
