@@ -56,7 +56,8 @@ public class UpdateSputnik {
 
     let task = URLSession.shared.dataTask(with: request) { data, _, error in
       if let error = error {
-        asyncOnMain {
+        asyncOnMain { [weak self] in
+          guard let self = self else { return }
           if !self.silentMode {
             self.showError(message: error.localizedDescription)
           }
@@ -85,7 +86,8 @@ public class UpdateSputnik {
     cleanUp()
 
     guard let plist = plist else {
-      asyncOnMain {
+      asyncOnMain { [weak self] in
+        guard let self = self else { return }
         self.showError(message: NSLocalizedString("Plist downloaded is nil.", comment: ""))
         self.currentTask = nil
       }
@@ -97,7 +99,8 @@ public class UpdateSputnik {
     guard let intRemoteVersion = Int(plist[kCFBundleVersionKey] as? String ?? ""),
           let strRemoteVersionShortened = plist["CFBundleShortVersionString"] as? String
     else {
-      asyncOnMain {
+      asyncOnMain { [weak self] in
+        guard let self = self else { return }
         self.showError(message: NSLocalizedString(
           "Plist downloaded cannot be parsed correctly.",
           comment: ""
@@ -192,7 +195,8 @@ public class UpdateSputnik {
   private var data: Data? {
     didSet {
       if let data = data, !silentMode {
-        asyncOnMain {
+        asyncOnMain { [weak self] in
+          guard let self = self else { return }
           if !self.silentMode {
             self.dataDidSet(data: data)
           }

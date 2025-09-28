@@ -32,7 +32,7 @@ open class CtlCandidate: NSWindowController, CtlCandidateProtocol {
   open var reverseLookupResult: [String] = []
 
   open var highlightedIndex: Int = .max
-  open var candidateFont = NSFont.systemFont(
+  open var candidateFont: NSFont = .systemFont(
     ofSize: min(196, max(12, Double(UserDefaults.current.integer(forKey: "CandidateListTextSize"))))
   )
 
@@ -49,7 +49,8 @@ open class CtlCandidate: NSWindowController, CtlCandidateProtocol {
       return NSPoint(x: frameRect.minX, y: frameRect.maxY)
     }
     set {
-      asyncOnMain {
+      asyncOnMain { [weak self] in
+        guard let self = self else { return }
         self.set(windowTopLeftPoint: newValue, bottomOutOfScreenAdjustmentHeight: 0, useGCD: true)
       }
     }
