@@ -206,7 +206,7 @@ extension InputHandlerProtocol {
         case [.option, .shift] where allowMovingCompositorCursor && input.isCursorForward:
           if compositor.cursor < compositor.length {
             compositor.cursor += 1
-            if isCursorCuttingChar() { compositor.jumpCursorBySpan(to: .front) }
+            if isCursorCuttingChar() { compositor.jumpCursorBySegment(to: .front) }
             session.switchState(generateStateOfCandidates())
           } else {
             errorCallback?("D3006C85")
@@ -215,7 +215,7 @@ extension InputHandlerProtocol {
         case [.option, .shift] where allowMovingCompositorCursor && input.isCursorBackward:
           if compositor.cursor > 0 {
             compositor.cursor -= 1
-            if isCursorCuttingChar() { compositor.jumpCursorBySpan(to: .rear) }
+            if isCursorCuttingChar() { compositor.jumpCursorBySegment(to: .rear) }
             session.switchState(generateStateOfCandidates())
           } else {
             errorCallback?("DE9DAF0D")
@@ -223,7 +223,7 @@ extension InputHandlerProtocol {
           return true
         case .option where input.isCursorForward:
           if compositor.cursor < compositor.length {
-            compositor.jumpCursorBySpan(to: .front)
+            compositor.jumpCursorBySegment(to: .front)
             session.switchState(generateStateOfCandidates())
           } else {
             errorCallback?("5D9F4819")
@@ -231,7 +231,7 @@ extension InputHandlerProtocol {
           return true
         case .option where input.isCursorBackward:
           if compositor.cursor > 0 {
-            compositor.jumpCursorBySpan(to: .rear)
+            compositor.jumpCursorBySegment(to: .rear)
             session.switchState(generateStateOfCandidates())
           } else {
             errorCallback?("34B6322D")
@@ -283,7 +283,7 @@ extension InputHandlerProtocol {
       case 38 where allowMovingCompositorCursorByJK, 4 where allowMovingCompositorCursorByHL:
         if compositor.cursor > 0 {
           compositor.cursor -= 1
-          if isCursorCuttingChar() { compositor.jumpCursorBySpan(to: .rear) }
+          if isCursorCuttingChar() { compositor.jumpCursorBySegment(to: .rear) }
           session.switchState(generateStateOfCandidates())
         } else {
           errorCallback?("6F389AE9")
@@ -292,7 +292,7 @@ extension InputHandlerProtocol {
       case 40 where allowMovingCompositorCursorByJK, 37 where allowMovingCompositorCursorByHL:
         if compositor.cursor < compositor.length {
           compositor.cursor += 1
-          if isCursorCuttingChar() { compositor.jumpCursorBySpan(to: .front) }
+          if isCursorCuttingChar() { compositor.jumpCursorBySegment(to: .front) }
           session.switchState(generateStateOfCandidates())
         } else {
           errorCallback?("EDBD27F2")

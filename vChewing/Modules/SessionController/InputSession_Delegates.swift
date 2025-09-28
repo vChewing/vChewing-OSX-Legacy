@@ -64,7 +64,7 @@ extension SessionProtocol {
       unigram: .init(value: userPhrase.value, score: userPhrase.weight ?? 0),
       isFiltering: addToFilter
     )
-    // 開始針對使用者半衰模組的清詞處理
+    // 開始針對使用者漸退模組的清詞處理
     LMMgr.bleachSpecifiedSuggestions(targets: [valueCurrent], mode: IMEApp.currentInputMode)
     LMMgr.bleachSpecifiedSuggestions(
       targets: [valueReversed],
@@ -227,7 +227,8 @@ extension SessionProtocol {
       let selectedValue = state.candidates[index]
       inputHandler.consolidateNode(
         candidate: selectedValue, respectCursorPushing: true,
-        preConsolidate: PrefMgr.shared.consolidateContextOnCandidateSelection
+        preConsolidate: PrefMgr.shared.consolidateContextOnCandidateSelection,
+        skipObservation: !prefs.fetchSuggestionsFromPerceptionOverrideModel
       )
       var result: IMEStateProtocol = inputHandler.generateStateOfInputting()
       defer { switchState(result) } // 這是最終輸出結果。
@@ -293,7 +294,7 @@ extension SessionProtocol {
       isFiltering: action == .toFilter
     )
 
-    // 開始針對使用者半衰模組的清詞處理
+    // 開始針對使用者漸退模組的清詞處理
     LMMgr.bleachSpecifiedSuggestions(targets: [valueCurrent], mode: IMEApp.currentInputMode)
     LMMgr.bleachSpecifiedSuggestions(
       targets: [valueReversed],
