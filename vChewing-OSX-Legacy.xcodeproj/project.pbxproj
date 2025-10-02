@@ -32,7 +32,6 @@
 		5B60CEA629B8E7D400A1AAC7 /* LMMgr_UserPhraseStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B60CEA529B8E7D400A1AAC7 /* LMMgr_UserPhraseStructure.swift */; };
 		5B60CEA829B8E7DB00A1AAC7 /* LMMgr_Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B60CEA729B8E7DB00A1AAC7 /* LMMgr_Utilities.swift */; };
 		5B6420012ABB3BA600E1B7F6 /* TooltipUIProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6420002ABB3BA600E1B7F6 /* TooltipUIProtocol.swift */; };
-		5B6420022ABB3BA600E1B7F6 /* TooltipUI_EarlyCocoa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B641FFE2ABB3BA600E1B7F6 /* TooltipUI_EarlyCocoa.swift */; };
 		5B6420032ABB3BA600E1B7F6 /* TooltipUI_LateCocoa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B641FFF2ABB3BA600E1B7F6 /* TooltipUI_LateCocoa.swift */; };
 		5B6815372B46EF86004A8A1A /* SpeechSputnik.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6815362B46EF86004A8A1A /* SpeechSputnik.swift */; };
 		5B69C36B2B7406DC006FBD09 /* VwrClientListMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B69C36A2B7406DC006FBD09 /* VwrClientListMgr.swift */; };
@@ -232,7 +231,6 @@
 		5B60CEA329B8E7CA00A1AAC7 /* LMMgr_PhraseEditorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMMgr_PhraseEditorDelegate.swift; sourceTree = "<group>"; };
 		5B60CEA529B8E7D400A1AAC7 /* LMMgr_UserPhraseStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMMgr_UserPhraseStructure.swift; sourceTree = "<group>"; };
 		5B60CEA729B8E7DB00A1AAC7 /* LMMgr_Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMMgr_Utilities.swift; sourceTree = "<group>"; };
-		5B641FFE2ABB3BA600E1B7F6 /* TooltipUI_EarlyCocoa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TooltipUI_EarlyCocoa.swift; sourceTree = "<group>"; };
 		5B641FFF2ABB3BA600E1B7F6 /* TooltipUI_LateCocoa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TooltipUI_LateCocoa.swift; sourceTree = "<group>"; };
 		5B6420002ABB3BA600E1B7F6 /* TooltipUIProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TooltipUIProtocol.swift; sourceTree = "<group>"; };
 		5B6815362B46EF86004A8A1A /* SpeechSputnik.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechSputnik.swift; sourceTree = "<group>"; };
@@ -838,7 +836,6 @@
 		5BE5A55D294E0EF500EFA49C /* TooltipUI */ = {
 			isa = PBXGroup;
 			children = (
-				5B641FFE2ABB3BA600E1B7F6 /* TooltipUI_EarlyCocoa.swift */,
 				5B641FFF2ABB3BA600E1B7F6 /* TooltipUI_LateCocoa.swift */,
 				5B6420002ABB3BA600E1B7F6 /* TooltipUIProtocol.swift */,
 			);
@@ -1174,7 +1171,6 @@
 				5BE5A52F294E0C2B00EFA49C /* lmPerceptionOverride.swift in Sources */,
 				5B81BD2A2B729AE90092819A /* VwrSettingsPaneCocoaCandidates.swift in Sources */,
 				5B81BD102B7297A70092819A /* AppKitImpl_NSView.swift in Sources */,
-				5B6420022ABB3BA600E1B7F6 /* TooltipUI_EarlyCocoa.swift in Sources */,
 				5B751DD3294EE57D0031CF70 /* InputHandler_TriageInput.swift in Sources */,
 				5BF1209F2B8C8D7E00C83A24 /* PrefMgr_Singleton.swift in Sources */,
 				5BE5A568294E119600EFA49C /* LMMgr_Core.swift in Sources */,
