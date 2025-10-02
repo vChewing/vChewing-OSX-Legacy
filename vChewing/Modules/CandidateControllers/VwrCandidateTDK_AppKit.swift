@@ -74,6 +74,9 @@ extension VwrCandidateTDKAppKit {
 
   override public func draw(_: NSRect) {
     let sizesCalculated = thePool.metrics
+    let alphaRatio = NSApplication.isDarkMode ? 0.75 : 1
+    let themeColor = controller?.delegate?.clientAccentColor?.withAlphaComponent(alphaRatio)
+    CandidatePool.shitCell.clientThemeColor = themeColor
     // 先塗底色
     if #available(macOS 10.13, *) {
       Self.candidateListBackground
@@ -96,8 +99,6 @@ extension VwrCandidateTDKAppKit {
     let allCells = thePool.candidateLines[thePool.lineRangeForCurrentPage].flatMap { $0 }
     allCells.forEach { currentCell in
       if currentCell.isHighlighted, !cellHighlightedDrawn {
-        let alphaRatio = NSApplication.isDarkMode ? 0.75 : 1
-        let themeColor = controller?.delegate?.clientAccentColor?.withAlphaComponent(alphaRatio)
         (themeColor ?? currentCell.themeColorCocoa).setFill()
         NSBezierPath(
           roundedRect: sizesCalculated.highlightedCandidate,
@@ -235,5 +236,27 @@ extension VwrCandidateTDKAppKit {
   private var finalContainerOrientation: NSUserInterfaceLayoutOrientation {
     if thePool.maxLinesPerPage == 1, thePool.layout == .horizontal { return .horizontal }
     return .vertical
+  }
+}
+
+// MARK: - Debug Module Using Swift UI.
+
+import SwiftUI
+
+// MARK: - VwrCandidateTDKAppKitForSwiftUI
+
+@available(macOS 10.15, *)
+public struct VwrCandidateTDKAppKitForSwiftUI: NSViewRepresentable {
+  public weak var controller: CtlCandidateTDK?
+  public var thePool: CandidatePool
+
+  public func makeNSView(context _: Context) -> VwrCandidateTDKAppKit {
+    let nsView = VwrCandidateTDKAppKit(thePool: thePool)
+    nsView.controller = controller
+    return nsView
+  }
+
+  public func updateNSView(_ nsView: VwrCandidateTDKAppKit, context _: Context) {
+    nsView.thePool = thePool
   }
 }
