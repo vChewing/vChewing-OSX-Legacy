@@ -300,7 +300,10 @@ internal class PopupCompositionView: NSView {
   }
 
   private var usesVerticalTypesetting: Bool {
-    isTypingDirectionVertical
+    if #available(macOS 10.13, *) {
+      return isTypingDirectionVertical
+    }
+    return false
   }
 
   private var themeColorCocoa: NSColor {
