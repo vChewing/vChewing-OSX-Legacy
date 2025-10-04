@@ -84,7 +84,6 @@
 		5B81BD292B729AE90092819A /* VwrSettingsPaneCocoaPhrases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B81BD1E2B729AE90092819A /* VwrSettingsPaneCocoaPhrases.swift */; };
 		5B81BD2A2B729AE90092819A /* VwrSettingsPaneCocoaCandidates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B81BD1F2B729AE90092819A /* VwrSettingsPaneCocoaCandidates.swift */; };
 		5B81BD2B2B729AE90092819A /* VwrSettingsPaneCocoaOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B81BD202B729AE90092819A /* VwrSettingsPaneCocoaOutput.swift */; };
-		5B8F0A632ABB3E7400A49491 /* Fuziki_NSAttributedTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8F0A622ABB3E7400A49491 /* Fuziki_NSAttributedTextView.swift */; };
 		5B8F94F72B3070C40071B14A /* InputToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8F94F62B3070C40071B14A /* InputToken.swift */; };
 		5B98203E2B8D9A4200E183D8 /* CandidateNode_ServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B98203D2B8D9A4200E183D8 /* CandidateNode_ServiceImpl.swift */; };
 		5B9939EA2B8B08EF00979BBC /* BrailleEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9939E82B8B085100979BBC /* BrailleEnums.swift */; };
@@ -279,7 +278,6 @@
 		5B81BD1E2B729AE90092819A /* VwrSettingsPaneCocoaPhrases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VwrSettingsPaneCocoaPhrases.swift; sourceTree = "<group>"; };
 		5B81BD1F2B729AE90092819A /* VwrSettingsPaneCocoaCandidates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VwrSettingsPaneCocoaCandidates.swift; sourceTree = "<group>"; };
 		5B81BD202B729AE90092819A /* VwrSettingsPaneCocoaOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VwrSettingsPaneCocoaOutput.swift; sourceTree = "<group>"; };
-		5B8F0A622ABB3E7400A49491 /* Fuziki_NSAttributedTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fuziki_NSAttributedTextView.swift; sourceTree = "<group>"; };
 		5B8F94F62B3070C40071B14A /* InputToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputToken.swift; sourceTree = "<group>"; };
 		5B98203D2B8D9A4200E183D8 /* CandidateNode_ServiceImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CandidateNode_ServiceImpl.swift; sourceTree = "<group>"; };
 		5B9939E82B8B085100979BBC /* BrailleEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrailleEnums.swift; sourceTree = "<group>"; };
@@ -723,7 +721,6 @@
 				5BA631612B135E9A00974241 /* sqlite-amalgamation-3440200 */,
 				5BE5A502294E095D00EFA49C /* AlexisBridoux_NSWindowPositioner.swift */,
 				5BE5A504294E097C00EFA49C /* DanielGalasko_FolderMonitor.swift */,
-				5B8F0A622ABB3E7400A49491 /* Fuziki_NSAttributedTextView.swift */,
 				5B4C81802ADABB60008507B1 /* HangarRash_SwiftyCapsLockToggler.swift */,
 				5B1523B52A74E92D007D2E53 /* Jad_BookmarkManager.swift */,
 				5B7B4D232AA1BB7600FE6B63 /* Qwertyyb_ShiftKeyUpChecker.swift */,
@@ -1166,7 +1163,6 @@
 				5BE5A527294E0C2900EFA49C /* LMInstantiator_DateTimeExtension.swift in Sources */,
 				5BB32F0329A61A3B00B05D7B /* CandidatePool_CocoaImpl.swift in Sources */,
 				5BAF0FFB2AA63F6D00FD58A0 /* UserDef.swift in Sources */,
-				5B8F0A632ABB3E7400A49491 /* Fuziki_NSAttributedTextView.swift in Sources */,
 				5BE5A55C294E0E8000EFA49C /* PopupCompositionBuffer.swift in Sources */,
 				5BE5A52F294E0C2B00EFA49C /* lmPerceptionOverride.swift in Sources */,
 				5B81BD2A2B729AE90092819A /* VwrSettingsPaneCocoaCandidates.swift in Sources */,
