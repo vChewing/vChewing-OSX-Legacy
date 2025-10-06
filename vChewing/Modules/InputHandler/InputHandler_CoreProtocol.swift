@@ -26,6 +26,7 @@ public protocol InputHandlerProtocol: AnyObject {
   var prefs: PrefMgrProtocol { get set }
   var errorCallback: ((String) -> ())? { get set }
   var notificationCallback: ((String) -> ())? { get set }
+  var pomSaveCallback: (() -> ())? { get set }
 
   var currentLM: LMAssembly.LMInstantiator { get set }
 
@@ -164,7 +165,7 @@ extension InputHandlerProtocol {
       currentLM.memorizePerception(
         (pomObservation.ngramKey, pomObservation.candidate),
         timestamp: Date().timeIntervalSince1970,
-        saveCallback: LMMgr.savePerceptionOverrideModelData
+        saveCallback: pomSaveCallback
       )
       prefs.failureFlagForPOMObservation = false
     }

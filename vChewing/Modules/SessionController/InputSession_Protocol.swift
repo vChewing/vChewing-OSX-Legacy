@@ -217,7 +217,8 @@ extension SessionProtocol {
       lm: inputMode.langModel,
       pref: PrefMgr.shared,
       errorCallback: Self.callError,
-      notificationCallback: Notifier.notify
+      notificationCallback: Notifier.notify,
+      pomSaveCallback: { LMMgr.savePerceptionOverrideModelData(false) }
     )
     inputHandler?.session = self
   }
