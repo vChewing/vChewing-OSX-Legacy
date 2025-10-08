@@ -48,7 +48,7 @@
 		5B751DD0294EE57D0031CF70 /* InputHandler_CoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DC1294EE57C0031CF70 /* InputHandler_CoreProtocol.swift */; };
 		5B751DD3294EE57D0031CF70 /* InputHandler_TriageInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DC4294EE57C0031CF70 /* InputHandler_TriageInput.swift */; };
 		5B751DD5294EE57D0031CF70 /* IMEState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DC6294EE57D0031CF70 /* IMEState.swift */; };
-		5B751DD6294EE57D0031CF70 /* IMEStateData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DC7294EE57D0031CF70 /* IMEStateData.swift */; };
+		5B751DD6294EE57D0031CF70 /* IMEStateDataImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DC7294EE57D0031CF70 /* IMEStateDataImpl.swift */; };
 		5B751DD7294EE57D0031CF70 /* SessionCtl_Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DC8294EE57D0031CF70 /* SessionCtl_Menu.swift */; };
 		5B751DD9294EE57D0031CF70 /* InputHandler_HandleComposition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DCA294EE57D0031CF70 /* InputHandler_HandleComposition.swift */; };
 		5B751DDB294EE57D0031CF70 /* InputHandler_HandleCandidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DCC294EE57D0031CF70 /* InputHandler_HandleCandidate.swift */; };
@@ -151,7 +151,7 @@
 		5BE5A53D294E0CEF00EFA49C /* PrefMgrProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A537294E0CEC00EFA49C /* PrefMgrProtocol.swift */; };
 		5BE5A53E294E0CEF00EFA49C /* Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A538294E0CEC00EFA49C /* Shared.swift */; };
 		5BE5A53F294E0CEF00EFA49C /* CandidateNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A53A294E0CEC00EFA49C /* CandidateNode.swift */; };
-		5BE5A540294E0CEF00EFA49C /* IMEStateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A539294E0CEC00EFA49C /* IMEStateProtocol.swift */; };
+		5BE5A540294E0CEF00EFA49C /* IMEStateProtocolAndData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A539294E0CEC00EFA49C /* IMEStateProtocolAndData.swift */; };
 		5BE5A541294E0CEF00EFA49C /* InputSignalProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A536294E0CEC00EFA49C /* InputSignalProtocol.swift */; };
 		5BE5A546294E0D1200EFA49C /* Tekkon_Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A542294E0D1100EFA49C /* Tekkon_Constants.swift */; };
 		5BE5A547294E0D1200EFA49C /* Tekkon_Phonabets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A543294E0D1100EFA49C /* Tekkon_Phonabets.swift */; };
@@ -256,7 +256,7 @@
 		5B751DC1294EE57C0031CF70 /* InputHandler_CoreProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputHandler_CoreProtocol.swift; sourceTree = "<group>"; };
 		5B751DC4294EE57C0031CF70 /* InputHandler_TriageInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputHandler_TriageInput.swift; sourceTree = "<group>"; };
 		5B751DC6294EE57D0031CF70 /* IMEState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IMEState.swift; sourceTree = "<group>"; };
-		5B751DC7294EE57D0031CF70 /* IMEStateData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IMEStateData.swift; sourceTree = "<group>"; };
+		5B751DC7294EE57D0031CF70 /* IMEStateDataImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IMEStateDataImpl.swift; sourceTree = "<group>"; };
 		5B751DC8294EE57D0031CF70 /* SessionCtl_Menu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionCtl_Menu.swift; sourceTree = "<group>"; };
 		5B751DCA294EE57D0031CF70 /* InputHandler_HandleComposition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputHandler_HandleComposition.swift; sourceTree = "<group>"; };
 		5B751DCC294EE57D0031CF70 /* InputHandler_HandleCandidate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputHandler_HandleCandidate.swift; sourceTree = "<group>"; };
@@ -359,7 +359,7 @@
 		5BE5A536294E0CEC00EFA49C /* InputSignalProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputSignalProtocol.swift; sourceTree = "<group>"; };
 		5BE5A537294E0CEC00EFA49C /* PrefMgrProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefMgrProtocol.swift; sourceTree = "<group>"; };
 		5BE5A538294E0CEC00EFA49C /* Shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shared.swift; sourceTree = "<group>"; };
-		5BE5A539294E0CEC00EFA49C /* IMEStateProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMEStateProtocol.swift; sourceTree = "<group>"; };
+		5BE5A539294E0CEC00EFA49C /* IMEStateProtocolAndData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMEStateProtocolAndData.swift; sourceTree = "<group>"; };
 		5BE5A53A294E0CEC00EFA49C /* CandidateNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandidateNode.swift; sourceTree = "<group>"; };
 		5BE5A53B294E0CEC00EFA49C /* CtlCandidateProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CtlCandidateProtocol.swift; sourceTree = "<group>"; };
 		5BE5A542294E0D1100EFA49C /* Tekkon_Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tekkon_Constants.swift; sourceTree = "<group>"; };
@@ -648,7 +648,7 @@
 				5B1C28E02B8F09DF00968E74 /* CandidateTextService_SelectorImpl.swift */,
 				5BE5A595294E1DFB00EFA49C /* ChineseConverterBridge.swift */,
 				5B751DC6294EE57D0031CF70 /* IMEState.swift */,
-				5B751DC7294EE57D0031CF70 /* IMEStateData.swift */,
+				5B751DC7294EE57D0031CF70 /* IMEStateDataImpl.swift */,
 				5BE5A4E4294E03C200EFA49C /* main.swift */,
 				5BF1209E2B8C8D7E00C83A24 /* PrefMgr_Singleton.swift */,
 				5BAE70102AE54F67002E673A /* SecurityAgentHelper.swift */,
@@ -816,7 +816,7 @@
 				5B6F7ADC2B8CEC72001596AF /* CandidateTextService.swift */,
 				5BE5A53B294E0CEC00EFA49C /* CtlCandidateProtocol.swift */,
 				5BF120A02B8C8E1700C83A24 /* IMEApp.swift */,
-				5BE5A539294E0CEC00EFA49C /* IMEStateProtocol.swift */,
+				5BE5A539294E0CEC00EFA49C /* IMEStateProtocolAndData.swift */,
 				5BE5A536294E0CEC00EFA49C /* InputSignalProtocol.swift */,
 				5B55ACAC2B5A254F009E2F54 /* KBEvent.swift */,
 				5B55ACAE2B5A255F009E2F54 /* NSEventImpl_Shared.swift */,
@@ -1145,7 +1145,7 @@
 				5BE5A56A294E120500EFA49C /* SymbolMenuDefaultData.swift in Sources */,
 				5BE5A4F1294E057F00EFA49C /* AppKitImpl_Misc.swift in Sources */,
 				5BA631862B13617800974241 /* sqlite3.m in Sources */,
-				5BE5A540294E0CEF00EFA49C /* IMEStateProtocol.swift in Sources */,
+				5BE5A540294E0CEF00EFA49C /* IMEStateProtocolAndData.swift in Sources */,
 				5BE5A53F294E0CEF00EFA49C /* CandidateNode.swift in Sources */,
 				5B55ACAF2B5A255F009E2F54 /* NSEventImpl_Shared.swift in Sources */,
 				5BF5BAE1294DFFC9006011AD /* AppDelegate.swift in Sources */,
@@ -1187,7 +1187,7 @@
 				5BE5A522294E0C2500EFA49C /* NotifierUI.swift in Sources */,
 				5B7B4D242AA1BB7600FE6B63 /* Qwertyyb_ShiftKeyUpChecker.swift in Sources */,
 				5B72F6672B885AF00051B7A9 /* lmPlainBopomopo_RawData.swift in Sources */,
-				5B751DD6294EE57D0031CF70 /* IMEStateData.swift in Sources */,
+				5B751DD6294EE57D0031CF70 /* IMEStateDataImpl.swift in Sources */,
 				5BE5A505294E097C00EFA49C /* DanielGalasko_FolderMonitor.swift in Sources */,
 				5BE5A56C294E127B00EFA49C /* PhraseEditorDelegate.swift in Sources */,
 				5B69C36B2B7406DC006FBD09 /* VwrClientListMgr.swift in Sources */,
