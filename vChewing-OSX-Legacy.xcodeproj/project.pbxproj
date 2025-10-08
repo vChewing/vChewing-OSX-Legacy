@@ -114,11 +114,11 @@
 		5BCC80D12B7E6521005D689C /* KimoCommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BCC80D02B7E6521005D689C /* KimoCommunicator.m */; };
 		5BCDA50D2D50C2D200571961 /* IMKInputControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCDA50C2D50C2D200571961 /* IMKInputControllerProtocol.swift */; };
 		5BCDA50F2D50C3DC00571961 /* InputHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCDA50E2D50C3DC00571961 /* InputHandler.swift */; };
-		5BCDA5162D50C45500571961 /* InputSession_CoreInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCDA5102D50C45500571961 /* InputSession_CoreInstance.swift */; };
+		5BCDA5162D50C45500571961 /* InputSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCDA5102D50C45500571961 /* InputSession.swift */; };
 		5BCDA5172D50C45500571961 /* InputSession_Delegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCDA5112D50C45500571961 /* InputSession_Delegates.swift */; };
 		5BCDA5182D50C45500571961 /* InputSession_HandleEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCDA5132D50C45500571961 /* InputSession_HandleEvent.swift */; };
 		5BCDA5192D50C45500571961 /* InputSession_HandleStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCDA5142D50C45500571961 /* InputSession_HandleStates.swift */; };
-		5BCDA51A2D50C45500571961 /* InputSession_Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCDA5152D50C45500571961 /* InputSession_Protocol.swift */; };
+		5BCDA51A2D50C45500571961 /* InputSession_CoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCDA5152D50C45500571961 /* InputSession_CoreProtocol.swift */; };
 		5BCDA51B2D50C45500571961 /* InputSession_HandleDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCDA5122D50C45500571961 /* InputSession_HandleDisplay.swift */; };
 		5BCF4AB829546B5200C7FBD9 /* convdict.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 5BCF4AB729546B5100C7FBD9 /* convdict.sqlite */; };
 		5BD289E42B7B48AE00D3E41A /* LatinKeyboardMappings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B572A7929FB76B900ED5066 /* LatinKeyboardMappings.swift */; };
@@ -318,12 +318,12 @@
 		5BCC80D02B7E6521005D689C /* KimoCommunicator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KimoCommunicator.m; sourceTree = "<group>"; };
 		5BCDA50C2D50C2D200571961 /* IMKInputControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMKInputControllerProtocol.swift; sourceTree = "<group>"; };
 		5BCDA50E2D50C3DC00571961 /* InputHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputHandler.swift; sourceTree = "<group>"; };
-		5BCDA5102D50C45500571961 /* InputSession_CoreInstance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputSession_CoreInstance.swift; sourceTree = "<group>"; };
+		5BCDA5102D50C45500571961 /* InputSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputSession.swift; sourceTree = "<group>"; };
 		5BCDA5112D50C45500571961 /* InputSession_Delegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputSession_Delegates.swift; sourceTree = "<group>"; };
 		5BCDA5122D50C45500571961 /* InputSession_HandleDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputSession_HandleDisplay.swift; sourceTree = "<group>"; };
 		5BCDA5132D50C45500571961 /* InputSession_HandleEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputSession_HandleEvent.swift; sourceTree = "<group>"; };
 		5BCDA5142D50C45500571961 /* InputSession_HandleStates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputSession_HandleStates.swift; sourceTree = "<group>"; };
-		5BCDA5152D50C45500571961 /* InputSession_Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputSession_Protocol.swift; sourceTree = "<group>"; };
+		5BCDA5152D50C45500571961 /* InputSession_CoreProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputSession_CoreProtocol.swift; sourceTree = "<group>"; };
 		5BCF4AB729546B5100C7FBD9 /* convdict.sqlite */ = {isa = PBXFileReference; lastKnownFileType = text; path = convdict.sqlite; sourceTree = "<group>"; };
 		5BE5A4E3294E00C300EFA49C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		5BE5A4E4294E03C200EFA49C /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -513,12 +513,12 @@
 		5B7C02082B77AFBA00B7DBAA /* SessionController */ = {
 			isa = PBXGroup;
 			children = (
-				5BCDA5102D50C45500571961 /* InputSession_CoreInstance.swift */,
+				5BCDA5102D50C45500571961 /* InputSession.swift */,
+				5BCDA5152D50C45500571961 /* InputSession_CoreProtocol.swift */,
 				5BCDA5112D50C45500571961 /* InputSession_Delegates.swift */,
 				5BCDA5122D50C45500571961 /* InputSession_HandleDisplay.swift */,
 				5BCDA5132D50C45500571961 /* InputSession_HandleEvent.swift */,
 				5BCDA5142D50C45500571961 /* InputSession_HandleStates.swift */,
-				5BCDA5152D50C45500571961 /* InputSession_Protocol.swift */,
 				5B751DC0294EE57C0031CF70 /* SessionCtl.swift */,
 				5B751DC8294EE57D0031CF70 /* SessionCtl_Menu.swift */,
 			);
@@ -1121,12 +1121,12 @@
 				5B751DB9294EE27C0031CF70 /* CtlRevLookupWindow.swift in Sources */,
 				5BE5A4F3294E058F00EFA49C /* SwiftExtension.swift in Sources */,
 				5B4BEE712B8F8A530044A4EE /* CtlServiceMenuEditor.swift in Sources */,
-				5BCDA5162D50C45500571961 /* InputSession_CoreInstance.swift in Sources */,
+				5BCDA5162D50C45500571961 /* InputSession.swift in Sources */,
 				5BCDA5172D50C45500571961 /* InputSession_Delegates.swift in Sources */,
 				5BCDA5182D50C45500571961 /* InputSession_HandleEvent.swift in Sources */,
 				5B57FA6B2E8911DB001A6146 /* 8_GramInPath.swift in Sources */,
 				5BCDA5192D50C45500571961 /* InputSession_HandleStates.swift in Sources */,
-				5BCDA51A2D50C45500571961 /* InputSession_Protocol.swift in Sources */,
+				5BCDA51A2D50C45500571961 /* InputSession_CoreProtocol.swift in Sources */,
 				5BCDA51B2D50C45500571961 /* InputSession_HandleDisplay.swift in Sources */,
 				5BE5A532294E0C9F00EFA49C /* PinyinPhonaConverter.swift in Sources */,
 				5B7EEAE32AE5002C006C30A3 /* SecureEventInputSputnik.swift in Sources */,
