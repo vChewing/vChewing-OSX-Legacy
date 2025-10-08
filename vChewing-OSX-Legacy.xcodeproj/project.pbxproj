@@ -811,8 +811,8 @@
 		5BE5A535294E0CDC00EFA49C /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				5B98203D2B8D9A4200E183D8 /* CandidateNode_ServiceImpl.swift */,
 				5BE5A53A294E0CEC00EFA49C /* CandidateNode.swift */,
+				5B98203D2B8D9A4200E183D8 /* CandidateNode_ServiceImpl.swift */,
 				5B6F7ADC2B8CEC72001596AF /* CandidateTextService.swift */,
 				5BE5A53B294E0CEC00EFA49C /* CtlCandidateProtocol.swift */,
 				5BF120A02B8C8E1700C83A24 /* IMEApp.swift */,
