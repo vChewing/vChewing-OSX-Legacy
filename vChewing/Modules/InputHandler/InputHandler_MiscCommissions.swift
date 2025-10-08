@@ -6,6 +6,8 @@
 // marks, or product names of Contributor, except as required to fulfill notice
 // requirements defined in MIT License.
 
+import Foundation
+
 // MARK: - CommitableMarkupType
 
 /// 該檔案專門管理「用指定熱鍵遞交特殊的內容」的這一類函式。
@@ -39,15 +41,15 @@ extension InputHandlerProtocol {
   /// - Parameter isShiftPressed: 有沒有同時摁著 Shift 鍵。
   /// - Returns: 將按鍵行為「是否有處理掉」藉由 SessionCtl 回報給 IMK。
   func commissionByCtrlCommandEnter(isShiftPressed: Bool = false) -> String {
-    var displayedText = compositor.keys.joined(separator: "\t")
-    if compositor.isEmpty {
+    var displayedText = assembler.keys.joined(separator: "\t")
+    if assembler.isEmpty {
       displayedText = readingForDisplay
     }
     if !prefs.cassetteEnabled {
       if prefs.inlineDumpPinyinInLieuOfZhuyin {
-        if !compositor.isEmpty {
+        if !assembler.isEmpty {
           var arrDisplayedTextElements = [String]()
-          compositor.keys.forEach { key in
+          assembler.keys.forEach { key in
             arrDisplayedTextElements.append(Tekkon.restoreToneOneInPhona(target: key)) // 恢復陰平標記
           }
           displayedText = arrDisplayedTextElements.joined(separator: "\t")
@@ -55,7 +57,7 @@ extension InputHandlerProtocol {
         displayedText = Tekkon.cnvPhonaToHanyuPinyin(targetJoined: displayedText) // 注音轉拼音
       }
       if prefs.showHanyuPinyinInCompositionBuffer {
-        if compositor.isEmpty {
+        if assembler.isEmpty {
           displayedText = displayedText.replacingOccurrences(of: "1", with: "")
         }
       }
@@ -87,14 +89,14 @@ extension InputHandlerProtocol {
     }
     let brailleProcessor = BrailleSputnik(standard: brailleStandard)
     return brailleProcessor.convertToBraille(
-      smashedPairs: compositor.assembledSentence.smashedPairs,
-      extraInsertion: (reading: composer.value, cursor: compositor.cursor)
+      smashedPairs: assembler.assembledSentence.smashedPairs,
+      extraInsertion: (reading: composer.value, cursor: assembler.cursor)
     )
   }
 
   private func specifyTextMarkupToCommit(behavior: CommitableMarkupType) -> String {
     var composed = ""
-    compositor.assembledSentence.smashedPairs.forEach { key, value in
+    assembler.assembledSentence.smashedPairs.forEach { key, value in
       var key = key
       if !prefs.cassetteEnabled {
         key =

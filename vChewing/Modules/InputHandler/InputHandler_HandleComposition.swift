@@ -8,7 +8,6 @@
 
 /// 該檔案用來處理 InputHandler.HandleInput() 當中的與組字有關的行為。
 
-import AppKit
 import Foundation
 
 extension InputHandlerProtocol {
@@ -64,7 +63,7 @@ extension InputHandlerProtocol {
       let maybeKey = maybeKey ?? composer
         .phonabetKeyForQuery(pronounceableOnly: prefs.acceptLeadingIntonations)
       guard var keyToNarrate = maybeKey else { return }
-      if composer.intonation == Tekkon.Phonabet(" ") { keyToNarrate.append("ˉ") }
+      if composer.intonation == Phonabet(" ") { keyToNarrate.append("ˉ") }
       SpeechSputnik.shared.narrate(keyToNarrate, allowDuplicates: allowDuplicates)
     }
 
@@ -82,7 +81,7 @@ extension InputHandlerProtocol {
         var theComposer = composer
         prevReading.0.map(\.description).forEach { theComposer.receiveKey(fromPhonabet: $0) }
         // 發現要覆寫的聲調與覆寫對象的聲調雷同的情況的話，直接跳過處理。
-        let oldIntonation: Tekkon.Phonabet = theComposer.intonation
+        let oldIntonation: Phonabet = theComposer.intonation
         theComposer.receiveKey(fromString: inputText)
         if theComposer.intonation == oldIntonation,
            prefs.specifyIntonationKeyBehavior == 1 { break proc }
@@ -90,8 +89,8 @@ extension InputHandlerProtocol {
         // 檢查新的漢字字音是否在庫。
         let temporaryReadingKey = theComposer.getComposition()
         if currentLM.hasUnigramsFor(keyArray: [temporaryReadingKey]) {
-          compositor.dropKey(direction: .rear)
-          walk() // 這裡必須 Walk 一次、來更新目前被 walk 的內容。
+          assembler.dropKey(direction: .rear)
+          assemble() // 這裡必須 Walk 一次、來更新目前被 walk 的內容。
           composer = theComposer
           // 這裡不需要回呼 generateStateOfInputting()，因為當前輸入的聲調鍵一定是合規的、會在之後回呼 generateStateOfInputting()。
           overrideHappened = true
@@ -124,7 +123,7 @@ extension InputHandlerProtocol {
     composeReading = composeReading || (!composer.isEmpty && confirmCombination)
     ifComposeReading: if composeReading {
       if input.isControlHold, input.isCommandHold, input.isEnter,
-         !input.isOptionHold, !input.isShiftHold, compositor.isEmpty {
+         !input.isOptionHold, !input.isShiftHold, assembler.isEmpty {
         return handleEnter(input: input, readingOnly: true)
       }
       // 拿取用來進行索引檢索用的注音。這裡先不急著處理「僅有注音符號輸入」的情況。
@@ -142,7 +141,7 @@ extension InputHandlerProtocol {
 
         composer.clear()
         // 根據「組字器是否為空」來判定回呼哪一種狀態。
-        switch compositor.isEmpty {
+        switch assembler.isEmpty {
         case false: session.switchState(generateStateOfInputting())
         case true: session.switchState(IMEState.ofAbortion())
         }
@@ -154,7 +153,7 @@ extension InputHandlerProtocol {
       if input.isInvalid {
         errorCallback?("22017F76: 不合規的按鍵輸入。")
         return true
-      } else if !compositor.insertKey(readingKey) {
+      } else if !assembler.insertKey(readingKey) {
         errorCallback?("3CF278C9: 得檢查對應的語言模組的 hasUnigramsFor() 是否有誤判之情形。")
         return true
       } else {
@@ -162,7 +161,7 @@ extension InputHandlerProtocol {
       }
 
       // 組句。
-      walk()
+      assemble()
 
       // 一邊吃一邊屙（僅對位列黑名單的 App 用這招限制組字區長度）。
       let textToCommit = commitOverflownComposition
@@ -219,8 +218,8 @@ extension InputHandlerProtocol {
       if composer.phonabetKeyForQuery(pronounceableOnly: false) == nil {
         // 將被空格鍵覆蓋掉的既有聲調塞入組字器。
         if !composer.isPinyinMode, input.isSpace,
-           compositor.insertKey(existedIntonation.value) {
-          walk()
+           assembler.insertKey(existedIntonation.value) {
+          assemble()
           var theInputting = generateStateOfInputting()
           theInputting.textToCommit = commitOverflownComposition
           composer.clear()
@@ -294,7 +293,7 @@ extension InputHandlerProtocol {
       if calligrapher.isEmpty, isWildcardKeyInput {
         errorCallback?("3606B9C0")
         if input.beganWithLetter {
-          var newEmptyState = compositor.isEmpty ? IMEState.ofEmpty() : generateStateOfInputting()
+          var newEmptyState = assembler.isEmpty ? IMEState.ofEmpty() : generateStateOfInputting()
           newEmptyState.tooltip = NSLocalizedString(
             "Wildcard key cannot be the initial key.",
             comment: ""
@@ -356,7 +355,7 @@ extension InputHandlerProtocol {
         errorCallback?("B49C0979_Cassette：語彙庫內無「\(calligrapher)」的匹配記錄。")
         calligrapher.removeAll()
         // 根據「組字器是否為空」來判定回呼哪一種狀態。
-        switch compositor.isEmpty {
+        switch assembler.isEmpty {
         case false: session.switchState(generateStateOfInputting())
         case true: session.switchState(IMEState.ofAbortion())
         }
@@ -368,13 +367,13 @@ extension InputHandlerProtocol {
       if input.isInvalid {
         errorCallback?("BFE387CC: 不合規的按鍵輸入。")
         return true
-      } else if !compositor.insertKey(calligrapher) {
+      } else if !assembler.insertKey(calligrapher) {
         errorCallback?("61F6B11F: 得檢查對應的語言模組的 hasUnigramsFor() 是否有誤判之情形。")
         return true
       }
 
       // 組句。
-      walk()
+      assemble()
 
       // 一邊吃一邊屙（僅對位列黑名單的 App 用這招限制組字區長度）。
       let textToCommit = commitOverflownComposition

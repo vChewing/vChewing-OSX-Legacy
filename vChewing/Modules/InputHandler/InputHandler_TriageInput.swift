@@ -41,11 +41,11 @@ extension InputHandlerProtocol {
       case .kBackSpace: return handleBackSpace(input: input)
       case .kWindowsDelete: return handleDelete(input: input)
       case .kCarriageReturn, .kLineFeed:
-        let frontNode = compositor.assembledSentence.last
+        let frontNode = assembler.assembledSentence.last
         return handleEnter(input: input) {
           guard self.currentTypingMethod == .vChewingFactory else { return [] }
           guard let frontNode = frontNode else { return [] }
-          let pair = Megrez.KeyValuePaired(keyArray: frontNode.keyArray, value: frontNode.value)
+          let pair = KeyValuePaired(keyArray: frontNode.keyArray, value: frontNode.value)
           let associates = self.generateArrayOfAssociates(withPair: pair)
           return associates
         }
@@ -79,8 +79,8 @@ extension InputHandlerProtocol {
             session.switchState(IMEState.ofAbortion())
             return true
           }
-          if compositor.cursor < compositor.length, compositor.insertKey(" ") {
-            walk()
+          if assembler.cursor < assembler.length, assembler.insertKey(" ") {
+            assemble()
             // 一邊吃一邊屙（僅對位列黑名單的 App 用這招限制組字區長度）。
             let textToCommit = commitOverflownComposition
             var inputting = generateStateOfInputting()
