@@ -19,7 +19,7 @@ extension LMAssembly {
     // MARK: Internal
 
     private(set) var filePath: String?
-
+    /// Range 只可能是一整行，所以必須得有 index。
     var rangeMap: [String: [(Range<String.Index>, Int)]] = [:]
     var strData: String = ""
 
@@ -94,24 +94,20 @@ extension LMAssembly {
 
     func saveData() {
       guard let filePath = filePath else { return }
-      do {
-        try strData.write(toFile: filePath, atomically: true, encoding: .utf8)
-      } catch {
-        vCLMLog("Failed to save current database to: \(filePath)")
+      LMAssembly.withFileHandleQueueSync {
+        do {
+          try strData.write(toFile: filePath, atomically: true, encoding: .utf8)
+        } catch {
+          vCLMLog("Failed to save current database to: \(filePath)")
+        }
       }
     }
 
     func valuesFor(pair: Megrez.KeyValuePaired) -> [String] {
       var pairs: [String] = []
-      if let arrRangeRecords: [(Range<String.Index>, Int)] = rangeMap[pair.toNGramKey] {
-        for (netaRange, index) in arrRangeRecords {
-          let neta = strData[netaRange].split(separator: " ")
-          let theValue: String = .init(neta[index])
-          pairs.append(theValue)
-        }
-      }
-      if let arrRangeRecords: [(Range<String.Index>, Int)] = rangeMap[pair.value] {
-        for (netaRange, index) in arrRangeRecords {
+      let availableResults = [rangeMap[pair.toNGramKey], rangeMap[pair.value]].compactMap { $0 }
+      availableResults.forEach { arrRangeRecords in
+        arrRangeRecords.forEach { netaRange, index in
           let neta = strData[netaRange].split(separator: " ")
           let theValue: String = .init(neta[index])
           pairs.append(theValue)

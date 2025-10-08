@@ -6,7 +6,7 @@
 // marks, or product names of Contributor, except as required to fulfill notice
 // requirements defined in MIT License.
 
-import AppKit
+import Foundation
 
 // MARK: - Implements Conforming to Phrase Editor Delegate Protocol
 
@@ -71,7 +71,7 @@ extension LMMgr: PhraseEditorDelegate {
     mode: Shared.InputMode, type: LMAssembly.ReplacableUserDataType, data: String
   )
     -> String {
-    asyncOnMain {
+    LMAssembly.withFileHandleQueueSync {
       let theURL = Self.userDictDataURL(mode: mode, type: type)
       do {
         try data.write(to: theURL, atomically: true, encoding: .utf8)
