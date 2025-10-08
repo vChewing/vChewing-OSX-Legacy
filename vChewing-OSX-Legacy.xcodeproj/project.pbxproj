@@ -110,6 +110,7 @@
 		5BB32F0529A61AFB00B05D7B /* CtlCandidateTDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB32F0429A61AFB00B05D7B /* CtlCandidateTDK.swift */; };
 		5BB5158D2B729E7800874257 /* AppKitImpl_Misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A4F0294E057F00EFA49C /* AppKitImpl_Misc.swift */; };
 		5BB5158E2B729E9D00874257 /* SwiftExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A4F2294E058F00EFA49C /* SwiftExtension.swift */; };
+		5BCA4FAD2E9659F700441688 /* SessionCoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA4FAC2E9659F700441688 /* SessionCoreProtocol.swift */; };
 		5BCC80CE2B7E6511005D689C /* KimoCommunicatorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCC80CD2B7E6511005D689C /* KimoCommunicatorImpl.swift */; };
 		5BCC80D12B7E6521005D689C /* KimoCommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BCC80D02B7E6521005D689C /* KimoCommunicator.m */; };
 		5BCDA50D2D50C2D200571961 /* IMKInputControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCDA50C2D50C2D200571961 /* IMKInputControllerProtocol.swift */; };
@@ -313,6 +314,7 @@
 		5BB1D7F12999025B00EA8D2C /* PrefUITabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefUITabs.swift; sourceTree = "<group>"; };
 		5BB32F0229A61A3B00B05D7B /* CandidatePool_CocoaImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandidatePool_CocoaImpl.swift; sourceTree = "<group>"; };
 		5BB32F0429A61AFB00B05D7B /* CtlCandidateTDK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CtlCandidateTDK.swift; sourceTree = "<group>"; };
+		5BCA4FAC2E9659F700441688 /* SessionCoreProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionCoreProtocol.swift; sourceTree = "<group>"; };
 		5BCC80CD2B7E6511005D689C /* KimoCommunicatorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KimoCommunicatorImpl.swift; sourceTree = "<group>"; };
 		5BCC80CF2B7E6521005D689C /* KimoCommunicator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KimoCommunicator.h; sourceTree = "<group>"; };
 		5BCC80D02B7E6521005D689C /* KimoCommunicator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KimoCommunicator.m; sourceTree = "<group>"; };
@@ -825,6 +827,7 @@
 				5BE5A563294E10F300EFA49C /* PrefMgr_Core.swift */,
 				5BE5A565294E111E00EFA49C /* PrefMgr_Utilities.swift */,
 				5BE5A537294E0CEC00EFA49C /* PrefMgrProtocol.swift */,
+				5BCA4FAC2E9659F700441688 /* SessionCoreProtocol.swift */,
 				5BE5A538294E0CEC00EFA49C /* Shared.swift */,
 				5BAF0FFA2AA63F6D00FD58A0 /* UserDef.swift */,
 				5B81BD122B72984E0092819A /* UserDefRenderableCocoa.swift */,
@@ -1136,6 +1139,7 @@
 				5BE5A549294E0D1200EFA49C /* Tekkon_Utilities.swift in Sources */,
 				5BE5A525294E0C2900EFA49C /* LMInstantiator_CassetteExtension.swift in Sources */,
 				5B1E6C2C2B65694100B977B5 /* LMInstantiator_NumPadExtension.swift in Sources */,
+				5BCA4FAD2E9659F700441688 /* SessionCoreProtocol.swift in Sources */,
 				5B8F94F72B3070C40071B14A /* InputToken.swift in Sources */,
 				5B9939ED2B8B44B000979BBC /* InputHandler_MiscCommissions.swift in Sources */,
 				5B423A542A9516B0004CC33B /* Broadcaster.swift in Sources */,

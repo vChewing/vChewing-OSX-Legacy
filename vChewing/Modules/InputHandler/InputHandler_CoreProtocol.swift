@@ -14,6 +14,8 @@ import AppKit
 /// 被封裝的「與 Megrez 組字引擎和 Tekkon 注拼引擎對接的」各種工具函式。
 /// 注意：不要把 composer 注拼槽與 compositor 組字器這兩個概念搞混。
 public protocol InputHandlerProtocol: AnyObject {
+  typealias Session = SessionCoreProtocol & CtlCandidateDelegate
+
   // MARK: - Type Properties
 
   static var keySeparator: String { get }
@@ -21,7 +23,7 @@ public protocol InputHandlerProtocol: AnyObject {
   // MARK: - Properties
 
   /// 委任物件 (SessionCtl)，以便呼叫其中的函式。
-  var session: (SessionProtocol & CtlCandidateDelegate)? { get set }
+  var session: Session? { get set }
 
   var prefs: PrefMgrProtocol { get set }
   var errorCallback: ((String) -> ())? { get set }
