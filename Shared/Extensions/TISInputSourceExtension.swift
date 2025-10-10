@@ -44,8 +44,9 @@
     }
 
     public static var modes: [String] {
-      guard let components = Bundle.main.infoDictionary?["ComponentInputModeDict"] as? [String: Any],
-            let tsInputModeListKey = components["tsInputModeListKey"] as? [String: Any]
+      guard let components = Bundle.main
+        .infoDictionary?["ComponentInputModeDict"] as? [String: Any],
+        let tsInputModeListKey = components["tsInputModeListKey"] as? [String: Any]
       else {
         return []
       }
@@ -192,7 +193,8 @@
       }
       // 為了保持指定排序，才在最後做這種處理。效能略有打折，但至少比起直接迭代容量破百的 retrieved 要好多了。
       return unionedIDs.compactMap { currentIdentifier in
-        retrieved.first { $0.identifier == currentIdentifier || $0.inputModeID == currentIdentifier }
+        retrieved
+          .first { $0.identifier == currentIdentifier || $0.inputModeID == currentIdentifier }
       }
     }
 
@@ -213,7 +215,8 @@
     }
 
     /// Derived from rawTISInputSources().
-    public static func getAllTISInputKeyboardLayoutMap() -> [String: TISInputSource.KeyboardLayout] {
+    public static func getAllTISInputKeyboardLayoutMap()
+      -> [String: TISInputSource.KeyboardLayout] {
       // 為了指定檢索條件，先構築 CFDictionary 辭典。
       let dicConditions: [CFString: Any] =
         [kTISPropertyInputSourceType: kTISTypeKeyboardLayout as CFString]

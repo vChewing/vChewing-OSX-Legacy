@@ -6,7 +6,11 @@
 // marks, or product names of Contributor, except as required to fulfill notice
 // requirements defined in MIT License.
 
-import InputMethodKit
+import Foundation
+
+#if canImport(InputMethodKit)
+  import InputMethodKit
+#endif
 
 // MARK: Guarded Method for Validating Candidate Keys.
 
@@ -47,17 +51,21 @@ extension PrefMgr {
     if KeyboardParser(rawValue: keyboardParser) == nil {
       keyboardParser = 0
     }
-    // 基礎鍵盤排列選項糾錯。
-    let matchedResults = TISInputSource.match(identifiers: [
-      basicKeyboardLayout,
-      alphanumericalKeyboardLayout,
-    ])
-    if !matchedResults.contains(where: { $0.identifier == basicKeyboardLayout }) {
-      basicKeyboardLayout = Self.kDefaultBasicKeyboardLayout
-    }
-    if !matchedResults.contains(where: { $0.identifier == alphanumericalKeyboardLayout }) {
-      alphanumericalKeyboardLayout = Self.kDefaultAlphanumericalKeyboardLayout
-    }
+
+    #if canImport(InputMethodKit)
+      // 基礎鍵盤排列選項糾錯。
+      let matchedResults = TISInputSource.match(identifiers: [
+        basicKeyboardLayout,
+        alphanumericalKeyboardLayout,
+      ])
+      if !matchedResults.contains(where: { $0.identifier == basicKeyboardLayout }) {
+        basicKeyboardLayout = Self.kDefaultBasicKeyboardLayout
+      }
+      if !matchedResults.contains(where: { $0.identifier == alphanumericalKeyboardLayout }) {
+        alphanumericalKeyboardLayout = Self.kDefaultAlphanumericalKeyboardLayout
+      }
+    #endif
+
     // 其它多元選項參數自動糾錯。
     if ![0, 1, 2].contains(specifyIntonationKeyBehavior) {
       specifyIntonationKeyBehavior = 0
@@ -119,7 +127,7 @@ extension PrefMgr {
       case .dictionary:
         if let valParsed = value as? AppProperty<[String: Bool]> {
           strTypeParam = strTypeParam.replacingOccurrences(of: "ionary", with: "")
-          let stack = NSMutableString()
+          let stack = NSMutableString(capacity: 0)
           valParsed.wrappedValue.forEach { currentPair in
             stack.append("\(currentPair.key) \(currentPair.value) ")
           }

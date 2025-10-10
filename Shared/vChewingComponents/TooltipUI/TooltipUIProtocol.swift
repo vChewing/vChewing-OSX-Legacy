@@ -10,7 +10,7 @@ import AppKit
 
 public protocol TooltipUIProtocol {
   func show(
-    tooltip: String, at point: NSPoint,
+    tooltip: String, at point: CGPoint,
     bottomOutOfScreenAdjustmentHeight heightDelta: Double,
     direction: NSUserInterfaceLayoutOrientation, duration: Double
   )

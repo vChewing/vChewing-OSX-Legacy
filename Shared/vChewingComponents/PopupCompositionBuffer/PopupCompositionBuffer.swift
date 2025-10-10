@@ -15,7 +15,7 @@ public class PopupCompositionBuffer: NSWindowController {
   // MARK: Lifecycle
 
   public init() {
-    let contentRect = NSRect(x: 128.0, y: 128.0, width: 300.0, height: 20.0)
+    let contentRect = CGRect(x: 128.0, y: 128.0, width: 300.0, height: 20.0)
     let styleMask: NSWindow.StyleMask = [.borderless, .nonactivatingPanel]
     let panel = NSPanel(
       contentRect: contentRect,
@@ -66,7 +66,7 @@ public class PopupCompositionBuffer: NSWindowController {
 
     if #available(macOS 10.13, *) {
       // 創建容器視圖作為 ZStack，設置固定尺寸
-      let containerView = NSView(frame: NSRect(origin: .zero, size: viewSize))
+      let containerView = NSView(frame: CGRect(origin: .zero, size: viewSize))
       // 為容器視圖也設置圓角，確保整體一致性
       containerView.wantsLayer = true
       containerView.layer?.cornerRadius = 9
@@ -85,7 +85,7 @@ public class PopupCompositionBuffer: NSWindowController {
       panel.contentView = containerView
     } else {
       compositionView.translatesAutoresizingMaskIntoConstraints = true
-      compositionView.frame = NSRect(origin: .zero, size: viewSize)
+      compositionView.frame = CGRect(origin: .zero, size: viewSize)
       panel.contentView = compositionView
       panel.contentView?.wantsLayer = true
       panel.contentView?.shadow = .init()
@@ -100,10 +100,10 @@ public class PopupCompositionBuffer: NSWindowController {
       weak compositionView = self.compositionView
     ] newSize in
       if compositionView?.translatesAutoresizingMaskIntoConstraints ?? false {
-        compositionView?.frame = NSRect(origin: .zero, size: newSize)
+        compositionView?.frame = CGRect(origin: .zero, size: newSize)
       }
       panel?.setFrame(
-        NSRect(origin: panel?.frame.origin ?? .zero, size: newSize),
+        CGRect(origin: panel?.frame.origin ?? .zero, size: newSize),
         display: true
       )
       panel?.invalidateShadow()
@@ -141,7 +141,7 @@ public class PopupCompositionBuffer: NSWindowController {
     }
   }
 
-  public func show(state: IMEStateProtocol, at point: NSPoint) {
+  public func show(state: IMEStateProtocol, at point: CGPoint) {
     if !state.hasComposition {
       hide()
       return
@@ -173,12 +173,12 @@ public class PopupCompositionBuffer: NSWindowController {
   private let compositionView: PopupCompositionView
   private let visualEffectView: NSView?
 
-  private func set(windowOrigin: NSPoint) {
+  private func set(windowOrigin: CGPoint) {
     guard let window = window else { return }
     let windowSize = window.frame.size
 
     var adjustedPoint = windowOrigin
-    var screenFrame = NSScreen.main?.visibleFrame ?? NSRect.seniorTheBeast
+    var screenFrame = NSScreen.main?.visibleFrame ?? CGRect.seniorTheBeast
     for frame in NSScreen.screens.map(\.visibleFrame).filter({ $0.contains(windowOrigin) }) {
       screenFrame = frame
       break
@@ -206,7 +206,7 @@ public class PopupCompositionBuffer: NSWindowController {
 internal class PopupCompositionView: NSView {
   // MARK: Lifecycle
 
-  override init(frame frameRect: NSRect) {
+  override init(frame frameRect: CGRect) {
     self.caretLayer = CALayer()
     super.init(frame: frameRect)
     commonInit()
@@ -228,14 +228,14 @@ internal class PopupCompositionView: NSView {
     true
   }
 
-  override var intrinsicContentSize: NSSize {
+  override var intrinsicContentSize: CGSize {
     cachedIntrinsicSize
   }
 
   var locale: String = ""
   var accent: NSColor = .accentColor
 
-  var onSizeChanged: ((NSSize) -> ())?
+  var onSizeChanged: ((CGSize) -> ())?
 
   var isTypingDirectionVertical = false {
     didSet {
@@ -245,7 +245,7 @@ internal class PopupCompositionView: NSView {
     }
   }
 
-  override func draw(_ dirtyRect: NSRect) {
+  override func draw(_ dirtyRect: CGRect) {
     super.draw(dirtyRect)
     guard !attributedText.string.isEmpty else { return }
 
@@ -312,7 +312,7 @@ internal class PopupCompositionView: NSView {
 
   private let caretLayer: CALayer
   private var attributedText: NSAttributedString = .init()
-  private var cachedIntrinsicSize: NSSize = .init(width: 300, height: 20)
+  private var cachedIntrinsicSize: CGSize = .init(width: 300, height: 20)
   private var currentCaretIndex: Int = 0
   private var markedRange: NSRange = .init(location: NSNotFound, length: 0)
 
@@ -465,7 +465,7 @@ internal class PopupCompositionView: NSView {
     let paddedWidth = max(contentWidth + textPadding * 2, textPadding * 2)
     let paddedHeight = max(contentHeight + textPadding * 2, textPadding * 2)
 
-    let newSize = NSSize(width: paddedWidth, height: paddedHeight)
+    let newSize = CGSize(width: paddedWidth, height: paddedHeight)
 
     if cachedIntrinsicSize != newSize {
       cachedIntrinsicSize = newSize

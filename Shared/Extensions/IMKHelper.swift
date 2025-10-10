@@ -65,9 +65,10 @@ public enum IMKHelper {
         Set(arrWhitelistedKeyLayoutsASCII)
           .subtracting(Set(arrDynamicBasicKeyLayouts))
       )
-      let matchedGroupBasic = (arrWhitelistedKeyLayoutsASCII + arrDynamicBasicKeyLayouts).compactMap {
-        allTISKeyboardLayouts[$0]
-      }
+      let matchedGroupBasic = (arrWhitelistedKeyLayoutsASCII + arrDynamicBasicKeyLayouts)
+        .compactMap {
+          allTISKeyboardLayouts[$0]
+        }
       matchedGroupBasic.forEach { neta in
         if filterSet.contains(neta.id) {
           containerC.append(neta)

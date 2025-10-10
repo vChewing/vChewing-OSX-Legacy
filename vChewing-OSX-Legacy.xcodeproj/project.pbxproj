@@ -648,7 +648,6 @@
 				5B7C02082B77AFBA00B7DBAA /* SessionController */,
 				5B751DB4294EE21D0031CF70 /* WindowControllers */,
 				5BF5BAE0294DFFC9006011AD /* AppDelegate.swift */,
-				5B423A532A9516B0004CC33B /* Broadcaster.swift */,
 				5B1C28E02B8F09DF00968E74 /* CandidateTextService_SelectorImpl.swift */,
 				5BE5A595294E1DFB00EFA49C /* ChineseConverterBridge.swift */,
 				5B751DC6294EE57D0031CF70 /* IMEState.swift */,
@@ -815,6 +814,7 @@
 		5BE5A535294E0CDC00EFA49C /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				5B423A532A9516B0004CC33B /* Broadcaster.swift */,
 				5BE5A53A294E0CEC00EFA49C /* CandidateNode.swift */,
 				5B98203D2B8D9A4200E183D8 /* CandidateNode_ServiceImpl.swift */,
 				5B6F7ADC2B8CEC72001596AF /* CandidateTextService.swift */,

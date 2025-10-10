@@ -98,7 +98,10 @@
 
     /// Called when a user selects an annotation in a candidate window.
     /// When a candidate window is displayed and the user selects an annotation, the selected annotation is sent to the input controller along with the selected candidate string.
-    func annotationSelected(_ annotationString: NSAttributedString!, forCandidate candidateString: NSAttributedString!)
+    func annotationSelected(
+      _ annotationString: NSAttributedString!,
+      forCandidate candidateString: NSAttributedString!
+    )
 
     /// Informs the input controller that the current candidate selection has changed.
     /// The `candidateString` is the updated selection, but it's not the final selection yet.

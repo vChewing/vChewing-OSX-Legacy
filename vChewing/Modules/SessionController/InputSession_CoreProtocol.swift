@@ -186,12 +186,12 @@ extension SessionProtocol {
   }
 
   @discardableResult
-  public func updateVerticalTypingStatus() -> NSRect {
+  public func updateVerticalTypingStatus() -> CGRect {
     guard let client = client() else {
       isVerticalTyping = false
       return .seniorTheBeast
     }
-    var textFrame = NSRect.seniorTheBeast
+    var textFrame = CGRect.seniorTheBeast
     let attributes: [AnyHashable: Any]? = client.attributes(
       forCharacterIndex: 0,
       lineHeightRectangle: &textFrame
