@@ -17,6 +17,7 @@
 		5B29704B2E962134005D9BED /* UserPhraseInsertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B29704A2E962134005D9BED /* UserPhraseInsertable.swift */; };
 		5B2F3B522AF24FD500225501 /* LMMgr_KimoDataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2F3B512AF24FD500225501 /* LMMgr_KimoDataParser.swift */; };
 		5B303E7E2A979F6F002CF4E6 /* IMKUtilsImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B303E7D2A979F6F002CF4E6 /* IMKUtilsImpl.swift */; };
+		5B3689052E99311E00B3DA69 /* ChineseConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3689042E99311E00B3DA69 /* ChineseConverter.swift */; };
 		5B3B0ED22B98170E000B2A25 /* SwiftFoundationImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3B0ED12B981579000B2A25 /* SwiftFoundationImpl.swift */; };
 		5B3B0ED32B981C95000B2A25 /* SwiftFoundationImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3B0ED12B981579000B2A25 /* SwiftFoundationImpl.swift */; };
 		5B3C0D5F2B13555400C87B27 /* vChewingFactoryDatabase.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 5B3C0D5E2B13555000C87B27 /* vChewingFactoryDatabase.sqlite */; };
@@ -216,6 +217,7 @@
 		5B29704A2E962134005D9BED /* UserPhraseInsertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPhraseInsertable.swift; sourceTree = "<group>"; };
 		5B2F3B512AF24FD500225501 /* LMMgr_KimoDataParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMMgr_KimoDataParser.swift; sourceTree = "<group>"; };
 		5B303E7D2A979F6F002CF4E6 /* IMKUtilsImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IMKUtilsImpl.swift; sourceTree = "<group>"; };
+		5B3689042E99311E00B3DA69 /* ChineseConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChineseConverter.swift; sourceTree = "<group>"; };
 		5B3B0ED12B981579000B2A25 /* SwiftFoundationImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftFoundationImpl.swift; sourceTree = "<group>"; };
 		5B3C0D5E2B13555000C87B27 /* vChewingFactoryDatabase.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = vChewingFactoryDatabase.sqlite; path = "DictionaryData/Build/Release/vanguardSQL-Legacy/vChewingFactoryDatabase.sqlite"; sourceTree = "<group>"; };
 		5B423A532A9516B0004CC33B /* Broadcaster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Broadcaster.swift; sourceTree = "<group>"; };
@@ -816,6 +818,7 @@
 				5BE5A53A294E0CEC00EFA49C /* CandidateNode.swift */,
 				5B98203D2B8D9A4200E183D8 /* CandidateNode_ServiceImpl.swift */,
 				5B6F7ADC2B8CEC72001596AF /* CandidateTextService.swift */,
+				5B3689042E99311E00B3DA69 /* ChineseConverter.swift */,
 				5BE5A53B294E0CEC00EFA49C /* CtlCandidateProtocol.swift */,
 				5BF120A02B8C8E1700C83A24 /* IMEApp.swift */,
 				5BE5A539294E0CEC00EFA49C /* IMEStateProtocolAndData.swift */,
@@ -1172,6 +1175,7 @@
 				5BAF0FFB2AA63F6D00FD58A0 /* UserDef.swift in Sources */,
 				5BE5A55C294E0E8000EFA49C /* PopupCompositionBuffer.swift in Sources */,
 				5BE5A52F294E0C2B00EFA49C /* lmPerceptionOverride.swift in Sources */,
+				5B3689052E99311E00B3DA69 /* ChineseConverter.swift in Sources */,
 				5B81BD2A2B729AE90092819A /* VwrSettingsPaneCocoaCandidates.swift in Sources */,
 				5B81BD102B7297A70092819A /* AppKitImpl_NSView.swift in Sources */,
 				5B751DD3294EE57D0031CF70 /* InputHandler_TriageInput.swift in Sources */,
