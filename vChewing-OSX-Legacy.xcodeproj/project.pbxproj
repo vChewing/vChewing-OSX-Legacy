@@ -655,7 +655,6 @@
 				5BE5A4E4294E03C200EFA49C /* main.swift */,
 				5BF1209E2B8C8D7E00C83A24 /* PrefMgr_Singleton.swift */,
 				5BAE70102AE54F67002E673A /* SecurityAgentHelper.swift */,
-				5B6815362B46EF86004A8A1A /* SpeechSputnik.swift */,
 				5BE5A569294E120500EFA49C /* SymbolMenuDefaultData.swift */,
 			);
 			path = Modules;
@@ -832,6 +831,7 @@
 				5BE5A537294E0CEC00EFA49C /* PrefMgrProtocol.swift */,
 				5BCA4FAC2E9659F700441688 /* SessionCoreProtocol.swift */,
 				5BE5A538294E0CEC00EFA49C /* Shared.swift */,
+				5B6815362B46EF86004A8A1A /* SpeechSputnik.swift */,
 				5BAF0FFA2AA63F6D00FD58A0 /* UserDef.swift */,
 				5B81BD122B72984E0092819A /* UserDefRenderableCocoa.swift */,
 				5B29704A2E962134005D9BED /* UserPhraseInsertable.swift */,

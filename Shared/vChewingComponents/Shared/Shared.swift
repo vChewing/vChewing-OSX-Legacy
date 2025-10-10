@@ -268,8 +268,8 @@ public enum Shared {
 
     public var nonUTFEncoding: UInt32? {
       switch self {
-      case .imeModeCHS: return 1586 // .GB_18030_2000
-      case .imeModeCHT: return 2566 // .big5_HKSCS_1999
+      case .imeModeCHS: return 1_586 // .GB_18030_2000
+      case .imeModeCHT: return 2_566 // .big5_HKSCS_1999
       default: return nil
       }
     }
