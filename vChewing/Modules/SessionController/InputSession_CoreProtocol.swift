@@ -219,6 +219,7 @@ extension SessionProtocol {
       lm: inputMode.langModel,
       pref: PrefMgr.shared,
       errorCallback: Self.callError,
+      filterabilityChecker: LMMgr.isStateDataFilterableForMarked,
       notificationCallback: Notifier.notify,
       pomSaveCallback: { LMMgr.savePerceptionOverrideModelData(false) }
     )
