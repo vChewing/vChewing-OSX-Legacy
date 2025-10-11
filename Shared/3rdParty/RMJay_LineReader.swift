@@ -36,7 +36,7 @@ public class LineReader {
       }
 
       fileRead: do {
-        let nextData = try fileHandle.read(upToCount: chunkSize)
+        let nextData = try fileHandle.readData(upToCount: chunkSize)
         if let nextData = nextData, !nextData.isEmpty {
           buffer.append(nextData)
           continue

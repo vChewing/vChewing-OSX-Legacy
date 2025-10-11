@@ -208,7 +208,7 @@ class AppDelegate: NSWindowController, NSApplicationDelegate {
 
     var output = ""
     do {
-      let data = try pipe.fileHandleForReading.readToEnd()
+      let data = try pipe.fileHandleForReading.readDataToEnd()
       if let data = data, let str = String(data: data, encoding: .utf8) {
         output.append(str)
       }
