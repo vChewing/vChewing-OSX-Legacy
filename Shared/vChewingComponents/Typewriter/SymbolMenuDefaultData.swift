@@ -6,7 +6,7 @@
 // marks, or product names of Contributor, except as required to fulfill notice
 // requirements defined in MIT License.
 
-import AppKit
+import Foundation
 
 extension CandidateNode {
   public static func load(url: URL) {
@@ -746,7 +746,7 @@ extension CandidateNode {
 
 extension BinaryInteger {
   fileprivate var kanji: String {
-    guard let prefix = PrefMgr.shared.appleLanguages.first?.prefix(2),
+    guard let prefix = PrefMgr().appleLanguages.first?.prefix(2),
           ["zh", "ja"].contains(prefix) else { return description }
     let formatter = NumberFormatter()
     formatter.locale = Locale(identifier: prefix.description)

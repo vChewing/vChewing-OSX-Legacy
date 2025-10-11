@@ -38,6 +38,9 @@ public final class InputHandler: InputHandlerProtocol {
 
   // MARK: Public
 
+  public typealias State = IMEState
+  public typealias Session = InputSession
+
   public static var keySeparator: String { Assembler.theSeparator }
 
   /// 委任物件 (SessionCtl)，以便呼叫其中的函式。

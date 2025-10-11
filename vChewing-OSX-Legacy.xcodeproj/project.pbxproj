@@ -421,6 +421,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5B2CD0042E9A18EB00F6A9FE /* Typewriter */ = {
+			isa = PBXGroup;
+			children = (
+				5B751DC1294EE57C0031CF70 /* InputHandler_CoreProtocol.swift */,
+				5B751DCC294EE57D0031CF70 /* InputHandler_HandleCandidate.swift */,
+				5B751DCA294EE57D0031CF70 /* InputHandler_HandleComposition.swift */,
+				5B751DBF294EE57C0031CF70 /* InputHandler_HandleStates.swift */,
+				5B9939EC2B8B44B000979BBC /* InputHandler_MiscCommissions.swift */,
+				5B751DC4294EE57C0031CF70 /* InputHandler_TriageInput.swift */,
+				5B785EEA2B78FC680006413D /* InputHandler_TypingMethod.swift */,
+				5BE5A569294E120500EFA49C /* SymbolMenuDefaultData.swift */,
+			);
+			path = Typewriter;
+			sourceTree = "<group>";
+		};
 		5B44BAD62950478300E1C02D /* Manuals */ = {
 			isa = PBXGroup;
 			children = (
@@ -491,13 +506,6 @@
 			isa = PBXGroup;
 			children = (
 				5BCDA50E2D50C3DC00571961 /* InputHandler.swift */,
-				5B751DC1294EE57C0031CF70 /* InputHandler_CoreProtocol.swift */,
-				5B751DCC294EE57D0031CF70 /* InputHandler_HandleCandidate.swift */,
-				5B751DCA294EE57D0031CF70 /* InputHandler_HandleComposition.swift */,
-				5B751DBF294EE57C0031CF70 /* InputHandler_HandleStates.swift */,
-				5B9939EC2B8B44B000979BBC /* InputHandler_MiscCommissions.swift */,
-				5B751DC4294EE57C0031CF70 /* InputHandler_TriageInput.swift */,
-				5B785EEA2B78FC680006413D /* InputHandler_TypingMethod.swift */,
 			);
 			path = InputHandler;
 			sourceTree = "<group>";
@@ -655,7 +663,6 @@
 				5BE5A4E4294E03C200EFA49C /* main.swift */,
 				5BF1209E2B8C8D7E00C83A24 /* PrefMgr_Singleton.swift */,
 				5BAE70102AE54F67002E673A /* SecurityAgentHelper.swift */,
-				5BE5A569294E120500EFA49C /* SymbolMenuDefaultData.swift */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -747,6 +754,7 @@
 				5BE5A535294E0CDC00EFA49C /* Shared */,
 				5BE5A4EF294E056D00EFA49C /* Tekkon */,
 				5BE5A55D294E0EF500EFA49C /* TooltipUI */,
+				5B2CD0042E9A18EB00F6A9FE /* Typewriter */,
 				5BE5A560294E10A700EFA49C /* Uninstaller */,
 			);
 			path = vChewingComponents;

@@ -16,7 +16,7 @@ import Foundation
 extension InputHandlerProtocol {
   public func triageInput(event input: InputSignalProtocol) -> Bool {
     guard let session = session else { return false }
-    var state: IMEStateProtocol { session.state }
+    var state: State { session.state }
 
     // MARK: - 按鍵碼分診（Triage by KeyCode）
 
@@ -66,7 +66,7 @@ extension InputHandlerProtocol {
         switch state.type {
         case .ofEmpty:
           if !input.isOptionHold, !input.isControlHold, !input.isCommandHold {
-            session.switchState(IMEState.ofCommitting(textToCommit: input.isShiftHold ? "　" : " "))
+            session.switchState(State.ofCommitting(textToCommit: input.isShiftHold ? "　" : " "))
             return true
           }
         case .ofInputting:
@@ -76,7 +76,7 @@ extension InputHandlerProtocol {
           }
           if currentTypingMethod == .codePoint {
             errorCallback?("FDD88EDB")
-            session.switchState(IMEState.ofAbortion())
+            session.switchState(State.ofAbortion())
             return true
           }
           if assembler.cursor < assembler.length, assembler.insertKey(" ") {
@@ -89,9 +89,9 @@ extension InputHandlerProtocol {
           } else {
             let displayedText = state.displayedText
             if !displayedText.isEmpty, !isConsideredEmptyForNow {
-              session.switchState(IMEState.ofCommitting(textToCommit: displayedText))
+              session.switchState(State.ofCommitting(textToCommit: displayedText))
             }
-            session.switchState(IMEState.ofCommitting(textToCommit: " "))
+            session.switchState(State.ofCommitting(textToCommit: " "))
           }
           return true
         default: break
@@ -108,7 +108,7 @@ extension InputHandlerProtocol {
     case .ofAssociates, .ofCandidates, .ofSymbolTable:
       let result = handleCandidate(input: input)
       guard !result, state.type == .ofAssociates else { return true }
-      session.switchState(IMEState.ofEmpty())
+      session.switchState(State.ofEmpty())
       return triageInput(event: input)
     case .ofMarking:
       if handleMarkingState(input: input) { return true }
