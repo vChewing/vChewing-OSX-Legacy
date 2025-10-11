@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5B0422082D4F7F2B00DFAA15 /* IMKTextInputImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0422062D4F7F2600DFAA15 /* IMKTextInputImpl.swift */; };
 		5B09126C2B134927000166DB /* LMInstantiator_SQLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B09126B2B134927000166DB /* LMInstantiator_SQLExtension.swift */; };
+		5B098B682E9B8D510005885E /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B098B672E9B8D260005885E /* libiconv.tbd */; };
 		5B0E4EEF2B67933E00BE3440 /* OSVersionComparer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0E4EEE2B67933E00BE3440 /* OSVersionComparer.swift */; };
 		5B1523B62A74E92D007D2E53 /* Jad_BookmarkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1523B52A74E92D007D2E53 /* Jad_BookmarkManager.swift */; };
 		5B1C28E12B8F09DF00968E74 /* CandidateTextService_SelectorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1C28E02B8F09DF00968E74 /* CandidateTextService_SelectorImpl.swift */; };
@@ -26,6 +27,7 @@
 		5B4BEE702B8F8A510044A4EE /* VwrServiceMenuEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4BEE6E2B8F8A450044A4EE /* VwrServiceMenuEditor.swift */; };
 		5B4BEE712B8F8A530044A4EE /* CtlServiceMenuEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4BEE6F2B8F8A450044A4EE /* CtlServiceMenuEditor.swift */; };
 		5B4C81812ADABB60008507B1 /* HangarRash_SwiftyCapsLockToggler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4C81802ADABB60008507B1 /* HangarRash_SwiftyCapsLockToggler.swift */; };
+		5B5319222E9A918700570E96 /* CodePointDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5319212E9A918700570E96 /* CodePointDecoder.swift */; };
 		5B55ACAD2B5A254F009E2F54 /* KBEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B55ACAC2B5A254F009E2F54 /* KBEvent.swift */; };
 		5B55ACAF2B5A255F009E2F54 /* NSEventImpl_Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B55ACAE2B5A255F009E2F54 /* NSEventImpl_Shared.swift */; };
 		5B572A7A29FB76B900ED5066 /* LatinKeyboardMappings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B572A7929FB76B900ED5066 /* LatinKeyboardMappings.swift */; };
@@ -209,6 +211,7 @@
 /* Begin PBXFileReference section */
 		5B0422062D4F7F2600DFAA15 /* IMKTextInputImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMKTextInputImpl.swift; sourceTree = "<group>"; };
 		5B09126B2B134927000166DB /* LMInstantiator_SQLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMInstantiator_SQLExtension.swift; sourceTree = "<group>"; };
+		5B098B672E9B8D260005885E /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.0.sdk/usr/lib/libiconv.tbd; sourceTree = DEVELOPER_DIR; };
 		5B0E4EEE2B67933E00BE3440 /* OSVersionComparer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSVersionComparer.swift; sourceTree = "<group>"; };
 		5B1523B52A74E92D007D2E53 /* Jad_BookmarkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Jad_BookmarkManager.swift; sourceTree = "<group>"; };
 		5B1C28E02B8F09DF00968E74 /* CandidateTextService_SelectorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandidateTextService_SelectorImpl.swift; sourceTree = "<group>"; };
@@ -228,6 +231,7 @@
 		5B4BEE6E2B8F8A450044A4EE /* VwrServiceMenuEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VwrServiceMenuEditor.swift; sourceTree = "<group>"; };
 		5B4BEE6F2B8F8A450044A4EE /* CtlServiceMenuEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CtlServiceMenuEditor.swift; sourceTree = "<group>"; };
 		5B4C81802ADABB60008507B1 /* HangarRash_SwiftyCapsLockToggler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HangarRash_SwiftyCapsLockToggler.swift; sourceTree = "<group>"; };
+		5B5319212E9A918700570E96 /* CodePointDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodePointDecoder.swift; sourceTree = "<group>"; };
 		5B55ACAC2B5A254F009E2F54 /* KBEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBEvent.swift; sourceTree = "<group>"; };
 		5B55ACAE2B5A255F009E2F54 /* NSEventImpl_Shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSEventImpl_Shared.swift; sourceTree = "<group>"; };
 		5B572A7929FB76B900ED5066 /* LatinKeyboardMappings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatinKeyboardMappings.swift; sourceTree = "<group>"; };
@@ -415,6 +419,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B098B682E9B8D510005885E /* libiconv.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -432,6 +437,7 @@
 				5B751DC4294EE57C0031CF70 /* InputHandler_TriageInput.swift */,
 				5B785EEA2B78FC680006413D /* InputHandler_TypingMethod.swift */,
 				5BE5A569294E120500EFA49C /* SymbolMenuDefaultData.swift */,
+				5B5319212E9A918700570E96 /* CodePointDecoder.swift */,
 			);
 			path = Typewriter;
 			sourceTree = "<group>";
@@ -576,6 +582,7 @@
 		5BA6316A2B135EF600974241 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5B098B672E9B8D260005885E /* libiconv.tbd */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1139,6 +1146,7 @@
 				5BCDA5172D50C45500571961 /* InputSession_Delegates.swift in Sources */,
 				5BCDA5182D50C45500571961 /* InputSession_HandleEvent.swift in Sources */,
 				5B57FA6B2E8911DB001A6146 /* 8_GramInPath.swift in Sources */,
+				5B5319222E9A918700570E96 /* CodePointDecoder.swift in Sources */,
 				5BCDA5192D50C45500571961 /* InputSession_HandleStates.swift in Sources */,
 				5BCDA51A2D50C45500571961 /* InputSession_CoreProtocol.swift in Sources */,
 				5BCDA51B2D50C45500571961 /* InputSession_HandleDisplay.swift in Sources */,
