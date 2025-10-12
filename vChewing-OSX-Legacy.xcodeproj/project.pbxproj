@@ -38,6 +38,7 @@
 		5B6420012ABB3BA600E1B7F6 /* TooltipUIProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6420002ABB3BA600E1B7F6 /* TooltipUIProtocol.swift */; };
 		5B6420032ABB3BA600E1B7F6 /* TooltipUI_LateCocoa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B641FFF2ABB3BA600E1B7F6 /* TooltipUI_LateCocoa.swift */; };
 		5B6815372B46EF86004A8A1A /* SpeechSputnik.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6815362B46EF86004A8A1A /* SpeechSputnik.swift */; };
+		5B693A302E9B8AE200BF4B53 /* Tekkon_PinyinTrie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B693A2F2E9B8AE200BF4B53 /* Tekkon_PinyinTrie.swift */; };
 		5B69C36B2B7406DC006FBD09 /* VwrClientListMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B69C36A2B7406DC006FBD09 /* VwrClientListMgr.swift */; };
 		5B69CA6A295DDC58005211BB /* RangeParserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B69CA69295DDC58005211BB /* RangeParserAPI.swift */; };
 		5B6F7ADD2B8CEC72001596AF /* CandidateTextService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6F7ADC2B8CEC72001596AF /* CandidateTextService.swift */; };
@@ -242,6 +243,7 @@
 		5B641FFF2ABB3BA600E1B7F6 /* TooltipUI_LateCocoa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TooltipUI_LateCocoa.swift; sourceTree = "<group>"; };
 		5B6420002ABB3BA600E1B7F6 /* TooltipUIProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TooltipUIProtocol.swift; sourceTree = "<group>"; };
 		5B6815362B46EF86004A8A1A /* SpeechSputnik.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechSputnik.swift; sourceTree = "<group>"; };
+		5B693A2F2E9B8AE200BF4B53 /* Tekkon_PinyinTrie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tekkon_PinyinTrie.swift; sourceTree = "<group>"; };
 		5B69C36A2B7406DC006FBD09 /* VwrClientListMgr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VwrClientListMgr.swift; sourceTree = "<group>"; };
 		5B69CA69295DDC58005211BB /* RangeParserAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RangeParserAPI.swift; sourceTree = "<group>"; };
 		5B6F7ADC2B8CEC72001596AF /* CandidateTextService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandidateTextService.swift; sourceTree = "<group>"; };
@@ -717,6 +719,7 @@
 			children = (
 				5BE5A542294E0D1100EFA49C /* Tekkon_Constants.swift */,
 				5BE5A543294E0D1100EFA49C /* Tekkon_Phonabets.swift */,
+				5B693A2F2E9B8AE200BF4B53 /* Tekkon_PinyinTrie.swift */,
 				5BE5A544294E0D1100EFA49C /* Tekkon_SyllableComposer.swift */,
 				5BE5A545294E0D1200EFA49C /* Tekkon_Utilities.swift */,
 			);
@@ -1217,6 +1220,7 @@
 				5B69C36B2B7406DC006FBD09 /* VwrClientListMgr.swift in Sources */,
 				5BE5A564294E10F300EFA49C /* PrefMgr_Core.swift in Sources */,
 				5B69CA6A295DDC58005211BB /* RangeParserAPI.swift in Sources */,
+				5B693A302E9B8AE200BF4B53 /* Tekkon_PinyinTrie.swift in Sources */,
 				5BE5A546294E0D1200EFA49C /* Tekkon_Constants.swift in Sources */,
 				5BE5A55A294E0D1E00EFA49C /* 6_LangModel.swift in Sources */,
 				5BE5A547294E0D1200EFA49C /* Tekkon_Phonabets.swift in Sources */,
