@@ -199,17 +199,17 @@ extension VwrCandidateTDKAppKit {
 
   @objc
   fileprivate func menuActionOfBoosting(_: Any? = nil) {
-    didRightClickCandidateAt(clickedCell.index, action: .toBoost)
+    didTriggerCandidatePairContextMenuActionAt(clickedCell.index, action: .toBoost)
   }
 
   @objc
   fileprivate func menuActionOfNerfing(_: Any? = nil) {
-    didRightClickCandidateAt(clickedCell.index, action: .toNerf)
+    didTriggerCandidatePairContextMenuActionAt(clickedCell.index, action: .toNerf)
   }
 
   @objc
   fileprivate func menuActionOfFiltering(_: Any? = nil) {
-    didRightClickCandidateAt(clickedCell.index, action: .toFilter)
+    didTriggerCandidatePairContextMenuActionAt(clickedCell.index, action: .toFilter)
   }
 }
 
@@ -220,8 +220,12 @@ extension VwrCandidateTDKAppKit {
     controller?.delegate?.candidatePairSelectionConfirmed(at: pos)
   }
 
-  fileprivate func didRightClickCandidateAt(_ pos: Int, action: CandidateContextMenuAction) {
-    controller?.delegate?.candidatePairRightClicked(at: pos, action: action)
+  fileprivate func didTriggerCandidatePairContextMenuActionAt(
+    _ pos: Int, action: CandidateContextMenuAction
+  ) {
+    controller?.delegate?.candidatePairContextMenuActionTriggered(
+      at: pos, action: action
+    )
   }
 }
 
