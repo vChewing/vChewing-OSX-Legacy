@@ -6,7 +6,7 @@
 // marks, or product names of Contributor, except as required to fulfill notice
 // requirements defined in MIT License.
 
-import AppKit
+import Foundation
 
 extension LMAssembly {
   /// 語言模組副本化模組（LMInstantiator，下稱「LMI」）自身為符合天權星組字引擎內
@@ -97,6 +97,16 @@ extension LMAssembly {
           load()
         }
       }
+    }
+
+    // MARK: Shared Resource Lifecycle
+
+    public static func resetSharedResources(restoreAsyncLoadingStrategy: Bool = true) {
+      disconnectSQLDB()
+      lmCassette = LMCassette()
+      lmPlainBopomofo = LMPlainBopomofo()
+      guard restoreAsyncLoadingStrategy else { return }
+      asyncLoadingUserData = !UserDefaults.pendingUnitTests
     }
 
     @discardableResult
@@ -532,6 +542,53 @@ extension LMAssembly {
 
     // 漸退记忆模组
     var lmPerceptionOverride: LMPerceptionOverride
+
+    #if DEBUG
+      /// Allows unit tests to mutate individual sub-language models without exposing them publicly.
+      /// The provided closures receive mutable references to the backing instances; pass `nil` to leave a store untouched.
+      ///
+      /// Dev notes: Switching that guard to `#if canImport(Testing) || canImport(XCTest)`
+      /// would actually compile the block out in this target: the LangModelAssembly
+      /// product doesn’t link either framework, so canImport evaluates to false and
+      /// the helper disappears—tests wouldn’t see injectTestData at all.
+      /// Keeping `#if DEBUG` (or introducing a dedicated -D flag you enable for tests)
+      /// is safer: it remains available when you build in the debug/test configuration,
+      /// but it still drops out of release binaries.
+      /// - Parameters:
+      ///   - userPhrases: Mutator for the user phrases store.
+      ///   - userFilter: Mutator for the exclusion list store.
+      ///   - userSymbols: Mutator for the symbol menu store.
+      ///   - replacements: Mutator for the user replacements store.
+      ///   - associates: Mutator for the associates store.
+      ///   - perceptionOverride: Mutator for the perception-override memory.
+      func injectTestData(
+        userPhrases: ((inout LMCoreEX) -> ())? = nil,
+        userFilter: ((inout LMCoreEX) -> ())? = nil,
+        userSymbols: ((inout LMCoreEX) -> ())? = nil,
+        replacements: ((inout LMReplacements) -> ())? = nil,
+        associates: ((inout LMAssociates) -> ())? = nil,
+        perceptionOverride: ((inout LMPerceptionOverride) -> ())? = nil
+      ) {
+        if let mutator = userPhrases {
+          mutator(&lmUserPhrases)
+        }
+        if let mutator = userFilter {
+          mutator(&lmFiltered)
+        }
+        if let mutator = userSymbols {
+          mutator(&lmUserSymbols)
+        }
+        if let mutator = replacements {
+          mutator(&lmReplacements)
+        }
+        if let mutator = associates {
+          mutator(&lmAssociates)
+        }
+        if let mutator = perceptionOverride {
+          mutator(&lmPerceptionOverride)
+        }
+      }
+    #endif
 
     // MARK: Private
 
