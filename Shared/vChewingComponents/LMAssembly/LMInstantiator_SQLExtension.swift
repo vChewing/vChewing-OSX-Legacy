@@ -323,3 +323,11 @@ extension LMAssembly.LMInstantiator {
     "T": "ㄣ", "N": "ㄤ", "L": "ㄥ", "R": "ㄦ", "2": "ˊ", "3": "ˇ", "4": "ˋ", "5": "˙",
   ]
 }
+
+extension LMAssembly.LMInstantiator {
+  @discardableResult
+  public static func connectToTestSQLDB(_ str: String) -> Bool {
+    guard !str.isEmpty else { return false }
+    return Self.connectSQLDB(dbPath: #":memory:"#) && str.runAsSQLExec(dbPointer: &ptrSQL)
+  }
+}
