@@ -99,7 +99,7 @@ extension PrefMgr {
     let mirror = Mirror(reflecting: self)
     guard let bundleIdentifier = Bundle.main.bundleIdentifier else { return nil }
     let strDoubleDashLine = String(String(repeating: "=", count: 70))
-    let consoleOutput = NSMutableString(string: "#!/bin/sh\n\n")
+    var consoleOutput = ContiguousArray<String>(["#!/bin/sh\n\n"])
     consoleOutput.append("# \(strDoubleDashLine)\n")
     consoleOutput.append("# vChewing Preferences Migration Script\n")
     consoleOutput.append("# - vChewing IME v\(IMEApp.appVersionLabel)\n")
@@ -127,11 +127,11 @@ extension PrefMgr {
       case .dictionary:
         if let valParsed = value as? AppProperty<[String: Bool]> {
           strTypeParam = strTypeParam.replacingOccurrences(of: "ionary", with: "")
-          let stack = NSMutableString(capacity: 0)
+          var stack = ContiguousArray<String>()
           valParsed.wrappedValue.forEach { currentPair in
             stack.append("\(currentPair.key) \(currentPair.value) ")
           }
-          strValue = stack.replacingOccurrences(of: "\n", with: "\\n")
+          strValue = stack.joined().replacingOccurrences(of: "\n", with: "\\n")
         } else {
           continue
         }
@@ -167,6 +167,6 @@ extension PrefMgr {
           "\ndefaults write \(bundleIdentifier) \(strKeyName) -\(strTypeParam) \(strValue)\n\n"
         )
     }
-    return consoleOutput.description
+    return consoleOutput.joined()
   }
 }
