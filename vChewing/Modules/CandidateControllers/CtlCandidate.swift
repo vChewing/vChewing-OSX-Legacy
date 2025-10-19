@@ -11,7 +11,7 @@ import AppKit
 open class CtlCandidate: NSWindowController, CtlCandidateProtocol {
   // MARK: Lifecycle
 
-  public required init(_: NSUserInterfaceLayoutOrientation = .horizontal) {
+  public required init(_: UILayoutOrientation = .horizontal) {
     super.init(window: .init())
     self.visible = false
   }
@@ -26,7 +26,7 @@ open class CtlCandidate: NSWindowController, CtlCandidateProtocol {
   // MARK: Open
 
   open var tooltip: String = ""
-  open var currentLayout: NSUserInterfaceLayoutOrientation = .horizontal
+  open var currentLayout: UILayoutOrientation = .horizontal
   open var locale: String = ""
   open var useLangIdentifier: Bool = false
   open var reverseLookupResult: [String] = []
@@ -36,7 +36,7 @@ open class CtlCandidate: NSWindowController, CtlCandidateProtocol {
     ofSize: min(196, max(12, Double(UserDefaults.current.integer(forKey: "CandidateListTextSize"))))
   )
 
-  open var delegate: CtlCandidateDelegate? {
+  open var delegate: CtlCandidateDelegateCore? {
     didSet {
       guard let delegate = delegate else { return }
       if delegate.isCandidateState { reloadData() }

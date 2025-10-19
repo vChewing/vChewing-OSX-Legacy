@@ -6,8 +6,6 @@
 // marks, or product names of Contributor, except as required to fulfill notice
 // requirements defined in MIT License.
 
-import Foundation
-
 // MARK: - CommitableMarkupType
 
 /// 該檔案專門管理「用指定熱鍵遞交特殊的內容」的這一類函式。

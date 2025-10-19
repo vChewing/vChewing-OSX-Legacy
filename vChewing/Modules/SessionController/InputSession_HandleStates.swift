@@ -56,7 +56,6 @@ extension SessionProtocol {
     switch newState.type {
     case .ofDeactivated:
       // 這裡移除一些處理，轉而交給 commitComposition() 代為執行。
-
       inputHandler?.clear()
       if ![.ofAbortion, .ofEmpty].contains(previous.type), !previous.displayedText.isEmpty {
         clearInlineDisplay()

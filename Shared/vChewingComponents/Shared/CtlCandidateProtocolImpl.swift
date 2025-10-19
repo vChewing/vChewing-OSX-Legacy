@@ -8,13 +8,14 @@
 
 import AppKit
 
-public protocol TooltipUIProtocol {
-  func show(
-    tooltip: String, at point: CGPoint,
-    bottomOutOfScreenAdjustmentHeight heightDelta: Double,
-    direction: UILayoutOrientation, duration: Double
-  )
+// MARK: - CtlCandidateDelegate
 
-  func hide()
-  func setColor(state: TooltipColorState)
+public protocol CtlCandidateDelegate: CtlCandidateDelegateCore {
+  var clientAccentColor: NSColor? { get }
+}
+
+// MARK: - CtlCandidateProtocol
+
+public protocol CtlCandidateProtocol: CtlCandidateProtocolCore {
+  var candidateFont: NSFont { get set }
 }

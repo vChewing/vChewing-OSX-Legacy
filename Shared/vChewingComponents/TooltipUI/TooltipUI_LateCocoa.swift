@@ -63,7 +63,7 @@ public class TooltipUI_LateCocoa: NSWindowController, TooltipUIProtocol {
 
   // MARK: Public
 
-  public var direction: NSUserInterfaceLayoutOrientation = .horizontal {
+  public var direction: UILayoutOrientation = .horizontal {
     didSet {
       if let preferred = Bundle.main.preferredLocalizations.first, preferred == "en",
          direction != .horizontal {
@@ -78,7 +78,7 @@ public class TooltipUI_LateCocoa: NSWindowController, TooltipUIProtocol {
   public func show(
     tooltip: String, at point: CGPoint,
     bottomOutOfScreenAdjustmentHeight heightDelta: Double,
-    direction: NSUserInterfaceLayoutOrientation = .horizontal, duration: Double
+    direction: UILayoutOrientation = .horizontal, duration: Double
   ) {
     self.direction = direction
     self.tooltip = tooltip
@@ -241,7 +241,7 @@ private final class TooltipContentView: NSView {
     }
   }
 
-  var writingDirection: NSUserInterfaceLayoutOrientation = .horizontal {
+  var writingDirection: UILayoutOrientation = .horizontal {
     didSet {
       if writingDirection != oldValue {
         rebuildAttributedText()
