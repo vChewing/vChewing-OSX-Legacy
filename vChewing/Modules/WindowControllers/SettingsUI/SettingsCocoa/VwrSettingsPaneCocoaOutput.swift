@@ -7,7 +7,6 @@
 // requirements defined in MIT License.
 
 import AppKit
-import Foundation
 
 extension SettingsPanesCocoa {
   public class Output: NSViewController {
@@ -40,6 +39,7 @@ extension SettingsPanesCocoa {
           }
           UserDef.kInlineDumpPinyinInLieuOfZhuyin.render(fixWidth: contentWidth)
           UserDef.kTrimUnfinishedReadingsOnCommit.render(fixWidth: contentWidth)
+          UserDef.kRomanNumeralOutputFormat.render(fixWidth: contentWidth)
         }?.boxed()
         NSStackView.buildSection(width: contentWidth) {
           UserDef.kHardenVerticalPunctuations.render(fixWidth: contentWidth)
