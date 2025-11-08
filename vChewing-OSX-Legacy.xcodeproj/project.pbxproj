@@ -19,6 +19,7 @@
 		5B2F3B522AF24FD500225501 /* LMMgr_KimoDataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2F3B512AF24FD500225501 /* LMMgr_KimoDataParser.swift */; };
 		5B303E7E2A979F6F002CF4E6 /* IMKUtilsImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B303E7D2A979F6F002CF4E6 /* IMKUtilsImpl.swift */; };
 		5B3689052E99311E00B3DA69 /* ChineseConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3689042E99311E00B3DA69 /* ChineseConverter.swift */; };
+		5B3A2BCF2EBFAF1700C59A2B /* LMInstantiator_KanjiDescriptorAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3A2BCE2EBFAF1700C59A2B /* LMInstantiator_KanjiDescriptorAPI.swift */; };
 		5B3B0ED22B98170E000B2A25 /* SwiftFoundationImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3B0ED12B981579000B2A25 /* SwiftFoundationImpl.swift */; };
 		5B3B0ED32B981C95000B2A25 /* SwiftFoundationImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3B0ED12B981579000B2A25 /* SwiftFoundationImpl.swift */; };
 		5B3C0D5F2B13555400C87B27 /* vChewingFactoryDatabase.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 5B3C0D5E2B13555000C87B27 /* vChewingFactoryDatabase.sqlite */; };
@@ -227,6 +228,7 @@
 		5B2F3B512AF24FD500225501 /* LMMgr_KimoDataParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMMgr_KimoDataParser.swift; sourceTree = "<group>"; };
 		5B303E7D2A979F6F002CF4E6 /* IMKUtilsImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IMKUtilsImpl.swift; sourceTree = "<group>"; };
 		5B3689042E99311E00B3DA69 /* ChineseConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChineseConverter.swift; sourceTree = "<group>"; };
+		5B3A2BCE2EBFAF1700C59A2B /* LMInstantiator_KanjiDescriptorAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMInstantiator_KanjiDescriptorAPI.swift; sourceTree = "<group>"; };
 		5B3B0ED12B981579000B2A25 /* SwiftFoundationImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftFoundationImpl.swift; sourceTree = "<group>"; };
 		5B3C0D5E2B13555000C87B27 /* vChewingFactoryDatabase.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = vChewingFactoryDatabase.sqlite; path = "DictionaryData/Build/Release/vanguardSQL-Legacy/vChewingFactoryDatabase.sqlite"; sourceTree = "<group>"; };
 		5B423A532A9516B0004CC33B /* Broadcaster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Broadcaster.swift; sourceTree = "<group>"; };
@@ -798,6 +800,7 @@
 				5BE5A51B294E0BEE00EFA49C /* LMConsolidator.swift */,
 				5BE5A51C294E0BEE00EFA49C /* LMInstantiator_CassetteExtension.swift */,
 				5BE5A51E294E0BEE00EFA49C /* LMInstantiator_DateTimeExtension.swift */,
+				5B3A2BCE2EBFAF1700C59A2B /* LMInstantiator_KanjiDescriptorAPI.swift */,
 				5B1E6C2B2B65694100B977B5 /* LMInstantiator_NumPadExtension.swift */,
 				5B09126B2B134927000166DB /* LMInstantiator_SQLExtension.swift */,
 				5BA379B62B8278DA00D82E16 /* LMInstantiator_POMRepresentable.swift */,
@@ -1182,6 +1185,7 @@
 				5BE5A52E294E0C2B00EFA49C /* lmCassette.swift in Sources */,
 				5BE5A525294E0C2900EFA49C /* LMInstantiator_CassetteExtension.swift in Sources */,
 				5B1E6C2C2B65694100B977B5 /* LMInstantiator_NumPadExtension.swift in Sources */,
+				5B3A2BCF2EBFAF1700C59A2B /* LMInstantiator_KanjiDescriptorAPI.swift in Sources */,
 				5BCA4FAD2E9659F700441688 /* SessionCoreProtocol.swift in Sources */,
 				5BCDA5162D50C45500571961 /* InputSession.swift in Sources */,
 				5BCDA5172D50C45500571961 /* InputSession_Delegates.swift in Sources */,
