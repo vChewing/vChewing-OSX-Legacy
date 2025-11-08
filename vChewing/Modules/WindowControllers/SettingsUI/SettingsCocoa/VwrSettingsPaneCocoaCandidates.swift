@@ -7,7 +7,6 @@
 // requirements defined in MIT License.
 
 import AppKit
-import Foundation
 
 extension SettingsPanesCocoa {
   public class Candidates: NSViewController {
@@ -41,7 +40,6 @@ extension SettingsPanesCocoa {
               UserDef.kCandidateWindowShowOnlyOneLine.render(fixWidth: innerContentWidth)
               UserDef.kAlwaysExpandCandidateWindow.render(fixWidth: innerContentWidth)
               UserDef.kMinCellWidthForHorizontalMatrix.render(fixWidth: innerContentWidth)
-
             }?.boxed()
             NSView()
           }
@@ -84,6 +82,9 @@ extension SettingsPanesCocoa {
                   renderable.currentControl?
                     .action = #selector(self.performCandidateKeysSanityCheck(_:))
                 }
+            }?.boxed()
+            NSStackView.buildSection(width: innerContentWidth) {
+              UserDef.kCandidateNarrationToggleType.render(fixWidth: innerContentWidth)
             }?.boxed()
             NSView()
           }
