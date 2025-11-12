@@ -588,7 +588,7 @@
   // MARK: - NSFileDragRetrieverButton
 
   @objcMembers
-  public class NSFileDragRetrieverButton: NSButton {
+  public final class NSFileDragRetrieverButton: NSButton {
     // MARK: Lifecycle
 
     public convenience init(

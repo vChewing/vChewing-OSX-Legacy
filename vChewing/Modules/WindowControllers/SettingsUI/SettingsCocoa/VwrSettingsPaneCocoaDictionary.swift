@@ -12,7 +12,7 @@ import Foundation
 // MARK: - SettingsPanesCocoa.Dictionary
 
 extension SettingsPanesCocoa {
-  public class Dictionary: NSViewController {
+  public final class Dictionary: NSViewController {
     // MARK: Public
 
     override public func loadView() {

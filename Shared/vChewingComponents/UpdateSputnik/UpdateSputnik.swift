@@ -8,7 +8,7 @@
 
 import AppKit
 
-public class UpdateSputnik {
+public final class UpdateSputnik {
   // MARK: Lifecycle
 
   public init() {}

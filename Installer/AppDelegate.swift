@@ -37,7 +37,7 @@ public let kTranslocationRemovalDeadline: TimeInterval = 60.0
 
 @NSApplicationMain
 @objc(AppDelegate)
-class AppDelegate: NSWindowController, NSApplicationDelegate {
+final class AppDelegate: NSWindowController, NSApplicationDelegate {
   @IBOutlet
   var installButton: NSButton!
   @IBOutlet

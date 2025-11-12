@@ -4,7 +4,7 @@ import Foundation
 
 // MARK: - LineReader
 
-public class LineReader {
+public final class LineReader {
   // MARK: Lifecycle
 
   public init(

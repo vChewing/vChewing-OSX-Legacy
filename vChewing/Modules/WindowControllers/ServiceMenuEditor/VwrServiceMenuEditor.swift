@@ -11,7 +11,7 @@ import Foundation
 
 // MARK: - VwrServiceMenuEditor
 
-public class VwrServiceMenuEditor: NSViewController {
+public final class VwrServiceMenuEditor: NSViewController {
   // MARK: Lifecycle
 
   public convenience init(windowController: NSWindowController? = nil) {

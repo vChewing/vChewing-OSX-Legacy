@@ -10,7 +10,7 @@ import AppKit
 
 // MARK: - CtlAboutWindow
 
-public class CtlAboutWindow: NSWindowController, NSWindowDelegate {
+public final class CtlAboutWindow: NSWindowController, NSWindowDelegate {
   // MARK: Lifecycle
 
   public init() {
@@ -92,7 +92,7 @@ extension VwrAboutCocoa {
 
 // MARK: - VwrAboutCocoa
 
-public class VwrAboutCocoa: NSViewController {
+public final class VwrAboutCocoa: NSViewController {
   // MARK: Public
 
   override public func loadView() {

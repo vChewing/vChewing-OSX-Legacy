@@ -6,7 +6,7 @@ import Foundation
 
 // MARK: - FolderMonitor
 
-public class FolderMonitor {
+public final class FolderMonitor {
   // MARK: Lifecycle
 
   // MARK: Initializers

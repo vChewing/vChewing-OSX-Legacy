@@ -11,7 +11,7 @@ import CoreText
 
 // MARK: - TooltipUI
 
-public class TooltipUI: NSWindowController, TooltipUIProtocol {
+public final class TooltipUI: NSWindowController, TooltipUIProtocol {
   // MARK: Lifecycle
 
   public init() {

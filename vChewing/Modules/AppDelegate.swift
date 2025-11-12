@@ -11,7 +11,7 @@ import AppKit
 // MARK: - AppDelegate
 
 @objc(AppDelegate)
-public class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDelegate {
+public final class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDelegate {
   // MARK: Public
 
   public static let shared = AppDelegate()

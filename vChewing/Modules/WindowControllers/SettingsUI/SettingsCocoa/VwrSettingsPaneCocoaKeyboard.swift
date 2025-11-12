@@ -10,7 +10,7 @@ import AppKit
 import Foundation
 
 extension SettingsPanesCocoa {
-  public class Keyboard: NSViewController {
+  public final class Keyboard: NSViewController {
     // MARK: Public
 
     override public func loadView() {

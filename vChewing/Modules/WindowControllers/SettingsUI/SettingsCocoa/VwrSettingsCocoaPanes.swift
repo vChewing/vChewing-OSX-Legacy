@@ -11,7 +11,7 @@ import Foundation
 
 // MARK: - SettingsPanesCocoa
 
-public class SettingsPanesCocoa {
+public final class SettingsPanesCocoa {
   public static let windowWidth: CGFloat = 614
 
   public static var contentWidth: CGFloat { windowWidth - 65 }

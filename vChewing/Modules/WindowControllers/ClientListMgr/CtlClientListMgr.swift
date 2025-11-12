@@ -9,7 +9,7 @@
 import AppKit
 import Foundation
 
-public class CtlClientListMgr: NSWindowController {
+public final class CtlClientListMgr: NSWindowController {
   // MARK: Lifecycle
 
   public init() {

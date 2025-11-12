@@ -11,7 +11,7 @@ import CoreText
 
 // MARK: - PopupCompositionBuffer
 
-public class PopupCompositionBuffer: NSWindowController, PCBProtocol {
+public final class PopupCompositionBuffer: NSWindowController, PCBProtocol {
   // MARK: Lifecycle
 
   public init() {
@@ -218,7 +218,7 @@ public class PopupCompositionBuffer: NSWindowController, PCBProtocol {
 
 // MARK: - PopupCompositionView
 
-internal class PopupCompositionView: NSView {
+private class PopupCompositionView: NSView {
   // MARK: Lifecycle
 
   override init(frame frameRect: CGRect) {

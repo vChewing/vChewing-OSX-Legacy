@@ -10,7 +10,7 @@ import AppKit
 import Foundation
 
 extension SettingsPanesCocoa {
-  public class General: NSViewController {
+  public final class General: NSViewController {
     // MARK: Public
 
     override public func loadView() {
