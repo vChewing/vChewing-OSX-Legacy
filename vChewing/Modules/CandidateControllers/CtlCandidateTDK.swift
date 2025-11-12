@@ -68,6 +68,8 @@ public final class CtlCandidateTDK: CtlCandidate, NSWindowDelegate {
     fatalError("init(coder:) has not been implemented")
   }
 
+  deinit { observation?.invalidate() }
+
   // MARK: Public
 
   public static var currentMenu: NSMenu? {

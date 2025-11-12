@@ -7,12 +7,15 @@
 // requirements defined in MIT License.
 
 import AppKit
-import Foundation
 
 // MARK: - SettingsPanesCocoa.Phrases
 
 extension SettingsPanesCocoa {
   public class Phrases: NSViewController {
+    // MARK: Lifecycle
+
+    deinit { observation?.invalidate() }
+
     // MARK: Public
 
     override public func loadView() {

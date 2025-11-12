@@ -111,12 +111,19 @@ public class PopupCompositionBuffer: NSWindowController {
 
     Self.currentWindow = panel
     super.init(window: panel)
+
+    self.observation = Broadcaster.shared
+      .observe(\.eventForClosingAllPanels, options: [.new]) { _, _ in
+        self.hide()
+      }
   }
 
   @available(*, unavailable)
   public required init?(coder _: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
+
+  deinit { observation?.invalidate() }
 
   // MARK: Public
 
@@ -172,6 +179,9 @@ public class PopupCompositionBuffer: NSWindowController {
 
   private let compositionView: PopupCompositionView
   private let visualEffectView: NSView?
+
+  @objc
+  private var observation: NSKeyValueObservation?
 
   private func set(windowOrigin: CGPoint) {
     guard let window = window else { return }

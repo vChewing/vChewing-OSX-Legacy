@@ -9,9 +9,9 @@
 import AppKit
 import CoreText
 
-// MARK: - TooltipUI_LateCocoa
+// MARK: - TooltipUI
 
-public class TooltipUI_LateCocoa: NSWindowController, TooltipUIProtocol {
+public class TooltipUI: NSWindowController, TooltipUIProtocol {
   // MARK: Lifecycle
 
   public init() {
@@ -59,6 +59,10 @@ public class TooltipUI_LateCocoa: NSWindowController, TooltipUIProtocol {
   @available(*, unavailable)
   public required init?(coder _: NSCoder) {
     fatalError("init(coder:) has not been implemented")
+  }
+
+  deinit {
+    observation?.invalidate()
   }
 
   // MARK: Public

@@ -37,7 +37,7 @@
 		5B60CEA629B8E7D400A1AAC7 /* UserPhraseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B60CEA529B8E7D400A1AAC7 /* UserPhraseImpl.swift */; };
 		5B60CEA829B8E7DB00A1AAC7 /* LMMgr_Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B60CEA729B8E7DB00A1AAC7 /* LMMgr_Utilities.swift */; };
 		5B6420012ABB3BA600E1B7F6 /* TooltipUIProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6420002ABB3BA600E1B7F6 /* TooltipUIProtocol.swift */; };
-		5B6420032ABB3BA600E1B7F6 /* TooltipUI_LateCocoa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B641FFF2ABB3BA600E1B7F6 /* TooltipUI_LateCocoa.swift */; };
+		5B6420032ABB3BA600E1B7F6 /* TooltipUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B641FFF2ABB3BA600E1B7F6 /* TooltipUI.swift */; };
 		5B6815372B46EF86004A8A1A /* SpeechSputnik.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6815362B46EF86004A8A1A /* SpeechSputnik.swift */; };
 		5B693A302E9B8AE200BF4B53 /* Tekkon_PinyinTrie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B693A2F2E9B8AE200BF4B53 /* Tekkon_PinyinTrie.swift */; };
 		5B69C36B2B7406DC006FBD09 /* VwrClientListMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B69C36A2B7406DC006FBD09 /* VwrClientListMgr.swift */; };
@@ -247,7 +247,7 @@
 		5B60CEA329B8E7CA00A1AAC7 /* LMMgr_PhraseEditorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMMgr_PhraseEditorDelegate.swift; sourceTree = "<group>"; };
 		5B60CEA529B8E7D400A1AAC7 /* UserPhraseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPhraseImpl.swift; sourceTree = "<group>"; };
 		5B60CEA729B8E7DB00A1AAC7 /* LMMgr_Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMMgr_Utilities.swift; sourceTree = "<group>"; };
-		5B641FFF2ABB3BA600E1B7F6 /* TooltipUI_LateCocoa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TooltipUI_LateCocoa.swift; sourceTree = "<group>"; };
+		5B641FFF2ABB3BA600E1B7F6 /* TooltipUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TooltipUI.swift; sourceTree = "<group>"; };
 		5B6420002ABB3BA600E1B7F6 /* TooltipUIProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TooltipUIProtocol.swift; sourceTree = "<group>"; };
 		5B6815362B46EF86004A8A1A /* SpeechSputnik.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechSputnik.swift; sourceTree = "<group>"; };
 		5B693A2F2E9B8AE200BF4B53 /* Tekkon_PinyinTrie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tekkon_PinyinTrie.swift; sourceTree = "<group>"; };
@@ -879,7 +879,7 @@
 		5BE5A55D294E0EF500EFA49C /* TooltipUI */ = {
 			isa = PBXGroup;
 			children = (
-				5B641FFF2ABB3BA600E1B7F6 /* TooltipUI_LateCocoa.swift */,
+				5B641FFF2ABB3BA600E1B7F6 /* TooltipUI.swift */,
 				5B6420002ABB3BA600E1B7F6 /* TooltipUIProtocol.swift */,
 			);
 			path = TooltipUI;
@@ -1144,7 +1144,7 @@
 				5BE5A500294E092900EFA49C /* AppKitImpl_NSWindowController.swift in Sources */,
 				5B09126C2B134927000166DB /* LMInstantiator_SQLExtension.swift in Sources */,
 				5B6F7ADD2B8CEC72001596AF /* CandidateTextService.swift in Sources */,
-				5B6420032ABB3BA600E1B7F6 /* TooltipUI_LateCocoa.swift in Sources */,
+				5B6420032ABB3BA600E1B7F6 /* TooltipUI.swift in Sources */,
 				5B2F3B522AF24FD500225501 /* LMMgr_KimoDataParser.swift in Sources */,
 				5B60CEA429B8E7CA00A1AAC7 /* LMMgr_PhraseEditorDelegate.swift in Sources */,
 				5B81BD292B729AE90092819A /* VwrSettingsPaneCocoaPhrases.swift in Sources */,
