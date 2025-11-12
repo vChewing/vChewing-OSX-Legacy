@@ -7,7 +7,6 @@
 // requirements defined in MIT License.
 
 import AppKit
-import Foundation
 
 extension SettingsPanesCocoa {
   public class Behavior: NSViewController {
@@ -119,10 +118,7 @@ extension SettingsPanesCocoa {
     @IBAction
     func syncShiftKeyUpChecker(_: NSControl) {
       print("Syncing ShiftKeyUpChecker configurations.")
-      InputSession.theShiftKeyDetector.toggleWithLShift = PrefMgr.shared
-        .togglingAlphanumericalModeWithLShift
-      InputSession.theShiftKeyDetector.toggleWithRShift = PrefMgr.shared
-        .togglingAlphanumericalModeWithRShift
+      SessionUI.shared.resyncShiftKeyUpCheckerSettings()
     }
 
     @IBAction

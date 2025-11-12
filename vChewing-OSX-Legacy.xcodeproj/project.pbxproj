@@ -36,7 +36,7 @@
 		5B60CEA429B8E7CA00A1AAC7 /* LMMgr_PhraseEditorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B60CEA329B8E7CA00A1AAC7 /* LMMgr_PhraseEditorDelegate.swift */; };
 		5B60CEA629B8E7D400A1AAC7 /* UserPhraseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B60CEA529B8E7D400A1AAC7 /* UserPhraseImpl.swift */; };
 		5B60CEA829B8E7DB00A1AAC7 /* LMMgr_Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B60CEA729B8E7DB00A1AAC7 /* LMMgr_Utilities.swift */; };
-		5B6420012ABB3BA600E1B7F6 /* TooltipUIProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6420002ABB3BA600E1B7F6 /* TooltipUIProtocol.swift */; };
+		5B6420012ABB3BA600E1B7F6 /* SessionUIProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6420002ABB3BA600E1B7F6 /* SessionUIProtocol.swift */; };
 		5B6420032ABB3BA600E1B7F6 /* TooltipUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B641FFF2ABB3BA600E1B7F6 /* TooltipUI.swift */; };
 		5B6815372B46EF86004A8A1A /* SpeechSputnik.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6815362B46EF86004A8A1A /* SpeechSputnik.swift */; };
 		5B693A302E9B8AE200BF4B53 /* Tekkon_PinyinTrie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B693A2F2E9B8AE200BF4B53 /* Tekkon_PinyinTrie.swift */; };
@@ -101,6 +101,7 @@
 		5B9939ED2B8B44B000979BBC /* InputHandler_MiscCommissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9939EC2B8B44B000979BBC /* InputHandler_MiscCommissions.swift */; };
 		5BA379B72B8278DA00D82E16 /* LMInstantiator_POMRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA379B62B8278DA00D82E16 /* LMInstantiator_POMRepresentable.swift */; };
 		5BA631862B13617800974241 /* sqlite3.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA631622B135E9A00974241 /* sqlite3.m */; };
+		5BA7437E2EC4EC4300C977DA /* SessionUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA7437D2EC4EC4300C977DA /* SessionUI.swift */; };
 		5BACBCDF295093A60078CAB3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BACBCDE295093A60078CAB3 /* AppDelegate.swift */; };
 		5BACBCE4295093A80078CAB3 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BACBCE2295093A80078CAB3 /* MainMenu.xib */; };
 		5BACBCF9295094CB0078CAB3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5BACBCF7295094CB0078CAB3 /* InfoPlist.strings */; };
@@ -248,7 +249,7 @@
 		5B60CEA529B8E7D400A1AAC7 /* UserPhraseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPhraseImpl.swift; sourceTree = "<group>"; };
 		5B60CEA729B8E7DB00A1AAC7 /* LMMgr_Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMMgr_Utilities.swift; sourceTree = "<group>"; };
 		5B641FFF2ABB3BA600E1B7F6 /* TooltipUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TooltipUI.swift; sourceTree = "<group>"; };
-		5B6420002ABB3BA600E1B7F6 /* TooltipUIProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TooltipUIProtocol.swift; sourceTree = "<group>"; };
+		5B6420002ABB3BA600E1B7F6 /* SessionUIProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionUIProtocol.swift; sourceTree = "<group>"; };
 		5B6815362B46EF86004A8A1A /* SpeechSputnik.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechSputnik.swift; sourceTree = "<group>"; };
 		5B693A2F2E9B8AE200BF4B53 /* Tekkon_PinyinTrie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tekkon_PinyinTrie.swift; sourceTree = "<group>"; };
 		5B69C36A2B7406DC006FBD09 /* VwrClientListMgr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VwrClientListMgr.swift; sourceTree = "<group>"; };
@@ -308,6 +309,7 @@
 		5BA379B62B8278DA00D82E16 /* LMInstantiator_POMRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMInstantiator_POMRepresentable.swift; sourceTree = "<group>"; };
 		5BA631622B135E9A00974241 /* sqlite3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = sqlite3.m; sourceTree = "<group>"; };
 		5BA631642B135E9A00974241 /* sqlite3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sqlite3.h; sourceTree = "<group>"; };
+		5BA7437D2EC4EC4300C977DA /* SessionUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionUI.swift; sourceTree = "<group>"; };
 		5BACBCDC295093A60078CAB3 /* vChewingInstallerLegacy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vChewingInstallerLegacy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BACBCDE295093A60078CAB3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5BACBCE3295093A80078CAB3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
@@ -541,6 +543,7 @@
 				5BCDA5142D50C45500571961 /* InputSession_HandleStates.swift */,
 				5B751DC0294EE57C0031CF70 /* SessionCtl.swift */,
 				5B751DC8294EE57D0031CF70 /* SessionCtl_Menu.swift */,
+				5BA7437D2EC4EC4300C977DA /* SessionUI.swift */,
 			);
 			path = SessionController;
 			sourceTree = "<group>";
@@ -866,6 +869,7 @@
 				5BE5A565294E111E00EFA49C /* PrefMgr_Utilities.swift */,
 				5BE5A537294E0CEC00EFA49C /* PrefMgrProtocol.swift */,
 				5BCA4FAC2E9659F700441688 /* SessionCoreProtocol.swift */,
+				5B6420002ABB3BA600E1B7F6 /* SessionUIProtocol.swift */,
 				5BE5A538294E0CEC00EFA49C /* Shared.swift */,
 				5B70C0A82EA427C700BC8273 /* SpeechNarratorProtocol.swift */,
 				5B6815362B46EF86004A8A1A /* SpeechSputnik.swift */,
@@ -880,7 +884,6 @@
 			isa = PBXGroup;
 			children = (
 				5B641FFF2ABB3BA600E1B7F6 /* TooltipUI.swift */,
-				5B6420002ABB3BA600E1B7F6 /* TooltipUIProtocol.swift */,
 			);
 			path = TooltipUI;
 			sourceTree = "<group>";
@@ -1260,7 +1263,8 @@
 				5BE5A53E294E0CEF00EFA49C /* Shared.swift in Sources */,
 				5BCDA50F2D50C3DC00571961 /* InputHandler.swift in Sources */,
 				5B0422082D4F7F2B00DFAA15 /* IMKTextInputImpl.swift in Sources */,
-				5B6420012ABB3BA600E1B7F6 /* TooltipUIProtocol.swift in Sources */,
+				5B6420012ABB3BA600E1B7F6 /* SessionUIProtocol.swift in Sources */,
+				5BA7437E2EC4EC4300C977DA /* SessionUI.swift in Sources */,
 				5BE5A52B294E0C2B00EFA49C /* lmPlainBopomofo.swift in Sources */,
 				5B70C0A92EA427C700BC8273 /* SpeechNarratorProtocol.swift in Sources */,
 				5B1C28E12B8F09DF00968E74 /* CandidateTextService_SelectorImpl.swift in Sources */,

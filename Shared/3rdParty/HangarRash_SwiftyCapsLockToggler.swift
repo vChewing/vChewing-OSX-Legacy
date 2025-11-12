@@ -5,8 +5,26 @@
 // #import <IOKit/IOKitLib.h>
 // #import <IOKit/hid/IOHIDBase.h>
 
-public enum CapsLockToggler {
-  public static var isOn: Bool {
+public enum CapsLockToggler: CapsLockTogglerProtocol {
+  case shared
+
+  // MARK: Public
+
+  public var isOn: Bool {
+    get {
+      Self.isTurnedOn
+    }
+    set {
+      switch (Self.isTurnedOn, newValue) {
+      case (false, false), (true, true): return
+      default: Self.toggle()
+      }
+    }
+  }
+
+  // MARK: Private
+
+  private static var isTurnedOn: Bool {
     var state = false
     try? IOKit.handleHIDSystemService { ioConnect in
       IOHIDGetModifierLockState(ioConnect, Int32(kIOHIDCapsLockState), &state)
@@ -14,7 +32,7 @@ public enum CapsLockToggler {
     return state
   }
 
-  public static func toggle() {
+  private static func toggle() {
     try? IOKit.handleHIDSystemService { ioConnect in
       var state = false
       IOHIDGetModifierLockState(ioConnect, Int32(kIOHIDCapsLockState), &state)
@@ -23,7 +41,7 @@ public enum CapsLockToggler {
     }
   }
 
-  public static func turnOff() {
+  private static func turnOff() {
     try? IOKit.handleHIDSystemService { ioConnect in
       IOHIDSetModifierLockState(ioConnect, Int32(kIOHIDCapsLockState), false)
     }

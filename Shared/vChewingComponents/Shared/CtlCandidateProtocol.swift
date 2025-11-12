@@ -35,12 +35,11 @@ public protocol CtlCandidateDelegateCore: AnyObject {
 
 // MARK: - CtlCandidateProtocolCore
 
-public protocol CtlCandidateProtocolCore {
+public protocol CtlCandidateProtocolCore: AnyObject {
   var tooltip: String { get set }
   var reverseLookupResult: [String] { get set }
   var locale: String { get set }
   var delegate: CtlCandidateDelegateCore? { get set }
-
   var highlightedIndex: Int { get set }
   var visible: Bool { get set }
   var windowTopLeftPoint: CGPoint { get set }
