@@ -6,7 +6,6 @@
 // marks, or product names of Contributor, except as required to fulfill notice
 // requirements defined in MIT License.
 
-import Foundation
 import InputMethodKit
 
 // MARK: - IMEState
@@ -36,26 +35,6 @@ public struct IMEState: IMEStateProtocol {
   ) {
     self.data = data
     self.type = type
-  }
-
-  /// 內部專用初期化函式，僅用於生成「有輸入內容」的狀態。
-  /// - Parameters:
-  ///   - displayTextSegments: 用以顯示的文本的字詞字串陣列，其中包含正在輸入的讀音或字根。
-  ///   - cursor: 要顯示的游標（UTF8）。
-  fileprivate init(displayTextSegments: [String], cursor: Int) {
-    // 注意資料的設定順序，一定得先設定 displayTextSegments。
-    data.displayTextSegments = displayTextSegments.map {
-      if !InputSession.isVerticalTyping { return $0 }
-      guard PrefMgr().hardenVerticalPunctuations else { return $0 }
-      var neta = $0
-      ChineseConverter.hardenVerticalPunctuations(
-        target: &neta,
-        convert: InputSession.isVerticalTyping
-      )
-      return neta
-    }
-    data.cursor = cursor
-    data.marker = cursor
   }
 
   /// 泛用初期化函式。
@@ -179,17 +158,17 @@ extension IMEStateProtocol {
   public var markedTargetIsCurrentlyFiltered: Bool { data.markedTargetIsCurrentlyFiltered }
   public var displayedTextConverted: String { data.displayedTextConverted }
 
-  public func attributedString(for session: IMKInputControllerProtocol) -> NSAttributedString {
+  public var attributedString: NSAttributedString {
     switch type {
-    case .ofMarking: return data.attributedStringMarking(for: session)
-    case .ofCandidates where cursor != marker: return data.attributedStringMarking(for: session)
+    case .ofMarking: return data.attributedStringMarking
+    case .ofCandidates where cursor != marker: return data.attributedStringMarking
     case .ofCandidates where cursor == marker: break
-    case .ofAssociates: return data.attributedStringPlaceholder(for: session)
+    case .ofAssociates: return data.attributedStringPlaceholder
     case .ofSymbolTable where displayedText.isEmpty || node.containsCandidateServices:
-      return data.attributedStringPlaceholder(for: session)
+      return data.attributedStringPlaceholder
     case .ofSymbolTable where !displayedText.isEmpty: break
     default: break
     }
-    return data.attributedStringNormal(for: session)
+    return data.attributedStringNormal
   }
 }
