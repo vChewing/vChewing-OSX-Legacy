@@ -43,7 +43,6 @@
 		5B69C36B2B7406DC006FBD09 /* VwrClientListMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B69C36A2B7406DC006FBD09 /* VwrClientListMgr.swift */; };
 		5B69CA6A295DDC58005211BB /* RangeParserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B69CA69295DDC58005211BB /* RangeParserAPI.swift */; };
 		5B6F7ADD2B8CEC72001596AF /* CandidateTextService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6F7ADC2B8CEC72001596AF /* CandidateTextService.swift */; };
-		5B70C0A72EA4279D00BC8273 /* CtlCandidateProtocolImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B70C0A62EA4279D00BC8273 /* CtlCandidateProtocolImpl.swift */; };
 		5B70C0A92EA427C700BC8273 /* SpeechNarratorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B70C0A82EA427C700BC8273 /* SpeechNarratorProtocol.swift */; };
 		5B70C0AB2EA428B500BC8273 /* FileOpenMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B70C0AA2EA428B500BC8273 /* FileOpenMethod.swift */; };
 		5B70C0AD2EA428C000BC8273 /* IMEApp_DarwinImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B70C0AC2EA428C000BC8273 /* IMEApp_DarwinImpl.swift */; };
@@ -255,7 +254,6 @@
 		5B69C36A2B7406DC006FBD09 /* VwrClientListMgr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VwrClientListMgr.swift; sourceTree = "<group>"; };
 		5B69CA69295DDC58005211BB /* RangeParserAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RangeParserAPI.swift; sourceTree = "<group>"; };
 		5B6F7ADC2B8CEC72001596AF /* CandidateTextService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandidateTextService.swift; sourceTree = "<group>"; };
-		5B70C0A62EA4279D00BC8273 /* CtlCandidateProtocolImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CtlCandidateProtocolImpl.swift; sourceTree = "<group>"; };
 		5B70C0A82EA427C700BC8273 /* SpeechNarratorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechNarratorProtocol.swift; sourceTree = "<group>"; };
 		5B70C0AA2EA428B500BC8273 /* FileOpenMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileOpenMethod.swift; sourceTree = "<group>"; };
 		5B70C0AC2EA428C000BC8273 /* IMEApp_DarwinImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMEApp_DarwinImpl.swift; sourceTree = "<group>"; };
@@ -855,7 +853,6 @@
 				5B6F7ADC2B8CEC72001596AF /* CandidateTextService.swift */,
 				5B3689042E99311E00B3DA69 /* ChineseConverter.swift */,
 				5BE5A53B294E0CEC00EFA49C /* CtlCandidateProtocol.swift */,
-				5B70C0A62EA4279D00BC8273 /* CtlCandidateProtocolImpl.swift */,
 				5B70C0AA2EA428B500BC8273 /* FileOpenMethod.swift */,
 				5BF120A02B8C8E1700C83A24 /* IMEApp.swift */,
 				5B70C0AC2EA428C000BC8273 /* IMEApp_DarwinImpl.swift */,
@@ -1217,7 +1214,6 @@
 				5BE5A541294E0CEF00EFA49C /* InputSignalProtocol.swift in Sources */,
 				5B81BD242B729AE90092819A /* VwrSettingsPaneCocoaBehavior.swift in Sources */,
 				5B81BD2B2B729AE90092819A /* VwrSettingsPaneCocoaOutput.swift in Sources */,
-				5B70C0A72EA4279D00BC8273 /* CtlCandidateProtocolImpl.swift in Sources */,
 				5B79A3FC2BB850E6003F449E /* LMInstantiator_UserDictionarySummarized.swift in Sources */,
 				5B55ACAD2B5A254F009E2F54 /* KBEvent.swift in Sources */,
 				5B785EEB2B78FC680006413D /* InputHandler_TypingMethod.swift in Sources */,
