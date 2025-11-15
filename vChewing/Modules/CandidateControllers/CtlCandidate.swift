@@ -51,8 +51,8 @@ open class CtlCandidate: NSWindowController, CtlCandidateProtocol {
     }
     set {
       asyncOnMain { [weak self] in
-        guard let self = self else { return }
-        self.set(windowTopLeftPoint: newValue, bottomOutOfScreenAdjustmentHeight: 0, useGCD: true)
+        guard let this = self else { return }
+        this.set(windowTopLeftPoint: newValue, bottomOutOfScreenAdjustmentHeight: 0, useGCD: true)
       }
     }
   }
@@ -64,8 +64,8 @@ open class CtlCandidate: NSWindowController, CtlCandidateProtocol {
         delegate.candidatePairHighlightChanged(at: visible ? 0 : nil)
       }
       asyncOnMain { [weak self] in
-        guard let self = self else { return }
-        _ = self.visible ? self.window?.orderFront(self) : self.window?.orderOut(self)
+        guard let this = self else { return }
+        _ = this.visible ? this.window?.orderFront(this) : this.window?.orderOut(this)
       }
     }
   }

@@ -57,11 +57,11 @@ public final class UpdateSputnik {
     let task = URLSession.shared.dataTask(with: request) { data, _, error in
       if let error = error {
         asyncOnMain { [weak self] in
-          guard let self = self else { return }
-          if !self.silentMode {
-            self.showError(message: error.localizedDescription)
+          guard let this = self else { return }
+          if !this.silentMode {
+            this.showError(message: error.localizedDescription)
           }
-          self.currentTask = nil
+          this.currentTask = nil
         }
         return
       }
@@ -87,9 +87,9 @@ public final class UpdateSputnik {
 
     guard let plist = plist else {
       asyncOnMain { [weak self] in
-        guard let self = self else { return }
-        self.showError(message: NSLocalizedString("Plist downloaded is nil.", comment: ""))
-        self.currentTask = nil
+        guard let this = self else { return }
+        this.showError(message: NSLocalizedString("Plist downloaded is nil.", comment: ""))
+        this.currentTask = nil
       }
       return
     }
@@ -100,12 +100,12 @@ public final class UpdateSputnik {
           let strRemoteVersionShortened = plist["CFBundleShortVersionString"] as? String
     else {
       asyncOnMain { [weak self] in
-        guard let self = self else { return }
-        self.showError(message: NSLocalizedString(
+        guard let this = self else { return }
+        this.showError(message: NSLocalizedString(
           "Plist downloaded cannot be parsed correctly.",
           comment: ""
         ))
-        self.currentTask = nil
+        this.currentTask = nil
       }
       return
     }
@@ -194,13 +194,13 @@ public final class UpdateSputnik {
   private var busy: Bool { currentTask != nil }
   private var data: Data? {
     didSet {
-      if let data = data, !silentMode {
+      if let data = data {
         asyncOnMain { [weak self] in
-          guard let self = self else { return }
-          if !self.silentMode {
-            self.dataDidSet(data: data)
+          guard let this = self else { return }
+          if !this.silentMode {
+            this.dataDidSet(data: data)
           }
-          self.currentTask = nil
+          this.currentTask = nil
         }
       }
     }
