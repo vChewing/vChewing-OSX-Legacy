@@ -56,6 +56,7 @@ public final class VwrCandidateTDKAppKit: NSView {
 
   // MARK: Private
 
+  private let prefs = PrefMgr()
   private var dimension: CGSize = .zero
 }
 
@@ -81,6 +82,11 @@ extension VwrCandidateTDKAppKit {
       hsba.alpha = alphaRatio
       themeColor = hsba.nsColor
       CandidatePool.shitCell.clientThemeColor = themeColor
+    } else {
+      CandidatePool.shitCell.clientThemeColor = prefs.respectClientAccentColor
+        ? NSColor.accentColor.withAlphaComponent(alphaRatio)
+        : nil
+      themeColor = CandidatePool.shitCell.clientThemeColor
     }
     // 先塗底色
     if #available(macOS 10.13, *) {
