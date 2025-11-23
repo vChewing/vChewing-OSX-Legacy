@@ -231,7 +231,6 @@ extension InputHandlerProtocol {
       assembler.marker = currentMarker
     }
     var theState = session.state
-
     consolidateNode(
       candidate: highlightedPair,
       respectCursorPushing: false,
@@ -304,6 +303,10 @@ extension InputHandlerProtocol {
     let atRearEdge = assembler.isCursorAtEdge(direction: .rear)
     let delta = ((atFrontEdge || !prefs.useRearCursorMode) && !atRearEdge ? 1 : 0)
     return assembler.cursor - delta
+  }
+
+  public func activePOMCandidateValues() -> [String] {
+    retrievePOMSuggestions(apply: false).map { $0.1.value }
   }
 
   // MARK: - Extracted methods and functions (Tekkon).
@@ -541,10 +544,6 @@ extension InputHandlerProtocol {
     }
     arrResult = arrResult.stableSort { $0.1.score > $1.1.score }
     return arrResult
-  }
-
-  public func activePOMCandidateValues() -> [String] {
-    retrievePOMSuggestions(apply: false).map { $0.1.value }
   }
 
   func letComposerAndCalligrapherDoBackSpace() {
