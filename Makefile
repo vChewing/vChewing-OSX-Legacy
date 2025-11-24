@@ -104,3 +104,14 @@ gc:
 
 test:
 	xcodebuild -project vChewing-OSX-Legacy.xcodeproj -scheme vChewing -configuration Debug test
+
+.PHONY: gitrelease
+
+gitrelease:
+	@echo "Running git release script for vChewing-OSX-legacy..."
+	@chmod +x ./Scripts/vchewing-legacy-update.swift || true
+	@if [ "$(DRY_RUN)" = "true" ]; then \
+		./Scripts/vchewing-legacy-update.swift --path . --dry-run; \
+	else \
+		./Scripts/vchewing-legacy-update.swift --path .; \
+	fi
