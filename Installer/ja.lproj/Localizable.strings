@@ -18,7 +18,7 @@
 "Stopping the old version. This may take up to one minute…" = "古いバージョンを強制停止中。１分かかると恐れ入りますが……";
 "The current installer only installs version suitable for macOS 10.9 Mavericks, and it theoreotically works with macOS 10.10 Yosemite - macOS 12 Monterey. Meanwhile, the mainstream releases is made available for most recent macOS release." = "今の実装アプリで実装するバージョンは、macOS 10.9 のために作ったバージョンです。多分 macOS 10.10 から macOS 12 Monterey までの macOS バージョンでも使えます。一方、このアプリの主流発行版は、そのあとの macOS バージョンのために開発したものである。";
 "Upgrade" = "承認と更新";
-"vChewing Input Method" = "威注音入力アプリ";
-"vChewing is ready to use. \n\nPlease relogin if this is the first time you install it in this user account." = "威注音入力、利用準備完了。\n\nこのシステムユーザーアカウントで初めて実装した場合、再ログインしてください。";
-"vChewing is upgraded, but please log out or reboot for the new version to be fully functional." = "威注音入力の更新は実装完了しましたが、うまく作動できるために、このパソコンの再起動および再ログインが必要だと恐れ入ります。";
+"vChewing Input Method" = "唯音入力アプリ";
+"vChewing is ready to use. \n\nPlease relogin if this is the first time you install it in this user account." = "唯音入力、利用準備完了。\n\nこのシステムユーザーアカウントで初めて実装した場合、再ログインしてください。";
+"vChewing is upgraded, but please log out or reboot for the new version to be fully functional." = "唯音入力の更新は実装完了しましたが、うまく作動できるために、このパソコンの再起動および再ログインが必要だと恐れ入ります。";
 "Warning" = "お知らせ";

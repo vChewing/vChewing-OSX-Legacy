@@ -2,7 +2,7 @@
 
 此處置放了取自 Xcode 14.2 的 LibARCLite。
 
-如果您使用了自 Xcode 14.3 開始的新版 Xcode 的話，只有給您的 Xcode 打上 LibARCLite 修補、才可以將威注音 Aqua 紀念版建置給比 macOS 10.13 更早的系統版本。修補方法就是將這個檔案放在下述目錄：
+如果您使用了自 Xcode 14.3 開始的新版 Xcode 的話，只有給您的 Xcode 打上 LibARCLite 修補、才可以將唯音 Aqua 紀念版建置給比 macOS 10.13 更早的系統版本。修補方法就是將這個檔案放在下述目錄：
 ```
 /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/arc
 ```

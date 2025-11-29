@@ -18,7 +18,7 @@
 "Stopping the old version. This may take up to one minute…" = "正在试图结束正在运行的旧版输入法，大概需要一分钟…";
 "The current installer only installs version suitable for macOS 10.9 Mavericks, and it theoreotically works with macOS 10.10 Yosemite - macOS 12 Monterey. Meanwhile, the mainstream releases is made available for most recent macOS release." = "当前的安装包所安装的版本是针对 macOS 10.9 特供的版本，或许也可以在 macOS 10.10 至 macOS 12 Montery 这几个版本的系统内使用。而主流版本则针对最新的几版 macOS 开发。";
 "Upgrade" = "接受并升级";
-"vChewing Input Method" = "威注音输入法";
-"vChewing is ready to use. \n\nPlease relogin if this is the first time you install it in this user account." = "威注音输入法安装成功。\n\n若是在當前使用者帳戶內首次安裝的話，請重新登入。";
+"vChewing Input Method" = "唯音输入法";
+"vChewing is ready to use. \n\nPlease relogin if this is the first time you install it in this user account." = "唯音输入法安装成功。\n\n若是在當前使用者帳戶內首次安裝的話，請重新登入。";
 "vChewing is upgraded, but please log out or reboot for the new version to be fully functional." = "vChewing 安装完成，但建议您登出或重新开机，以便顺利使用新版。";
 "Warning" = "安装不完整";

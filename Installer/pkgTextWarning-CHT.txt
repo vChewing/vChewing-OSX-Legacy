@@ -8,4 +8,4 @@
     installer -pkg ~/Downloads/vChewing-macOS-?.?.?-unsigned.pkg -target CurrentUserHomeDirectory
 
 順頌時祺
-威注音輸入法
+唯音輸入法
