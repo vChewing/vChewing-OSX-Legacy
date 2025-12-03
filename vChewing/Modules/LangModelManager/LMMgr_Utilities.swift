@@ -237,6 +237,9 @@ extension LMMgr {
   // MARK: - 重設使用者語彙檔案目錄
 
   public static func resetSpecifiedUserDataFolder() {
+    // 在重設前，請確保先停止所有先前啟動的 security-scoped 存取（避免殘留權限）
+    BookmarkManager.shared.stopAllSecurityScopedAccesses()
+
     UserDefaults.current.set(
       dataFolderPath(isDefaultFolder: true),
       forKey: UserDef.kUserDataFolderSpecified.rawValue
@@ -245,6 +248,9 @@ extension LMMgr {
   }
 
   public static func resetCassettePath() {
+    // 停止先前的 security-scope 存取，以避免權限或資源洩漏
+    BookmarkManager.shared.stopAllSecurityScopedAccesses()
+
     UserDefaults.current.set("", forKey: UserDef.kCassettePath.rawValue)
     Self.loadCassetteData()
   }
