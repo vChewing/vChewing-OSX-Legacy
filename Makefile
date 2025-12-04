@@ -109,9 +109,9 @@ test:
 
 gitrelease:
 	@echo "Running git release script for vChewing-OSX-legacy..."
-	@chmod +x ./Scripts/vchewing-legacy-update.swift || true
+	@chmod +x ./Scripts/vchewing-update.swift || true
 	@if [ "$(DRY_RUN)" = "true" ]; then \
-		./Scripts/vchewing-legacy-update.swift --path . --dry-run; \
+		./Scripts/vchewing-update.swift --path . --dry-run; \
 	else \
-		./Scripts/vchewing-legacy-update.swift --path .; \
+		./Scripts/vchewing-update.swift --path .; \
 	fi
