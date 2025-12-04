@@ -112,7 +112,11 @@ extension AppDelegate {
       endAppWithDelay()
     }
 
-    _ = try? shell("/usr/bin/xattr -drs com.apple.quarantine \(kTargetPartialPath)")
+    // 忽略錯誤，維持原有行為
+    _ = try? exec(
+      "/usr/bin/xattr",
+      args: ["-drs", "com.apple.quarantine", kTargetPartialPath]
+    )
 
     guard let theBundle = Bundle(url: imeURLInstalled),
           let imeIdentifier = theBundle.bundleIdentifier

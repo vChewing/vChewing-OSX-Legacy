@@ -186,17 +186,23 @@ final class AppDelegate: NSWindowController, NSApplicationDelegate {
     NSApp.terminate(self)
   }
 
-  func shell(_ command: String) throws -> String {
+  /// 安全地以可執行檔路徑與參數呼叫外部程式，避免使用 shell -c 的命令注入風險。
+  /// - Parameters:
+  ///   - executable: 可執行檔完整路徑（ex: `/usr/bin/xattr`）
+  ///   - args: 傳遞給程式的 arguments（不透過 shell 字串拼接）
+  /// - Returns: 程式輸出的標準輸出／標準錯誤合併
+  /// - Throws: 若無法啟動程式或程式執行失敗時拋出錯誤
+  func exec(_ executable: String, args: [String]) throws -> String {
     let task = Process()
     let pipe = Pipe()
 
     task.standardOutput = pipe
     task.standardError = pipe
-    task.arguments = ["-c", command]
+    task.arguments = args
     if #available(macOS 10.13, *) {
-      task.executableURL = URL(fileURLWithPath: "/bin/zsh")
+      task.executableURL = URL(fileURLWithPath: executable)
     } else {
-      task.launchPath = "/bin/zsh"
+      task.launchPath = executable
     }
     task.standardInput = nil
 
@@ -212,9 +218,7 @@ final class AppDelegate: NSWindowController, NSApplicationDelegate {
       if let data = data, let str = String(data: data, encoding: .utf8) {
         output.append(str)
       }
-    } catch {
-      return ""
-    }
+    } catch { return "" }
     return output
   }
 }
