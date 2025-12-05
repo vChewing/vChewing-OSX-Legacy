@@ -187,6 +187,8 @@
 		5BEE11F92D46755F0001EF09 /* 9_SwiftImpl_Internals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEE11F82D46755F0001EF09 /* 9_SwiftImpl_Internals.swift */; };
 		5BF1209F2B8C8D7E00C83A24 /* PrefMgr_Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF1209E2B8C8D7E00C83A24 /* PrefMgr_Singleton.swift */; };
 		5BF120A12B8C8E1700C83A24 /* IMEApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF120A02B8C8E1700C83A24 /* IMEApp.swift */; };
+		5BF5AD872EE3661700121ED1 /* PhonabetTypewriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF5AD862EE3661700121ED1 /* PhonabetTypewriter.swift */; };
+		5BF5AD892EE3661B00121ED1 /* TypewriterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF5AD882EE3661B00121ED1 /* TypewriterProtocol.swift */; };
 		5BF5BAE1294DFFC9006011AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF5BAE0294DFFC9006011AD /* AppDelegate.swift */; };
 		5BF5BAE3294DFFCA006011AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BF5BAE2294DFFCA006011AD /* Assets.xcassets */; };
 		5BF5BAE6294DFFCA006011AD /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BF5BAE4294DFFCA006011AD /* MainMenu.xib */; };
@@ -414,6 +416,8 @@
 		5BEE11F82D46755F0001EF09 /* 9_SwiftImpl_Internals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = 9_SwiftImpl_Internals.swift; sourceTree = "<group>"; };
 		5BF1209E2B8C8D7E00C83A24 /* PrefMgr_Singleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefMgr_Singleton.swift; sourceTree = "<group>"; };
 		5BF120A02B8C8E1700C83A24 /* IMEApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMEApp.swift; sourceTree = "<group>"; };
+		5BF5AD862EE3661700121ED1 /* PhonabetTypewriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhonabetTypewriter.swift; sourceTree = "<group>"; };
+		5BF5AD882EE3661B00121ED1 /* TypewriterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypewriterProtocol.swift; sourceTree = "<group>"; };
 		5BF5BADD294DFFC9006011AD /* vChewing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vChewing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BF5BAE0294DFFC9006011AD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5BF5BAE2294DFFCA006011AD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -443,6 +447,7 @@
 		5B2CD0042E9A18EB00F6A9FE /* Typewriter */ = {
 			isa = PBXGroup;
 			children = (
+				5BF5AD852EE3660C00121ED1 /* Typewriter */,
 				5BC783DD2EBEF0FB00AE14E2 /* InputHandler */,
 				5B5319212E9A918700570E96 /* CodePointDecoder.swift */,
 				5BC783DB2EBEF02F00AE14E2 /* RomanNumeralConverter.swift */,
@@ -923,6 +928,15 @@
 			path = SoundFiles;
 			sourceTree = "<group>";
 		};
+		5BF5AD852EE3660C00121ED1 /* Typewriter */ = {
+			isa = PBXGroup;
+			children = (
+				5BF5AD882EE3661B00121ED1 /* TypewriterProtocol.swift */,
+				5BF5AD862EE3661700121ED1 /* PhonabetTypewriter.swift */,
+			);
+			path = Typewriter;
+			sourceTree = "<group>";
+		};
 		5BF5BAD4294DFFC9006011AD = {
 			isa = PBXGroup;
 			children = (
@@ -1164,6 +1178,7 @@
 				5BE5A4FA294E082800EFA49C /* NSEventImpl.swift in Sources */,
 				5BE5A530294E0C2E00EFA49C /* HotenkaChineseConverter.swift in Sources */,
 				5B751DCE294EE57D0031CF70 /* InputHandler_HandleStates.swift in Sources */,
+				5BF5AD872EE3661700121ED1 /* PhonabetTypewriter.swift in Sources */,
 				5B751DBA294EE27C0031CF70 /* CtlAboutWindow.swift in Sources */,
 				5B6815372B46EF86004A8A1A /* SpeechSputnik.swift in Sources */,
 				5B751DD5294EE57D0031CF70 /* IMEState.swift in Sources */,
@@ -1264,6 +1279,7 @@
 				5BE5A52B294E0C2B00EFA49C /* lmPlainBopomofo.swift in Sources */,
 				5B70C0A92EA427C700BC8273 /* SpeechNarratorProtocol.swift in Sources */,
 				5B1C28E12B8F09DF00968E74 /* CandidateTextService_SelectorImpl.swift in Sources */,
+				5BF5AD892EE3661B00121ED1 /* TypewriterProtocol.swift in Sources */,
 				5B4BEE702B8F8A510044A4EE /* VwrServiceMenuEditor.swift in Sources */,
 				5B60CEA829B8E7DB00A1AAC7 /* LMMgr_Utilities.swift in Sources */,
 				5B81BD282B729AE90092819A /* VwrSettingsPaneCocoaKeyboard.swift in Sources */,
