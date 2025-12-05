@@ -14,7 +14,7 @@ public protocol TypewriterProtocol {
   typealias Session = InputHandler.Session
   var handler: InputHandler { get }
   init(_ handler: InputHandler)
-  func handle(_ input: InputSignalProtocol) -> Bool?
+  func handle(_ input: some InputSignalProtocol) -> Bool?
 }
 
 extension TypewriterProtocol {

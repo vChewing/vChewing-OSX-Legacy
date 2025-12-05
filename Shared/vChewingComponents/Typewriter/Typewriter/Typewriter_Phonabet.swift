@@ -8,10 +8,12 @@
 
 // MARK: - PhonabetTypewriter
 
-public final class PhonabetTypewriter<InputHandler: InputHandlerProtocol>: TypewriterProtocol {
+/// 注音按鍵輸入處理 (Handle BPMF Keys)
+@frozen
+public struct PhonabetTypewriter<Handler: InputHandlerProtocol>: TypewriterProtocol {
   // MARK: Lifecycle
 
-  public init(_ handler: InputHandler) {
+  public init(_ handler: Handler) {
     self.handler = handler
   }
 
@@ -19,12 +21,12 @@ public final class PhonabetTypewriter<InputHandler: InputHandlerProtocol>: Typew
 
   public typealias Phonabet = Tekkon.Phonabet
 
-  public let handler: InputHandler
+  public let handler: Handler
 
   /// 用來處理 InputHandler.HandleInput() 當中的與注音输入有關的組字行為。
   /// - Parameter input: 輸入訊號。
   /// - Returns: 告知 IMK「該按鍵是否已經被輸入法攔截處理」。
-  public func handle(_ input: InputSignalProtocol) -> Bool? {
+  public func handle(_ input: some InputSignalProtocol) -> Bool? {
     guard let session = handler.session else { return nil }
     let prefs = handler.prefs
     var inputText = (input.inputTextIgnoringModifiers ?? input.text)
@@ -52,7 +54,6 @@ public final class PhonabetTypewriter<InputHandler: InputHandlerProtocol>: Typew
       ) {
         return overrideHandled
       }
-
       // 鐵恨引擎並不具備對 Enter (CR / LF) 鍵的具體判斷能力，所以在這裡單獨處理。
       handler.composer.receiveKey(fromString: confirmCombination ? " " : inputText)
       keyConsumedByReading = true
