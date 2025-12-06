@@ -7,7 +7,6 @@
 // requirements defined in MIT License.
 
 import AppKit
-import Foundation
 
 // MARK: - SettingsPanesCocoa.Dictionary
 
@@ -51,8 +50,10 @@ extension SettingsPanesCocoa {
         NSTabView.build {
           NSTabView.TabPage(title: "Ａ") {
             NSStackView.buildSection(width: innerContentWidth) {
-              UserDef.kFetchSuggestionsFromPerceptionOverrideModel
-                .render(fixWidth: innerContentWidth)
+              UserDef.kFetchSuggestionsFromPerceptionOverrideModel.render(fixWidth: innerContentWidth)
+              UserDef.kReducePOMLifetimeToNoMoreThan12Hours.render(fixWidth: innerContentWidth)
+            }?.boxed()
+            NSStackView.buildSection(width: innerContentWidth) {
               UserDef.kFilterNonCNSReadingsForCHTInput
                 .render(fixWidth: innerContentWidth) { renderable in
                   renderable.currentControl?.target = self
@@ -82,23 +83,23 @@ extension SettingsPanesCocoa {
               }
               UserDef.kAllowBoostingSingleKanjiAsUserPhrase.render(fixWidth: innerContentWidth)
             }?.boxed()
+            NSStackView.buildSection(width: innerContentWidth) {
+              NSStackView.build(.horizontal) {
+                "i18n:settings.importFromKimoTxt.label".makeNSLabel(fixWidth: innerContentWidth)
+                NSView()
+                NSStackView.build(.horizontal, spacing: 4) {
+                  importKimoDragButton()
+                  NSButton(
+                    "i18n:settings.importFromKimoTxt.DirectlyImport",
+                    target: self,
+                    action: #selector(importYahooKeyKeyUserDictionaryDataXPC(_:))
+                  )
+                }
+              }
+            }?.boxed()
             NSView()
           }
         }?.makeSimpleConstraint(.width, relation: .equal, value: tabContainerWidth)
-        NSStackView.buildSection(width: contentWidth) {
-          NSStackView.build(.horizontal) {
-            "i18n:settings.importFromKimoTxt.label".makeNSLabel(fixWidth: contentWidth)
-            NSView()
-            NSStackView.build(.horizontal, spacing: 4) {
-              importKimoDragButton()
-              NSButton(
-                "i18n:settings.importFromKimoTxt.DirectlyImport",
-                target: self,
-                action: #selector(importYahooKeyKeyUserDictionaryDataXPC(_:))
-              )
-            }
-          }
-        }?.boxed()
         NSView().makeSimpleConstraint(.height, relation: .equal, value: NSFont.systemFontSize)
       }
     }
