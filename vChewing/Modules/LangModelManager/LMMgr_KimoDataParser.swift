@@ -7,7 +7,6 @@
 // requirements defined in MIT License.
 
 import AppKit
-import Foundation
 
 extension LMMgr {
   public enum KimoDataImportError: Error, LocalizedError {
@@ -19,8 +18,8 @@ extension LMMgr {
     public var errorDescription: String? {
       switch self {
       case .fileHandlerFailure: return "i18n:KimoDataImportError.fileHandlerFailure.errMsg"
-        .localized
-      case .connectionFailure: return "i18n:KimoDataImportError.connectionFailure.errMsg".localized
+        .i18n
+      case .connectionFailure: return "i18n:KimoDataImportError.connectionFailure.errMsg".i18n
       }
     }
   }

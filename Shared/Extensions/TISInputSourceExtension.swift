@@ -44,9 +44,8 @@
     }
 
     public static var modes: [String] {
-      guard let components = Bundle.main
-        .infoDictionary?["ComponentInputModeDict"] as? [String: Any],
-        let tsInputModeListKey = components["tsInputModeListKey"] as? [String: Any]
+      guard let components = Bundle.main.infoDictionary?["ComponentInputModeDict"] as? [String: Any],
+            let tsInputModeListKey = components["tsInputModeListKey"] as? [String: Any]
       else {
         return []
       }
@@ -129,9 +128,9 @@
     public var vChewingLocalizedName: String {
       switch identifier {
       case "com.apple.keylayout.ZhuyinBopomofo":
-        return "Apple Zhuyin Bopomofo (Dachen)".localized
+        return "Apple Zhuyin Bopomofo (Dachen)".i18n
       case "com.apple.keylayout.ZhuyinEten":
-        return "Apple Zhuyin Eten (Traditional)".localized
+        return "Apple Zhuyin Eten (Traditional)".i18n
       default: return localizedName
       }
     }

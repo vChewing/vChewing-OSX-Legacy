@@ -48,7 +48,7 @@ public final class CtlAboutWindow: NSWindowController, NSWindowDelegate {
         window.titlebarAppearsTransparent = true
       }
       window.title = "i18n:aboutWindow.ABOUT_APP_TITLE_FULL"
-        .localized + " (v\(IMEApp.appMainVersionLabel.joined(separator: " Build ")))"
+        .i18n + " (v\(IMEApp.appMainVersionLabel.joined(separator: " Build ")))"
     }
   }
 
@@ -108,7 +108,7 @@ public final class VwrAboutCocoa: NSViewController {
   let imgWidth: CGFloat = 63
 
   var appNameAndVersionString: NSAttributedString {
-    let strResult = NSMutableAttributedString(string: "i18n:aboutWindow.APP_NAME".localized)
+    let strResult = NSMutableAttributedString(string: "i18n:aboutWindow.APP_NAME".i18n)
     strResult.addAttribute(
       .font,
       value: {
@@ -141,19 +141,19 @@ public final class VwrAboutCocoa: NSViewController {
         NSStackView.build(.vertical) {
           appNameAndVersionString.makeNSLabel(fixWidth: contentWidth - imgWidth - 10)
           makeFormattedLabel(
-            verbatim: "i18n:aboutWindow.DONATION_MESSAGE".localized
+            verbatim: "i18n:aboutWindow.DONATION_MESSAGE".i18n
               + "\n"
               + Self.copyrightLabel,
             size: 11,
             isBold: false, fixWidth: contentWidth - imgWidth - 10
           )
           makeFormattedLabel(
-            verbatim: "i18n:aboutWindow.DEV_CREW".localized,
+            verbatim: "i18n:aboutWindow.DEV_CREW".i18n,
             size: 11,
             isBold: false, fixWidth: contentWidth - imgWidth - 10
           )
           makeFormattedLabel(
-            verbatim: "i18n:aboutWindow.LICENSE_TITLE".localized,
+            verbatim: "i18n:aboutWindow.LICENSE_TITLE".i18n,
             size: 11,
             isBold: false, fixWidth: contentWidth - imgWidth - 10
           )

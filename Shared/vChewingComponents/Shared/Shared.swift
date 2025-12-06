@@ -8,7 +8,6 @@
 
 import CoreFoundation
 import Foundation
-
 #if canImport(OSLog)
   import OSLog
 #endif
@@ -108,7 +107,7 @@ public enum KeyboardParser: Int, CaseIterable {
       case .ofWadeGilesPinyin: return "Wade-Giles Pinyin with Numeral Intonation"
       }
     }()
-    return NSLocalizedString(rawString, comment: "")
+    return rawString.i18n
   }
 
   public var name: String {
@@ -166,19 +165,12 @@ public enum CandidateKey {
       switch self {
       case .invalidCharacters:
         return "- "
-          + NSLocalizedString(
-            "Candidate keys can only contain printable ASCII characters like alphanumericals.",
-            comment: ""
-          ) + "\n" + "- " + NSLocalizedString(
-            "i18n:CandidateKey.ValidationError.AssignedForOtherPurposes", comment: ""
-          ) + "\n" + "- " + NSLocalizedString(
-            "Candidate keys cannot contain space.", comment: ""
-          )
+          + "Candidate keys can only contain printable ASCII characters like alphanumericals.".i18n
+          + "\n" + "- " + "i18n:CandidateKey.ValidationError.AssignedForOtherPurposes".i18n
+          + "\n" + "- " + "Candidate keys cannot contain space.".i18n
       case .countMismatch:
-        return "- "
-          + NSLocalizedString(
-            "Minimum 6 candidate keys allowed.", comment: ""
-          ) + "\n" + "- " + NSLocalizedString("Maximum 10 candidate keys allowed.", comment: "")
+        return "- " + "Minimum 6 candidate keys allowed.".i18n
+          + "\n" + "- " + "Maximum 10 candidate keys allowed.".i18n
       case .noError:
         return ""
       }
@@ -254,7 +246,8 @@ public enum Shared {
       }
     }
 
-    public var localizedDescription: String { NSLocalizedString(description, comment: "") }
+    public var localizedDescription: String { description.i18n }
+
     public var description: String {
       switch self {
       case .imeModeCHS:

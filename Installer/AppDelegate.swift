@@ -127,13 +127,13 @@ final class AppDelegate: NSWindowController, NSApplicationDelegate {
     if #available(macOS 13, *) {
       NSSound.beep()
       let alert = NSAlert()
-      alert.messageText = "Please use mainstream releases for the current system version.".localized
+      alert.messageText = "Please use mainstream releases for the current system version.".i18n
       alert.informativeText =
         "The current installer only installs version suitable for macOS 10.9 Mavericks, and it theoreotically works with macOS 10.10 Yosemite - macOS 12 Monterey. Meanwhile, the mainstream releases is made available for most recent macOS release."
-          .localized
-      alert.addButton(withTitle: "Download Mainstream Releases".localized)
-      alert.addButton(withTitle: "Continue Installation".localized)
-      alert.addButton(withTitle: "Quit Installation".localized)
+          .i18n
+      alert.addButton(withTitle: "Download Mainstream Releases".i18n)
+      alert.addButton(withTitle: "Continue Installation".i18n)
+      alert.addButton(withTitle: "Quit Installation".i18n)
       alert.beginSheetModal(for: window) { result in
         switch result {
         case .alertFirstButtonReturn:

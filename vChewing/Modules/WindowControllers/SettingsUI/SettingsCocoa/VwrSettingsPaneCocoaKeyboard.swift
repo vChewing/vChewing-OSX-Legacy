@@ -7,7 +7,6 @@
 // requirements defined in MIT License.
 
 import AppKit
-import Foundation
 
 extension SettingsPanesCocoa {
   public final class Keyboard: NSViewController {
@@ -34,12 +33,12 @@ extension SettingsPanesCocoa {
             "Quick Setup:".makeNSLabel(fixWidth: contentWidth)
             NSView()
             NSButton(
-              verbatim: "↻ㄅ" + " " + "Dachen Trad.".localized,
+              verbatim: "↻ㄅ" + " " + "Dachen Trad.".i18n,
               target: self,
               action: #selector(quickSetupButtonDachen(_:))
             )
             NSButton(
-              verbatim: "↻ㄅ" + " " + "Eten Trad.".localized,
+              verbatim: "↻ㄅ" + " " + "Eten Trad.".i18n,
               target: self,
               action: #selector(quickSetupButtonEtenTraditional(_:))
             )

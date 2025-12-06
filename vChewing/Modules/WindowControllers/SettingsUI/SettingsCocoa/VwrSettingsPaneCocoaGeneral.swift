@@ -7,7 +7,6 @@
 // requirements defined in MIT License.
 
 import AppKit
-import Foundation
 
 extension SettingsPanesCocoa {
   public final class General: NSViewController {
@@ -37,11 +36,11 @@ extension SettingsPanesCocoa {
           var strNotice = "\u{2022} "
           strNotice +=
             "Please use mouse wheel to scroll each page if needed. The CheatSheet is available in the IME menu."
-            .localized
+            .i18n
           strNotice += "\n\u{2022} "
           strNotice +=
             "Note: The “Delete ⌫” key on Mac keyboard is named as “BackSpace ⌫” here in order to distinguish the real “Delete ⌦” key from full-sized desktop keyboards. If you want to use the real “Delete ⌦” key on a Mac keyboard with no numpad equipped, you have to press “Fn+⌫” instead."
-            .localized
+            .i18n
           strNotice.makeNSLabel(descriptive: true, fixWidth: contentWidth)
           UserDef.kAppleLanguages.render(fixWidth: contentWidth) { renderable in
             renderable.currentControl = self.btnLangSelector
@@ -66,7 +65,7 @@ extension SettingsPanesCocoa {
       }
     }
 
-    // Credit: Hiraku (2022).
+    // Credit: Hiraku (in ObjC; 2022); Refactored by Shiki (2024).
     func prepareLangSelectorButton() {
       let chosenLangObj = PrefMgr.shared.appleLanguages.first ?? "auto"
       btnLangSelector.menu?.removeAllItems()
@@ -74,7 +73,7 @@ extension SettingsPanesCocoa {
       // 往這個 property 裡面直接寫東西會導致整個視窗叫不出來！！！
       btnLangSelector.menu?.appendItems {
         for language in languages {
-          NSMenuItem(language.localized)?.represent(language)
+          NSMenuItem(language.i18n)?.represent(language)
         }
       }
       currentLanguageSelectItem = btnLangSelector.menu?.items.first {
@@ -106,7 +105,7 @@ extension SettingsPanesCocoa {
       } else {
         UserDefaults.standard.removeObject(forKey: "AppleLanguages")
       }
-      Process.consoleLog("vChewing App self-terminated due to UI language change.")
+      vCLog(forced: true, "vChewing App self-terminated due to UI language change.")
       NSApp.terminate(nil)
     }
   }

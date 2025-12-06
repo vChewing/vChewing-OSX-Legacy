@@ -8,6 +8,8 @@
 
 import AppKit
 
+// MARK: - UpdateSputnik
+
 public final class UpdateSputnik {
   // MARK: Lifecycle
 
@@ -15,7 +17,7 @@ public final class UpdateSputnik {
 
   // MARK: Public
 
-  public static let isMainStreamRelease = false
+  public static let isMainStreamRelease = true
   public static let shared: UpdateSputnik = .init()
 
   public let kUpdateInfoPageURLKey: String = {
@@ -93,7 +95,7 @@ public final class UpdateSputnik {
     guard let plist = plist else {
       asyncOnMain { [weak self] in
         guard let this = self else { return }
-        this.showError(message: NSLocalizedString("Plist downloaded is nil.", comment: ""))
+        this.showError(message: "Plist downloaded is nil.".i18n)
         this.currentTask = nil
       }
       return
@@ -106,10 +108,7 @@ public final class UpdateSputnik {
     else {
       asyncOnMain { [weak self] in
         guard let this = self else { return }
-        this.showError(message: NSLocalizedString(
-          "Plist downloaded cannot be parsed correctly.",
-          comment: ""
-        ))
+        this.showError(message: "Plist downloaded cannot be parsed correctly.".i18n)
         this.currentTask = nil
       }
       return
@@ -121,28 +120,23 @@ public final class UpdateSputnik {
           let strCurrentVersionShortened = dicMainBundle["CFBundleShortVersionString"] as? String
     else { return } // Shouldn't happen.
     /// 註：此處 isRemoteMainStreamDistro 在 Aqua 紀念版內應該設為 false；主流版則為 true。
-    let isRemoteMainStreamDistro: Bool = plist["IsMainStreamDistro"] as? Bool ?? false
+    let isRemoteMainStreamDistro: Bool = plist["IsMainStreamDistro"] as? Bool ?? true
     let crossDistroNotification = Self.isMainStreamRelease != isRemoteMainStreamDistro
     versionCheck: if intRemoteVersion <= intCurrentVersion {
       guard isCurrentCheckForced else { return }
       if intRemoteVersion == intCurrentVersion, crossDistroNotification { break versionCheck }
       let alert = NSAlert()
-      alert.messageText = NSLocalizedString("Update Check Completed", comment: "")
-      alert.informativeText = NSLocalizedString(
-        "You are already using the latest version.",
-        comment: ""
-      )
-      alert.addButton(withTitle: NSLocalizedString("OK", comment: ""))
+      alert.messageText = "Update Check Completed".i18n
+      alert.informativeText = "You are already using the latest version.".i18n
+      alert.addButton(withTitle: "OK".i18n)
       alert.runModal()
       NSApp.popup()
       return
     }
 
     var content = String(
-      format: NSLocalizedString(
-        "You're currently using vChewing %@ (%@), a new version %@ (%@) is now available. Do you want to visit vChewing's website to download the version?",
-        comment: ""
-      ),
+      format: "You're currently using vChewing %@ (%@), a new version %@ (%@) is now available. Do you want to visit vChewing's website to download the version?"
+        .i18n,
       strCurrentVersionShortened,
       intCurrentVersion.description,
       strRemoteVersionShortened,
@@ -150,20 +144,19 @@ public final class UpdateSputnik {
     )
     if crossDistroNotification {
       content.append("\n\n")
-      content.append(
-        NSLocalizedString(
-          "This update will upgrade vChewing from Aqua Special Edition to Mainstream Release (recommended for your current OS version).",
-          comment: ""
+      content
+        .append(
+          "This update will upgrade vChewing from Aqua Special Edition to Mainstream Release (recommended for your current OS version)."
+            .i18n
         )
-      )
     }
     let alert = NSAlert()
     alert.informativeText = content
-    alert.messageText = NSLocalizedString("New Version Available", comment: "")
-    let strVisitWebsite = NSLocalizedString("Visit Website", comment: "")
+    alert.messageText = "New Version Available".i18n
+    let strVisitWebsite = "Visit Website".i18n
     alert.addButton(withTitle: "\(strVisitWebsite) (Gitee)")
     alert.addButton(withTitle: "\(strVisitWebsite) (GitHub)")
-    alert.addButton(withTitle: NSLocalizedString("Not Now", comment: ""))
+    alert.addButton(withTitle: "Not Now".i18n)
 
     guard let siteInfoURLString = plist["\(kUpdateInfoPageURLKey)"] as? String,
           let siteURL = URL(string: siteInfoURLString),
@@ -230,9 +223,9 @@ public final class UpdateSputnik {
     if !isCurrentCheckForced { return }
     let alert = NSAlert()
     let content = message
-    alert.messageText = NSLocalizedString("Update Check Failed", comment: "")
+    alert.messageText = "Update Check Failed".i18n
     alert.informativeText = content
-    alert.addButton(withTitle: NSLocalizedString("OK", comment: ""))
+    alert.addButton(withTitle: "OK".i18n)
     alert.runModal()
     NSApp.popup()
   }

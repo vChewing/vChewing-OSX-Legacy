@@ -24,7 +24,7 @@ public enum LMAssembly {
 
     public var id: String { rawValue }
 
-    public var localizedDescription: String { rawValue.localized }
+    public var localizedDescription: String { rawValue.i18n }
   }
 
   public static let fileHandleQueue: DispatchQueue = {
