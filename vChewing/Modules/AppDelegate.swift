@@ -7,25 +7,41 @@
 // requirements defined in MIT License.
 
 import AppKit
+#if canImport(UserNotifications)
+  import UserNotifications
+#endif
+
+// MARK: - AppDelegate + UNUserNotificationCenterDelegate
+
+@available(macOS 10.14, *)
+extension AppDelegate: UNUserNotificationCenterDelegate {}
+
+// MARK: - AppDelegate + NSUserNotificationCenterDelegate
+
+@available(macOS, deprecated: 10.14)
+extension AppDelegate: NSUserNotificationCenterDelegate {
+  public func userNotificationCenter(
+    _: NSUserNotificationCenter,
+    shouldPresent _: NSUserNotification
+  )
+    -> Bool {
+    true
+  }
+}
 
 // MARK: - AppDelegate
 
 @objc(AppDelegate)
-public final class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDelegate {
+public final class AppDelegate: NSObject, NSApplicationDelegate {
   // MARK: Public
 
   public static let shared = AppDelegate()
 
   public static var updateInfoSourceURL: URL? {
-    let keyUpdateURL: String = {
-      if #available(macOS 10.13, *) {
-        return "UpdateInfoEndpoint"
-      }
-      return "UpdateInfoEndpointLegacy"
-    }()
-    guard let urlText = Bundle.main.infoDictionary?[keyUpdateURL] as? String else {
-      Process.consoleLog(
-        "vChewingDebug: Fatal error: Info.plist wrecked. It needs to have correct '\(keyUpdateURL)' value."
+    guard let urlText = Bundle.main.infoDictionary?["UpdateInfoEndpoint"] as? String else {
+      vCLog(
+        forced: true,
+        "vChewingDebug: Fatal error: Info.plist wrecked. It needs to have correct 'UpdateInfoEndpoint' value."
       )
       return nil
     }
@@ -70,16 +86,17 @@ extension AppDelegate {
 // MARK: - Public Functions
 
 extension AppDelegate {
-  public func userNotificationCenter(
-    _: NSUserNotificationCenter,
-    shouldPresent _: NSUserNotification
-  )
-    -> Bool {
-    true
-  }
-
   public func applicationWillFinishLaunching(_: Notification) {
-    NSUserNotificationCenter.default.delegate = self
+    if #available(macOS 10.14, *) {
+      UNUserNotificationCenter.current().delegate = self
+      UNUserNotificationCenter.current().requestAuthorization(
+        options: [.alert, .sound, .badge],
+        completionHandler: { _, _ in }
+      )
+    } else {
+      NSUserNotificationCenter.default.delegate = self
+    }
+
     PrefMgr.shared.fixOddPreferences()
 
     SecurityAgentHelper.shared.timer?.fire()
@@ -88,20 +105,34 @@ extension AppDelegate {
 
     CandidateTextService.enableFinalSanityCheck()
 
-    // 一旦發現與使用者半衰模組的觀察行為有關的崩潰標記被開啟：
-    // 如果有開啟 Debug 模式的話，就將既有的半衰記憶資料檔案更名＋打上當時的時間戳。
-    // 如果沒有開啟 Debug 模式的話，則將半衰記憶資料直接清空。
+    // 一旦發現與使用者漸退模組的觀察行為有關的崩潰標記被開啟：
+    // 如果有開啟 Debug 模式的話，就將既有的漸退記憶資料檔案更名＋打上當時的時間戳。
+    // 如果沒有開啟 Debug 模式的話，則將漸退記憶資料直接清空。
     if PrefMgr.shared.failureFlagForPOMObservation {
       LMMgr.relocateWreckedPOMData()
       PrefMgr.shared.failureFlagForPOMObservation = false
-      let userNotification = NSUserNotification()
-      userNotification.title = NSLocalizedString("vChewing", comment: "")
-      userNotification.informativeText = NSLocalizedString(
-        "vChewing crashed while handling previously loaded POM observation data. These data files are cleaned now to ensure the usability.",
-        comment: ""
-      )
-      userNotification.soundName = NSUserNotificationDefaultSoundName
-      NSUserNotificationCenter.default.deliver(userNotification)
+      if #available(macOS 10.14, *) {
+        let msgPackage = UNMutableNotificationContent()
+        msgPackage.title = "vChewing".localized
+        msgPackage
+          .body =
+          "vChewing crashed while handling previously loaded POM observation data. These data files are cleaned now to ensure the usability."
+            .localized
+        msgPackage.sound = .defaultCritical
+        UNUserNotificationCenter.current().add(
+          .init(identifier: "vChewing.notification.pomCrash", content: msgPackage, trigger: nil),
+          withCompletionHandler: nil
+        )
+      } else {
+        let userNotification = NSUserNotification()
+        userNotification.title = "vChewing".localized
+        userNotification
+          .informativeText =
+          "vChewing crashed while handling previously loaded POM observation data. These data files are cleaned now to ensure the usability."
+            .localized
+        userNotification.soundName = NSUserNotificationDefaultSoundName
+        NSUserNotificationCenter.default.deliver(userNotification)
+      }
     }
 
     LMMgr.connectCoreDB()
@@ -138,21 +169,18 @@ extension AppDelegate {
 
   public func selfUninstall() {
     let content = String(
-      format: NSLocalizedString(
-        "This will remove vChewing Input Method from this user account, requiring your confirmation.",
-        comment: ""
-      )
+      format: "This will remove vChewing Input Method from this user account, requiring your confirmation.".localized
     )
     let alert = NSAlert()
-    alert.messageText = NSLocalizedString("Uninstallation", comment: "")
+    alert.messageText = "Uninstallation".localized
     alert.informativeText = content
-    alert.addButton(withTitle: NSLocalizedString("OK", comment: ""))
+    alert.addButton(withTitle: "OK".localized)
     if #available(macOS 11, *) {
       alert.buttons.forEach { button in
         button.hasDestructiveAction = true
       }
     }
-    alert.addButton(withTitle: NSLocalizedString("Not Now", comment: ""))
+    alert.addButton(withTitle: "Not Now".localized)
     let result = alert.runModal()
     NSApp.popup()
     guard result == NSApplication.ModalResponse.alertFirstButtonReturn else { return }
@@ -173,13 +201,27 @@ extension AppDelegate {
     switch currentMemorySize {
     case 1_024...:
       vCLog("WARNING: EXCESSIVE MEMORY FOOTPRINT (\(currentMemorySize)MB).")
-      let userNotification = NSUserNotification()
-      userNotification.title = NSLocalizedString("vChewing", comment: "")
-      userNotification.informativeText = NSLocalizedString(
-        "vChewing is rebooted due to a memory-excessive-usage problem. If convenient, please inform the developer that you are having this issue, stating whether you are using an Intel Mac or Apple Silicon Mac. An NSLog is generated with the current memory footprint size.",
-        comment: ""
-      )
-      NSUserNotificationCenter.default.deliver(userNotification)
+      let title = "vChewing".localized
+      let body =
+        "vChewing is rebooted due to a memory-excessive-usage problem. If convenient, please inform the developer that you are having this issue, stating whether you are using an Intel Mac or Apple Silicon Mac. An NSLog is generated with the current memory footprint size."
+          .localized
+      if #available(macOS 10.14, *) {
+        let msgPackage = UNMutableNotificationContent()
+        msgPackage.title = title
+        msgPackage.body = body
+        UNUserNotificationCenter.current().add(
+          .init(
+            identifier: "vChewing.notification.memoryExcessiveUsage",
+            content: msgPackage, trigger: nil
+          ),
+          withCompletionHandler: nil
+        )
+      } else {
+        let userNotification = NSUserNotification()
+        userNotification.title = title
+        userNotification.informativeText = body
+        NSUserNotificationCenter.default.deliver(userNotification)
+      }
       asyncOnMain(after: 0.3) {
         NSApp.terminate(self)
       }
