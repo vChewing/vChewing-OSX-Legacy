@@ -1318,7 +1318,7 @@ struct POMError: LocalizedError {
   var rawValue: String
 
   var errorDescription: String? {
-    NSLocalizedString("rawValue", comment: "")
+    "rawValue".localized
   }
 }
 

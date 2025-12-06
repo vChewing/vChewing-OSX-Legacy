@@ -129,9 +129,9 @@
     public var vChewingLocalizedName: String {
       switch identifier {
       case "com.apple.keylayout.ZhuyinBopomofo":
-        return NSLocalizedString("Apple Zhuyin Bopomofo (Dachen)", comment: "")
+        return "Apple Zhuyin Bopomofo (Dachen)".localized
       case "com.apple.keylayout.ZhuyinEten":
-        return NSLocalizedString("Apple Zhuyin Eten (Traditional)", comment: "")
+        return "Apple Zhuyin Eten (Traditional)".localized
       default: return localizedName
       }
     }
@@ -193,8 +193,7 @@
       }
       // 為了保持指定排序，才在最後做這種處理。效能略有打折，但至少比起直接迭代容量破百的 retrieved 要好多了。
       return unionedIDs.compactMap { currentIdentifier in
-        retrieved
-          .first { $0.identifier == currentIdentifier || $0.inputModeID == currentIdentifier }
+        retrieved.first { $0.identifier == currentIdentifier || $0.inputModeID == currentIdentifier }
       }
     }
 
@@ -215,8 +214,7 @@
     }
 
     /// Derived from rawTISInputSources().
-    public static func getAllTISInputKeyboardLayoutMap()
-      -> [String: TISInputSource.KeyboardLayout] {
+    public static func getAllTISInputKeyboardLayoutMap() -> [String: TISInputSource.KeyboardLayout] {
       // 為了指定檢索條件，先構築 CFDictionary 辭典。
       let dicConditions: [CFString: Any] =
         [kTISPropertyInputSourceType: kTISTypeKeyboardLayout as CFString]
