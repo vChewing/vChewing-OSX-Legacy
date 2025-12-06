@@ -73,8 +73,13 @@ public final class UpdateSputnik {
 
   // MARK: Internal
 
-  var sessionConfiguration = URLSessionConfiguration
-    .backgroundSessionConfiguration(Bundle.main.bundleIdentifier!)
+  var sessionConfiguration: URLSessionConfiguration = {
+    if #available(macOS 10.10, *) {
+      return URLSessionConfiguration.background(withIdentifier: Bundle.main.bundleIdentifier!)
+    } else {
+      return URLSessionConfiguration.backgroundSessionConfiguration(Bundle.main.bundleIdentifier!)
+    }
+  }()
 
   // MARK: - Private Functions.
 
