@@ -17,10 +17,12 @@ public let kTargetType = "app"
 public let kTargetBundle = "vChewing.app"
 public let kTargetBundleWithComponents = "Library/Input%20Methods/vChewing.app"
 
-public let realHomeDir = URL(
-  fileURLWithFileSystemRepresentation: getpwuid(getuid()).pointee.pw_dir, isDirectory: true,
-  relativeTo: nil
-)
+public let realHomeDir: URL = {
+  // Use 10.9-safe URL initializer (no relativeTo: parameter).
+  let url = URL(fileURLWithPath: String(cString: getpwuid(getuid()).pointee.pw_dir))
+  return url.standardizedFileURL
+}()
+
 public let urlDestinationPartial = realHomeDir.appendingPathComponent("Library/Input Methods")
 public let urlTargetPartial = realHomeDir.appendingPathComponent(kTargetBundleWithComponents)
 public let urlTargetFullBinPartial = urlTargetPartial.appendingPathComponent("Contents/MacOS")
