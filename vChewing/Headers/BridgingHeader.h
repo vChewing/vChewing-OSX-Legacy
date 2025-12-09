@@ -3,4 +3,3 @@
 #import <IOKit/IOKitLib.h>
 #import <IOKit/hid/IOHIDBase.h>
 #import "sqlite3.h"
-#import "KimoCommunicator.h"
