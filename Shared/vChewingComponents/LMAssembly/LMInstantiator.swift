@@ -118,7 +118,17 @@ extension LMAssembly {
       return self
     }
 
-    // MARK: - 工具函式
+    public func syncPrefs() {
+      config.isPhraseReplacementEnabled = prefs.phraseReplacementEnabled
+      config.isCNSEnabled = prefs.cns11643Enabled
+      config.isSymbolEnabled = prefs.symbolInputEnabled
+      config.isSCPCEnabled = prefs.useSCPCTypingMode
+      config.isCassetteEnabled = prefs.cassetteEnabled
+      config.filterNonCNSReadings = prefs.filterNonCNSReadingsForCHTInput
+      config.deltaOfCalendarYears = prefs.deltaOfCalendarYears
+      config.allowBoostingSingleKanjiAsUserPhrase = prefs.allowBoostingSingleKanjiAsUserPhrase
+      config.alwaysSupplyETenDOSUnigrams = prefs.enforceETenDOSCandidateSequence
+    }
 
     public func resetFactoryJSONModels() {}
 
@@ -619,6 +629,10 @@ extension LMAssembly {
     #endif
 
     // MARK: Private
+
+    // MARK: - 工具函式
+
+    private let prefs = PrefMgr()
 
     /// 當 HashMap 過大時自動清理
     private func cleanupInputTokenHashMapIfNeeded() {
