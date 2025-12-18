@@ -197,7 +197,6 @@
 		5BF5AD912EE366FC00121ED1 /* Typewriter_Cassette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF5AD8A2EE366FC00121ED1 /* Typewriter_Cassette.swift */; };
 		5BF5BAE1294DFFC9006011AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF5BAE0294DFFC9006011AD /* AppDelegate.swift */; };
 		5BF5BAE3294DFFCA006011AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BF5BAE2294DFFCA006011AD /* Assets.xcassets */; };
-		5BF5BAE6294DFFCA006011AD /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BF5BAE4294DFFCA006011AD /* MainMenu.xib */; };
 		5BF846922EE7DACA00C2857D /* KeyKeyUserDBKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8468B2EE7DACA00C2857D /* KeyKeyUserDBKit.swift */; };
 		5BF846932EE7DACA00C2857D /* Gram.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8468A2EE7DACA00C2857D /* Gram.swift */; };
 		5BF846942EE7DACA00C2857D /* UserPhraseTextFileObj.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF846902EE7DACA00C2857D /* UserPhraseTextFileObj.swift */; };
@@ -439,7 +438,6 @@
 		5BF5BADD294DFFC9006011AD /* vChewing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vChewing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BF5BAE0294DFFC9006011AD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5BF5BAE2294DFFCA006011AD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		5BF5BAE5294DFFCA006011AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		5BF5BAE7294DFFCA006011AD /* vChewing.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = vChewing.entitlements; sourceTree = "<group>"; };
 		5BF8468A2EE7DACA00C2857D /* Gram.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gram.swift; sourceTree = "<group>"; };
 		5BF8468B2EE7DACA00C2857D /* KeyKeyUserDBKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyKeyUserDBKit.swift; sourceTree = "<group>"; };
@@ -1005,7 +1003,6 @@
 				5BE5A4EB294E04BC00EFA49C /* Resources */,
 				5BE5A4E3294E00C300EFA49C /* Info.plist */,
 				5B751D87294EC30D0031CF70 /* InfoPlist.strings */,
-				5BF5BAE4294DFFCA006011AD /* MainMenu.xib */,
 				5BF5BAE7294DFFCA006011AD /* vChewing.entitlements */,
 			);
 			path = vChewing;
@@ -1135,7 +1132,6 @@
 				5B751DF2294EF28C0031CF70 /* template-exclusions.txt in Resources */,
 				5B751DE9294EF2880031CF70 /* MenuIcon-TCVIM@2x.png in Resources */,
 				5B751DF5294EF2940031CF70 /* Beep.m4a in Resources */,
-				5BF5BAE6294DFFCA006011AD /* MainMenu.xib in Resources */,
 				5B751DF0294EF28C0031CF70 /* template-replacements.txt in Resources */,
 				5B751DF7294EF29B0031CF70 /* Localizable.strings in Resources */,
 				5B751DEA294EF2880031CF70 /* MenuIcon-SCVIM@2x.png in Resources */,
@@ -1435,14 +1431,6 @@
 			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
-		5BF5BAE4294DFFCA006011AD /* MainMenu.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5BF5BAE5294DFFCA006011AD /* Base */,
-			);
-			name = MainMenu.xib;
-			sourceTree = "<group>";
-		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -1622,7 +1610,6 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = vChewing/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INFOPLIST_KEY_NSMainNibFile = MainMenu;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1656,7 +1643,6 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = vChewing/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INFOPLIST_KEY_NSMainNibFile = MainMenu;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
