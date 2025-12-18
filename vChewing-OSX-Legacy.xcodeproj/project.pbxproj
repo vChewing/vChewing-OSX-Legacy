@@ -49,7 +49,6 @@
 		5B72F6672B885AF00051B7A9 /* lmPlainBopomopo_RawData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B72F6662B885AF00051B7A9 /* lmPlainBopomopo_RawData.swift */; };
 		5B751DB8294EE27C0031CF70 /* CtlClientListMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DB7294EE27C0031CF70 /* CtlClientListMgr.swift */; };
 		5B751DB9294EE27C0031CF70 /* CtlRevLookupWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DB5294EE27C0031CF70 /* CtlRevLookupWindow.swift */; };
-		5B751DBA294EE27C0031CF70 /* CtlAboutWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DB6294EE27C0031CF70 /* CtlAboutWindow.swift */; };
 		5B751DBD294EE44F0031CF70 /* UpdateSputnik.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DBC294EE44F0031CF70 /* UpdateSputnik.swift */; };
 		5B751DCE294EE57D0031CF70 /* InputHandler_HandleStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DBF294EE57C0031CF70 /* InputHandler_HandleStates.swift */; };
 		5B751DCF294EE57D0031CF70 /* SessionCtl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DC0294EE57C0031CF70 /* SessionCtl.swift */; };
@@ -120,6 +119,9 @@
 		5BB5158D2B729E7800874257 /* AppKitImpl_Misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A4F0294E057F00EFA49C /* AppKitImpl_Misc.swift */; };
 		5BB5158E2B729E9D00874257 /* SwiftExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A4F2294E058F00EFA49C /* SwiftExtension.swift */; };
 		5BC783DC2EBEF02F00AE14E2 /* RomanNumeralConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC783DB2EBEF02F00AE14E2 /* RomanNumeralConverter.swift */; };
+		5BC8B2912EF3FFB60025533D /* VwrAboutUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC8B28F2EF3FFB60025533D /* VwrAboutUI.swift */; };
+		5BC8B2922EF3FFB60025533D /* VwrAboutCocoa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC8B28E2EF3FFB60025533D /* VwrAboutCocoa.swift */; };
+		5BC8B2932EF3FFB60025533D /* CtlAboutUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC8B28D2EF3FFB60025533D /* CtlAboutUI.swift */; };
 		5BCA4FAD2E9659F700441688 /* SessionCoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA4FAC2E9659F700441688 /* SessionCoreProtocol.swift */; };
 		5BCC80CE2B7E6511005D689C /* KimoDataReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCC80CD2B7E6511005D689C /* KimoDataReader.swift */; };
 		5BCDA50D2D50C2D200571961 /* IMKInputControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCDA50C2D50C2D200571961 /* IMKInputControllerProtocol.swift */; };
@@ -280,7 +282,6 @@
 		5B751DA6294EE1B50031CF70 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		5B751DA7294EE1B60031CF70 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5B751DB5294EE27C0031CF70 /* CtlRevLookupWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CtlRevLookupWindow.swift; sourceTree = "<group>"; };
-		5B751DB6294EE27C0031CF70 /* CtlAboutWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CtlAboutWindow.swift; sourceTree = "<group>"; };
 		5B751DB7294EE27C0031CF70 /* CtlClientListMgr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CtlClientListMgr.swift; sourceTree = "<group>"; };
 		5B751DBC294EE44F0031CF70 /* UpdateSputnik.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateSputnik.swift; sourceTree = "<group>"; };
 		5B751DBF294EE57C0031CF70 /* InputHandler_HandleStates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputHandler_HandleStates.swift; sourceTree = "<group>"; };
@@ -347,6 +348,9 @@
 		5BB32F0229A61A3B00B05D7B /* CandidatePool_CocoaImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandidatePool_CocoaImpl.swift; sourceTree = "<group>"; };
 		5BB32F0429A61AFB00B05D7B /* CtlCandidateTDK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CtlCandidateTDK.swift; sourceTree = "<group>"; };
 		5BC783DB2EBEF02F00AE14E2 /* RomanNumeralConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RomanNumeralConverter.swift; sourceTree = "<group>"; };
+		5BC8B28D2EF3FFB60025533D /* CtlAboutUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CtlAboutUI.swift; sourceTree = "<group>"; };
+		5BC8B28E2EF3FFB60025533D /* VwrAboutCocoa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VwrAboutCocoa.swift; sourceTree = "<group>"; };
+		5BC8B28F2EF3FFB60025533D /* VwrAboutUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VwrAboutUI.swift; sourceTree = "<group>"; };
 		5BCA4FAC2E9659F700441688 /* SessionCoreProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionCoreProtocol.swift; sourceTree = "<group>"; };
 		5BCC80CD2B7E6511005D689C /* KimoDataReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KimoDataReader.swift; sourceTree = "<group>"; };
 		5BCDA50C2D50C2D200571961 /* IMKInputControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMKInputControllerProtocol.swift; sourceTree = "<group>"; };
@@ -506,10 +510,10 @@
 		5B751DB4294EE21D0031CF70 /* WindowControllers */ = {
 			isa = PBXGroup;
 			children = (
+				5BC8B2902EF3FFB60025533D /* AboutUI */,
 				5B4BEE722B8F8A680044A4EE /* ClientListMgr */,
 				5B4BEE6D2B8F8A450044A4EE /* ServiceMenuEditor */,
 				5BB1D7F52999028800EA8D2C /* SettingsUI */,
-				5B751DB6294EE27C0031CF70 /* CtlAboutWindow.swift */,
 				5B751DB5294EE27C0031CF70 /* CtlRevLookupWindow.swift */,
 			);
 			path = WindowControllers;
@@ -660,6 +664,16 @@
 				5B785EEA2B78FC680006413D /* InputHandler_TypingMethod.swift */,
 			);
 			path = InputHandler;
+			sourceTree = "<group>";
+		};
+		5BC8B2902EF3FFB60025533D /* AboutUI */ = {
+			isa = PBXGroup;
+			children = (
+				5BC8B28D2EF3FFB60025533D /* CtlAboutUI.swift */,
+				5BC8B28E2EF3FFB60025533D /* VwrAboutCocoa.swift */,
+				5BC8B28F2EF3FFB60025533D /* VwrAboutUI.swift */,
+			);
+			path = AboutUI;
 			sourceTree = "<group>";
 		};
 		5BCC80CC2B7E64FA005D689C /* KimoDataReader */ = {
@@ -1216,9 +1230,11 @@
 				5B751DD7294EE57D0031CF70 /* SessionCtl_Menu.swift in Sources */,
 				5BE5A4FA294E082800EFA49C /* NSEventImpl.swift in Sources */,
 				5BE5A530294E0C2E00EFA49C /* HotenkaChineseConverter.swift in Sources */,
+				5BC8B2912EF3FFB60025533D /* VwrAboutUI.swift in Sources */,
+				5BC8B2922EF3FFB60025533D /* VwrAboutCocoa.swift in Sources */,
+				5BC8B2932EF3FFB60025533D /* CtlAboutUI.swift in Sources */,
 				5B751DCE294EE57D0031CF70 /* InputHandler_HandleStates.swift in Sources */,
 				5BF5AD872EE3661700121ED1 /* Typewriter_Phonabet.swift in Sources */,
-				5B751DBA294EE27C0031CF70 /* CtlAboutWindow.swift in Sources */,
 				5B6815372B46EF86004A8A1A /* SpeechSputnik.swift in Sources */,
 				5B751DD5294EE57D0031CF70 /* IMEState.swift in Sources */,
 				5BE5A53D294E0CEF00EFA49C /* PrefMgrProtocol.swift in Sources */,

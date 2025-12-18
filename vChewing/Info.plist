@@ -118,7 +118,7 @@
 	<key>LSUIElement</key>
 	<true/>
 	<key>NSHumanReadableCopyright</key>
-	<string>© 2021 and onwards The vChewing Project.</string>
+	<string>Aqua Special Build. © 2021 and onwards The vChewing Project.</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>

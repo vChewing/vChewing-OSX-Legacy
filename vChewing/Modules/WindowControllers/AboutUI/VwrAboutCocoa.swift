@@ -8,82 +8,9 @@
 
 import AppKit
 
-// MARK: - CtlAboutWindow
-
-public final class CtlAboutWindow: NSWindowController, NSWindowDelegate {
-  // MARK: Lifecycle
-
-  public init() {
-    let newWindow = NSWindow(
-      contentRect: CGRect(x: 401, y: 295, width: 577, height: 568),
-      styleMask: [.titled, .closable, .miniaturizable],
-      backing: .buffered, defer: true
-    )
-    super.init(window: newWindow)
-    autoreleasepool {
-      viewController.loadView()
-    }
-  }
-
-  required init?(coder: NSCoder) {
-    super.init(coder: coder)
-  }
-
-  // MARK: Public
-
-  public static var shared: CtlAboutWindow?
-
-  override public func windowDidLoad() {
-    autoreleasepool {
-      super.windowDidLoad()
-      guard let window = window else { return }
-      window.contentView = viewController.view
-      let size = viewController.view.fittingSize
-      window.setPosition(vertical: .top, horizontal: .left, padding: 20)
-      window.setFrame(.init(origin: window.frame.origin, size: size), display: true)
-      window.standardWindowButton(.closeButton)?.isHidden = true
-      window.standardWindowButton(.miniaturizeButton)?.isHidden = true
-      window.standardWindowButton(.zoomButton)?.isHidden = true
-      if #available(macOS 10.10, *) {
-        window.titlebarAppearsTransparent = true
-      }
-      window.title = "i18n:aboutWindow.ABOUT_APP_TITLE_FULL"
-        .i18n + " (v\(IMEApp.appMainVersionLabel.joined(separator: " Build ")))"
-    }
-  }
-
-  public static func show() {
-    autoreleasepool {
-      if shared == nil {
-        let newInstance = CtlAboutWindow()
-        shared = newInstance
-      }
-      guard let shared = shared, let sharedWindow = shared.window else { return }
-      sharedWindow.delegate = shared
-      if !sharedWindow.isVisible {
-        shared.windowDidLoad()
-      }
-      sharedWindow.setPosition(vertical: .top, horizontal: .left, padding: 20)
-      sharedWindow.orderFrontRegardless() // 逼著視窗往最前方顯示
-      sharedWindow.level = .statusBar
-      shared.showWindow(shared)
-      NSApp.popup()
-    }
-  }
-
-  // MARK: Private
-
-  private var viewController: NSViewController = VwrAboutCocoa()
-}
-
-// MARK: - View.
-
 extension VwrAboutCocoa {
-  public static let copyrightLabel = "Aqua Special build. " +
-    (
-      Bundle.main
-        .localizedInfoDictionary?["NSHumanReadableCopyright"] as? String ?? "BAD_COPYRIGHT_LABEL"
-    )
+  public static let copyrightLabel = Bundle.main
+    .localizedInfoDictionary?["NSHumanReadableCopyright"] as? String ?? "BAD_COPYRIGHT_LABEL"
   public static let eulaContent = Bundle.main
     .localizedInfoDictionary?["CFEULAContent"] as? String ?? "BAD_EULA_CONTENT"
   public static let eulaContentUpstream = Bundle.main
@@ -163,7 +90,7 @@ public final class VwrAboutCocoa: NSViewController {
       NSStackView.build(.horizontal) {
         NSStackView.build(.vertical) {
           "i18n:aboutWindow.DISCLAIMER_TEXT".makeNSLabel(
-            descriptive: true, fixWidth: contentWidth - 120
+            descriptive: true, fixWidth: contentWidth - 140
           )
           NSView()
         }
@@ -234,7 +161,10 @@ public final class VwrAboutCocoa: NSViewController {
     clipView.autoresizingMask = [.width, .height]
     clipView.drawsBackground = false
     scrollView.contentView = clipView
-    scrollView.makeSimpleConstraint(.width, relation: .equal, value: 430)
+    scrollView.makeSimpleConstraint(
+      .width, relation: .equal, value: contentWidth - imgWidth - 30
+    )
+    scrollView.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
     scrollView.hasVerticalScroller = true
     scrollView.hasHorizontalScroller = false
     scrollView.scrollerStyle = .legacy
@@ -276,7 +206,7 @@ public final class VwrAboutCocoa: NSViewController {
 
   @objc
   func btnOKAction(_: NSControl) {
-    CtlAboutWindow.shared?.window?.close()
+    CtlAboutUI.shared?.window?.close()
   }
 
   @objc
