@@ -77,7 +77,7 @@
 		5B751DF7294EF29B0031CF70 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5B751DA4294EE1B00031CF70 /* Localizable.strings */; };
 		5B785EEB2B78FC680006413D /* InputHandler_TypingMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B785EEA2B78FC680006413D /* InputHandler_TypingMethod.swift */; };
 		5B79A3FC2BB850E6003F449E /* LMInstantiator_UserDictionarySummarized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B79A3FB2BB850E6003F449E /* LMInstantiator_UserDictionarySummarized.swift */; };
-		5B7B4D242AA1BB7600FE6B63 /* Qwertyyb_ShiftKeyUpChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7B4D232AA1BB7600FE6B63 /* Qwertyyb_ShiftKeyUpChecker.swift */; };
+		5B7B4D242AA1BB7600FE6B63 /* ShiftKeyUpChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7B4D232AA1BB7600FE6B63 /* ShiftKeyUpChecker.swift */; };
 		5B7EEAE32AE5002C006C30A3 /* SecureEventInputSputnik.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7EEAE22AE5002C006C30A3 /* SecureEventInputSputnik.swift */; };
 		5B81BD102B7297A70092819A /* AppKitImpl_NSView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B81BD0F2B7297A70092819A /* AppKitImpl_NSView.swift */; };
 		5B81BD132B72984E0092819A /* UserDefRenderableCocoa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B81BD122B72984E0092819A /* UserDefRenderableCocoa.swift */; };
@@ -297,7 +297,7 @@
 		5B751DE1294EE7A80031CF70 /* CtlCandidate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CtlCandidate.swift; sourceTree = "<group>"; };
 		5B785EEA2B78FC680006413D /* InputHandler_TypingMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputHandler_TypingMethod.swift; sourceTree = "<group>"; };
 		5B79A3FB2BB850E6003F449E /* LMInstantiator_UserDictionarySummarized.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LMInstantiator_UserDictionarySummarized.swift; sourceTree = "<group>"; };
-		5B7B4D232AA1BB7600FE6B63 /* Qwertyyb_ShiftKeyUpChecker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Qwertyyb_ShiftKeyUpChecker.swift; sourceTree = "<group>"; };
+		5B7B4D232AA1BB7600FE6B63 /* ShiftKeyUpChecker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShiftKeyUpChecker.swift; sourceTree = "<group>"; };
 		5B7EEAE22AE5002C006C30A3 /* SecureEventInputSputnik.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecureEventInputSputnik.swift; sourceTree = "<group>"; };
 		5B81BD0F2B7297A70092819A /* AppKitImpl_NSView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppKitImpl_NSView.swift; sourceTree = "<group>"; };
 		5B81BD122B72984E0092819A /* UserDefRenderableCocoa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefRenderableCocoa.swift; sourceTree = "<group>"; };
@@ -485,6 +485,14 @@
 				5B44BADB295047AC00E1C02D /* shortcuts.html */,
 			);
 			path = Manuals;
+			sourceTree = "<group>";
+		};
+		5B4848A12EF45A5900EAA6BB /* ShiftKeyUpChecker */ = {
+			isa = PBXGroup;
+			children = (
+				5B7B4D232AA1BB7600FE6B63 /* ShiftKeyUpChecker.swift */,
+			);
+			path = ShiftKeyUpChecker;
 			sourceTree = "<group>";
 		};
 		5B4BEE6D2B8F8A450044A4EE /* ServiceMenuEditor */ = {
@@ -797,7 +805,6 @@
 				5BE5A504294E097C00EFA49C /* DanielGalasko_FolderMonitor.swift */,
 				5B4C81802ADABB60008507B1 /* HangarRash_SwiftyCapsLockToggler.swift */,
 				5B1523B52A74E92D007D2E53 /* Jad_BookmarkManager.swift */,
-				5B7B4D232AA1BB7600FE6B63 /* Qwertyyb_ShiftKeyUpChecker.swift */,
 				5BE5A50A294E0A1B00EFA49C /* RMJay_LineReader.swift */,
 			);
 			path = 3rdParty;
@@ -806,6 +813,7 @@
 		5BE5A50E294E0B8700EFA49C /* vChewingComponents */ = {
 			isa = PBXGroup;
 			children = (
+				5B4848A12EF45A5900EAA6BB /* ShiftKeyUpChecker */,
 				5B9939E72B8B083D00979BBC /* BrailleSputnik */,
 				5BCC80CC2B7E64FA005D689C /* KimoDataReader */,
 				5B751DBB294EE4310031CF70 /* UpdateSputnik */,
@@ -1307,7 +1315,7 @@
 				5BCC80CE2B7E6511005D689C /* KimoDataReader.swift in Sources */,
 				5B4C81812ADABB60008507B1 /* HangarRash_SwiftyCapsLockToggler.swift in Sources */,
 				5BE5A522294E0C2500EFA49C /* NotifierUI.swift in Sources */,
-				5B7B4D242AA1BB7600FE6B63 /* Qwertyyb_ShiftKeyUpChecker.swift in Sources */,
+				5B7B4D242AA1BB7600FE6B63 /* ShiftKeyUpChecker.swift in Sources */,
 				5B72F6672B885AF00051B7A9 /* lmPlainBopomopo_RawData.swift in Sources */,
 				5BDA204E2EEABDDF00377085 /* MainSputnik.swift in Sources */,
 				5B70C0AB2EA428B500BC8273 /* FileOpenMethod.swift in Sources */,
