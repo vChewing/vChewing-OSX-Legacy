@@ -100,13 +100,9 @@
 		5BA379B72B8278DA00D82E16 /* LMInstantiator_POMRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA379B62B8278DA00D82E16 /* LMInstantiator_POMRepresentable.swift */; };
 		5BA631862B13617800974241 /* sqlite3.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA631622B135E9A00974241 /* sqlite3.m */; };
 		5BA7437E2EC4EC4300C977DA /* SessionUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA7437D2EC4EC4300C977DA /* SessionUI.swift */; };
-		5BACBCDF295093A60078CAB3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BACBCDE295093A60078CAB3 /* AppDelegate.swift */; };
-		5BACBCE4295093A80078CAB3 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BACBCE2295093A80078CAB3 /* MainMenu.xib */; };
 		5BACBCF9295094CB0078CAB3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5BACBCF7295094CB0078CAB3 /* InfoPlist.strings */; };
 		5BACBCFD295094E90078CAB3 /* IMKHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A4F4294E059600EFA49C /* IMKHelper.swift */; };
 		5BACBCFE295094FA0078CAB3 /* TISInputSourceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A4FB294E087B00EFA49C /* TISInputSourceExtension.swift */; };
-		5BACBD002950950D0078CAB3 /* AppDelegate_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BACBCFF2950950C0078CAB3 /* AppDelegate_Extension.swift */; };
-		5BACBD022950951A0078CAB3 /* RelocationDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BACBD012950951A0078CAB3 /* RelocationDetector.swift */; };
 		5BACBD03295095390078CAB3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BF5BAE2294DFFCA006011AD /* Assets.xcassets */; };
 		5BACBD09295098F50078CAB3 /* vChewing.app in Resources */ = {isa = PBXBuildFile; fileRef = 5BF5BADD294DFFC9006011AD /* vChewing.app */; };
 		5BACBD0C2950991D0078CAB3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5BACBD0A2950991D0078CAB3 /* Localizable.strings */; };
@@ -186,6 +182,16 @@
 		5BE5A56A294E120500EFA49C /* SymbolMenuDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A569294E120500EFA49C /* SymbolMenuDefaultData.swift */; };
 		5BE5A56C294E127B00EFA49C /* PhraseEditorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A56B294E127B00EFA49C /* PhraseEditorDelegate.swift */; };
 		5BE5A596294E1DFB00EFA49C /* ChineseConverterBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A595294E1DFB00EFA49C /* ChineseConverterBridge.swift */; };
+		5BE9FA7B2EF549230048D81F /* MainSputnik4Installer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE9FA792EF549230048D81F /* MainSputnik4Installer.swift */; };
+		5BE9FA7C2EF549230048D81F /* RelocationDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE9FA7A2EF549230048D81F /* RelocationDetector.swift */; };
+		5BE9FA7D2EF549230048D81F /* CtlAppInstaller4Cocoa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE9FA752EF549230048D81F /* CtlAppInstaller4Cocoa.swift */; };
+		5BE9FA7E2EF549230048D81F /* VwrAppInstaller4Cocoa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE9FA762EF549230048D81F /* VwrAppInstaller4Cocoa.swift */; };
+		5BE9FA7F2EF549230048D81F /* InstallerShared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE9FA772EF549230048D81F /* InstallerShared.swift */; };
+		5BE9FA802EF549230048D81F /* InstallerVMProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE9FA782EF549230048D81F /* InstallerVMProtocol.swift */; };
+		5BE9FA822EF549C10048D81F /* AppKitImpl_NSView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B81BD0F2B7297A70092819A /* AppKitImpl_NSView.swift */; };
+		5BE9FA832EF549C70048D81F /* AppKitImpl_NSWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A4FF294E092900EFA49C /* AppKitImpl_NSWindowController.swift */; };
+		5BE9FA852EF54A0F0048D81F /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE9FA842EF54A0D0048D81F /* main.swift */; };
+		5BE9FA862EF54C510048D81F /* AlexisBridoux_NSWindowPositioner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A502294E095D00EFA49C /* AlexisBridoux_NSWindowPositioner.swift */; };
 		5BEE11F92D46755F0001EF09 /* 9_SwiftImpl_Internals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEE11F82D46755F0001EF09 /* 9_SwiftImpl_Internals.swift */; };
 		5BF1209F2B8C8D7E00C83A24 /* PrefMgr_Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF1209E2B8C8D7E00C83A24 /* PrefMgr_Singleton.swift */; };
 		5BF120A12B8C8E1700C83A24 /* IMEApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF120A02B8C8E1700C83A24 /* IMEApp.swift */; };
@@ -322,19 +328,11 @@
 		5BA631642B135E9A00974241 /* sqlite3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sqlite3.h; sourceTree = "<group>"; };
 		5BA7437D2EC4EC4300C977DA /* SessionUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionUI.swift; sourceTree = "<group>"; };
 		5BACBCDC295093A60078CAB3 /* vChewingInstallerLegacy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vChewingInstallerLegacy.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		5BACBCDE295093A60078CAB3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5BACBCE3295093A80078CAB3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		5BACBCE5295093A80078CAB3 /* Installer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Installer.entitlements; sourceTree = "<group>"; };
-		5BACBCEA2950945D0078CAB3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MainMenu.strings; sourceTree = "<group>"; };
-		5BACBCEC2950945E0078CAB3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MainMenu.strings"; sourceTree = "<group>"; };
-		5BACBCEE2950945E0078CAB3 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/MainMenu.strings"; sourceTree = "<group>"; };
-		5BACBCF02950945E0078CAB3 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/MainMenu.strings; sourceTree = "<group>"; };
 		5BACBCF8295094CB0078CAB3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5BACBCFA295094CE0078CAB3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		5BACBCFB295094CF0078CAB3 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		5BACBCFC295094D10078CAB3 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		5BACBCFF2950950C0078CAB3 /* AppDelegate_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate_Extension.swift; sourceTree = "<group>"; };
-		5BACBD012950951A0078CAB3 /* RelocationDetector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RelocationDetector.swift; sourceTree = "<group>"; };
 		5BACBD072950988F0078CAB3 /* Installer-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Installer-Info.plist"; sourceTree = "<group>"; };
 		5BACBD0B2950991D0078CAB3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Installer/en.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
 		5BACBD0F295099480078CAB3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -426,6 +424,13 @@
 		5BE5A593294E19B300EFA49C /* template-usersymbolphrases.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "template-usersymbolphrases.txt"; sourceTree = "<group>"; };
 		5BE5A594294E19B300EFA49C /* template-exclusions.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "template-exclusions.txt"; sourceTree = "<group>"; };
 		5BE5A595294E1DFB00EFA49C /* ChineseConverterBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChineseConverterBridge.swift; sourceTree = "<group>"; };
+		5BE9FA752EF549230048D81F /* CtlAppInstaller4Cocoa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CtlAppInstaller4Cocoa.swift; sourceTree = "<group>"; };
+		5BE9FA762EF549230048D81F /* VwrAppInstaller4Cocoa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VwrAppInstaller4Cocoa.swift; sourceTree = "<group>"; };
+		5BE9FA772EF549230048D81F /* InstallerShared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallerShared.swift; sourceTree = "<group>"; };
+		5BE9FA782EF549230048D81F /* InstallerVMProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallerVMProtocol.swift; sourceTree = "<group>"; };
+		5BE9FA792EF549230048D81F /* MainSputnik4Installer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSputnik4Installer.swift; sourceTree = "<group>"; };
+		5BE9FA7A2EF549230048D81F /* RelocationDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelocationDetector.swift; sourceTree = "<group>"; };
+		5BE9FA842EF54A0D0048D81F /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		5BEE11F82D46755F0001EF09 /* 9_SwiftImpl_Internals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = 9_SwiftImpl_Internals.swift; sourceTree = "<group>"; };
 		5BF1209E2B8C8D7E00C83A24 /* PrefMgr_Singleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefMgr_Singleton.swift; sourceTree = "<group>"; };
 		5BF120A02B8C8E1700C83A24 /* IMEApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMEApp.swift; sourceTree = "<group>"; };
@@ -629,14 +634,12 @@
 		5BACBCDD295093A60078CAB3 /* Installer */ = {
 			isa = PBXGroup;
 			children = (
-				5BACBCFF2950950C0078CAB3 /* AppDelegate_Extension.swift */,
-				5BACBCDE295093A60078CAB3 /* AppDelegate.swift */,
+				5BE9FA842EF54A0D0048D81F /* main.swift */,
+				5BE9FA812EF5495E0048D81F /* Modules */,
 				5BACBCF7295094CB0078CAB3 /* InfoPlist.strings */,
 				5BACBD072950988F0078CAB3 /* Installer-Info.plist */,
 				5BACBCE5295093A80078CAB3 /* Installer.entitlements */,
 				5BACBD0A2950991D0078CAB3 /* Localizable.strings */,
-				5BACBCE2295093A80078CAB3 /* MainMenu.xib */,
-				5BACBD012950951A0078CAB3 /* RelocationDetector.swift */,
 			);
 			path = Installer;
 			sourceTree = "<group>";
@@ -969,6 +972,19 @@
 			path = SoundFiles;
 			sourceTree = "<group>";
 		};
+		5BE9FA812EF5495E0048D81F /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				5BE9FA752EF549230048D81F /* CtlAppInstaller4Cocoa.swift */,
+				5BE9FA772EF549230048D81F /* InstallerShared.swift */,
+				5BE9FA782EF549230048D81F /* InstallerVMProtocol.swift */,
+				5BE9FA792EF549230048D81F /* MainSputnik4Installer.swift */,
+				5BE9FA7A2EF549230048D81F /* RelocationDetector.swift */,
+				5BE9FA762EF549230048D81F /* VwrAppInstaller4Cocoa.swift */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
 		5BF5AD852EE3660C00121ED1 /* Typewriter */ = {
 			isa = PBXGroup;
 			children = (
@@ -1119,7 +1135,6 @@
 				5BACBD09295098F50078CAB3 /* vChewing.app in Resources */,
 				5BACBCF9295094CB0078CAB3 /* InfoPlist.strings in Resources */,
 				5BACBD03295095390078CAB3 /* Assets.xcassets in Resources */,
-				5BACBCE4295093A80078CAB3 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1179,14 +1194,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				5BB5158E2B729E9D00874257 /* SwiftExtension.swift in Sources */,
-				5BACBCDF295093A60078CAB3 /* AppDelegate.swift in Sources */,
 				5B3B0ED32B981C95000B2A25 /* SwiftFoundationImpl.swift in Sources */,
 				5BB5158D2B729E7800874257 /* AppKitImpl_Misc.swift in Sources */,
+				5BE9FA7B2EF549230048D81F /* MainSputnik4Installer.swift in Sources */,
+				5BE9FA7C2EF549230048D81F /* RelocationDetector.swift in Sources */,
+				5BE9FA832EF549C70048D81F /* AppKitImpl_NSWindowController.swift in Sources */,
+				5BE9FA7D2EF549230048D81F /* CtlAppInstaller4Cocoa.swift in Sources */,
+				5BE9FA7E2EF549230048D81F /* VwrAppInstaller4Cocoa.swift in Sources */,
+				5BE9FA862EF54C510048D81F /* AlexisBridoux_NSWindowPositioner.swift in Sources */,
+				5BE9FA7F2EF549230048D81F /* InstallerShared.swift in Sources */,
+				5BE9FA802EF549230048D81F /* InstallerVMProtocol.swift in Sources */,
 				5BACBCFE295094FA0078CAB3 /* TISInputSourceExtension.swift in Sources */,
-				5BACBD002950950D0078CAB3 /* AppDelegate_Extension.swift in Sources */,
+				5BE9FA852EF54A0F0048D81F /* main.swift in Sources */,
 				5BACBCFD295094E90078CAB3 /* IMKHelper.swift in Sources */,
+				5BE9FA822EF549C10048D81F /* AppKitImpl_NSView.swift in Sources */,
 				5BD289E42B7B48AE00D3E41A /* LatinKeyboardMappings.swift in Sources */,
-				5BACBD022950951A0078CAB3 /* RelocationDetector.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1405,18 +1427,6 @@
 			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
-		5BACBCE2295093A80078CAB3 /* MainMenu.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5BACBCE3295093A80078CAB3 /* Base */,
-				5BACBCEA2950945D0078CAB3 /* en */,
-				5BACBCEC2950945E0078CAB3 /* zh-Hans */,
-				5BACBCEE2950945E0078CAB3 /* zh-Hant */,
-				5BACBCF02950945E0078CAB3 /* ja */,
-			);
-			name = MainMenu.xib;
-			sourceTree = "<group>";
-		};
 		5BACBCF7295094CB0078CAB3 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1453,7 +1463,6 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Installer/Installer-Info.plist";
-				INFOPLIST_KEY_NSMainNibFile = MainMenu;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1477,7 +1486,6 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Installer/Installer-Info.plist";
-				INFOPLIST_KEY_NSMainNibFile = MainMenu;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
