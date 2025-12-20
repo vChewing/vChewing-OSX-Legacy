@@ -118,6 +118,7 @@
 		5BC8B2912EF3FFB60025533D /* VwrAboutUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC8B28F2EF3FFB60025533D /* VwrAboutUI.swift */; };
 		5BC8B2922EF3FFB60025533D /* VwrAboutCocoa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC8B28E2EF3FFB60025533D /* VwrAboutCocoa.swift */; };
 		5BC8B2932EF3FFB60025533D /* CtlAboutUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC8B28D2EF3FFB60025533D /* CtlAboutUI.swift */; };
+		5BCA232D2EF6B77B00A8ADD0 /* CpLkHitChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA232C2EF6B77B00A8ADD0 /* CpLkHitChecker.swift */; };
 		5BCA4FAD2E9659F700441688 /* SessionCoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA4FAC2E9659F700441688 /* SessionCoreProtocol.swift */; };
 		5BCC80CE2B7E6511005D689C /* KimoDataReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCC80CD2B7E6511005D689C /* KimoDataReader.swift */; };
 		5BCDA50D2D50C2D200571961 /* IMKInputControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCDA50C2D50C2D200571961 /* IMKInputControllerProtocol.swift */; };
@@ -348,6 +349,7 @@
 		5BC8B28D2EF3FFB60025533D /* CtlAboutUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CtlAboutUI.swift; sourceTree = "<group>"; };
 		5BC8B28E2EF3FFB60025533D /* VwrAboutCocoa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VwrAboutCocoa.swift; sourceTree = "<group>"; };
 		5BC8B28F2EF3FFB60025533D /* VwrAboutUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VwrAboutUI.swift; sourceTree = "<group>"; };
+		5BCA232C2EF6B77B00A8ADD0 /* CpLkHitChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CpLkHitChecker.swift; sourceTree = "<group>"; };
 		5BCA4FAC2E9659F700441688 /* SessionCoreProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionCoreProtocol.swift; sourceTree = "<group>"; };
 		5BCC80CD2B7E6511005D689C /* KimoDataReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KimoDataReader.swift; sourceTree = "<group>"; };
 		5BCDA50C2D50C2D200571961 /* IMKInputControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMKInputControllerProtocol.swift; sourceTree = "<group>"; };
@@ -492,12 +494,13 @@
 			path = Manuals;
 			sourceTree = "<group>";
 		};
-		5B4848A12EF45A5900EAA6BB /* ShiftKeyUpChecker */ = {
+		5B4848A12EF45A5900EAA6BB /* ModifierKeyHitChecker */ = {
 			isa = PBXGroup;
 			children = (
+				5BCA232C2EF6B77B00A8ADD0 /* CpLkHitChecker.swift */,
 				5B7B4D232AA1BB7600FE6B63 /* ShiftKeyUpChecker.swift */,
 			);
-			path = ShiftKeyUpChecker;
+			path = ModifierKeyHitChecker;
 			sourceTree = "<group>";
 		};
 		5B4BEE6D2B8F8A450044A4EE /* ServiceMenuEditor */ = {
@@ -816,7 +819,7 @@
 		5BE5A50E294E0B8700EFA49C /* vChewingComponents */ = {
 			isa = PBXGroup;
 			children = (
-				5B4848A12EF45A5900EAA6BB /* ShiftKeyUpChecker */,
+				5B4848A12EF45A5900EAA6BB /* ModifierKeyHitChecker */,
 				5B9939E72B8B083D00979BBC /* BrailleSputnik */,
 				5BCC80CC2B7E64FA005D689C /* KimoDataReader */,
 				5B751DBB294EE4310031CF70 /* UpdateSputnik */,
@@ -1379,6 +1382,7 @@
 				5B751DE2294EE7A80031CF70 /* CandidatePool.swift in Sources */,
 				5B751DBD294EE44F0031CF70 /* UpdateSputnik.swift in Sources */,
 				5B751DCF294EE57D0031CF70 /* SessionCtl.swift in Sources */,
+				5BCA232D2EF6B77B00A8ADD0 /* CpLkHitChecker.swift in Sources */,
 				5BE5A4E5294E03C200EFA49C /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
