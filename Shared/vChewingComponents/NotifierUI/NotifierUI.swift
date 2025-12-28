@@ -116,6 +116,14 @@ public final class Notifier: NSWindowController {
       theWindow.titlebarAppearsTransparent = true
       theWindow.titleVisibility = .hidden
     }
+    // 強制 Notifier 視窗使用 Dark Mode（僅在 macOS 10.14+ 生效）。
+    if #available(macOS 10.14, *) {
+      theWindow.appearance = Self.currentNSAppearance
+      if let visual = transparentVisualEffect as? NSVisualEffectView {
+        visual.material = .underWindowBackground
+        visual.appearance = Self.currentNSAppearance
+      }
+    }
     theWindow.showsToolbarButton = false
     theWindow.standardWindowButton(NSWindow.ButtonType.zoomButton)?.isHidden = true
     theWindow.standardWindowButton(NSWindow.ButtonType.miniaturizeButton)?.isHidden = true
@@ -185,6 +193,19 @@ public final class Notifier: NSWindowController {
   // MARK: - Private Declarations
 
   private static var instanceSet: NSMutableOrderedSet = .init()
+  private static let prefs = PrefMgr()
+
+  private static var currentNSAppearance: NSAppearance? {
+    if #available(macOS 10.14, *) {
+      // minus-zero: Bright, 0: nil, rest: Dark.
+      switch prefs.specifiedNotifyUIColorScheme {
+      case ..<0: return NSAppearance(named: .aqua)
+      case 0: return nil
+      default: return NSAppearance(named: .darkAqua)
+      }
+    }
+    return nil
+  }
 
   private var currentMessage: String // 承載該副本在初期化時被傳入的訊息內容。
   private var isNew = true // 新通知標記。
