@@ -18,6 +18,9 @@
 [branch "upd/dev"]
         remote = origin
         merge = refs/heads/upd/dev
+[remote "atomgit"]
+        url = https://atomgit.com/vChewing/vChewing-OSX-Legacy.git/
+        fetch = +refs/heads/*:refs/remotes/atomgit/*
 [remote "gitlink"]
         url = https://gitlink.org.cn/vChewing/vChewing-OSX-Legacy.git
         fetch = +refs/heads/*:refs/remotes/gitlink/*
@@ -30,6 +33,7 @@
 [remote "all"]
         url = https://gitee.com/vChewing/vChewing-OSX-Legacy.git/
         fetch = +refs/heads/*:refs/remotes/all/*
+        pushurl = https://atomgit.com/vChewing/vChewing-OSX-Legacy.git/
         pushurl = https://gitee.com/vchewing/vChewing-OSX-Legacy.git/
         pushurl = https://gitlink.org.cn/vChewing/vChewing-OSX-Legacy.git/
         pushurl = https://gitcode.net/vChewing/vChewing-OSX-Legacy.git/
