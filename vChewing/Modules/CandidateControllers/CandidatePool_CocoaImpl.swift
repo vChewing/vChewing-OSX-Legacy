@@ -74,8 +74,6 @@ private final class RoundedBadgeTextAttachmentCell: NSTextAttachmentCell {
     text.draw(in: textRect)
   }
 
-  // No attachmentBounds override here to remain compatible with macOS 10.9 SDK.
-
   // MARK: Private
 
   private let text: NSAttributedString
@@ -113,6 +111,7 @@ extension CandidatePool {
     Self.shitCell.updateMetrics(pool: self, origin: currentOrigin)
     Self.shitCell.isHighlighted = false
     let minimumCellDimension = Self.shitCell.visualDimension
+    let minCellWidth = Self.blankCell.cellLength()
     currentPageLines.forEach { currentLine in
       let currentLineOrigin = currentOrigin
       var accumulatedLineSize: CGSize = .zero
@@ -122,10 +121,15 @@ extension CandidatePool {
       currentLine.forEach { currentCell in
         currentCell.updateMetrics(pool: self, origin: currentOrigin)
         var cellDimension = currentCell.visualDimension
-        if layout == .vertical || currentCell.displayedText.count <= 2 {
+        // Horizontal matrix 模式：使用倍數化寬度。
+        if layout == .horizontal, isMatrix {
+          cellDimension.width = currentCell.cellWidthMultiplied(minCellWidth: minCellWidth)
+        } else if layout == .vertical || currentCell.displayedText.count <= 2 {
           cellDimension.width = max(minimumCellDimension.width, cellDimension.width)
         }
         cellDimension.height = max(minimumCellDimension.height, cellDimension.height)
+        // 更新 visualDimension 供後續使用。
+        currentCell.visualDimension.width = cellDimension.width
 
         switch self.layout {
         case .horizontal:
