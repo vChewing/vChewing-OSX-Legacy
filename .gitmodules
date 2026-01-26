@@ -1,0 +1,3 @@
+[submodule "DictionaryData"]
+	path = DictionaryData
+	url = https://atomgit.com/vChewing/vChewing-VanguardLexicon.git

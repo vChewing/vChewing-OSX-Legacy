@@ -7,14 +7,15 @@
         precomposeunicode = true
 [submodule]
         active = .
+[submodule "DictionaryData"]
+    	url = https://atomgit.com/vChewing/vChewing-VanguardLexicon.git
 [remote "origin"]
         url = https://gitee.com/vChewing/vChewing-OSX-Legacy.git/
         fetch = +refs/heads/*:refs/remotes/origin/*
 [branch "main"]
         remote = origin
         merge = refs/heads/main
-[submodule "Source/Data"]
-        url = https://gitlink.org.cn/vChewing/vChewing-VanguardLexicon.git
+    	vscode-merge-base = origin/main
 [branch "upd/dev"]
         remote = origin
         merge = refs/heads/upd/dev
