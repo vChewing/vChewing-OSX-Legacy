@@ -184,15 +184,17 @@ public final class HotenkaChineseConverter {
         }
         do {
           let arrLines = try String(contentsOfFile: filePath, encoding: .utf8)
-            .split(separator: "\n")
+            .split(whereSeparator: { $0.isNewline })
           for line in arrLines {
-            let arrWords = line.split(separator: "\t")
+            let arrWords = line.split(separator: "\t", maxSplits: 1, omittingEmptySubsequences: false)
             if arrWords.count == 2 {
+              let key = String(arrWords[0]).trimmingCharacters(in: .whitespacesAndNewlines)
+              let val = String(arrWords[1]).trimmingCharacters(in: .whitespacesAndNewlines)
               if var theSubDict = dict[dictType] {
-                theSubDict[String(arrWords[0])] = String(arrWords[1])
+                theSubDict[key] = val
                 dict[dictType] = theSubDict
               } else {
-                dict[dictType] = .init()
+                dict[dictType] = [key: val]
               }
             }
           }
@@ -201,7 +203,7 @@ public final class HotenkaChineseConverter {
         }
       }
     }
-    sleep(1)
+    Thread.sleep(forTimeInterval: 1)
   }
 
   // MARK: Public
@@ -218,8 +220,9 @@ public final class HotenkaChineseConverter {
     defer { sqlite3_finalize(ptrStatement); ptrStatement = nil }
     // 綁定 dict 與 key
     _ = sqlite3_bind_int(ptrStatement, 1, Int32(dictType.rawValue))
-    let cKey = (searchKey as NSString).utf8String
-    _ = sqlite3_bind_text(ptrStatement, 2, cKey, -1, unsafeBitCast(-1, to: sqlite3_destructor_type.self))
+    searchKey.withCString { cKey in
+      _ = sqlite3_bind_text(ptrStatement, 2, cKey, -1, unsafeBitCast(-1, to: sqlite3_destructor_type.self))
+    }
     // 此處只需要用到第一筆結果。
     while sqlite3_step(ptrStatement) == SQLITE_ROW {
       // 因為 SELECT theValue 回傳的是第 0 欄位
