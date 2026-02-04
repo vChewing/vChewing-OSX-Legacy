@@ -101,6 +101,7 @@ extension NSApplication {
 
 struct InstallerUIConfig: Hashable {
   var pendingSheetPresenting: Bool = false
+  var isLegacyPackageNoticeEverShown: Bool = false
   var isShowingAlertForFailedInstallation: Bool = false
   var isShowingAlertForMissingPostInstall: Bool = false
   var isShowingPostInstallNotification: Bool = false
