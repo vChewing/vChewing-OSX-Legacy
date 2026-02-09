@@ -57,6 +57,10 @@ extension SessionCoreProtocol {
     id == ui?.currentSessionID
   }
 
+  public var isServiceMenuState: Bool {
+    state.type == .ofSymbolTable && state.node.containsCandidateServices
+  }
+
   public func toggleCandidateUIVisibility(_ newValue: Bool, refresh: Bool = true) {
     toggleCandidateUIVisibility(newValue, refresh: refresh)
   }
