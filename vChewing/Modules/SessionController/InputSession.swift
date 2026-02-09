@@ -285,7 +285,7 @@ extension InputSession {
   /// 輸入法要被換掉或關掉的時候，要做的事情。
   /// 不過好像因為 IMK 的 Bug 而並不會被執行。
   public func inputControllerWillClose() {
-    // 下述兩行用來防止尚未完成拼寫的注音內容被遞交出去。
+    // 防止尚未完成拼寫的注音內容被遞交出去。
     resetInputHandler()
   }
 
