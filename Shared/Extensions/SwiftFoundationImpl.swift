@@ -183,14 +183,26 @@ extension UInt16 {
 // MARK: - User Defaults Storage
 
 extension UserDefaults {
-  // 內部標記，看輸入法是否處於測試模式。
-  public static var pendingUnitTests = false
+  public static var pendingUnitTests: Bool {
+    get { _pendingUnitTests.value }
+    set { _pendingUnitTests.value = newValue }
+  }
 
-  public static var unitTests = UserDefaults(suiteName: "UnitTests")
+  public static var unitTests: UserDefaults? {
+    get { _unitTests.value }
+    set { _unitTests.value = newValue }
+  }
 
   public static var current: UserDefaults {
-    pendingUnitTests ? .unitTests ?? .standard : .standard
+    pendingUnitTests ? (unitTests ?? .standard) : .standard
   }
+
+  // MARK: - Private
+
+  nonisolated private static let _pendingUnitTests = NSMutex(false)
+  nonisolated private static let _unitTests: NSMutex<UserDefaults?> = .init(
+    UserDefaults(suiteName: "UnitTests")
+  )
 }
 
 // MARK: - AppProperty
