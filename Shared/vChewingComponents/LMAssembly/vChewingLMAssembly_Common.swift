@@ -43,6 +43,27 @@ public enum LMAssembly {
     return try fileHandleQueue.sync(execute: execute)
   }
 
+  /// 在 fileHandleQueue 上非同步讀取檔案內容（含可選的 consolidation），
+  /// 完成後在 MainActor 上回呼結果。不阻塞呼叫方（通常是 MainActor）。
+  nonisolated public static func readFileContentAsync(
+    path: String,
+    shouldConsolidate: Bool,
+    completion: @escaping (String) -> ()
+  ) {
+    fileHandleQueue.async {
+      do {
+        if shouldConsolidate {
+          LMConsolidator.fixEOF(path: path)
+          LMConsolidator.consolidate(path: path, pragma: true)
+        }
+        let rawStrData = try String(contentsOfFile: path, encoding: .utf8)
+        asyncOnMain { completion(rawStrData) }
+      } catch {
+        vCLMLog("readFileContentAsync failed at: \(path). Details: \(error)")
+      }
+    }
+  }
+
   // MARK: Internal
 
   enum FileErrors: Error {

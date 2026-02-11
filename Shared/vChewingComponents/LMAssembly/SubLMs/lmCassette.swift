@@ -13,7 +13,7 @@ import Foundation
 
 extension LMAssembly {
   /// 磁帶模組，用來方便使用者自行擴充字根輸入法。
-  struct LMCassette {
+  struct LMCassette: Sendable {
     // MARK: Internal
 
     private(set) var filePath: String?
@@ -43,7 +43,7 @@ extension LMAssembly {
     private(set) var areCandidateKeysShiftHeld: Bool = false
     private(set) var supplyQuickResults: Bool = false
     private(set) var supplyPartiallyMatchedResults: Bool = false
-    var candidateKeysValidator: (String) -> Bool = { _ in false }
+    var candidateKeysValidator: @Sendable (String) -> Bool = { _ in false }
 
     // MARK: Private
 
@@ -243,7 +243,8 @@ extension LMAssembly.LMCassette {
               )
             default: break
             }
-            norm += Self.fscale ** (Double(cells[0].count) / 3.0 - 1.0) * Double(countValue)
+            let powResult = pow(Self.fscale, Double(cells[0].count) / 3.0 - 1.0)
+            norm += powResult * Double(countValue)
           }
         }
         // Post process.
@@ -364,12 +365,10 @@ extension LMAssembly.LMCassette {
   /// - parameters:
   ///   - key: 讀音索引鍵。
   func hasUnigramsFor(key: String) -> Bool {
-    charDefMap[key] != nil
-      ||
-      (
-        charDefWildcardMap[key] != nil && key.contains(wildcard) && key.first?
-          .description != wildcard
-      )
+    if charDefMap[key] != nil { return true }
+    guard charDefWildcardMap[key] != nil else { return false }
+    guard key.contains(wildcard) else { return false }
+    return key.first?.description != wildcard
   }
 
   // MARK: - Private Functions.
@@ -383,28 +382,13 @@ extension LMAssembly.LMCassette {
       weight = -13
     case 0: // 墊底低頻漢字與詞語
       weight = log10(
-        Self.fscale ** (Double(phraseLength) / 3.0 - 1.0) * 0.25 / norm
+        pow(Self.fscale, Double(phraseLength) / 3.0 - 1.0) * 0.25 / norm
       )
     default:
       weight = log10(
-        Self.fscale ** (Double(phraseLength) / 3.0 - 1.0)
-          * Double(theCount) / norm
+        pow(Self.fscale, Double(phraseLength) / 3.0 - 1.0) * Double(theCount) / norm
       )
     }
     return weight
   }
-}
-
-// MARK: - 引入冪乘函式
-
-// Ref: https://stackoverflow.com/a/41581695/4162914
-precedencegroup ExponentiationPrecedence {
-  associativity: right
-  higherThan: MultiplicationPrecedence
-}
-
-infix operator **: ExponentiationPrecedence
-
-private func ** (_ base: Double, _ exp: Double) -> Double {
-  pow(base, exp)
 }
