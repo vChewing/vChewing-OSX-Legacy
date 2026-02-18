@@ -32,7 +32,7 @@ extension VwrAboutUI: View {
       VStack(alignment: .leading, spacing: 6) {
         VStack(alignment: .leading) {
           HStack(alignment: .center) {
-            if let icon = NSImage(named: "IconSansMargin") {
+            if let icon = NSImage(named: "AppIcon") {
               Image(nsImage: icon).resizable().frame(width: 90, height: 90)
             }
             VStack(alignment: .leading) {
