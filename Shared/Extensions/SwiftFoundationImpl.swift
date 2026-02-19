@@ -362,6 +362,14 @@ public func asyncOnMain(
   }
 }
 
+@discardableResult
+public func mainSync<T>(execute work: () throws -> T) rethrows -> T {
+  if Thread.isMainThread {
+    return try work()
+  }
+  return try DispatchQueue.main.sync(execute: work)
+}
+
 // MARK: - Total RAM Size.
 
 extension Process {
