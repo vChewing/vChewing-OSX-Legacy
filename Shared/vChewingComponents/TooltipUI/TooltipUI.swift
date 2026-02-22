@@ -51,8 +51,10 @@ public final class TooltipUI: NSWindowController, TooltipUIProtocol {
     updateWindowSize(to: tooltipView.intrinsicContentSize)
 
     self.observation = Broadcaster.shared
-      .observe(\.eventForClosingAllPanels, options: [.new]) { _, _ in
-        self.hide()
+      .observe(\.eventForClosingAllPanels, options: [.new]) { [weak self] _, _ in
+        asyncOnMain {
+          self?.hide()
+        }
       }
   }
 
