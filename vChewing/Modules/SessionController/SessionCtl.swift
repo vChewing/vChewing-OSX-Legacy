@@ -26,7 +26,6 @@ public final class SessionCtl: IMKInputController {
   override public init() {
     super.init()
     _ = core // Force initialization.
-    Self.currentInputController = self
   }
 
   /// 對用以設定委任物件的控制器型別進行初期化處理。
@@ -40,12 +39,9 @@ public final class SessionCtl: IMKInputController {
   override public init!(server: IMKServer!, delegate: Any!, client inputClient: Any!) {
     super.init(server: server, delegate: delegate, client: inputClient)
     _ = core // Force initialization.
-    Self.currentInputController = self
   }
 
   // MARK: Public
-
-  public private(set) static weak var currentInputController: SessionCtl?
 
   public private(set) lazy var core: InputSession = .init(
     controller: self,
@@ -60,7 +56,6 @@ extension SessionCtl {
   /// - Parameter sender: 呼叫了該函式的客體。
   override public func activateServer(_ sender: Any!) {
     super.activateServer(sender)
-    Self.currentInputController = self
     mainSync {
       core.activateServer(sender)
     }
