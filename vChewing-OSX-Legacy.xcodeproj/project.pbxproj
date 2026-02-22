@@ -693,13 +693,13 @@
 			path = AboutUI;
 			sourceTree = "<group>";
 		};
-		5BCC80CC2B7E64FA005D689C /* KimoDataReader */ = {
+		5BCC80CC2B7E64FA005D689C /* OtherIMEDataReader */ = {
 			isa = PBXGroup;
 			children = (
 				5BF846912EE7DACA00C2857D /* KeyKeyUserDBKit */,
 				5BCC80CD2B7E6511005D689C /* KimoDataReader.swift */,
 			);
-			path = KimoDataReader;
+			path = OtherIMEDataReader;
 			sourceTree = "<group>";
 		};
 		5BE5A4E6294E04B000EFA49C /* MenuIcons */ = {
@@ -826,7 +826,7 @@
 				5B52709E2F005F0800F41D73 /* FolderMonitor */,
 				5B4848A12EF45A5900EAA6BB /* ModifierKeyHitChecker */,
 				5B9939E72B8B083D00979BBC /* BrailleSputnik */,
-				5BCC80CC2B7E64FA005D689C /* KimoDataReader */,
+				5BCC80CC2B7E64FA005D689C /* OtherIMEDataReader */,
 				5B751DBB294EE4310031CF70 /* UpdateSputnik */,
 				5BE5A50F294E0BB400EFA49C /* Hotenka */,
 				5BE5A511294E0BD400EFA49C /* LMAssembly */,
