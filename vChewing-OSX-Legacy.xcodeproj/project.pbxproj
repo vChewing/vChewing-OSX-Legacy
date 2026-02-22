@@ -25,6 +25,7 @@
 		5B3C0D5F2B13555400C87B27 /* vChewingFactoryDatabase.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 5B3C0D5E2B13555000C87B27 /* vChewingFactoryDatabase.sqlite */; };
 		5B423A542A9516B0004CC33B /* Broadcaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B423A532A9516B0004CC33B /* Broadcaster.swift */; };
 		5B44BAD9295047AC00E1C02D /* shortcuts.html in Resources */ = {isa = PBXBuildFile; fileRef = 5B44BADB295047AC00E1C02D /* shortcuts.html */; };
+		5B47F73F2F4AEBE000774728 /* OIDR_Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B47F73D2F4AEBE000774728 /* OIDR_Shared.swift */; };
 		5B4BEE702B8F8A510044A4EE /* VwrServiceMenuEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4BEE6E2B8F8A450044A4EE /* VwrServiceMenuEditor.swift */; };
 		5B4BEE712B8F8A530044A4EE /* CtlServiceMenuEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4BEE6F2B8F8A450044A4EE /* CtlServiceMenuEditor.swift */; };
 		5B4C81812ADABB60008507B1 /* HangarRash_SwiftyCapsLockToggler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4C81802ADABB60008507B1 /* HangarRash_SwiftyCapsLockToggler.swift */; };
@@ -109,6 +110,7 @@
 		5BACBD0E295099290078CAB3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5B751D87294EC30D0031CF70 /* InfoPlist.strings */; };
 		5BAE70112AE54F67002E673A /* SecurityAgentHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAE70102AE54F67002E673A /* SecurityAgentHelper.swift */; };
 		5BAF0FFB2AA63F6D00FD58A0 /* UserDef.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAF0FFA2AA63F6D00FD58A0 /* UserDef.swift */; };
+		5BB040572F4BA8BC00425457 /* README.MD in Resources */ = {isa = PBXBuildFile; fileRef = 5BB040562F4BA8BC00425457 /* README.MD */; };
 		5BB1D7F22999025B00EA8D2C /* PrefUITabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB1D7F12999025B00EA8D2C /* PrefUITabs.swift */; };
 		5BB32F0529A61AFB00B05D7B /* CtlCandidateTDK4AppKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB32F0429A61AFB00B05D7B /* CtlCandidateTDK4AppKit.swift */; };
 		5BB5158D2B729E7800874257 /* AppKitImpl_Misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A4F0294E057F00EFA49C /* AppKitImpl_Misc.swift */; };
@@ -204,10 +206,10 @@
 		5BF5BAE1294DFFC9006011AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF5BAE0294DFFC9006011AD /* AppDelegate.swift */; };
 		5BF5BAE3294DFFCA006011AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BF5BAE2294DFFCA006011AD /* Assets.xcassets */; };
 		5BF846922EE7DACA00C2857D /* KeyKeyUserDBKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8468B2EE7DACA00C2857D /* KeyKeyUserDBKit.swift */; };
-		5BF846932EE7DACA00C2857D /* Gram.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8468A2EE7DACA00C2857D /* Gram.swift */; };
+		5BF846932EE7DACA00C2857D /* KeyKeyGram.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8468A2EE7DACA00C2857D /* KeyKeyGram.swift */; };
 		5BF846942EE7DACA00C2857D /* UserPhraseTextFileObj.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF846902EE7DACA00C2857D /* UserPhraseTextFileObj.swift */; };
 		5BF846952EE7DACA00C2857D /* UserPhraseDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8468F2EE7DACA00C2857D /* UserPhraseDataSource.swift */; };
-		5BF846962EE7DACA00C2857D /* UserDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8468E2EE7DACA00C2857D /* UserDatabase.swift */; };
+		5BF846962EE7DACA00C2857D /* UserDatabase4KeyKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8468E2EE7DACA00C2857D /* UserDatabase4KeyKey.swift */; };
 		5BF846972EE7DACA00C2857D /* SEEDecryptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8468D2EE7DACA00C2857D /* SEEDecryptor.swift */; };
 		5BF846982EE7DACA00C2857D /* PhonaSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8468C2EE7DACA00C2857D /* PhonaSet.swift */; };
 /* End PBXBuildFile section */
@@ -256,6 +258,7 @@
 		5B44BADC295047AE00E1C02D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = "zh-Hans"; path = "zh-Hans.lproj/shortcuts.html"; sourceTree = "<group>"; };
 		5B44BADD295047AF00E1C02D /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = "zh-Hant"; path = "zh-Hant.lproj/shortcuts.html"; sourceTree = "<group>"; };
 		5B44BADE295047B400E1C02D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = ja; path = ja.lproj/shortcuts.html; sourceTree = "<group>"; };
+		5B47F73D2F4AEBE000774728 /* OIDR_Shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OIDR_Shared.swift; sourceTree = "<group>"; };
 		5B4BEE6E2B8F8A450044A4EE /* VwrServiceMenuEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VwrServiceMenuEditor.swift; sourceTree = "<group>"; };
 		5B4BEE6F2B8F8A450044A4EE /* CtlServiceMenuEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CtlServiceMenuEditor.swift; sourceTree = "<group>"; };
 		5B4C81802ADABB60008507B1 /* HangarRash_SwiftyCapsLockToggler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HangarRash_SwiftyCapsLockToggler.swift; sourceTree = "<group>"; };
@@ -341,6 +344,7 @@
 		5BAD67E02ADAAF63005A4842 /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
 		5BAE70102AE54F67002E673A /* SecurityAgentHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityAgentHelper.swift; sourceTree = "<group>"; };
 		5BAF0FFA2AA63F6D00FD58A0 /* UserDef.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDef.swift; sourceTree = "<group>"; };
+		5BB040562F4BA8BC00425457 /* README.MD */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.MD; sourceTree = "<group>"; };
 		5BB1D7F12999025B00EA8D2C /* PrefUITabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefUITabs.swift; sourceTree = "<group>"; };
 		5BB32F0429A61AFB00B05D7B /* CtlCandidateTDK4AppKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CtlCandidateTDK4AppKit.swift; sourceTree = "<group>"; };
 		5BC783DB2EBEF02F00AE14E2 /* RomanNumeralConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RomanNumeralConverter.swift; sourceTree = "<group>"; };
@@ -444,11 +448,11 @@
 		5BF5BAE0294DFFC9006011AD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5BF5BAE2294DFFCA006011AD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5BF5BAE7294DFFCA006011AD /* vChewing.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = vChewing.entitlements; sourceTree = "<group>"; };
-		5BF8468A2EE7DACA00C2857D /* Gram.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gram.swift; sourceTree = "<group>"; };
+		5BF8468A2EE7DACA00C2857D /* KeyKeyGram.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyKeyGram.swift; sourceTree = "<group>"; };
 		5BF8468B2EE7DACA00C2857D /* KeyKeyUserDBKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyKeyUserDBKit.swift; sourceTree = "<group>"; };
 		5BF8468C2EE7DACA00C2857D /* PhonaSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhonaSet.swift; sourceTree = "<group>"; };
 		5BF8468D2EE7DACA00C2857D /* SEEDecryptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SEEDecryptor.swift; sourceTree = "<group>"; };
-		5BF8468E2EE7DACA00C2857D /* UserDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDatabase.swift; sourceTree = "<group>"; };
+		5BF8468E2EE7DACA00C2857D /* UserDatabase4KeyKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDatabase4KeyKey.swift; sourceTree = "<group>"; };
 		5BF8468F2EE7DACA00C2857D /* UserPhraseDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPhraseDataSource.swift; sourceTree = "<group>"; };
 		5BF846902EE7DACA00C2857D /* UserPhraseTextFileObj.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPhraseTextFileObj.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -696,8 +700,10 @@
 		5BCC80CC2B7E64FA005D689C /* OtherIMEDataReader */ = {
 			isa = PBXGroup;
 			children = (
+				5BB040562F4BA8BC00425457 /* README.MD */,
 				5BF846912EE7DACA00C2857D /* KeyKeyUserDBKit */,
 				5BCC80CD2B7E6511005D689C /* KimoDataReader.swift */,
+				5B47F73D2F4AEBE000774728 /* OIDR_Shared.swift */,
 			);
 			path = OtherIMEDataReader;
 			sourceTree = "<group>";
@@ -1043,11 +1049,11 @@
 		5BF846912EE7DACA00C2857D /* KeyKeyUserDBKit */ = {
 			isa = PBXGroup;
 			children = (
-				5BF8468A2EE7DACA00C2857D /* Gram.swift */,
+				5BF8468A2EE7DACA00C2857D /* KeyKeyGram.swift */,
 				5BF8468B2EE7DACA00C2857D /* KeyKeyUserDBKit.swift */,
 				5BF8468C2EE7DACA00C2857D /* PhonaSet.swift */,
 				5BF8468D2EE7DACA00C2857D /* SEEDecryptor.swift */,
-				5BF8468E2EE7DACA00C2857D /* UserDatabase.swift */,
+				5BF8468E2EE7DACA00C2857D /* UserDatabase4KeyKey.swift */,
 				5BF8468F2EE7DACA00C2857D /* UserPhraseDataSource.swift */,
 				5BF846902EE7DACA00C2857D /* UserPhraseTextFileObj.swift */,
 			);
@@ -1163,6 +1169,7 @@
 				5B751DF2294EF28C0031CF70 /* template-exclusions.txt in Resources */,
 				5B751DE9294EF2880031CF70 /* MenuIcon-TCVIM@2x.png in Resources */,
 				5B751DF5294EF2940031CF70 /* Beep.m4a in Resources */,
+				5BB040572F4BA8BC00425457 /* README.MD in Resources */,
 				5B751DF0294EF28C0031CF70 /* template-replacements.txt in Resources */,
 				5B751DF7294EF29B0031CF70 /* Localizable.strings in Resources */,
 				5B751DEA294EF2880031CF70 /* MenuIcon-SCVIM@2x.png in Resources */,
@@ -1309,6 +1316,7 @@
 				5BE5A53F294E0CEF00EFA49C /* CandidateNode.swift in Sources */,
 				5B55ACAF2B5A255F009E2F54 /* NSEventImpl_Shared.swift in Sources */,
 				5BF5BAE1294DFFC9006011AD /* AppDelegate.swift in Sources */,
+				5B47F73F2F4AEBE000774728 /* OIDR_Shared.swift in Sources */,
 				5B3B0ED22B98170E000B2A25 /* SwiftFoundationImpl.swift in Sources */,
 				5BE5A53C294E0CEF00EFA49C /* CtlCandidateProtocol.swift in Sources */,
 				5B98203E2B8D9A4200E183D8 /* CandidateNode_ServiceImpl.swift in Sources */,
@@ -1377,10 +1385,10 @@
 				5B81BD282B729AE90092819A /* VwrSettingsPaneCocoaKeyboard.swift in Sources */,
 				5BE5A596294E1DFB00EFA49C /* ChineseConverterBridge.swift in Sources */,
 				5BF846922EE7DACA00C2857D /* KeyKeyUserDBKit.swift in Sources */,
-				5BF846932EE7DACA00C2857D /* Gram.swift in Sources */,
+				5BF846932EE7DACA00C2857D /* KeyKeyGram.swift in Sources */,
 				5BF846942EE7DACA00C2857D /* UserPhraseTextFileObj.swift in Sources */,
 				5BF846952EE7DACA00C2857D /* UserPhraseDataSource.swift in Sources */,
-				5BF846962EE7DACA00C2857D /* UserDatabase.swift in Sources */,
+				5BF846962EE7DACA00C2857D /* UserDatabase4KeyKey.swift in Sources */,
 				5BF846972EE7DACA00C2857D /* SEEDecryptor.swift in Sources */,
 				5BF846982EE7DACA00C2857D /* PhonaSet.swift in Sources */,
 				5B751DE2294EE7A80031CF70 /* CandidatePool4AppKit.swift in Sources */,

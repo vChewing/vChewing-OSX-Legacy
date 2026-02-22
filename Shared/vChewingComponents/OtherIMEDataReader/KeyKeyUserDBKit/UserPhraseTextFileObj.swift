@@ -21,7 +21,7 @@ extension KeyKeyUserDBKit {
   /// ## 加密方式
   /// - SQLite SEE AES-128-CCM
   /// - 密鑰: "mjsrexportmjsrex" (重複填充到 16 bytes)
-  public final class UserPhraseTextFileObj: Sendable, UserPhraseDataSource {
+  public final class UserPhraseTextFileObj: UserPhraseDataSource {
     // MARK: Lifecycle
 
     /// 從檔案路徑初始化
@@ -53,7 +53,7 @@ extension KeyKeyUserDBKit {
       self.version = firstLine
 
       // 解析 unigrams（逐行解析到 # 或 < 開頭為止）
-      var unigrams: [Gram] = []
+      var unigrams: [KeyKeyGram] = []
       for line in lines.dropFirst() {
         if line.hasPrefix("#") || line.hasPrefix("<") {
           break
@@ -70,7 +70,7 @@ extension KeyKeyUserDBKit {
 
         // reading 格式是逗號分隔的注音字串，如 "ㄔㄨㄣ,ㄒㄧ"
         let keyArray = reading.split(separator: ",").map(String.init)
-        unigrams.append(Gram(keyArray: keyArray, current: word, probability: probability))
+        unigrams.append(KeyKeyGram(keyArray: keyArray, current: word, probability: probability))
       }
       self.unigrams = unigrams
 
@@ -94,35 +94,35 @@ extension KeyKeyUserDBKit {
     public let version: String
 
     /// 使用者單元圖
-    public let unigrams: [Gram]
+    public let unigrams: [KeyKeyGram]
 
     /// 使用者雙元圖（來自 database block）
-    public let bigrams: [Gram]
+    public let bigrams: [KeyKeyGram]
 
     /// 候選字覆蓋（來自 database block）
-    public let candidateOverrides: [Gram]
+    public let candidateOverrides: [KeyKeyGram]
 
     // MARK: - UserPhraseDataSource
 
-    public func fetchUnigrams() throws -> [Gram] {
+    public func fetchUnigrams() throws -> [KeyKeyGram] {
       unigrams
     }
 
-    public func fetchBigrams(limit: Int? = nil) throws -> [Gram] {
+    public func fetchBigrams(limit: Int? = nil) throws -> [KeyKeyGram] {
       if let limit {
         return Array(bigrams.prefix(limit))
       }
       return bigrams
     }
 
-    public func fetchCandidateOverrides() throws -> [Gram] {
+    public func fetchCandidateOverrides() throws -> [KeyKeyGram] {
       candidateOverrides
     }
 
     // MARK: - Sequence
 
-    public func makeIterator() -> IndexingIterator<[Gram]> {
-      var allGrams: [Gram] = []
+    public func makeIterator() -> IndexingIterator<[KeyKeyGram]> {
+      var allGrams: [KeyKeyGram] = []
       allGrams.append(contentsOf: unigrams)
       allGrams.append(contentsOf: bigrams)
       allGrams.append(contentsOf: candidateOverrides)
@@ -136,7 +136,7 @@ extension KeyKeyUserDBKit {
     private static func parseDatabaseBlock(
       from content: String
     ) throws
-      -> (bigrams: [Gram], candidateOverrides: [Gram]) {
+      -> (bigrams: [KeyKeyGram], candidateOverrides: [KeyKeyGram]) {
       // 找到 <database> block
       guard let startRange = content.range(of: "<database>"),
             let endRange = content.range(of: "</database>")
@@ -293,7 +293,7 @@ extension KeyKeyUserDBKit {
     private static func readGramsFromDecryptedDatabase(
       data: Data
     ) throws
-      -> (bigrams: [Gram], candidateOverrides: [Gram]) {
+      -> (bigrams: [KeyKeyGram], candidateOverrides: [KeyKeyGram]) {
       // sbooth/CSQLite is built with SQLITE_OMIT_AUTOINIT,
       // so we need to call sqlite3_initialize() first.
       // However, the current project does not use that. Skipping that step.
@@ -341,8 +341,8 @@ extension KeyKeyUserDBKit {
 
       defer { sqlite3_close(db) }
 
-      var bigrams: [Gram] = []
-      var candidateOverrides: [Gram] = []
+      var bigrams: [KeyKeyGram] = []
+      var candidateOverrides: [KeyKeyGram] = []
 
       // 讀取 user_bigram_cache
       var statement: OpaquePointer?
@@ -357,7 +357,7 @@ extension KeyKeyUserDBKit {
           // bigram 的 qstring 格式是 "{前字注音2char} {當前字注音2char}"
           let keyArray = PhonaSet.decodeQueryStringAsKeyArray(qstring)
           bigrams.append(
-            Gram(keyArray: keyArray, current: current, previous: previous, probability: probability)
+            KeyKeyGram(keyArray: keyArray, current: current, previous: previous, probability: probability)
           )
         }
         sqlite3_finalize(statement)
@@ -373,7 +373,7 @@ extension KeyKeyUserDBKit {
 
           let keyArray = PhonaSet.decodeQueryStringAsKeyArray(qstring)
           candidateOverrides.append(
-            Gram(
+            KeyKeyGram(
               keyArray: keyArray,
               current: current,
               probability: candidateOverrideProbability,
