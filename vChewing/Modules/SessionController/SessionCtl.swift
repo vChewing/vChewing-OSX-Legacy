@@ -55,7 +55,7 @@ extension SessionCtl {
   /// 啟用輸入法時，會觸發該函式。
   /// - Parameter sender: 呼叫了該函式的客體。
   override public func activateServer(_ sender: Any!) {
-    super.activateServer(sender)
+    // super.activateServer(sender) <- CONSIDERED_USELESS_WITH_TROUBLES
     mainSync {
       core.activateServer(sender)
     }
@@ -67,7 +67,7 @@ extension SessionCtl {
     mainSync {
       core.deactivateServer(sender)
     }
-    super.deactivateServer(sender)
+    // super.deactivateServer(sender) <- CONSIDERED_USELESS_WITH_TROUBLES
   }
 
   /// 切換至某一個輸入法的某個副本時（比如唯音的簡體輸入法副本與繁體輸入法副本），會觸發該函式。
@@ -81,7 +81,7 @@ extension SessionCtl {
     mainSync {
       core.setValue(value, forTag: tag, client: sender)
     }
-    super.setValue(value, forTag: tag, client: sender)
+    // super.setValue(value, forTag: tag, client: sender) <- CONSIDERED_USELESS_WITH_TROUBLES
   }
 }
 
@@ -134,8 +134,8 @@ extension SessionCtl {
   /// 這時需要在 commitComposition 這一關做一些收尾處理。
   /// - Parameter sender: 呼叫了該函式的客體（無須使用）。
   override public func commitComposition(_ sender: Any!) {
-    mainSync {
-      core.commitCompositionByOS(sender)
+    asyncOnMain { [weak self] in
+      self?.core.commitCompositionByOS(sender)
     }
     // `super.commitComposition(sender)` 這句不要引入，否則每次切出輸入法時都會死當。
   }
@@ -153,8 +153,8 @@ extension SessionCtl {
   /// 不過好像因為 IMK 的 Bug 而並不會被執行。
   override public func inputControllerWillClose() {
     // 下述兩行用來防止尚未完成拼寫的注音內容被遞交出去。
-    mainSync {
-      core.inputControllerWillClose()
+    asyncOnMain { [weak self] in
+      self?.core.inputControllerWillClose()
     }
   }
 
@@ -167,8 +167,8 @@ extension SessionCtl {
 
   /// 該函式僅用來取消任何輸入法浮動視窗的顯示。
   override public func hidePalettes() {
-    mainSync {
-      core.hidePalettes()
+    asyncOnMain { [weak self] in
+      self?.core.hidePalettes()
     }
   }
 }
