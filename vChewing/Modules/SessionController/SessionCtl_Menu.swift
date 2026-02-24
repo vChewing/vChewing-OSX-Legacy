@@ -138,7 +138,7 @@ extension SessionCtl {
   @objc
   public func switchInputMode(_: Any? = nil) {
     mainSync {
-      core.toggleInputMode()
+      core?.toggleInputMode()
     }
   }
 
@@ -171,7 +171,7 @@ extension SessionCtl {
   @objc
   public func toggleCassetteMode(_: Any? = nil) {
     mainSync {
-      core.resetInputHandler(forceComposerCleanup: true)
+      core?.resetInputHandler(forceComposerCleanup: true)
     }
     if !PrefMgr.shared.cassetteEnabled,
        !LMMgr.checkCassettePathValidity(PrefMgr.shared.cassettePath) {
@@ -198,7 +198,8 @@ extension SessionCtl {
             : "NotificationSwitchOFF".i18n
         )
     )
-    if !core.inputMode.langModel.isCassetteDataLoaded {
+    let cassetteDataLoaded = core?.inputMode.langModel.isCassetteDataLoaded
+    if let cassetteDataLoaded, !cassetteDataLoaded {
       LMMgr.loadCassetteData()
     }
   }
@@ -206,7 +207,7 @@ extension SessionCtl {
   @objc
   public func toggleSCPCTypingMode(_: Any? = nil) {
     mainSync {
-      core.resetInputHandler(forceComposerCleanup: true)
+      core?.resetInputHandler(forceComposerCleanup: true)
     }
     Notifier.notify(
       message: "Per-Char Select Mode".i18n + "\n"
@@ -221,7 +222,7 @@ extension SessionCtl {
   @objc
   public func toggleChineseConverter(_: Any? = nil) {
     mainSync {
-      core.resetInputHandler(forceComposerCleanup: true)
+      core?.resetInputHandler(forceComposerCleanup: true)
     }
     Notifier.notify(
       message: "Force KangXi Writing".i18n + "\n"
@@ -236,7 +237,7 @@ extension SessionCtl {
   @objc
   public func toggleShiftJISShinjitaiOutput(_: Any? = nil) {
     mainSync {
-      core.resetInputHandler(forceComposerCleanup: true)
+      core?.resetInputHandler(forceComposerCleanup: true)
     }
     Notifier.notify(
       message: "JIS Shinjitai Output".i18n + "\n"
@@ -251,7 +252,7 @@ extension SessionCtl {
   @objc
   public func toggleCurrencyNumerals(_: Any? = nil) {
     mainSync {
-      core.resetInputHandler(forceComposerCleanup: true)
+      core?.resetInputHandler(forceComposerCleanup: true)
     }
     Notifier.notify(
       message: "Currency Numeral Output".i18n + "\n"
@@ -266,7 +267,7 @@ extension SessionCtl {
   @objc
   public func toggleHalfWidthPunctuation(_: Any? = nil) {
     mainSync {
-      core.resetInputHandler(forceComposerCleanup: true)
+      core?.resetInputHandler(forceComposerCleanup: true)
     }
     Notifier.notify(
       message: "Half-Width Punctuation Mode".i18n + "\n"
@@ -281,7 +282,7 @@ extension SessionCtl {
   @objc
   public func toggleCNS11643Enabled(_: Any? = nil) {
     mainSync {
-      core.resetInputHandler(forceComposerCleanup: true)
+      core?.resetInputHandler(forceComposerCleanup: true)
     }
     Notifier.notify(
       message: "CNS11643 Mode".i18n + "\n"
@@ -296,7 +297,7 @@ extension SessionCtl {
   @objc
   public func toggleSymbolEnabled(_: Any? = nil) {
     mainSync {
-      core.resetInputHandler(forceComposerCleanup: true)
+      core?.resetInputHandler(forceComposerCleanup: true)
     }
     Notifier.notify(
       message: "Symbol & Emoji Input".i18n + "\n"
@@ -311,7 +312,7 @@ extension SessionCtl {
   @objc
   public func toggleAssociatedPhrasesEnabled(_: Any? = nil) {
     mainSync {
-      core.resetInputHandler(forceComposerCleanup: true)
+      core?.resetInputHandler(forceComposerCleanup: true)
     }
     Notifier.notify(
       message: "Associated Phrases".i18n + "\n"
@@ -326,7 +327,7 @@ extension SessionCtl {
   @objc
   public func togglePhraseReplacement(_: Any? = nil) {
     mainSync {
-      core.resetInputHandler(forceComposerCleanup: true)
+      core?.resetInputHandler(forceComposerCleanup: true)
     }
     Notifier.notify(
       message: "Use Phrase Replacement".i18n + "\n"
@@ -351,7 +352,7 @@ extension SessionCtl {
 
   @objc
   public func checkForUpdate(_: Any? = nil) {
-    let bundleID = core.clientBundleIdentifier
+    let bundleID = core?.clientBundleIdentifier
     AppDelegate.shared.checkUpdate(forced: true) {
       bundleID == "com.apple.SecurityAgent"
     }
@@ -425,7 +426,7 @@ extension SessionCtl {
   // MARK: Internal
 
   var optionKeyPressed: Bool { NSEvent.keyModifierFlags.contains(.option) }
-  var silentMode: Bool { core.clientBundleIdentifier == "com.apple.SecurityAgent" }
+  var silentMode: Bool { core?.clientBundleIdentifier == "com.apple.SecurityAgent" }
 
   var currentRAMUsageDescription: String? {
     guard let currentMemorySizeInBytes = NSApplication.memoryFootprint else { return nil }
