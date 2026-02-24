@@ -153,7 +153,7 @@ public final class InputSession: SessionProtocol {
     if let inputHandler {
       inputHandler.currentLM = inputMode.langModel
       inputHandler.prefs = PrefMgr.shared
-      inputHandler.errorCallback = callError
+      inputHandler.errorCallback = { [weak self] msg in self?.callError(msg) }
       inputHandler.filterabilityChecker = LMMgr.isStateDataFilterableForMarked
       inputHandler.notificationCallback = Notifier.notify
       inputHandler.pomSaveCallback = { LMMgr.savePerceptionOverrideModelData(false) }
@@ -163,7 +163,7 @@ public final class InputSession: SessionProtocol {
       inputHandler = InputHandler(
         lm: inputMode.langModel,
         pref: PrefMgr.shared,
-        errorCallback: callError,
+        errorCallback: { [weak self] msg in self?.callError(msg) },
         filterabilityChecker: LMMgr.isStateDataFilterableForMarked,
         notificationCallback: Notifier.notify,
         pomSaveCallback: { LMMgr.savePerceptionOverrideModelData(false) }
