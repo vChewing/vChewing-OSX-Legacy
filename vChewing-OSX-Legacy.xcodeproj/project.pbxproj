@@ -597,9 +597,9 @@
 		5B81BD152B729AD60092819A /* SettingsCocoa */ = {
 			isa = PBXGroup;
 			children = (
-				5B23DBFD2F54268D0032DD9A /* VwrSettingsPaneCocoaAbout.swift */,
 				5B81BD1C2B729AE90092819A /* CtlSettingsCocoa.swift */,
 				5B81BD1A2B729AE90092819A /* VwrSettingsCocoaPanes.swift */,
+				5B23DBFD2F54268D0032DD9A /* VwrSettingsPaneCocoaAbout.swift */,
 				5B81BD192B729AE90092819A /* VwrSettingsPaneCocoaBehavior.swift */,
 				5B81BD1F2B729AE90092819A /* VwrSettingsPaneCocoaCandidates.swift */,
 				5B81BD162B729AE90092819A /* VwrSettingsPaneCocoaCassette.swift */,

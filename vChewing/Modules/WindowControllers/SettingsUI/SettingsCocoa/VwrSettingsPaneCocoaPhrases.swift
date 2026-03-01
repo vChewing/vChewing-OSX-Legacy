@@ -20,8 +20,10 @@ extension SettingsPanesCocoa {
 
     override public func loadView() {
       observation = Broadcaster.shared
-        .observe(\.eventForReloadingPhraseEditor, options: [.new]) { _, _ in
-          self.updatePhraseEditor()
+        .observe(\.eventForReloadingPhraseEditor, options: [.new]) { [weak self] _, _ in
+          asyncOnMain {
+            self?.updatePhraseEditor()
+          }
         }
       initPhraseEditor()
       view = body ?? .init()
@@ -177,14 +179,16 @@ extension SettingsPanesCocoa.Phrases: NSTextViewDelegate, NSTextFieldDelegate {
     isLoading = true
     tfdPETextEditor.string = "Loading…".i18n
     asyncOnMain { [weak self] in
-      guard let this = self else { return }
-      this.tfdPETextEditor.string = LMMgr.retrieveData(
-        mode: this.selInputMode,
-        type: this.selUserDataType
-      )
-      this.tfdPETextEditor.toolTip = PETerminology.TooltipTexts
-        .sampleDictionaryContent(for: this.selUserDataType)
-      this.isLoading = false
+      mainSync { [weak self] in
+        guard let this = self else { return }
+        this.tfdPETextEditor.string = LMMgr.retrieveData(
+          mode: this.selInputMode,
+          type: this.selUserDataType
+        )
+        this.tfdPETextEditor.toolTip = PETerminology.TooltipTexts
+          .sampleDictionaryContent(for: this.selUserDataType)
+        this.isLoading = false
+      }
     }
   }
 
@@ -298,7 +302,6 @@ extension SettingsPanesCocoa.Phrases: NSTextViewDelegate, NSTextFieldDelegate {
     tfdPETextEditor.isRichText = false
 
     // Tab key targets.
-    tfdPETextEditor.delegate = self
     txtPECommentField.nextKeyView = txtPEField1
     txtPEField1.nextKeyView = txtPEField2
     txtPEField2.nextKeyView = txtPEField3
@@ -322,9 +325,7 @@ extension SettingsPanesCocoa.Phrases: NSTextViewDelegate, NSTextFieldDelegate {
     btnPEConsolidate.bezelStyle = .rounded
     btnPESave.bezelStyle = .rounded
     btnPEOpenExternally.bezelStyle = .rounded
-    if #available(macOS 10.10, *) {
-      txtPECommentField.controlSize = .small
-    }
+    txtPECommentField.cell?.controlSize = .small
     txtPECommentField.font = NSFont.systemFont(ofSize: NSFont.smallSystemFontSize)
     cmbPEInputModeMenu.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
     cmbPEInputModeMenu.setContentHuggingPriority(.defaultHigh, for: .horizontal)
@@ -348,8 +349,6 @@ extension SettingsPanesCocoa.Phrases: NSTextViewDelegate, NSTextFieldDelegate {
     btnPEConsolidate.action = #selector(consolidatePEButtonClicked(_:))
     btnPESave.target = self
     btnPESave.action = #selector(savePEButtonClicked(_:))
-    btnPEConsolidate.target = self
-    btnPEConsolidate.action = #selector(consolidatePEButtonClicked(_:))
     btnPEOpenExternally.target = self
     btnPEOpenExternally.action = #selector(openExternallyPEButtonClicked(_:))
     btnPEAdd.target = self
