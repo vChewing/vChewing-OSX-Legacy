@@ -15,6 +15,7 @@
 		5B1C28E12B8F09DF00968E74 /* CandidateTextService_SelectorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1C28E02B8F09DF00968E74 /* CandidateTextService_SelectorImpl.swift */; };
 		5B1CA80E29AC53BA0089E95F /* VwrCandidateTDK4AppKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1CA80D29AC53BA0089E95F /* VwrCandidateTDK4AppKit.swift */; };
 		5B1E6C2C2B65694100B977B5 /* LMInstantiator_NumPadExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1E6C2B2B65694100B977B5 /* LMInstantiator_NumPadExtension.swift */; };
+		5B23DBFE2F5426900032DD9A /* VwrSettingsPaneCocoaAbout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B23DBFD2F54268D0032DD9A /* VwrSettingsPaneCocoaAbout.swift */; };
 		5B29704B2E962134005D9BED /* UserPhraseInsertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B29704A2E962134005D9BED /* UserPhraseInsertable.swift */; };
 		5B2F3B522AF24FD500225501 /* LMMgr_KimoDataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2F3B512AF24FD500225501 /* LMMgr_KimoDataParser.swift */; };
 		5B303E7E2A979F6F002CF4E6 /* IMKUtilsImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B303E7D2A979F6F002CF4E6 /* IMKUtilsImpl.swift */; };
@@ -116,9 +117,6 @@
 		5BB5158D2B729E7800874257 /* AppKitImpl_Misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A4F0294E057F00EFA49C /* AppKitImpl_Misc.swift */; };
 		5BB5158E2B729E9D00874257 /* SwiftExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A4F2294E058F00EFA49C /* SwiftExtension.swift */; };
 		5BC783DC2EBEF02F00AE14E2 /* RomanNumeralConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC783DB2EBEF02F00AE14E2 /* RomanNumeralConverter.swift */; };
-		5BC8B2912EF3FFB60025533D /* VwrAboutUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC8B28F2EF3FFB60025533D /* VwrAboutUI.swift */; };
-		5BC8B2922EF3FFB60025533D /* VwrAboutCocoa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC8B28E2EF3FFB60025533D /* VwrAboutCocoa.swift */; };
-		5BC8B2932EF3FFB60025533D /* CtlAboutUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC8B28D2EF3FFB60025533D /* CtlAboutUI.swift */; };
 		5BCA232D2EF6B77B00A8ADD0 /* CpLkHitChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA232C2EF6B77B00A8ADD0 /* CpLkHitChecker.swift */; };
 		5BCA4FAD2E9659F700441688 /* SessionCoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA4FAC2E9659F700441688 /* SessionCoreProtocol.swift */; };
 		5BCC80CE2B7E6511005D689C /* KimoDataReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCC80CD2B7E6511005D689C /* KimoDataReader.swift */; };
@@ -246,6 +244,7 @@
 		5B1C28E02B8F09DF00968E74 /* CandidateTextService_SelectorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandidateTextService_SelectorImpl.swift; sourceTree = "<group>"; };
 		5B1CA80D29AC53BA0089E95F /* VwrCandidateTDK4AppKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VwrCandidateTDK4AppKit.swift; sourceTree = "<group>"; };
 		5B1E6C2B2B65694100B977B5 /* LMInstantiator_NumPadExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMInstantiator_NumPadExtension.swift; sourceTree = "<group>"; };
+		5B23DBFD2F54268D0032DD9A /* VwrSettingsPaneCocoaAbout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VwrSettingsPaneCocoaAbout.swift; sourceTree = "<group>"; };
 		5B29704A2E962134005D9BED /* UserPhraseInsertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPhraseInsertable.swift; sourceTree = "<group>"; };
 		5B2F3B512AF24FD500225501 /* LMMgr_KimoDataParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMMgr_KimoDataParser.swift; sourceTree = "<group>"; };
 		5B303E7D2A979F6F002CF4E6 /* IMKUtilsImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IMKUtilsImpl.swift; sourceTree = "<group>"; };
@@ -348,9 +347,6 @@
 		5BB1D7F12999025B00EA8D2C /* PrefUITabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefUITabs.swift; sourceTree = "<group>"; };
 		5BB32F0429A61AFB00B05D7B /* CtlCandidateTDK4AppKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CtlCandidateTDK4AppKit.swift; sourceTree = "<group>"; };
 		5BC783DB2EBEF02F00AE14E2 /* RomanNumeralConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RomanNumeralConverter.swift; sourceTree = "<group>"; };
-		5BC8B28D2EF3FFB60025533D /* CtlAboutUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CtlAboutUI.swift; sourceTree = "<group>"; };
-		5BC8B28E2EF3FFB60025533D /* VwrAboutCocoa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VwrAboutCocoa.swift; sourceTree = "<group>"; };
-		5BC8B28F2EF3FFB60025533D /* VwrAboutUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VwrAboutUI.swift; sourceTree = "<group>"; };
 		5BCA232C2EF6B77B00A8ADD0 /* CpLkHitChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CpLkHitChecker.swift; sourceTree = "<group>"; };
 		5BCA4FAC2E9659F700441688 /* SessionCoreProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionCoreProtocol.swift; sourceTree = "<group>"; };
 		5BCC80CD2B7E6511005D689C /* KimoDataReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KimoDataReader.swift; sourceTree = "<group>"; };
@@ -534,7 +530,6 @@
 		5B751DB4294EE21D0031CF70 /* WindowControllers */ = {
 			isa = PBXGroup;
 			children = (
-				5BC8B2902EF3FFB60025533D /* AboutUI */,
 				5B4BEE722B8F8A680044A4EE /* ClientListMgr */,
 				5B4BEE6D2B8F8A450044A4EE /* ServiceMenuEditor */,
 				5BB1D7F52999028800EA8D2C /* SettingsUI */,
@@ -602,6 +597,7 @@
 		5B81BD152B729AD60092819A /* SettingsCocoa */ = {
 			isa = PBXGroup;
 			children = (
+				5B23DBFD2F54268D0032DD9A /* VwrSettingsPaneCocoaAbout.swift */,
 				5B81BD1C2B729AE90092819A /* CtlSettingsCocoa.swift */,
 				5B81BD1A2B729AE90092819A /* VwrSettingsCocoaPanes.swift */,
 				5B81BD192B729AE90092819A /* VwrSettingsPaneCocoaBehavior.swift */,
@@ -685,16 +681,6 @@
 				5B785EEA2B78FC680006413D /* InputHandler_TypingMethod.swift */,
 			);
 			path = InputHandler;
-			sourceTree = "<group>";
-		};
-		5BC8B2902EF3FFB60025533D /* AboutUI */ = {
-			isa = PBXGroup;
-			children = (
-				5BC8B28D2EF3FFB60025533D /* CtlAboutUI.swift */,
-				5BC8B28E2EF3FFB60025533D /* VwrAboutCocoa.swift */,
-				5BC8B28F2EF3FFB60025533D /* VwrAboutUI.swift */,
-			);
-			path = AboutUI;
 			sourceTree = "<group>";
 		};
 		5BCC80CC2B7E64FA005D689C /* OtherIMEDataReader */ = {
@@ -1241,6 +1227,7 @@
 				5BE5A558294E0D1E00EFA49C /* 7_Unigram.swift in Sources */,
 				5BE5A55A294E0D1E00EFA49C /* 6_LangModel.swift in Sources */,
 				5BE5A555294E0D1E00EFA49C /* 2_PathFinder.swift in Sources */,
+				5B23DBFE2F5426900032DD9A /* VwrSettingsPaneCocoaAbout.swift in Sources */,
 				5BE5A553294E0D1E00EFA49C /* 0_Megrez.swift in Sources */,
 				5B693A302E9B8AE200BF4B53 /* Tekkon_PinyinTrie.swift in Sources */,
 				5BE5A546294E0D1200EFA49C /* Tekkon_Constants.swift in Sources */,
@@ -1271,9 +1258,6 @@
 				5B751DD7294EE57D0031CF70 /* SessionCtl_Menu.swift in Sources */,
 				5BE5A4FA294E082800EFA49C /* NSEventImpl.swift in Sources */,
 				5BE5A530294E0C2E00EFA49C /* HotenkaChineseConverter.swift in Sources */,
-				5BC8B2912EF3FFB60025533D /* VwrAboutUI.swift in Sources */,
-				5BC8B2922EF3FFB60025533D /* VwrAboutCocoa.swift in Sources */,
-				5BC8B2932EF3FFB60025533D /* CtlAboutUI.swift in Sources */,
 				5B751DCE294EE57D0031CF70 /* InputHandler_HandleStates.swift in Sources */,
 				5BF5AD872EE3661700121ED1 /* Typewriter_Phonabet.swift in Sources */,
 				5B6815372B46EF86004A8A1A /* SpeechSputnik.swift in Sources */,

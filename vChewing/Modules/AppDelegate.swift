@@ -245,9 +245,6 @@ extension AppDelegate {
   public func buildNSAppMainMenu() -> NSMenu {
     NSMenu(title: "MainMenu").appendItems {
       NSMenu.buildSubMenu(verbatim: "vChewing") {
-        NSMenu.Item("About vChewing")?
-          .act(#selector(about(_:)))
-          .withTarget(self)
         NSMenu.Item.separator()
         NSMenu.Item("Close")?
           .act(#selector(NSWindow.performClose(_:)))
@@ -277,12 +274,5 @@ extension AppDelegate {
         NSMenu.Item.separator()
       }
     }
-  }
-
-  // New About Window
-  @IBAction
-  public func about(_: Any) {
-    CtlAboutUI.show()
-    NSApp.popup()
   }
 }
