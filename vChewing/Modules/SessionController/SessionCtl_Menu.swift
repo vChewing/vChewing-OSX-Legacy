@@ -112,12 +112,6 @@ extension SessionCtl {
       NSMenu.Item("vChewing Preferences…")?
         .act(#selector(showPreferences(_:)))
         .nulled(silentMode)
-      NSMenu.Item(verbatim: "Client Manager".i18n.withEllipsis)?
-        .act(#selector(showClientListMgr(_:)))
-        .nulled(silentMode)
-      NSMenu.Item(verbatim: "Service Menu Editor".i18n.withEllipsis)?
-        .act(#selector(showServiceMenuEditor(_:)))
-        .alternated().nulled(silentMode)
       NSMenu.Item("Check for Updates…")?
         .act(#selector(checkForUpdate(_:)))
         .nulled(silentMode)
@@ -151,18 +145,6 @@ extension SessionCtl {
       return
     }
     FileOpenMethod.safari.open(url: url)
-  }
-
-  @objc
-  public func showClientListMgr(_: Any? = nil) {
-    CtlClientListMgr.show()
-    NSApp.popup()
-  }
-
-  @objc
-  public func showServiceMenuEditor(_: Any? = nil) {
-    CtlServiceMenuEditor.show()
-    NSApp.popup()
   }
 
   @objc

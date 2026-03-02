@@ -27,8 +27,7 @@
 		5B423A542A9516B0004CC33B /* Broadcaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B423A532A9516B0004CC33B /* Broadcaster.swift */; };
 		5B44BAD9295047AC00E1C02D /* shortcuts.html in Resources */ = {isa = PBXBuildFile; fileRef = 5B44BADB295047AC00E1C02D /* shortcuts.html */; };
 		5B47F73F2F4AEBE000774728 /* OIDR_Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B47F73D2F4AEBE000774728 /* OIDR_Shared.swift */; };
-		5B4BEE702B8F8A510044A4EE /* VwrServiceMenuEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4BEE6E2B8F8A450044A4EE /* VwrServiceMenuEditor.swift */; };
-		5B4BEE712B8F8A530044A4EE /* CtlServiceMenuEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4BEE6F2B8F8A450044A4EE /* CtlServiceMenuEditor.swift */; };
+		5B4BEE702B8F8A510044A4EE /* VwrSettingsPaneCocoaServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4BEE6E2B8F8A450044A4EE /* VwrSettingsPaneCocoaServices.swift */; };
 		5B4C81812ADABB60008507B1 /* HangarRash_SwiftyCapsLockToggler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4C81802ADABB60008507B1 /* HangarRash_SwiftyCapsLockToggler.swift */; };
 		5B5139442F3A318C00223E77 /* TDKCandidates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5139432F3A318C00223E77 /* TDKCandidates.swift */; };
 		5B5319222E9A918700570E96 /* CodePointDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5319212E9A918700570E96 /* CodePointDecoder.swift */; };
@@ -43,14 +42,13 @@
 		5B6420032ABB3BA600E1B7F6 /* TooltipUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B641FFF2ABB3BA600E1B7F6 /* TooltipUI.swift */; };
 		5B6815372B46EF86004A8A1A /* SpeechSputnik.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6815362B46EF86004A8A1A /* SpeechSputnik.swift */; };
 		5B693A302E9B8AE200BF4B53 /* Tekkon_PinyinTrie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B693A2F2E9B8AE200BF4B53 /* Tekkon_PinyinTrie.swift */; };
-		5B69C36B2B7406DC006FBD09 /* VwrClientListMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B69C36A2B7406DC006FBD09 /* VwrClientListMgr.swift */; };
+		5B69C36B2B7406DC006FBD09 /* VwrSettingsPaneCocoaClients.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B69C36A2B7406DC006FBD09 /* VwrSettingsPaneCocoaClients.swift */; };
 		5B69CA6A295DDC58005211BB /* RangeParserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B69CA69295DDC58005211BB /* RangeParserAPI.swift */; };
 		5B6F7ADD2B8CEC72001596AF /* CandidateTextService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6F7ADC2B8CEC72001596AF /* CandidateTextService.swift */; };
 		5B70C0A92EA427C700BC8273 /* SpeechNarratorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B70C0A82EA427C700BC8273 /* SpeechNarratorProtocol.swift */; };
 		5B70C0AB2EA428B500BC8273 /* FileOpenMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B70C0AA2EA428B500BC8273 /* FileOpenMethod.swift */; };
 		5B70C0AD2EA428C000BC8273 /* IMEApp_DarwinImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B70C0AC2EA428C000BC8273 /* IMEApp_DarwinImpl.swift */; };
 		5B72F6672B885AF00051B7A9 /* lmPlainBopomopo_RawData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B72F6662B885AF00051B7A9 /* lmPlainBopomopo_RawData.swift */; };
-		5B751DB8294EE27C0031CF70 /* CtlClientListMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DB7294EE27C0031CF70 /* CtlClientListMgr.swift */; };
 		5B751DB9294EE27C0031CF70 /* CtlRevLookupWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DB5294EE27C0031CF70 /* CtlRevLookupWindow.swift */; };
 		5B751DBD294EE44F0031CF70 /* UpdateSputnik.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DBC294EE44F0031CF70 /* UpdateSputnik.swift */; };
 		5B751DCE294EE57D0031CF70 /* InputHandler_HandleStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DBF294EE57C0031CF70 /* InputHandler_HandleStates.swift */; };
@@ -258,8 +256,7 @@
 		5B44BADD295047AF00E1C02D /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = "zh-Hant"; path = "zh-Hant.lproj/shortcuts.html"; sourceTree = "<group>"; };
 		5B44BADE295047B400E1C02D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = ja; path = ja.lproj/shortcuts.html; sourceTree = "<group>"; };
 		5B47F73D2F4AEBE000774728 /* OIDR_Shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OIDR_Shared.swift; sourceTree = "<group>"; };
-		5B4BEE6E2B8F8A450044A4EE /* VwrServiceMenuEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VwrServiceMenuEditor.swift; sourceTree = "<group>"; };
-		5B4BEE6F2B8F8A450044A4EE /* CtlServiceMenuEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CtlServiceMenuEditor.swift; sourceTree = "<group>"; };
+		5B4BEE6E2B8F8A450044A4EE /* VwrSettingsPaneCocoaServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VwrSettingsPaneCocoaServices.swift; sourceTree = "<group>"; };
 		5B4C81802ADABB60008507B1 /* HangarRash_SwiftyCapsLockToggler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HangarRash_SwiftyCapsLockToggler.swift; sourceTree = "<group>"; };
 		5B5139432F3A318C00223E77 /* TDKCandidates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TDKCandidates.swift; sourceTree = "<group>"; };
 		5B5319212E9A918700570E96 /* CodePointDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodePointDecoder.swift; sourceTree = "<group>"; };
@@ -274,7 +271,7 @@
 		5B6420002ABB3BA600E1B7F6 /* SessionUIProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionUIProtocol.swift; sourceTree = "<group>"; };
 		5B6815362B46EF86004A8A1A /* SpeechSputnik.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechSputnik.swift; sourceTree = "<group>"; };
 		5B693A2F2E9B8AE200BF4B53 /* Tekkon_PinyinTrie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tekkon_PinyinTrie.swift; sourceTree = "<group>"; };
-		5B69C36A2B7406DC006FBD09 /* VwrClientListMgr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VwrClientListMgr.swift; sourceTree = "<group>"; };
+		5B69C36A2B7406DC006FBD09 /* VwrSettingsPaneCocoaClients.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VwrSettingsPaneCocoaClients.swift; sourceTree = "<group>"; };
 		5B69CA69295DDC58005211BB /* RangeParserAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RangeParserAPI.swift; sourceTree = "<group>"; };
 		5B6F7ADC2B8CEC72001596AF /* CandidateTextService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandidateTextService.swift; sourceTree = "<group>"; };
 		5B70C0A82EA427C700BC8273 /* SpeechNarratorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechNarratorProtocol.swift; sourceTree = "<group>"; };
@@ -290,7 +287,6 @@
 		5B751DA6294EE1B50031CF70 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		5B751DA7294EE1B60031CF70 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5B751DB5294EE27C0031CF70 /* CtlRevLookupWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CtlRevLookupWindow.swift; sourceTree = "<group>"; };
-		5B751DB7294EE27C0031CF70 /* CtlClientListMgr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CtlClientListMgr.swift; sourceTree = "<group>"; };
 		5B751DBC294EE44F0031CF70 /* UpdateSputnik.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateSputnik.swift; sourceTree = "<group>"; };
 		5B751DBF294EE57C0031CF70 /* InputHandler_HandleStates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputHandler_HandleStates.swift; sourceTree = "<group>"; };
 		5B751DC0294EE57C0031CF70 /* SessionCtl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionCtl.swift; sourceTree = "<group>"; };
@@ -501,24 +497,6 @@
 			path = ModifierKeyHitChecker;
 			sourceTree = "<group>";
 		};
-		5B4BEE6D2B8F8A450044A4EE /* ServiceMenuEditor */ = {
-			isa = PBXGroup;
-			children = (
-				5B4BEE6E2B8F8A450044A4EE /* VwrServiceMenuEditor.swift */,
-				5B4BEE6F2B8F8A450044A4EE /* CtlServiceMenuEditor.swift */,
-			);
-			path = ServiceMenuEditor;
-			sourceTree = "<group>";
-		};
-		5B4BEE722B8F8A680044A4EE /* ClientListMgr */ = {
-			isa = PBXGroup;
-			children = (
-				5B751DB7294EE27C0031CF70 /* CtlClientListMgr.swift */,
-				5B69C36A2B7406DC006FBD09 /* VwrClientListMgr.swift */,
-			);
-			path = ClientListMgr;
-			sourceTree = "<group>";
-		};
 		5B52709E2F005F0800F41D73 /* FolderMonitor */ = {
 			isa = PBXGroup;
 			children = (
@@ -530,8 +508,6 @@
 		5B751DB4294EE21D0031CF70 /* WindowControllers */ = {
 			isa = PBXGroup;
 			children = (
-				5B4BEE722B8F8A680044A4EE /* ClientListMgr */,
-				5B4BEE6D2B8F8A450044A4EE /* ServiceMenuEditor */,
 				5BB1D7F52999028800EA8D2C /* SettingsUI */,
 				5B751DB5294EE27C0031CF70 /* CtlRevLookupWindow.swift */,
 			);
@@ -603,12 +579,14 @@
 				5B81BD192B729AE90092819A /* VwrSettingsPaneCocoaBehavior.swift */,
 				5B81BD1F2B729AE90092819A /* VwrSettingsPaneCocoaCandidates.swift */,
 				5B81BD162B729AE90092819A /* VwrSettingsPaneCocoaCassette.swift */,
+				5B69C36A2B7406DC006FBD09 /* VwrSettingsPaneCocoaClients.swift */,
 				5B81BD1B2B729AE90092819A /* VwrSettingsPaneCocoaDevZone.swift */,
 				5B81BD172B729AE90092819A /* VwrSettingsPaneCocoaDictionary.swift */,
 				5B81BD182B729AE90092819A /* VwrSettingsPaneCocoaGeneral.swift */,
 				5B81BD1D2B729AE90092819A /* VwrSettingsPaneCocoaKeyboard.swift */,
 				5B81BD202B729AE90092819A /* VwrSettingsPaneCocoaOutput.swift */,
 				5B81BD1E2B729AE90092819A /* VwrSettingsPaneCocoaPhrases.swift */,
+				5B4BEE6E2B8F8A450044A4EE /* VwrSettingsPaneCocoaServices.swift */,
 			);
 			path = SettingsCocoa;
 			sourceTree = "<group>";
@@ -1250,7 +1228,6 @@
 				5BB32F0529A61AFB00B05D7B /* CtlCandidateTDK4AppKit.swift in Sources */,
 				5B751DD9294EE57D0031CF70 /* InputHandler_HandleComposition.swift in Sources */,
 				5B751DD0294EE57D0031CF70 /* InputHandler_CoreProtocol.swift in Sources */,
-				5B751DB8294EE27C0031CF70 /* CtlClientListMgr.swift in Sources */,
 				5B81BD212B729AE90092819A /* VwrSettingsPaneCocoaCassette.swift in Sources */,
 				5BE5A4F5294E059600EFA49C /* IMKHelper.swift in Sources */,
 				5BF120A12B8C8E1700C83A24 /* IMEApp.swift in Sources */,
@@ -1271,7 +1248,6 @@
 				5BE5A50B294E0A1B00EFA49C /* RMJay_LineReader.swift in Sources */,
 				5B751DB9294EE27C0031CF70 /* CtlRevLookupWindow.swift in Sources */,
 				5BE5A4F3294E058F00EFA49C /* SwiftExtension.swift in Sources */,
-				5B4BEE712B8F8A530044A4EE /* CtlServiceMenuEditor.swift in Sources */,
 				5B5319222E9A918700570E96 /* CodePointDecoder.swift in Sources */,
 				5BE5A532294E0C9F00EFA49C /* PinyinPhonaConverter.swift in Sources */,
 				5B7EEAE32AE5002C006C30A3 /* SecureEventInputSputnik.swift in Sources */,
@@ -1342,7 +1318,7 @@
 				5B751DD6294EE57D0031CF70 /* IMEStateDataImpl.swift in Sources */,
 				5BE5A505294E097C00EFA49C /* vChewing_FolderMonitor.swift in Sources */,
 				5BE5A56C294E127B00EFA49C /* PhraseEditorDelegate.swift in Sources */,
-				5B69C36B2B7406DC006FBD09 /* VwrClientListMgr.swift in Sources */,
+				5B69C36B2B7406DC006FBD09 /* VwrSettingsPaneCocoaClients.swift in Sources */,
 				5BE5A564294E10F300EFA49C /* PrefMgr_Core.swift in Sources */,
 				5B69CA6A295DDC58005211BB /* RangeParserAPI.swift in Sources */,
 				5B81BD232B729AE90092819A /* VwrSettingsPaneCocoaGeneral.swift in Sources */,
@@ -1364,7 +1340,7 @@
 				5B70C0A92EA427C700BC8273 /* SpeechNarratorProtocol.swift in Sources */,
 				5B1C28E12B8F09DF00968E74 /* CandidateTextService_SelectorImpl.swift in Sources */,
 				5BF5AD892EE3661B00121ED1 /* TypewriterProtocol.swift in Sources */,
-				5B4BEE702B8F8A510044A4EE /* VwrServiceMenuEditor.swift in Sources */,
+				5B4BEE702B8F8A510044A4EE /* VwrSettingsPaneCocoaServices.swift in Sources */,
 				5B60CEA829B8E7DB00A1AAC7 /* LMMgr_Utilities.swift in Sources */,
 				5B81BD282B729AE90092819A /* VwrSettingsPaneCocoaKeyboard.swift in Sources */,
 				5BE5A596294E1DFB00EFA49C /* ChineseConverterBridge.swift in Sources */,

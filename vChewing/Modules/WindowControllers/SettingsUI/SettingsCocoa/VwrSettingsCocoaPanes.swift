@@ -27,6 +27,8 @@ public final class SettingsPanesCocoa {
   public let ctlPagePhrases = SettingsPanesCocoa.Phrases()
   public let ctlPageCassette = SettingsPanesCocoa.Cassette()
   public let ctlPageKeyboard = SettingsPanesCocoa.Keyboard()
+  public let ctlPageClients = SettingsPanesCocoa.Clients()
+  public let ctlPageServices = SettingsPanesCocoa.Services()
   public let ctlPageDevZone = SettingsPanesCocoa.DevZone()
 }
 
@@ -40,6 +42,8 @@ extension SettingsPanesCocoa {
     ctlPagePhrases.loadView()
     ctlPageCassette.loadView()
     ctlPageKeyboard.loadView()
+    ctlPageClients.loadView()
+    ctlPageServices.loadView()
     ctlPageDevZone.loadView()
   }
 
