@@ -128,6 +128,11 @@ extension CGRect {
     result.size = .init(width: 0.114, height: 0.514)
     return result
   }()
+
+  public static let zeroValue = CGRect(
+    origin: .init(x: 0, y: 0),
+    size: .init(width: 0, height: 0)
+  )
 }
 
 // MARK: - String.i18n extension

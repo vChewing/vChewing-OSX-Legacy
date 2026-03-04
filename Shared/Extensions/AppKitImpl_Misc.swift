@@ -102,6 +102,34 @@
     }
   }
 
+  // MARK: - AttributedStringMeasurementCache
+
+  /// Isolated cache for NSAttributedString dimension measurements.
+  private enum AttributedStringMeasurementCache {
+    enum MeasurementPath: Hashable, Sendable { case fastSingleLine, textKitFallback }
+
+    struct CacheKey: Hashable, Sendable {
+      let stringHash: Int
+      let attributesHash: Int
+      let path: MeasurementPath
+    }
+
+    static let cachedSizes: NSMutex<[CacheKey: CGSize]> = .init([:])
+
+    static let cacheQueue = DispatchQueue(
+      label: "org.vChewing.candidateWindow.measure.cache",
+      attributes: .concurrent
+    )
+
+    static func get(_ key: CacheKey) -> CGSize? {
+      cacheQueue.sync { cachedSizes.value[key] }
+    }
+
+    static func set(_ size: CGSize, for key: CacheKey) {
+      cacheQueue.async(flags: .barrier) { cachedSizes.value[key] = size }
+    }
+  }
+
   // MARK: - NSAttributedString extension
 
   extension NSAttributedString {
@@ -112,29 +140,14 @@
     public func getBoundingDimension(forceFallback: Bool = false) -> CGSize {
       guard length > 0 else { return .zero }
       let shouldFallback = forceFallback || containsLineBreaks || containsAttachments
-      let path: MeasurementPath = shouldFallback ? .textKitFallback : .fastSingleLine
+      let path: AttributedStringMeasurementCache.MeasurementPath = shouldFallback ? .textKitFallback : .fastSingleLine
       return Self.measure(self, using: path)
     }
 
     // MARK: Private Helpers
 
-    private enum MeasurementPath: Hashable { case fastSingleLine, textKitFallback }
-
-    private struct CacheKey: Hashable {
-      let stringHash: Int
-      let attributesHash: Int
-      let path: MeasurementPath
-    }
-
     private static let newlineSet = CharacterSet.newlines
-    private static let cacheQueue = DispatchQueue(
-      label: "org.vChewing.candidateWindow.measure.cache",
-      attributes: .concurrent
-    )
-    private static var cachedSizes: [CacheKey: CGSize] = [:]
 
-    private static let textKitQueue =
-      DispatchQueue(label: "org.vChewing.candidateWindow.measure.textkit")
     private static let textKitContext: TextKitContext = .init()
 
     private var containsLineBreaks: Bool { string.rangeOfCharacter(from: Self.newlineSet) != nil }
@@ -156,11 +169,11 @@
 
     private static func measure(
       _ attributedString: NSAttributedString,
-      using path: MeasurementPath
+      using path: AttributedStringMeasurementCache.MeasurementPath
     )
       -> CGSize {
       let key = cacheKey(for: attributedString, path: path)
-      if let cached = cachedSize(for: key) { return cached }
+      if let cached = AttributedStringMeasurementCache.get(key) { return cached }
 
       let measured: CGSize
       switch path {
@@ -168,26 +181,18 @@
       case .textKitFallback: measured = textKitSize(for: attributedString)
       }
 
-      store(size: measured, for: key)
+      AttributedStringMeasurementCache.set(measured, for: key)
       return measured
-    }
-
-    private static func cachedSize(for key: CacheKey) -> CGSize? {
-      cacheQueue.sync { cachedSizes[key] }
-    }
-
-    private static func store(size: CGSize, for key: CacheKey) {
-      cacheQueue.async(flags: .barrier) { cachedSizes[key] = size }
     }
 
     private static func cacheKey(
       for attributedString: NSAttributedString,
-      path: MeasurementPath
+      path: AttributedStringMeasurementCache.MeasurementPath
     )
-      -> CacheKey {
+      -> AttributedStringMeasurementCache.CacheKey {
       let stringHash = attributedString.string.hashValue
       let attributesHash = attributeHash(for: attributedString)
-      return CacheKey(stringHash: stringHash, attributesHash: attributesHash, path: path)
+      return .init(stringHash: stringHash, attributesHash: attributesHash, path: path)
     }
 
     private static func attributeHash(for attributedString: NSAttributedString) -> Int {
@@ -264,7 +269,7 @@
     }
 
     private static func textKitSize(for attributedString: NSAttributedString) -> CGSize {
-      textKitQueue.sync {
+      mainSync {
         let context = textKitContext
         context.textContainer.containerSize = CGSize(
           width: CGFloat.greatestFiniteMagnitude,
@@ -274,7 +279,7 @@
         _ = context.layoutManager.glyphRange(for: context.textContainer)
         context.layoutManager.ensureLayout(for: context.textContainer)
         var usedRect = context.layoutManager.usedRect(for: context.textContainer)
-        if usedRect.isNull { usedRect = .zero }
+        if usedRect.isNull { usedRect = .zeroValue }
         return CGSize(
           width: ceil(max(usedRect.width, 0)),
           height: ceil(max(usedRect.height, 0))
@@ -388,6 +393,19 @@
 
   // MARK: - Memory Footprint Calculator
 
+  // 協助釋放 malloc zone 中未使用的頁面，使得後續的足跡
+  // 測量只計算實際有物理 backing 的記憶體。自我終止機制
+  // 依賴準確的值；若不這麼做，allocator 可能保留大量空
+  // 閒區塊而讓 RSS 看起來仍然很高。呼叫
+  // `malloc_zone_pressure_relief` 是官方文件建議的釋放方式。
+  extension NSApplication {
+    public static func purgeMallocZones() {
+      // `nil` 表示預設 zone；第二個參數是想要釋放的數量，但 zone
+      // 可視情況選擇不釋放。
+      malloc_zone_pressure_relief(nil, 0)
+    }
+  }
+
   // Ref: https://developer.apple.com/forums/thread/105088?answerId=357415022#357415022
   extension NSApplication {
     /// The memory footprint of the current application in bytes.
@@ -463,15 +481,15 @@
   }
 
   extension NSRunningApplication {
-    private static var temporatyBundlePtr: Bundle?
+    private static let temporatyBundlePtr: NSMutex<Bundle?> = .init(nil)
 
     public static func findAccentColor(with bundleIdentifier: String?) -> HSBA? {
       guard let bundleIdentifier else { return nil }
       let matchedRunningApps = Self.runningApplications(withBundleIdentifier: bundleIdentifier)
       guard let matchedAppURL = matchedRunningApps.first?.bundleURL else { return nil }
-      Self.temporatyBundlePtr = Bundle(url: matchedAppURL)
-      defer { temporatyBundlePtr = nil }
-      return Self.temporatyBundlePtr?.getAccentColor().usingColorSpace(
+      Self.temporatyBundlePtr.value = Bundle(url: matchedAppURL)
+      defer { temporatyBundlePtr.value = nil }
+      return Self.temporatyBundlePtr.value?.getAccentColor().usingColorSpace(
         .deviceRGB
       )?.asHSBA
     }
