@@ -25,7 +25,8 @@
     public func set(
       windowTopLeftPoint: CGPoint,
       bottomOutOfScreenAdjustmentHeight heightDelta: Double,
-      useGCD: Bool
+      useGCD: Bool,
+      animated: Bool = false
     ) {
       func doSet() {
         guard let window = window, var screenFrame = NSScreen.main?.visibleFrame else { return }
@@ -50,7 +51,14 @@
           screenFrame.maxX - windowSize.width - 1.0
         )
 
-        window.setFrameTopLeftPoint(adjustedPoint)
+        if animated {
+          NSAnimationContext.runAnimationGroup { context in
+            context.duration = 0.12
+            window.animator().setFrameTopLeftPoint(adjustedPoint)
+          }
+        } else {
+          window.setFrameTopLeftPoint(adjustedPoint)
+        }
       }
 
       if !useGCD { doSet() } else { asyncOnMain { doSet() } }
