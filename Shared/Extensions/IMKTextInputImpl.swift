@@ -8,8 +8,6 @@
 
 #if canImport(InputMethodKit)
 
-  import InputMethodKit
-
   extension Optional where Wrapped == IMKTextInput {
     /// Constant for IMKTextOrientationName
     /// A constant string used to reference text orientation for IMKTextInput.

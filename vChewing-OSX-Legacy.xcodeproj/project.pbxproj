@@ -35,6 +35,7 @@
 		5B55ACAF2B5A255F009E2F54 /* NSEventImpl_Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B55ACAE2B5A255F009E2F54 /* NSEventImpl_Shared.swift */; };
 		5B572A7A29FB76B900ED5066 /* LatinKeyboardMappings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B572A7929FB76B900ED5066 /* LatinKeyboardMappings.swift */; };
 		5B57FA6B2E8911DB001A6146 /* 8_GramInPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B57FA6A2E8911DB001A6146 /* 8_GramInPath.swift */; };
+		5B602B502F599AA1003F2FCB /* IMKSwift.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B602B4F2F599AA1003F2FCB /* IMKSwift.m */; };
 		5B60CEA429B8E7CA00A1AAC7 /* LMMgr_PhraseEditorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B60CEA329B8E7CA00A1AAC7 /* LMMgr_PhraseEditorDelegate.swift */; };
 		5B60CEA629B8E7D400A1AAC7 /* UserPhraseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B60CEA529B8E7D400A1AAC7 /* UserPhraseImpl.swift */; };
 		5B60CEA829B8E7DB00A1AAC7 /* LMMgr_Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B60CEA729B8E7DB00A1AAC7 /* LMMgr_Utilities.swift */; };
@@ -264,6 +265,8 @@
 		5B55ACAE2B5A255F009E2F54 /* NSEventImpl_Shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSEventImpl_Shared.swift; sourceTree = "<group>"; };
 		5B572A7929FB76B900ED5066 /* LatinKeyboardMappings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatinKeyboardMappings.swift; sourceTree = "<group>"; };
 		5B57FA6A2E8911DB001A6146 /* 8_GramInPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 8_GramInPath.swift; sourceTree = "<group>"; };
+		5B602B4E2F599AA1003F2FCB /* IMKSwift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMKSwift.h; sourceTree = "<group>"; };
+		5B602B4F2F599AA1003F2FCB /* IMKSwift.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMKSwift.m; sourceTree = "<group>"; };
 		5B60CEA329B8E7CA00A1AAC7 /* LMMgr_PhraseEditorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMMgr_PhraseEditorDelegate.swift; sourceTree = "<group>"; };
 		5B60CEA529B8E7D400A1AAC7 /* UserPhraseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPhraseImpl.swift; sourceTree = "<group>"; };
 		5B60CEA729B8E7DB00A1AAC7 /* LMMgr_Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMMgr_Utilities.swift; sourceTree = "<group>"; };
@@ -503,6 +506,15 @@
 				5BE5A504294E097C00EFA49C /* vChewing_FolderMonitor.swift */,
 			);
 			path = FolderMonitor;
+			sourceTree = "<group>";
+		};
+		5B602B4D2F599A95003F2FCB /* IMKSwift */ = {
+			isa = PBXGroup;
+			children = (
+				5B602B4E2F599AA1003F2FCB /* IMKSwift.h */,
+				5B602B4F2F599AA1003F2FCB /* IMKSwift.m */,
+			);
+			path = IMKSwift;
 			sourceTree = "<group>";
 		};
 		5B751DB4294EE21D0031CF70 /* WindowControllers */ = {
@@ -793,6 +805,7 @@
 		5BE5A50E294E0B8700EFA49C /* vChewingComponents */ = {
 			isa = PBXGroup;
 			children = (
+				5B602B4D2F599A95003F2FCB /* IMKSwift */,
 				5B52709E2F005F0800F41D73 /* FolderMonitor */,
 				5B4848A12EF45A5900EAA6BB /* ModifierKeyHitChecker */,
 				5B9939E72B8B083D00979BBC /* BrailleSputnik */,
@@ -1290,6 +1303,7 @@
 				5B785EEB2B78FC680006413D /* InputHandler_TypingMethod.swift in Sources */,
 				5BE5A527294E0C2900EFA49C /* LMInstantiator_DateTimeExtension.swift in Sources */,
 				5BAF0FFB2AA63F6D00FD58A0 /* UserDef.swift in Sources */,
+				5B602B502F599AA1003F2FCB /* IMKSwift.m in Sources */,
 				5BE5A55C294E0E8000EFA49C /* PopupCompositionBuffer.swift in Sources */,
 				5BE5A52F294E0C2B00EFA49C /* lmPerceptionOverride.swift in Sources */,
 				5B3689052E99311E00B3DA69 /* ChineseConverter.swift in Sources */,

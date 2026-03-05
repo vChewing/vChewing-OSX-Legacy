@@ -7,6 +7,7 @@
 // requirements defined in MIT License.
 
 import Foundation
+import InputMethodKit
 
 // MARK: - IMKHelper
 
@@ -45,8 +46,6 @@ public enum IMKHelper {
 }
 
 #if canImport(InputMethodKit)
-
-  import InputMethodKit
 
   extension IMKHelper {
     public static var allowedAlphanumericalTISInputSources: [TISInputSource.KeyboardLayout] {

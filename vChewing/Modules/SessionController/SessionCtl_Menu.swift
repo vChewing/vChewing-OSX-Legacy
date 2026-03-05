@@ -134,7 +134,7 @@ extension SessionCtl {
   }
 
   @objc
-  override public func showPreferences(_: Any? = nil) {
+  override public func showPreferences(_: (any IMKTextInput)? = nil) {
     CtlSettingsCocoa.show()
     NSApp.popup()
   }

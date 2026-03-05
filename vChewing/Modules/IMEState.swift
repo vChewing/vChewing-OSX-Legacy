@@ -6,8 +6,6 @@
 // marks, or product names of Contributor, except as required to fulfill notice
 // requirements defined in MIT License.
 
-import InputMethodKit
-
 // MARK: - IMEState
 
 /// 用以呈現輸入法控制器（SessionCtl）的各種狀態。
