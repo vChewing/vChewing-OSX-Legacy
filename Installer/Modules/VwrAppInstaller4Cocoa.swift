@@ -189,7 +189,7 @@ public final class VwrAppInstaller4Cocoa: NSViewController, InstallerVMProtocol 
     isBold: Bool = false,
     fixWidth: CGFloat? = nil
   )
-    -> NSTextField {
+    -> NSLabelView {
     let attrStr = NSMutableAttributedString(string: verbatim)
     attrStr.addAttribute(
       .kern,
