@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5B0422082D4F7F2B00DFAA15 /* IMKTextInputImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0422062D4F7F2600DFAA15 /* IMKTextInputImpl.swift */; };
-		5B09126C2B134927000166DB /* LMInstantiator_SQLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B09126B2B134927000166DB /* LMInstantiator_SQLExtension.swift */; };
+		5B09126C2B134927000166DB /* LMInstantiator_TextMapExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B09126B2B134927000166DB /* LMInstantiator_TextMapExtension.swift */; };
 		5B098B682E9B8D510005885E /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B098B672E9B8D260005885E /* libiconv.tbd */; };
 		5B0E4EEF2B67933E00BE3440 /* OSVersionComparer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0E4EEE2B67933E00BE3440 /* OSVersionComparer.swift */; };
 		5B1523B62A74E92D007D2E53 /* Jad_BookmarkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1523B52A74E92D007D2E53 /* Jad_BookmarkManager.swift */; };
@@ -23,7 +23,7 @@
 		5B3A2BCF2EBFAF1700C59A2B /* LMInstantiator_KanjiDescriptorAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3A2BCE2EBFAF1700C59A2B /* LMInstantiator_KanjiDescriptorAPI.swift */; };
 		5B3B0ED22B98170E000B2A25 /* SwiftFoundationImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3B0ED12B981579000B2A25 /* SwiftFoundationImpl.swift */; };
 		5B3B0ED32B981C95000B2A25 /* SwiftFoundationImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3B0ED12B981579000B2A25 /* SwiftFoundationImpl.swift */; };
-		5B3C0D5F2B13555400C87B27 /* vChewingFactoryDatabase.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 5B3C0D5E2B13555000C87B27 /* vChewingFactoryDatabase.sqlite */; };
+		5B3C0D5F2B13555400C87B27 /* VanguardFactoryDict4Typing.txtMap in Resources */ = {isa = PBXBuildFile; fileRef = 5B3C0D5E2B13555000C87B27 /* VanguardFactoryDict4Typing.txtMap */; };
 		5B423A542A9516B0004CC33B /* Broadcaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B423A532A9516B0004CC33B /* Broadcaster.swift */; };
 		5B44BAD9295047AC00E1C02D /* shortcuts.html in Resources */ = {isa = PBXBuildFile; fileRef = 5B44BADB295047AC00E1C02D /* shortcuts.html */; };
 		5B47F73F2F4AEBE000774728 /* OIDR_Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B47F73D2F4AEBE000774728 /* OIDR_Shared.swift */; };
@@ -236,7 +236,7 @@
 
 /* Begin PBXFileReference section */
 		5B0422062D4F7F2600DFAA15 /* IMKTextInputImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMKTextInputImpl.swift; sourceTree = "<group>"; };
-		5B09126B2B134927000166DB /* LMInstantiator_SQLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMInstantiator_SQLExtension.swift; sourceTree = "<group>"; };
+		5B09126B2B134927000166DB /* LMInstantiator_TextMapExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMInstantiator_TextMapExtension.swift; sourceTree = "<group>"; };
 		5B098B672E9B8D260005885E /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.0.sdk/usr/lib/libiconv.tbd; sourceTree = DEVELOPER_DIR; };
 		5B0E4EEE2B67933E00BE3440 /* OSVersionComparer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSVersionComparer.swift; sourceTree = "<group>"; };
 		5B1523B52A74E92D007D2E53 /* Jad_BookmarkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Jad_BookmarkManager.swift; sourceTree = "<group>"; };
@@ -250,7 +250,7 @@
 		5B3689042E99311E00B3DA69 /* ChineseConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChineseConverter.swift; sourceTree = "<group>"; };
 		5B3A2BCE2EBFAF1700C59A2B /* LMInstantiator_KanjiDescriptorAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMInstantiator_KanjiDescriptorAPI.swift; sourceTree = "<group>"; };
 		5B3B0ED12B981579000B2A25 /* SwiftFoundationImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftFoundationImpl.swift; sourceTree = "<group>"; };
-		5B3C0D5E2B13555000C87B27 /* vChewingFactoryDatabase.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = vChewingFactoryDatabase.sqlite; path = "DictionaryData/Build/Release/vanguardSQL-Legacy/vChewingFactoryDatabase.sqlite"; sourceTree = "<group>"; };
+		5B3C0D5E2B13555000C87B27 /* VanguardFactoryDict4Typing.txtMap */ = {isa = PBXFileReference; lastKnownFileType = file; name = VanguardFactoryDict4Typing.txtMap; path = "DictionaryData/Build/Release/vanguard-textmap/VanguardFactoryDict4Typing.txtMap"; sourceTree = "<group>"; };
 		5B423A532A9516B0004CC33B /* Broadcaster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Broadcaster.swift; sourceTree = "<group>"; };
 		5B44BADA295047AC00E1C02D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = en; path = en.lproj/shortcuts.html; sourceTree = "<group>"; };
 		5B44BADC295047AE00E1C02D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = "zh-Hans"; path = "zh-Hans.lproj/shortcuts.html"; sourceTree = "<group>"; };
@@ -843,7 +843,7 @@
 				5BE5A51E294E0BEE00EFA49C /* LMInstantiator_DateTimeExtension.swift */,
 				5B3A2BCE2EBFAF1700C59A2B /* LMInstantiator_KanjiDescriptorAPI.swift */,
 				5B1E6C2B2B65694100B977B5 /* LMInstantiator_NumPadExtension.swift */,
-				5B09126B2B134927000166DB /* LMInstantiator_SQLExtension.swift */,
+				5B09126B2B134927000166DB /* LMInstantiator_TextMapExtension.swift */,
 				5BA379B62B8278DA00D82E16 /* LMInstantiator_POMRepresentable.swift */,
 				5B79A3FB2BB850E6003F449E /* LMInstantiator_UserDictionarySummarized.swift */,
 				5BE5A51D294E0BEE00EFA49C /* LMInstantiator.swift */,
@@ -936,7 +936,7 @@
 		5BE5A570294E18D100EFA49C /* DictionaryData */ = {
 			isa = PBXGroup;
 			children = (
-				5B3C0D5E2B13555000C87B27 /* vChewingFactoryDatabase.sqlite */,
+				5B3C0D5E2B13555000C87B27 /* VanguardFactoryDict4Typing.txtMap */,
 			);
 			name = DictionaryData;
 			sourceTree = "<group>";
@@ -1150,7 +1150,7 @@
 				5B751DF0294EF28C0031CF70 /* template-replacements.txt in Resources */,
 				5B751DF7294EF29B0031CF70 /* Localizable.strings in Resources */,
 				5B751DEA294EF2880031CF70 /* MenuIcon-SCVIM@2x.png in Resources */,
-				5B3C0D5F2B13555400C87B27 /* vChewingFactoryDatabase.sqlite in Resources */,
+				5B3C0D5F2B13555400C87B27 /* VanguardFactoryDict4Typing.txtMap in Resources */,
 				5B751DE7294EF2880031CF70 /* MenuIcon-TCVIM.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1228,7 +1228,7 @@
 				5BE5A4FC294E087B00EFA49C /* TISInputSourceExtension.swift in Sources */,
 				5B9939EA2B8B08EF00979BBC /* BrailleEnums.swift in Sources */,
 				5BE5A500294E092900EFA49C /* AppKitImpl_NSWindowController.swift in Sources */,
-				5B09126C2B134927000166DB /* LMInstantiator_SQLExtension.swift in Sources */,
+				5B09126C2B134927000166DB /* LMInstantiator_TextMapExtension.swift in Sources */,
 				5B6F7ADD2B8CEC72001596AF /* CandidateTextService.swift in Sources */,
 				5B6420032ABB3BA600E1B7F6 /* TooltipUI.swift in Sources */,
 				5B2F3B522AF24FD500225501 /* LMMgr_KimoDataParser.swift in Sources */,
