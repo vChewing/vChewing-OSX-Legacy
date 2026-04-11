@@ -1176,7 +1176,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\ncd ${SRCROOT}/DictionaryData/ && make vanguardSQLLegacy\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\ncd ${SRCROOT}/DictionaryData/ && /usr/bin/swift run VCDataBuilder vanguardTextMap\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
