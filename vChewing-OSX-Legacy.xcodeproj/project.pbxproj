@@ -19,6 +19,9 @@
 		5B29704B2E962134005D9BED /* UserPhraseInsertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B29704A2E962134005D9BED /* UserPhraseInsertable.swift */; };
 		5B2F3B522AF24FD500225501 /* LMMgr_KimoDataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2F3B512AF24FD500225501 /* LMMgr_KimoDataParser.swift */; };
 		5B303E7E2A979F6F002CF4E6 /* IMKUtilsImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B303E7D2A979F6F002CF4E6 /* IMKUtilsImpl.swift */; };
+		5B35B27F2F8D55690030D79F /* phonic_table_Z.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5B35B27E2F8D55690030D79F /* phonic_table_Z.txt */; };
+		5B35B2822F8D558F0030D79F /* LICENSE_BPMFVS.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5B35B2812F8D558F0030D79F /* LICENSE_BPMFVS.txt */; };
+		5B35B2842F8D55B40030D79F /* ButKo_BPMFVS_Accessors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B35B2832F8D55A70030D79F /* ButKo_BPMFVS_Accessors.swift */; };
 		5B3689052E99311E00B3DA69 /* ChineseConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3689042E99311E00B3DA69 /* ChineseConverter.swift */; };
 		5B3A2BCF2EBFAF1700C59A2B /* LMInstantiator_KanjiDescriptorAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3A2BCE2EBFAF1700C59A2B /* LMInstantiator_KanjiDescriptorAPI.swift */; };
 		5B3B0ED22B98170E000B2A25 /* SwiftFoundationImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3B0ED12B981579000B2A25 /* SwiftFoundationImpl.swift */; };
@@ -247,10 +250,13 @@
 		5B29704A2E962134005D9BED /* UserPhraseInsertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPhraseInsertable.swift; sourceTree = "<group>"; };
 		5B2F3B512AF24FD500225501 /* LMMgr_KimoDataParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMMgr_KimoDataParser.swift; sourceTree = "<group>"; };
 		5B303E7D2A979F6F002CF4E6 /* IMKUtilsImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IMKUtilsImpl.swift; sourceTree = "<group>"; };
+		5B35B27E2F8D55690030D79F /* phonic_table_Z.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = phonic_table_Z.txt; sourceTree = "<group>"; };
+		5B35B2812F8D558F0030D79F /* LICENSE_BPMFVS.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE_BPMFVS.txt; sourceTree = "<group>"; };
+		5B35B2832F8D55A70030D79F /* ButKo_BPMFVS_Accessors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButKo_BPMFVS_Accessors.swift; sourceTree = "<group>"; };
 		5B3689042E99311E00B3DA69 /* ChineseConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChineseConverter.swift; sourceTree = "<group>"; };
 		5B3A2BCE2EBFAF1700C59A2B /* LMInstantiator_KanjiDescriptorAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMInstantiator_KanjiDescriptorAPI.swift; sourceTree = "<group>"; };
 		5B3B0ED12B981579000B2A25 /* SwiftFoundationImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftFoundationImpl.swift; sourceTree = "<group>"; };
-		5B3C0D5E2B13555000C87B27 /* VanguardFactoryDict4Typing.txtMap */ = {isa = PBXFileReference; lastKnownFileType = file; name = VanguardFactoryDict4Typing.txtMap; path = "DictionaryData/Build/Release/vanguard-textmap/VanguardFactoryDict4Typing.txtMap"; sourceTree = "<group>"; };
+		5B3C0D5E2B13555000C87B27 /* VanguardFactoryDict4Typing.txtMap */ = {isa = PBXFileReference; lastKnownFileType = text; name = VanguardFactoryDict4Typing.txtMap; path = "DictionaryData/Build/Release/vanguard-textmap/VanguardFactoryDict4Typing.txtMap"; sourceTree = "<group>"; };
 		5B423A532A9516B0004CC33B /* Broadcaster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Broadcaster.swift; sourceTree = "<group>"; };
 		5B44BADA295047AC00E1C02D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = en; path = en.lproj/shortcuts.html; sourceTree = "<group>"; };
 		5B44BADC295047AE00E1C02D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = "zh-Hans"; path = "zh-Hans.lproj/shortcuts.html"; sourceTree = "<group>"; };
@@ -483,6 +489,15 @@
 			path = Typewriter;
 			sourceTree = "<group>";
 		};
+		5B35B27C2F8D555D0030D79F /* ButKoBPMFVS_Assets */ = {
+			isa = PBXGroup;
+			children = (
+				5B35B2812F8D558F0030D79F /* LICENSE_BPMFVS.txt */,
+				5B35B27E2F8D55690030D79F /* phonic_table_Z.txt */,
+			);
+			path = ButKoBPMFVS_Assets;
+			sourceTree = "<group>";
+		};
 		5B44BAD62950478300E1C02D /* Manuals */ = {
 			isa = PBXGroup;
 			children = (
@@ -701,6 +716,7 @@
 				5BCF4AB729546B5100C7FBD9 /* convdict.sqlite */,
 				5B751DA4294EE1B00031CF70 /* Localizable.strings */,
 				5BF5BAE2294DFFCA006011AD /* Assets.xcassets */,
+				5B35B27C2F8D555D0030D79F /* ButKoBPMFVS_Assets */,
 				5BE5A589294E195B00EFA49C /* DataTemplates */,
 				5B44BAD62950478300E1C02D /* Manuals */,
 				5BE5A4E6294E04B000EFA49C /* MenuIcons */,
@@ -795,6 +811,7 @@
 			children = (
 				5BA631612B135E9A00974241 /* sqlite-amalgamation-3440200 */,
 				5BE5A502294E095D00EFA49C /* AlexisBridoux_NSWindowPositioner.swift */,
+				5B35B2832F8D55A70030D79F /* ButKo_BPMFVS_Accessors.swift */,
 				5B4C81802ADABB60008507B1 /* HangarRash_SwiftyCapsLockToggler.swift */,
 				5B1523B52A74E92D007D2E53 /* Jad_BookmarkManager.swift */,
 				5BE5A50A294E0A1B00EFA49C /* RMJay_LineReader.swift */,
@@ -1134,10 +1151,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				5BCF4AB829546B5200C7FBD9 /* convdict.sqlite in Resources */,
+				5B35B27F2F8D55690030D79F /* phonic_table_Z.txt in Resources */,
 				5B44BAD9295047AC00E1C02D /* shortcuts.html in Resources */,
 				5BACBD0E295099290078CAB3 /* InfoPlist.strings in Resources */,
 				5B751DF3294EF28C0031CF70 /* template-usersymbolphrases.txt in Resources */,
 				5B751DE8294EF2880031CF70 /* MenuIcon-SCVIM.png in Resources */,
+				5B35B2822F8D558F0030D79F /* LICENSE_BPMFVS.txt in Resources */,
 				5B751DEF294EF28C0031CF70 /* template-userphrases.txt in Resources */,
 				5BF5BAE3294DFFCA006011AD /* Assets.xcassets in Resources */,
 				5B751DF1294EF28C0031CF70 /* template-associatedPhrases-chs.txt in Resources */,
@@ -1240,6 +1259,7 @@
 				5BCDA50D2D50C2D200571961 /* IMKInputControllerProtocol.swift in Sources */,
 				5BB32F0529A61AFB00B05D7B /* CtlCandidateTDK4AppKit.swift in Sources */,
 				5B751DD9294EE57D0031CF70 /* InputHandler_HandleComposition.swift in Sources */,
+				5B35B2842F8D55B40030D79F /* ButKo_BPMFVS_Accessors.swift in Sources */,
 				5B751DD0294EE57D0031CF70 /* InputHandler_CoreProtocol.swift in Sources */,
 				5B81BD212B729AE90092819A /* VwrSettingsPaneCocoaCassette.swift in Sources */,
 				5BE5A4F5294E059600EFA49C /* IMKHelper.swift in Sources */,
