@@ -34,8 +34,9 @@ extension SettingsPanesCocoa {
             NSStackView.buildSection(width: innerContentWidth) {
               UserDef.kSpecifyShiftBackSpaceKeyBehavior.render(fixWidth: innerContentWidth)
               UserDef.kSpecifyShiftTabKeyBehavior.render(fixWidth: innerContentWidth)
-              UserDef.kSpecifyShiftSpaceKeyBehavior.render(fixWidth: innerContentWidth)
               UserDef.kSpecifyCmdOptCtrlEnterBehavior.render(fixWidth: innerContentWidth)
+              UserDef.kReflectBPMFVSInCompositionBuffer.render(fixWidth: innerContentWidth)
+              UserDef.kSpecifyShiftSpaceKeyBehavior.render(fixWidth: innerContentWidth)
             }?.boxed()
             NSStackView.buildSection(width: innerContentWidth) {
               UserDef.kBeepSoundPreference.render(fixWidth: contentWidth)
