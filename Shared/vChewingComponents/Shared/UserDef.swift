@@ -774,6 +774,7 @@ extension UserDef {
           1: "i18n:UserDef.kSpecifyCmdOptCtrlEnterBehavior.option.1",
           2: "i18n:UserDef.kSpecifyCmdOptCtrlEnterBehavior.option.2",
           3: "i18n:UserDef.kSpecifyCmdOptCtrlEnterBehavior.option.3",
+          4: "i18n:UserDef.kSpecifyCmdOptCtrlEnterBehavior.option.4",
         ]
       )
     case .kAllowRescoringSingleKanjiCandidates: return .init(
