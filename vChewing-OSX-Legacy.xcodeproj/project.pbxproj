@@ -130,7 +130,7 @@
 		5BCDA5192D50C45500571961 /* InputSession_HandleStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCDA5142D50C45500571961 /* InputSession_HandleStates.swift */; };
 		5BCDA51A2D50C45500571961 /* InputSession_CoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCDA5152D50C45500571961 /* InputSession_CoreProtocol.swift */; };
 		5BCDA51B2D50C45500571961 /* InputSession_HandleDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCDA5122D50C45500571961 /* InputSession_HandleDisplay.swift */; };
-		5BCF4AB829546B5200C7FBD9 /* convdict.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 5BCF4AB729546B5100C7FBD9 /* convdict.sqlite */; };
+		5BCF4AB829546B5200C7FBD9 /* convdict.stringmap in Resources */ = {isa = PBXBuildFile; fileRef = 5BCF4AB729546B5100C7FBD9 /* convdict.stringmap */; };
 		5BD289E42B7B48AE00D3E41A /* LatinKeyboardMappings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B572A7929FB76B900ED5066 /* LatinKeyboardMappings.swift */; };
 		5BDA204E2EEABDDF00377085 /* MainSputnik.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDA204D2EEABDDC00377085 /* MainSputnik.swift */; };
 		5BE5A4E5294E03C200EFA49C /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A4E4294E03C200EFA49C /* main.swift */; };
@@ -157,6 +157,7 @@
 		5BE5A52E294E0C2B00EFA49C /* lmCassette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A518294E0BE900EFA49C /* lmCassette.swift */; };
 		5BE5A52F294E0C2B00EFA49C /* lmPerceptionOverride.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A51A294E0BE900EFA49C /* lmPerceptionOverride.swift */; };
 		5BE5A530294E0C2E00EFA49C /* HotenkaChineseConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A510294E0BBB00EFA49C /* HotenkaChineseConverter.swift */; };
+		5BE5A530294E0C2F00EFA49C /* HotenkaStringMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A510294E0BBC00EFA49C /* HotenkaStringMap.swift */; };
 		5BE5A532294E0C9F00EFA49C /* PinyinPhonaConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A531294E0C9F00EFA49C /* PinyinPhonaConverter.swift */; };
 		5BE5A53C294E0CEF00EFA49C /* CtlCandidateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A53B294E0CEC00EFA49C /* CtlCandidateProtocol.swift */; };
 		5BE5A53D294E0CEF00EFA49C /* PrefMgrProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A537294E0CEC00EFA49C /* PrefMgrProtocol.swift */; };
@@ -363,7 +364,8 @@
 		5BCDA5132D50C45500571961 /* InputSession_HandleEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputSession_HandleEvent.swift; sourceTree = "<group>"; };
 		5BCDA5142D50C45500571961 /* InputSession_HandleStates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputSession_HandleStates.swift; sourceTree = "<group>"; };
 		5BCDA5152D50C45500571961 /* InputSession_CoreProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputSession_CoreProtocol.swift; sourceTree = "<group>"; };
-		5BCF4AB729546B5100C7FBD9 /* convdict.sqlite */ = {isa = PBXFileReference; lastKnownFileType = text; path = convdict.sqlite; sourceTree = "<group>"; };
+		5BCF4AB729546B5100C7FBD9 /* convdict.stringmap */ = {isa = PBXFileReference; lastKnownFileType = text; path = convdict.stringmap; sourceTree = "<group>"; };
+		5BE5A510294E0BBC00EFA49C /* HotenkaStringMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotenkaStringMap.swift; sourceTree = "<group>"; };
 		5BDA204D2EEABDDC00377085 /* MainSputnik.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSputnik.swift; sourceTree = "<group>"; };
 		5BE5A4E3294E00C300EFA49C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		5BE5A4E4294E03C200EFA49C /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -713,7 +715,7 @@
 		5BE5A4EB294E04BC00EFA49C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				5BCF4AB729546B5100C7FBD9 /* convdict.sqlite */,
+				5BCF4AB729546B5100C7FBD9 /* convdict.stringmap */,
 				5B751DA4294EE1B00031CF70 /* Localizable.strings */,
 				5BF5BAE2294DFFCA006011AD /* Assets.xcassets */,
 				5B35B27C2F8D555D0030D79F /* ButKoBPMFVS_Assets */,
@@ -846,6 +848,7 @@
 			isa = PBXGroup;
 			children = (
 				5BE5A510294E0BBB00EFA49C /* HotenkaChineseConverter.swift */,
+				5BE5A510294E0BBC00EFA49C /* HotenkaStringMap.swift */,
 			);
 			path = Hotenka;
 			sourceTree = "<group>";
@@ -1150,7 +1153,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5BCF4AB829546B5200C7FBD9 /* convdict.sqlite in Resources */,
+				5BCF4AB829546B5200C7FBD9 /* convdict.stringmap in Resources */,
 				5B35B27F2F8D55690030D79F /* phonic_table_Z.txt in Resources */,
 				5B44BAD9295047AC00E1C02D /* shortcuts.html in Resources */,
 				5BACBD0E295099290078CAB3 /* InfoPlist.strings in Resources */,
@@ -1268,6 +1271,7 @@
 				5B751DD7294EE57D0031CF70 /* SessionCtl_Menu.swift in Sources */,
 				5BE5A4FA294E082800EFA49C /* NSEventImpl.swift in Sources */,
 				5BE5A530294E0C2E00EFA49C /* HotenkaChineseConverter.swift in Sources */,
+				5BE5A530294E0C2F00EFA49C /* HotenkaStringMap.swift in Sources */,
 				5B751DCE294EE57D0031CF70 /* InputHandler_HandleStates.swift in Sources */,
 				5BF5AD872EE3661700121ED1 /* Typewriter_Phonabet.swift in Sources */,
 				5B6815372B46EF86004A8A1A /* SpeechSputnik.swift in Sources */,
