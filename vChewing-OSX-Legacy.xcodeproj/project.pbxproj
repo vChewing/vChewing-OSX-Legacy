@@ -33,6 +33,7 @@
 		5B4BEE702B8F8A510044A4EE /* VwrSettingsPaneCocoaServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4BEE6E2B8F8A450044A4EE /* VwrSettingsPaneCocoaServices.swift */; };
 		5B4C81812ADABB60008507B1 /* HangarRash_SwiftyCapsLockToggler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4C81802ADABB60008507B1 /* HangarRash_SwiftyCapsLockToggler.swift */; };
 		5B5139442F3A318C00223E77 /* TDKCandidates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5139432F3A318C00223E77 /* TDKCandidates.swift */; };
+		5B5269F62F9295370026F43A /* uninstall.sh in Resources */ = {isa = PBXBuildFile; fileRef = 5B5269F52F9295370026F43A /* uninstall.sh */; };
 		5B5319222E9A918700570E96 /* CodePointDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5319212E9A918700570E96 /* CodePointDecoder.swift */; };
 		5B55ACAD2B5A254F009E2F54 /* KBEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B55ACAC2B5A254F009E2F54 /* KBEvent.swift */; };
 		5B55ACAF2B5A255F009E2F54 /* NSEventImpl_Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B55ACAE2B5A255F009E2F54 /* NSEventImpl_Shared.swift */; };
@@ -267,6 +268,7 @@
 		5B4BEE6E2B8F8A450044A4EE /* VwrSettingsPaneCocoaServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VwrSettingsPaneCocoaServices.swift; sourceTree = "<group>"; };
 		5B4C81802ADABB60008507B1 /* HangarRash_SwiftyCapsLockToggler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HangarRash_SwiftyCapsLockToggler.swift; sourceTree = "<group>"; };
 		5B5139432F3A318C00223E77 /* TDKCandidates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TDKCandidates.swift; sourceTree = "<group>"; };
+		5B5269F52F9295370026F43A /* uninstall.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = uninstall.sh; sourceTree = "<group>"; };
 		5B5319212E9A918700570E96 /* CodePointDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodePointDecoder.swift; sourceTree = "<group>"; };
 		5B55ACAC2B5A254F009E2F54 /* KBEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBEvent.swift; sourceTree = "<group>"; };
 		5B55ACAE2B5A255F009E2F54 /* NSEventImpl_Shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSEventImpl_Shared.swift; sourceTree = "<group>"; };
@@ -365,7 +367,6 @@
 		5BCDA5142D50C45500571961 /* InputSession_HandleStates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputSession_HandleStates.swift; sourceTree = "<group>"; };
 		5BCDA5152D50C45500571961 /* InputSession_CoreProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputSession_CoreProtocol.swift; sourceTree = "<group>"; };
 		5BCF4AB729546B5100C7FBD9 /* convdict.stringmap */ = {isa = PBXFileReference; lastKnownFileType = text; path = convdict.stringmap; sourceTree = "<group>"; };
-		5BE5A510294E0BBC00EFA49C /* HotenkaStringMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotenkaStringMap.swift; sourceTree = "<group>"; };
 		5BDA204D2EEABDDC00377085 /* MainSputnik.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSputnik.swift; sourceTree = "<group>"; };
 		5BE5A4E3294E00C300EFA49C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		5BE5A4E4294E03C200EFA49C /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -384,6 +385,7 @@
 		5BE5A504294E097C00EFA49C /* vChewing_FolderMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vChewing_FolderMonitor.swift; sourceTree = "<group>"; };
 		5BE5A50A294E0A1B00EFA49C /* RMJay_LineReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMJay_LineReader.swift; sourceTree = "<group>"; };
 		5BE5A510294E0BBB00EFA49C /* HotenkaChineseConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotenkaChineseConverter.swift; sourceTree = "<group>"; };
+		5BE5A510294E0BBC00EFA49C /* HotenkaStringMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotenkaStringMap.swift; sourceTree = "<group>"; };
 		5BE5A514294E0BE800EFA49C /* lmReplacements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lmReplacements.swift; sourceTree = "<group>"; };
 		5BE5A515294E0BE800EFA49C /* lmAssociates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lmAssociates.swift; sourceTree = "<group>"; };
 		5BE5A516294E0BE800EFA49C /* lmPlainBopomofo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lmPlainBopomofo.swift; sourceTree = "<group>"; };
@@ -716,8 +718,9 @@
 			isa = PBXGroup;
 			children = (
 				5BCF4AB729546B5100C7FBD9 /* convdict.stringmap */,
-				5B751DA4294EE1B00031CF70 /* Localizable.strings */,
+				5B5269F52F9295370026F43A /* uninstall.sh */,
 				5BF5BAE2294DFFCA006011AD /* Assets.xcassets */,
+				5B751DA4294EE1B00031CF70 /* Localizable.strings */,
 				5B35B27C2F8D555D0030D79F /* ButKoBPMFVS_Assets */,
 				5BE5A589294E195B00EFA49C /* DataTemplates */,
 				5B44BAD62950478300E1C02D /* Manuals */,
@@ -1158,6 +1161,7 @@
 				5B44BAD9295047AC00E1C02D /* shortcuts.html in Resources */,
 				5BACBD0E295099290078CAB3 /* InfoPlist.strings in Resources */,
 				5B751DF3294EF28C0031CF70 /* template-usersymbolphrases.txt in Resources */,
+				5B5269F62F9295370026F43A /* uninstall.sh in Resources */,
 				5B751DE8294EF2880031CF70 /* MenuIcon-SCVIM.png in Resources */,
 				5B35B2822F8D558F0030D79F /* LICENSE_BPMFVS.txt in Resources */,
 				5B751DEF294EF28C0031CF70 /* template-userphrases.txt in Resources */,
