@@ -157,6 +157,7 @@
 		5BE5A52D294E0C2B00EFA49C /* lmCoreEX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A517294E0BE800EFA49C /* lmCoreEX.swift */; };
 		5BE5A52E294E0C2B00EFA49C /* lmCassette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A518294E0BE900EFA49C /* lmCassette.swift */; };
 		5BE5A52F294E0C2B00EFA49C /* lmPerceptionOverride.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A51A294E0BE900EFA49C /* lmPerceptionOverride.swift */; };
+		F1A26002294E0C2B00EFA49C /* lmPerceptionPersistor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A26001294E0BE900EFA49C /* lmPerceptionPersistor.swift */; };
 		5BE5A530294E0C2E00EFA49C /* HotenkaChineseConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A510294E0BBB00EFA49C /* HotenkaChineseConverter.swift */; };
 		5BE5A530294E0C2F00EFA49C /* HotenkaStringMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A510294E0BBC00EFA49C /* HotenkaStringMap.swift */; };
 		5BE5A532294E0C9F00EFA49C /* PinyinPhonaConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A531294E0C9F00EFA49C /* PinyinPhonaConverter.swift */; };
@@ -392,6 +393,7 @@
 		5BE5A517294E0BE800EFA49C /* lmCoreEX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lmCoreEX.swift; sourceTree = "<group>"; };
 		5BE5A518294E0BE900EFA49C /* lmCassette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lmCassette.swift; sourceTree = "<group>"; };
 		5BE5A51A294E0BE900EFA49C /* lmPerceptionOverride.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lmPerceptionOverride.swift; sourceTree = "<group>"; };
+		F1A26001294E0BE900EFA49C /* lmPerceptionPersistor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lmPerceptionPersistor.swift; sourceTree = "<group>"; };
 		5BE5A51B294E0BEE00EFA49C /* LMConsolidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMConsolidator.swift; sourceTree = "<group>"; };
 		5BE5A51C294E0BEE00EFA49C /* LMInstantiator_CassetteExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMInstantiator_CassetteExtension.swift; sourceTree = "<group>"; };
 		5BE5A51D294E0BEE00EFA49C /* LMInstantiator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMInstantiator.swift; sourceTree = "<group>"; };
@@ -887,6 +889,7 @@
 				5BE5A516294E0BE800EFA49C /* lmPlainBopomofo.swift */,
 				5BE5A514294E0BE800EFA49C /* lmReplacements.swift */,
 				5BE5A51A294E0BE900EFA49C /* lmPerceptionOverride.swift */,
+				F1A26001294E0BE900EFA49C /* lmPerceptionPersistor.swift */,
 			);
 			path = SubLMs;
 			sourceTree = "<group>";
@@ -1334,6 +1337,7 @@
 				5B602B502F599AA1003F2FCB /* IMKSwift.m in Sources */,
 				5BE5A55C294E0E8000EFA49C /* PopupCompositionBuffer.swift in Sources */,
 				5BE5A52F294E0C2B00EFA49C /* lmPerceptionOverride.swift in Sources */,
+				F1A26002294E0C2B00EFA49C /* lmPerceptionPersistor.swift in Sources */,
 				5B3689052E99311E00B3DA69 /* ChineseConverter.swift in Sources */,
 				5B81BD2A2B729AE90092819A /* VwrSettingsPaneCocoaCandidates.swift in Sources */,
 				5B81BD102B7297A70092819A /* AppKitImpl_NSView.swift in Sources */,
