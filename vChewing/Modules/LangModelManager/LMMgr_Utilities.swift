@@ -238,6 +238,11 @@ extension LMMgr {
     return ""
   }
 
+  public static func resolveUserSpecifiedURL(_ url: URL) -> URL {
+    guard url.isFileURL else { return url }
+    return url.resolvingSymlinksInPath().standardizedFileURL
+  }
+
   // MARK: - Cassette file internal cache (iCloud Drive bookmark workaround)
 
   /// Directory for cached cassette files inside App Support (no bookmark needed).
@@ -297,7 +302,7 @@ extension LMMgr {
 
   public static func userDataFolderInvalidityDescription(path: String? = nil) -> String {
     pathGuidanceDescription(
-      baseKey: "i18n:LMMgr.pathInvalidityFound.userDataFolder.description", 
+      baseKey: "i18n:LMMgr.pathInvalidityFound.userDataFolder.description",
       path: path
     )
   }
