@@ -139,6 +139,7 @@ $tf/
 .swiftpm
 .TemporaryItems
 .Trashes
+.[Tt]mp/
 .VolumeIcon.icns
 .vs/
 ._*
@@ -219,6 +220,7 @@ xcuserdata
 [Rr]eleasePS/
 [Rr]eleases/
 [Tt]est[Rr]esult*/
+[Tt]mp/
 _Chutzpah*
 _NCrunch_*
 _pkginfo.txt
