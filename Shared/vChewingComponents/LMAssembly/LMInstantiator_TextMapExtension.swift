@@ -840,7 +840,7 @@ extension LMAssembly.LMInstantiator {
     factoryLexicon?.reverseLookup(for: kanji)
   }
 
-  func getHaninSymbolMenuUnigrams() -> [Megrez.Unigram] {
+  func getHaninSymbolMenuUnigrams() -> [Homa.Gram] {
     // `_punctuation_list` entries are typeID=4 (letterPunctuations),
     // which belongs to .theDataMISC column, not .theDataCHS / .theDataCHT.
     let entries = Self.factoryLexicon?.exactEntries(for: "_punctuation_list") ?? []
@@ -858,7 +858,7 @@ extension LMAssembly.LMInstantiator {
     keyArray: [String],
     onlyFindSupersets: Bool = false
   )
-    -> [Megrez.Unigram] {
+    -> [Homa.Gram] {
     if onlyFindSupersets {
       return factorySupersetUnigramsFor(
         subsetKey: key,
@@ -878,7 +878,7 @@ extension LMAssembly.LMInstantiator {
     keyArray: [String],
     column: LMAssembly.LMInstantiator.CoreColumn
   )
-    -> [Megrez.Unigram] {
+    -> [Homa.Gram] {
     if key == "_punctuation_list" { return [] }
     let encryptedKey = Self.cnvPhonabetToASCII(key)
     let entries = Self.factoryLexicon?.exactEntries(for: encryptedKey) ?? []
@@ -896,7 +896,7 @@ extension LMAssembly.LMInstantiator {
     subsetKeyArray: [String],
     column: LMAssembly.LMInstantiator.CoreColumn
   )
-    -> [Megrez.Unigram] {
+    -> [Homa.Gram] {
     if subsetKey == "_punctuation_list" { return [] }
     let encryptedKey = Self.cnvPhonabetToASCII(subsetKey)
     let supersetEntries = Self.factoryLexicon?.supersetEntries(containing: encryptedKey) ?? []
@@ -930,9 +930,9 @@ extension LMAssembly.LMInstantiator {
     return exactEntries.contains(where: { typeIDs.contains($0.typeID) })
   }
 
-  func checkCNSConformation(for unigram: Megrez.Unigram, keyArray: [String]) -> Bool {
-    guard unigram.value.count == keyArray.count else { return true }
-    let chars = unigram.value.map(\.description)
+  func checkCNSConformation(for unigram: Homa.Gram, keyArray: [String]) -> Bool {
+    guard unigram.current.count == keyArray.count else { return true }
+    let chars = unigram.current.map(\.description)
     for (index, key) in keyArray.enumerated() {
       guard !key.hasPrefix("_") else { continue }
       guard let matchedResult = factoryCNSFilterThreadFor(key: key) else { continue }
@@ -996,9 +996,9 @@ extension LMAssembly.LMInstantiator {
     column: CoreColumn,
     includeHalfWidthVariants: Bool
   )
-    -> [Megrez.Unigram] {
-    var grams: [Megrez.Unigram] = []
-    var extraHalfWidthGrams: [Megrez.Unigram] = []
+    -> [Homa.Gram] {
+    var grams: [Homa.Gram] = []
+    var extraHalfWidthGrams: [Homa.Gram] = []
     var repeatedScoreOffset: Double = 0
     var previousScore: Double?
 

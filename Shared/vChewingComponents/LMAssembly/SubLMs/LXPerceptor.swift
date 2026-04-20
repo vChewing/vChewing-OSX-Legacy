@@ -29,14 +29,14 @@ extension LMAssembly {
   }
 }
 
-// MARK: - LMAssembly.LMPerceptionOverride
+// MARK: - LMAssembly.LXPerceptor
 
 extension LMAssembly {
   /// 漸退記憶模組，用來學習使用者的打字行為偏好、且在之後的打字過程中給出建議。
   ///
   /// POM 使用野獸常數作為衰減曲線。
   /// 預設整個生存週期是八天，但可以藉由偏好設定銳減至 12 小時內。
-  public final class LMPerceptionOverride {
+  public final class LXPerceptor {
     // MARK: Lifecycle
 
     public init(
@@ -96,7 +96,7 @@ extension LMAssembly {
 
 // MARK: - Private Structures
 
-extension LMAssembly.LMPerceptionOverride {
+extension LMAssembly.LXPerceptor {
   public struct Override: Hashable, Encodable, Decodable, CustomStringConvertible {
     // MARK: Lifecycle
 
@@ -272,13 +272,13 @@ extension LMAssembly.LMPerceptionOverride {
 
 // MARK: - Internal Methods in LMAssembly.
 
-extension Array where Element == Megrez.GramInPath {
+extension Array where Element == Homa.GramInPath {
   /// 在陣列內以給定游標位置找出對應的節點。
   /// - Parameters:
   ///   - cursor: 給定游標位置。
   ///   - outCursorPastNode: 找出的節點的前端位置。
   /// - Returns: 查找結果。
-  nonisolated public func findGramWithRange(at cursor: Int) -> (node: Megrez.GramInPath, range: Range<Int>)? {
+  nonisolated public func findGramWithRange(at cursor: Int) -> (node: Homa.GramInPath, range: Range<Int>)? {
     guard !isEmpty else { return nil }
     let cursor = Swift.max(0, Swift.min(cursor, totalKeyCount - 1)) // 防呆
     let range = contextRange(ofGivenCursor: cursor)
@@ -288,9 +288,9 @@ extension Array where Element == Megrez.GramInPath {
   }
 }
 
-extension LMAssembly.LMPerceptionOverride {
+extension LMAssembly.LXPerceptor {
   nonisolated public func fetchSuggestion(
-    assembledResult: [Megrez.GramInPath],
+    assembledResult: [Homa.GramInPath],
     cursor: Int,
     timestamp: Double
   )
@@ -366,7 +366,7 @@ extension LMAssembly.LMPerceptionOverride {
     var currentHighScore: Double = threshold // 初期化為閾值
 
     // 解析 key 用於衰減計算
-    let separatorString = Megrez.Compositor.theSeparator
+    let separatorString = Homa.Assembler.theSeparator
     let keyArrayForCandidate =
       separatorString.isEmpty
         ? [frontEdgeReading]
@@ -678,7 +678,7 @@ extension LMAssembly.LMPerceptionOverride {
   ///   - skipDebounce: 為了 API 相容性而保留，實際的防抖處理由外部負責。
   nonisolated func saveData(toURL fileURL: URL? = nil, skipDebounce _: Bool = false) {
     persistor.saveData(
-      dataProvider: { [self] in lock.withLock { getSavableData() } },
+      dataProvider: { [self] in getSavableData() },
       mapProvider: { [self] in lock.withLock { mutLRUMap } },
       keyValidator: { [self] in !shouldIgnoreKey($0) },
       toURL: fileURL
@@ -706,7 +706,7 @@ extension LMAssembly.LMPerceptionOverride {
 
 // MARK: - Other Non-Public Internal Methods
 
-extension LMAssembly.LMPerceptionOverride {
+extension LMAssembly.LXPerceptor {
   /// 判斷一個鍵是否為單漢字 (SegLength == 1)
   nonisolated private func isSegLengthOne(key: String) -> Bool {
     !key.contains("-")
@@ -776,7 +776,8 @@ extension LMAssembly.LMPerceptionOverride {
 
   nonisolated private func compareContextPart(
     _ lhs: (reading: String, value: String)?,
-    _ rhs: (reading: String, value: String)?
+    _ rhs: (reading: String, value: String)?,
+    separatorString: String
   )
     -> Bool {
     // 若原始（rhs）沒有上下文，則無論 lhs 為何都接受該候選。
@@ -784,11 +785,33 @@ extension LMAssembly.LMPerceptionOverride {
     // 被視為多段原始的備選。
     if rhs == nil { return true }
 
+    func splitSegments(_ reading: String) -> [String] {
+      guard !separatorString.isEmpty else { return reading.isEmpty ? [] : [reading] }
+      return reading.components(separatedBy: separatorString).filter { !$0.isEmpty }
+    }
+
+    func isSuffixContextMatch(
+      _ candidate: (reading: String, value: String),
+      within original: (reading: String, value: String)
+    )
+      -> Bool {
+      let candidateSegments = splitSegments(candidate.reading)
+      let originalSegments = splitSegments(original.reading)
+      guard !candidateSegments.isEmpty, originalSegments.count > candidateSegments.count else {
+        return false
+      }
+      guard Array(originalSegments.suffix(candidateSegments.count)) == candidateSegments else {
+        return false
+      }
+      return original.value.hasSuffix(candidate.value)
+    }
+
     switch (lhs, rhs) {
     case (.none, .none):
       return true
     case let (.some(lValue), .some(rValue)):
-      return lValue.reading == rValue.reading && lValue.value == rValue.value
+      if lValue.reading == rValue.reading, lValue.value == rValue.value { return true }
+      return isSuffixContextMatch(lValue, within: rValue)
     default:
       return false
     }
@@ -797,7 +820,7 @@ extension LMAssembly.LMPerceptionOverride {
   nonisolated private func alternateKeys(for originalKey: String) -> [String] {
     guard let originalParts = parsePerceptionKey(originalKey) else { return [] }
     guard !shouldIgnorePerception(originalParts) else { return [] }
-    let separatorString = Megrez.Compositor.theSeparator
+    let separatorString = Homa.Assembler.theSeparator
     let headSegments =
       separatorString.isEmpty
         ? (originalParts.headReading.isEmpty ? [] : [originalParts.headReading])
@@ -814,8 +837,16 @@ extension LMAssembly.LMPerceptionOverride {
     for keyCandidate in mutLRUKeySeqList {
       guard let candidateParts = parsePerceptionKey(keyCandidate) else { continue }
       guard !shouldIgnorePerception(candidateParts) else { continue }
-      guard compareContextPart(candidateParts.previous, originalParts.previous) else { continue }
-      guard compareContextPart(candidateParts.anterior, originalParts.anterior) else { continue }
+      guard compareContextPart(
+        candidateParts.previous,
+        originalParts.previous,
+        separatorString: separatorString
+      ) else { continue }
+      guard compareContextPart(
+        candidateParts.anterior,
+        originalParts.anterior,
+        separatorString: separatorString
+      ) else { continue }
       let candidateHeadSegments =
         separatorString.isEmpty
           ? (candidateParts.headReading.isEmpty ? [] : [candidateParts.headReading])
@@ -879,7 +910,7 @@ extension LMAssembly.LMPerceptionOverride {
   nonisolated private func forceHighScoreOverrideFlag(for key: String) -> Bool {
     guard let parts = parsePerceptionKey(key) else { return false }
     guard !shouldIgnorePerception(parts) else { return false }
-    let separatorString = Megrez.Compositor.theSeparator
+    let separatorString = Homa.Assembler.theSeparator
     let headLen =
       separatorString.isEmpty
         ? (parts.headReading.isEmpty ? 0 : 1)
@@ -968,7 +999,7 @@ extension LMAssembly.LMPerceptionOverride {
     return max(score, threshold + 0.001)
   }
 
-  nonisolated static func isPunctuation(_ node: Megrez.GramInPath) -> Bool {
+  nonisolated static func isPunctuation(_ node: Homa.GramInPath) -> Bool {
     for key in node.keyArray {
       guard let firstChar = key.first else { continue }
       return String(firstChar) == "_"
@@ -994,7 +1025,7 @@ extension LMAssembly.LMPerceptionOverride {
   nonisolated private func readingSegments(from reading: String) -> [String] {
     let trimmed = reading.trimmingCharacters(in: .whitespacesAndNewlines)
     guard !trimmed.isEmpty else { return [] }
-    let separator = Megrez.Compositor.theSeparator
+    let separator = Homa.Assembler.theSeparator
     if separator.isEmpty { return [trimmed] }
     return trimmed
       .components(separatedBy: separator)

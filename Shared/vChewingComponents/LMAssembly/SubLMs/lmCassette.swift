@@ -779,7 +779,7 @@ extension LMAssembly.LMCassette {
     return sanitized.isEmpty ? nil : sanitized
   }
 
-  func unigramsFor(key: String, keyArray: [String]? = nil) -> [Megrez.Unigram] {
+  func unigramsFor(key: String, keyArray: [String]? = nil) -> [Homa.Gram] {
     let keyArray = keyArray ?? key.split(separator: "-").map(\.description)
     let arrRaw = (charDefMap.valuesFor(key: key) ?? []).deduplicated
     var arrRawWildcard: [String] = []
@@ -787,7 +787,7 @@ extension LMAssembly.LMCassette {
        key.contains(wildcard), key.first?.description != wildcard {
       arrRawWildcard.append(contentsOf: arrRawWildcardValues)
     }
-    var arrResults = [Megrez.Unigram]()
+    var arrResults = [Homa.Gram]()
     var lowestScore: Double = 0
     for neta in arrRaw {
       let theScore: Double = {

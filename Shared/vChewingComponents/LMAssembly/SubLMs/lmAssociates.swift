@@ -109,7 +109,7 @@ extension LMAssembly {
       }
     }
 
-    func valuesFor(pair: Megrez.KeyValuePaired) -> [String] {
+    func valuesFor(pair: Homa.CandidatePair) -> [String] {
       var pairs: [String] = []
       let availableResults = [rangeMap[pair.toNGramKey], rangeMap[pair.value]].compactMap { $0 }
       availableResults.forEach { arrRangeRecords in
@@ -127,7 +127,7 @@ extension LMAssembly {
       return pairs.deduplicated
     }
 
-    func hasValuesFor(pair: Megrez.KeyValuePaired) -> Bool {
+    func hasValuesFor(pair: Homa.CandidatePair) -> Bool {
       if rangeMap[pair.toNGramKey] != nil { return true }
       return rangeMap[pair.value] != nil
     }

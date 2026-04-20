@@ -1,13 +1,26 @@
-// (c) 2022 and onwards The vChewing Project (LGPL v3.0 License or later).
+// (c) 2025 and onwards The vChewing Project (LGPL v3.0 License or later).
 // ====================
 // This code is released under the SPDX-License-Identifier: `LGPL-3.0-or-later`.
 
-// This package is trying to deprecate its dependency of Foundation, hence this file.
-
 extension StringProtocol {
   func sliced(by separator: any StringProtocol = "") -> [String] {
+    /// 以指定分界字元拆分字串，回傳字串陣列；等同於 `split` 的功能，但不使用 Foundation。
+    ///
+    /// - 注意：該實作會將分隔符視為完整字串進行比對（以 Unicode Scalar 為基準），
+    ///         若分隔符為空字串，則回傳每個 Unicode Scalar 各自獨立為一個字串的陣列。
+    /// - Parameters:
+    ///   - separator: 作為斷詞分界的字串，預設為空字串。
+    /// - Returns: 拆分後的字串陣列。
+    ///
+    /// 範例：
+    /// "a-b-c".sliced(by: "-") => ["a","b","c"]
+    /// "幽蝶".sliced(by: "")  => ["幽","蝶"]
     let selfArray = Array(unicodeScalars)
     let arrSeparator = Array(separator.description.unicodeScalars)
+    // 空分隔符：每個 Unicode Scalar 各自成為一個元素。
+    guard !arrSeparator.isEmpty else {
+      return selfArray.map { String($0) }
+    }
     var result: [String] = []
     var buffer: [Unicode.Scalar] = []
     var sleepCount = 0
@@ -29,6 +42,37 @@ extension StringProtocol {
     result.append(buffer.map { String($0) }.joined())
     buffer.removeAll()
     return result
+  }
+}
+
+// MARK: - Index Revolver (only for Array)
+
+extension Int {
+  /// 將整數作為陣列索引進行循環位移。
+  /// - Parameters:
+  ///   - target: 目標陣列
+  ///   - clockwise: 是否順時針位移（向更大的索引方向）
+  ///   - steps: 位移步數
+  public mutating func revolveAsIndex<T>(with target: [T], clockwise: Bool = true, steps: Int = 1) {
+    guard self >= 0, steps > 0, !target.isEmpty else { return }
+
+    func revolvedIndex(_ id: Int, clockwise: Bool = true, steps: Int = 1) -> Int {
+      guard id >= 0, steps > 0, !target.isEmpty else { return id }
+      let count = target.count
+
+      // 優化：使用取模運算直接計算最終位置，避免循環
+      let effectiveSteps = steps % count
+      if effectiveSteps == 0 { return id }
+
+      let offset = clockwise ? effectiveSteps : -effectiveSteps
+      let rawResult = id + offset
+
+      // 使用取模運算處理邊界情況
+      let result = ((rawResult % count) + count) % count
+      return result
+    }
+
+    self = revolvedIndex(self, clockwise: clockwise, steps: steps)
   }
 }
 
@@ -180,3 +224,25 @@ public struct FIUUID: Hashable, Codable, Sendable {
     }
   }
 }
+
+#if canImport(Foundation)
+  import Foundation
+
+  extension FIUUID {
+    /// 以 `UUID` 表示的識別值，僅在可匯入 Foundation 時提供。
+    public var uuid: UUID {
+      guard let result = UUID(uuidString: uuidString()) else {
+        preconditionFailure("Invalid FIUUID state: unable to produce UUID string.")
+      }
+      return result
+    }
+
+    /// 透過 Foundation 的 `UUID` 初始化。
+    public init(uuid: UUID) {
+      guard let value = FIUUID(uuidString: uuid.uuidString) else {
+        preconditionFailure("Unable to convert UUID to FIUUID.")
+      }
+      self = value
+    }
+  }
+#endif
