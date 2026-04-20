@@ -26,6 +26,7 @@
 		5B29704B2E962134005D9BED /* UserPhraseInsertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B29704A2E962134005D9BED /* UserPhraseInsertable.swift */; };
 		5B2F3B522AF24FD500225501 /* LMMgr_KimoDataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2F3B512AF24FD500225501 /* LMMgr_KimoDataParser.swift */; };
 		5B303E7E2A979F6F002CF4E6 /* IMKUtilsImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B303E7D2A979F6F002CF4E6 /* IMKUtilsImpl.swift */; };
+		5B30BC2D2F979F2C00B49F70 /* PhonabetCipher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B30BC2C2F979F2C00B49F70 /* PhonabetCipher.swift */; };
 		5B35B27F2F8D55690030D79F /* phonic_table_Z.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5B35B27E2F8D55690030D79F /* phonic_table_Z.txt */; };
 		5B35B2822F8D558F0030D79F /* LICENSE_BPMFVS.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5B35B2812F8D558F0030D79F /* LICENSE_BPMFVS.txt */; };
 		5B35B2842F8D55B40030D79F /* ButKo_BPMFVS_Accessors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B35B2832F8D55A70030D79F /* ButKo_BPMFVS_Accessors.swift */; };
@@ -211,6 +212,13 @@
 		5BF846962EE7DACA00C2857D /* UserDatabase4KeyKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8468E2EE7DACA00C2857D /* UserDatabase4KeyKey.swift */; };
 		5BF846972EE7DACA00C2857D /* SEEDecryptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8468D2EE7DACA00C2857D /* SEEDecryptor.swift */; };
 		5BF846982EE7DACA00C2857D /* PhonaSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8468C2EE7DACA00C2857D /* PhonaSet.swift */; };
+		5C34A0012F9C100100C0A001 /* TK_QueryBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C34A0112F9C100100C0A001 /* TK_QueryBuffer.swift */; };
+		5C34A0032F9C100100C0A001 /* TrieKit_PerformanceUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C34A0132F9C100100C0A001 /* TrieKit_PerformanceUtils.swift */; };
+		5C34A0042F9C100100C0A001 /* TrieProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C34A0142F9C100100C0A001 /* TrieProtocol.swift */; };
+		5C34A0052F9C100100C0A001 /* TrieTextMap_Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C34A0152F9C100100C0A001 /* TrieTextMap_Core.swift */; };
+		5C34A0062F9C100100C0A001 /* VanguardTrieIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C34A0162F9C100100C0A001 /* VanguardTrieIO.swift */; };
+		5C34A0072F9C100100C0A001 /* VanguardTrie_Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C34A0172F9C100100C0A001 /* VanguardTrie_Core.swift */; };
+		5C34A0082F9C100100C0A001 /* VanguardTrie_Impl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C34A0182F9C100100C0A001 /* VanguardTrie_Impl.swift */; };
 		5CD795F9D2124A4EA61C3B58 /* Homa_CandidateAPIs_Revolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D620C12F4D4F4ED7B6679542 /* Homa_CandidateAPIs_Revolver.swift */; };
 		5F32C88FBFFC4D389EBDEFBD /* Homa_Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = C532D78E31074613AE47BAB3 /* Homa_Node.swift */; };
 		7FF684C67F7F498081940708 /* Homa_GramInPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70B82D8889B4398AAEB5FCA /* Homa_GramInPath.swift */; };
@@ -268,6 +276,7 @@
 		5B29704A2E962134005D9BED /* UserPhraseInsertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPhraseInsertable.swift; sourceTree = "<group>"; };
 		5B2F3B512AF24FD500225501 /* LMMgr_KimoDataParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMMgr_KimoDataParser.swift; sourceTree = "<group>"; };
 		5B303E7D2A979F6F002CF4E6 /* IMKUtilsImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IMKUtilsImpl.swift; sourceTree = "<group>"; };
+		5B30BC2C2F979F2C00B49F70 /* PhonabetCipher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhonabetCipher.swift; sourceTree = "<group>"; };
 		5B35B27E2F8D55690030D79F /* phonic_table_Z.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = phonic_table_Z.txt; sourceTree = "<group>"; };
 		5B35B2812F8D558F0030D79F /* LICENSE_BPMFVS.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE_BPMFVS.txt; sourceTree = "<group>"; };
 		5B35B2832F8D55A70030D79F /* ButKo_BPMFVS_Accessors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButKo_BPMFVS_Accessors.swift; sourceTree = "<group>"; };
@@ -466,6 +475,13 @@
 		5BF8468E2EE7DACA00C2857D /* UserDatabase4KeyKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDatabase4KeyKey.swift; sourceTree = "<group>"; };
 		5BF8468F2EE7DACA00C2857D /* UserPhraseDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPhraseDataSource.swift; sourceTree = "<group>"; };
 		5BF846902EE7DACA00C2857D /* UserPhraseTextFileObj.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPhraseTextFileObj.swift; sourceTree = "<group>"; };
+		5C34A0112F9C100100C0A001 /* TK_QueryBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TK_QueryBuffer.swift; sourceTree = "<group>"; };
+		5C34A0132F9C100100C0A001 /* TrieKit_PerformanceUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrieKit_PerformanceUtils.swift; sourceTree = "<group>"; };
+		5C34A0142F9C100100C0A001 /* TrieProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrieProtocol.swift; sourceTree = "<group>"; };
+		5C34A0152F9C100100C0A001 /* TrieTextMap_Core.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrieTextMap_Core.swift; sourceTree = "<group>"; };
+		5C34A0162F9C100100C0A001 /* VanguardTrieIO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VanguardTrieIO.swift; sourceTree = "<group>"; };
+		5C34A0172F9C100100C0A001 /* VanguardTrie_Core.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VanguardTrie_Core.swift; sourceTree = "<group>"; };
+		5C34A0182F9C100100C0A001 /* VanguardTrie_Impl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VanguardTrie_Impl.swift; sourceTree = "<group>"; };
 		60F6EEEB720E480BAAEBED66 /* Homa_ConsolidatorAPIs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homa_ConsolidatorAPIs.swift; sourceTree = "<group>"; };
 		79AD04D1F0004E8FBC7DEB10 /* Homa_PathFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homa_PathFinder.swift; sourceTree = "<group>"; };
 		91CCBFE00CBE4E4EB6B3119A /* HomaCompatShims.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomaCompatShims.swift; sourceTree = "<group>"; };
@@ -894,6 +910,7 @@
 		5BE5A511294E0BD400EFA49C /* LMAssembly */ = {
 			isa = PBXGroup;
 			children = (
+				5C34A0212F9C100100C0A001 /* TrieKit */,
 				5BE5A512294E0BDE00EFA49C /* SubLMs */,
 				5B8F94F62B3070C40071B14A /* InputToken.swift */,
 				5BE5A51B294E0BEE00EFA49C /* LMConsolidator.swift */,
@@ -905,6 +922,7 @@
 				5BA379B62B8278DA00D82E16 /* LMInstantiator_POMRepresentable.swift */,
 				5B79A3FB2BB850E6003F449E /* LMInstantiator_UserDictionarySummarized.swift */,
 				5BE5A51D294E0BEE00EFA49C /* LMInstantiator.swift */,
+				5B30BC2C2F979F2C00B49F70 /* PhonabetCipher.swift */,
 				5BE5A531294E0C9F00EFA49C /* PinyinPhonaConverter.swift */,
 				5B69CA69295DDC58005211BB /* RangeParserAPI.swift */,
 				91CCBFE00CBE4E4EB6B3119A /* HomaCompatShims.swift */,
@@ -1095,6 +1113,20 @@
 				5BF846902EE7DACA00C2857D /* UserPhraseTextFileObj.swift */,
 			);
 			path = KeyKeyUserDBKit;
+			sourceTree = "<group>";
+		};
+		5C34A0212F9C100100C0A001 /* TrieKit */ = {
+			isa = PBXGroup;
+			children = (
+				5C34A0112F9C100100C0A001 /* TK_QueryBuffer.swift */,
+				5C34A0132F9C100100C0A001 /* TrieKit_PerformanceUtils.swift */,
+				5C34A0142F9C100100C0A001 /* TrieProtocol.swift */,
+				5C34A0152F9C100100C0A001 /* TrieTextMap_Core.swift */,
+				5C34A0162F9C100100C0A001 /* VanguardTrieIO.swift */,
+				5C34A0172F9C100100C0A001 /* VanguardTrie_Core.swift */,
+				5C34A0182F9C100100C0A001 /* VanguardTrie_Impl.swift */,
+			);
+			path = TrieKit;
 			sourceTree = "<group>";
 		};
 		9430F9B5DB0C4577ACD8C403 /* Homa */ = {
@@ -1310,6 +1342,13 @@
 				5B9939EA2B8B08EF00979BBC /* BrailleEnums.swift in Sources */,
 				5BE5A500294E092900EFA49C /* AppKitImpl_NSWindowController.swift in Sources */,
 				5B09126C2B134927000166DB /* LMInstantiator_TextMapExtension.swift in Sources */,
+				5C34A0012F9C100100C0A001 /* TK_QueryBuffer.swift in Sources */,
+				5C34A0032F9C100100C0A001 /* TrieKit_PerformanceUtils.swift in Sources */,
+				5C34A0042F9C100100C0A001 /* TrieProtocol.swift in Sources */,
+				5C34A0052F9C100100C0A001 /* TrieTextMap_Core.swift in Sources */,
+				5C34A0062F9C100100C0A001 /* VanguardTrieIO.swift in Sources */,
+				5C34A0072F9C100100C0A001 /* VanguardTrie_Core.swift in Sources */,
+				5C34A0082F9C100100C0A001 /* VanguardTrie_Impl.swift in Sources */,
 				5B6F7ADD2B8CEC72001596AF /* CandidateTextService.swift in Sources */,
 				5B6420032ABB3BA600E1B7F6 /* TooltipUI.swift in Sources */,
 				5B2F3B522AF24FD500225501 /* LMMgr_KimoDataParser.swift in Sources */,
@@ -1446,6 +1485,7 @@
 				5BF846932EE7DACA00C2857D /* KeyKeyGram.swift in Sources */,
 				5BF846942EE7DACA00C2857D /* UserPhraseTextFileObj.swift in Sources */,
 				5BF846952EE7DACA00C2857D /* UserPhraseDataSource.swift in Sources */,
+				5B30BC2D2F979F2C00B49F70 /* PhonabetCipher.swift in Sources */,
 				5BF846962EE7DACA00C2857D /* UserDatabase4KeyKey.swift in Sources */,
 				5BF846972EE7DACA00C2857D /* SEEDecryptor.swift in Sources */,
 				5BF846982EE7DACA00C2857D /* PhonaSet.swift in Sources */,
