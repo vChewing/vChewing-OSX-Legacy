@@ -11,9 +11,8 @@ import Foundation
 extension LMAssembly {
   typealias ScoreAssigner = (CandidateInState?) -> Double
 
-  /// 語言模組副本化模組（LMInstantiator，下稱「LMI」）負責統籌且整理來自其它
-  /// 子模組的資料（包括使用者語彙、繪文字模組、語彙濾除表、原廠語言模組等），
-  /// 並對 Homa / Typewriter 提供統一的查詢介面。
+  /// 語言模組副本化模組（LMInstantiator，下稱「LMI」）自身統籌且整理來自
+  /// 其它子模組的資料（包括使用者語彙、繪文字模組、語彙濾除表、原廠語言模組等）。
   ///
   /// LMI 型別為與輸入法輸入調度模組直接溝通之唯一語言模組。當組字器開始根據給定的
   /// 讀音鏈構築語句時，LMI 會接收來自組字器的讀音、輪流檢查自身是否有可以匹配到的
