@@ -837,12 +837,19 @@ extension LMAssembly {
         }
       }
 
+      let factoryCoreUnigramsByKeyArray = Dictionary(grouping: factoryCoreUnigramsResult, by: \.keyArray)
+      let topScoreByKeyArray: [[String]: Double] = rawAllUnigrams.reduce(into: [:]) { partialResult, current in
+        let existingTopScore = partialResult[current.keyArray] ?? -.infinity
+        if current.probability > existingTopScore {
+          partialResult[current.keyArray] = current.probability
+        }
+      }
+
       let expandedKeyArrays = expandAlternativeKeyArrays(from: keyArray)
+      var deferredFilterByKeyArray: [[String]: Set<String>] = [:]
       for expandedKeyArray in expandedKeyArrays {
         let keyChain = expandedKeyArray.joined(separator: "-")
-        let factoryCoreUnigramsForExpandedKey = factoryCoreUnigramsResult.filter {
-          $0.keyArray == expandedKeyArray
-        }
+        let factoryCoreUnigramsForExpandedKey = factoryCoreUnigramsByKeyArray[expandedKeyArray] ?? []
 
         if !config.bypassUserPhrasesData, config.isSymbolEnabled {
           rawAllUnigrams += lmUserSymbols.unigramsFor(key: keyChain, keyArray: expandedKeyArray)
@@ -868,8 +875,7 @@ extension LMAssembly {
               factorySingleReadingValueHashes: factorySingleReadingValueHashes
             ).reversed()
           )
-          let existingUnigramsForExpandedKey = rawAllUnigrams.lazy.filter { $0.keyArray == expandedKeyArray }
-          if expandedKeyArray.count == 1, let topScore = existingUnigramsForExpandedKey.map(\.probability).max() {
+          if expandedKeyArray.count == 1, let topScore = topScoreByKeyArray[expandedKeyArray] {
             userPhraseUnigrams = userPhraseUnigrams.map { currentUnigram in
               Homa.Gram(
                 keyArray: expandedKeyArray,
@@ -898,10 +904,16 @@ extension LMAssembly {
           let dataAsFilter = Set(
             lmFiltered.unigramsFor(key: keyChain, keyArray: expandedKeyArray).map(\.current)
           )
-          rawAllUnigrams.removeAll { gram in
-            guard gram.keyArray == expandedKeyArray else { return false }
-            return dataAsFilter.contains(gram.current)
+          if !dataAsFilter.isEmpty {
+            deferredFilterByKeyArray[expandedKeyArray, default: []].formUnion(dataAsFilter)
           }
+        }
+      }
+
+      if !config.bypassUserPhrasesData, !deferredFilterByKeyArray.isEmpty {
+        rawAllUnigrams.removeAll { gram in
+          guard let dataAsFilter = deferredFilterByKeyArray[gram.keyArray] else { return false }
+          return dataAsFilter.contains(gram.current)
         }
       }
 
