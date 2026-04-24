@@ -98,6 +98,13 @@ public final class QueryBuffer<T> {
   private let lock = NSLock()
 
   private func removeExpiredEntriesLocked(now: UInt64) {
-    cache = cache.filter { now &- $0.value.timestampNs <= expirationNanoseconds }
+    guard !cache.isEmpty else { return }
+    var expiredKeys: [Int] = []
+    expiredKeys.reserveCapacity(Swift.min(cache.count, 256))
+    for (key, value) in cache where now &- value.timestampNs > expirationNanoseconds {
+      expiredKeys.append(key)
+    }
+    guard !expiredKeys.isEmpty else { return }
+    expiredKeys.forEach { cache.removeValue(forKey: $0) }
   }
 }
