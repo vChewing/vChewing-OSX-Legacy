@@ -61,19 +61,19 @@ extension LMAssembly.LMInstantiator {
     case strictSuperset
   }
 
-  @discardableResult
   public static func connectFactoryDictionary(
     textMapPath: String,
-    dropPreviousConnection: Bool = true
-  )
-    -> Bool {
+    dropPreviousConnection: Bool = true,
+    completionHandler: (@Sendable (Bool) -> ())? = nil
+  ) {
     if dropPreviousConnection {
       disconnectFactoryDictionary()
     }
 
     guard let resolvedTextMapPath = resolveTextMapPath(from: textMapPath) else {
       vCLMLog("Factory TextMap path not found: \(textMapPath)")
-      return false
+      completionHandler?(false)
+      return
     }
 
     if !Self.asyncLoadingUserData {
@@ -81,11 +81,13 @@ extension LMAssembly.LMInstantiator {
         let textMapData = try Data(contentsOf: URL(fileURLWithPath: resolvedTextMapPath), options: [.mappedIfSafe])
         factoryTrie = try VanguardTrie.TextMapTrie(data: textMapData)
         vCLMLog("Factory TextMap loading complete: \(resolvedTextMapPath)")
-        return true
+        completionHandler?(true)
+        return
       } catch {
         vCLMLog("Factory TextMap loading failed: \(error.localizedDescription)")
         factoryTrie = nil
-        return false
+        completionHandler?(false)
+        return
       }
     } else {
       LMAssembly.fileHandleQueue.async {
@@ -94,12 +96,14 @@ extension LMAssembly.LMInstantiator {
           let newTrie = try VanguardTrie.TextMapTrie(data: textMapData)
           factoryTrie = newTrie
           vCLMLog("Factory TextMap async loading complete: \(resolvedTextMapPath)")
+          completionHandler?(true)
         } catch {
           vCLMLog("Factory TextMap async loading failed: \(error.localizedDescription)")
           factoryTrie = nil
+          completionHandler?(false)
         }
       }
-      return true
+      return
     }
   }
 
