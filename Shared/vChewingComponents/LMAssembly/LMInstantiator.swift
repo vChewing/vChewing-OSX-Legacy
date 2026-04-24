@@ -1075,7 +1075,9 @@ extension LMAssembly {
           }
         }
 
-        rawAllUnigrams.append(contentsOf: queryDateTimeUnigrams(with: keyChain, keyArray: expandedKeyArray))
+        if Self.dateTimeKnownTriggers.contains(keyChain) {
+          rawAllUnigrams.append(contentsOf: queryDateTimeUnigrams(with: keyChain, keyArray: expandedKeyArray))
+        }
 
         if !config.bypassUserPhrasesData, matchingFilteredKeys.contains(keyChain) {
           let dataAsFilter = Set(
