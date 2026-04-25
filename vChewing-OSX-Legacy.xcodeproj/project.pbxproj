@@ -224,6 +224,7 @@
 		7FF684C67F7F498081940708 /* Homa_GramInPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70B82D8889B4398AAEB5FCA /* Homa_GramInPath.swift */; };
 		80BD41A79D7D4380BBCD2FDE /* Homa_CandidateAPIs_FetchAndApply.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0159425256504E12AEC12CB8 /* Homa_CandidateAPIs_FetchAndApply.swift */; };
 		81746FCD432D44EF908A4DA3 /* Homa_TypeAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C2F2EE93334E75A2BB3ED2 /* Homa_TypeAliases.swift */; };
+		A7BED23A2FFA4EDBB3972B1B6C2AEA9A /* Homa_PossibleKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116F2930785644468C967F664FDAEB28 /* Homa_PossibleKey.swift */; };
 		9A5A4E423AB84B6FA6E6CFB3 /* HomaAssemblerCompat.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF6126938424573BE9ACFC0 /* HomaAssemblerCompat.swift */; };
 		9BE072A24CE3459E8CA8FE41 /* Homa_CandidatePair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA89F3DC79B4AF7A84BEA67 /* Homa_CandidatePair.swift */; };
 		B8633E59D9444C8DA96249A5 /* Homa_Assembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CEDB4618F12438D8F853D10 /* Homa_Assembler.swift */; };
@@ -264,6 +265,7 @@
 		3BD3F56DDE1F49B788D9F668 /* Homa_Exception.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homa_Exception.swift; sourceTree = "<group>"; };
 		3CEDB4618F12438D8F853D10 /* Homa_Assembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homa_Assembler.swift; sourceTree = "<group>"; };
 		51C2F2EE93334E75A2BB3ED2 /* Homa_TypeAliases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homa_TypeAliases.swift; sourceTree = "<group>"; };
+		116F2930785644468C967F664FDAEB28 /* Homa_PossibleKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homa_PossibleKey.swift; sourceTree = "<group>"; };
 		5B0422062D4F7F2600DFAA15 /* IMKTextInputImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMKTextInputImpl.swift; sourceTree = "<group>"; };
 		5B09126B2B134927000166DB /* LMInstantiator_TextMapExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMInstantiator_TextMapExtension.swift; sourceTree = "<group>"; };
 		5B098B672E9B8D260005885E /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.0.sdk/usr/lib/libiconv.tbd; sourceTree = DEVELOPER_DIR; };
@@ -524,6 +526,7 @@
 				C532D78E31074613AE47BAB3 /* Homa_Node.swift */,
 				377A7CABB6FC4203B3101DFF /* Homa_Segment.swift */,
 				51C2F2EE93334E75A2BB3ED2 /* Homa_TypeAliases.swift */,
+				116F2930785644468C967F664FDAEB28 /* Homa_PossibleKey.swift */,
 			);
 			path = Homa_BasicTypes;
 			sourceTree = "<group>";
@@ -1323,6 +1326,7 @@
 				5F32C88FBFFC4D389EBDEFBD /* Homa_Node.swift in Sources */,
 				18D039FEBC7A4223A3BD300A /* Homa_Segment.swift in Sources */,
 				81746FCD432D44EF908A4DA3 /* Homa_TypeAliases.swift in Sources */,
+				A7BED23A2FFA4EDBB3972B1B6C2AEA9A /* Homa_PossibleKey.swift in Sources */,
 				B8633E59D9444C8DA96249A5 /* Homa_Assembler.swift in Sources */,
 				80BD41A79D7D4380BBCD2FDE /* Homa_CandidateAPIs_FetchAndApply.swift in Sources */,
 				5CD795F9D2124A4EA61C3B58 /* Homa_CandidateAPIs_Revolver.swift in Sources */,
