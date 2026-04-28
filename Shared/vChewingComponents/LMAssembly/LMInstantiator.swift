@@ -493,6 +493,10 @@ extension LMAssembly {
         || (config.isCassetteEnabled && (keyArray.first?.hasPrefix("_") ?? false)) {
         if hasFactoryCoreUnigramsFor(keyArray: keyArray) { return true }
 
+        if !factoryUnigramsFor(key: keyChain, keyArray: keyArray, column: .theDataNonKanji).isEmpty {
+          return true
+        }
+
         if keyChain.hasPrefix("_"), keyChain.count > 1,
            !factoryChoppedUnigramsFor(keyArray: keyArray, column: .theDataMISC).isEmpty {
           return true
@@ -597,6 +601,12 @@ extension LMAssembly {
           key: keyChain,
           keyArray: keyArray,
           column: .theDataCHEW
+        )
+        // nonKanji 內容（假名、鴨蛋零等）對應普通讀音。
+        rawAllUnigrams += factoryUnigramsFor(
+          key: keyChain,
+          keyArray: keyArray,
+          column: .theDataNonKanji
         )
         // `_` 開頭的特殊 key（標點、半形標點、特殊符號）存放在 MISC 欄位。
         if keyChain.hasPrefix("_"), keyChain.count > 1 {

@@ -18,6 +18,7 @@ extension LMAssembly.LMInstantiator {
     case theDataMISC = 4
     case theDataSYMB = 5
     case theDataCHEW = 6
+    case theDataNonKanji = 7
 
     // MARK: Internal
 
@@ -38,9 +39,10 @@ extension LMAssembly.LMInstantiator {
       case .theDataCHS: return [5]
       case .theDataCHT: return [6]
       case .theDataCNS: return [7]
-      case .theDataMISC: return [4, 8]
+      case .theDataMISC: return [4]
       case .theDataSYMB: return [9]
       case .theDataCHEW: return [10]
+      case .theDataNonKanji: return [8]
       }
     }
 
