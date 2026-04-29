@@ -56,6 +56,7 @@ extension LMAssembly {
       public var deltaOfCalendarYears: Int = -2_000
       public var allowRescoringSingleKanjiCandidates = false
       public var bypassUserPhrasesData = false
+      public var suppressFactoryUnigramsOfKanaSyllables = false
     }
 
     public enum SupplementalLookupStrategy {
@@ -217,6 +218,7 @@ extension LMAssembly {
       config.allowRescoringSingleKanjiCandidates = prefs.allowRescoringSingleKanjiCandidates
       config.alwaysSupplyETenDOSUnigrams = prefs.enforceETenDOSCandidateSequence
       config.bypassUserPhrasesData = prefs.userPhrasesDatabaseBypassed
+      config.suppressFactoryUnigramsOfKanaSyllables = prefs.suppressFactoryUnigramsOfKanaSyllables
     }
 
     /// 清除 InputToken HashMap。

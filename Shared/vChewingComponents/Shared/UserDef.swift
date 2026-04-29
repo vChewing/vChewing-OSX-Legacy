@@ -52,6 +52,7 @@ public enum UserDef: String, CaseIterable, Identifiable {
   case kSymbolInputEnabled = "SymbolInputEnabled"
   case kChineseConversionEnabled = "ChineseConversionEnabled"
   case kShiftJISShinjitaiOutputEnabled = "ShiftJISShinjitaiOutputEnabled"
+  case kSuppressFactoryUnigramsOfKanaSyllables = "SuppressFactoryUnigramsOfKanaSyllables"
   case kCurrencyNumeralsEnabled = "CurrencyNumeralsEnabled"
   case kHalfWidthPunctuationEnabled = "HalfWidthPunctuationEnable"
   case kCursorPlacementAfterSelectingCandidate = "CursorBehaviorAfterConfirmingCandidate"
@@ -451,6 +452,7 @@ extension UserDef {
     case .kSymbolInputEnabled: return .bool(true)
     case .kChineseConversionEnabled: return .bool(false)
     case .kShiftJISShinjitaiOutputEnabled: return .bool(false)
+    case .kSuppressFactoryUnigramsOfKanaSyllables: return .bool(false)
     case .kCurrencyNumeralsEnabled: return .bool(false)
     case .kHalfWidthPunctuationEnabled: return .bool(false)
     case .kCursorPlacementAfterSelectingCandidate: return .integer(1)
@@ -704,6 +706,11 @@ extension UserDef {
     case .kShiftJISShinjitaiOutputEnabled: return .init(
         userDef: self,
         shortTitle: "Auto-convert traditional Chinese glyphs to JIS Shinjitai characters"
+      )
+    case .kSuppressFactoryUnigramsOfKanaSyllables: return .init(
+        userDef: self,
+        shortTitle: "i18n:UserDef.kSuppressFactoryUnigramsOfKanaSyllables.shortTitle",
+        description: "i18n:UserDef.kSuppressFactoryUnigramsOfKanaSyllables.description"
       )
     case .kCurrencyNumeralsEnabled: return .init(
         userDef: self,
