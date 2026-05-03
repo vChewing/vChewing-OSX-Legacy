@@ -843,7 +843,8 @@ extension UserDef {
       )
     case .kAutoCorrectReadingCombination: return .init(
         userDef: self,
-        shortTitle: "Automatically correct reading combinations when typing"
+        shortTitle: "i18n:UserDef.kAutoCorrectReadingCombination.shortTitle",
+        description: "i18n:UserDef.kAutoCorrectReadingCombination.description"
       )
     case .kReadingNarrationCoverage: return .init(
         userDef: self, shortTitle: "i18n:UserDef.kReadingNarrationCoverage.shortTitle",

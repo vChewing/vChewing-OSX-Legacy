@@ -396,6 +396,7 @@ extension InputHandlerProtocol {
     }
     composer.clear()
     composer.phonabetCombinationCorrectionEnabled = prefs.autoCorrectReadingCombination
+      && !prefs.mixedAlphanumericalEnabled
   }
 
   public func clearComposerAndCalligrapher() {
