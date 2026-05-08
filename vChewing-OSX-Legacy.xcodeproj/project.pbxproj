@@ -68,7 +68,7 @@
 		5B751DD0294EE57D0031CF70 /* InputHandler_CoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DC1294EE57C0031CF70 /* InputHandler_CoreProtocol.swift */; };
 		5B751DD3294EE57D0031CF70 /* InputHandler_TriageInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DC4294EE57C0031CF70 /* InputHandler_TriageInput.swift */; };
 		5B751DD5294EE57D0031CF70 /* IMEState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DC6294EE57D0031CF70 /* IMEState.swift */; };
-		5B751DD6294EE57D0031CF70 /* IMEStateDataImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DC7294EE57D0031CF70 /* IMEStateDataImpl.swift */; };
+		02DE245ED6584712B4AF3E4E /* IMEStateParsed4Darwin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C232A060BD485EABD2B24D /* IMEStateParsed4Darwin.swift */; };
 		5B751DD7294EE57D0031CF70 /* SessionCtl_Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DC8294EE57D0031CF70 /* SessionCtl_Menu.swift */; };
 		5B751DD9294EE57D0031CF70 /* InputHandler_HandleComposition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DCA294EE57D0031CF70 /* InputHandler_HandleComposition.swift */; };
 		5B751DDB294EE57D0031CF70 /* InputHandler_HandleCandidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DCC294EE57D0031CF70 /* InputHandler_HandleCandidate.swift */; };
@@ -332,7 +332,7 @@
 		5B751DC1294EE57C0031CF70 /* InputHandler_CoreProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputHandler_CoreProtocol.swift; sourceTree = "<group>"; };
 		5B751DC4294EE57C0031CF70 /* InputHandler_TriageInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputHandler_TriageInput.swift; sourceTree = "<group>"; };
 		5B751DC6294EE57D0031CF70 /* IMEState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IMEState.swift; sourceTree = "<group>"; };
-		5B751DC7294EE57D0031CF70 /* IMEStateDataImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IMEStateDataImpl.swift; sourceTree = "<group>"; };
+		55C232A060BD485EABD2B24D /* IMEStateParsed4Darwin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IMEStateParsed4Darwin.swift; sourceTree = "<group>"; };
 		5B751DC8294EE57D0031CF70 /* SessionCtl_Menu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionCtl_Menu.swift; sourceTree = "<group>"; };
 		5B751DCA294EE57D0031CF70 /* InputHandler_HandleComposition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputHandler_HandleComposition.swift; sourceTree = "<group>"; };
 		5B751DCC294EE57D0031CF70 /* InputHandler_HandleCandidate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputHandler_HandleCandidate.swift; sourceTree = "<group>"; };
@@ -815,7 +815,7 @@
 				5B1C28E02B8F09DF00968E74 /* CandidateTextService_SelectorImpl.swift */,
 				5BE5A595294E1DFB00EFA49C /* ChineseConverterBridge.swift */,
 				5B751DC6294EE57D0031CF70 /* IMEState.swift */,
-				5B751DC7294EE57D0031CF70 /* IMEStateDataImpl.swift */,
+				55C232A060BD485EABD2B24D /* IMEStateParsed4Darwin.swift */,
 				5BE5A4E4294E03C200EFA49C /* main.swift */,
 				5BDA204D2EEABDDC00377085 /* MainSputnik.swift */,
 				5BF1209E2B8C8D7E00C83A24 /* PrefMgr_Singleton.swift */,
@@ -1460,7 +1460,7 @@
 				5B72F6672B885AF00051B7A9 /* lmPlainBopomopo_RawData.swift in Sources */,
 				5BDA204E2EEABDDF00377085 /* MainSputnik.swift in Sources */,
 				5B70C0AB2EA428B500BC8273 /* FileOpenMethod.swift in Sources */,
-				5B751DD6294EE57D0031CF70 /* IMEStateDataImpl.swift in Sources */,
+				02DE245ED6584712B4AF3E4E /* IMEStateParsed4Darwin.swift in Sources */,
 				5BE5A505294E097C00EFA49C /* vChewing_FolderMonitor.swift in Sources */,
 				5BE5A56C294E127B00EFA49C /* PhraseEditorDelegate.swift in Sources */,
 				5B69C36B2B7406DC006FBD09 /* VwrSettingsPaneCocoaClients.swift in Sources */,

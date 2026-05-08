@@ -623,7 +623,7 @@ private class PopupCompositionView: NSView {
   }
 
   private func prepareAttributedString(from state: IMEStateProtocol) -> NSAttributedString {
-    let attrString = NSMutableAttributedString(string: state.displayedTextConverted)
+    let attrString = NSMutableAttributedString(string: state.data.displayedTextConverted)
 
     let baseFont = bufferFont()
     let paragraphStyle: NSParagraphStyle = {

@@ -313,7 +313,7 @@ extension InputHandlerProtocol {
         errorCallback?("9AAFAC00")
         return true
       }
-      let areWeUnfiltering = state.markedTargetIsCurrentlyFiltered
+      let areWeUnfiltering = IMEStateParsed4Darwin(state).markedTargetIsCurrentlyFiltered
       if !session.performUserPhraseOperation(addToFilter: false) {
         errorCallback?("5B69CC8D")
         return true

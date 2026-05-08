@@ -1122,6 +1122,7 @@ extension TDK4AppKit.CandidatePool4AppKit {
     attachment.attachmentCell = badgeCell
     return .init(attachment: attachment)
   }
+
   // MARK: Reading Disambiguation Logic
 
   /// 計算當前高亮候選字詞的讀音 disambiguation 顯示。
@@ -1157,8 +1158,6 @@ extension TDK4AppKit.CandidatePool4AppKit {
       readingDisambiguationResult = readingString
     }
   }
-
-
 }
 
 // MARK: - Badge Helpers
