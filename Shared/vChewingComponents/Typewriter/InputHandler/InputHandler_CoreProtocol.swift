@@ -245,7 +245,7 @@ extension InputHandlerProtocol {
     let preservedCursorPosition = actualNodeCursorPosition
 
     /// 必須先鞏固當前組字器游標上下文、以消滅意料之外的影響，但在內文組字區內就地輪替候選字詞時除外。
-    if preConsolidate { consolidateCursorContext(with: theCandidate, explicitlyChosen: explicitlyChosen) }
+    if preConsolidate { consolidateCursorContext(with: theCandidate) }
 
     // 先嘗試用 POM 建議覆寫（如果有完全匹配的記憶）。
     let pomSuggestion = retrievePOMSuggestions(apply: false)
@@ -289,7 +289,7 @@ extension InputHandlerProtocol {
         // 無法直接匹配「奇」的 unigram keyArray）。此時先鞏固上下文以拆分 bigram，
         // 後續重試才能成功匹配 keyArray 並觸發 POM 記憶。
         if !overrideTaskResult, attempt == 1, !preConsolidate {
-          consolidateCursorContext(with: theCandidate, explicitlyChosen: explicitlyChosen)
+          consolidateCursorContext(with: theCandidate)
         }
 
         if !overrideTaskResult, attempt == 2 {
@@ -920,7 +920,7 @@ extension InputHandlerProtocol {
   /// 唯音輸入法截至 v1.9.3 SP2 版為止都受到上游的這個 Bug 的影響，且在 v1.9.4 版利用該函式修正了這個缺陷。
   /// 該修正必須搭配至少天權星組字引擎 v2.0.2 版方可生效。算法可能比較囉唆，但至少在常用情形下不會再發生該問題。
   /// Homa 已內建上下文鞏固邏輯；Typewriter 僅負責將當前游標風格轉譯給 Homa。
-  func consolidateCursorContext(with theCandidate: Homa.CandidatePair, explicitlyChosen _: Bool = false) {
+  func consolidateCursorContext(with theCandidate: Homa.CandidatePair) {
     try? assembler.consolidateCandidateCursorContext(
       for: theCandidate,
       cursorType: homaCandidateCursorType
