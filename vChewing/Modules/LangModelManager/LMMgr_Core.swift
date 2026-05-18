@@ -446,7 +446,7 @@ public final class LMMgr {
           let alert = NSAlert()
           alert.messageText = "i18n:LMMgr.pathInvalidityFound.userDataFolder.title".i18n
           alert.informativeText = Self.userDataFolderInvalidityDescription(path: path)
-          alert.addButton(withTitle: "OK".i18n)
+          alert.addButton(withTitle: "i18n:Common.OK".i18n)
           _ = alert.runModal()
           NSApp.popup()
         }
@@ -467,7 +467,7 @@ public final class LMMgr {
           let alert = NSAlert()
           alert.messageText = "i18n:LMMgr.pathInvalidityFound.cassette.title".i18n
           alert.informativeText = Self.cassettePathInvalidityDescription(path: path)
-          alert.addButton(withTitle: "OK".i18n)
+          alert.addButton(withTitle: "i18n:Common.OK".i18n)
           _ = alert.runModal()
           NSApp.popup()
         }

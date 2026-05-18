@@ -70,12 +70,11 @@ public final class InputSession: SessionProtocol {
   public private(set) lazy var sharedAlertForInputModeToggling: NSAlert = {
     let alert = NSAlert()
     alert.alertStyle = .informational
-    alert.messageText = "Target Input Mode Activation Required".i18n
+    alert.messageText = "i18n:InputMode.TargetInputModeActivationRequired".i18n
     alert
       .informativeText =
-      "You are proceeding to System Preferences to enable the Input Source which corresponds to the input mode you are going to switch to."
-        .i18n
-    alert.addButton(withTitle: "OK".i18n)
+      "i18n:InfoMessage.ProceedingToSystemPreferences".i18n
+    alert.addButton(withTitle: "i18n:Common.OK".i18n)
     return alert
   }()
 
@@ -184,7 +183,7 @@ public final class InputSession: SessionProtocol {
       var tooltip = result.tooltip
       if PrefMgr.shared.phraseReplacementEnabled {
         colorState = .warning
-        tooltip += "\n" + "⚠︎ Phrase replacement mode enabled, interfering user phrase entry.".i18n
+        tooltip += "\n" + "i18n:PhraseOperation.PhraseReplacementInterfering".i18n
       }
       return (tooltip, colorState)
     }

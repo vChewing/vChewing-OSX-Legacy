@@ -93,7 +93,7 @@ extension SettingsPanesCocoa {
             }?.boxed()
             NSStackView.buildSection(width: innerContentWidth) {
               NSStackView.build(.horizontal) {
-                "Where's IMK Candidate Window?".makeNSLabel(fixWidth: innerContentWidth)
+                "i18n:Menu.WhereIsIMKCandidateWindow".makeNSLabel(fixWidth: innerContentWidth)
                 NSView()
                 NSButton(
                   verbatim: "...",
@@ -112,10 +112,9 @@ extension SettingsPanesCocoa {
     @IBAction
     func whereIsIMKCandidatesWindow(_: Any) {
       let window = CtlSettingsCocoa.shared?.window
-      let title = "The End of Support for IMK Candidate Window"
-      let explanation =
-        "1) Only macOS has IMKCandidates. Since it relies on a dedicated ObjC Bridging Header to expose necessary internal APIs to work, it hinders vChewing from completely modularized for multi-platform support.\n\n2) IMKCandidates is buggy. It is not likely to be completely fixed by Apple, and its devs are not allowed to talk about it to non-Apple individuals. That's why we have had enough with IMKCandidates. It is likely the reason why Apple had never used IMKCandidates in their official InputMethodKit sample projects (as of August 2023)."
-      window.callAlert(title: title.i18n, text: explanation.i18n)
+      let title = "i18n:Menu.EndOfIMKCandidateWindow".i18n
+      let explanation = "i18n:InfoMessage.EndOfIMKCandidatesExplanation".i18n
+      window.callAlert(title: title, text: explanation)
     }
 
     @IBAction
@@ -134,7 +133,7 @@ extension SettingsPanesCocoa {
         PrefMgr.shared.candidateKeys = keys
         return
       }
-      let alert = NSAlert(error: "Invalid Selection Keys.".i18n)
+      let alert = NSAlert(error: "i18n:ErrorMessage.InvalidSelectionKeys".i18n)
       alert.informativeText = errorResult
       IMEApp.buzz()
       if let window = CtlSettingsCocoa.shared?.window {
