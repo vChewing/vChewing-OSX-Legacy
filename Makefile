@@ -13,7 +13,7 @@ ARCHIVE_DIR := $(HOME)/Library/Developer/Xcode/Archives/$(DATE_DIR)
 ARCHIVE_NAME := vChewingInstallerLegacy-$(DATE_FILE)-$(TIME_FILE).xcarchive
 ARCHIVE_PATH := $(ARCHIVE_DIR)/$(ARCHIVE_NAME)
 
-all: release
+all: archive
 install: install-release
 update:
 	@git restore ./DictionaryData
@@ -23,6 +23,8 @@ ifdef ARCHS
 BUILD_SETTINGS += ARCHS="$(ARCHS)"
 BUILD_SETTINGS += ONLY_ACTIVE_ARCH=NO
 endif
+
+archive: release
 
 release:
 	@echo "Creating directory: $(ARCHIVE_DIR)"
