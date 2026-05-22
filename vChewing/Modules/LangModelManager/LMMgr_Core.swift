@@ -92,9 +92,24 @@ public final class LMMgr {
 
   // MARK: Public
 
+  /// Captured path-invalidity alerts during unit tests (modal suppressed).
+  public struct PathInvalidityAlert: Equatable {
+    public let msg: String
+    public let infoText: String
+  }
+
   public static var shared = LMMgr()
 
+  /// Accumulates path-invalidity alerts when `UserDefaults.pendingUnitTests` is true.
+  /// Call `resetRecordedPathInvalidityAlerts()` between tests.
+  public static var recordedPathInvalidityAlerts = [PathInvalidityAlert]()
+
   public static var isCoreDBConnected: Bool { LMAssembly.LMInstantiator.isFactoryDictionaryLoaded }
+
+  /// Clear the accumulated invalidity-alert buffer (call in test `init` / `deinit`).
+  public static func resetRecordedPathInvalidityAlerts() {
+    recordedPathInvalidityAlerts.removeAll()
+  }
 
   public static func prepareForUnitTests() {
     guard UserDefaults.pendingUnitTests else { return }
@@ -439,6 +454,14 @@ public final class LMMgr {
         // 只有在發現 invalidity（非 nil 且非空字串）時才顯示警示
         guard let path = newValue, !path.isEmpty else { return }
         asyncOnMain(bypassAsync: UserDefaults.pendingUnitTests) {
+          // Phase 78: Suppress modal during unit tests; capture for assertion instead.
+          guard !UserDefaults.pendingUnitTests else {
+            Self.recordedPathInvalidityAlerts.append(.init(
+              msg: "i18n:LMMgr.pathInvalidityFound.userDataFolder.title".i18n,
+              infoText: Self.userDataFolderInvalidityDescription(path: path)
+            ))
+            return
+          }
           // 若當前已存在 modal 視窗，避免再開啟重複的 modal。
           if NSApp.modalWindow != nil { return }
           // 無動作：已停用 cooldown，觀察器改以舊/新值比較來避免重複警示。
@@ -460,6 +483,14 @@ public final class LMMgr {
         if oldValue == newValue { return }
         guard let path = newValue, !path.isEmpty else { return }
         asyncOnMain(bypassAsync: UserDefaults.pendingUnitTests) {
+          // Phase 78: Suppress modal during unit tests; capture for assertion instead.
+          guard !UserDefaults.pendingUnitTests else {
+            Self.recordedPathInvalidityAlerts.append(.init(
+              msg: "i18n:LMMgr.pathInvalidityFound.cassette.title".i18n,
+              infoText: Self.cassettePathInvalidityDescription(path: path)
+            ))
+            return
+          }
           // 若當前已存在 modal 視窗，避免再開啟重複的 modal。
           if NSApp.modalWindow != nil { return }
           // 無動作：已停用 cooldown，觀察器改以舊/新值比較來避免重複警示。
