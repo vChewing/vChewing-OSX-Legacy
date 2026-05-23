@@ -44,11 +44,13 @@ extension SettingsPanesCocoa {
                 fixWidth: innerContentWidth,
                 prefUITab: .tabBehavior
               )
-              UserDef.kReflectBPMFVSInCompositionBuffer.renderCocoa(
+            }?.boxed()
+            NSStackView.buildSection(width: innerContentWidth) {
+              UserDef.kSpecifyShiftSpaceKeyBehavior.renderCocoa(
                 fixWidth: innerContentWidth,
                 prefUITab: .tabBehavior
               )
-              UserDef.kSpecifyShiftSpaceKeyBehavior.renderCocoa(
+              UserDef.kUseSpaceToCommitHighlightedCandidate4SCPC.renderCocoa(
                 fixWidth: innerContentWidth,
                 prefUITab: .tabBehavior
               )
@@ -104,7 +106,7 @@ extension SettingsPanesCocoa {
                 fixWidth: innerContentWidth,
                 prefUITab: .tabBehavior
               )
-              UserDef.kUseSpaceToCommitHighlightedSCPCCandidate.renderCocoa(
+              UserDef.kReflectBPMFVSInCompositionBuffer.renderCocoa(
                 fixWidth: innerContentWidth,
                 prefUITab: .tabBehavior
               )

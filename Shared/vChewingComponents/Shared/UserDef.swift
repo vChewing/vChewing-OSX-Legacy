@@ -104,7 +104,7 @@ public enum UserDef: String, CaseIterable, Identifiable {
   case kRomanNumeralOutputFormat = "RomanNumeralOutputFormat"
   case kReducePOMLifetimeToNoMoreThan12Hours = "ReducePOMLifetimeToNoMoreThan12Hours"
 
-  case kUseSpaceToCommitHighlightedSCPCCandidate = "UseSpaceToCommitHighlightedSCPCCandidate"
+  case kUseSpaceToCommitHighlightedCandidate4SCPC = "UseSpaceToCommitHighlightedSCPCCandidate"
   case kEnableMouseScrollingForTDKCandidatesCocoa = "EnableMouseScrollingForTDKCandidatesCocoa"
   case kEnableCandidateWindowAnimation = "EnableCandidateWindowAnimation"
   case kDisableSegmentedThickUnderlineInMarkingModeForManagedClients
@@ -504,7 +504,7 @@ extension UserDef {
     case .kEnforceETenDOSCandidateSequence: return .bool(true)
     case .kRomanNumeralOutputFormat: return .integer(0)
     case .kReducePOMLifetimeToNoMoreThan12Hours: return .bool(false)
-    case .kUseSpaceToCommitHighlightedSCPCCandidate: return .bool(true)
+    case .kUseSpaceToCommitHighlightedCandidate4SCPC: return .bool(false)
     case .kEnableMouseScrollingForTDKCandidatesCocoa: return .bool(false)
     case .kEnableCandidateWindowAnimation: return .bool(true)
     case .kDisableSegmentedThickUnderlineInMarkingModeForManagedClients: return .bool(false)
@@ -985,9 +985,10 @@ extension UserDef {
           3: "i18n:UserDef.kRomanNumeralOutputFormat.option.3", // lowercaseURN
         ]
       )
-    case .kUseSpaceToCommitHighlightedSCPCCandidate: return .init(
+    case .kUseSpaceToCommitHighlightedCandidate4SCPC: return .init(
         userDef: self,
-        shortTitle: "i18n:UserDef.kUseSpaceToCommitHighlightedSCPCCandidate.shortTitle"
+        shortTitle: "i18n:UserDef.kUseSpaceToCommitHighlightedCandidate4SCPC.shortTitle",
+        description: "i18n:UserDef.kUseSpaceToCommitHighlightedCandidate4SCPC.description"
       )
     case .kEnableMouseScrollingForTDKCandidatesCocoa: return .init(
         userDef: self, shortTitle: "i18n:UserDef.kEnableMouseScrollingForTDKCandidatesCocoa.shortTitle"
