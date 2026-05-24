@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		02DE245ED6584712B4AF3E4E /* IMEStateParsed4Darwin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C232A060BD485EABD2B24D /* IMEStateParsed4Darwin.swift */; };
 		18D039FEBC7A4223A3BD300A /* Homa_Segment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377A7CABB6FC4203B3101DFF /* Homa_Segment.swift */; };
 		1A28692F2E444F20B532B6D0 /* Homa_Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59008A8A7D746779D9CD750 /* Homa_Config.swift */; };
 		29DBF8A494254C78AFC81409 /* Homa_SwiftImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C51CF3E668442AB87CF4C7 /* Homa_SwiftImpl.swift */; };
@@ -68,7 +69,6 @@
 		5B751DD0294EE57D0031CF70 /* InputHandler_CoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DC1294EE57C0031CF70 /* InputHandler_CoreProtocol.swift */; };
 		5B751DD3294EE57D0031CF70 /* InputHandler_TriageInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DC4294EE57C0031CF70 /* InputHandler_TriageInput.swift */; };
 		5B751DD5294EE57D0031CF70 /* IMEState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DC6294EE57D0031CF70 /* IMEState.swift */; };
-		02DE245ED6584712B4AF3E4E /* IMEStateParsed4Darwin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C232A060BD485EABD2B24D /* IMEStateParsed4Darwin.swift */; };
 		5B751DD7294EE57D0031CF70 /* SessionCtl_Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DC8294EE57D0031CF70 /* SessionCtl_Menu.swift */; };
 		5B751DD9294EE57D0031CF70 /* InputHandler_HandleComposition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DCA294EE57D0031CF70 /* InputHandler_HandleComposition.swift */; };
 		5B751DDB294EE57D0031CF70 /* InputHandler_HandleCandidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DCC294EE57D0031CF70 /* InputHandler_HandleCandidate.swift */; };
@@ -198,12 +198,12 @@
 		5BF1209F2B8C8D7E00C83A24 /* PrefMgr_Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF1209E2B8C8D7E00C83A24 /* PrefMgr_Singleton.swift */; };
 		5BF120A12B8C8E1700C83A24 /* IMEApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF120A02B8C8E1700C83A24 /* IMEApp.swift */; };
 		5BF5AD872EE3661700121ED1 /* Typewriter_BPMFFullMatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF5AD862EE3661700121ED1 /* Typewriter_BPMFFullMatch.swift */; };
-		5BF5AD932EE3671000121ED1 /* Typewriter_MixedAlphanumerical.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF5AD922EE3671000121ED1 /* Typewriter_MixedAlphanumerical.swift */; };
 		5BF5AD892EE3661B00121ED1 /* TypewriterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF5AD882EE3661B00121ED1 /* TypewriterProtocol.swift */; };
 		5BF5AD8E2EE366FC00121ED1 /* Typewriter_CodePoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF5AD8B2EE366FC00121ED1 /* Typewriter_CodePoint.swift */; };
 		5BF5AD8F2EE366FC00121ED1 /* Typewriter_HaninSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF5AD8C2EE366FC00121ED1 /* Typewriter_HaninSymbol.swift */; };
 		5BF5AD902EE366FC00121ED1 /* Typewriter_RomanNumeral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF5AD8D2EE366FC00121ED1 /* Typewriter_RomanNumeral.swift */; };
 		5BF5AD912EE366FC00121ED1 /* Typewriter_Cassette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF5AD8A2EE366FC00121ED1 /* Typewriter_Cassette.swift */; };
+		5BF5AD932EE3671000121ED1 /* Typewriter_MixedAlphanumerical.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF5AD922EE3671000121ED1 /* Typewriter_MixedAlphanumerical.swift */; };
 		5BF5BAE1294DFFC9006011AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF5BAE0294DFFC9006011AD /* AppDelegate.swift */; };
 		5BF5BAE3294DFFCA006011AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BF5BAE2294DFFCA006011AD /* Assets.xcassets */; };
 		5BF846922EE7DACA00C2857D /* KeyKeyUserDBKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8468B2EE7DACA00C2857D /* KeyKeyUserDBKit.swift */; };
@@ -225,9 +225,9 @@
 		7FF684C67F7F498081940708 /* Homa_GramInPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70B82D8889B4398AAEB5FCA /* Homa_GramInPath.swift */; };
 		80BD41A79D7D4380BBCD2FDE /* Homa_CandidateAPIs_FetchAndApply.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0159425256504E12AEC12CB8 /* Homa_CandidateAPIs_FetchAndApply.swift */; };
 		81746FCD432D44EF908A4DA3 /* Homa_TypeAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C2F2EE93334E75A2BB3ED2 /* Homa_TypeAliases.swift */; };
-		A7BED23A2FFA4EDBB3972B1B6C2AEA9A /* Homa_PossibleKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116F2930785644468C967F664FDAEB28 /* Homa_PossibleKey.swift */; };
 		9A5A4E423AB84B6FA6E6CFB3 /* HomaAssemblerCompat.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF6126938424573BE9ACFC0 /* HomaAssemblerCompat.swift */; };
 		9BE072A24CE3459E8CA8FE41 /* Homa_CandidatePair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA89F3DC79B4AF7A84BEA67 /* Homa_CandidatePair.swift */; };
+		A7BED23A2FFA4EDBB3972B1B6C2AEA9A /* Homa_PossibleKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116F2930785644468C967F664FDAEB28 /* Homa_PossibleKey.swift */; };
 		B8633E59D9444C8DA96249A5 /* Homa_Assembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CEDB4618F12438D8F853D10 /* Homa_Assembler.swift */; };
 		CB6C806985524F059E307773 /* Homa_Exception.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD3F56DDE1F49B788D9F668 /* Homa_Exception.swift */; };
 		F1A26002294E0C2B00EFA49C /* lmPerceptionPersistor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A26001294E0BE900EFA49C /* lmPerceptionPersistor.swift */; };
@@ -261,12 +261,13 @@
 		0159425256504E12AEC12CB8 /* Homa_CandidateAPIs_FetchAndApply.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homa_CandidateAPIs_FetchAndApply.swift; sourceTree = "<group>"; };
 		07C51CF3E668442AB87CF4C7 /* Homa_SwiftImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homa_SwiftImpl.swift; sourceTree = "<group>"; };
 		08694E6CA3144345863DF5D4 /* Homa_Gram.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homa_Gram.swift; sourceTree = "<group>"; };
+		116F2930785644468C967F664FDAEB28 /* Homa_PossibleKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homa_PossibleKey.swift; sourceTree = "<group>"; };
 		2CA89F3DC79B4AF7A84BEA67 /* Homa_CandidatePair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homa_CandidatePair.swift; sourceTree = "<group>"; };
 		377A7CABB6FC4203B3101DFF /* Homa_Segment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homa_Segment.swift; sourceTree = "<group>"; };
 		3BD3F56DDE1F49B788D9F668 /* Homa_Exception.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homa_Exception.swift; sourceTree = "<group>"; };
 		3CEDB4618F12438D8F853D10 /* Homa_Assembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homa_Assembler.swift; sourceTree = "<group>"; };
 		51C2F2EE93334E75A2BB3ED2 /* Homa_TypeAliases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homa_TypeAliases.swift; sourceTree = "<group>"; };
-		116F2930785644468C967F664FDAEB28 /* Homa_PossibleKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homa_PossibleKey.swift; sourceTree = "<group>"; };
+		55C232A060BD485EABD2B24D /* IMEStateParsed4Darwin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IMEStateParsed4Darwin.swift; sourceTree = "<group>"; };
 		5B0422062D4F7F2600DFAA15 /* IMKTextInputImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMKTextInputImpl.swift; sourceTree = "<group>"; };
 		5B09126B2B134927000166DB /* LMInstantiator_TextMapExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMInstantiator_TextMapExtension.swift; sourceTree = "<group>"; };
 		5B098B672E9B8D260005885E /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.0.sdk/usr/lib/libiconv.tbd; sourceTree = DEVELOPER_DIR; };
@@ -332,7 +333,6 @@
 		5B751DC1294EE57C0031CF70 /* InputHandler_CoreProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputHandler_CoreProtocol.swift; sourceTree = "<group>"; };
 		5B751DC4294EE57C0031CF70 /* InputHandler_TriageInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputHandler_TriageInput.swift; sourceTree = "<group>"; };
 		5B751DC6294EE57D0031CF70 /* IMEState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IMEState.swift; sourceTree = "<group>"; };
-		55C232A060BD485EABD2B24D /* IMEStateParsed4Darwin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IMEStateParsed4Darwin.swift; sourceTree = "<group>"; };
 		5B751DC8294EE57D0031CF70 /* SessionCtl_Menu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionCtl_Menu.swift; sourceTree = "<group>"; };
 		5B751DCA294EE57D0031CF70 /* InputHandler_HandleComposition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputHandler_HandleComposition.swift; sourceTree = "<group>"; };
 		5B751DCC294EE57D0031CF70 /* InputHandler_HandleCandidate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputHandler_HandleCandidate.swift; sourceTree = "<group>"; };
@@ -462,12 +462,12 @@
 		5BF1209E2B8C8D7E00C83A24 /* PrefMgr_Singleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefMgr_Singleton.swift; sourceTree = "<group>"; };
 		5BF120A02B8C8E1700C83A24 /* IMEApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMEApp.swift; sourceTree = "<group>"; };
 		5BF5AD862EE3661700121ED1 /* Typewriter_BPMFFullMatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typewriter_BPMFFullMatch.swift; sourceTree = "<group>"; };
-		5BF5AD922EE3671000121ED1 /* Typewriter_MixedAlphanumerical.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typewriter_MixedAlphanumerical.swift; sourceTree = "<group>"; };
 		5BF5AD882EE3661B00121ED1 /* TypewriterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypewriterProtocol.swift; sourceTree = "<group>"; };
 		5BF5AD8A2EE366FC00121ED1 /* Typewriter_Cassette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typewriter_Cassette.swift; sourceTree = "<group>"; };
 		5BF5AD8B2EE366FC00121ED1 /* Typewriter_CodePoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typewriter_CodePoint.swift; sourceTree = "<group>"; };
 		5BF5AD8C2EE366FC00121ED1 /* Typewriter_HaninSymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typewriter_HaninSymbol.swift; sourceTree = "<group>"; };
 		5BF5AD8D2EE366FC00121ED1 /* Typewriter_RomanNumeral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typewriter_RomanNumeral.swift; sourceTree = "<group>"; };
+		5BF5AD922EE3671000121ED1 /* Typewriter_MixedAlphanumerical.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typewriter_MixedAlphanumerical.swift; sourceTree = "<group>"; };
 		5BF5BADD294DFFC9006011AD /* vChewing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vChewing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BF5BAE0294DFFC9006011AD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5BF5BAE2294DFFCA006011AD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -562,6 +562,7 @@
 				5B5319212E9A918700570E96 /* CodePointDecoder.swift */,
 				5BC783DB2EBEF02F00AE14E2 /* RomanNumeralConverter.swift */,
 				5BE5A569294E120500EFA49C /* SymbolMenuDefaultData.swift */,
+				5BCA4FAC2E9659F700441688 /* SessionCoreProtocol.swift */,
 			);
 			path = Typewriter;
 			sourceTree = "<group>";
@@ -988,7 +989,6 @@
 				5BE5A563294E10F300EFA49C /* PrefMgr_Core.swift */,
 				5BE5A565294E111E00EFA49C /* PrefMgr_Utilities.swift */,
 				5BE5A537294E0CEC00EFA49C /* PrefMgrProtocol.swift */,
-				5BCA4FAC2E9659F700441688 /* SessionCoreProtocol.swift */,
 				5B6420002ABB3BA600E1B7F6 /* SessionUIProtocol.swift */,
 				5BE5A538294E0CEC00EFA49C /* Shared.swift */,
 				5B70C0A82EA427C700BC8273 /* SpeechNarratorProtocol.swift */,
