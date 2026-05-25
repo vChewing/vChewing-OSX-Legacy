@@ -42,6 +42,8 @@
 		5B4BEE702B8F8A510044A4EE /* VwrSettingsPaneCocoaServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4BEE6E2B8F8A450044A4EE /* VwrSettingsPaneCocoaServices.swift */; };
 		5B4C81812ADABB60008507B1 /* HangarRash_SwiftyCapsLockToggler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4C81802ADABB60008507B1 /* HangarRash_SwiftyCapsLockToggler.swift */; };
 		5B5139442F3A318C00223E77 /* TDKCandidates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5139432F3A318C00223E77 /* TDKCandidates.swift */; };
+		5B0A10000000000000000001 /* CtlCandidateGSI4AppKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0A20000000000000000001 /* CtlCandidateGSI4AppKit.swift */; };
+		5B0A10000000000000000002 /* VwrCandidateGSI4AppKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0A20000000000000000002 /* VwrCandidateGSI4AppKit.swift */; };
 		5B5269F62F9295370026F43A /* uninstall.sh in Resources */ = {isa = PBXBuildFile; fileRef = 5B5269F52F9295370026F43A /* uninstall.sh */; };
 		5B5319222E9A918700570E96 /* CodePointDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5319212E9A918700570E96 /* CodePointDecoder.swift */; };
 		5B55ACAD2B5A254F009E2F54 /* KBEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B55ACAC2B5A254F009E2F54 /* KBEvent.swift */; };
@@ -297,6 +299,8 @@
 		5B4BEE6E2B8F8A450044A4EE /* VwrSettingsPaneCocoaServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VwrSettingsPaneCocoaServices.swift; sourceTree = "<group>"; };
 		5B4C81802ADABB60008507B1 /* HangarRash_SwiftyCapsLockToggler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HangarRash_SwiftyCapsLockToggler.swift; sourceTree = "<group>"; };
 		5B5139432F3A318C00223E77 /* TDKCandidates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TDKCandidates.swift; sourceTree = "<group>"; };
+		5B0A20000000000000000001 /* CtlCandidateGSI4AppKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CtlCandidateGSI4AppKit.swift; sourceTree = "<group>"; };
+		5B0A20000000000000000002 /* VwrCandidateGSI4AppKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VwrCandidateGSI4AppKit.swift; sourceTree = "<group>"; };
 		5B5269F52F9295370026F43A /* uninstall.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = uninstall.sh; sourceTree = "<group>"; };
 		5B5319212E9A918700570E96 /* CodePointDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodePointDecoder.swift; sourceTree = "<group>"; };
 		5B55ACAC2B5A254F009E2F54 /* KBEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBEvent.swift; sourceTree = "<group>"; };
@@ -635,6 +639,8 @@
 				5B751DE0294EE7A80031CF70 /* CandidatePool4AppKit.swift */,
 				5BB32F0429A61AFB00B05D7B /* CtlCandidateTDK4AppKit.swift */,
 				5B1CA80D29AC53BA0089E95F /* VwrCandidateTDK4AppKit.swift */,
+				5B0A20000000000000000001 /* CtlCandidateGSI4AppKit.swift */,
+				5B0A20000000000000000002 /* VwrCandidateGSI4AppKit.swift */,
 			);
 			path = CandidateControllers;
 			sourceTree = "<group>";
@@ -1366,6 +1372,7 @@
 				5BE5A52A294E0C2B00EFA49C /* lmAssociates.swift in Sources */,
 				5BCDA50D2D50C2D200571961 /* IMKInputControllerProtocol.swift in Sources */,
 				5BB32F0529A61AFB00B05D7B /* CtlCandidateTDK4AppKit.swift in Sources */,
+				5B0A10000000000000000001 /* CtlCandidateGSI4AppKit.swift in Sources */,
 				5B751DD9294EE57D0031CF70 /* InputHandler_HandleComposition.swift in Sources */,
 				5B35B2842F8D55B40030D79F /* ButKo_BPMFVS_Accessors.swift in Sources */,
 				5B751DD0294EE57D0031CF70 /* InputHandler_CoreProtocol.swift in Sources */,
@@ -1412,6 +1419,7 @@
 				5B423A542A9516B0004CC33B /* Broadcaster.swift in Sources */,
 				5B81BD262B729AE90092819A /* VwrSettingsPaneCocoaDevZone.swift in Sources */,
 				5B1CA80E29AC53BA0089E95F /* VwrCandidateTDK4AppKit.swift in Sources */,
+				5B0A10000000000000000002 /* VwrCandidateGSI4AppKit.swift in Sources */,
 				5B751DDB294EE57D0031CF70 /* InputHandler_HandleCandidate.swift in Sources */,
 				5BE5A56A294E120500EFA49C /* SymbolMenuDefaultData.swift in Sources */,
 				5BE5A4F1294E057F00EFA49C /* AppKitImpl_Misc.swift in Sources */,

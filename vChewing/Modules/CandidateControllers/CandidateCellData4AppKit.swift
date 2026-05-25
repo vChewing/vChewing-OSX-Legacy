@@ -77,6 +77,11 @@ extension TDK4AppKit {
 
     var visualDimension: CGSize = .zero
     var visualOrigin: CGPoint = .zero
+
+    /// Pre-computed offsets to avoid per-frame ceil() in draw loops.
+    var headerDrawYOffset: CGFloat = 0
+    var phraseDrawXOffset: CGFloat = 0
+
     var locale = ""
     var selectionKey: String
     let displayedText: String
@@ -116,10 +121,13 @@ extension TDK4AppKit {
         isSelected: isHighlighted
       )
       result.visualDimension = visualDimension
+      result.headerDrawYOffset = headerDrawYOffset
+      result.phraseDrawXOffset = phraseDrawXOffset
       result.locale = locale
       result.whichLine = whichLine
       result.index = index
       result.subIndex = subIndex
+      result.invalidateCache()
       return result
     }
 
@@ -131,6 +139,7 @@ extension TDK4AppKit {
     }
 
     var attributedStringHeader: NSAttributedString {
+      if let cached = _cachedAttributedStringHeader { return cached }
       let attrKey: [NSAttributedString.Key: Any] = [
         .kern: 0,
         .font: selectionKeyFont(size: fontSizeKey),
@@ -138,6 +147,7 @@ extension TDK4AppKit {
         .foregroundColor: fontColorKey,
       ]
       let attrStrKey = NSAttributedString(string: selectionKey, attributes: attrKey)
+      _cachedAttributedStringHeader = attrStrKey
       return attrStrKey
     }
 
@@ -152,6 +162,12 @@ extension TDK4AppKit {
 
     static func == (lhs: CandidateCellData4AppKit, rhs: CandidateCellData4AppKit) -> Bool {
       lhs.selectionKey == rhs.selectionKey && lhs.displayedText == rhs.displayedText
+    }
+
+    func invalidateCache() {
+      _cachedAttributedStringHeader = nil
+      _cachedAttributedStringPhrase.removeAll()
+      _cacheInvalidated = true
     }
 
     func hash(into hasher: inout Hasher) {
@@ -209,6 +225,7 @@ extension TDK4AppKit {
     }
 
     func attributedStringPhrase(isMatrix: Bool = false) -> NSAttributedString {
+      if let cached = _cachedAttributedStringPhrase[isMatrix] { return cached }
       var attrCandidate: [NSAttributedString.Key: Any] = [
         .kern: 0,
         .font: phraseFont(size: size),
@@ -222,6 +239,7 @@ extension TDK4AppKit {
       let attrStrCandidate = NSAttributedString(
         string: displayedText + delta, attributes: attrCandidate
       )
+      _cachedAttributedStringPhrase[isMatrix] = attrStrCandidate
       return attrStrCandidate
     }
 
@@ -239,6 +257,7 @@ extension TDK4AppKit {
     }
 
     func updateMetrics(pool thePool: CandidatePool4AppKit, origin currentOrigin: CGPoint) {
+      invalidateCache()
       let padding = thePool.padding
       var cellDimension = textDimension
       if let givenWidth = thePool.cellWidth(self).min, displayedText.count <= 2 {
@@ -250,6 +269,8 @@ extension TDK4AppKit {
       cellDimension.height = Self.unifiedTextHeight + 2 * padding
       visualDimension = cellDimension
       visualOrigin = currentOrigin
+      headerDrawYOffset = ceil(cellDimension.height * 0.2)
+      phraseDrawXOffset = ceil(size * 0.6)
     }
 
     // MARK: - Fonts and NSColors.
@@ -314,6 +335,12 @@ extension TDK4AppKit {
       let result: CTFont? = CTFontCreateUIFontForLanguage(.emphasizedSystem, size, locale as CFString)
       return result ?? NSFont.systemFont(ofSize: size)
     }
+
+    // MARK: Private
+
+    private var _cachedAttributedStringHeader: NSAttributedString?
+    private var _cachedAttributedStringPhrase: [Bool: NSAttributedString] = [:]
+    private var _cacheInvalidated = true
   }
 } // extension TDK4AppKit
 

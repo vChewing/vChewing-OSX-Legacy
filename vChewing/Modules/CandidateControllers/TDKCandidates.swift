@@ -8,7 +8,8 @@
 
 import Foundation
 
-public typealias CtlCandidateTDK = TDK4AppKit.CtlCandidateTDK4AppKit
+public typealias CtlCandidateTDKOLD = TDK4AppKit.CtlCandidateTDK4AppKit
+public typealias CtlCandidateTDK = GSI4AppKit.CtlCandidateGSI4AppKit
 
 // MARK: - TDK4AppKit
 
