@@ -113,7 +113,6 @@ extension TDK4AppKit {
     }
 
     override public func scrollWheel(with event: NSEvent) {
-      guard useMouseScrolling else { return }
       handleMouseScroll(deltaX: event.deltaX, deltaY: event.deltaY)
     }
 
@@ -192,8 +191,6 @@ extension TDK4AppKit {
 
     var tooltip: String = ""
 
-    var useMouseScrolling: Bool = true
-
     var reverseLookupResult: [String] = []
     var maxLinesPerPage: Int = 1
 
@@ -223,7 +220,6 @@ extension TDK4AppKit {
           this.updateNSWindowModern(window)
         }
       }
-      useMouseScrolling = prefs.enableMouseScrollingForTDKCandidatesCocoa
       // 先擦除之前的反查结果。
       reverseLookupResult = []
       // 再更新新的反查结果。
