@@ -91,6 +91,17 @@ extension SettingsPanesCocoa {
             prefUITab: .tabGeneral
           )
         }?.boxed()
+        NSStackView.buildSection(width: contentWidth) {
+          NSStackView.build(.horizontal) {
+            "i18n:Settings.ApplySCPCPreset.ButtonTitle".makeNSLabel(fixWidth: innerContentWidth)
+            NSView()
+            NSButton(
+              verbatim: "...",
+              target: self,
+              action: #selector(applySCPCPreset(_:))
+            )
+          }
+        }?.boxed()
         NSView().makeSimpleConstraint(.height, relation: .equal, value: NSFont.systemFontSize)
       }
     }
@@ -113,6 +124,47 @@ extension SettingsPanesCocoa {
       btnLangSelector.action = #selector(updateUiLanguageAction(_:))
       btnLangSelector.target = self
       btnLangSelector.font = NSFont.systemFont(ofSize: 12)
+    }
+
+    @IBAction
+    func applySCPCPreset(_ sender: NSButton) {
+      asyncOnMain {
+        let window = CtlSettingsCocoa.shared?.window
+        let alert = NSAlert()
+        alert.messageText = "i18n:Settings.ApplySCPCPreset.Confirm.AlertTitle".i18n
+        alert.informativeText = "i18n:Settings.ApplySCPCPreset.Confirm.AlertMessage".i18n
+        alert.addButton(withTitle: "i18n:Common.Yes".i18n)
+        alert.addButton(withTitle: "i18n:Common.No".i18n)
+        alert.beginSheetModal(at: window) { response in
+          if response == .alertFirstButtonReturn {
+            PrefMgr.shared.useSpaceToCommitHighlightedCandidate4SCPC = false
+            if !PrefMgr.shared.useSCPCTypingMode {
+              Notifier.notify(
+                message: "i18n:UserDef.kUsingHotKeySCPC.shortTitle".i18n + "\n"
+                  + (
+                    PrefMgr.shared.useSCPCTypingMode.toggled()
+                      ? "i18n:NotificationSwitch.On".i18n
+                      : "i18n:NotificationSwitch.Off".i18n
+                  )
+              )
+            }
+            if !PrefMgr.shared.associatedPhrasesEnabled {
+              Notifier.notify(
+                message: "i18n:UserDef.kUsingHotKeyAssociates.shortTitle".i18n + "\n"
+                  + (
+                    PrefMgr.shared.associatedPhrasesEnabled.toggled()
+                      ? "i18n:NotificationSwitch.On".i18n
+                      : "i18n:NotificationSwitch.Off".i18n
+                  )
+              )
+            }
+            window.callAlert(
+              title: "i18n:Settings.ApplySCPCPreset.Succeeded.AlertTitle".i18n,
+              text: "i18n:Settings.ApplySCPCPreset.Succeeded.AlertMessage".i18n
+            )
+          }
+        }
+      }
     }
 
     @IBAction
