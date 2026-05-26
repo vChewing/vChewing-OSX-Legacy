@@ -46,7 +46,7 @@ public enum UserDef: String, CaseIterable, Identifiable {
   case kUseDynamicCandidateWindowOrigin = "UseDynamicCandidateWindowOrigin"
   case kUseHorizontalCandidateList = "UseHorizontalCandidateList"
   case kMinCellWidthForHorizontalMatrix = "MinCellWidthForHorizontalMatrix"
-  case kChooseCandidateUsingSpace = "ChooseCandidateUsingSpace"
+  case kSpaceKeyBehaviorAgainstICB = "SpaceKeyBehaviorAgainstICB"
   case kCassetteEnabled = "CassetteEnabled"
   case kMixedAlphanumericalEnabled = "MixedAlphanumericalEnabled"
   case kCNS11643Enabled = "CNS11643Enabled"
@@ -383,6 +383,8 @@ public enum UserDef: String, CaseIterable, Identifiable {
       if ![0, 1, 2].contains(value) { return "Must be 0, 1, or 2" }
     case .kNumPadCharInputBehavior:
       if ![0, 1, 2].contains(value) { return "Must be 0, 1, or 2" }
+    case .kSpaceKeyBehaviorAgainstICB:
+      if ![0, 1, 2].contains(value) { return "Must be 0, 1, or 2" }
     default: break
     }
     return nil
@@ -447,7 +449,7 @@ extension UserDef {
     case .kUseDynamicCandidateWindowOrigin: return .bool(true)
     case .kUseHorizontalCandidateList: return .bool(true)
     case .kMinCellWidthForHorizontalMatrix: return .integer(0)
-    case .kChooseCandidateUsingSpace: return .bool(true)
+    case .kSpaceKeyBehaviorAgainstICB: return .integer(1)
     case .kCassetteEnabled: return .bool(false)
     case .kMixedAlphanumericalEnabled: return .bool(false)
     case .kCNS11643Enabled: return .bool(false)
@@ -690,9 +692,14 @@ extension UserDef {
           1: "i18n:UserDef.kMinCellWidthForHorizontalMatrix.option.1",
         ]
       )
-    case .kChooseCandidateUsingSpace: return .init(
-        userDef: self, shortTitle: "i18n:UserDef.kChooseCandidateUsingSpace.shortTitle",
-        description: "i18n:UserDef.kChooseCandidateUsingSpace.description"
+    case .kSpaceKeyBehaviorAgainstICB: return .init(
+        userDef: self, shortTitle: "i18n:UserDef.kSpaceKeyBehaviorAgainstICB.shortTitle",
+        description: "i18n:UserDef.kSpaceKeyBehaviorAgainstICB.description",
+        options: [
+          0: "i18n:UserDef.kSpaceKeyBehaviorAgainstICB.option.0",
+          1: "i18n:UserDef.kSpaceKeyBehaviorAgainstICB.option.1",
+          2: "i18n:UserDef.kSpaceKeyBehaviorAgainstICB.option.2",
+        ]
       )
     case .kCassetteEnabled: return .init(
         userDef: self, shortTitle: "i18n:UserDef.kCassetteEnabled.shortTitle",
