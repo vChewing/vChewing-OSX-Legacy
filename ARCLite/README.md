@@ -1,25 +1,27 @@
 # LibARCLite
 
-此處置放了取自 Xcode 14.2 的 LibARCLite。
+此處置放了取自 Xcode 14.2 的 LibARCLite（`libarclite_macosx.a`）。
 
-如果您使用了自 Xcode 14.3 開始的新版 Xcode 的話，只有給您的 Xcode 打上 LibARCLite 修補、才可以將唯音 Aqua 紀念版建置給比 macOS 10.13 更早的系統版本。修補方法就是將這個檔案放在下述目錄：
-```
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/arc
-```
-如果沒有最後的 arc 目錄的話，請自行建立。
+Xcode 14.3 起移除了該檔案。若 Deployment Target 低於 macOS 10.13 且需要建置 x86_64 架構，clang driver 會強制檢查 toolchain 內的 `usr/lib/arc/libarclite_macosx.a` 是否存在。
 
-P.S.: 如果您用的是 Xcode 15 開始的版本的話，還請另將系統 SDK 換成 macOS 13.1 或 13.3 的 SDK。
-- macOS 13.1 的 SDK 可取自 Xcode 14.2，正好可以與 LibARCLite 一起取出來。
-- macOS 13.3 的 SDK 可取自 Xcode 14.3.1，也可以前往此處這裡下載：
+本專案已在 Xcode 專案層級指定 `LIBRARY_SEARCH_PATHS = $(SRCROOT)/ARCLite`（這足以應付 arm64 建置），並在 Makefile 內提供了 `setup-arc` 目標來自動建立 toolchain 內的符號連結：
 
-```
-https://github.com/alexey-lysiuk/macos-sdk/releases/tag/13.3
+```sh
+make setup-arc
 ```
 
-如果您用的是 Xcode 16 開始的版本的話，還請額外下載 Swift 5.10.1 的 Toolchain：
+若直接使用 `make debug` 或 `make archive`，`setup-arc` 會在建置前自動執行。
+
+## SDK 要求
+
+若您使用的是 Xcode 15 開始的版本，還需手動將 macOS 13.x SDK 放入 Xcode 的 SDK 目錄：
 
 ```
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/
+```
+
+- macOS 13.3 SDK 可取自 Xcode 14.3.1，也可從此處下載：
+  https://github.com/alexey-lysiuk/macos-sdk/releases/tag/13.3
+
+若使用 Xcode 16，還需額外安裝 Swift 5.10.1 Toolchain：
 https://download.swift.org/swift-5.10.1-release/xcode/swift-5.10.1-RELEASE/swift-5.10.1-RELEASE-osx.pkg
-```
-
-$ EOF.

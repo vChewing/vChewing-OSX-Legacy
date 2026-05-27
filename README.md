@@ -17,7 +17,17 @@ P.S.: 唯音輸入法的 Shift 按鍵監測功能僅藉由對 NSEvent 訊號資�
     - 如果您要改用 Swift 6 的話，您必須放棄對 macOS 10.13.x 及更舊的系統的支援。
 - 至少 Xcode 15.1 且有補過下述元件（詳見本倉庫 `./ARCLite/README.md`）：
     - LibArcLite：可以從 Xcode 14.2 取得。本倉庫隨附了一份可用於 macOS 目標建置的拷貝。
-    - macOS 10.13.1 SDK：可以從 Xcode 14.2 取得。
+        - 專案已設定 `LIBRARY_SEARCH_PATHS = $(SRCROOT)/ARCLite`，可應付 arm64 建置。
+        - 若需建置 x86_64 架構，clang 仍要求 toolchain 內存在該檔案。Makefile 的 `setup-arc` 目標會自動處理（`make debug` / `make archive` 已內建此步驟），亦可手動執行：
+          ```sh
+          make setup-arc
+          ```
+    - macOS 13.3 SDK：可從 Xcode 14.3.1 解包取得，或[在此下載](https://github.com/alexey-lysiuk/macos-sdk/releases/tag/13.3)。取得後需手動執行下述命令將其連結至 Xcode 15 的 SDK 目錄：
+      ```sh
+      sudo ln -sf /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk \
+        "/Applications/Xcode-15.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk"
+      ```
+      若 SDK 存放路徑不同，請自行調整來源路徑。
     - 不補裝上述元件的話，您只能建置給 macOS 10.13 High Sierra 開始的系統。
 - 作業系統：能運行上述建置環境的 macOS 作業系統。
 - Swift 5.10.1 Open-Source Toolchain 是最低條件，否則原廠辭典無法正常建置。

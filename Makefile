@@ -2,8 +2,13 @@
 
 # 定义共享常量
 XCODEBUILD := /Applications/Xcode-15.app/Contents/Developer/usr/bin/xcodebuild
-SDK := /Applications/Xcode-15.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk
+SDK := /Applications/Xcode-15.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk
 TOOLCHAIN := /Applications/Xcode-15.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain
+
+# LibARCLite 路徑
+ARC_LIB_SRC := $(PWD)/ARCLite/libarclite_macosx.a
+ARC_LIB_DIR := $(TOOLCHAIN)/usr/lib/arc
+ARC_LIB_DEST := $(ARC_LIB_DIR)/libarclite_macosx.a
 
 # 定义日期和时间变量
 DATE_DIR := $(shell date +%Y-%m-%d)
@@ -24,9 +29,18 @@ BUILD_SETTINGS += ARCHS="$(ARCHS)"
 BUILD_SETTINGS += ONLY_ACTIVE_ARCH=NO
 endif
 
-archive: release
+# 確認 LibARCLite 已在 toolchain 內就位（x86_64 建置需要）
+setup-arc:
+	@if [ ! -f "$(ARC_LIB_DEST)" ]; then \
+		echo "→ 設定 LibARCLite 符號連結至 toolchain …"; \
+		sudo mkdir -p "$(ARC_LIB_DIR)" && \
+		sudo ln -sf "$(ARC_LIB_SRC)" "$(ARC_LIB_DEST)" && \
+		echo "  LibARCLite 符號連結已建立。"; \
+	fi
 
-release:
+archive: setup-arc release
+
+release: setup-arc
 	@echo "Creating directory: $(ARCHIVE_DIR)"
 	@mkdir -p "$(ARCHIVE_DIR)"
 	@echo "Archiving to: $(ARCHIVE_PATH)"
@@ -39,7 +53,7 @@ release:
 	-allowProvisioningUpdates \
 	TOOLCHAINS=$(TOOLCHAIN)
 
-debug: 
+debug: setup-arc
 	@echo "Building debug configuration"
 	$(XCODEBUILD) build \
 	-project vChewing-OSX-Legacy.xcodeproj \
@@ -48,7 +62,7 @@ debug:
 	-sdk $(SDK) \
 	TOOLCHAINS=$(TOOLCHAIN)
 
-debug-core: 
+debug-core:
 	@echo "Building debug configuration"
 	$(XCODEBUILD) build \
 	-project vChewing-OSX-Legacy.xcodeproj \
@@ -89,8 +103,8 @@ install-release: permission-check
 .PHONY: clean
 
 clean:
-	xcodebuild -scheme vChewingInstallerLegacy -configuration Debug $(BUILD_SETTINGS)  clean
-	xcodebuild -scheme vChewingInstallerLegacy -configuration Release $(BUILD_SETTINGS) clean
+	$(XCODEBUILD) -scheme vChewingInstallerLegacy -configuration Debug $(BUILD_SETTINGS) clean
+	$(XCODEBUILD) -scheme vChewingInstallerLegacy -configuration Release $(BUILD_SETTINGS) clean
 	make clean --file=./Source/Data/Makefile || true
 
 clean-spm:
