@@ -18,7 +18,11 @@ extension SessionCtl {
   override public func menu() -> NSMenu {
     let currentInputMode = IMEApp.currentInputMode
     return NSMenu().appendItems(self) {
+      NSMenu.Item("i18n:Menu.vChewingSettings")?
+        .act(#selector(showPreferences(_:)))
+        .nulled(silentMode)
       NSMenu.Item(verbatim: currentRAMUsageDescription)
+      NSMenu.Item.separator() // ---------------------
       NSMenu.Item(
         verbatim: String(
           format: "i18n:InputMode.SwitchToInputMode:%@".i18n,
@@ -109,9 +113,6 @@ extension SessionCtl {
         .alternated()
 
       NSMenu.Item.separator() // ---------------------
-      NSMenu.Item("i18n:Menu.VChewingPreferences")?
-        .act(#selector(showPreferences(_:)))
-        .nulled(silentMode)
       NSMenu.Item("i18n:Menu.CheckForUpdates")?
         .act(#selector(checkForUpdate(_:)))
         .nulled(silentMode)
