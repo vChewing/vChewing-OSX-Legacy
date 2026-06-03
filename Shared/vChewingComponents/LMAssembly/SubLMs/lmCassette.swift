@@ -7,18 +7,17 @@
 // marks, or product names of Contributor, except as required to fulfill notice
 // requirements defined in MIT License.
 
-// 以連續記憶體空間（contiguous Data blob）取代大量 Dictionary<String, [String]>，
-// 將 charDef / symbolDef / reverseLookup / octagram 等大型字典改為
+// 以連續記憶體空間（contiguous [UInt8] blob）取代大量 Dictionary<String, [String]>，
+// 將 charDef / symbolDef / reverseLookup / octagram / quickDef / quickPhrase 等大型字典改為
 // sorted byte-range index + binary search，按需從 rawData 解析字串，
 // 大幅降低 heap allocation 與 Dictionary 開銷。
-
 import Foundation
 
 // MARK: - LMAssembly.LMCassette
 
 extension LMAssembly {
   /// 磁帶模組，用來方便使用者自行擴充字根輸入法。
-  /// 以連續記憶體 Data blob + byte-range 索引取代各大型 Dictionary。
+  /// 以連續記憶體 [UInt8] blob + byte-range 索引取代各大型 Dictionary。
   struct LMCassette: Sendable {
     // MARK: Internal
 
@@ -36,10 +35,10 @@ extension LMAssembly {
     private(set) var keysToDirectlyCommit: String = ""
     /// 字根翻譯表（小型，~30 entries），保持 Dictionary。
     private(set) var keyNameMap: [String: String] = [:]
-    /// `%quick` 簡碼資料（中型），保持 Dictionary（值為字元拼接字串）。
-    private(set) var quickDefMap: [String: String] = [:]
-    /// `%quickphrases` 詞語資料（極小，<10 entries），保持 Dictionary。
-    private(set) var quickPhraseMap: [String: [String]] = [:]
+    /// `%quick` 簡碼資料，改用 contiguous-memory index（值為字元拼接字串）。
+    private(set) var quickDefMap: CassetteQuickMap = .init()
+    /// `%quickphrases` 詞語資料，改用 contiguous-memory index。
+    private(set) var quickPhraseMap: CassetteSortedMap = .init()
     private(set) var quickPhraseCommissionKey: String = ""
 
     // 大型資料結構改為 contiguous-memory 索引。
@@ -71,7 +70,7 @@ extension LMAssembly {
 // MARK: - Contiguous-Memory Index Types
 
 extension LMAssembly {
-  /// 以連續 Data blob 承載的 sorted key→[value] 對照表。
+  /// 以連續 [UInt8] blob 承載的 sorted key→[value] 對照表。
   struct CassetteSortedMap: Sendable {
     // MARK: Internal
 
@@ -80,7 +79,7 @@ extension LMAssembly {
 
     // MARK: Fileprivate
 
-    fileprivate var rawData: Data = .init()
+    fileprivate var rawData: [UInt8] = []
     fileprivate var entries: [CassetteMapEntry] = []
     fileprivate var allValues: [CassetteByteRange] = []
   }
@@ -97,6 +96,26 @@ extension LMAssembly {
     let end: Int
   }
 
+  /// key→single value 的 contiguous-memory 對照表（取代 quickDef Dictionary）。
+  struct CassetteQuickMap: Sendable {
+    // MARK: Internal
+
+    var count: Int { entries.count }
+    var isEmpty: Bool { entries.isEmpty }
+
+    // MARK: Fileprivate
+
+    fileprivate var rawData: [UInt8] = []
+    fileprivate var entries: [CassetteQuickEntry] = []
+  }
+
+  struct CassetteQuickEntry: Sendable {
+    let keyStart: Int
+    let keyEnd: Int
+    let valueStart: Int
+    let valueEnd: Int
+  }
+
   struct CassetteOctagramMap: Sendable {
     // MARK: Internal
 
@@ -105,7 +124,7 @@ extension LMAssembly {
 
     // MARK: Fileprivate
 
-    fileprivate var rawData: Data = .init()
+    fileprivate var rawData: [UInt8] = []
     fileprivate var entries: [CassetteOctagramEntry] = []
   }
 
@@ -123,7 +142,7 @@ extension LMAssembly {
 
     // MARK: Fileprivate
 
-    fileprivate var rawData: Data = .init()
+    fileprivate var rawData: [UInt8] = []
     fileprivate var entries: [CassetteOctagramDividedEntry] = []
   }
 
@@ -133,6 +152,39 @@ extension LMAssembly {
     let count: Int
     let readingStart: Int
     let readingEnd: Int
+  }
+}
+
+// MARK: - [UInt8] Extension: UTF-8 Byte-Level Comparison
+
+extension Array where Element == UInt8 {
+  fileprivate func cassetteCompareUTF8Range(_ range: Range<Int>, with rhs: [UInt8]) -> Int {
+    let lhsCount = range.count
+    let rhsCount = rhs.count
+    let minCount = Swift.min(lhsCount, rhsCount)
+    for i in 0 ..< minCount {
+      let lb = self[range.lowerBound + i]
+      let rb = rhs[i]
+      if lb < rb { return -1 }
+      if lb > rb { return 1 }
+    }
+    if lhsCount < rhsCount { return -1 }
+    if lhsCount > rhsCount { return 1 }
+    return 0
+  }
+
+  fileprivate func cassetteCompareUTF8RangePrefix(_ range: Range<Int>, with prefix: [UInt8]) -> Int {
+    let lhsCount = range.count
+    let prefixCount = prefix.count
+    let minCount = Swift.min(lhsCount, prefixCount)
+    for i in 0 ..< minCount {
+      let lb = self[range.lowerBound + i]
+      let rb = prefix[i]
+      if lb < rb { return -1 }
+      if lb > rb { return 1 }
+    }
+    if lhsCount < prefixCount { return -1 }
+    return 0
   }
 }
 
@@ -209,6 +261,36 @@ extension LMAssembly.CassetteSortedMap {
   }
 }
 
+// MARK: - CassetteQuickMap: Binary Search & Query API
+
+extension LMAssembly.CassetteQuickMap {
+  fileprivate func binarySearchIndex(for key: String) -> Int? {
+    let keyUTF8 = Array(key.utf8)
+    var lo = 0, hi = entries.count - 1
+    while lo <= hi {
+      let mid = lo + (hi - lo) / 2
+      let e = entries[mid]
+      let cmp = rawData.cassetteCompareUTF8Range(e.keyStart ..< e.keyEnd, with: keyUTF8)
+      if cmp < 0 { lo = mid + 1 } else if cmp > 0 { hi = mid - 1 } else { return mid }
+    }
+    return nil
+  }
+
+  func valuesFor(key: String) -> String? {
+    guard let idx = binarySearchIndex(for: key) else { return nil }
+    let e = entries[idx]
+    return String(decoding: rawData[e.valueStart ..< e.valueEnd], as: UTF8.self)
+  }
+
+  subscript(key: String) -> String? {
+    valuesFor(key: key)
+  }
+
+  func containsKey(_ key: String) -> Bool {
+    binarySearchIndex(for: key) != nil
+  }
+}
+
 // MARK: - CassetteOctagramMap: Binary Search
 
 extension LMAssembly.CassetteOctagramMap {
@@ -251,39 +333,6 @@ extension LMAssembly.CassetteOctagramDividedMap {
   }
 }
 
-// MARK: - Data Extension: UTF-8 Byte-Level Comparison
-
-extension Data {
-  fileprivate func cassetteCompareUTF8Range(_ range: Range<Int>, with rhs: [UInt8]) -> Int {
-    let lhsCount = range.count
-    let rhsCount = rhs.count
-    let minCount = Swift.min(lhsCount, rhsCount)
-    for i in 0 ..< minCount {
-      let lb = self[range.lowerBound + i]
-      let rb = rhs[i]
-      if lb < rb { return -1 }
-      if lb > rb { return 1 }
-    }
-    if lhsCount < rhsCount { return -1 }
-    if lhsCount > rhsCount { return 1 }
-    return 0
-  }
-
-  fileprivate func cassetteCompareUTF8RangePrefix(_ range: Range<Int>, with prefix: [UInt8]) -> Int {
-    let lhsCount = range.count
-    let prefixCount = prefix.count
-    let minCount = Swift.min(lhsCount, prefixCount)
-    for i in 0 ..< minCount {
-      let lb = self[range.lowerBound + i]
-      let rb = prefix[i]
-      if lb < rb { return -1 }
-      if lb > rb { return 1 }
-    }
-    if lhsCount < prefixCount { return -1 }
-    return 0
-  }
-}
-
 // MARK: - CassetteSortedMap Builder
 
 extension LMAssembly.CassetteSortedMap {
@@ -299,7 +348,8 @@ extension LMAssembly.CassetteSortedMap {
     let sortedKeys = dictionary.keys.sorted { lhs, rhs in
       lhs.utf8.lexicographicallyPrecedes(rhs.utf8)
     }
-    var rawData = Data(capacity: totalBytes)
+    var rawData = [UInt8]()
+    rawData.reserveCapacity(totalBytes)
     var entries = [LMAssembly.CassetteMapEntry]()
     entries.reserveCapacity(sortedKeys.count)
     var allValues = [LMAssembly.CassetteByteRange]()
@@ -364,7 +414,8 @@ extension LMAssembly.CassetteSortedMap {
       totalKeyBytes += prototype.key.utf8.count
       previousKey = prototype.key
     }
-    var rawData = Data(capacity: totalKeyBytes + totalValueBytes)
+    var rawData = [UInt8]()
+    rawData.reserveCapacity(totalKeyBytes + totalValueBytes)
     var entries = [LMAssembly.CassetteMapEntry]()
     var allValues = [LMAssembly.CassetteByteRange]()
     entries.reserveCapacity(prototypes.count)
@@ -434,7 +485,8 @@ extension LMAssembly.CassetteSortedMap {
       }
       totalValueBytes += prototype.sourceKey.utf8.count
     }
-    var rawData = Data(capacity: totalKeyBytes + totalValueBytes)
+    var rawData = [UInt8]()
+    rawData.reserveCapacity(totalKeyBytes + totalValueBytes)
     var entries = [LMAssembly.CassetteMapEntry]()
     entries.reserveCapacity(prototypes.count)
     var allValues = [LMAssembly.CassetteByteRange]()
@@ -467,6 +519,44 @@ extension LMAssembly.CassetteSortedMap {
   }
 }
 
+// MARK: - CassetteQuickMap Builder
+
+extension LMAssembly.CassetteQuickMap {
+  static func build(from dictionary: [String: String]) -> Self {
+    guard !dictionary.isEmpty else { return .init() }
+    let sortedKeys = dictionary.keys.sorted { lhs, rhs in
+      lhs.utf8.lexicographicallyPrecedes(rhs.utf8)
+    }
+    var totalBytes = 0
+    for key in sortedKeys {
+      guard let value = dictionary[key] else { continue }
+      totalBytes += key.utf8.count + value.utf8.count
+    }
+    var rawData = [UInt8]()
+    rawData.reserveCapacity(totalBytes)
+    var entries = [LMAssembly.CassetteQuickEntry]()
+    entries.reserveCapacity(sortedKeys.count)
+    for key in sortedKeys {
+      guard let value = dictionary[key] else { continue }
+      let keyStart = rawData.count
+      rawData.append(contentsOf: key.utf8)
+      let keyEnd = rawData.count
+      let valueStart = rawData.count
+      rawData.append(contentsOf: value.utf8)
+      entries.append(.init(
+        keyStart: keyStart,
+        keyEnd: keyEnd,
+        valueStart: valueStart,
+        valueEnd: rawData.count
+      ))
+    }
+    var result = Self()
+    result.rawData = rawData
+    result.entries = entries
+    return result
+  }
+}
+
 // MARK: - CassetteOctagramMap Builder
 
 extension LMAssembly.CassetteOctagramMap {
@@ -477,7 +567,8 @@ extension LMAssembly.CassetteOctagramMap {
     }
     var totalBytes = 0
     for key in sortedKeys { totalBytes += key.utf8.count }
-    var rawData = Data(capacity: totalBytes)
+    var rawData = [UInt8]()
+    rawData.reserveCapacity(totalBytes)
     var entries = [LMAssembly.CassetteOctagramEntry]()
     entries.reserveCapacity(sortedKeys.count)
     for key in sortedKeys {
@@ -504,7 +595,8 @@ extension LMAssembly.CassetteOctagramDividedMap {
       guard let value = dictionary[key] else { continue }
       totalBytes += key.utf8.count + value.1.utf8.count
     }
-    var rawData = Data(capacity: totalBytes)
+    var rawData = [UInt8]()
+    rawData.reserveCapacity(totalBytes)
     var entries = [LMAssembly.CassetteOctagramDividedEntry]()
     entries.reserveCapacity(sortedKeys.count)
     for key in sortedKeys {
@@ -548,6 +640,23 @@ extension LMAssembly.LMCassette {
   }
 
   /// 載入給定的 CIN 檔案內容。
+  /// - Note:
+  /// - 檢查是否以 `%gen_inp` 或者 `%ename` 開頭、以確認其是否為 cin 檔案。在讀到這些資訊之前的行都會被忽略。
+  /// - `%ename` 決定磁帶的英文名、`%cname` 決定磁帶的 CJK 名稱、
+  /// `%sname` 決定磁帶的最短英文縮寫名稱、`%intlname` 決定磁帶的本地化名稱綜合字串。
+  /// - `%encoding` 不處理，因為 Swift 只認 UTF-8。
+  /// - `%selkey` 不處理，因為唯音輸入法有自己的選字鍵體系。
+  /// - `%endkey` 是會觸發組字事件的按鍵。
+  /// - `%wildcardkey` 決定磁帶的萬能鍵名稱，只有第一個字元會生效。
+  /// - `%nullcandidate` 用來指明 `%quick` 字段給出的候選字當中有哪一種是無效的。
+  /// - `%keyname begin` 至 `%keyname end` 之間是字根翻譯表，先讀取為 Swift 辭典以備用。
+  /// - `%quick begin` 至 `%quick end` 之間則是簡碼資料，對應的 value 得拆成單個漢字。
+  /// - `%chardef begin` 至 `%chardef end` 之間則是詞庫資料。
+  /// - `%symboldef begin` 至 `%symboldef end` 之間則是符號選單的專用資料。
+  /// - `%octagram begin` 至 `%octagram end` 之間則是詞語頻次資料。
+  /// 第三欄資料為對應字根、可有可無。第一欄與第二欄分別為「字詞」與「統計頻次」。
+  /// - Parameter path: 檔案路徑。
+  /// - Returns: 是否載入成功。
   @discardableResult
   mutating func open(_ path: String) -> Bool {
     if isLoaded { return false }
@@ -562,16 +671,18 @@ extension LMAssembly.LMCassette {
         var theMaxKeyLength = 1
         var loadingKeys = false
 
-        // 僅保留必要的 grouped Dictionary；reverse / wildcard 改在建構期以輕量 prototype 直接生成。
+        // quickDef / quickPhrase 改為 tmp Dictionary → contiguous-memory index
         var tmpCharDef = [String: [String]]()
         var tmpSymbolDef = [String: [String]]()
         var tmpOctagram = [String: Int]()
         var tmpOctagramDivided = [String: (Int, String)]()
+        var tmpQuickDef = [String: String]()
+        var tmpQuickPhraseMap = [String: [String]]()
 
         var loadingQuickSets = false {
           willSet {
             supplyQuickResults = true
-            if !newValue, quickDefMap.keys.contains(wildcardKey) { wildcardKey = "" }
+            if !newValue, tmpQuickDef.keys.contains(wildcardKey) { wildcardKey = "" }
           }
         }
         var loadingCharDefinitions = false {
@@ -590,12 +701,16 @@ extension LMAssembly.LMCassette {
 
         for strLine in lineReader {
           let isTabDelimiting = strLine.contains("\t")
-          let cells = isTabDelimiting ? strLine.split(separator: "\t") : strLine
-            .split(separator: " ")
+          let cells = isTabDelimiting
+            ? strLine.split(separator: "\t")
+            : strLine.split(separator: " ")
           guard cells.count >= 1 else { continue }
           let strFirstCell = cells[0].trimmingCharacters(in: .newlines)
-          let strSecondCell = cells.count >= 2 ? cells[1].trimmingCharacters(in: .newlines) : nil
+          let strSecondCell = cells.count >= 2
+            ? cells[1].trimmingCharacters(in: .newlines) : nil
+
           if strLine.first == "%", strFirstCell != "%" {
+            // %flag_disp_partial_match
             if strLine == "%flag_disp_partial_match" {
               supplyPartiallyMatchedResults = true
               supplyQuickResults = true
@@ -651,7 +766,8 @@ extension LMAssembly.LMCassette {
             keyNameMap[strFirstCell] = strSecondCell.trimmingCharacters(in: .newlines)
           } else if loadingQuickSets {
             theMaxKeyLength = max(theMaxKeyLength, cells[0].count)
-            quickDefMap[strFirstCell, default: .init()].append(strSecondCell)
+            let existing = tmpQuickDef[strFirstCell] ?? ""
+            tmpQuickDef[strFirstCell] = existing + strSecondCell
           } else if loadingQuickPhrases {
             theMaxKeyLength = max(theMaxKeyLength, strFirstCell.count)
             var remainderLine = strLine.trimmingCharacters(in: .newlines)
@@ -674,13 +790,13 @@ extension LMAssembly.LMCassette {
               .map { $0.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) }
               .filter { !$0.isEmpty && $0 != nullCandidate }
             guard !sanitized.isEmpty else { continue }
-            var phrases = quickPhraseMap[strFirstCell, default: []]
+            var phrases = tmpQuickPhraseMap[strFirstCell, default: []]
             phrases.append(contentsOf: sanitized)
             phrases = phrases
               .map { $0.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) }
               .filter { !$0.isEmpty && $0 != nullCandidate }
               .deduplicated
-            quickPhraseMap[strFirstCell] = phrases
+            tmpQuickPhraseMap[strFirstCell] = phrases
           } else if loadingCharDefinitions, !loadingSymbolDefinitions {
             theMaxKeyLength = max(theMaxKeyLength, cells[0].count)
             tmpCharDef[strFirstCell, default: []].append(strSecondCell)
@@ -714,7 +830,6 @@ extension LMAssembly.LMCassette {
         maxKeyLength = theMaxKeyLength
         keyNameMap[wildcardKey] = keyNameMap[wildcardKey] ?? "？"
 
-        // 直接從 grouped Dictionary 建構最終索引，避免 reverse / wildcard 的額外大型暫存結構。
         let theWildcard = wildcard
         charDefMap = .build(from: tmpCharDef)
         charDefWildcardMap = .buildWildcard(from: tmpCharDef, wildcard: theWildcard)
@@ -722,6 +837,8 @@ extension LMAssembly.LMCassette {
         reverseLookupMap = .buildReverseLookup(charDefs: tmpCharDef, symbolDefs: tmpSymbolDef)
         octagramMap = .build(from: tmpOctagram)
         octagramDividedMap = .build(from: tmpOctagramDivided)
+        quickDefMap = .build(from: tmpQuickDef)
+        quickPhraseMap = .build(from: tmpQuickPhraseMap)
 
         filePath = path
         return true
@@ -737,8 +854,8 @@ extension LMAssembly.LMCassette {
 
   mutating func clear() {
     keyNameMap.removeAll(keepingCapacity: false)
-    quickDefMap.removeAll(keepingCapacity: false)
-    quickPhraseMap.removeAll(keepingCapacity: false)
+    quickDefMap = .init()
+    quickPhraseMap = .init()
     endKeys.removeAll(keepingCapacity: false)
     charDefMap = .init()
     charDefWildcardMap = .init()
@@ -752,7 +869,7 @@ extension LMAssembly.LMCassette {
   func quickSetsFor(key: String) -> String? {
     guard !key.isEmpty else { return nil }
     var result = [String]()
-    if let specifiedResult = quickDefMap[key], !specifiedResult.isEmpty {
+    if let specifiedResult = quickDefMap.valuesFor(key: key), !specifiedResult.isEmpty {
       result.append(contentsOf: specifiedResult.map(\.description))
     }
     if supplyQuickResults, result.isEmpty {
@@ -772,7 +889,7 @@ extension LMAssembly.LMCassette {
 
   func quickPhrasesFor(key: String) -> [String]? {
     guard !key.isEmpty else { return nil }
-    guard let phrases = quickPhraseMap[key]?
+    guard let phrases = quickPhraseMap.valuesFor(key: key)?
       .map({ $0.trimmingCharacters(in: .whitespacesAndNewlines) })
       .filter({ !$0.isEmpty }) else { return nil }
     let sanitized = phrases.filter { $0 != nullCandidate }.deduplicated
@@ -831,11 +948,11 @@ extension LMAssembly.LMCassette {
   private func calculateWeight(count theCount: Int, phraseLength: Int) -> Double {
     var weight: Double = 0
     switch theCount {
-    case -2: // 拗音假名
+    case -2:
       weight = -13
-    case -1: // 單個假名
+    case -1:
       weight = -13
-    case 0: // 墊底低頻漢字與詞語
+    case 0:
       weight = log10(
         pow(Self.fscale, Double(phraseLength) / 3.0 - 1.0) * 0.25 / norm
       )
