@@ -22,6 +22,8 @@ extension SessionCtl {
         .act(#selector(showPreferences(_:)))
         .nulled(silentMode)
       NSMenu.Item(verbatim: currentRAMUsageDescription)
+      NSMenu.Item("i18n:Menu.SponsorTheDevelopment")?
+        .act(#selector(sponsorTheDevelopment(_:)))
       NSMenu.Item.separator() // ---------------------
       NSMenu.Item(
         verbatim: String(
@@ -394,6 +396,12 @@ extension SessionCtl {
   public func clearPOM(_: Any? = nil) {
     LMMgr.clearPerceptionOverrideModelData(IMEApp.currentInputMode)
     LMMgr.clearPerceptionOverrideModelData(IMEApp.currentInputMode.reversed)
+  }
+
+  @objc
+  public func sponsorTheDevelopment(_: Any? = nil) {
+    guard let url = URL(string: "https://vchewing.github.io/SPONSOR_ME.html") else { return }
+    NSWorkspace.shared.open(url)
   }
 
   // MARK: Internal
