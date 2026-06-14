@@ -548,31 +548,38 @@ extension LMMgr {
       coordinator c: POMSavingCoordinator
     ) {
       // Debounce frequent save requests to reduce IO churn.
-      c.pomDebounceQueue.async {
-        // Merge intent (escalate to all-modes if any pending requested it)
-        c.mergeIntent4PendingSaveAllModes(saveAllModes)
-        c.pomDebounceToken &+= 1
-        let scheduledToken = c.pomDebounceToken
-        let interval = max(c.pomDebounceInterval, 0)
+      // Coordinator mutable state is accessed on the main actor (satisfying isolation).
+      // Disk I/O runs on pomDebounceQueue to avoid blocking MainActor.
+      let interval = max(c.pomDebounceInterval, 0)
+      c.pomDebounceQueue.async { [weak c] in
+        guard let c else { return }
+        let scheduledToken: UInt64 = mainSync {
+          c.mergeIntent4PendingSaveAllModes(saveAllModes)
+          c.pomDebounceToken &+= 1
+          return c.pomDebounceToken
+        }
         c.pomDebounceQueue.asyncAfter(deadline: .now() + interval) { [weak c] in
-          guard let coordinator = c else { return }
-          guard coordinator.pomDebounceToken == scheduledToken else { return }
-          let shouldSaveAll = coordinator.pomPendingSave4AllModes
-          coordinator.pomPendingSave4AllModes = false
-          let targetModes: [Shared.InputMode]
-          if shouldSaveAll {
-            targetModes = Shared.InputMode.validCases
-          } else {
-            let currentMode = IMEApp.currentInputMode
-            targetModes = currentMode == .imeModeNULL ? [] : [currentMode]
+          // Read coordinator state and UI state on the main thread (no I/O here).
+          let targetLangModels: [LMAssembly.LMInstantiator] = mainSync {
+            guard let coordinator = c else { return [] }
+            guard coordinator.pomDebounceToken == scheduledToken else { return [] }
+            let shouldSaveAll = coordinator.pomPendingSave4AllModes
+            coordinator.pomPendingSave4AllModes = false
+            let targetModes: [Shared.InputMode]
+            if shouldSaveAll {
+              targetModes = Shared.InputMode.validCases
+            } else {
+              let currentMode = IMEApp.currentInputMode
+              targetModes = currentMode == .imeModeNULL ? [] : [currentMode]
+            }
+            guard !targetModes.isEmpty else { return [] }
+            AppDelegate.shared.suppressUserDataMonitor(
+              for: Swift.max(0.8, coordinator.pomDebounceInterval + 0.2)
+            )
+            return targetModes.map(\.langModel)
           }
-          guard !targetModes.isEmpty else { return }
-          AppDelegate.shared.suppressUserDataMonitor(
-            for: Swift.max(0.8, coordinator.pomDebounceInterval + 0.2)
-          )
-          targetModes.forEach { mode in
-            mode.langModel.savePOMData()
-          }
+          // Perform disk I/O on this background queue – avoids blocking MainActor.
+          targetLangModels.forEach { $0.savePOMData() }
         }
       }
     }
