@@ -482,15 +482,27 @@
       guard source.length > 0 else { return source }
       let mutable = NSMutableAttributedString(attributedString: source)
       let fullRange = NSRange(location: 0, length: mutable.length)
-      if #available(macOS 10.14, *) {
-        NSAppearance.current = effectiveAppearance
-      }
-      mutable.enumerateAttributes(in: fullRange, options: []) { attrs, range, _ in
-        if attrs[.font] == nil {
-          mutable.addAttribute(.font, value: font, range: range)
+      if #available(macOS 11.0, *) {
+        effectiveAppearance.performAsCurrentDrawingAppearance {
+          mutable.enumerateAttributes(in: fullRange, options: []) { attrs, range, _ in
+            if attrs[.font] == nil {
+              mutable.addAttribute(.font, value: font, range: range)
+            }
+            if attrs[.foregroundColor] == nil {
+              mutable.addAttribute(.foregroundColor, value: textColor, range: range)
+            }
+          }
         }
-        if attrs[.foregroundColor] == nil {
-          mutable.addAttribute(.foregroundColor, value: textColor, range: range)
+      } else {
+        // 10.14–10.15: performAsCurrentDrawingAppearance unavailable.
+        NSAppearance.current = effectiveAppearance
+        mutable.enumerateAttributes(in: fullRange, options: []) { attrs, range, _ in
+          if attrs[.font] == nil {
+            mutable.addAttribute(.font, value: font, range: range)
+          }
+          if attrs[.foregroundColor] == nil {
+            mutable.addAttribute(.foregroundColor, value: textColor, range: range)
+          }
         }
       }
       return mutable
