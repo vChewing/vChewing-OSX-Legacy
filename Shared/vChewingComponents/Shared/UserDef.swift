@@ -36,6 +36,7 @@ public enum UserDef: String, CaseIterable, Identifiable {
   case kShowNotificationsWhenTogglingShift = "ShowNotificationsWhenTogglingShift"
   case kSpecifiedNotifyUIColorScheme = "OverrideNotifyUIColorScheme"
   case kCandidateListTextSize = "CandidateListTextSize"
+  case kPopupCompositionBufferTextSize = "PopupCompositionBufferTextSize"
   case kAlwaysExpandCandidateWindow = "AlwaysExpandCandidateWindow"
   case kCandidateWindowShowOnlyOneLine = "CandidateWindowShowOnlyOneLine"
   case kEnforceSingleLineCandidateWindowLayout4SCPC = "EnforceSingleLineCandidateWindowLayout4SCPC"
@@ -351,7 +352,6 @@ public enum UserDef: String, CaseIterable, Identifiable {
       return nil
     }
   }
-
 }
 
 // MARK: - 各型別的範圍驗證，對應 PrefMgr.fixOddPreferencesCore() 的邏輯。
@@ -362,21 +362,22 @@ extension UserDef {
     case .kKeyboardParser:
       // KeyboardParser(rawValue:) 如果 nil 則不合理。
       0 ... 100
-    case .kSpecifyIntonationKeyBehavior: 0...2
-    case .kSpecifyShiftBackSpaceKeyBehavior: 0...2
-    case .kUpperCaseLetterKeyBehavior: 0...4
-    case .kReadingNarrationCoverage: 0...2
-    case .kRomanNumeralOutputFormat: 0...3
-    case .kSpecifyCmdOptCtrlEnterBehavior: 0...4
-    case .kBeepSoundPreference: 0...2
-    case .kCursorPlacementAfterSelectingCandidate: 0...2
-    case .kCandidateNarrationToggleType: 0...2
-    case .kCandidateStateJKHLBehavior: 0...2
-    case .kSpecifiedNotifyUIColorScheme: 0...2
-    case .kForceCassetteChineseConversion: 0...2
-    case .kNumPadCharInputBehavior: 0...2
-    case .kSpaceKeyBehaviorAgainstICB: 0...2
-    case .kCandidateListTextSize: 12...196
+    case .kSpecifyIntonationKeyBehavior: 0 ... 2
+    case .kSpecifyShiftBackSpaceKeyBehavior: 0 ... 2
+    case .kUpperCaseLetterKeyBehavior: 0 ... 4
+    case .kReadingNarrationCoverage: 0 ... 2
+    case .kRomanNumeralOutputFormat: 0 ... 3
+    case .kSpecifyCmdOptCtrlEnterBehavior: 0 ... 4
+    case .kBeepSoundPreference: 0 ... 2
+    case .kCursorPlacementAfterSelectingCandidate: 0 ... 2
+    case .kCandidateNarrationToggleType: 0 ... 2
+    case .kCandidateStateJKHLBehavior: 0 ... 2
+    case .kSpecifiedNotifyUIColorScheme: 0 ... 2
+    case .kForceCassetteChineseConversion: 0 ... 2
+    case .kNumPadCharInputBehavior: 0 ... 2
+    case .kSpaceKeyBehaviorAgainstICB: 0 ... 2
+    case .kCandidateListTextSize: 12 ... 196
+    case .kPopupCompositionBufferTextSize: 18 ... 40
     default: nil
     }
   }
@@ -396,7 +397,7 @@ extension UserDef {
   private static func validateDoubleRange(userDef: Self, value: Double) -> String? {
     // This API is no-op for now but we keep it for possible future purposes.
     let vNVR = userDef.validNumeralValueRange
-    if let vNVR, !(Double(vNVR.lowerBound)...Double(vNVR.upperBound)).contains(value) {
+    if let vNVR, !(Double(vNVR.lowerBound) ... Double(vNVR.upperBound)).contains(value) {
       let rangeDescribed = String(describing: vNVR)
       switch userDef {
       default: return "Must be within this range: \(rangeDescribed)."
@@ -445,6 +446,7 @@ extension UserDef {
     case .kShowNotificationsWhenTogglingShift: return .bool(true)
     case .kSpecifiedNotifyUIColorScheme: return .integer(0)
     case .kCandidateListTextSize: return .integer(16)
+    case .kPopupCompositionBufferTextSize: return .integer(18)
     case .kAlwaysExpandCandidateWindow: return .bool(false)
     case .kCandidateWindowShowOnlyOneLine: return .bool(false)
     case .kEnforceSingleLineCandidateWindowLayout4SCPC: return .bool(true)
@@ -628,6 +630,17 @@ extension UserDef {
         userDef: self,
         shortTitle: "i18n:UserDef.kCandidateListTextSize.shortTitle",
         description: "i18n:UserDef.kCandidateListTextSize.description",
+        options: {
+          var result = [Int: String]()
+          guard let validNumeralValueRange else { return nil }
+          validNumeralValueRange.forEach { result[$0] = $0.description }
+          return result.isEmpty ? nil : result
+        }()
+      )
+    case .kPopupCompositionBufferTextSize: return .init(
+        userDef: self,
+        shortTitle: "i18n:UserDef.kPopupCompositionBufferTextSize.shortTitle",
+        description: "i18n:UserDef.kPopupCompositionBufferTextSize.description",
         options: {
           var result = [Int: String]()
           guard let validNumeralValueRange else { return nil }
