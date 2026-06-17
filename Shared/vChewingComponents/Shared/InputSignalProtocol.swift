@@ -62,4 +62,8 @@ extension InputSignalProtocol {
   public var commonKeyModifierFlags: KBEvent.ModifierFlags {
     keyModifierFlags.subtracting([.function, .numericPad, .help])
   }
+
+  public func isHotKeyOfAnyFlag(_ flags: KBEvent.ModifierFlags) -> Bool {
+    !keyModifierFlags.isDisjoint(with: flags) && text.first?.isLetter ?? false
+  }
 }
