@@ -863,7 +863,7 @@ extension InputHandlerProtocol {
        input.commonKeyModifierFlags == [.option, .shift] {
       return "_shift_alt_punctuation_"
     }
-    switch (input.isControlHold, input.isOptionHold) {
+    switch (input.isControlHeld, input.isOptionHeld) {
     case (true, true): return "_alt_ctrl_punctuation_"
     case (true, false): return "_ctrl_punctuation_"
     case (false, true): return "_alt_punctuation_"
