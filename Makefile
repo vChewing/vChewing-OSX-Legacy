@@ -22,7 +22,7 @@ all: archive
 install: install-release
 update:
 	@git restore ./DictionaryData
-	git submodule update --init --recursive --remote --force
+	git -c http.lowSpeedLimit=1000 -c http.lowSpeedTime=15 submodule update --init --recursive --remote --force
 
 ifdef ARCHS
 BUILD_SETTINGS += ARCHS="$(ARCHS)"
