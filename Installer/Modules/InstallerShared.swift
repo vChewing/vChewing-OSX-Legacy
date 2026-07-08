@@ -33,6 +33,14 @@ let kDestinationPartial = urlDestinationPartial.path
 let kTargetPartialPath = urlTargetPartial.path
 let kTargetFullBinPartialPath = urlTargetFullBinPartial.path
 
+/// 從安裝器內嵌的 IME App Bundle 取得 InputMethodConnectionName。
+/// 若 plist 中沒有該 key，則 fallback 到 CFBundleIdentifier。
+var installingIMEConnectionName: String? {
+  Bundle.main.path(forResource: kTargetBin, ofType: kTargetType)
+    .flatMap { Bundle(path: $0) }
+    .flatMap { $0.infoDictionary?["InputMethodConnectionName"] as? String ?? $0.bundleIdentifier }
+}
+
 let kTranslocationRemovalTickInterval: TimeInterval = 0.5
 let kTranslocationRemovalDeadline: TimeInterval = 60.0
 
@@ -112,6 +120,7 @@ struct InstallerUIConfig: Hashable {
   var isTranslocationFinished: Bool?
   var isUpgrading: Bool = false
   var timeRemaining: Int = .init(kTranslocationRemovalDeadline)
+  var adminRenameFailureAlertPaths: [String] = []
 }
 
 // MARK: InstallerUIConfig.AlertType
@@ -119,7 +128,7 @@ struct InstallerUIConfig: Hashable {
 extension InstallerUIConfig {
   public enum AlertType: String, Identifiable, Hashable, Sendable {
     case nothing, installationFailed, missingAfterRegistration, postInstallAttention,
-         postInstallWarning, postInstallOK
+         postInstallWarning, postInstallOK, adminRenameFailure
 
     // MARK: Public
 
@@ -135,6 +144,7 @@ extension InstallerUIConfig {
       case .postInstallAttention: return "i18n:Installer.Attention".i18n
       case .postInstallWarning: return "i18n:Common.Warning".i18n
       case .postInstallOK: return "i18n:Installer.InstallationSuccessful".i18n
+      case .adminRenameFailure: return "i18n:Installer.Attention".i18n
       }
     }
 
@@ -154,6 +164,8 @@ extension InstallerUIConfig {
         return "i18n:Installer.InputMethodMayNotBeFullyEnabled".i18n
       case .postInstallOK:
         return "i18n:Installer.ReadyToUse".i18n
+      case .adminRenameFailure:
+        return "i18n:Installer.AdminRenameFailureNotice".i18n
       }
     }
   }
