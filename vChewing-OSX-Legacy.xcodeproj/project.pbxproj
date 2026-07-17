@@ -18,6 +18,8 @@
 		5B0422082D4F7F2B00DFAA15 /* IMKTextInputImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0422062D4F7F2600DFAA15 /* IMKTextInputImpl.swift */; };
 		5B09126C2B134927000166DB /* LMInstantiator_TextMapExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B09126B2B134927000166DB /* LMInstantiator_TextMapExtension.swift */; };
 		5B098B682E9B8D510005885E /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B098B672E9B8D260005885E /* libiconv.tbd */; };
+		5B0A10000000000000000001 /* CtlCandidateGSI4AppKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0A20000000000000000001 /* CtlCandidateGSI4AppKit.swift */; };
+		5B0A10000000000000000002 /* VwrCandidateGSI4AppKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0A20000000000000000002 /* VwrCandidateGSI4AppKit.swift */; };
 		5B0E4EEF2B67933E00BE3440 /* OSVersionComparer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0E4EEE2B67933E00BE3440 /* OSVersionComparer.swift */; };
 		5B1523B62A74E92D007D2E53 /* Jad_BookmarkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1523B52A74E92D007D2E53 /* Jad_BookmarkManager.swift */; };
 		5B1C28E12B8F09DF00968E74 /* CandidateTextService_SelectorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1C28E02B8F09DF00968E74 /* CandidateTextService_SelectorImpl.swift */; };
@@ -42,8 +44,6 @@
 		5B4BEE702B8F8A510044A4EE /* VwrSettingsPaneCocoaServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4BEE6E2B8F8A450044A4EE /* VwrSettingsPaneCocoaServices.swift */; };
 		5B4C81812ADABB60008507B1 /* HangarRash_SwiftyCapsLockToggler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4C81802ADABB60008507B1 /* HangarRash_SwiftyCapsLockToggler.swift */; };
 		5B5139442F3A318C00223E77 /* TDKCandidates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5139432F3A318C00223E77 /* TDKCandidates.swift */; };
-		5B0A10000000000000000001 /* CtlCandidateGSI4AppKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0A20000000000000000001 /* CtlCandidateGSI4AppKit.swift */; };
-		5B0A10000000000000000002 /* VwrCandidateGSI4AppKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0A20000000000000000002 /* VwrCandidateGSI4AppKit.swift */; };
 		5B5269F62F9295370026F43A /* uninstall.sh in Resources */ = {isa = PBXBuildFile; fileRef = 5B5269F52F9295370026F43A /* uninstall.sh */; };
 		5B5319222E9A918700570E96 /* CodePointDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5319212E9A918700570E96 /* CodePointDecoder.swift */; };
 		5B55ACAD2B5A254F009E2F54 /* KBEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B55ACAC2B5A254F009E2F54 /* KBEvent.swift */; };
@@ -273,6 +273,8 @@
 		5B0422062D4F7F2600DFAA15 /* IMKTextInputImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMKTextInputImpl.swift; sourceTree = "<group>"; };
 		5B09126B2B134927000166DB /* LMInstantiator_TextMapExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMInstantiator_TextMapExtension.swift; sourceTree = "<group>"; };
 		5B098B672E9B8D260005885E /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.0.sdk/usr/lib/libiconv.tbd; sourceTree = DEVELOPER_DIR; };
+		5B0A20000000000000000001 /* CtlCandidateGSI4AppKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CtlCandidateGSI4AppKit.swift; sourceTree = "<group>"; };
+		5B0A20000000000000000002 /* VwrCandidateGSI4AppKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VwrCandidateGSI4AppKit.swift; sourceTree = "<group>"; };
 		5B0E4EEE2B67933E00BE3440 /* OSVersionComparer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSVersionComparer.swift; sourceTree = "<group>"; };
 		5B1523B52A74E92D007D2E53 /* Jad_BookmarkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Jad_BookmarkManager.swift; sourceTree = "<group>"; };
 		5B1C28E02B8F09DF00968E74 /* CandidateTextService_SelectorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandidateTextService_SelectorImpl.swift; sourceTree = "<group>"; };
@@ -299,8 +301,6 @@
 		5B4BEE6E2B8F8A450044A4EE /* VwrSettingsPaneCocoaServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VwrSettingsPaneCocoaServices.swift; sourceTree = "<group>"; };
 		5B4C81802ADABB60008507B1 /* HangarRash_SwiftyCapsLockToggler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HangarRash_SwiftyCapsLockToggler.swift; sourceTree = "<group>"; };
 		5B5139432F3A318C00223E77 /* TDKCandidates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TDKCandidates.swift; sourceTree = "<group>"; };
-		5B0A20000000000000000001 /* CtlCandidateGSI4AppKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CtlCandidateGSI4AppKit.swift; sourceTree = "<group>"; };
-		5B0A20000000000000000002 /* VwrCandidateGSI4AppKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VwrCandidateGSI4AppKit.swift; sourceTree = "<group>"; };
 		5B5269F52F9295370026F43A /* uninstall.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = uninstall.sh; sourceTree = "<group>"; };
 		5B5319212E9A918700570E96 /* CodePointDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodePointDecoder.swift; sourceTree = "<group>"; };
 		5B55ACAC2B5A254F009E2F54 /* KBEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBEvent.swift; sourceTree = "<group>"; };
@@ -1677,9 +1677,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				LIBRARY_SEARCH_PATHS = (
-					"$(SRCROOT)/ARCLite",
-				);
+				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/ARCLite";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				SDKROOT = macosx13.3;
 				STRIP_SWIFT_SYMBOLS = NO;
@@ -1735,9 +1733,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				LIBRARY_SEARCH_PATHS = (
-					"$(SRCROOT)/ARCLite",
-				);
+				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/ARCLite";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				SDKROOT = macosx13.3;
 				STRIP_SWIFT_SYMBOLS = NO;
@@ -1750,6 +1746,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_ENTITLEMENTS = vChewing/vChewing.entitlements;
 				CODE_SIGN_IDENTITY = "-";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
@@ -1783,6 +1780,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_ENTITLEMENTS = vChewing/vChewing.entitlements;
 				CODE_SIGN_IDENTITY = "-";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
