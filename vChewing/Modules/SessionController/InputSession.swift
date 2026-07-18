@@ -65,7 +65,7 @@ public final class InputSession: SessionProtocol {
 
   public var clientObjectIdentifier: ObjectIdentifier?
 
-  public var buzzer: (() -> ())? = IMEApp.buzz
+  public var buzzer: (() -> ())? = { mainSync { IMEApp.buzz() } }
 
   public var synchronizer4LMPrefs: (() -> ())? = { LMMgr.syncLMPrefs() }
 
@@ -110,7 +110,7 @@ public final class InputSession: SessionProtocol {
   public var lastAppliedKeyboardLayout: String?
 
   /// IMKInputController 副本（記憶體位址）。
-  public var inputControllerAssignedAddr: UInt?
+  public nonisolated(unsafe) var inputControllerAssignedAddr: UInt?
 
   public var inputController: SessionCtl? {
     guard let addr = inputControllerAssignedAddr,
@@ -231,7 +231,7 @@ public final class InputSession: SessionProtocol {
   }
 
   /// 依據 SessionCtl 記憶體位址查詢對應的 InputSession。
-  static func session(for controller: SessionCtl) -> InputSession? {
+  nonisolated static func session(for controller: SessionCtl) -> InputSession? {
     let ctlKey = Int(bitPattern: Unmanaged.passUnretained(controller).toOpaque())
     guard let ssnAddr = sessionAddrByControllerAddr.withLockRead({ $0[ctlKey] }),
           let opaque = UnsafeRawPointer(bitPattern: ssnAddr)
@@ -240,14 +240,14 @@ public final class InputSession: SessionProtocol {
   }
 
   /// 登記 controller → session 對照關係。
-  static func registerSessionAddr(_ session: InputSession, for controller: SessionCtl) {
+  nonisolated static func registerSessionAddr(_ session: InputSession, for controller: SessionCtl) {
     let ctlKey = Int(bitPattern: Unmanaged.passUnretained(controller).toOpaque())
     let ssnKey = Int(bitPattern: Unmanaged.passUnretained(session).toOpaque())
     sessionAddrByControllerAddr.withLock { $0[ctlKey] = ssnKey }
   }
 
   /// 移除 controller 對照關係（由 SessionCtl.deinit 呼叫）。
-  static func unregisterSessionAddr(for controller: SessionCtl) {
+  nonisolated static func unregisterSessionAddr(for controller: SessionCtl) {
     let ctlKey = Int(bitPattern: Unmanaged.passUnretained(controller).toOpaque())
     sessionAddrByControllerAddr.withLock { map in
       if let ssnKey = map[ctlKey],
@@ -288,12 +288,11 @@ public final class InputSession: SessionProtocol {
   /// 等頻繁變更 client proxy 物件的場景下會導致 hang。
   /// - Remark: 參見 DevLab/InputMethodKitPhuquingRetarded.txt 內的分析。
   private static var sessionsByClient = NSMutex([Int: InputSession]())
-
   /// 以 controller NSObject 的記憶體位址整數值為鍵的快取字典。
   /// 資料值是 Session 的記憶體位址。
   /// - Note: Session 的記憶體位址必須在其生命週期有效期間內確保有效。
   ///   此處不保留強引用，避免靜態字典參與 ARC。
-  private static var sessionAddrByControllerAddr = NSMutex([Int: Int]())
+  private nonisolated(unsafe) static var sessionAddrByControllerAddr = NSMutex([Int: Int]())
 
   /// 靜態全域 LRU 記數器（單調遞增，&+= 溢位迴繞）。
   private static var globalLRUTick: UInt = 0
@@ -412,7 +411,9 @@ extension InputSession {
   }
 
   public func hidePalettes() {
-    Broadcaster.shared.postEventForClosingAllPanels()
+    asyncOnMain {
+      Broadcaster.shared.postEventForClosingAllPanels()
+    }
   }
 
   public func menu() -> NSMenu? { inputController?.menu() }
@@ -431,7 +432,9 @@ extension InputSession {
   /// 不過好像因為 IMK 的 Bug 而並不會被執行。
   public func inputControllerWillClose() {
     // 防止尚未完成拼寫的注音內容被遞交出去。
-    resetInputHandler()
+    asyncOnMain { [weak self] in
+      self?.resetInputHandler()
+    }
   }
 
   public func annotationSelected(
