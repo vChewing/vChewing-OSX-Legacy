@@ -142,6 +142,8 @@
 		5BCDA51B2D50C45500571961 /* InputSession_HandleDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCDA5122D50C45500571961 /* InputSession_HandleDisplay.swift */; };
 		5BCF4AB829546B5200C7FBD9 /* convdict.stringmap in Resources */ = {isa = PBXBuildFile; fileRef = 5BCF4AB729546B5100C7FBD9 /* convdict.stringmap */; };
 		5BD289E42B7B48AE00D3E41A /* LatinKeyboardMappings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B572A7929FB76B900ED5066 /* LatinKeyboardMappings.swift */; };
+		5BD56015300DD5BC005136EA /* DeallocSentinel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BD56014300DD5BC005136EA /* DeallocSentinel.m */; };
+		5BD56018300DD5E0005136EA /* ObjCMemoryLeakTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD56017300DD5E0005136EA /* ObjCMemoryLeakTracker.swift */; };
 		5BDA204E2EEABDDF00377085 /* MainSputnik.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDA204D2EEABDDC00377085 /* MainSputnik.swift */; };
 		5BE5A4E5294E03C200EFA49C /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A4E4294E03C200EFA49C /* main.swift */; };
 		5BE5A4F1294E057F00EFA49C /* AppKitImpl_Misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A4F0294E057F00EFA49C /* AppKitImpl_Misc.swift */; };
@@ -398,6 +400,9 @@
 		5BCDA5142D50C45500571961 /* InputSession_HandleStates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputSession_HandleStates.swift; sourceTree = "<group>"; };
 		5BCDA5152D50C45500571961 /* InputSession_CoreProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputSession_CoreProtocol.swift; sourceTree = "<group>"; };
 		5BCF4AB729546B5100C7FBD9 /* convdict.stringmap */ = {isa = PBXFileReference; lastKnownFileType = text; path = convdict.stringmap; sourceTree = "<group>"; };
+		5BD56014300DD5BC005136EA /* DeallocSentinel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeallocSentinel.m; sourceTree = "<group>"; };
+		5BD56016300DD5C3005136EA /* DeallocSentinel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeallocSentinel.h; sourceTree = "<group>"; };
+		5BD56017300DD5E0005136EA /* ObjCMemoryLeakTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjCMemoryLeakTracker.swift; sourceTree = "<group>"; };
 		5BDA204D2EEABDDC00377085 /* MainSputnik.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSputnik.swift; sourceTree = "<group>"; };
 		5BE5A4E3294E00C300EFA49C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		5BE5A4E4294E03C200EFA49C /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -783,6 +788,15 @@
 			path = OtherIMEDataReader;
 			sourceTree = "<group>";
 		};
+		5BD56013300DD5B4005136EA /* ObjCUtils */ = {
+			isa = PBXGroup;
+			children = (
+				5BD56016300DD5C3005136EA /* DeallocSentinel.h */,
+				5BD56014300DD5BC005136EA /* DeallocSentinel.m */,
+			);
+			path = ObjCUtils;
+			sourceTree = "<group>";
+		};
 		5BE5A4E6294E04B000EFA49C /* MenuIcons */ = {
 			isa = PBXGroup;
 			children = (
@@ -890,6 +904,7 @@
 		5BE5A50E294E0B8700EFA49C /* vChewingComponents */ = {
 			isa = PBXGroup;
 			children = (
+				5BD56013300DD5B4005136EA /* ObjCUtils */,
 				5B602B4D2F599A95003F2FCB /* IMKSwift */,
 				5B52709E2F005F0800F41D73 /* FolderMonitor */,
 				5B4848A12EF45A5900EAA6BB /* ModifierKeyHitChecker */,
@@ -990,6 +1005,7 @@
 				5BE5A536294E0CEC00EFA49C /* InputSignalProtocol.swift */,
 				5B55ACAC2B5A254F009E2F54 /* KBEvent.swift */,
 				5B55ACAE2B5A255F009E2F54 /* NSEventImpl_Shared.swift */,
+				5BD56017300DD5E0005136EA /* ObjCMemoryLeakTracker.swift */,
 				5B0E4EEE2B67933E00BE3440 /* OSVersionComparer.swift */,
 				5BE5A56B294E127B00EFA49C /* PhraseEditorDelegate.swift */,
 				5BE5A563294E10F300EFA49C /* PrefMgr_Core.swift */,
@@ -1350,6 +1366,7 @@
 				5BE5A546294E0D1200EFA49C /* Tekkon_Constants.swift in Sources */,
 				5BE5A547294E0D1200EFA49C /* Tekkon_Phonabets.swift in Sources */,
 				5BE5A548294E0D1200EFA49C /* Tekkon_SyllableComposer.swift in Sources */,
+				5BD56018300DD5E0005136EA /* ObjCMemoryLeakTracker.swift in Sources */,
 				5BE5A549294E0D1200EFA49C /* Tekkon_Utilities.swift in Sources */,
 				5BE5A4FC294E087B00EFA49C /* TISInputSourceExtension.swift in Sources */,
 				5B9939EA2B8B08EF00979BBC /* BrailleEnums.swift in Sources */,
@@ -1417,6 +1434,7 @@
 				5B8F94F72B3070C40071B14A /* InputToken.swift in Sources */,
 				5B9939ED2B8B44B000979BBC /* InputHandler_MiscCommissions.swift in Sources */,
 				5B423A542A9516B0004CC33B /* Broadcaster.swift in Sources */,
+				5BD56015300DD5BC005136EA /* DeallocSentinel.m in Sources */,
 				5B81BD262B729AE90092819A /* VwrSettingsPaneCocoaDevZone.swift in Sources */,
 				5B1CA80E29AC53BA0089E95F /* VwrCandidateTDK4AppKit.swift in Sources */,
 				5B0A10000000000000000002 /* VwrCandidateGSI4AppKit.swift in Sources */,
