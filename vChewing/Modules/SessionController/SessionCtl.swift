@@ -56,24 +56,22 @@ public final class SessionCtl: IMKInputSessionController {
     }
     set {
       if let session = newValue {
-        InputSession.registerSessionAddr(session, for: self)
+        let thisAddr = UInt(bitPattern: Unmanaged.passUnretained(self).toOpaque())
+        InputSession.registerSessionAddr(session, for: thisAddr)
       }
     }
   }
 
   // MARK: Private
 
-  private func getClientAddrProvider() -> (() -> UInt?) {
+  private func getClientAddrProvider() -> (() -> ClientControllerAddrPair?) {
     let thisAddr = UInt(bitPattern: Unmanaged.passUnretained(self).toOpaque())
     return {
-      // Client 在 Controller 建構完畢之後才可用，
-      // 但 Controller 被析構之後 Client Addr 必定是 dangling pointer。
-      // 所以在此複查 Controller 的生命週期。
-      guard ObjCMemoryLeakTracker.shared.isTracked(addr: thisAddr) else { return nil }
       guard let opaque = UnsafeRawPointer(bitPattern: thisAddr) else { return nil }
       let this = Unmanaged<SessionCtl>.fromOpaque(opaque).takeUnretainedValue()
       guard let clientObj = this.client() as? InputSession.ClientObj else { return nil }
-      return UInt(bitPattern: Unmanaged.passUnretained(clientObj).toOpaque())
+      let clientAddr = UInt(bitPattern: Unmanaged.passUnretained(clientObj).toOpaque())
+      return ClientControllerAddrPair(clientAddr: clientAddr, controllerAddr: thisAddr)
     }
   }
 
@@ -85,24 +83,25 @@ public final class SessionCtl: IMKInputSessionController {
     // 改用 uniqueClientIdentifierString 作為快取鍵。
     // 此舉解決 Chrome/Electron 的 client object memAddr 不穩定問題。
     if let clientObj {
-      let key = Int(bitPattern: Unmanaged.passUnretained(clientObj).toOpaque())
+      let key = UInt(bitPattern: Unmanaged.passUnretained(clientObj).toOpaque())
       if let cached = InputSession.cachedSession(for: key) {
         cached.reassign(to: self, clientAddrProvider: getClientAddrProvider())
         vCLog("InputSession reused. ID: \(cached.id.uuidString)")
         return cached
       }
     }
+    let thisAddr = UInt(bitPattern: Unmanaged.passUnretained(self).toOpaque())
     // 先用傳入的參數完成 InputSession 的初期化，其中包括了對這個 Session 的登記過程。
     let newSession = InputSession(controller: self) {
       if let clientObj {
-        return UInt(bitPattern: Unmanaged.passUnretained(clientObj).toOpaque())
+        let clientAddr = UInt(bitPattern: Unmanaged.passUnretained(clientObj).toOpaque())
+        return ClientControllerAddrPair(clientAddr: clientAddr, controllerAddr: thisAddr)
       }
       return nil
     }
     // 然後再用脫手操作給這個 Session 重新指派 clientAddrProvider。
     // 這個 async 反而是有必要的，因為 SessionCtl 的 initializer 在
     // 徹底執行完畢之前能拿到的 client() 反而在早期版本 macOS 系統下會是 nil。
-    let thisAddr = UInt(bitPattern: Unmanaged.passUnretained(self).toOpaque())
     asyncOnMain {
       guard let opaque = UnsafeRawPointer(bitPattern: thisAddr) else { return }
       let this = Unmanaged<SessionCtl>.fromOpaque(opaque).takeUnretainedValue()
