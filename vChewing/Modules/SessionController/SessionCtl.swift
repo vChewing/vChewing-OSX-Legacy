@@ -207,4 +207,13 @@ extension SessionCtl {
   override public func hidePalettes() {
     core?.hidePalettes()
   }
+
+  override public func menu() -> NSMenu {
+    makeMenu()
+  }
+
+  @objc
+  override public func showPreferences(_: IMKTextInput? = nil) {
+    core?.showPreferences(nil)
+  }
 }

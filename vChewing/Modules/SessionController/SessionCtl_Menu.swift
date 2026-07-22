@@ -8,14 +8,10 @@
 
 import AppKit
 
-// MARK: - IME Menu Manager
-
-// 因為選單部分的內容又臭又長，所以就單獨拉到一個檔案內管理了。
+// MARK: - IME Menu Sputnik
 
 extension SessionCtl {
-  // MARK: Public
-
-  override public func menu() -> NSMenu {
+  public func makeMenu() -> NSMenu {
     let currentInputMode = IMEApp.currentInputMode
     return NSMenu().appendItems(self) {
       NSMenu.Item("i18n:Menu.vChewingSettings")?
@@ -134,12 +130,6 @@ extension SessionCtl {
     mainSync {
       core?.toggleInputMode()
     }
-  }
-
-  @objc
-  override public func showPreferences(_: (any IMKTextInput)? = nil) {
-    CtlSettingsCocoa.show()
-    NSApp.popup()
   }
 
   @objc
