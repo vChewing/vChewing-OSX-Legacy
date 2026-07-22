@@ -71,7 +71,7 @@
 		5B751DD0294EE57D0031CF70 /* InputHandler_CoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DC1294EE57C0031CF70 /* InputHandler_CoreProtocol.swift */; };
 		5B751DD3294EE57D0031CF70 /* InputHandler_TriageInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DC4294EE57C0031CF70 /* InputHandler_TriageInput.swift */; };
 		5B751DD5294EE57D0031CF70 /* IMEState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DC6294EE57D0031CF70 /* IMEState.swift */; };
-		5B751DD7294EE57D0031CF70 /* SessionCtl_Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DC8294EE57D0031CF70 /* SessionCtl_Menu.swift */; };
+		5B751DD7294EE57D0031CF70 /* IMEMenuSputnik.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DC8294EE57D0031CF70 /* IMEMenuSputnik.swift */; };
 		5B751DD9294EE57D0031CF70 /* InputHandler_HandleComposition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DCA294EE57D0031CF70 /* InputHandler_HandleComposition.swift */; };
 		5B751DDB294EE57D0031CF70 /* InputHandler_HandleCandidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DCC294EE57D0031CF70 /* InputHandler_HandleCandidate.swift */; };
 		5B751DE2294EE7A80031CF70 /* CandidatePool4AppKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DE0294EE7A80031CF70 /* CandidatePool4AppKit.swift */; };
@@ -341,7 +341,7 @@
 		5B751DC1294EE57C0031CF70 /* InputHandler_CoreProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputHandler_CoreProtocol.swift; sourceTree = "<group>"; };
 		5B751DC4294EE57C0031CF70 /* InputHandler_TriageInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputHandler_TriageInput.swift; sourceTree = "<group>"; };
 		5B751DC6294EE57D0031CF70 /* IMEState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IMEState.swift; sourceTree = "<group>"; };
-		5B751DC8294EE57D0031CF70 /* SessionCtl_Menu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionCtl_Menu.swift; sourceTree = "<group>"; };
+		5B751DC8294EE57D0031CF70 /* IMEMenuSputnik.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IMEMenuSputnik.swift; sourceTree = "<group>"; };
 		5B751DCA294EE57D0031CF70 /* InputHandler_HandleComposition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputHandler_HandleComposition.swift; sourceTree = "<group>"; };
 		5B751DCC294EE57D0031CF70 /* InputHandler_HandleCandidate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputHandler_HandleCandidate.swift; sourceTree = "<group>"; };
 		5B751DDF294EE7A80031CF70 /* CandidateCellData4AppKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandidateCellData4AppKit.swift; sourceTree = "<group>"; };
@@ -686,6 +686,7 @@
 		5B7C02082B77AFBA00B7DBAA /* SessionController */ = {
 			isa = PBXGroup;
 			children = (
+				5B751DC8294EE57D0031CF70 /* IMEMenuSputnik.swift */,
 				5BCDA5102D50C45500571961 /* InputSession.swift */,
 				5BCDA5152D50C45500571961 /* InputSession_CoreProtocol.swift */,
 				5BCDA5112D50C45500571961 /* InputSession_Delegates.swift */,
@@ -693,7 +694,6 @@
 				5BCDA5132D50C45500571961 /* InputSession_HandleEvent.swift */,
 				5BCDA5142D50C45500571961 /* InputSession_HandleStates.swift */,
 				5B751DC0294EE57C0031CF70 /* SessionCtl.swift */,
-				5B751DC8294EE57D0031CF70 /* SessionCtl_Menu.swift */,
 				5BA7437D2EC4EC4300C977DA /* SessionUI.swift */,
 			);
 			path = SessionController;
@@ -1412,7 +1412,7 @@
 				5BE5A4F5294E059600EFA49C /* IMKHelper.swift in Sources */,
 				5BF120A12B8C8E1700C83A24 /* IMEApp.swift in Sources */,
 				5B70C0AD2EA428C000BC8273 /* IMEApp_DarwinImpl.swift in Sources */,
-				5B751DD7294EE57D0031CF70 /* SessionCtl_Menu.swift in Sources */,
+				5B751DD7294EE57D0031CF70 /* IMEMenuSputnik.swift in Sources */,
 				5BE5A4FA294E082800EFA49C /* NSEventImpl.swift in Sources */,
 				5BE5A530294E0C2E00EFA49C /* HotenkaChineseConverter.swift in Sources */,
 				5BE5A530294E0C2F00EFA49C /* HotenkaStringMap.swift in Sources */,
