@@ -106,6 +106,7 @@
 		5B81BD292B729AE90092819A /* VwrSettingsPaneCocoaPhrases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B81BD1E2B729AE90092819A /* VwrSettingsPaneCocoaPhrases.swift */; };
 		5B81BD2A2B729AE90092819A /* VwrSettingsPaneCocoaCandidates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B81BD1F2B729AE90092819A /* VwrSettingsPaneCocoaCandidates.swift */; };
 		5B81BD2B2B729AE90092819A /* VwrSettingsPaneCocoaOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B81BD202B729AE90092819A /* VwrSettingsPaneCocoaOutput.swift */; };
+		5B8C94013010E13200B28612 /* MenuActionTrampoline.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DD8451ECAC44E63B6DE292A /* MenuActionTrampoline.m */; };
 		5B8F94F72B3070C40071B14A /* InputToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8F94F62B3070C40071B14A /* InputToken.swift */; };
 		5B98203E2B8D9A4200E183D8 /* CandidateNode_ServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B98203D2B8D9A4200E183D8 /* CandidateNode_ServiceImpl.swift */; };
 		5B9939EA2B8B08EF00979BBC /* BrailleEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9939E82B8B085100979BBC /* BrailleEnums.swift */; };
@@ -231,6 +232,7 @@
 		81746FCD432D44EF908A4DA3 /* Homa_TypeAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C2F2EE93334E75A2BB3ED2 /* Homa_TypeAliases.swift */; };
 		9A5A4E423AB84B6FA6E6CFB3 /* HomaAssemblerCompat.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF6126938424573BE9ACFC0 /* HomaAssemblerCompat.swift */; };
 		9BE072A24CE3459E8CA8FE41 /* Homa_CandidatePair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA89F3DC79B4AF7A84BEA67 /* Homa_CandidatePair.swift */; };
+		A508A4BEAD4048A19097D8D9 /* MenuActionTrampoline.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DD8451ECAC44E63B6DE292A /* MenuActionTrampoline.m */; };
 		A7BED23A2FFA4EDBB3972B1B6C2AEA9A /* Homa_PossibleKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116F2930785644468C967F664FDAEB28 /* Homa_PossibleKey.swift */; };
 		B8633E59D9444C8DA96249A5 /* Homa_Assembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CEDB4618F12438D8F853D10 /* Homa_Assembler.swift */; };
 		CB6C806985524F059E307773 /* Homa_Exception.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD3F56DDE1F49B788D9F668 /* Homa_Exception.swift */; };
@@ -497,11 +499,13 @@
 		5C34A0182F9C100100C0A001 /* VanguardTrie_Impl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VanguardTrie_Impl.swift; sourceTree = "<group>"; };
 		60F6EEEB720E480BAAEBED66 /* Homa_ConsolidatorAPIs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homa_ConsolidatorAPIs.swift; sourceTree = "<group>"; };
 		79AD04D1F0004E8FBC7DEB10 /* Homa_PathFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homa_PathFinder.swift; sourceTree = "<group>"; };
+		8DD8451ECAC44E63B6DE292A /* MenuActionTrampoline.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MenuActionTrampoline.m; sourceTree = "<group>"; };
 		91CCBFE00CBE4E4EB6B3119A /* HomaCompatShims.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomaCompatShims.swift; sourceTree = "<group>"; };
 		A59008A8A7D746779D9CD750 /* Homa_Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homa_Config.swift; sourceTree = "<group>"; };
 		C532D78E31074613AE47BAB3 /* Homa_Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homa_Node.swift; sourceTree = "<group>"; };
 		D620C12F4D4F4ED7B6679542 /* Homa_CandidateAPIs_Revolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homa_CandidateAPIs_Revolver.swift; sourceTree = "<group>"; };
 		D9C64C5B696E4D958C2D68A0 /* Homa_Namespace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homa_Namespace.swift; sourceTree = "<group>"; };
+		E56B87199BA24A50B99630DF /* MenuActionTrampoline.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MenuActionTrampoline.h; sourceTree = "<group>"; };
 		EDF6126938424573BE9ACFC0 /* HomaAssemblerCompat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomaAssemblerCompat.swift; sourceTree = "<group>"; };
 		F1A26001294E0BE900EFA49C /* lmPerceptionPersistor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lmPerceptionPersistor.swift; sourceTree = "<group>"; };
 		F70B82D8889B4398AAEB5FCA /* Homa_GramInPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homa_GramInPath.swift; sourceTree = "<group>"; };
@@ -560,6 +564,15 @@
 				79AD04D1F0004E8FBC7DEB10 /* Homa_PathFinder.swift */,
 			);
 			path = Homa_MainComponents;
+			sourceTree = "<group>";
+		};
+		5ADD3ED0370E4EE1A47EF342 /* OSFrameworkImplViaObjC */ = {
+			isa = PBXGroup;
+			children = (
+				E56B87199BA24A50B99630DF /* MenuActionTrampoline.h */,
+				8DD8451ECAC44E63B6DE292A /* MenuActionTrampoline.m */,
+			);
+			path = OSFrameworkImplViaObjC;
 			sourceTree = "<group>";
 		};
 		5B2CD0042E9A18EB00F6A9FE /* Typewriter */ = {
@@ -848,6 +861,7 @@
 		5BE5A4ED294E054900EFA49C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				5ADD3ED0370E4EE1A47EF342 /* OSFrameworkImplViaObjC */,
 				5BE5A4F0294E057F00EFA49C /* AppKitImpl_Misc.swift */,
 				5BE5A4FD294E090800EFA49C /* AppKitImpl_NSSound.swift */,
 				5B81BD0F2B7297A70092819A /* AppKitImpl_NSView.swift */,
@@ -1331,6 +1345,7 @@
 				5BE9FA7F2EF549230048D81F /* InstallerShared.swift in Sources */,
 				5BE9FA802EF549230048D81F /* InstallerVMProtocol.swift in Sources */,
 				5BACBCFE295094FA0078CAB3 /* TISInputSourceExtension.swift in Sources */,
+				5B8C94013010E13200B28612 /* MenuActionTrampoline.m in Sources */,
 				5BE9FA852EF54A0F0048D81F /* main.swift in Sources */,
 				5BACBCFD295094E90078CAB3 /* IMKHelper.swift in Sources */,
 				5BE9FA822EF549C10048D81F /* AppKitImpl_NSView.swift in Sources */,
@@ -1435,6 +1450,7 @@
 				5B9939ED2B8B44B000979BBC /* InputHandler_MiscCommissions.swift in Sources */,
 				5B423A542A9516B0004CC33B /* Broadcaster.swift in Sources */,
 				5BD56015300DD5BC005136EA /* DeallocSentinel.m in Sources */,
+				A508A4BEAD4048A19097D8D9 /* MenuActionTrampoline.m in Sources */,
 				5B81BD262B729AE90092819A /* VwrSettingsPaneCocoaDevZone.swift in Sources */,
 				5B1CA80E29AC53BA0089E95F /* VwrCandidateTDK4AppKit.swift in Sources */,
 				5B0A10000000000000000002 /* VwrCandidateGSI4AppKit.swift in Sources */,
@@ -1655,7 +1671,7 @@
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -1699,6 +1715,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				SDKROOT = macosx13.3;
 				STRIP_SWIFT_SYMBOLS = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/vChewing/Headers/BridgingHeader.h";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -1712,7 +1729,7 @@
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -1755,6 +1772,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				SDKROOT = macosx13.3;
 				STRIP_SWIFT_SYMBOLS = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/vChewing/Headers/BridgingHeader.h";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
@@ -1764,7 +1782,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_ENTITLEMENTS = vChewing/vChewing.entitlements;
 				CODE_SIGN_IDENTITY = "-";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
@@ -1788,7 +1805,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/vChewing/Headers/BridgingHeader.h";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -1798,7 +1814,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_ENTITLEMENTS = vChewing/vChewing.entitlements;
 				CODE_SIGN_IDENTITY = "-";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
@@ -1822,7 +1837,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/vChewing/Headers/BridgingHeader.h";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;

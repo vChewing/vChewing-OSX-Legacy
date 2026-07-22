@@ -726,6 +726,22 @@
       return self
     }
 
+    private static var trampolineKey: NSMutex<UInt8> = .init(0)
+
+    @discardableResult
+    public func act(_ block: @escaping ((() -> ())?) -> ()) -> NSMenuItem {
+      Self.trampolineKey.withLock { key in
+        let oldTrampoline = objc_getAssociatedObject(self, &key) as? NSMenuActionTrampoline
+        let oldBlock = oldTrampoline?.actionBlock
+        objc_setAssociatedObject(self, &key, nil, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        let trampoline = NSMenuActionTrampoline(block: { block(oldBlock) })
+        self.target = trampoline
+        self.action = #selector(NSMenuActionTrampoline.fire(_:))
+        objc_setAssociatedObject(self, &key, trampoline, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+      }
+      return self
+    }
+
     @discardableResult
     public func nulled(_ condition: Bool) -> NSMenuItem? {
       condition ? nil : self
