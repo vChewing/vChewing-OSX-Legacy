@@ -249,6 +249,7 @@ public final class MainSputnik4IME {
       "org.atelierInmu.inputmethod.vChewing_Connection"
 
     guard let bundleID = Bundle.main.bundleIdentifier else { return nil }
+    SessionControllerSputnik.injectPostConstructionHandler()
     return IMKServer(name: kConnectionName, bundleIdentifier: bundleID)
   }
 }

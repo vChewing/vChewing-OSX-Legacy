@@ -103,7 +103,7 @@ extension SessionProtocol {
     }
   }
 
-  /// 當前這個 SessionCtl 副本是否處於英數輸入模式。
+  /// 當前這個 Session 副本是否處於英數輸入模式。
   public var isASCIIMode: Bool {
     get {
       prefs.shareAlphanumericalModeStatusAcrossClients
