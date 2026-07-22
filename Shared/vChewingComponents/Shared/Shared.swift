@@ -13,7 +13,7 @@ import Foundation
 #endif
 
 public func vCLog(forced: Bool = false, _ strPrint: StringLiteralType) {
-  guard forced || UserDefaults.current.bool(forKey: "_DebugMode") else { return }
+  guard forced || UserDefaults.pendingUnitTests || UserDefaults.current.bool(forKey: "_DebugMode") else { return }
   Process.consoleLog("vChewingDebug: \(strPrint)")
 }
 
