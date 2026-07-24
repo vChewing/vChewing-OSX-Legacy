@@ -1,6 +1,6 @@
 // Ref: https://stackoverflow.com/a/75870807/4162914
 
-#import "DeallocSentinel.h"
+#import "IMKControllerLifetimeTracker.h"
 #import "MenuActionTrampoline.h"
 #import "IMKSwift.h"
 #import <IOKit/IOKitLib.h>

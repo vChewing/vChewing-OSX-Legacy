@@ -45,7 +45,7 @@ struct IMEMenuSputnik {
     let currentMemorySize: Double = (Double(currentMemorySizeInBytes) / 1_024 / 1_024).rounded(toPlaces: 1)
     let ramMsg = "i18n:IME.RAMUsedLabelHeader".i18n + " \(currentMemorySize)MB"
     let count4Controllers = "i18n:IME.RAMControllerCountLabel"
-      .i18n + " \(ObjCMemoryLeakTracker.shared.trackedCountByType["IMKInputSessionController"] ?? 0)"
+      .i18n + " \(IMKControllerLifetimeTracker.shared().trackedControllerCount)"
     return [ramMsg, count4Controllers].joined(separator: "; ")
   }
 }
