@@ -19,6 +19,7 @@ struct IMEMenuSputnik {
 
   init?(controllerAddr: UInt?) {
     guard let controllerAddr else { return nil }
+    // ClientAddr 在此處無意義，因為無須使用。
     self.addrPair = ClientControllerAddrPair(clientAddr: 0, controllerAddr: controllerAddr)
   }
 
@@ -28,25 +29,10 @@ struct IMEMenuSputnik {
 
   private var core: InputSession? {
     guard let controllerAddr = addrPair.unwrapped?.controllerAddr else { return nil }
-    guard let controllerOpaque = UnsafeRawPointer(bitPattern: controllerAddr) else { return nil }
-    let controller = Unmanaged<IMKInputSessionController>.fromOpaque(controllerOpaque).takeUnretainedValue()
-    return InputSession.session(for: controllerAddr) ?? SessionControllerSputnik.callCoreAtLeastOnce(
-      controller,
-      client: nil
-    )
-  }
-
-  private var optionKeyPressed: Bool { NSEvent.keyModifierFlags.contains(.option) }
-  private var silentMode: Bool { core?.clientBundleIdentifier == "com.apple.SecurityAgent" }
-
-  private var currentRAMUsageDescription: String? {
-    NSApplication.purgeMallocZones()
-    guard let currentMemorySizeInBytes = NSApplication.memoryFootprintAnonymous else { return nil }
-    let currentMemorySize: Double = (Double(currentMemorySizeInBytes) / 1_024 / 1_024).rounded(toPlaces: 1)
-    let ramMsg = "i18n:IME.RAMUsedLabelHeader".i18n + " \(currentMemorySize)MB"
-    let count4Controllers = "i18n:IME.RAMControllerCountLabel"
-      .i18n + " \(IMKControllerLifetimeTracker.shared().trackedControllerCount)"
-    return [ramMsg, count4Controllers].joined(separator: "; ")
+    let parity = Int(IMKControllerLifetimeTracker.shared().generation(forAddress: controllerAddr) & 1)
+    let session = InputSession.session(forParity: parity)
+    guard session.inputControllerAssignedAddr != nil else { return nil }
+    return session
   }
 }
 
@@ -312,5 +298,20 @@ extension IMEMenuSputnik {
         .act(register { AppDelegate.shared.selfUninstall() })
         .nulled(silentMode || !optionKeyPressed)
     }
+  }
+
+  // MARK: Internal
+
+  var optionKeyPressed: Bool { NSEvent.keyModifierFlags.contains(.option) }
+  var silentMode: Bool { core?.clientBundleIdentifier == "com.apple.SecurityAgent" }
+
+  var currentRAMUsageDescription: String? {
+    NSApplication.purgeMallocZones()
+    guard let currentMemorySizeInBytes = NSApplication.memoryFootprintAnonymous else { return nil }
+    let currentMemorySize: Double = (Double(currentMemorySizeInBytes) / 1_024 / 1_024).rounded(toPlaces: 1)
+    let ramMsg = "i18n:IME.RAMUsedLabelHeader".i18n + " \(currentMemorySize)MB"
+    let count4Controllers = "i18n:IME.RAMControllerCountLabel"
+      .i18n + " \(IMKControllerLifetimeTracker.shared().trackedControllerCount)"
+    return [ramMsg, count4Controllers].joined(separator: "; ")
   }
 }
