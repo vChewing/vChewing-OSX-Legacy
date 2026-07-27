@@ -15,7 +15,6 @@
 		30DD7E9C48B9480A8552443A /* Homa_ConsolidatorAPIs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F6EEEB720E480BAAEBED66 /* Homa_ConsolidatorAPIs.swift */; };
 		43B74771A6E94482B4B2208E /* HomaCompatShims.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CCBFE00CBE4E4EB6B3119A /* HomaCompatShims.swift */; };
 		50A52DE6989E41AB95B86407 /* Homa_Gram.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08694E6CA3144345863DF5D4 /* Homa_Gram.swift */; };
-		5B0422082D4F7F2B00DFAA15 /* IMKTextInputImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0422062D4F7F2600DFAA15 /* IMKTextInputImpl.swift */; };
 		5B09126C2B134927000166DB /* LMInstantiator_TextMapExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B09126B2B134927000166DB /* LMInstantiator_TextMapExtension.swift */; };
 		5B098B682E9B8D510005885E /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B098B672E9B8D260005885E /* libiconv.tbd */; };
 		5B0A10000000000000000001 /* CtlCandidateGSI4AppKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0A20000000000000000001 /* CtlCandidateGSI4AppKit.swift */; };
@@ -274,7 +273,6 @@
 		3CEDB4618F12438D8F853D10 /* Homa_Assembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homa_Assembler.swift; sourceTree = "<group>"; };
 		51C2F2EE93334E75A2BB3ED2 /* Homa_TypeAliases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homa_TypeAliases.swift; sourceTree = "<group>"; };
 		55C232A060BD485EABD2B24D /* IMEStateParsed4Darwin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IMEStateParsed4Darwin.swift; sourceTree = "<group>"; };
-		5B0422062D4F7F2600DFAA15 /* IMKTextInputImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMKTextInputImpl.swift; sourceTree = "<group>"; };
 		5B09126B2B134927000166DB /* LMInstantiator_TextMapExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMInstantiator_TextMapExtension.swift; sourceTree = "<group>"; };
 		5B098B672E9B8D260005885E /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.0.sdk/usr/lib/libiconv.tbd; sourceTree = DEVELOPER_DIR; };
 		5B0A20000000000000000001 /* CtlCandidateGSI4AppKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CtlCandidateGSI4AppKit.swift; sourceTree = "<group>"; };
@@ -862,7 +860,6 @@
 				5B81BD0F2B7297A70092819A /* AppKitImpl_NSView.swift */,
 				5BE5A4FF294E092900EFA49C /* AppKitImpl_NSWindowController.swift */,
 				5BE5A4F4294E059600EFA49C /* IMKHelper.swift */,
-				5B0422062D4F7F2600DFAA15 /* IMKTextInputImpl.swift */,
 				5B303E7D2A979F6F002CF4E6 /* IMKUtilsImpl.swift */,
 				5B572A7929FB76B900ED5066 /* LatinKeyboardMappings.swift */,
 				5BE5A4F9294E082800EFA49C /* NSEventImpl.swift */,
@@ -1511,7 +1508,6 @@
 				5BE5A528294E0C2B00EFA49C /* lmReplacements.swift in Sources */,
 				5BE5A53E294E0CEF00EFA49C /* Shared.swift in Sources */,
 				5BCDA50F2D50C3DC00571961 /* InputHandler.swift in Sources */,
-				5B0422082D4F7F2B00DFAA15 /* IMKTextInputImpl.swift in Sources */,
 				5B5139442F3A318C00223E77 /* TDKCandidates.swift in Sources */,
 				5B6420012ABB3BA600E1B7F6 /* SessionUIProtocol.swift in Sources */,
 				5BA7437E2EC4EC4300C977DA /* SessionUI.swift in Sources */,

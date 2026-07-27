@@ -43,26 +43,30 @@ public struct ClientControllerAddrPair: Sendable {
 
 // MARK: - InputSession
 
-public final class InputSession: SessionProtocol {
+public final class InputSession: SessionProtocol, Sendable {
   // MARK: Lifecycle
 
   public init(
-    controller inputController: IMKInputSessionController?,
-    clientAddr inputClientAddr: @escaping (() -> ClientControllerAddrPair?)
+    controller inputController: IMKInputSessionController?
   ) {
-    self.theClientAddr = inputClientAddr
-    self.inputControllerAssignedAddr = theClientAddr()?.unwrapped?.controllerAddr
-    if let controllerAddr = inputControllerAssignedAddr {
+    if let inputController {
+      let controllerAddr = UInt(bitPattern: Unmanaged.passUnretained(inputController).toOpaque())
+      self.inputControllerAssignedAddr = controllerAddr
       Self.registerSessionAddr(self, for: controllerAddr)
     }
-    construct(client: theClient())
+    construct(clientProxy: inputController)
     vCLog("InputSession constructed. ID: \(id.uuidString)")
   }
 
   /// 預配置 session（極性雙緩衝用）：不繫結任何 controller/client，僅初始化內部引擎。
   /// 後續經由 `reassign(to:clientAddrProvider:)` 與具體 controller 綁定。
-  public init(preallocated: ()) {
-    self.theClientAddr = { nil }
+  public init(preallocated: (), manuallyAssignedClientProxy: IMKClientProxyProtocol? = nil) {
+    if let manuallyAssignedClientProxy {
+      let controllerAddr = UInt(bitPattern: Unmanaged.passUnretained(manuallyAssignedClientProxy).toOpaque())
+      self.inputControllerAssignedAddr = controllerAddr
+      Self.registerSessionAddr(self, for: controllerAddr)
+      construct(clientProxy: manuallyAssignedClientProxy)
+    }
     initInputHandler()
     synchronizer4LMPrefs?()
     self.inputMode = .init(rawValue: prefs.mostRecentInputMode) ?? .imeModeNULL
@@ -104,7 +108,7 @@ public final class InputSession: SessionProtocol {
 
   public let id: UUID = .init()
 
-  public var clientObjectIdentifier: ObjectIdentifier?
+  public var clientProxyObjectIdentifier: ObjectIdentifier?
 
   public var buzzer: (() -> ())? = { mainSync { IMEApp.buzz() } }
 
@@ -142,8 +146,6 @@ public final class InputSession: SessionProtocol {
 
   public var isVerticalTyping: Bool = false
 
-  public var theClientAddr: () -> ClientControllerAddrPair?
-
   /// 用來標記當前副本是否已處於活動狀態。
   public var isActivated: Bool = false
 
@@ -152,6 +154,19 @@ public final class InputSession: SessionProtocol {
 
   /// IMKInputController 副本（記憶體位址）。
   public nonisolated(unsafe) var inputControllerAssignedAddr: UInt?
+
+  /// 用以透過 ObjC proxy 安全存取 IMKTextInput（避免 Swift ARC 干擾 IMKTextInput Client 物件）。
+  /// 生產環境：從 `inputControllerAssignedAddr` 解析 IMKInputSessionController；
+  /// 測試環境：從 `manuallyAssignedClientProxy` 解析 FakeClient。
+  public var clientProxy: IMKClientProxyProtocol? {
+    guard let addr = inputControllerAssignedAddr,
+          let opaque = UnsafeRawPointer(bitPattern: addr)
+    else { return nil }
+    if !UserDefaults.pendingUnitTests {
+      guard IMKControllerLifetimeTracker.shared().isAddressAlive(addr) else { return nil }
+    }
+    return Unmanaged<any IMKClientProxyProtocol>.fromOpaque(opaque).takeUnretainedValue()
+  }
 
   public var inputController: IMKInputSessionController? {
     guard let addr = inputControllerAssignedAddr,
@@ -206,14 +221,6 @@ public final class InputSession: SessionProtocol {
         synchronizer4LMPrefs?()
       }
     }
-  }
-
-  public func theClient() -> ClientObj? {
-    guard let addrPair = theClientAddr()?.unwrapped else { return nil }
-    if let opaque = UnsafeRawPointer(bitPattern: addrPair.clientAddr) {
-      return Unmanaged<ClientObj>.fromOpaque(opaque).takeUnretainedValue()
-    }
-    return nil
   }
 
   public func initInputHandler() {
@@ -282,6 +289,7 @@ public final class InputSession: SessionProtocol {
       map[ctlKey] = nil
       let session = Unmanaged<InputSession>.fromOpaque(opaque).takeUnretainedValue()
       // 僅在 session 仍屬於該 controller 時才清空 inputControllerAssignedAddr。
+      // reassign 後 session 已歸新 controller 所有，舊 controller 的 dealloc 不應干擾。
       if session.inputControllerAssignedAddr == ctlKey {
         session.inputControllerAssignedAddr = nil
       }
@@ -302,7 +310,6 @@ public final class InputSession: SessionProtocol {
     let oldAddr = inputControllerAssignedAddr
     let newAddr = UInt(bitPattern: Unmanaged.passUnretained(controller).toOpaque())
     inputControllerAssignedAddr = newAddr
-    theClientAddr = clientAddrProvider
     if let oldAddr {
       Self.sessionAddrByControllerAddr.withLock { $0[oldAddr] = nil }
     }
@@ -325,23 +332,7 @@ public final class InputSession: SessionProtocol {
 extension InputSession {
   // MARK: - IMKStateSetting surface
 
-  /// 啟用輸入法時，會觸發該函式。
-  /// - Parameter sender: 呼叫了該函式的客體。
-  public func activateServer(_ sender: any IMKTextInput) {
-    performServerActivation(client: sender as? ClientObj)
-  }
-
-  /// 停用輸入法時，會觸發該函式。
-  /// - Parameter sender: 呼叫了該函式的客體（無須使用）。
-  public func deactivateServer(_ sender: any IMKTextInput) {
-    performServerDeactivation()
-  }
-
-  public func value(forTag tag: Int, client sender: any IMKTextInput) -> Any? {
-    inputController?.value(forTag: tag, client: sender)
-  }
-
-  public func setValue(_ value: Any?, forTag tag: Int, client sender: any IMKTextInput) {
+  public func setValue(_ value: Any?, forTag tag: Int) {
     if isCurrentSession {
       hidePalettes()
     }
@@ -353,10 +344,6 @@ extension InputSession {
     }
   }
 
-  public func modes(_ sender: any IMKTextInput) -> [AnyHashable: Any]? {
-    inputController?.modes(sender)
-  }
-
   /// 該函式的回饋結果決定了輸入法會攔截且捕捉哪些類型的輸入裝置操作事件。
   ///
   /// 一個客體應用會與輸入法共同確認某個輸入裝置操作事件是否可以觸發輸入法內的某個方法。預設情況下，
@@ -366,13 +353,12 @@ extension InputSession {
   /// 「`commitComposition(_ message)`」遞交給客體。
   /// - Parameter sender: 呼叫了該函式的客體（無須使用）。
   /// - Returns: 返回一個 uint，其中承載了與系統 NSEvent 操作事件有關的掩碼集合（詳見 NSEvent.h）。
-  public func recognizedEvents(_ sender: any IMKTextInput) -> UInt {
+  public func recognizedEvents() -> UInt {
     let events: NSEvent.EventTypeMask = [.keyDown, .flagsChanged, .keyUp]
     return UInt(events.rawValue)
   }
 
-  public func showPreferences(_ sender: (any IMKTextInput)?) {
-    _ = sender // 防止格式整理工具毀掉與此對應的參數。
+  public func showPreferences() {
     resetInputHandler()
     clearInlineDisplay()
     CtlSettingsCocoa.show()
@@ -423,10 +409,6 @@ extension InputSession {
 
   public func server() -> IMKServer { inputController!.server() }
 
-  public func client() -> (any IMKTextInput)? {
-    inputController?.client() ?? theClient()
-  }
-
   /// 輸入法要被換掉或關掉的時候，要做的事情。
   /// 不過好像因為 IMK 的 Bug 而並不會被執行。
   public func inputControllerWillClose() {
@@ -434,61 +416,10 @@ extension InputSession {
     resetInputHandler()
   }
 
-  public func annotationSelected(
-    _ annotationString: NSAttributedString?,
-    forCandidate candidateString: NSAttributedString?
-  ) { inputController?.annotationSelected(annotationString, forCandidate: candidateString) }
-
-  public func candidateSelectionChanged(_ candidateString: NSAttributedString?) {
-    inputController?.candidateSelectionChanged(candidateString)
-  }
-
-  public func candidateSelected(_ candidateString: NSAttributedString?) {
-    inputController?.candidateSelected(candidateString)
-  }
-
-  // MARK: - IMKMouseHandling surface
-
-  public func mouseDown(
-    onCharacterIndex index: UInt, coordinate point: NSPoint,
-    withModifier flags: UInt,
-    continueTracking keepTracking: UnsafeMutablePointer<ObjCBool>,
-    client sender: any IMKTextInput
-  )
-    -> Bool { false }
-
-  public func mouseUp(
-    onCharacterIndex index: UInt, coordinate point: NSPoint,
-    withModifier flags: UInt, client sender: any IMKTextInput
-  )
-    -> Bool { false }
-
-  public func mouseMoved(
-    onCharacterIndex index: UInt, coordinate point: NSPoint,
-    withModifier flags: UInt, client sender: any IMKTextInput
-  )
-    -> Bool { false }
-
-  // MARK: - IMKServerInput surface
-
-  public func inputText(
-    _ string: String, key keyCode: Int,
-    modifiers flags: UInt, client sender: any IMKTextInput
-  )
-    -> Bool { false }
-
-  public func inputText(_ string: String, client sender: any IMKTextInput) -> Bool { false }
-
-  public func handle(_ event: NSEvent?, client sender: any IMKTextInput) -> Bool {
-    handleNSEvent(event, client: sender)
-  }
-
-  public func didCommand(by aSelector: Selector, client sender: any IMKTextInput) -> Bool { false }
-
   /// 指定輸入法要遞交出去的內容（個別 IMKInputClient 會呼叫這個函式）。
   /// - Parameter sender: 呼叫了該函式的客體（無須使用）。
   /// - Returns: 字串內容，或者 nil。
-  public func composedString(_ sender: any IMKTextInput) -> Any? {
+  public func composedString() -> Any? {
     guard let inputHandler else { return "" }
     var textToCommit = ""
     // 過濾掉尚未完成拼寫的注音。
@@ -502,16 +433,12 @@ extension InputSession {
     return textToCommit
   }
 
-  public func originalString(_ sender: any IMKTextInput) -> NSAttributedString? { nil }
-
   /// 有時會出現某些 App 攔截輸入法的 Ctrl+Enter / Shift+Enter 熱鍵的情況。
   /// 也就是說 handle(event:) 完全抓不到這個 Event。
   /// 這時需要在 commitComposition 這一關做一些收尾處理。
   /// - Parameter sender: 呼叫了該函式的客體（無須使用）。
-  public func commitComposition(_ sender: any IMKTextInput) {
+  public func commitComposition() {
     resetInputHandler()
     clearInlineDisplay()
   }
-
-  public func candidates(_ sender: any IMKTextInput) -> [Any]? { nil }
 }
