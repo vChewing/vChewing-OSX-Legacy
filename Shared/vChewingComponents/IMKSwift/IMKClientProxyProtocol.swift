@@ -10,7 +10,6 @@ extension IMKInputSessionController: IMKClientProxyProtocol {}
 
 @objc
 public protocol IMKClientProxyProtocol: AnyObject {
-  func clientAddress() -> UInt
   func hasClient() -> Bool
   func clientTextInsertion(with: String, replacementRange: NSRange)
   func clientMarkedTextSetup(
