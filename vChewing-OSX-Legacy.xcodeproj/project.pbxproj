@@ -113,6 +113,7 @@
 		5B9939EB2B8B08F100979BBC /* BrailleSputnik.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9939E92B8B085100979BBC /* BrailleSputnik.swift */; };
 		5B9939ED2B8B44B000979BBC /* InputHandler_MiscCommissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9939EC2B8B44B000979BBC /* InputHandler_MiscCommissions.swift */; };
 		5BA379B72B8278DA00D82E16 /* LMInstantiator_POMRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA379B62B8278DA00D82E16 /* LMInstantiator_POMRepresentable.swift */; };
+		5BA4491C3017243700BB3A7C /* IMKClientProxyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA4491B3017243700BB3A7C /* IMKClientProxyProtocol.swift */; };
 		5BA631862B13617800974241 /* sqlite3.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA631622B135E9A00974241 /* sqlite3.m */; };
 		5BA7437E2EC4EC4300C977DA /* SessionUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA7437D2EC4EC4300C977DA /* SessionUI.swift */; };
 		5BACBCF9295094CB0078CAB3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5BACBCF7295094CB0078CAB3 /* InfoPlist.strings */; };
@@ -133,7 +134,7 @@
 		5BCA232D2EF6B77B00A8ADD0 /* CpLkHitChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA232C2EF6B77B00A8ADD0 /* CpLkHitChecker.swift */; };
 		5BCA4FAD2E9659F700441688 /* SessionCoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA4FAC2E9659F700441688 /* SessionCoreProtocol.swift */; };
 		5BCC80CE2B7E6511005D689C /* KimoDataReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCC80CD2B7E6511005D689C /* KimoDataReader.swift */; };
-		5BCDA50D2D50C2D200571961 /* IMKInputControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCDA50C2D50C2D200571961 /* IMKInputControllerProtocol.swift */; };
+		5BCDA50D2D50C2D200571961 /* IMKInputSessionControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCDA50C2D50C2D200571961 /* IMKInputSessionControllerProtocol.swift */; };
 		5BCDA50F2D50C3DC00571961 /* InputHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCDA50E2D50C3DC00571961 /* InputHandler.swift */; };
 		5BCDA5162D50C45500571961 /* InputSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCDA5102D50C45500571961 /* InputSession.swift */; };
 		5BCDA5172D50C45500571961 /* InputSession_Delegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCDA5112D50C45500571961 /* InputSession_Delegates.swift */; };
@@ -368,6 +369,7 @@
 		5B9939E92B8B085100979BBC /* BrailleSputnik.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrailleSputnik.swift; sourceTree = "<group>"; };
 		5B9939EC2B8B44B000979BBC /* InputHandler_MiscCommissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputHandler_MiscCommissions.swift; sourceTree = "<group>"; };
 		5BA379B62B8278DA00D82E16 /* LMInstantiator_POMRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMInstantiator_POMRepresentable.swift; sourceTree = "<group>"; };
+		5BA4491B3017243700BB3A7C /* IMKClientProxyProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMKClientProxyProtocol.swift; sourceTree = "<group>"; };
 		5BA631622B135E9A00974241 /* sqlite3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = sqlite3.m; sourceTree = "<group>"; };
 		5BA631642B135E9A00974241 /* sqlite3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sqlite3.h; sourceTree = "<group>"; };
 		5BA7437D2EC4EC4300C977DA /* SessionUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionUI.swift; sourceTree = "<group>"; };
@@ -392,7 +394,7 @@
 		5BCA232C2EF6B77B00A8ADD0 /* CpLkHitChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CpLkHitChecker.swift; sourceTree = "<group>"; };
 		5BCA4FAC2E9659F700441688 /* SessionCoreProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionCoreProtocol.swift; sourceTree = "<group>"; };
 		5BCC80CD2B7E6511005D689C /* KimoDataReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KimoDataReader.swift; sourceTree = "<group>"; };
-		5BCDA50C2D50C2D200571961 /* IMKInputControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMKInputControllerProtocol.swift; sourceTree = "<group>"; };
+		5BCDA50C2D50C2D200571961 /* IMKInputSessionControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMKInputSessionControllerProtocol.swift; sourceTree = "<group>"; };
 		5BCDA50E2D50C3DC00571961 /* InputHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputHandler.swift; sourceTree = "<group>"; };
 		5BCDA5102D50C45500571961 /* InputSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputSession.swift; sourceTree = "<group>"; };
 		5BCDA5112D50C45500571961 /* InputSession_Delegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputSession_Delegates.swift; sourceTree = "<group>"; };
@@ -624,8 +626,10 @@
 		5B602B4D2F599A95003F2FCB /* IMKSwift */ = {
 			isa = PBXGroup;
 			children = (
+				5BA4491B3017243700BB3A7C /* IMKClientProxyProtocol.swift */,
 				5BD56016300DD5C3005136EA /* IMKControllerLifetimeTracker.h */,
 				5BD56014300DD5BC005136EA /* IMKControllerLifetimeTracker.m */,
+				5BCDA50C2D50C2D200571961 /* IMKInputSessionControllerProtocol.swift */,
 				5B602B4E2F599AA1003F2FCB /* IMKSwift.h */,
 				5B602B4F2F599AA1003F2FCB /* IMKSwift.m */,
 			);
@@ -858,7 +862,6 @@
 				5B81BD0F2B7297A70092819A /* AppKitImpl_NSView.swift */,
 				5BE5A4FF294E092900EFA49C /* AppKitImpl_NSWindowController.swift */,
 				5BE5A4F4294E059600EFA49C /* IMKHelper.swift */,
-				5BCDA50C2D50C2D200571961 /* IMKInputControllerProtocol.swift */,
 				5B0422062D4F7F2600DFAA15 /* IMKTextInputImpl.swift */,
 				5B303E7D2A979F6F002CF4E6 /* IMKUtilsImpl.swift */,
 				5B572A7929FB76B900ED5066 /* LatinKeyboardMappings.swift */,
@@ -1390,7 +1393,7 @@
 				5B572A7A29FB76B900ED5066 /* LatinKeyboardMappings.swift in Sources */,
 				5BE5A566294E111E00EFA49C /* PrefMgr_Utilities.swift in Sources */,
 				5BE5A52A294E0C2B00EFA49C /* lmAssociates.swift in Sources */,
-				5BCDA50D2D50C2D200571961 /* IMKInputControllerProtocol.swift in Sources */,
+				5BCDA50D2D50C2D200571961 /* IMKInputSessionControllerProtocol.swift in Sources */,
 				5BB32F0529A61AFB00B05D7B /* CtlCandidateTDK4AppKit.swift in Sources */,
 				5B0A10000000000000000001 /* CtlCandidateGSI4AppKit.swift in Sources */,
 				5B751DD9294EE57D0031CF70 /* InputHandler_HandleComposition.swift in Sources */,
@@ -1448,6 +1451,7 @@
 				5BE5A540294E0CEF00EFA49C /* IMEStateProtocolAndData.swift in Sources */,
 				5BE5A53F294E0CEF00EFA49C /* CandidateNode.swift in Sources */,
 				5B55ACAF2B5A255F009E2F54 /* NSEventImpl_Shared.swift in Sources */,
+				5BA4491C3017243700BB3A7C /* IMKClientProxyProtocol.swift in Sources */,
 				5BF5BAE1294DFFC9006011AD /* AppDelegate.swift in Sources */,
 				5B47F73F2F4AEBE000774728 /* OIDR_Shared.swift in Sources */,
 				5B3B0ED22B98170E000B2A25 /* SwiftFoundationImpl.swift in Sources */,
