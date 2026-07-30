@@ -308,6 +308,9 @@ extension IMEMenuSputnik {
   var silentMode: Bool { core?.clientBundleIdentifier == "com.apple.SecurityAgent" }
 
   var currentRAMUsageDescription: String? {
+    // 關閉 malloc zone 的空閒頁面，讓選單顯示的數值儘可能真實。
+    // `memoryFootprintAnonymous` 內部使用 `task_vm_info.internal`，
+    // 只計入匿名私有頁面。10.9–10.10 自動退還 phys_footprint。
     NSApplication.purgeMallocZones()
     guard let currentMemorySizeInBytes = NSApplication.memoryFootprintAnonymous else { return nil }
     let currentMemorySize: Double = (Double(currentMemorySizeInBytes) / 1_024 / 1_024).rounded(toPlaces: 1)

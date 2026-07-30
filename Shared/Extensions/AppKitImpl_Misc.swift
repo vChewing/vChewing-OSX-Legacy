@@ -411,15 +411,16 @@
 
   // Ref: https://developer.apple.com/forums/thread/105088?answerId=357415022#357415022
   extension NSApplication {
-    /// The private memory footprint in bytes.
+    /// 該進程的私有匿名記憶體佔用量（bytes）。
     ///
-    /// Computed as ``phys_footprint`` minus graphics / neural engine /
-    /// purgeable ledger overhead.  When Liquid Glass compositor surfaces
-    /// are active on Apple Silicon they inflate ``phys_footprint`` via
-    /// ``ledger_tag_graphics_footprint``; subtracting them keeps the
-    /// measurement honest for leak self-diagnosis.
+    /// macOS 10.11 起優先使用 `task_vm_info.internal`（只計匿名私有頁面：
+    /// malloc zone、stack、VM_ALLOCATE），語義比手動扣除 ledger tags 更清晰、
+    /// 不依賴 ledger category 的枚舉完整性。10.9–10.10 則退還為 `phys_footprint`
+    /// 扣除 ledger tags。
     nonisolated public static var memoryFootprintAnonymous: UInt64? {
       guard let info = Self._vmInfo() else { return nil }
+      if info.internal > 0 { return info.internal }
+      // macOS ≤10.10: `internal` not available, fall back to phys_footprint − ledgers
       var footprint = info.phys_footprint
       if footprint > info.ledger_tag_graphics_footprint {
         footprint -= UInt64(bitPattern: info.ledger_tag_graphics_footprint)
