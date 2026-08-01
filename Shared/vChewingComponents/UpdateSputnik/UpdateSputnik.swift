@@ -38,6 +38,7 @@ public final class UpdateSputnik {
   public let kUpdateCheckDateKeyNext: String = "NextUpdateCheckDate"
   public let kUpdateCheckInterval: TimeInterval = 114_514
   public let kCheckUpdateAutomatically = "CheckUpdateAutomatically"
+  public let kSkippedUpdateVersionBuildKey = "SkippedUpdateVersionBuild"
 
   public func checkForUpdate(forced: Bool = false, url: URL, shouldBypass: @escaping () -> Bool) {
     let shouldBypass = shouldBypass()
@@ -139,6 +140,12 @@ public final class UpdateSputnik {
       return
     }
 
+    // 「略過該版本」：若該遠端建置編號曾被使用者略過，則僅在手動強制檢查時才再次提醒。
+    if !isCurrentCheckForced,
+       UserDefaults.standard.integer(forKey: kSkippedUpdateVersionBuildKey) == intRemoteVersion {
+      return
+    }
+
     var content = String(
       format: "i18n:InfoMessage.NewVersionAvailableDetail:%@%@@%@@%@".i18n,
       strCurrentVersionShortened,
@@ -160,6 +167,7 @@ public final class UpdateSputnik {
     alert.addButton(withTitle: "\(strVisitWebsite) (Gitee)")
     alert.addButton(withTitle: "\(strVisitWebsite) (GitHub)")
     alert.addButton(withTitle: "i18n:Common.NotNow".i18n)
+    alert.addButton(withTitle: "i18n:UpdateNotification.SkipThisVersion".i18n)
 
     guard let siteInfoURLString = plist["\(kUpdateInfoPageURLKey)"] as? String,
           let siteURL = URL(string: siteInfoURLString),
@@ -169,6 +177,10 @@ public final class UpdateSputnik {
       return
     }
 
+    // NSAlert 僅為前三個按鈕提供具名 ModalResponse，第四個按鈕需以 rawValue 推算。
+    let skipThisVersionResponse = NSApplication.ModalResponse(
+      rawValue: NSApplication.ModalResponse.alertFirstButtonReturn.rawValue + 3
+    )
     let result = alert.runModal()
     NSApp.popup()
     switch result {
@@ -180,6 +192,8 @@ public final class UpdateSputnik {
       asyncOnMain {
         NSWorkspace.shared.open(siteURLGitHub)
       }
+    case skipThisVersionResponse:
+      UserDefaults.standard.set(intRemoteVersion, forKey: kSkippedUpdateVersionBuildKey)
     default: break
     }
   }
