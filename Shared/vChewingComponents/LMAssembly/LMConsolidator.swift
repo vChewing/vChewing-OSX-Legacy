@@ -8,6 +8,29 @@
 
 import Foundation
 
+// Apple artificially gated the modern FileHandle API names behind macOS 10.15 / 10.15.4,
+// even though these APIs have no version restriction on Linux/Windows.
+// Use @backDeployed to provide fallbacks on older Darwin via the legacy names.
+#if canImport(Darwin)
+  extension FileHandle {
+    @backDeployed(before: macOS 10.15)
+    public final func close() throws {
+      closeFile()
+    }
+
+    @backDeployed(before: macOS 10.15)
+    @discardableResult
+    public final func seekToEnd() throws -> UInt64 {
+      seekToEndOfFile()
+    }
+
+    @backDeployed(before: macOS 10.15)
+    public final func write(contentsOf data: Data) throws {
+      write(data)
+    }
+  }
+#endif
+
 // MARK: - LMAssembly.LMConsolidator
 
 extension LMAssembly {
@@ -25,7 +48,7 @@ extension LMAssembly {
             guard let fileHandle = FileHandle(forReadingAtPath: path) else {
               throw FileErrors.fileHandleError("")
             }
-            defer { fileHandle.closeFile() }
+            defer { try? fileHandle.close() }
             let lineReader = try LineReader(file: fileHandle)
             for strLine in lineReader { // 不需要 i=0，因為第一遍迴圈就出結果。
               if strLine != kPragmaHeader {
@@ -65,17 +88,17 @@ extension LMAssembly {
           vCLMLog("EOF Fix Failed: File Not Writable at \(path).")
           return false
         }
-        defer { writeFile.closeFile() }
+        defer { try? writeFile.close() }
         /// 注意：Swift 版 LMConsolidator 並未在此安排對 EOF 的去重複工序。
         /// 但這個函式執行完之後往往就會 consolidate() 整理格式，所以不會有差。
         if fileSize >= 1 {
-          writeFile.seek(toFileOffset: fileSize - 1)
+          try? writeFile.seek(toOffset: fileSize - 1)
         }
-        if writeFile.readDataToEndOfFile().first != 0x0A {
+        if (try? writeFile.readToEnd())?.first != 0x0A {
           vCLMLog("EOF Missing Confirmed, Start Fixing.")
           var newData = Data()
           newData.append(0x0A)
-          writeFile.write(newData)
+          try? writeFile.write(contentsOf: newData)
           vCLMLog("EOF Successfully Assured.")
         }
         return true
