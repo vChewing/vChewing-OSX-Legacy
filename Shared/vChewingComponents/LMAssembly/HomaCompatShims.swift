@@ -28,8 +28,9 @@ extension Array where Element == Homa.Gram {
   public mutating func consolidate(filter theFilter: Set<String> = .init()) {
     var inserted: [String: Double] = [:]
     var insertedArray: [Homa.Gram] = []
-    filter { !theFilter.contains($0.current) }.forEach { neta in
-      if inserted.keys.contains(neta.current) { return }
+    for neta in self {
+      if theFilter.contains(neta.current) { continue }
+      if inserted.keys.contains(neta.current) { continue }
       inserted[neta.current] = neta.probability
       insertedArray.append(neta)
     }
