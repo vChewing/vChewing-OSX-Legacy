@@ -13,8 +13,8 @@ import AppKit
 extension TDK4AppKit {
   // MARK: - CandidateCellData
 
-  /// 用來管理選字窗內顯示的候選字的單位。用 class 型別會比較方便一些。
-  final class CandidateCellData4AppKit: Hashable {
+  /// 用來管理選字窗內顯示的候選字的單位。用 struct 型別以取得值語義。
+  struct CandidateCellData4AppKit: Hashable {
     // MARK: Lifecycle
 
     init(
@@ -32,7 +32,7 @@ extension TDK4AppKit {
         height: Self.unifiedTextHeight
       )
       if displayedText.count > 1 {
-        textDimension.width = attributedString().getBoundingDimension().width
+        textDimension.width = makeAttributedString().getBoundingDimension().width
       }
     }
 
@@ -112,8 +112,8 @@ extension TDK4AppKit {
         : Self.plainTextColor.withAlphaComponent(0.5)
     }
 
-    var hardCopy: CandidateCellData4AppKit {
-      let result = CandidateCellData4AppKit(
+    var hardCopy: Self {
+      var result = Self(
         key: selectionKey,
         displayedText: displayedText,
         keyArray: keyArray,
@@ -127,28 +127,14 @@ extension TDK4AppKit {
       result.whichLine = whichLine
       result.index = index
       result.subIndex = subIndex
-      result.invalidateCache()
       return result
     }
 
-    var cleanCopy: CandidateCellData4AppKit {
-      let result = hardCopy
+    var cleanCopy: Self {
+      var result = hardCopy
       result.isHighlighted = false
       result.selectionKey = " "
       return result
-    }
-
-    var attributedStringHeader: NSAttributedString {
-      if let cached = _cachedAttributedStringHeader { return cached }
-      let attrKey: [NSAttributedString.Key: Any] = [
-        .kern: 0,
-        .font: selectionKeyFont(size: fontSizeKey),
-        .paragraphStyle: Self.sharedParagraphStyle,
-        .foregroundColor: fontColorKey,
-      ]
-      let attrStrKey = NSAttributedString(string: selectionKey, attributes: attrKey)
-      _cachedAttributedStringHeader = attrStrKey
-      return attrStrKey
     }
 
     var themeColorCocoa: NSColor {
@@ -160,14 +146,19 @@ extension TDK4AppKit {
       }
     }
 
-    static func == (lhs: CandidateCellData4AppKit, rhs: CandidateCellData4AppKit) -> Bool {
+    static func == (lhs: Self, rhs: Self) -> Bool {
       lhs.selectionKey == rhs.selectionKey && lhs.displayedText == rhs.displayedText
     }
 
-    func invalidateCache() {
-      _cachedAttributedStringHeader = nil
-      _cachedAttributedStringPhrase.removeAll()
-      _cacheInvalidated = true
+    /// 生成「選字鍵」的屬性字串。不帶快取；快取統一由資料池管理。
+    func makeAttributedStringHeader() -> NSAttributedString {
+      let attrKey: [NSAttributedString.Key: Any] = [
+        .kern: 0,
+        .font: selectionKeyFont(size: fontSizeKey),
+        .paragraphStyle: Self.sharedParagraphStyle,
+        .foregroundColor: fontColorKey,
+      ]
+      return NSAttributedString(string: selectionKey, attributes: attrKey)
     }
 
     func hash(into hasher: inout Hasher) {
@@ -194,7 +185,8 @@ extension TDK4AppKit {
       return multiplier * minCellWidth
     }
 
-    func attributedString(
+    /// 生成組合後的屬性字串（選字鍵 + 候選字詞）。不帶快取；快取統一由資料池管理。
+    func makeAttributedString(
       noSpacePadding: Bool = true, withHighlight: Bool = false, isMatrix: Bool = false
     )
       -> NSAttributedString {
@@ -206,13 +198,13 @@ extension TDK4AppKit {
       let result: NSMutableAttributedString = {
         if noSpacePadding {
           let resultNeo = NSMutableAttributedString(string: " ", attributes: attrSpace)
-          resultNeo.insert(attributedStringPhrase(isMatrix: isMatrix), at: 1)
-          resultNeo.insert(attributedStringHeader, at: 0)
+          resultNeo.insert(makeAttributedStringPhrase(isMatrix: isMatrix), at: 1)
+          resultNeo.insert(makeAttributedStringHeader(), at: 0)
           return resultNeo
         }
         let resultNeo = NSMutableAttributedString(string: "   ", attributes: attrSpace)
-        resultNeo.insert(attributedStringPhrase(isMatrix: isMatrix), at: 2)
-        resultNeo.insert(attributedStringHeader, at: 1)
+        resultNeo.insert(makeAttributedStringPhrase(isMatrix: isMatrix), at: 2)
+        resultNeo.insert(makeAttributedStringHeader(), at: 1)
         return resultNeo
       }()
       if withHighlight, isHighlighted {
@@ -224,8 +216,8 @@ extension TDK4AppKit {
       return result
     }
 
-    func attributedStringPhrase(isMatrix: Bool = false) -> NSAttributedString {
-      if let cached = _cachedAttributedStringPhrase[isMatrix] { return cached }
+    /// 生成「候選字詞」的屬性字串。不帶快取；快取統一由資料池管理。
+    func makeAttributedStringPhrase(isMatrix: Bool = false) -> NSAttributedString {
       var attrCandidate: [NSAttributedString.Key: Any] = [
         .kern: 0,
         .font: phraseFont(size: size),
@@ -233,14 +225,12 @@ extension TDK4AppKit {
         .foregroundColor: fontColorCandidate,
       ]
       if #available(macOS 12, *) {
-        attrCandidate[.languageIdentifier] = self.locale as AnyObject
+        attrCandidate[.languageIdentifier] = locale as AnyObject
       }
       let delta: String = (isMatrix && displayedText.count < 2) ? "  　" : ""
-      let attrStrCandidate = NSAttributedString(
+      return NSAttributedString(
         string: displayedText + delta, attributes: attrCandidate
       )
-      _cachedAttributedStringPhrase[isMatrix] = attrStrCandidate
-      return attrStrCandidate
     }
 
     func charDescriptions(shortened: Bool = false) -> [String] {
@@ -256,8 +246,7 @@ extension TDK4AppKit {
       }
     }
 
-    func updateMetrics(pool thePool: CandidatePool4AppKit, origin currentOrigin: CGPoint) {
-      invalidateCache()
+    mutating func updateMetrics(pool thePool: CandidatePool4AppKit, origin currentOrigin: CGPoint) {
       let padding = thePool.padding
       var cellDimension = textDimension
       if let givenWidth = thePool.cellWidth(self).min, displayedText.count <= 2 {
@@ -335,12 +324,6 @@ extension TDK4AppKit {
       let result: CTFont? = CTFontCreateUIFontForLanguage(.emphasizedSystem, size, locale as CFString)
       return result ?? NSFont.systemFont(ofSize: size)
     }
-
-    // MARK: Private
-
-    private var _cachedAttributedStringHeader: NSAttributedString?
-    private var _cachedAttributedStringPhrase: [Bool: NSAttributedString] = [:]
-    private var _cacheInvalidated = true
   }
 } // extension TDK4AppKit
 
