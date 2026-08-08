@@ -375,6 +375,7 @@ extension LMAssembly.LXPerceptor {
     let isSingleCharUnigram = isUnigramKey && keyArrayForCandidate.count == 1
     // 避免在每輪疊代中重複建立候選鍵陣列。
     let effectiveKeyArray = keyArrayForCandidate.isEmpty ? [frontEdgeReading] : keyArrayForCandidate
+    let previousStr: String? = parts.previous?.value
 
     for (candidate, override) in perception.overrides {
       let overrideScore = calculateWeight(
@@ -388,8 +389,6 @@ extension LMAssembly.LXPerceptor {
 
       // 如果分數低於閾值則跳過
       if overrideScore <= threshold { continue }
-
-      let previousStr: String? = parts.previous?.value
 
       if overrideScore > currentHighScore {
         candidates = [
