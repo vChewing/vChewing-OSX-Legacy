@@ -49,8 +49,10 @@ extension LMAssembly {
               throw FileErrors.fileHandleError("")
             }
             defer { try? fileHandle.close() }
-            let lineReader = try LineReader(file: fileHandle)
-            for strLine in lineReader { // 不需要 i=0，因為第一遍迴圈就出結果。
+            let lineIterator = ByteLineIterator(file: fileHandle)
+            // 不需要 i=0，因為只取第一行就出結果。
+            if let firstLine = lineIterator.nextLine() {
+              let strLine = String(decoding: firstLine, as: UTF8.self)
               if strLine != kPragmaHeader {
                 vCLMLog("Header Mismatch, Starting In-Place Consolidation.")
                 return false
