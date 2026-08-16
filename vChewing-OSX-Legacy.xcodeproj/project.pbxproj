@@ -17,6 +17,7 @@
 		50A52DE6989E41AB95B86407 /* Homa_Gram.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08694E6CA3144345863DF5D4 /* Homa_Gram.swift */; };
 		5B09126C2B134927000166DB /* LMInstantiator_TextMapExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B09126B2B134927000166DB /* LMInstantiator_TextMapExtension.swift */; };
 		5B098B682E9B8D510005885E /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B098B672E9B8D260005885E /* libiconv.tbd */; };
+		5BA631912E16A00000974241 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BA631902E16A00000974241 /* libsqlite3.tbd */; };
 		5B0A10000000000000000001 /* CtlCandidateGSI4AppKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0A20000000000000000001 /* CtlCandidateGSI4AppKit.swift */; };
 		5B0A10000000000000000002 /* VwrCandidateGSI4AppKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0A20000000000000000002 /* VwrCandidateGSI4AppKit.swift */; };
 		5B0E4EEF2B67933E00BE3440 /* OSVersionComparer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0E4EEE2B67933E00BE3440 /* OSVersionComparer.swift */; };
@@ -113,7 +114,6 @@
 		5B9939ED2B8B44B000979BBC /* InputHandler_MiscCommissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9939EC2B8B44B000979BBC /* InputHandler_MiscCommissions.swift */; };
 		5BA379B72B8278DA00D82E16 /* LMInstantiator_POMRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA379B62B8278DA00D82E16 /* LMInstantiator_POMRepresentable.swift */; };
 		5BA4491C3017243700BB3A7C /* IMKClientProxyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA4491B3017243700BB3A7C /* IMKClientProxyProtocol.swift */; };
-		5BA631862B13617800974241 /* sqlite3.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA631622B135E9A00974241 /* sqlite3.m */; };
 		5BA7437E2EC4EC4300C977DA /* SessionUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA7437D2EC4EC4300C977DA /* SessionUI.swift */; };
 		5BACBCF9295094CB0078CAB3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5BACBCF7295094CB0078CAB3 /* InfoPlist.strings */; };
 		5BACBCFD295094E90078CAB3 /* IMKHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A4F4294E059600EFA49C /* IMKHelper.swift */; };
@@ -275,6 +275,7 @@
 		55C232A060BD485EABD2B24D /* IMEStateParsed4Darwin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IMEStateParsed4Darwin.swift; sourceTree = "<group>"; };
 		5B09126B2B134927000166DB /* LMInstantiator_TextMapExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMInstantiator_TextMapExtension.swift; sourceTree = "<group>"; };
 		5B098B672E9B8D260005885E /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.0.sdk/usr/lib/libiconv.tbd; sourceTree = DEVELOPER_DIR; };
+		5BA631902E16A00000974241 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.0.sdk/usr/lib/libsqlite3.tbd; sourceTree = DEVELOPER_DIR; };
 		5B0A20000000000000000001 /* CtlCandidateGSI4AppKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CtlCandidateGSI4AppKit.swift; sourceTree = "<group>"; };
 		5B0A20000000000000000002 /* VwrCandidateGSI4AppKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VwrCandidateGSI4AppKit.swift; sourceTree = "<group>"; };
 		5B0E4EEE2B67933E00BE3440 /* OSVersionComparer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSVersionComparer.swift; sourceTree = "<group>"; };
@@ -368,8 +369,6 @@
 		5B9939EC2B8B44B000979BBC /* InputHandler_MiscCommissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputHandler_MiscCommissions.swift; sourceTree = "<group>"; };
 		5BA379B62B8278DA00D82E16 /* LMInstantiator_POMRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMInstantiator_POMRepresentable.swift; sourceTree = "<group>"; };
 		5BA4491B3017243700BB3A7C /* IMKClientProxyProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMKClientProxyProtocol.swift; sourceTree = "<group>"; };
-		5BA631622B135E9A00974241 /* sqlite3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = sqlite3.m; sourceTree = "<group>"; };
-		5BA631642B135E9A00974241 /* sqlite3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sqlite3.h; sourceTree = "<group>"; };
 		5BA7437D2EC4EC4300C977DA /* SessionUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionUI.swift; sourceTree = "<group>"; };
 		5BACBCDC295093A60078CAB3 /* vChewingInstallerLegacy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vChewingInstallerLegacy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BACBCE5295093A80078CAB3 /* Installer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Installer.entitlements; sourceTree = "<group>"; };
@@ -522,6 +521,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B098B682E9B8D510005885E /* libiconv.tbd in Frameworks */,
+				5BA631912E16A00000974241 /* libsqlite3.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -731,19 +731,11 @@
 			path = BrailleSputnik;
 			sourceTree = "<group>";
 		};
-		5BA631612B135E9A00974241 /* sqlite-amalgamation-3440200 */ = {
-			isa = PBXGroup;
-			children = (
-				5BA631622B135E9A00974241 /* sqlite3.m */,
-				5BA631642B135E9A00974241 /* sqlite3.h */,
-			);
-			path = "sqlite-amalgamation-3440200";
-			sourceTree = "<group>";
-		};
 		5BA6316A2B135EF600974241 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				5B098B672E9B8D260005885E /* libiconv.tbd */,
+				5BA631902E16A00000974241 /* libsqlite3.tbd */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -896,7 +888,6 @@
 		5BE5A501294E094E00EFA49C /* 3rdParty */ = {
 			isa = PBXGroup;
 			children = (
-				5BA631612B135E9A00974241 /* sqlite-amalgamation-3440200 */,
 				5BE5A502294E095D00EFA49C /* AlexisBridoux_NSWindowPositioner.swift */,
 				5B35B2832F8D55A70030D79F /* ButKo_BPMFVS_Accessors.swift */,
 				5B4C81802ADABB60008507B1 /* HangarRash_SwiftyCapsLockToggler.swift */,
@@ -1364,7 +1355,6 @@
 				29DBF8A494254C78AFC81409 /* Homa_SwiftImpl.swift in Sources */,
 				43B74771A6E94482B4B2208E /* HomaCompatShims.swift in Sources */,
 				9A5A4E423AB84B6FA6E6CFB3 /* HomaAssemblerCompat.swift in Sources */,
-				5BA631862B13617800974241 /* sqlite3.m in Sources */,
 				5B23DBFE2F5426900032DD9A /* VwrSettingsPaneCocoaAbout.swift in Sources */,
 				5B693A302E9B8AE200BF4B53 /* Tekkon_PinyinTrie.swift in Sources */,
 				5BE5A546294E0D1200EFA49C /* Tekkon_Constants.swift in Sources */,
