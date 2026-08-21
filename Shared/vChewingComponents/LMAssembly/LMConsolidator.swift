@@ -35,6 +35,8 @@ import Foundation
 
 extension LMAssembly {
   public enum LMConsolidator {
+    // MARK: Public
+
     public static let kPragmaHeader =
       "# 𝙵𝙾𝚁𝙼𝙰𝚃 𝚘𝚛𝚐.𝚊𝚝𝚎𝚕𝚒𝚎𝚛𝙸𝚗𝚖𝚞.𝚟𝚌𝚑𝚎𝚠𝚒𝚗𝚐.𝚞𝚜𝚎𝚛𝙻𝚊𝚗𝚐𝚞𝚊𝚐𝚎𝙼𝚘𝚍𝚎𝚕𝙳𝚊𝚝𝚊.𝚏𝚘𝚛𝚖𝚊𝚝𝚝𝚎𝚍"
 
@@ -49,18 +51,19 @@ extension LMAssembly {
               throw FileErrors.fileHandleError("")
             }
             defer { try? fileHandle.close() }
-            let lineIterator = ByteLineIterator(file: fileHandle)
-            // 不需要 i=0，因為只取第一行就出結果。
-            if let firstLine = lineIterator.nextLine() {
-              let strLine = String(decoding: firstLine, as: UTF8.self)
-              if strLine != kPragmaHeader {
-                vCLMLog("Header Mismatch, Starting In-Place Consolidation.")
-                return false
-              } else {
-                vCLMLog("Header Verification Succeeded: \(strLine).")
-                return true
-              }
+            // 純前綴判定：檔頭須與 pragma 的 UTF-8 位元組完全一致，且其後須為斷行或 EOF。
+            guard let head = try fileHandle.read(upToCount: kPragmaHeaderBytes.count),
+                  head.elementsEqual(kPragmaHeaderBytes) else {
+              vCLMLog("Header Mismatch, Starting In-Place Consolidation.")
+              return false
             }
+            let nextByte = try fileHandle.read(upToCount: 1)?.first
+            guard nextByte == nil || nextByte == 0x0A || nextByte == 0x0D else {
+              vCLMLog("Header Mismatch, Starting In-Place Consolidation.")
+              return false
+            }
+            vCLMLog("Header Verification Succeeded: \(kPragmaHeader).")
+            return true
           } catch {
             vCLMLog("Header Verification Failed: File Access Error.")
             return false
@@ -195,5 +198,9 @@ extension LMAssembly {
         return false
       }
     }
+
+    // MARK: Internal
+
+    static let kPragmaHeaderBytes = [UInt8](kPragmaHeader.utf8)
   }
 }
