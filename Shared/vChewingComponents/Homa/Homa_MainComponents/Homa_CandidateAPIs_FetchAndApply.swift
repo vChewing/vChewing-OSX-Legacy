@@ -61,17 +61,19 @@ extension Homa.Assembler {
     }
     // 預先為每個候選字算好排序鍵值，避免 comparator 在每次比較時重新 joined() 出字串
     // （原先每次候選窗開啟都會產生 O(n·log n) 個一次性字串）。
+    // 排序鍵順序：先 segment length（降序）、再 probability（降序）、再 keyArray 字面
+    // （降序）——與 `queryGrams` 的 `sortGram` 語義一致（先權重、後索引鍵字面）。
     let keyed = result.map { candidate in
       (
         segLength: candidate.pair.segLength,
-        joinedKey: candidate.pair.keyArray.joined(separator: "-"),
         weight: candidate.weight,
+        joinedKey: candidate.pair.keyArray.joined(separator: "-"),
         candidate: candidate
       )
     }
     return keyed.sorted {
-      ($0.segLength, $0.joinedKey, $0.weight) > ($1.segLength, $1.joinedKey, $1.weight)
-    }.map { $0.candidate }
+      ($0.segLength, $0.weight, $0.joinedKey) > ($1.segLength, $1.weight, $1.joinedKey)
+    }.map(\.candidate)
   }
 
   /// 使用給定的候選字（詞音配對），將給定位置的節點的候選字詞改為與之一致的候選字詞。
