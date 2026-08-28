@@ -133,6 +133,15 @@ extension LMAssembly {
         lmi.unigramsFor(keyArray: keyArray, partiallyMatch: lmi.config.partialMatchEnabled)
       }
 
+      /// 狂拼整詞簡拼查詢（R2-α）：給定「每位置的 & 連接前綴候選」，回傳整詞候選。
+      ///
+      /// 原廠辭典走「&」連讀有界路徑（逐位置 byte 前綴比對，恆為 partial 語義、與偏好無關）；
+      /// 使用者片語走多位置前綴交集掃描（有界、訪問鍵數與乘積無關）。
+      /// 依分數降冪排序、依詞值去重（保留分數最高者）。
+      public func abbreviatedWordCandidates(keysChopped: [String]) -> [Homa.Gram] {
+        lmi.abbreviatedWordCandidates(keysChopped: keysChopped)
+      }
+
       public func hasGrams(for keyArray: [String]) -> Bool {
         lmi.hasUnigramsForFast(keyArray: keyArray)
       }
@@ -996,9 +1005,58 @@ extension LMAssembly {
       unigramLRUCache.removeAll(keepingCapacity: true)
     }
 
+    /// 狂拼整詞簡拼查詢（R2-α）。
+    ///
+    /// 給定「每位置的 & 連接前綴候選」（如 `["ㄧ&ㄩ","ㄕ&ㄙ","ㄒ","ㄅ"]`），
+    /// 回傳可能的整詞候選。候選分區：置頂整詞猜測（factory 命中詞之首）→ 其餘
+    /// factory「&」命中詞（逐位置 byte 前綴、恆為 partial 語義、與 `partialMatchEnabled`
+    /// 偏好無關）→ user-phrase 命中詞（多位置前綴交集掃描、有界）。各分區依分數降冪、
+    /// 依詞值去重（保留先出現者＝factory 優先）。
+    func abbreviatedWordCandidates(keysChopped: [String]) -> [Homa.Gram] {
+      guard !keysChopped.isEmpty, keysChopped.allSatisfy({ !$0.isEmpty }) else { return [] }
+      var factoryGrams: [Homa.Gram] = []
+      var userGrams: [Homa.Gram] = []
+      let entryType: VanguardTrie.Trie.EntryType = isCHS ? .chs : .cht
+      // 原廠辭典：「&」連讀、逐位置 byte 前綴（恆為 partial 語義）。
+      factoryGrams = factoryChoppedUnigramsFor(
+        keyArray: keysChopped, entryType: entryType, partiallyMatch: true
+      )
+      // 使用者片語：多位置前綴交集掃描（有界、訪問鍵數與乘積無關）。
+      if !config.bypassUserPhrasesData {
+        let prefixCells = keysChopped.map { cell in cell.split(separator: "&").map(String.init) }
+        if prefixCells.allSatisfy({ !$0.isEmpty }) {
+          let factorySingleReadingValueHashes: Set<Int> = factoryGrams.reduce(into: []) {
+            if $1.keyArray.count == 1 { $0.insert($1.hashValue) }
+          }
+          userGrams = lmUserPhrases.unigramsFor(
+            keyPrefixesByPosition: prefixCells,
+            omitNonTemporarySingleCharNonSymbolUnigrams: !config.allowRescoringSingleKanjiCandidates,
+            factorySingleReadingValueHashes: factorySingleReadingValueHashes
+          )
+        }
+      }
+      // 依詞值去重（保留先出現者＝factory 優先）、各分區依分數降冪排序。
+      var seenValues = Set<String>()
+      var result: [Homa.Gram] = []
+      for gram in factoryGrams.sorted(by: { $0.probability > $1.probability }) + userGrams
+        .sorted(by: { $0.probability > $1.probability }) {
+        guard !gram.current.isEmpty else { continue }
+        guard seenValues.insert(gram.current).inserted else { continue }
+        result.append(gram)
+      }
+      return result
+    }
+
     // MARK: Private
 
     nonisolated private static let mtxFactoryTrie: NSMutex<VanguardTrie.TextMapTrie?> = .init(nil)
+
+    /// 笛卡爾積爆炸防禦預算上限。
+    ///
+    /// 當一個查詢的展開組合數量超過此值時，放棄逐組合展開、只保留原廠辭典的
+    /// "&" 連讀查詢路徑，以避免在查詢過程中被笛卡爾積卡死（例如狂拼模式下的
+    /// 不完全拼寫）。此閾值以老舊硬體的下限為基準校準，與 Homa 組字器的防禦閾值一致。
+    nonisolated private static let kCartesianProductBudgetLimit = 10_000
 
     // LRU cache for unigramsFor results
     private var unigramCacheFingerprint: Int = 0
@@ -1009,6 +1067,20 @@ extension LMAssembly {
     // MARK: - 工具函式
 
     private let prefs = PrefMgr.sharedSansDidSetOps
+
+    /// 計算給定 PossibleKey 陣列的笛卡爾積展開總數（飽和計算、超過預算即早停）。
+    private static func cartesianProductBudget(_ keyArray: [Homa.PossibleKey]) -> Int {
+      var product = 1
+      for pk in keyArray {
+        let count = pk.count
+        guard count > 1 else { continue }
+        if product > Self.kCartesianProductBudgetLimit / count {
+          return Self.kCartesianProductBudgetLimit + 1
+        }
+        product *= count
+      }
+      return product
+    }
 
     /// 展開含有替代讀音的 PossibleKey 陣列為個別鍵陣列組合。
     /// 例如 [.multipleKeys(["ㄕ","ㄙ"]), .singleKey("ㄨ")] → [["ㄕ","ㄨ"], ["ㄙ","ㄨ"]]
@@ -1048,8 +1120,11 @@ extension LMAssembly {
       if let cached = unigramLRUCache[cacheKey] {
         return cached
       }
-      // 展開替代讀音陣列（供非原廠辭典查詢使用）
-      let expandedKeyArrays = Self.expandPossibleKeyArrays(keyArray)
+      // 展開替代讀音陣列（供非原廠辭典查詢使用）。
+      // 若笛卡爾積展開總量超過預算，則放棄展開、只保留原廠辭典的 "&" 連讀查詢路徑，
+      // 以免在查詢過程中被笛卡爾積卡死（例如狂拼模式下的不完全拼寫）。
+      let cartesianBudgetExceeded = Self.cartesianProductBudget(keyArray) > Self.kCartesianProductBudgetLimit
+      let expandedKeyArrays = cartesianBudgetExceeded ? [] : Self.expandPossibleKeyArrays(keyArray)
       // 原廠辭典使用 chopped 路徑（"&" 連接，發生在這裡，一次查詢）
       let choppedKeyArray = keyArray.map { $0.allValues.joined(separator: "&") }
 
@@ -1068,7 +1143,8 @@ extension LMAssembly {
           keyArray: choppedKeyArray,
           strategy: .configuredLookup
         )
-        if config.filterNonCNSReadings, !isCHS {
+        // 笛卡爾預算超閾時，展開組合不可用，無法做 CNS 讀音比對，跳過此過濾。
+        if config.filterNonCNSReadings, !isCHS, !cartesianBudgetExceeded {
           if flatKeyArray.count == 1 {
             factoryCoreUnigramsResult = factoryCoreUnigramsResult.map { unigram in
               guard expandedKeyArrays.contains(where: { checkCNSConformation(for: unigram, keyArray: $0) }) else {
@@ -1116,19 +1192,20 @@ extension LMAssembly {
           if $1.keyArray.count == 1 { $0.insert($1.hashValue) }
         }
         var allUserPhraseUnigrams: [Homa.Gram] = []
-        for subKeyArray in expandedKeyArrays {
-          let subKeyChain = subKeyArray.joined(separator: "-")
-          var userPhraseUnigrams: [Homa.Gram]
-          if partiallyMatch {
-            userPhraseUnigrams = Array(
-              lmUserPhrases.unigramsFor(
-                keyPrefix: subKeyChain,
-                omitNonTemporarySingleCharNonSymbolUnigrams: !allowBoostingSingleKanji,
-                factorySingleReadingValueHashes: factorySingleReadingValueHashes
-              ).reversed()
-            )
-          } else {
-            userPhraseUnigrams = Array(
+        if partiallyMatch {
+          // 多位置前綴交集掃描：一次掃描取代「逐 combo 各做一次前綴查詢」。
+          // 訪問鍵數與笛卡爾乘積無關，避免 `ysxb` 類查詢把詞庫查詢展開成天文數字。
+          allUserPhraseUnigrams = Array(
+            lmUserPhrases.unigramsFor(
+              keyPrefixesByPosition: keyArray.map(\.allValues),
+              omitNonTemporarySingleCharNonSymbolUnigrams: !allowBoostingSingleKanji,
+              factorySingleReadingValueHashes: factorySingleReadingValueHashes
+            ).reversed()
+          )
+        } else {
+          for subKeyArray in expandedKeyArrays {
+            let subKeyChain = subKeyArray.joined(separator: "-")
+            allUserPhraseUnigrams += Array(
               lmUserPhrases.unigramsFor(
                 key: subKeyChain,
                 keyArray: subKeyArray,
@@ -1137,17 +1214,16 @@ extension LMAssembly {
               ).reversed()
             )
           }
-          if flatKeyArray.count == 1, let topScore = rawAllUnigrams.lazy.map(\.probability).max() {
-            userPhraseUnigrams = userPhraseUnigrams.map { currentUnigram in
-              guard currentUnigram.keyArray.count == 1 else { return currentUnigram }
-              return Homa.Gram(
-                keyArray: currentUnigram.keyArray,
-                value: currentUnigram.current,
-                score: Swift.min(topScore + 0.000114514, currentUnigram.probability)
-              )
-            }
+        }
+        if flatKeyArray.count == 1, let topScore = rawAllUnigrams.lazy.map(\.probability).max() {
+          allUserPhraseUnigrams = allUserPhraseUnigrams.map { currentUnigram in
+            guard currentUnigram.keyArray.count == 1 else { return currentUnigram }
+            return Homa.Gram(
+              keyArray: currentUnigram.keyArray,
+              value: currentUnigram.current,
+              score: Swift.min(topScore + 0.000114514, currentUnigram.probability)
+            )
           }
-          allUserPhraseUnigrams.append(contentsOf: userPhraseUnigrams)
         }
         rawAllUnigrams = allUserPhraseUnigrams + rawAllUnigrams
       }
