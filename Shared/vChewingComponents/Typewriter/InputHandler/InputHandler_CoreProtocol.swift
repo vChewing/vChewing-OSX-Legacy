@@ -293,6 +293,7 @@ extension InputHandlerProtocol {
         let enforce = attempt % 2 == 0 // 偶數次強制 retokenization
         overrideTaskResult = assembler.overrideCandidate(
           theCandidate, at: actualNodeCursorPosition,
+          overrideType: .withSpecified,
           isExplicitlyOverridden: explicitlyChosen,
           enforceRetokenization: enforce
         ) { perceptionIntel in
@@ -309,7 +310,6 @@ extension InputHandlerProtocol {
         if !overrideTaskResult, attempt == 1, !preConsolidate {
           consolidateCursorContext(with: theCandidate)
         }
-
         if !overrideTaskResult, attempt == 2 {
           let contextualTargets = [
             pomObservationPrimary
@@ -472,7 +472,7 @@ extension InputHandlerProtocol {
   }
 
   /// 要拿給 Homa 使用的特殊游標位址，用於各種與節點判定有關的操作。
-  /// - Remark: 該參數不得用於獲取候選字詞清單資料。相關函式僅接收原始 cursor 資料。
+  /// - Remark: 該參數僅用於節點判定與 POM 查詢，不得直接替代候選字詞清單 API 所需的原始 cursor 資料。
   public var actualNodeCursorPosition: Int {
     // 防止指向虛位；`assembler.length` 表示最前端的虛位（cursor 可達）。
     // `actualNodeCursorPosition` 應回傳對應 `assembler.keys.indices` 的真實索引。
@@ -679,6 +679,7 @@ extension InputHandlerProtocol {
         }
       }
     }
+
     return arrCandidates.map { ($0.keyArray, $0.value) }
   }
 
@@ -787,10 +788,12 @@ extension InputHandlerProtocol {
     /// 如果這個開關沒打開的話，直接放棄執行這個函式。
     if !prefs.fetchSuggestionsFromPerceptionOverrideModel { return arrResult }
     /// 獲取來自漸退記憶模組的建議結果
+    /// 狂拼模式下以容錯查詢（逐段去聲調等值）取回記憶，使聲調桶／無調形代表鍵不致落空。
     let suggestion = currentLM.fetchPOMSuggestion(
       assembledResult: assembler.assembledSentence,
       cursor: actualNodeCursorPosition,
-      timestamp: Date().timeIntervalSince1970
+      timestamp: Date().timeIntervalSince1970,
+      matchMode: isFuriousTypingModeEffective ? .toneInsensitivePrefix : .exact
     )
     // 以組字器實際返回的候選字詞權重來過濾 POM 建議：
     // 若建議的分數比當前候選的最高權重還低，則忽略以避免覆寫。
@@ -927,19 +930,6 @@ extension InputHandlerProtocol {
 }
 
 extension InputHandlerProtocol {
-  /// 鞏固當前組字器游標上下文，防止在當前游標位置固化節點時給作業範圍以外的內容帶來不想要的變化。
-  ///
-  /// 打比方說輸入法原廠詞庫內有「章太炎」一詞，你敲「章太炎」，然後想把「太」改成「泰」以使其變成「章泰炎」。
-  /// **macOS 內建的注音輸入法不會在這個過程對這個詞除了「太」以外的部分有任何變動**，
-  /// 但所有 OV 系輸入法都對此有 Bug：會將這些部分全部重設為各自的讀音下的最高原始權重的漢字。
-  /// 也就是說，選字之後的結果可能會變成「張泰言」。
-  ///
-  /// - Remark: 類似的可以拿來測試的詞有「蔡依林」「周杰倫」。
-  ///
-  /// 測試時請務必也測試「敲長句子、且這種詞在句子中間出現時」的情況。
-  ///
-  /// 唯音輸入法截至 v1.9.3 SP2 版為止都受到上游的這個 Bug 的影響，且在 v1.9.4 版利用該函式修正了這個缺陷。
-  /// 該修正必須搭配至少天權星組字引擎 v2.0.2 版方可生效。算法可能比較囉唆，但至少在常用情形下不會再發生該問題。
   /// Homa 已內建上下文鞏固邏輯；Typewriter 僅負責將當前游標風格轉譯給 Homa。
   func consolidateCursorContext(with theCandidate: Homa.CandidatePair) {
     try? assembler.consolidateCandidateCursorContext(

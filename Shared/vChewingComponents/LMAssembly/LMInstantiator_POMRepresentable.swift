@@ -24,13 +24,15 @@ extension LMAssembly.LMInstantiator {
   public func fetchPOMSuggestion(
     assembledResult: [Homa.GramInPath],
     cursor: Int,
-    timestamp: Double
+    timestamp: Double,
+    matchMode: LMAssembly.POMQueryMode = .exact
   )
     -> LMAssembly.OverrideSuggestion {
     lxPerceptor.fetchSuggestion(
       assembledResult: assembledResult,
       cursor: cursor,
-      timestamp: timestamp
+      timestamp: timestamp,
+      matchMode: matchMode
     )
   }
 
