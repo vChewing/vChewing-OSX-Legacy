@@ -15,8 +15,19 @@
 extension Homa.Gram {
   /// Convenience initialiser matching the old Megrez.Unigram signature.
   @inlinable
-  public init(keyArray: [String] = [], value: String = "", score: Double = 0, id: FIUUID = .init()) {
-    self.init(keyArray: keyArray, current: value, previous: nil, probability: score, backoff: 0, id: id)
+  public init(
+    keyArray: [String] = [],
+    value: String = "",
+    score: Double = 0,
+    id: FIUUID = .init(),
+    previous: String? = nil,
+    anterior: String? = nil
+  ) {
+    self.init(
+      keyArray: keyArray, current: value,
+      previous: previous, anterior: anterior,
+      probability: score, backoff: 0, id: id
+    )
   }
 }
 
@@ -62,7 +73,7 @@ extension Homa.CandidatePair {
 extension Homa.Assembler {
   /// The reading separator, hardcoded to "-". Matches the old `Megrez.Compositor.separator`.
   @inlinable
-  nonisolated public var separator: String { Self.theSeparator }
+  public var separator: String { Self.theSeparator }
 
   /// The reading separator, hardcoded to "-". Matches the old `Megrez.Compositor.separator`.
   @inlinable

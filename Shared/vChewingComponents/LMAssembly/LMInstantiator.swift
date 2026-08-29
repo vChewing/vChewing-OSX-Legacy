@@ -891,7 +891,8 @@ extension LMAssembly {
           Homa.Gram(
             keyArray: pom.headReading.split(separator: "-").map(String.init),
             current: pom.candidate,
-            previous: pom.previous, probability: pom.probability
+            previous: pom.previous, anterior: pom.anterior,
+            probability: pom.probability
           )
         }
         rawAllUnigrams.append(contentsOf: pomGrams)
@@ -1342,7 +1343,8 @@ extension LMAssembly {
           Homa.Gram(
             keyArray: pom.headReading.split(separator: "-").map(String.init),
             current: pom.candidate,
-            previous: pom.previous, probability: pom.probability
+            previous: pom.previous, anterior: pom.anterior,
+            probability: pom.probability
           )
         }
         rawAllUnigrams.append(contentsOf: pomGrams)
