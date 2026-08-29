@@ -55,6 +55,7 @@ public enum UserDef: String, CaseIterable, Identifiable {
   case kCassetteEnabled = "CassetteEnabled"
   case kMixedAlphanumericalEnabled = "MixedAlphanumericalEnabled"
   case kFuriousTypingEnabled = "FuriousTypingEnabled"
+  case kPOMAsNGramSourceEnabled = "POMAsNGramSourceEnabled"
   case kCNS11643Enabled = "CNS11643Enabled"
   case kSymbolInputEnabled = "SymbolInputEnabled"
   case kSuppressFactoryUnigramsOfKanaSyllables = "SuppressFactoryUnigramsOfKanaSyllables"
@@ -287,6 +288,7 @@ public enum UserDef: String, CaseIterable, Identifiable {
   private static func validateAndApply(userDef: Self, value: Any) -> String? {
     switch userDef.dataType {
     case .bool:
+      // JSON 數字 0/1 也可視為 Bool。
       if let v = value as? Bool {
         UserDefaults.current.set(v, forKey: userDef.rawValue)
         return nil
@@ -298,6 +300,7 @@ public enum UserDef: String, CaseIterable, Identifiable {
 
     case .integer:
       guard let v = value as? Int else {
+        // 嘗試從 Double 取整數（JSON 數字皆為 Double）。
         if let d = value as? Double, d == d.rounded() {
           let intVal = Int(d)
           if let reason = validateIntRange(userDef: userDef, value: intVal) { return reason }
@@ -326,6 +329,7 @@ public enum UserDef: String, CaseIterable, Identifiable {
 
     case .arrayOfStrings:
       guard let v = value as? [String] else {
+        // 也接受 [Any]，但需要每個元素都是 String。
         if let arr = value as? [Any] {
           let strings = arr.compactMap { $0 as? String }
           guard strings.count == arr.count else { return "Expected Array of Strings" }
@@ -339,6 +343,7 @@ public enum UserDef: String, CaseIterable, Identifiable {
 
     case .dictionary:
       guard let v = value as? [String: Bool] else {
+        // JSON 解析後可能是 [String: Any]，需要檢查值是否為 Bool。
         if let rawDict = value as? [String: Any] {
           var converted = [String: Bool]()
           for (k, val) in rawDict {
@@ -396,7 +401,7 @@ extension UserDef {
     let validNumeralValueRange = userDef.validNumeralValueRange
     if let validNumeralValueRange, !validNumeralValueRange.contains(value) {
       let rangeDescribed = String(describing: validNumeralValueRange)
-      return "Must be within this range: \(rangeDescribed)."
+      return "Must be any Integer within this closed range: [\(rangeDescribed)]."
     }
     return nil
   }
@@ -407,7 +412,7 @@ extension UserDef {
     if let vNVR, !(Double(vNVR.lowerBound) ... Double(vNVR.upperBound)).contains(value) {
       let rangeDescribed = String(describing: vNVR)
       switch userDef {
-      default: return "Must be within this range: \(rangeDescribed)."
+      default: return "Must be any Double within this closed range: [\(rangeDescribed)]."
       }
     }
     return nil
@@ -472,6 +477,7 @@ extension UserDef {
     case .kCassetteEnabled: return .bool(false)
     case .kMixedAlphanumericalEnabled: return .bool(false)
     case .kFuriousTypingEnabled: return .bool(true)
+    case .kPOMAsNGramSourceEnabled: return .bool(false)
     case .kCNS11643Enabled: return .bool(false)
     case .kSymbolInputEnabled: return .bool(true)
     case .kSuppressFactoryUnigramsOfKanaSyllables: return .bool(false)
@@ -758,6 +764,11 @@ extension UserDef {
     case .kFuriousTypingEnabled: return .init(
         userDef: self, shortTitle: "i18n:UserDef.kFuriousTypingEnabled.shortTitle",
         description: "i18n:UserDef.kFuriousTypingEnabled.description"
+      )
+    case .kPOMAsNGramSourceEnabled: return .init(
+        userDef: self,
+        shortTitle: "i18n:UserDef.kPOMAsNGramSourceEnabled.shortTitle",
+        description: "i18n:UserDef.kPOMAsNGramSourceEnabled.description"
       )
     case .kCNS11643Enabled: return .init(
         userDef: self,
