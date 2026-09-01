@@ -17,7 +17,6 @@
 		50A52DE6989E41AB95B86407 /* Homa_Gram.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08694E6CA3144345863DF5D4 /* Homa_Gram.swift */; };
 		5B09126C2B134927000166DB /* LMInstantiator_TextMapExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B09126B2B134927000166DB /* LMInstantiator_TextMapExtension.swift */; };
 		5B098B682E9B8D510005885E /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B098B672E9B8D260005885E /* libiconv.tbd */; };
-		5BA631912E16A00000974241 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BA631902E16A00000974241 /* libsqlite3.tbd */; };
 		5B0A10000000000000000001 /* CtlCandidateGSI4AppKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0A20000000000000000001 /* CtlCandidateGSI4AppKit.swift */; };
 		5B0A10000000000000000002 /* VwrCandidateGSI4AppKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0A20000000000000000002 /* VwrCandidateGSI4AppKit.swift */; };
 		5B0E4EEF2B67933E00BE3440 /* OSVersionComparer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0E4EEE2B67933E00BE3440 /* OSVersionComparer.swift */; };
@@ -67,9 +66,6 @@
 		5B751DB9294EE27C0031CF70 /* CtlRevLookupWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DB5294EE27C0031CF70 /* CtlRevLookupWindow.swift */; };
 		5B751DBD294EE44F0031CF70 /* UpdateSputnik.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DBC294EE44F0031CF70 /* UpdateSputnik.swift */; };
 		5B751DCE294EE57D0031CF70 /* InputHandler_HandleStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DBF294EE57C0031CF70 /* InputHandler_HandleStates.swift */; };
-		5BAA00022EBEF0FB00AE14E2 /* FuriousTypingSegmentor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA00012EBEF0FB00AE14E2 /* FuriousTypingSegmentor.swift */; };
-		5BAA00042EBEF0FB00AE14E2 /* InputHandler_FuriousResegmentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA00032EBEF0FB00AE14E2 /* InputHandler_FuriousResegmentation.swift */; };
-		5BAA00052EBEF0FB00AE14E2 /* InputHandler_TypingMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA00062EBEF0FB00AE14E2 /* InputHandler_TypingMode.swift */; };
 		5B751DCF294EE57D0031CF70 /* SessionControllerSputnik.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DC0294EE57C0031CF70 /* SessionControllerSputnik.swift */; };
 		5B751DD0294EE57D0031CF70 /* InputHandler_CoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DC1294EE57C0031CF70 /* InputHandler_CoreProtocol.swift */; };
 		5B751DD3294EE57D0031CF70 /* InputHandler_TriageInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DC4294EE57C0031CF70 /* InputHandler_TriageInput.swift */; };
@@ -115,9 +111,15 @@
 		5B9939EA2B8B08EF00979BBC /* BrailleEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9939E82B8B085100979BBC /* BrailleEnums.swift */; };
 		5B9939EB2B8B08F100979BBC /* BrailleSputnik.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9939E92B8B085100979BBC /* BrailleSputnik.swift */; };
 		5B9939ED2B8B44B000979BBC /* InputHandler_MiscCommissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9939EC2B8B44B000979BBC /* InputHandler_MiscCommissions.swift */; };
+		5BA1C302819487 /* SettingsUIHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA1C301026A7E /* SettingsUIHost.swift */; };
+		5BA1C3041E145E /* SettingsUIHostWiring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA1C303C35BE2 /* SettingsUIHostWiring.swift */; };
 		5BA379B72B8278DA00D82E16 /* LMInstantiator_POMRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA379B62B8278DA00D82E16 /* LMInstantiator_POMRepresentable.swift */; };
 		5BA4491C3017243700BB3A7C /* IMKClientProxyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA4491B3017243700BB3A7C /* IMKClientProxyProtocol.swift */; };
+		5BA631912E16A00000974241 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BA631902E16A00000974241 /* libsqlite3.tbd */; };
 		5BA7437E2EC4EC4300C977DA /* SessionUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA7437D2EC4EC4300C977DA /* SessionUI.swift */; };
+		5BAA00022EBEF0FB00AE14E2 /* FuriousTypingSegmentor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA00012EBEF0FB00AE14E2 /* FuriousTypingSegmentor.swift */; };
+		5BAA00042EBEF0FB00AE14E2 /* InputHandler_FuriousResegmentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA00032EBEF0FB00AE14E2 /* InputHandler_FuriousResegmentation.swift */; };
+		5BAA00052EBEF0FB00AE14E2 /* InputHandler_TypingMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA00062EBEF0FB00AE14E2 /* InputHandler_TypingMode.swift */; };
 		5BACBCF9295094CB0078CAB3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5BACBCF7295094CB0078CAB3 /* InfoPlist.strings */; };
 		5BACBCFD295094E90078CAB3 /* IMKHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A4F4294E059600EFA49C /* IMKHelper.swift */; };
 		5BACBCFE295094FA0078CAB3 /* TISInputSourceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A4FB294E087B00EFA49C /* TISInputSourceExtension.swift */; };
@@ -159,7 +161,6 @@
 		5BE5A503294E095D00EFA49C /* AlexisBridoux_NSWindowPositioner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A502294E095D00EFA49C /* AlexisBridoux_NSWindowPositioner.swift */; };
 		5BE5A505294E097C00EFA49C /* vChewing_FolderMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A504294E097C00EFA49C /* vChewing_FolderMonitor.swift */; };
 		5BE5A522294E0C2500EFA49C /* NotifierUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A521294E0C0B00EFA49C /* NotifierUI.swift */; };
-		9D4E5C0F2A1B3C4D5E607182 /* NotifierViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4E5C0F2A1B3C4D5E607183 /* NotifierViewModel.swift */; };
 		5BE5A523294E0C2900EFA49C /* LMConsolidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A51B294E0BEE00EFA49C /* LMConsolidator.swift */; };
 		5BE5A524294E0C2900EFA49C /* vChewingLMAssembly_Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A51F294E0BEE00EFA49C /* vChewingLMAssembly_Common.swift */; };
 		5BE5A525294E0C2900EFA49C /* LMInstantiator_CassetteExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A51C294E0BEE00EFA49C /* LMInstantiator_CassetteExtension.swift */; };
@@ -234,6 +235,7 @@
 		81746FCD432D44EF908A4DA3 /* Homa_TypeAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C2F2EE93334E75A2BB3ED2 /* Homa_TypeAliases.swift */; };
 		9A5A4E423AB84B6FA6E6CFB3 /* HomaAssemblerCompat.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF6126938424573BE9ACFC0 /* HomaAssemblerCompat.swift */; };
 		9BE072A24CE3459E8CA8FE41 /* Homa_CandidatePair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA89F3DC79B4AF7A84BEA67 /* Homa_CandidatePair.swift */; };
+		9D4E5C0F2A1B3C4D5E607182 /* NotifierViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4E5C0F2A1B3C4D5E607183 /* NotifierViewModel.swift */; };
 		A508A4BEAD4048A19097D8D9 /* MenuActionTrampoline.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DD8451ECAC44E63B6DE292A /* MenuActionTrampoline.m */; };
 		A7BED23A2FFA4EDBB3972B1B6C2AEA9A /* Homa_PossibleKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116F2930785644468C967F664FDAEB28 /* Homa_PossibleKey.swift */; };
 		B8633E59D9444C8DA96249A5 /* Homa_Assembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CEDB4618F12438D8F853D10 /* Homa_Assembler.swift */; };
@@ -278,7 +280,6 @@
 		55C232A060BD485EABD2B24D /* IMEStateParsed4Darwin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IMEStateParsed4Darwin.swift; sourceTree = "<group>"; };
 		5B09126B2B134927000166DB /* LMInstantiator_TextMapExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMInstantiator_TextMapExtension.swift; sourceTree = "<group>"; };
 		5B098B672E9B8D260005885E /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.0.sdk/usr/lib/libiconv.tbd; sourceTree = DEVELOPER_DIR; };
-		5BA631902E16A00000974241 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.0.sdk/usr/lib/libsqlite3.tbd; sourceTree = DEVELOPER_DIR; };
 		5B0A20000000000000000001 /* CtlCandidateGSI4AppKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CtlCandidateGSI4AppKit.swift; sourceTree = "<group>"; };
 		5B0A20000000000000000002 /* VwrCandidateGSI4AppKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VwrCandidateGSI4AppKit.swift; sourceTree = "<group>"; };
 		5B0E4EEE2B67933E00BE3440 /* OSVersionComparer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSVersionComparer.swift; sourceTree = "<group>"; };
@@ -346,9 +347,6 @@
 		5B751DC8294EE57D0031CF70 /* IMEMenuSputnik.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IMEMenuSputnik.swift; sourceTree = "<group>"; };
 		5B751DCA294EE57D0031CF70 /* InputHandler_HandleComposition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputHandler_HandleComposition.swift; sourceTree = "<group>"; };
 		5B751DCC294EE57D0031CF70 /* InputHandler_HandleCandidate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputHandler_HandleCandidate.swift; sourceTree = "<group>"; };
-		5BAA00012EBEF0FB00AE14E2 /* FuriousTypingSegmentor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FuriousTypingSegmentor.swift; sourceTree = "<group>"; };
-		5BAA00032EBEF0FB00AE14E2 /* InputHandler_FuriousResegmentation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputHandler_FuriousResegmentation.swift; sourceTree = "<group>"; };
-		5BAA00062EBEF0FB00AE14E2 /* InputHandler_TypingMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputHandler_TypingMode.swift; sourceTree = "<group>"; };
 		5B751DDF294EE7A80031CF70 /* CandidateCellData4AppKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandidateCellData4AppKit.swift; sourceTree = "<group>"; };
 		5B751DE0294EE7A80031CF70 /* CandidatePool4AppKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandidatePool4AppKit.swift; sourceTree = "<group>"; };
 		5B785EEA2B78FC680006413D /* InputHandler_TypingMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputHandler_TypingMethod.swift; sourceTree = "<group>"; };
@@ -373,9 +371,15 @@
 		5B9939E82B8B085100979BBC /* BrailleEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrailleEnums.swift; sourceTree = "<group>"; };
 		5B9939E92B8B085100979BBC /* BrailleSputnik.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrailleSputnik.swift; sourceTree = "<group>"; };
 		5B9939EC2B8B44B000979BBC /* InputHandler_MiscCommissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputHandler_MiscCommissions.swift; sourceTree = "<group>"; };
+		5BA1C301026A7E /* SettingsUIHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsUIHost.swift; sourceTree = "<group>"; };
+		5BA1C303C35BE2 /* SettingsUIHostWiring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsUIHostWiring.swift; sourceTree = "<group>"; };
 		5BA379B62B8278DA00D82E16 /* LMInstantiator_POMRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMInstantiator_POMRepresentable.swift; sourceTree = "<group>"; };
 		5BA4491B3017243700BB3A7C /* IMKClientProxyProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMKClientProxyProtocol.swift; sourceTree = "<group>"; };
+		5BA631902E16A00000974241 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.0.sdk/usr/lib/libsqlite3.tbd; sourceTree = DEVELOPER_DIR; };
 		5BA7437D2EC4EC4300C977DA /* SessionUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionUI.swift; sourceTree = "<group>"; };
+		5BAA00012EBEF0FB00AE14E2 /* FuriousTypingSegmentor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FuriousTypingSegmentor.swift; sourceTree = "<group>"; };
+		5BAA00032EBEF0FB00AE14E2 /* InputHandler_FuriousResegmentation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputHandler_FuriousResegmentation.swift; sourceTree = "<group>"; };
+		5BAA00062EBEF0FB00AE14E2 /* InputHandler_TypingMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputHandler_TypingMode.swift; sourceTree = "<group>"; };
 		5BACBCDC295093A60078CAB3 /* vChewingInstallerLegacy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vChewingInstallerLegacy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BACBCE5295093A80078CAB3 /* Installer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Installer.entitlements; sourceTree = "<group>"; };
 		5BACBCF8295094CB0078CAB3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -438,7 +442,6 @@
 		5BE5A51E294E0BEE00EFA49C /* LMInstantiator_DateTimeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMInstantiator_DateTimeExtension.swift; sourceTree = "<group>"; };
 		5BE5A51F294E0BEE00EFA49C /* vChewingLMAssembly_Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vChewingLMAssembly_Common.swift; sourceTree = "<group>"; };
 		5BE5A521294E0C0B00EFA49C /* NotifierUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifierUI.swift; sourceTree = "<group>"; };
-		9D4E5C0F2A1B3C4D5E607183 /* NotifierViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifierViewModel.swift; sourceTree = "<group>"; };
 		5BE5A531294E0C9F00EFA49C /* PinyinPhonaConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinyinPhonaConverter.swift; sourceTree = "<group>"; };
 		5BE5A534294E0CBA00EFA49C /* PopupCompositionBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupCompositionBuffer.swift; sourceTree = "<group>"; };
 		5BE5A536294E0CEC00EFA49C /* InputSignalProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputSignalProtocol.swift; sourceTree = "<group>"; };
@@ -504,6 +507,7 @@
 		79AD04D1F0004E8FBC7DEB10 /* Homa_PathFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homa_PathFinder.swift; sourceTree = "<group>"; };
 		8DD8451ECAC44E63B6DE292A /* MenuActionTrampoline.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MenuActionTrampoline.m; sourceTree = "<group>"; };
 		91CCBFE00CBE4E4EB6B3119A /* HomaCompatShims.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomaCompatShims.swift; sourceTree = "<group>"; };
+		9D4E5C0F2A1B3C4D5E607183 /* NotifierViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifierViewModel.swift; sourceTree = "<group>"; };
 		A59008A8A7D746779D9CD750 /* Homa_Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homa_Config.swift; sourceTree = "<group>"; };
 		C532D78E31074613AE47BAB3 /* Homa_Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homa_Node.swift; sourceTree = "<group>"; };
 		D620C12F4D4F4ED7B6679542 /* Homa_CandidateAPIs_Revolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homa_CandidateAPIs_Revolver.swift; sourceTree = "<group>"; };
@@ -771,7 +775,10 @@
 			isa = PBXGroup;
 			children = (
 				5B81BD152B729AD60092819A /* SettingsCocoa */,
+				5BE5A56B294E127B00EFA49C /* PhraseEditorDelegate.swift */,
 				5BB1D7F12999025B00EA8D2C /* PrefUITabs.swift */,
+				5BA1C301026A7E /* SettingsUIHost.swift */,
+				5BA1C303C35BE2 /* SettingsUIHostWiring.swift */,
 			);
 			path = SettingsUI;
 			sourceTree = "<group>";
@@ -1010,7 +1017,6 @@
 				5B55ACAC2B5A254F009E2F54 /* KBEvent.swift */,
 				5B55ACAE2B5A255F009E2F54 /* NSEventImpl_Shared.swift */,
 				5B0E4EEE2B67933E00BE3440 /* OSVersionComparer.swift */,
-				5BE5A56B294E127B00EFA49C /* PhraseEditorDelegate.swift */,
 				5BE5A563294E10F300EFA49C /* PrefMgr_Core.swift */,
 				5BE5A565294E111E00EFA49C /* PrefMgr_Utilities.swift */,
 				5BE5A537294E0CEC00EFA49C /* PrefMgrProtocol.swift */,
@@ -1478,6 +1484,8 @@
 				5B60CEA629B8E7D400A1AAC7 /* UserPhraseImpl.swift in Sources */,
 				5B1523B62A74E92D007D2E53 /* Jad_BookmarkManager.swift in Sources */,
 				5BB1D7F22999025B00EA8D2C /* PrefUITabs.swift in Sources */,
+				5BA1C302819487 /* SettingsUIHost.swift in Sources */,
+				5BA1C3041E145E /* SettingsUIHostWiring.swift in Sources */,
 				5B751DE3294EE7A80031CF70 /* CandidateCellData4AppKit.swift in Sources */,
 				5BF5AD8E2EE366FC00121ED1 /* Typewriter_CodePoint.swift in Sources */,
 				5BF5AD8F2EE366FC00121ED1 /* Typewriter_HaninSymbol.swift in Sources */,
