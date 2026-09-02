@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		02DE245ED6584712B4AF3E4E /* IMEStateParsed4Darwin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C232A060BD485EABD2B24D /* IMEStateParsed4Darwin.swift */; };
 		18D039FEBC7A4223A3BD300A /* Homa_Segment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377A7CABB6FC4203B3101DFF /* Homa_Segment.swift */; };
 		1A28692F2E444F20B532B6D0 /* Homa_Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59008A8A7D746779D9CD750 /* Homa_Config.swift */; };
 		29DBF8A494254C78AFC81409 /* Homa_SwiftImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C51CF3E668442AB87CF4C7 /* Homa_SwiftImpl.swift */; };
@@ -69,7 +68,6 @@
 		5B751DCF294EE57D0031CF70 /* SessionControllerSputnik.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DC0294EE57C0031CF70 /* SessionControllerSputnik.swift */; };
 		5B751DD0294EE57D0031CF70 /* InputHandler_CoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DC1294EE57C0031CF70 /* InputHandler_CoreProtocol.swift */; };
 		5B751DD3294EE57D0031CF70 /* InputHandler_TriageInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DC4294EE57C0031CF70 /* InputHandler_TriageInput.swift */; };
-		5B751DD5294EE57D0031CF70 /* IMEState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DC6294EE57D0031CF70 /* IMEState.swift */; };
 		5B751DD7294EE57D0031CF70 /* IMEMenuSputnik.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DC8294EE57D0031CF70 /* IMEMenuSputnik.swift */; };
 		5B751DD9294EE57D0031CF70 /* InputHandler_HandleComposition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DCA294EE57D0031CF70 /* InputHandler_HandleComposition.swift */; };
 		5B751DDB294EE57D0031CF70 /* InputHandler_HandleCandidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DCC294EE57D0031CF70 /* InputHandler_HandleCandidate.swift */; };
@@ -139,13 +137,6 @@
 		5BCA4FAD2E9659F700441688 /* SessionCoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA4FAC2E9659F700441688 /* SessionCoreProtocol.swift */; };
 		5BCC80CE2B7E6511005D689C /* KimoDataReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCC80CD2B7E6511005D689C /* KimoDataReader.swift */; };
 		5BCDA50D2D50C2D200571961 /* IMKInputSessionControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCDA50C2D50C2D200571961 /* IMKInputSessionControllerProtocol.swift */; };
-		5BCDA50F2D50C3DC00571961 /* InputHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCDA50E2D50C3DC00571961 /* InputHandler.swift */; };
-		5BCDA5162D50C45500571961 /* InputSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCDA5102D50C45500571961 /* InputSession.swift */; };
-		5BCDA5172D50C45500571961 /* InputSession_Delegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCDA5112D50C45500571961 /* InputSession_Delegates.swift */; };
-		5BCDA5182D50C45500571961 /* InputSession_HandleEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCDA5132D50C45500571961 /* InputSession_HandleEvent.swift */; };
-		5BCDA5192D50C45500571961 /* InputSession_HandleStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCDA5142D50C45500571961 /* InputSession_HandleStates.swift */; };
-		5BCDA51A2D50C45500571961 /* InputSession_CoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCDA5152D50C45500571961 /* InputSession_CoreProtocol.swift */; };
-		5BCDA51B2D50C45500571961 /* InputSession_HandleDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCDA5122D50C45500571961 /* InputSession_HandleDisplay.swift */; };
 		5BCF4AB829546B5200C7FBD9 /* convdict.stringmap in Resources */ = {isa = PBXBuildFile; fileRef = 5BCF4AB729546B5100C7FBD9 /* convdict.stringmap */; };
 		5BD289E42B7B48AE00D3E41A /* LatinKeyboardMappings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B572A7929FB76B900ED5066 /* LatinKeyboardMappings.swift */; };
 		5BD56015300DD5BC005136EA /* IMKControllerLifetimeTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BD56014300DD5BC005136EA /* IMKControllerLifetimeTracker.m */; };
@@ -242,6 +233,19 @@
 		CB6C806985524F059E307773 /* Homa_Exception.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD3F56DDE1F49B788D9F668 /* Homa_Exception.swift */; };
 		F1A26002294E0C2B00EFA49C /* lmPerceptionPersistor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A26001294E0BE900EFA49C /* lmPerceptionPersistor.swift */; };
 		FB387E75707447C7BAEEC353 /* Homa_PathFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AD04D1F0004E8FBC7DEB10 /* Homa_PathFinder.swift */; };
+		E65AC7D61D27092196D52038 /* SessionHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5788130C01CF1147A4C6859E /* SessionHost.swift */; };
+		8A69EB2EFC06129B35678180 /* SessionClientProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A125A1D23A4A2EE263DF43 /* SessionClientProxy.swift */; };
+		D952CC00B0AFDFFF1DC51644 /* IMEState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2378355A78369B836C838F /* IMEState.swift */; };
+		A925FE0B9B1F273F4CAE8319 /* IMEStateParsed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CD7FEE6D4552A698440F02 /* IMEStateParsed.swift */; };
+		A3F5601ECD37A181A56EE58C /* InputSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D282D78508DA56CE2F0BBD0 /* InputSession.swift */; };
+		B62FA9234208814E648D5C36 /* SessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99807146F3BB8E749C8A203 /* SessionProtocol.swift */; };
+		5A5128D5FC402F81B42295A1 /* InputSession_Delegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65AB55C6DFD08060CAB7644 /* InputSession_Delegates.swift */; };
+		84C0443C961F5D9DF634401E /* InputSession_HandleDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D2C8FA5AC25643FB6CE6CC /* InputSession_HandleDisplay.swift */; };
+		5192CD4CB20F7055954F6C9A /* InputSession_HandleEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6CAEF4965F6332A7C60B79 /* InputSession_HandleEvent.swift */; };
+		B2F0797ECF0FA857EA8BE42A /* InputSession_HandleStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D09A47CB8D289DC8D64577 /* InputSession_HandleStates.swift */; };
+		334BE28E59F7A9B54875B9B4 /* InputHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478B48D9F5212677EEFAAD66 /* InputHandler.swift */; };
+		900DD6ECF42A20DC7E390D41 /* InputSession_DarwinSurface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB586B181E3A3D546633A36 /* InputSession_DarwinSurface.swift */; };
+		03D365D919C3A6E3FEB554A5 /* SessionHostWiring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E10159461514D435B59BCA /* SessionHostWiring.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -277,7 +281,6 @@
 		3BD3F56DDE1F49B788D9F668 /* Homa_Exception.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homa_Exception.swift; sourceTree = "<group>"; };
 		3CEDB4618F12438D8F853D10 /* Homa_Assembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homa_Assembler.swift; sourceTree = "<group>"; };
 		51C2F2EE93334E75A2BB3ED2 /* Homa_TypeAliases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homa_TypeAliases.swift; sourceTree = "<group>"; };
-		55C232A060BD485EABD2B24D /* IMEStateParsed4Darwin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IMEStateParsed4Darwin.swift; sourceTree = "<group>"; };
 		5B09126B2B134927000166DB /* LMInstantiator_TextMapExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMInstantiator_TextMapExtension.swift; sourceTree = "<group>"; };
 		5B098B672E9B8D260005885E /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.0.sdk/usr/lib/libiconv.tbd; sourceTree = DEVELOPER_DIR; };
 		5B0A20000000000000000001 /* CtlCandidateGSI4AppKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CtlCandidateGSI4AppKit.swift; sourceTree = "<group>"; };
@@ -343,7 +346,6 @@
 		5B751DC0294EE57C0031CF70 /* SessionControllerSputnik.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionControllerSputnik.swift; sourceTree = "<group>"; };
 		5B751DC1294EE57C0031CF70 /* InputHandler_CoreProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputHandler_CoreProtocol.swift; sourceTree = "<group>"; };
 		5B751DC4294EE57C0031CF70 /* InputHandler_TriageInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputHandler_TriageInput.swift; sourceTree = "<group>"; };
-		5B751DC6294EE57D0031CF70 /* IMEState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IMEState.swift; sourceTree = "<group>"; };
 		5B751DC8294EE57D0031CF70 /* IMEMenuSputnik.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IMEMenuSputnik.swift; sourceTree = "<group>"; };
 		5B751DCA294EE57D0031CF70 /* InputHandler_HandleComposition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputHandler_HandleComposition.swift; sourceTree = "<group>"; };
 		5B751DCC294EE57D0031CF70 /* InputHandler_HandleCandidate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputHandler_HandleCandidate.swift; sourceTree = "<group>"; };
@@ -402,13 +404,6 @@
 		5BCA4FAC2E9659F700441688 /* SessionCoreProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionCoreProtocol.swift; sourceTree = "<group>"; };
 		5BCC80CD2B7E6511005D689C /* KimoDataReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KimoDataReader.swift; sourceTree = "<group>"; };
 		5BCDA50C2D50C2D200571961 /* IMKInputSessionControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMKInputSessionControllerProtocol.swift; sourceTree = "<group>"; };
-		5BCDA50E2D50C3DC00571961 /* InputHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputHandler.swift; sourceTree = "<group>"; };
-		5BCDA5102D50C45500571961 /* InputSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputSession.swift; sourceTree = "<group>"; };
-		5BCDA5112D50C45500571961 /* InputSession_Delegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputSession_Delegates.swift; sourceTree = "<group>"; };
-		5BCDA5122D50C45500571961 /* InputSession_HandleDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputSession_HandleDisplay.swift; sourceTree = "<group>"; };
-		5BCDA5132D50C45500571961 /* InputSession_HandleEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputSession_HandleEvent.swift; sourceTree = "<group>"; };
-		5BCDA5142D50C45500571961 /* InputSession_HandleStates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputSession_HandleStates.swift; sourceTree = "<group>"; };
-		5BCDA5152D50C45500571961 /* InputSession_CoreProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputSession_CoreProtocol.swift; sourceTree = "<group>"; };
 		5BCF4AB729546B5100C7FBD9 /* convdict.stringmap */ = {isa = PBXFileReference; lastKnownFileType = text; path = convdict.stringmap; sourceTree = "<group>"; };
 		5BD56014300DD5BC005136EA /* IMKControllerLifetimeTracker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMKControllerLifetimeTracker.m; sourceTree = "<group>"; };
 		5BD56016300DD5C3005136EA /* IMKControllerLifetimeTracker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMKControllerLifetimeTracker.h; sourceTree = "<group>"; };
@@ -516,6 +511,19 @@
 		EDF6126938424573BE9ACFC0 /* HomaAssemblerCompat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomaAssemblerCompat.swift; sourceTree = "<group>"; };
 		F1A26001294E0BE900EFA49C /* lmPerceptionPersistor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lmPerceptionPersistor.swift; sourceTree = "<group>"; };
 		F70B82D8889B4398AAEB5FCA /* Homa_GramInPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homa_GramInPath.swift; sourceTree = "<group>"; };
+		5788130C01CF1147A4C6859E /* SessionHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionHost.swift; sourceTree = "<group>"; };
+		39A125A1D23A4A2EE263DF43 /* SessionClientProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionClientProxy.swift; sourceTree = "<group>"; };
+		0F2378355A78369B836C838F /* IMEState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMEState.swift; sourceTree = "<group>"; };
+		04CD7FEE6D4552A698440F02 /* IMEStateParsed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMEStateParsed.swift; sourceTree = "<group>"; };
+		6D282D78508DA56CE2F0BBD0 /* InputSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputSession.swift; sourceTree = "<group>"; };
+		E99807146F3BB8E749C8A203 /* SessionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionProtocol.swift; sourceTree = "<group>"; };
+		D65AB55C6DFD08060CAB7644 /* InputSession_Delegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputSession_Delegates.swift; sourceTree = "<group>"; };
+		33D2C8FA5AC25643FB6CE6CC /* InputSession_HandleDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputSession_HandleDisplay.swift; sourceTree = "<group>"; };
+		8F6CAEF4965F6332A7C60B79 /* InputSession_HandleEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputSession_HandleEvent.swift; sourceTree = "<group>"; };
+		36D09A47CB8D289DC8D64577 /* InputSession_HandleStates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputSession_HandleStates.swift; sourceTree = "<group>"; };
+		478B48D9F5212677EEFAAD66 /* InputHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputHandler.swift; sourceTree = "<group>"; };
+		4BB586B181E3A3D546633A36 /* InputSession_DarwinSurface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputSession_DarwinSurface.swift; sourceTree = "<group>"; };
+		55E10159461514D435B59BCA /* SessionHostWiring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionHostWiring.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -588,6 +596,7 @@
 			children = (
 				5BF5AD852EE3660C00121ED1 /* Typewriter */,
 				5BC783DD2EBEF0FB00AE14E2 /* InputHandler */,
+				FF5C05817CB960B0E3F9DD89 /* Session */,
 				EDF6126938424573BE9ACFC0 /* HomaAssemblerCompat.swift */,
 				5B5319212E9A918700570E96 /* CodePointDecoder.swift */,
 				5BC783DB2EBEF02F00AE14E2 /* RomanNumeralConverter.swift */,
@@ -678,7 +687,6 @@
 		5B7C02062B77AFAA00B7DBAA /* InputHandler */ = {
 			isa = PBXGroup;
 			children = (
-				5BCDA50E2D50C3DC00571961 /* InputHandler.swift */,
 			);
 			path = InputHandler;
 			sourceTree = "<group>";
@@ -699,14 +707,10 @@
 			isa = PBXGroup;
 			children = (
 				5B751DC8294EE57D0031CF70 /* IMEMenuSputnik.swift */,
-				5BCDA5102D50C45500571961 /* InputSession.swift */,
-				5BCDA5152D50C45500571961 /* InputSession_CoreProtocol.swift */,
-				5BCDA5112D50C45500571961 /* InputSession_Delegates.swift */,
-				5BCDA5122D50C45500571961 /* InputSession_HandleDisplay.swift */,
-				5BCDA5132D50C45500571961 /* InputSession_HandleEvent.swift */,
-				5BCDA5142D50C45500571961 /* InputSession_HandleStates.swift */,
 				5B751DC0294EE57C0031CF70 /* SessionControllerSputnik.swift */,
 				5BA7437D2EC4EC4300C977DA /* SessionUI.swift */,
+				4BB586B181E3A3D546633A36 /* InputSession_DarwinSurface.swift */,
+				55E10159461514D435B59BCA /* SessionHostWiring.swift */,
 			);
 			path = SessionController;
 			sourceTree = "<group>";
@@ -796,6 +800,7 @@
 				5BAA00012EBEF0FB00AE14E2 /* FuriousTypingSegmentor.swift */,
 				5BAA00032EBEF0FB00AE14E2 /* InputHandler_FuriousResegmentation.swift */,
 				5BAA00062EBEF0FB00AE14E2 /* InputHandler_TypingMode.swift */,
+				478B48D9F5212677EEFAAD66 /* InputHandler.swift */,
 			);
 			path = InputHandler;
 			sourceTree = "<group>";
@@ -849,8 +854,6 @@
 				5BF5BAE0294DFFC9006011AD /* AppDelegate.swift */,
 				5B1C28E02B8F09DF00968E74 /* CandidateTextService_SelectorImpl.swift */,
 				5BE5A595294E1DFB00EFA49C /* ChineseConverterBridge.swift */,
-				5B751DC6294EE57D0031CF70 /* IMEState.swift */,
-				55C232A060BD485EABD2B24D /* IMEStateParsed4Darwin.swift */,
 				5BE5A4E4294E03C200EFA49C /* main.swift */,
 				5BDA204D2EEABDDC00377085 /* MainSputnik.swift */,
 				5BF1209E2B8C8D7E00C83A24 /* PrefMgr_Singleton.swift */,
@@ -1177,6 +1180,23 @@
 			path = Homa;
 			sourceTree = "<group>";
 		};
+		FF5C05817CB960B0E3F9DD89 /* Session */ = {
+			isa = PBXGroup;
+			children = (
+				5788130C01CF1147A4C6859E /* SessionHost.swift */,
+				39A125A1D23A4A2EE263DF43 /* SessionClientProxy.swift */,
+				0F2378355A78369B836C838F /* IMEState.swift */,
+				04CD7FEE6D4552A698440F02 /* IMEStateParsed.swift */,
+				6D282D78508DA56CE2F0BBD0 /* InputSession.swift */,
+				E99807146F3BB8E749C8A203 /* SessionProtocol.swift */,
+				D65AB55C6DFD08060CAB7644 /* InputSession_Delegates.swift */,
+				33D2C8FA5AC25643FB6CE6CC /* InputSession_HandleDisplay.swift */,
+				8F6CAEF4965F6332A7C60B79 /* InputSession_HandleEvent.swift */,
+				36D09A47CB8D289DC8D64577 /* InputSession_HandleStates.swift */,
+			);
+			path = Session;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1416,7 +1436,6 @@
 				5BF5AD872EE3661700121ED1 /* Typewriter_BPMFFullMatch.swift in Sources */,
 				5BF5AD932EE3671000121ED1 /* Typewriter_MixedAlphanumerical.swift in Sources */,
 				5B6815372B46EF86004A8A1A /* SpeechSputnik.swift in Sources */,
-				5B751DD5294EE57D0031CF70 /* IMEState.swift in Sources */,
 				5BE5A53D294E0CEF00EFA49C /* PrefMgrProtocol.swift in Sources */,
 				5B9939EB2B8B08F100979BBC /* BrailleSputnik.swift in Sources */,
 				5BE5A52D294E0C2B00EFA49C /* lmCoreEX.swift in Sources */,
@@ -1435,12 +1454,19 @@
 				5B1E6C2C2B65694100B977B5 /* LMInstantiator_NumPadExtension.swift in Sources */,
 				5B3A2BCF2EBFAF1700C59A2B /* LMInstantiator_KanjiDescriptorAPI.swift in Sources */,
 				5BCA4FAD2E9659F700441688 /* SessionCoreProtocol.swift in Sources */,
-				5BCDA5162D50C45500571961 /* InputSession.swift in Sources */,
-				5BCDA5172D50C45500571961 /* InputSession_Delegates.swift in Sources */,
-				5BCDA5182D50C45500571961 /* InputSession_HandleEvent.swift in Sources */,
-				5BCDA5192D50C45500571961 /* InputSession_HandleStates.swift in Sources */,
-				5BCDA51A2D50C45500571961 /* InputSession_CoreProtocol.swift in Sources */,
-				5BCDA51B2D50C45500571961 /* InputSession_HandleDisplay.swift in Sources */,
+				E65AC7D61D27092196D52038 /* SessionHost.swift in Sources */,
+				8A69EB2EFC06129B35678180 /* SessionClientProxy.swift in Sources */,
+				D952CC00B0AFDFFF1DC51644 /* IMEState.swift in Sources */,
+				A925FE0B9B1F273F4CAE8319 /* IMEStateParsed.swift in Sources */,
+				A3F5601ECD37A181A56EE58C /* InputSession.swift in Sources */,
+				B62FA9234208814E648D5C36 /* SessionProtocol.swift in Sources */,
+				5A5128D5FC402F81B42295A1 /* InputSession_Delegates.swift in Sources */,
+				84C0443C961F5D9DF634401E /* InputSession_HandleDisplay.swift in Sources */,
+				5192CD4CB20F7055954F6C9A /* InputSession_HandleEvent.swift in Sources */,
+				B2F0797ECF0FA857EA8BE42A /* InputSession_HandleStates.swift in Sources */,
+				334BE28E59F7A9B54875B9B4 /* InputHandler.swift in Sources */,
+				900DD6ECF42A20DC7E390D41 /* InputSession_DarwinSurface.swift in Sources */,
+				03D365D919C3A6E3FEB554A5 /* SessionHostWiring.swift in Sources */,
 				5B8F94F72B3070C40071B14A /* InputToken.swift in Sources */,
 				5B9939ED2B8B44B000979BBC /* InputHandler_MiscCommissions.swift in Sources */,
 				5B423A542A9516B0004CC33B /* Broadcaster.swift in Sources */,
@@ -1501,7 +1527,6 @@
 				5B72F6672B885AF00051B7A9 /* lmPlainBopomopo_RawData.swift in Sources */,
 				5BDA204E2EEABDDF00377085 /* MainSputnik.swift in Sources */,
 				5B70C0AB2EA428B500BC8273 /* FileOpenMethod.swift in Sources */,
-				02DE245ED6584712B4AF3E4E /* IMEStateParsed4Darwin.swift in Sources */,
 				5BE5A505294E097C00EFA49C /* vChewing_FolderMonitor.swift in Sources */,
 				5BE5A56C294E127B00EFA49C /* PhraseEditorDelegate.swift in Sources */,
 				5B69C36B2B7406DC006FBD09 /* VwrSettingsPaneCocoaClients.swift in Sources */,
@@ -1517,7 +1542,6 @@
 				5BA379B72B8278DA00D82E16 /* LMInstantiator_POMRepresentable.swift in Sources */,
 				5BE5A528294E0C2B00EFA49C /* lmReplacements.swift in Sources */,
 				5BE5A53E294E0CEF00EFA49C /* Shared.swift in Sources */,
-				5BCDA50F2D50C3DC00571961 /* InputHandler.swift in Sources */,
 				5B5139442F3A318C00223E77 /* TDKCandidates.swift in Sources */,
 				5B6420012ABB3BA600E1B7F6 /* SessionUIProtocol.swift in Sources */,
 				5BA7437E2EC4EC4300C977DA /* SessionUI.swift in Sources */,
