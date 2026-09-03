@@ -7,13 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03D365D919C3A6E3FEB554A5 /* SessionHostWiring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E10159461514D435B59BCA /* SessionHostWiring.swift */; };
 		18D039FEBC7A4223A3BD300A /* Homa_Segment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377A7CABB6FC4203B3101DFF /* Homa_Segment.swift */; };
 		1A28692F2E444F20B532B6D0 /* Homa_Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59008A8A7D746779D9CD750 /* Homa_Config.swift */; };
 		29DBF8A494254C78AFC81409 /* Homa_SwiftImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C51CF3E668442AB87CF4C7 /* Homa_SwiftImpl.swift */; };
 		2CF9B8CEBB2A41DB9CDEE165 /* Homa_Namespace.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C64C5B696E4D958C2D68A0 /* Homa_Namespace.swift */; };
 		30DD7E9C48B9480A8552443A /* Homa_ConsolidatorAPIs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F6EEEB720E480BAAEBED66 /* Homa_ConsolidatorAPIs.swift */; };
+		334BE28E59F7A9B54875B9B4 /* InputHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478B48D9F5212677EEFAAD66 /* InputHandler.swift */; };
 		43B74771A6E94482B4B2208E /* HomaCompatShims.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CCBFE00CBE4E4EB6B3119A /* HomaCompatShims.swift */; };
 		50A52DE6989E41AB95B86407 /* Homa_Gram.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08694E6CA3144345863DF5D4 /* Homa_Gram.swift */; };
+		5192CD4CB20F7055954F6C9A /* InputSession_HandleEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6CAEF4965F6332A7C60B79 /* InputSession_HandleEvent.swift */; };
+		5A5128D5FC402F81B42295A1 /* InputSession_Delegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65AB55C6DFD08060CAB7644 /* InputSession_Delegates.swift */; };
 		5B09126C2B134927000166DB /* LMInstantiator_TextMapExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B09126B2B134927000166DB /* LMInstantiator_TextMapExtension.swift */; };
 		5B098B682E9B8D510005885E /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B098B672E9B8D260005885E /* libiconv.tbd */; };
 		5B0A10000000000000000001 /* CtlCandidateGSI4AppKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0A20000000000000000001 /* CtlCandidateGSI4AppKit.swift */; };
@@ -224,28 +228,24 @@
 		7FF684C67F7F498081940708 /* Homa_GramInPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70B82D8889B4398AAEB5FCA /* Homa_GramInPath.swift */; };
 		80BD41A79D7D4380BBCD2FDE /* Homa_CandidateAPIs_FetchAndApply.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0159425256504E12AEC12CB8 /* Homa_CandidateAPIs_FetchAndApply.swift */; };
 		81746FCD432D44EF908A4DA3 /* Homa_TypeAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C2F2EE93334E75A2BB3ED2 /* Homa_TypeAliases.swift */; };
+		84C0443C961F5D9DF634401E /* InputSession_HandleDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D2C8FA5AC25643FB6CE6CC /* InputSession_HandleDisplay.swift */; };
+		8A69EB2EFC06129B35678180 /* SessionClientProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A125A1D23A4A2EE263DF43 /* SessionClientProxy.swift */; };
+		900DD6ECF42A20DC7E390D41 /* InputSession_DarwinSurface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB586B181E3A3D546633A36 /* InputSession_DarwinSurface.swift */; };
 		9A5A4E423AB84B6FA6E6CFB3 /* HomaAssemblerCompat.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF6126938424573BE9ACFC0 /* HomaAssemblerCompat.swift */; };
 		9BE072A24CE3459E8CA8FE41 /* Homa_CandidatePair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA89F3DC79B4AF7A84BEA67 /* Homa_CandidatePair.swift */; };
 		9D4E5C0F2A1B3C4D5E607182 /* NotifierViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4E5C0F2A1B3C4D5E607183 /* NotifierViewModel.swift */; };
+		A3F5601ECD37A181A56EE58C /* InputSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D282D78508DA56CE2F0BBD0 /* InputSession.swift */; };
 		A508A4BEAD4048A19097D8D9 /* MenuActionTrampoline.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DD8451ECAC44E63B6DE292A /* MenuActionTrampoline.m */; };
 		A7BED23A2FFA4EDBB3972B1B6C2AEA9A /* Homa_PossibleKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116F2930785644468C967F664FDAEB28 /* Homa_PossibleKey.swift */; };
+		A925FE0B9B1F273F4CAE8319 /* IMEStateParsed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CD7FEE6D4552A698440F02 /* IMEStateParsed.swift */; };
+		B2F0797ECF0FA857EA8BE42A /* InputSession_HandleStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D09A47CB8D289DC8D64577 /* InputSession_HandleStates.swift */; };
+		B62FA9234208814E648D5C36 /* SessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99807146F3BB8E749C8A203 /* SessionProtocol.swift */; };
 		B8633E59D9444C8DA96249A5 /* Homa_Assembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CEDB4618F12438D8F853D10 /* Homa_Assembler.swift */; };
 		CB6C806985524F059E307773 /* Homa_Exception.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD3F56DDE1F49B788D9F668 /* Homa_Exception.swift */; };
+		D952CC00B0AFDFFF1DC51644 /* IMEState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2378355A78369B836C838F /* IMEState.swift */; };
+		E65AC7D61D27092196D52038 /* SessionHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5788130C01CF1147A4C6859E /* SessionHost.swift */; };
 		F1A26002294E0C2B00EFA49C /* lmPerceptionPersistor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A26001294E0BE900EFA49C /* lmPerceptionPersistor.swift */; };
 		FB387E75707447C7BAEEC353 /* Homa_PathFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AD04D1F0004E8FBC7DEB10 /* Homa_PathFinder.swift */; };
-		E65AC7D61D27092196D52038 /* SessionHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5788130C01CF1147A4C6859E /* SessionHost.swift */; };
-		8A69EB2EFC06129B35678180 /* SessionClientProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A125A1D23A4A2EE263DF43 /* SessionClientProxy.swift */; };
-		D952CC00B0AFDFFF1DC51644 /* IMEState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2378355A78369B836C838F /* IMEState.swift */; };
-		A925FE0B9B1F273F4CAE8319 /* IMEStateParsed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CD7FEE6D4552A698440F02 /* IMEStateParsed.swift */; };
-		A3F5601ECD37A181A56EE58C /* InputSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D282D78508DA56CE2F0BBD0 /* InputSession.swift */; };
-		B62FA9234208814E648D5C36 /* SessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99807146F3BB8E749C8A203 /* SessionProtocol.swift */; };
-		5A5128D5FC402F81B42295A1 /* InputSession_Delegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65AB55C6DFD08060CAB7644 /* InputSession_Delegates.swift */; };
-		84C0443C961F5D9DF634401E /* InputSession_HandleDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D2C8FA5AC25643FB6CE6CC /* InputSession_HandleDisplay.swift */; };
-		5192CD4CB20F7055954F6C9A /* InputSession_HandleEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6CAEF4965F6332A7C60B79 /* InputSession_HandleEvent.swift */; };
-		B2F0797ECF0FA857EA8BE42A /* InputSession_HandleStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D09A47CB8D289DC8D64577 /* InputSession_HandleStates.swift */; };
-		334BE28E59F7A9B54875B9B4 /* InputHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478B48D9F5212677EEFAAD66 /* InputHandler.swift */; };
-		900DD6ECF42A20DC7E390D41 /* InputSession_DarwinSurface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB586B181E3A3D546633A36 /* InputSession_DarwinSurface.swift */; };
-		03D365D919C3A6E3FEB554A5 /* SessionHostWiring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E10159461514D435B59BCA /* SessionHostWiring.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -273,14 +273,23 @@
 
 /* Begin PBXFileReference section */
 		0159425256504E12AEC12CB8 /* Homa_CandidateAPIs_FetchAndApply.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homa_CandidateAPIs_FetchAndApply.swift; sourceTree = "<group>"; };
+		04CD7FEE6D4552A698440F02 /* IMEStateParsed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMEStateParsed.swift; sourceTree = "<group>"; };
 		07C51CF3E668442AB87CF4C7 /* Homa_SwiftImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homa_SwiftImpl.swift; sourceTree = "<group>"; };
 		08694E6CA3144345863DF5D4 /* Homa_Gram.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homa_Gram.swift; sourceTree = "<group>"; };
+		0F2378355A78369B836C838F /* IMEState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMEState.swift; sourceTree = "<group>"; };
 		116F2930785644468C967F664FDAEB28 /* Homa_PossibleKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homa_PossibleKey.swift; sourceTree = "<group>"; };
 		2CA89F3DC79B4AF7A84BEA67 /* Homa_CandidatePair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homa_CandidatePair.swift; sourceTree = "<group>"; };
+		33D2C8FA5AC25643FB6CE6CC /* InputSession_HandleDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputSession_HandleDisplay.swift; sourceTree = "<group>"; };
+		36D09A47CB8D289DC8D64577 /* InputSession_HandleStates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputSession_HandleStates.swift; sourceTree = "<group>"; };
 		377A7CABB6FC4203B3101DFF /* Homa_Segment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homa_Segment.swift; sourceTree = "<group>"; };
+		39A125A1D23A4A2EE263DF43 /* SessionClientProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionClientProxy.swift; sourceTree = "<group>"; };
 		3BD3F56DDE1F49B788D9F668 /* Homa_Exception.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homa_Exception.swift; sourceTree = "<group>"; };
 		3CEDB4618F12438D8F853D10 /* Homa_Assembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homa_Assembler.swift; sourceTree = "<group>"; };
+		478B48D9F5212677EEFAAD66 /* InputHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputHandler.swift; sourceTree = "<group>"; };
+		4BB586B181E3A3D546633A36 /* InputSession_DarwinSurface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputSession_DarwinSurface.swift; sourceTree = "<group>"; };
 		51C2F2EE93334E75A2BB3ED2 /* Homa_TypeAliases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homa_TypeAliases.swift; sourceTree = "<group>"; };
+		55E10159461514D435B59BCA /* SessionHostWiring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionHostWiring.swift; sourceTree = "<group>"; };
+		5788130C01CF1147A4C6859E /* SessionHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionHost.swift; sourceTree = "<group>"; };
 		5B09126B2B134927000166DB /* LMInstantiator_TextMapExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMInstantiator_TextMapExtension.swift; sourceTree = "<group>"; };
 		5B098B672E9B8D260005885E /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.0.sdk/usr/lib/libiconv.tbd; sourceTree = DEVELOPER_DIR; };
 		5B0A20000000000000000001 /* CtlCandidateGSI4AppKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CtlCandidateGSI4AppKit.swift; sourceTree = "<group>"; };
@@ -499,31 +508,22 @@
 		5C34A0172F9C100100C0A001 /* VanguardTrie_Core.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VanguardTrie_Core.swift; sourceTree = "<group>"; };
 		5C34A0182F9C100100C0A001 /* VanguardTrie_Impl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VanguardTrie_Impl.swift; sourceTree = "<group>"; };
 		60F6EEEB720E480BAAEBED66 /* Homa_ConsolidatorAPIs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homa_ConsolidatorAPIs.swift; sourceTree = "<group>"; };
+		6D282D78508DA56CE2F0BBD0 /* InputSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputSession.swift; sourceTree = "<group>"; };
 		79AD04D1F0004E8FBC7DEB10 /* Homa_PathFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homa_PathFinder.swift; sourceTree = "<group>"; };
 		8DD8451ECAC44E63B6DE292A /* MenuActionTrampoline.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MenuActionTrampoline.m; sourceTree = "<group>"; };
+		8F6CAEF4965F6332A7C60B79 /* InputSession_HandleEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputSession_HandleEvent.swift; sourceTree = "<group>"; };
 		91CCBFE00CBE4E4EB6B3119A /* HomaCompatShims.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomaCompatShims.swift; sourceTree = "<group>"; };
 		9D4E5C0F2A1B3C4D5E607183 /* NotifierViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifierViewModel.swift; sourceTree = "<group>"; };
 		A59008A8A7D746779D9CD750 /* Homa_Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homa_Config.swift; sourceTree = "<group>"; };
 		C532D78E31074613AE47BAB3 /* Homa_Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homa_Node.swift; sourceTree = "<group>"; };
 		D620C12F4D4F4ED7B6679542 /* Homa_CandidateAPIs_Revolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homa_CandidateAPIs_Revolver.swift; sourceTree = "<group>"; };
+		D65AB55C6DFD08060CAB7644 /* InputSession_Delegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputSession_Delegates.swift; sourceTree = "<group>"; };
 		D9C64C5B696E4D958C2D68A0 /* Homa_Namespace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homa_Namespace.swift; sourceTree = "<group>"; };
 		E56B87199BA24A50B99630DF /* MenuActionTrampoline.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MenuActionTrampoline.h; sourceTree = "<group>"; };
+		E99807146F3BB8E749C8A203 /* SessionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionProtocol.swift; sourceTree = "<group>"; };
 		EDF6126938424573BE9ACFC0 /* HomaAssemblerCompat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomaAssemblerCompat.swift; sourceTree = "<group>"; };
 		F1A26001294E0BE900EFA49C /* lmPerceptionPersistor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lmPerceptionPersistor.swift; sourceTree = "<group>"; };
 		F70B82D8889B4398AAEB5FCA /* Homa_GramInPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homa_GramInPath.swift; sourceTree = "<group>"; };
-		5788130C01CF1147A4C6859E /* SessionHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionHost.swift; sourceTree = "<group>"; };
-		39A125A1D23A4A2EE263DF43 /* SessionClientProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionClientProxy.swift; sourceTree = "<group>"; };
-		0F2378355A78369B836C838F /* IMEState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMEState.swift; sourceTree = "<group>"; };
-		04CD7FEE6D4552A698440F02 /* IMEStateParsed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMEStateParsed.swift; sourceTree = "<group>"; };
-		6D282D78508DA56CE2F0BBD0 /* InputSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputSession.swift; sourceTree = "<group>"; };
-		E99807146F3BB8E749C8A203 /* SessionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionProtocol.swift; sourceTree = "<group>"; };
-		D65AB55C6DFD08060CAB7644 /* InputSession_Delegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputSession_Delegates.swift; sourceTree = "<group>"; };
-		33D2C8FA5AC25643FB6CE6CC /* InputSession_HandleDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputSession_HandleDisplay.swift; sourceTree = "<group>"; };
-		8F6CAEF4965F6332A7C60B79 /* InputSession_HandleEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputSession_HandleEvent.swift; sourceTree = "<group>"; };
-		36D09A47CB8D289DC8D64577 /* InputSession_HandleStates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputSession_HandleStates.swift; sourceTree = "<group>"; };
-		478B48D9F5212677EEFAAD66 /* InputHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputHandler.swift; sourceTree = "<group>"; };
-		4BB586B181E3A3D546633A36 /* InputSession_DarwinSurface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputSession_DarwinSurface.swift; sourceTree = "<group>"; };
-		55E10159461514D435B59BCA /* SessionHostWiring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionHostWiring.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -684,13 +684,6 @@
 			path = CandidateControllers;
 			sourceTree = "<group>";
 		};
-		5B7C02062B77AFAA00B7DBAA /* InputHandler */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = InputHandler;
-			sourceTree = "<group>";
-		};
 		5B7C02072B77AFB000B7DBAA /* LangModelManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -847,7 +840,6 @@
 			isa = PBXGroup;
 			children = (
 				5B751DDE294EE77F0031CF70 /* CandidateControllers */,
-				5B7C02062B77AFAA00B7DBAA /* InputHandler */,
 				5B7C02072B77AFB000B7DBAA /* LangModelManager */,
 				5B7C02082B77AFBA00B7DBAA /* SessionController */,
 				5B751DB4294EE21D0031CF70 /* WindowControllers */,
