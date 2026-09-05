@@ -69,6 +69,8 @@ extension LMAssembly {
       public var allowRescoringSingleKanjiCandidates = false
       public var bypassUserPhrasesData = false
       public var suppressFactoryUnigramsOfKanaSyllables = false
+      /// 隨狂拼主開關（kFuriousTypingEnabled）同步：true 時抑制來自原廠辭典（TextMapTrie）的注音文資料。
+      public var shouldSuppressFactoryZhuyinwenData = false
     }
 
     public enum SupplementalLookupStrategy {
@@ -258,6 +260,7 @@ extension LMAssembly {
       config.fetchSuggestionsFromPerceptionOverrideModel = prefs.fetchSuggestionsFromPerceptionOverrideModel
       config.bypassUserPhrasesData = prefs.userPhrasesDatabaseBypassed
       config.suppressFactoryUnigramsOfKanaSyllables = prefs.suppressFactoryUnigramsOfKanaSyllables
+      config.shouldSuppressFactoryZhuyinwenData = prefs.furiousTypingEnabled && prefs.pinyinTypingEnabled
     }
 
     /// 清除 InputToken HashMap。
