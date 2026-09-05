@@ -574,7 +574,7 @@ extension LMAssembly.LXPerceptor {
   nonisolated func perceptionsFor(
     headReading: String,
     timestamp: Double,
-    matchMode: LMAssembly.POMQueryMode = .toneInsensitivePrefix
+    matchMode: LMAssembly.POMQueryMode = .exact
   )
     -> [(headReading: String, previous: String?, anterior: String?, candidate: String, probability: Double)] {
     guard !headReading.isEmpty else { return [] }
@@ -593,8 +593,24 @@ extension LMAssembly.LXPerceptor {
         guard !shouldIgnorePerception(parts) else { continue }
         let storedSegments = segments(of: parts.headReading)
         guard storedSegments.count == querySegments.count else { continue }
-        let headMatches = zip(storedSegments, querySegments).allSatisfy {
-          matchMode == .exact ? $0 == $1 : toneStrippedReading($0) == toneStrippedReading($1)
+        // 比對規則：`.exact` 為「逐段依 query 段是否帶聲調」——query 段帶聲調（具體讀音，
+        // 如注音「ㄧㄡˇ」）需與記憶逐字等值（跨聲調記憶不得注入——「打『有』出『右』」
+        // 類故障）；query 段無聲調（聲調桶代表鍵／前綴 partial）則沿用去聲調等值容錯
+        // （狂拼桶與 partial matching 依賴之，不能妨礙）。
+        // `.toneInsensitivePrefix` 維持全局去聲調等值（狂拼 Typewriter 建議查詢）。
+        let headMatches: Bool
+        switch matchMode {
+        case .toneInsensitivePrefix:
+          headMatches = zip(storedSegments, querySegments).allSatisfy {
+            toneStrippedReading($0) == toneStrippedReading($1)
+          }
+        case .exact:
+          headMatches = zip(storedSegments, querySegments).allSatisfy { stored, query in
+            if toneStrippedReading(query) == query { // query 段無聲調記號
+              return toneStrippedReading(stored) == query
+            }
+            return stored == query
+          }
         }
         guard headMatches else { continue }
         let perception = kvPair.perception
