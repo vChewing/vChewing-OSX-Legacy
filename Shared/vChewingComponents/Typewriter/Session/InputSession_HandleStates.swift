@@ -39,6 +39,12 @@ extension SessionProtocol {
     guard isCurrentSession else { return }
     if state.hasComposition, clientMitigationLevel >= 2 {
       updateVerticalTypingStatus()
+      // 浮動組字窗（PCB）顯示時，若打字模式提示（statusUI）仍在顯示則將其收起：
+      // 提示為一過性、組字開始時任務已完成；PCB 於 activation 之後才出現、顯示當下的
+      // 抬升避讓鞭長莫及，直接收起可避免提示窗擋住 PCB（含 PCB 字級放大之場合）。
+      if ui?.statusUI?.isShown == true {
+        ui?.statusUI?.hide()
+      }
       ui?.pcb?.isTypingDirectionVertical = isVerticalTyping
       ui?.pcb?.sync(
         accent: clientAccentColor,

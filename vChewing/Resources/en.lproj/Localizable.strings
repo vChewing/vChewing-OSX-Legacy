@@ -319,6 +319,12 @@
 "i18n:TypingMethod.UniversalPinyinNumeral" = "Universal Pinyin with Numeral Intonation";
 "i18n:TypingMethod.WadeGilesPinyinNumeral" = "Wade-Giles Pinyin with Numeral Intonation";
 "i18n:TypingMethod.YalePinyinNumeral" = "Yale Pinyin with Numeral Intonation";
+"i18n:TypingMode.i18nKey4InlineModeHint.ascii" = "ASCII Alnum Input";
+"i18n:TypingMode.i18nKey4InlineModeHint.asciiCpLk" = "Caps Lock On (Direct Alnum Input)";
+"i18n:TypingMode.i18nKey4InlineModeHint.bopomofoKeyblock" = "Chinese Input (Zhuyin)";
+"i18n:TypingMode.i18nKey4InlineModeHint.cassette" = "Cassette Mode";
+"i18n:TypingMode.i18nKey4InlineModeHint.pinyinFuriousTyping" = "Furious Typing";
+"i18n:TypingMode.i18nKey4InlineModeHint.pinyinKeyblock" = "Chinese Input (Pinyin)";
 "i18n:Uninstaller.failureGuidance" = "vChewing cannot move its own bundle to the Trash from a sandboxed input method process. You can follow the manual uninstall instructions on the wiki page.";
 "i18n:Uninstaller.openWikiPage" = "Open Uninstall Guide";
 "i18n:Uninstaller.Title" = "Uninstallation";
@@ -481,6 +487,8 @@
 "i18n:UserDef.kShouldNotFartInLieuOfBeep.shortTitle" = "Stop farting (when typed phonetic combination is invalid, etc.)";
 "i18n:UserDef.kShowCodePointInCandidateUI.shortTitle" = "Show Unicode codepoint metadata in candidate window";
 "i18n:UserDef.kShowHanyuPinyinInCompositionBuffer.shortTitle" = "Show Hanyu-Pinyin in the inline composition buffer";
+"i18n:UserDef.kShowModeDescriptionOnActivatingServer.description" = "When enabled, vChewing shows the current typing mode as a transient inline hint right after it starts serving an input client — for example when you switch back to vChewing or toggle back to Chinese with Caps Lock. The hint automatically fades out after a few seconds. Note that some client apps report the location of the text input area even when they are not actually receiving any text input, which may cause the hint to appear at an unexpected location.";
+"i18n:UserDef.kShowModeDescriptionOnActivatingServer.shortTitle" = "Show the current typing mode as an inline hint upon connecting to an input client";
 "i18n:UserDef.kShowNotificationsWhenTogglingCapsLock.shortTitle" = "Show notifications when toggling Caps Lock";
 "i18n:UserDef.kShowNotificationsWhenTogglingEisu.description" = "☠️ This may let you feel harder to quickly identify the current ASCII mode ON/OFF status.";
 "i18n:UserDef.kShowNotificationsWhenTogglingEisu.shortTitle" = "Show notifications when toggling ASCII mode by hitting Eisu";

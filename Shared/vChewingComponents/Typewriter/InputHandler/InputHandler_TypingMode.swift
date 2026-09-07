@@ -15,7 +15,7 @@ import Foundation
 /// 注意：`TypingMethod`（vChewingFactory／codePoint／haninKeyboardSymbol／romanNumerals）
 /// 是另一層「輸入方法」概念，兩者勿混淆。本枚舉僅在 `currentTypingMethod == .vChewingFactory`
 /// 時有意義。
-public enum TypingMode: Equatable {
+public enum TypingMode: String, Equatable {
   /// 磁帶（Cin Cassette）模式：以使用者提供的鍵盤對照表輸入（雙拼、部首筆畫等由磁帶承載）。
   case cassette
   /// 注音鍵盤模式（Bopomofo Keyblock）。
@@ -24,6 +24,13 @@ public enum TypingMode: Equatable {
   case pinyinKeyblock
   /// 狂拼模式（Furious Typing）：拼音鍵盤＋快速自動 chop 組句。
   case pinyinFuriousTyping
+
+  // MARK: Public
+
+  /// 該打字模式用於「內文模式提示」（於對接輸入客體時顯示）的 i18n key。
+  public var i18nKey4InlineModeHint: String {
+    "i18n:TypingMode.i18nKey4InlineModeHint.\(rawValue)"
+  }
 }
 
 extension InputHandlerProtocol {

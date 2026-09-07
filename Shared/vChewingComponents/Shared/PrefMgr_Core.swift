@@ -99,6 +99,9 @@ public final class PrefMgr: PrefMgrProtocol, Sendable {
   @AppProperty(userDef: .kAlphanumericalKeyboardLayout)
   public var alphanumericalKeyboardLayout: String
 
+  @AppProperty(userDef: .kShowModeDescriptionOnActivatingServer)
+  public var showModeDescriptionOnActivatingServer: Bool
+
   @AppProperty(userDef: .kShowNotificationsWhenTogglingCapsLock)
   public var showNotificationsWhenTogglingCapsLock: Bool
 

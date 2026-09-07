@@ -29,6 +29,7 @@ public protocol PrefMgrProtocol {
   var kanjiConversionPreferences: Int { get set }
   var basicKeyboardLayout: String { get set }
   var alphanumericalKeyboardLayout: String { get set }
+  var showModeDescriptionOnActivatingServer: Bool { get set }
   var showNotificationsWhenTogglingCapsLock: Bool { get set }
   var showNotificationsWhenTogglingEisu: Bool { get set }
   var showNotificationsWhenTogglingShift: Bool { get set }

@@ -319,6 +319,12 @@
 "i18n:TypingMethod.UniversalPinyinNumeral" = "汎用弁音 (ローマ字+数字音調)";
 "i18n:TypingMethod.WadeGilesPinyinNumeral" = "ウェード式弁音 (ローマ字+数字音調)";
 "i18n:TypingMethod.YalePinyinNumeral" = "イェール弁音 (ローマ字+数字音調)";
+"i18n:TypingMode.i18nKey4InlineModeHint.ascii" = "ASCII英数入力";
+"i18n:TypingMode.i18nKey4InlineModeHint.asciiCpLk" = "Caps Lock 点灯中（英数直接入力可）";
+"i18n:TypingMode.i18nKey4InlineModeHint.bopomofoKeyblock" = "注音入力";
+"i18n:TypingMode.i18nKey4InlineModeHint.cassette" = "カセットモード";
+"i18n:TypingMode.i18nKey4InlineModeHint.pinyinFuriousTyping" = "狂拼モード";
+"i18n:TypingMode.i18nKey4InlineModeHint.pinyinKeyblock" = "弁音入力";
 "i18n:Uninstaller.failureGuidance" = "唯音はサンドボックス化された入力メソッドプロセスから自身のバンドルをゴミ箱へ移動できません。Wiki ページの手動卸除手順をご参照ください。";
 "i18n:Uninstaller.openWikiPage" = "卸除ガイドを開く";
 "i18n:Uninstaller.Title" = "入力アプリの卸除（おろしのぞき）";
@@ -481,6 +487,8 @@
 "i18n:UserDef.kShouldNotFartInLieuOfBeep.shortTitle" = "マナーモード // 外すと入力間違った時に変な声が出る";
 "i18n:UserDef.kShowCodePointInCandidateUI.shortTitle" = "候補陳列ウィンドウで Unicode のコードポイント情報を示す";
 "i18n:UserDef.kShowHanyuPinyinInCompositionBuffer.shortTitle" = "弁音合併入力（入力緩衝列で音読みを漢語弁音に）";
+"i18n:UserDef.kShowModeDescriptionOnActivatingServer.description" = "有効にすると、vChewing が入力クライアントへのサービスを開始した直後（vChewing に切り替えたときや、Caps Lock で中国語モードに戻したときなど）に、現在の入力モードが一時的なインラインヒントで表示されます。ヒントは数秒後に自動的に消えます。ただし、一部のクライアントアプリは、文字入力を受け付けていないにもかかわらずテキスト入力エリアの位置を報告することがあり、ヒントが意図しない場所に表示される可能性があります。";
+"i18n:UserDef.kShowModeDescriptionOnActivatingServer.shortTitle" = "入力クライアント接続時に現在の入力モードをインラインヒントで表示";
 "i18n:UserDef.kShowNotificationsWhenTogglingCapsLock.shortTitle" = "Caps Lock でASCII入力モード切り替えの時に吹出通知メッセージを";
 "i18n:UserDef.kShowNotificationsWhenTogglingEisu.description" = "☠️ これをONにすると、ASCII モードの点滅状態をすばやく確認することが難しくなる恐れです。";
 "i18n:UserDef.kShowNotificationsWhenTogglingEisu.shortTitle" = "JIS英数キーでASCII入力モード切り替えの時に吹出通知メッセージを";

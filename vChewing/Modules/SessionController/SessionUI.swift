@@ -42,6 +42,9 @@ public final class SessionUI: SessionUIProtocol {
   /// 工具提示視窗的副本。
   public let tooltipUI: (any TooltipUIProtocol)? = TooltipUI()
 
+  /// 打字模式提示專用的輔助工具提示視窗副本。
+  public let statusUI: (any TooltipUIProtocol)? = StatusUI()
+
   /// 目前在用的的選字窗副本。Layout 預設值不再重要，因為使用時會就地重新賦值。
   public let candidateUI: (any CtlCandidateProtocol)?
 

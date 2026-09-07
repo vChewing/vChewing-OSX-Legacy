@@ -18,6 +18,8 @@ public protocol SessionUIProtocol: AnyObject {
   var capsLockToggler: (any CapsLockTogglerProtocol)? { get }
   var pcb: (any PCBProtocol)? { get }
   var tooltipUI: (any TooltipUIProtocol)? { get }
+  /// 打字模式提示專用的輔助工具提示副本（`StatusUI` 實例；隨 close-all 隱藏、由 setValue 於提示期重發）。
+  var statusUI: (any TooltipUIProtocol)? { get }
   var candidateUI: (any CtlCandidateProtocol)? { get }
 }
 
@@ -49,6 +51,10 @@ public protocol CapsLockTogglerProtocol {
 
 public protocol PCBProtocol: AnyObject {
   var isTypingDirectionVertical: Bool { get set }
+  /// 浮動組字窗目前是否顯示中。
+  var isShown: Bool { get }
+  /// 浮動組字窗目前的視窗 frame（螢幕座標）；僅於 `isShown` 時有意義。
+  var frame: CGRect? { get }
   func show(state: some IMEStateProtocol, at point: CGPoint)
   func hide()
   func sync(accent: HSBA?, locale: String)
@@ -64,5 +70,10 @@ public protocol TooltipUIProtocol {
   )
 
   func hide()
+  /// 視窗目前是否顯示中。
+  var isShown: Bool { get }
   func setColor(state: TooltipColorState)
+  /// 依 accent／locale 同步外觀（文字色與視圖背景色）。TooltipUI 以顯式 no-op 滿足；
+  /// StatusUI 實作之（背景為實色、不透明，無 visualEffect／glassEffect）。
+  func sync(accent: HSBA?, locale: String)
 }

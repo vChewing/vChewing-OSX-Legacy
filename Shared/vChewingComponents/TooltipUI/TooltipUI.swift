@@ -11,7 +11,7 @@ import CoreText
 
 // MARK: - TooltipUI
 
-public final class TooltipUI: NSWindowController, TooltipUIProtocol {
+public class TooltipUI: NSWindowController, TooltipUIProtocol {
   // MARK: Lifecycle
 
   public init() {
@@ -81,6 +81,11 @@ public final class TooltipUI: NSWindowController, TooltipUIProtocol {
     }
   }
 
+  /// 視窗目前是否顯示中。
+  public var isShown: Bool {
+    window?.isVisible ?? false
+  }
+
   public func show(
     tooltip: String, at point: CGPoint,
     bottomOutOfScreenAdjustmentHeight heightDelta: Double,
@@ -92,7 +97,7 @@ public final class TooltipUI: NSWindowController, TooltipUIProtocol {
     self.tooltip = tooltip
     window?.setIsVisible(false)
     window?.orderFront(nil)
-    set(windowTopLeftPoint: point, bottomOutOfScreenAdjustmentHeight: heightDelta, useGCD: false)
+    positionWindow(at: point, heightDelta: heightDelta)
     window?.setIsVisible(true)
     if duration > 0 {
       asyncOnMain(after: duration) {
@@ -169,6 +174,9 @@ public final class TooltipUI: NSWindowController, TooltipUIProtocol {
     setColor(state: .normal)
   }
 
+  /// TooltipUI 不需外觀同步（配色由 setColor 管理）；以顯式 no-op 滿足協定必備需求。
+  public func sync(accent _: HSBA?, locale _: String) {}
+
   public func hide() {
     setColor(state: .normal)
     window?.orderOut(nil)
@@ -178,6 +186,32 @@ public final class TooltipUI: NSWindowController, TooltipUIProtocol {
 
   @objc
   var observation: NSKeyValueObservation?
+
+  /// 供子類別（StatusUI）設定的粗體文字旗標。
+  var usesBoldText: Bool = false {
+    didSet {
+      tooltipView.usesBoldText = usesBoldText
+    }
+  }
+
+  /// 設定文字顏色（供子類別於 sync(accent:locale:) 使用）。
+  func applyTextColor(_ color: NSColor) {
+    tooltipView.textColor = color
+  }
+
+  /// 設定視圖／視窗背景色（實色、不透明）。
+  func applyBackgroundColor(_ color: NSColor) {
+    tooltipView.layer?.backgroundColor = color.cgColor
+    if let window {
+      window.backgroundColor = color
+    }
+  }
+
+  /// 視窗定位掛鉤：預設將給定點視為視窗左上角（沿用既有定位邏輯）。
+  /// 子類別可覆寫以變更點位語義（例如 StatusUI 將點視為視窗左下角）。
+  func positionWindow(at point: CGPoint, heightDelta: Double) {
+    set(windowTopLeftPoint: point, bottomOutOfScreenAdjustmentHeight: heightDelta, useGCD: false)
+  }
 
   // MARK: Private
 
@@ -264,6 +298,14 @@ private final class TooltipContentView: NSView {
   var textColor: NSColor = .textColor {
     didSet {
       if textColor != oldValue {
+        rebuildAttributedText()
+      }
+    }
+  }
+
+  var usesBoldText = false {
+    didSet {
+      if usesBoldText != oldValue {
         rebuildAttributedText()
       }
     }
@@ -361,7 +403,10 @@ private final class TooltipContentView: NSView {
   }
 
   private func tooltipFont() -> NSFont {
-    NSFont.systemFont(ofSize: max(12, NSFont.systemFontSize + 1))
+    if usesBoldText {
+      return NSFont.boldSystemFont(ofSize: max(12, NSFont.systemFontSize + 1))
+    }
+    return NSFont.systemFont(ofSize: max(12, NSFont.systemFontSize + 1))
   }
 
   private func updateLayout() {

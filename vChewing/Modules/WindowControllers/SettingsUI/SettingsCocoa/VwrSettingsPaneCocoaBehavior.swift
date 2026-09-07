@@ -57,6 +57,10 @@ extension SettingsPanesCocoa {
               prefUITab: .tabBehavior
             )
           }
+          UserDef.kShowModeDescriptionOnActivatingServer.renderCocoa(
+            fixWidth: contentWidth,
+            prefUITab: .tabBehavior
+          )
           UserDef.kBeepSoundPreference.renderCocoa(
             fixWidth: contentWidth,
             prefUITab: .tabBehavior

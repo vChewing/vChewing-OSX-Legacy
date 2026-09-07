@@ -142,6 +142,16 @@ public final class PopupCompositionBuffer: NSWindowController, PCBProtocol {
     set { compositionView.isTypingDirectionVertical = newValue }
   }
 
+  /// 浮動組字窗目前是否顯示中。
+  public var isShown: Bool {
+    window?.isVisible ?? false
+  }
+
+  /// 浮動組字窗目前的視窗 frame（螢幕座標）；僅於 `isShown` 時有意義。
+  public var frame: CGRect? {
+    window?.frame
+  }
+
   public func sync(accent: HSBA?, locale: String) {
     let accentColor: NSColor? = accent?.nsColor
       ?? (

@@ -210,6 +210,15 @@ extension SessionProtocol {
   }
 
   public func performServerActivation() {
+    // 延遲 0.05s 執行打字模式提示，以避免 flickering、避免被緊跟著 Server Activation 執行
+    // 的 setValue 連續技打斷（所有操作都在 MainActor 上，不會有時序錯亂）。
+    // 快速路徑與完整路徑皆由此 defer 收尾，僅需撰寫一次；單元測試環境同步執行（bypass）。
+    defer {
+      asyncOnMain(after: 0.05, bypassAsync: UserDefaults.pendingUnitTests) { [weak self] in
+        self?.maybeShowModeDescriptionHintUponActivation()
+      }
+    }
+
     // MARK: 快速路徑 — 最佳化 CapsLock 中英頻繁切換的場景。
 
     /// 每次 activateServer 都是一次全新的啟用事件，
@@ -305,6 +314,63 @@ extension SessionProtocol {
       asyncOnMain {
         SessionHost.shared.checkMemoryUsage()
       }
+    }
+  }
+
+  /// 若使用者啟用了「對接輸入客體時顯示目前打字模式提示」，則：① 把提示記錄於 state
+  /// （`.ofEmpty()`＋tooltip，**直接賦值不經 switchState**——作為「提示顯示中」旗標，
+  /// 供 `InputSession.setValue(_:forTag:)` 在 hidePalettes 之後偵測並重發）；② 以
+  /// `ui?.statusUI` 顯示（實際 show 延後至主執行緒下一拍，排在 activation 序列中可能
+  /// 已入隊的 close-all 之後）。分支：英數模式→`…ascii`；Caps Lock 亮燈且未關閉唯音
+  /// 內建 Caps Lock 處理→`…asciiCpLk`（此際字母鍵可直接敲出英數小寫）；其餘→
+  /// `typingMode` key。訊息滯留 0.7 秒。
+  ///
+  /// 一過性輸入方法（內碼／漢音鍵盤符號／羅馬數字等）僅存活於單次按鍵事件處理，每次
+  /// activateServer 皆回到 vChewingFactory 語境，故無需檢查 `currentTypingMethod`。
+  func maybeShowModeDescriptionHintUponActivation() {
+    guard prefs.showModeDescriptionOnActivatingServer else { return }
+    let hintKey: String
+    if isASCIIMode {
+      hintKey = "i18n:TypingMode.i18nKey4InlineModeHint.ascii"
+    } else if !prefs.bypassNonAppleCapsLockHandling, ui?.capsLockToggler?.isOn ?? false {
+      hintKey = "i18n:TypingMode.i18nKey4InlineModeHint.asciiCpLk"
+    } else if let inputHandler {
+      hintKey = inputHandler.typingMode.i18nKey4InlineModeHint
+    } else {
+      return
+    }
+    let hintTooltip = "► \(hintKey.i18n)"
+    var hintState = IMEState.ofEmpty()
+    hintState.tooltip = hintTooltip
+    hintState.tooltipDuration = 0.7
+    state = hintState
+    guard let statusUI = ui?.statusUI else { return }
+    // 顯示前依客體 accent 同步外觀（文字色／實色背景；StatusUI 實作、tooltip 為 no-op）。
+    statusUI.sync(accent: clientAccentColor, locale: localeForFontFallbacks)
+    // IMK 的 lineHeightRectangle 為螢幕座標（原點在左下角），故左上角頂點＝origin.y＋height；
+    // statusUI 會將此點視為其視窗左下角。坐標與文案在入隊前算妥，closure 不捕獲 self。
+    let lineHeightRect = updateVerticalTypingStatus()
+    // 若浮動組字窗（PCB）正在顯示，將給定點上抬至 PCB 頂端之上、避免提示與 PCB 重疊。
+    // 座標語義：PCB 橫排時以打字列底緣為窗底向上長出、可高於打字列頂端；直排時以打字列
+    // 底緣為窗頂（setFrameTopLeftPoint）向下長出、頂端恆不高於打字列頂端——故一律比對
+    // PCB 窗頂（frame 的 origin.y + height）即可，直排自然不觸發抬升（相容）。
+    // 坐標於入隊前算妥，closure 不捕獲 self。
+    var topLeftY = lineHeightRect.origin.y + lineHeightRect.size.height
+    if let pcb = ui?.pcb, pcb.isShown, let pcbFrame = pcb.frame {
+      topLeftY = max(topLeftY, pcbFrame.origin.y + pcbFrame.size.height)
+    }
+    let topLeftPoint = CGPoint(
+      x: lineHeightRect.origin.x, y: topLeftY
+    )
+    let heightDelta = lineHeightRect.size.height + 4.0
+    asyncOnMain(bypassAsync: UserDefaults.pendingUnitTests) {
+      statusUI.show(
+        tooltip: hintTooltip,
+        at: topLeftPoint,
+        bottomOutOfScreenAdjustmentHeight: heightDelta,
+        direction: .horizontal,
+        duration: 0.7
+      )
     }
   }
 }
