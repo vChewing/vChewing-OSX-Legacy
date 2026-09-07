@@ -110,8 +110,22 @@ extension LMMgr {
 
   // MARK: - 使用者片語檔案專用目錄的合規性檢查
 
+  /// 判斷「指定的使用者資料目錄」是否實質等同於「未指定」。
+  /// AppProperty 初次初始化時會把空字串預設值寫入 prefs，使「從未手動指定過目錄」看起來
+  /// 像「指定了空路徑」；空字串經 `ensureTrailingSlash()` 補尾斜槓後會變成 "/"。
+  /// 因此空字串與其補尾斜槓產物 "/" 皆必須視為「未指定」，而非失效路徑。
+  internal static func userDataFolderPathIsEffectivelyUnset(_ path: String) -> Bool {
+    path.isEmpty || path == "/"
+  }
+
   // 一次性檢查給定的目錄是否存在寫入合規性（僅用於偏好設定檢查等初步檢查場合，不做任何糾偏行為）
   public static func checkIfSpecifiedUserDataFolderValid(_ folderPath: String?) -> Bool {
+    // 空值代表使用者尚未指定自訂目錄。此狀態並非目錄失效，只是「尚未選擇」：
+    // 直接視為合規（回傳 true）、且不觸發失效廣播，避免無謂的權限警示。
+    if Self.userDataFolderPathIsEffectivelyUnset(folderPath ?? "") {
+      Broadcaster.shared.clearLmMgrDataFolderPathInvalidity()
+      return true
+    }
     var isFolder = ObjCBool(false)
     let folderExist = FileManager.default.fileExists(
       atPath: folderPath ?? "",
@@ -210,6 +224,16 @@ extension LMMgr {
 
     userDictPathDefault.ensureTrailingSlash()
     userDictPathSpecified.ensureTrailingSlash()
+
+    // 空值（含空字串補尾斜槓後變成 "/" 的情形）等同於「從未指定」：不經合規性驗證、
+    // 不廣播失效事件，直接採用預設目錄；並順手清除殘留在 prefs 的空值與失效廣播。
+    if Self.userDataFolderPathIsEffectivelyUnset(userDictPathSpecified) {
+      if !isDefaultFolder {
+        UserDefaults.current.removeObject(forKey: UserDef.kUserDataFolderSpecified.rawValue)
+        Broadcaster.shared.clearLmMgrDataFolderPathInvalidity()
+      }
+      return userDictPathDefault
+    }
 
     if (userDictPathSpecified == userDictPathDefault)
       || isDefaultFolder {
