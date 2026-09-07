@@ -30,9 +30,11 @@ extension LMAssembly {
 
   /// POM 查詢模式。
   ///
-  /// - `.exact`：現行行為——ngramKey 等值查詢＋`alternateKeys` 等值/後綴比對。
-  /// - `.toneInsensitivePrefix`：狂拼容錯查詢——三位置讀音「逐段去聲調等值」比對
-  ///   （query 讀音恆為完整音節，故前綴語義退化成去聲調等值，避免 `ma`↔`mang` 跨音節誤配），
+  /// - `.exact`：**逐字等值（含第一聲）**——注音第一聲讀音字串雖無聲調記號（生＝`ㄕㄥ`），
+  ///   仍屬具體讀音；跨聲調記憶不得命中（「打『有』出『右』」／「打ㄕㄥ出聖」類故障的守衛）。
+  ///   語彙層的 `getSuggestion` 另以 ngramKey 等值＋`alternateKeys` 等值/後綴比對為之。
+  /// - `.toneInsensitivePrefix`：容錯查詢（聲調桶／partial 語境專用）——讀音「逐段去聲調等值」
+  ///   比對（query 讀音恆為完整音節，故前綴語義退化成去聲調等值，避免 `ma`↔`mang` 跨音節誤配），
   ///   values 於上下文位置維持 exact、head 位置放寬（容許建議替換當前最佳猜測）。
   public enum POMQueryMode: String, Sendable {
     case exact
@@ -584,9 +586,14 @@ extension LMAssembly.LXPerceptor {
 
   /// 以 head 讀音取回所有高於閾值的 perception 記憶（供 n-gram 餵入，Phase 160 / S2）。
   ///
-  /// 讀音比對沿用容錯語義（預設逐段去聲調等值；`.exact` 為逐段等值）；回傳每筆記憶的
-  /// previous 值（若有）與候選、權重。不做「只留最高分」篩選——n-gram 餵入需要全量記憶，
-  /// 各記憶的前後文（previous）即是 bigram 的條件鍵。
+  /// 讀音比對**預設 `.exact`＝逐段逐字等值（含第一聲）**——帶調的具體讀音不允許跨聲調注入
+  /// （錯調 gram keyArray 與節點鍵不符仍可能被 DP 以 reading-mismatch 選中，
+  /// 造成「打『有』出『右』」／「打ㄕㄥ出聖」類故障）。**不得**以「query 段無聲調記號」判斷
+  /// 容錯：注音第一聲讀音在字串上本就不帶聲調記號（生＝`ㄕㄥ`），卻屬真實聲調；
+  /// 真正的聲調桶／partial 容錯由呼叫端**顯式**以 `.toneInsensitivePrefix` 要求
+  /// （引擎 alternatives 路徑、狂拼 Typewriter 建議查詢）。
+  /// 回傳每筆記憶的 previous 值（若有）與候選、權重。不做「只留最高分」篩選——n-gram 餵入
+  /// 需要全量記憶，各記憶的前後文（previous）即是 bigram 的條件鍵。
   nonisolated func perceptionsFor(
     headReading: String,
     timestamp: Double,
@@ -609,11 +616,8 @@ extension LMAssembly.LXPerceptor {
         guard !shouldIgnorePerception(parts) else { continue }
         let storedSegments = segments(of: parts.headReading)
         guard storedSegments.count == querySegments.count else { continue }
-        // 比對規則：`.exact` 為「逐段依 query 段是否帶聲調」——query 段帶聲調（具體讀音，
-        // 如注音「ㄧㄡˇ」）需與記憶逐字等值（跨聲調記憶不得注入——「打『有』出『右』」
-        // 類故障）；query 段無聲調（聲調桶代表鍵／前綴 partial）則沿用去聲調等值容錯
-        // （狂拼桶與 partial matching 依賴之，不能妨礙）。
-        // `.toneInsensitivePrefix` 維持全局去聲調等值（狂拼 Typewriter 建議查詢）。
+        // 比對規則：`.exact`＝逐段逐字等值（含第一聲——第一聲讀音字串無聲調記號，仍是具體讀音）；
+        // `.toneInsensitivePrefix`＝全局去聲調等值（聲調桶／partial 語境由呼叫端顯式選用）。
         let headMatches: Bool
         switch matchMode {
         case .toneInsensitivePrefix:
@@ -621,12 +625,7 @@ extension LMAssembly.LXPerceptor {
             toneStrippedReading($0) == toneStrippedReading($1)
           }
         case .exact:
-          headMatches = zip(storedSegments, querySegments).allSatisfy { stored, query in
-            if toneStrippedReading(query) == query { // query 段無聲調記號
-              return toneStrippedReading(stored) == query
-            }
-            return stored == query
-          }
+          headMatches = zip(storedSegments, querySegments).allSatisfy { $0 == $1 }
         }
         guard headMatches else { continue }
         let perception = kvPair.perception

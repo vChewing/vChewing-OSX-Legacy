@@ -1344,14 +1344,15 @@ extension LMAssembly {
         )
       rawAllUnigrams.consolidate(filter: dataAsFilter)
       rawAllUnigrams.sort { $0.probability > $1.probability }
-      // POM 記憶作為 n-gram 統計來源（S2）：附加於 unigram 之後、不經 consolidate
-      // （避免與同名 unigram 去重互擾）。僅餵「帶前後文」的 contextual 記憶——bare unigram
-      // 記憶對 DP 無貢獻（節點 unigramScore 取陣列首筆、不選中尾端注入）且會污染選字窗
-      // 原始候選清單（fetchCandidates 僅排除 contextual grams）；unigram 記憶改由
-      // Typewriter 建議通道浮現（受 fetch／「固定順序」等把守）。
+      // POM 記憶作為 n-gram 統計來源——同 fast path：僅餵「帶前後文」的 contextual 記憶。
+      // 此為聲調桶（[PossibleKey] alternatives）路徑，keyChain 為各位置代表鍵（無調字形），
+      // 故 POM head 比對**顯式**以 `.toneInsensitivePrefix`（去聲調等值）進行——桶查詢本就不能
+      // 釘定聲調；fast path 的單鍵具體讀音（含第一聲）則維持 `.exact` 逐字等值。
       if config.fetchSuggestionsFromPerceptionOverrideModel {
         let pomGrams = lxPerceptor.perceptionsFor(
-          headReading: keyChain, timestamp: Date().timeIntervalSince1970
+          headReading: keyChain,
+          timestamp: Date().timeIntervalSince1970,
+          matchMode: .toneInsensitivePrefix
         ).compactMap { pom -> Homa.Gram? in
           guard pom.previous != nil || pom.anterior != nil else { return nil }
           return Homa.Gram(
