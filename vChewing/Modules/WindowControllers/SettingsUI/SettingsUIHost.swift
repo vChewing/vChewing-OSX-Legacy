@@ -61,8 +61,10 @@ public final class SettingsUIHost {
   )
     -> () = { _, _, _ in }
 
-  /// 語彙編輯器委派（宿主以 `LMMgr.shared` 注入）。
-  public var phraseEditorDelegate: (any PhraseEditorDelegate)?
+  /// 語彙編輯器委派之延遲供應器（宿主注入 `{ LMMgr.shared }`）。
+  /// 刻意不以值直接注入：`phraseEditorDelegate` 只在詞彙編輯頁（GUI）被使用，
+  /// 沒有必要在程序啟動階段就實體化 `LMMgr.shared`（連帶提早武裝其 KVO 路徑失效觀察器）。
+  public var phraseEditorDelegateProvider: (() -> (any PhraseEditorDelegate)?)?
 
   // MARK: - SessionUI / AppDelegate / InputSession 動作依賴
 
@@ -73,4 +75,7 @@ public final class SettingsUIHost {
   // MARK: - Notifier 動作依賴
 
   public var notify: (String) -> () = { _ in }
+
+  /// 語彙編輯器委派。首次被讀取（詞彙編輯頁開啟）時才經由供應器解析。
+  public var phraseEditorDelegate: (any PhraseEditorDelegate)? { phraseEditorDelegateProvider?() }
 }

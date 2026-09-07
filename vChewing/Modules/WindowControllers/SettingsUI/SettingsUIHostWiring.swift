@@ -47,7 +47,9 @@ extension SettingsUIHost {
     host.openPhraseFile = { mode, type, app in
       LMMgr.shared.openPhraseFile(mode: mode, type: type, using: app)
     }
-    host.phraseEditorDelegate = LMMgr.shared
+    // 以 provider 延遲注入：LMMgr.shared 僅在詞彙編輯頁真正開啟時才實體化，
+    // 避免程序啟動階段就武裝其 KVO 路徑失效觀察器。
+    host.phraseEditorDelegateProvider = { LMMgr.shared }
     // SessionUI / AppDelegate / InputSession 動作依賴。
     host.resyncShiftKeyUpCheckerSettings = { SessionUI.shared.resyncShiftKeyUpCheckerSettings() }
     host.updateDirectoryMonitorPath = { AppDelegate.shared.updateDirectoryMonitorPath() }
