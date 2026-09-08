@@ -17,14 +17,23 @@ private enum CommitableMarkupType: Int {
   case braille1947 = 2
   case braille2018 = 3
   case bpmfvsAnnotationButKo = 4
+  case brailleASCII1947 = 5
+  case brailleASCII2018 = 6
 
   // MARK: Internal
 
   var brailleStandard: BrailleSputnik.BrailleStandard? {
     switch self {
-    case .braille1947: return .of1947
-    case .braille2018: return .of2018
+    case .braille1947, .brailleASCII1947: return .of1947
+    case .braille2018, .brailleASCII2018: return .of2018
     default: return nil
+    }
+  }
+
+  var usesASCIIBrailleOutput: Bool {
+    switch self {
+    case .brailleASCII1947, .brailleASCII2018: return true
+    default: return false
     }
   }
 
@@ -76,6 +85,8 @@ extension InputHandlerProtocol {
   /// 3. 國語點字 (1947)。
   /// 4. 國通盲文 (GF0019-2018)。
   /// 5. ButKo BPMFVS 注音標記。
+  /// 6. 點字 ASCII (1947)。
+  /// 7. 點字 ASCII (GF0019-2018)。
   /// - Parameter isShiftPressed: 有沒有同時摁著 Shift 鍵。摁了的話則只遞交讀音字串。
   /// - Returns: 將按鍵行為「是否有處理掉」藉由 IMKInputSessionController 回報給 IMK。
   func commissionByCtrlOptionCommandEnter(isShiftPressed: Bool = false) -> String {
@@ -88,6 +99,12 @@ extension InputHandlerProtocol {
       return specifyTextMarkupToCommit(behavior: behavior)
     }
     let brailleProcessor = BrailleSputnik(standard: brailleStandard)
+    if behavior.usesASCIIBrailleOutput {
+      return brailleProcessor.convertToASCIIBraille(
+        smashedPairs: assembler.assembledSentence.smashedPairs,
+        extraInsertion: (reading: composer.value, cursor: assembler.cursor)
+      )
+    }
     return brailleProcessor.convertToBraille(
       smashedPairs: assembler.assembledSentence.smashedPairs,
       extraInsertion: (reading: composer.value, cursor: assembler.cursor)
@@ -122,8 +139,8 @@ extension InputHandlerProtocol {
       case .textWithHTMLRubyAnnotations:
         composed += key
           .contains("_") ? value : "<ruby>\(value)<rp>(</rp><rt>\(key)</rt><rp>)</rp></ruby>"
-      case .braille1947: break // 另案處理
-      case .braille2018: break // 另案處理
+      case .braille1947, .brailleASCII1947: break // 另案處理
+      case .braille2018, .brailleASCII2018: break // 另案處理
       case .bpmfvsAnnotationButKo: break // 已於進入點另案處理
       }
     }

@@ -381,7 +381,7 @@ extension UserDef {
     case .kUpperCaseLetterKeyBehavior: 0 ... 4
     case .kReadingNarrationCoverage: 0 ... 2
     case .kRomanNumeralOutputFormat: 0 ... 3
-    case .kSpecifyCmdOptCtrlEnterBehavior: 0 ... 4
+    case .kSpecifyCmdOptCtrlEnterBehavior: 0 ... 6
     case .kBeepSoundPreference: 0 ... 2
     case .kCursorPlacementAfterSelectingCandidate: 0 ... 2
     case .kCandidateNarrationToggleType: 0 ... 2
@@ -854,6 +854,8 @@ extension UserDef {
           2: "i18n:UserDef.kSpecifyCmdOptCtrlEnterBehavior.option.2",
           3: "i18n:UserDef.kSpecifyCmdOptCtrlEnterBehavior.option.3",
           4: "i18n:UserDef.kSpecifyCmdOptCtrlEnterBehavior.option.4",
+          5: "i18n:UserDef.kSpecifyCmdOptCtrlEnterBehavior.option.5",
+          6: "i18n:UserDef.kSpecifyCmdOptCtrlEnterBehavior.option.6",
         ]
       )
     case .kReflectBPMFVSInCompositionBuffer: return .init(

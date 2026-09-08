@@ -507,12 +507,14 @@
 "i18n:UserDef.kSpecifiedNotifyUIColorScheme.option.0" = "不指定";
 "i18n:UserDef.kSpecifiedNotifyUIColorScheme.option.1" = "深色模式";
 "i18n:UserDef.kSpecifiedNotifyUIColorScheme.shortTitle" = "通知飄窗配色外觀:";
-"i18n:UserDef.kSpecifyCmdOptCtrlEnterBehavior.description" = "在磁帶模式下，該熱鍵組合將不再遞交點字陣列（屆時會改為遞交括弧註解標記）。如另有對點字/盲文功能的更專業的需求的話，請考慮使用專門的點字/盲文工具軟體。若要使用 ButKo BPMFVS 功能，目前電腦另須安裝符合相關標準的專用字型，方可確保相關資訊得以正常顯示。";
+"i18n:UserDef.kSpecifyCmdOptCtrlEnterBehavior.description" = "在磁帶模式下，該熱鍵組合將不再遞交點字陣列（屆時會改為遞交括弧註解標記）。如另有對點字/盲文功能的更專業的需求的話，請考慮使用專門的點字/盲文工具軟體。若要使用「ButKo BPMFVS」或「點字 / 盲文 ASCII」功能，目前電腦另須安裝符合相關標準的專用字型，方可確保相關資訊得以正常顯示。";
 "i18n:UserDef.kSpecifyCmdOptCtrlEnterBehavior.option.0" = "遞交括弧註解標記";
 "i18n:UserDef.kSpecifyCmdOptCtrlEnterBehavior.option.1" = "遞交 HTML Ruby 註解標記";
 "i18n:UserDef.kSpecifyCmdOptCtrlEnterBehavior.option.2" = "遞交國語點字 (1947)";
 "i18n:UserDef.kSpecifyCmdOptCtrlEnterBehavior.option.3" = "遞交國通盲文 (GF0019-2018)";
 "i18n:UserDef.kSpecifyCmdOptCtrlEnterBehavior.option.4" = "遞交 ButKo BPMFVS 注音標記";
+"i18n:UserDef.kSpecifyCmdOptCtrlEnterBehavior.option.5" = "遞交國語點字 ASCII (1947)";
+"i18n:UserDef.kSpecifyCmdOptCtrlEnterBehavior.option.6" = "遞交國通盲文 ASCII (GF0019-2018)";
 "i18n:UserDef.kSpecifyCmdOptCtrlEnterBehavior.shortTitle" = "Command+Option+Ctrl+Enter:";
 "i18n:UserDef.kSpecifyIntonationKeyBehavior.description" = "指定聲調鍵（在注拼槽為「空」狀態時）的行為。在啟用中英混合輸入回退時，該設定會被無視——中英混合輸入回退永遠不會將前置數字視為聲調鍵。";
 "i18n:UserDef.kSpecifyIntonationKeyBehavior.option.0" = "嘗試對游標正後方的字音覆寫聲調，且重設其選字狀態";

@@ -507,12 +507,14 @@
 "i18n:UserDef.kSpecifiedNotifyUIColorScheme.option.0" = "不指定";
 "i18n:UserDef.kSpecifiedNotifyUIColorScheme.option.1" = "ダーク (暗い)";
 "i18n:UserDef.kSpecifiedNotifyUIColorScheme.shortTitle" = "通知ウインドウの外観モード:";
-"i18n:UserDef.kSpecifyCmdOptCtrlEnterBehavior.description" = "カセットモードがONにした場合、このショートカットで点字を送り出すのはできなくて、代わりに「発音表記（丸括弧仕様）」を送り出します。尚、他の点字機能のご希望の場合、他の特別の点字ツールソフトのご使用はお薦めです。ButKo BPMFVS 機能を利用するには、このコンピュータに規格準拠の専用フォントがインストールされている必要があります。そうでない場合、関連情報が正しく表示されないことがあります。";
+"i18n:UserDef.kSpecifyCmdOptCtrlEnterBehavior.description" = "カセットモードがONにした場合、このショートカットで点字を送り出すのはできなくて、代わりに「発音表記（丸括弧仕様）」を送り出します。尚、他の点字機能のご希望の場合、他の特別の点字ツールソフトのご使用はお薦めです。「ButKo BPMFVS」或いは「点字 ASCII」機能を利用するには、このコンピュータに規格準拠の専用フォントがインストールされている必要があります。そうでない場合、関連情報が正しく表示されないことがあります。";
 "i18n:UserDef.kSpecifyCmdOptCtrlEnterBehavior.option.0" = "発音表記（丸括弧仕様）を送出";
 "i18n:UserDef.kSpecifyCmdOptCtrlEnterBehavior.option.1" = "発音表記（HTML ルビ仕様）を送出";
 "i18n:UserDef.kSpecifyCmdOptCtrlEnterBehavior.option.2" = "中国語点字 (1947) を送出";
 "i18n:UserDef.kSpecifyCmdOptCtrlEnterBehavior.option.3" = "中国語点字 (GF0019-2018) を送出";
 "i18n:UserDef.kSpecifyCmdOptCtrlEnterBehavior.option.4" = "ButKo BPMFVS 注音表記を送出";
+"i18n:UserDef.kSpecifyCmdOptCtrlEnterBehavior.option.5" = "中国語点字 ASCII (1947) を送出";
+"i18n:UserDef.kSpecifyCmdOptCtrlEnterBehavior.option.6" = "中国語点字 ASCII (GF0019-2018) を送出";
 "i18n:UserDef.kSpecifyCmdOptCtrlEnterBehavior.shortTitle" = "Command+Option+Ctrl+Enter:";
 "i18n:UserDef.kSpecifyIntonationKeyBehavior.description" = "音読組立緩衝列が空かされた時の音調キーの行為をご指定ください。中英混在入力のフォール バックが有効な場合、この設定は無視されます——中英混在入力のフォール バックは常に前置数字を音調キーとして扱いません。";
 "i18n:UserDef.kSpecifyIntonationKeyBehavior.option.0" = "カーソルの後部の音読みの音調を上書きし、候補選択状態を戻す";

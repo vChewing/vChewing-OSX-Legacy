@@ -481,7 +481,7 @@ extension PrefMgr {
     if ![0, 1, 2, 3].contains(romanNumeralOutputFormat) {
       romanNumeralOutputFormat = 0
     }
-    if ![0, 1, 2, 3, 4].contains(specifyCmdOptCtrlEnterBehavior) {
+    if ![0, 1, 2, 3, 4, 5, 6].contains(specifyCmdOptCtrlEnterBehavior) {
       specifyCmdOptCtrlEnterBehavior = 0
     }
     if ![0, 1, 2].contains(beepSoundPreference) {
