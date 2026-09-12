@@ -3,6 +3,13 @@
 // This code is released under the SPDX-License-Identifier: `LGPL-3.0-or-later`.
 
 import Foundation
+#if canImport(SwiftExtension)
+  // 條件匯入：vChewing-OSX-Legacy 無 `SwiftExtension` 模組（其 `NSMutex` 與本檔同模組），
+  // 故以條件匯入維持三倉 TrieKit 逐位元組一致。
+  import SwiftExtension
+#endif
+
+// MARK: - QueryBuffer
 
 /// 一個會在指定時間間隔後自動使快取條目失效的快取系統。
 ///
@@ -15,7 +22,9 @@ public final class QueryBuffer<T> {
   // MARK: Lifecycle
 
   /// 以特定的過期時間間隔初期化 QueryBuffer
-  /// - Parameter expirationInterval: 條目過期的秒數（預設值：7）
+  /// - Parameters:
+  ///   - expirationInterval: 條目過期的秒數（預設值：7）
+  ///   - maxCount: 最大快取條目數，超過時淘汰最舊條目（nil = 無上限）
   public init(expirationInterval: TimeInterval = 7.0, maxCount: Int? = nil) {
     self.expirationNanoseconds = UInt64(expirationInterval * 1_000_000_000)
     self.cleanupThrottleNanoseconds = Swift.max(
@@ -134,13 +143,26 @@ public final class QueryBuffer<T> {
 
   private let cleanupThrottleNanoseconds: UInt64
 
-  private let maxCount: Int?
-
   private let mtxOperationCount = NSMutex<UInt64>(0)
 
   private let mtxLastCleanupTimestampNs = NSMutex<UInt64>(0)
 
   private let mtxCleanupInProgress = NSMutex<Bool>(false)
+
+  private let maxCount: Int?
+
+  private func evictOldestIfOverMaxCountLocked(now: UInt64) {
+    guard let maxCount else { return }
+    let currentCount = count
+    guard currentCount > maxCount else { return }
+    // O(1) 逐出：到期佇列為插入序（＝時間序、`DispatchTime` 單調），
+    // 佇列頭即最舊條目——直接消費之。取代舊實作的「全 Dictionary 掃描找最舊」：
+    // 快取滿後每次 set() 皆 O(n) 掃描（狂拼每鍵大量 set、舊實作佔 ~19% 打字 CPU）。
+    guard let marker = currentExpirationMarker() else { return }
+    _ = mtxCache.withLock { $0.removeValue(forKey: marker.hashKey) }
+    advanceExpirationQueueHead()
+    compactExpirationQueueIfNeeded()
+  }
 
   private func shouldRunCleanupLocked(now: UInt64) -> Bool {
     let lastCleanupTimestampNs = mtxLastCleanupTimestampNs.value
@@ -189,19 +211,6 @@ public final class QueryBuffer<T> {
       }
     }
     mtxExpirationQueueHead.value = 0
-  }
-
-  private func evictOldestIfOverMaxCountLocked(now: UInt64) {
-    guard let maxCount else { return }
-    let currentCount = count
-    guard currentCount > maxCount else { return }
-    // O(1) 逐出：到期佇列為插入序（＝時間序），佇列頭即最舊條目——
-    // 直接消費之，取代舊實作的「全 Dictionary 掃描找最舊」（快取滿後每次 set() 皆
-    // O(n) 掃描、狂拼每鍵大量 set、舊實作佔 ~19% 打字 CPU）。
-    guard let marker = currentExpirationMarker() else { return }
-    _ = mtxCache.withLock { $0.removeValue(forKey: marker.hashKey) }
-    advanceExpirationQueueHead()
-    compactExpirationQueueIfNeeded()
   }
 
   private func removeExpiredEntriesLocked(now: UInt64) {
