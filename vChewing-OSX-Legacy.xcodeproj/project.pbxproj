@@ -137,6 +137,7 @@
 		5BB32F0529A61AFB00B05D7B /* CtlCandidateTDK4AppKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB32F0429A61AFB00B05D7B /* CtlCandidateTDK4AppKit.swift */; };
 		5BB5158D2B729E7800874257 /* AppKitImpl_Misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A4F0294E057F00EFA49C /* AppKitImpl_Misc.swift */; };
 		5BB5158E2B729E9D00874257 /* SwiftExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A4F2294E058F00EFA49C /* SwiftExtension.swift */; };
+		5BB5F56D305685CA004F621A /* KBEvent_FCITX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB5F56C305685CA004F621A /* KBEvent_FCITX.swift */; };
 		5BC783DC2EBEF02F00AE14E2 /* RomanNumeralConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC783DB2EBEF02F00AE14E2 /* RomanNumeralConverter.swift */; };
 		5BCA232D2EF6B77B00A8ADD0 /* CpLkHitChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA232C2EF6B77B00A8ADD0 /* CpLkHitChecker.swift */; };
 		5BCA4FAD2E9659F700441688 /* SessionCoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA4FAC2E9659F700441688 /* SessionCoreProtocol.swift */; };
@@ -410,6 +411,7 @@
 		5BB040562F4BA8BC00425457 /* README.MD */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.MD; sourceTree = "<group>"; };
 		5BB1D7F12999025B00EA8D2C /* PrefUITabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefUITabs.swift; sourceTree = "<group>"; };
 		5BB32F0429A61AFB00B05D7B /* CtlCandidateTDK4AppKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CtlCandidateTDK4AppKit.swift; sourceTree = "<group>"; };
+		5BB5F56C305685CA004F621A /* KBEvent_FCITX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBEvent_FCITX.swift; sourceTree = "<group>"; };
 		5BC783DB2EBEF02F00AE14E2 /* RomanNumeralConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RomanNumeralConverter.swift; sourceTree = "<group>"; };
 		5BCA232C2EF6B77B00A8ADD0 /* CpLkHitChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CpLkHitChecker.swift; sourceTree = "<group>"; };
 		5BCA4FAC2E9659F700441688 /* SessionCoreProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionCoreProtocol.swift; sourceTree = "<group>"; };
@@ -1012,6 +1014,7 @@
 				5BE5A539294E0CEC00EFA49C /* IMEStateProtocolAndData.swift */,
 				5BE5A536294E0CEC00EFA49C /* InputSignalProtocol.swift */,
 				5B55ACAC2B5A254F009E2F54 /* KBEvent.swift */,
+				5BB5F56C305685CA004F621A /* KBEvent_FCITX.swift */,
 				5B55ACAE2B5A255F009E2F54 /* NSEventImpl_Shared.swift */,
 				5B0E4EEE2B67933E00BE3440 /* OSVersionComparer.swift */,
 				5BE5A563294E10F300EFA49C /* PrefMgr_Core.swift */,
@@ -1493,6 +1496,7 @@
 				5B785EEB2B78FC680006413D /* InputHandler_TypingMethod.swift in Sources */,
 				5BE5A527294E0C2900EFA49C /* LXFacade_DateTimeExtension.swift in Sources */,
 				5BAF0FFB2AA63F6D00FD58A0 /* UserDef.swift in Sources */,
+				5BB5F56D305685CA004F621A /* KBEvent_FCITX.swift in Sources */,
 				5B602B502F599AA1003F2FCB /* IMKSwift.m in Sources */,
 				5BE5A55C294E0E8000EFA49C /* PopupCompositionBuffer.swift in Sources */,
 				5BE5A52F294E0C2B00EFA49C /* LXPerceptor.swift in Sources */,
