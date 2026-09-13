@@ -39,6 +39,7 @@
 		5B3A2BCF2EBFAF1700C59A2B /* LXFacade_KanjiDescriptorAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3A2BCE2EBFAF1700C59A2B /* LXFacade_KanjiDescriptorAPI.swift */; };
 		5B3B0ED22B98170E000B2A25 /* SwiftFoundationImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3B0ED12B981579000B2A25 /* SwiftFoundationImpl.swift */; };
 		5B3B0ED32B981C95000B2A25 /* SwiftFoundationImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3B0ED12B981579000B2A25 /* SwiftFoundationImpl.swift */; };
+		5B0A21022F9A0001000000A2 /* ResourceLocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0A21012F9A0001000000A1 /* ResourceLocator.swift */; };
 		5B3C0D5F2B13555400C87B27 /* VanguardFactoryDict4Typing.txtMap in Resources */ = {isa = PBXBuildFile; fileRef = 5B3C0D5E2B13555000C87B27 /* VanguardFactoryDict4Typing.txtMap */; };
 		5B423A542A9516B0004CC33B /* Broadcaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B423A532A9516B0004CC33B /* Broadcaster.swift */; };
 		5B44BAD9295047AC00E1C02D /* shortcuts.html in Resources */ = {isa = PBXBuildFile; fileRef = 5B44BADB295047AC00E1C02D /* shortcuts.html */; };
@@ -188,6 +189,7 @@
 		5BE5A566294E111E00EFA49C /* PrefMgr_Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A565294E111E00EFA49C /* PrefMgr_Utilities.swift */; };
 		5BE5A568294E119600EFA49C /* LXMgr_Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A567294E119600EFA49C /* LXMgr_Core.swift */; };
 		5BE5A56A294E120500EFA49C /* SymbolMenuDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A569294E120500EFA49C /* SymbolMenuDefaultData.swift */; };
+		5B0A21042F9A0001000000A4 /* ResourceProvision.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0A21032F9A0001000000A3 /* ResourceProvision.swift */; };
 		5BE5A56C294E127B00EFA49C /* PhraseEditorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A56B294E127B00EFA49C /* PhraseEditorDelegate.swift */; };
 		5BE5A596294E1DFB00EFA49C /* ChineseConverterBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A595294E1DFB00EFA49C /* ChineseConverterBridge.swift */; };
 		5BE9FA7B2EF549230048D81F /* MainSputnik4Installer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE9FA792EF549230048D81F /* MainSputnik4Installer.swift */; };
@@ -311,6 +313,7 @@
 		5B3689042E99311E00B3DA69 /* ChineseConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChineseConverter.swift; sourceTree = "<group>"; };
 		5B3A2BCE2EBFAF1700C59A2B /* LXFacade_KanjiDescriptorAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LXFacade_KanjiDescriptorAPI.swift; sourceTree = "<group>"; };
 		5B3B0ED12B981579000B2A25 /* SwiftFoundationImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftFoundationImpl.swift; sourceTree = "<group>"; };
+		5B0A21012F9A0001000000A1 /* ResourceLocator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceLocator.swift; sourceTree = "<group>"; };
 		5B3C0D5E2B13555000C87B27 /* VanguardFactoryDict4Typing.txtMap */ = {isa = PBXFileReference; lastKnownFileType = text; name = VanguardFactoryDict4Typing.txtMap; path = "DictionaryData/Build/Release/vanguard-textmap/VanguardFactoryDict4Typing.txtMap"; sourceTree = "<group>"; };
 		5B423A532A9516B0004CC33B /* Broadcaster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Broadcaster.swift; sourceTree = "<group>"; };
 		5B44BADA295047AC00E1C02D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = en; path = en.lproj/shortcuts.html; sourceTree = "<group>"; };
@@ -466,6 +469,7 @@
 		5BE5A565294E111E00EFA49C /* PrefMgr_Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefMgr_Utilities.swift; sourceTree = "<group>"; };
 		5BE5A567294E119600EFA49C /* LXMgr_Core.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LXMgr_Core.swift; sourceTree = "<group>"; };
 		5BE5A569294E120500EFA49C /* SymbolMenuDefaultData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolMenuDefaultData.swift; sourceTree = "<group>"; };
+		5B0A21032F9A0001000000A3 /* ResourceProvision.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceProvision.swift; sourceTree = "<group>"; };
 		5BE5A56B294E127B00EFA49C /* PhraseEditorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhraseEditorDelegate.swift; sourceTree = "<group>"; };
 		5BE5A58B294E196C00EFA49C /* Beep.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Beep.m4a; sourceTree = "<group>"; };
 		5BE5A58C294E196C00EFA49C /* Fart.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Fart.m4a; sourceTree = "<group>"; };
@@ -603,6 +607,7 @@
 				5B5319212E9A918700570E96 /* CodePointDecoder.swift */,
 				5BC783DB2EBEF02F00AE14E2 /* RomanNumeralConverter.swift */,
 				5BE5A569294E120500EFA49C /* SymbolMenuDefaultData.swift */,
+				5B0A21032F9A0001000000A3 /* ResourceProvision.swift */,
 				5BCA4FAC2E9659F700441688 /* SessionCoreProtocol.swift */,
 			);
 			path = OSNeutralAssembly;
@@ -871,6 +876,7 @@
 				5B7EEAE22AE5002C006C30A3 /* SecureEventInputSputnik.swift */,
 				5BE5A4F2294E058F00EFA49C /* SwiftExtension.swift */,
 				5B3B0ED12B981579000B2A25 /* SwiftFoundationImpl.swift */,
+				5B0A21012F9A0001000000A1 /* ResourceLocator.swift */,
 				5BE5A4FB294E087B00EFA49C /* TISInputSourceExtension.swift */,
 			);
 			path = Extensions;
@@ -1472,6 +1478,7 @@
 				5B0A10000000000000000002 /* VwrCandidateGSI4AppKit.swift in Sources */,
 				5B751DDB294EE57D0031CF70 /* InputHandler_HandleCandidate.swift in Sources */,
 				5BE5A56A294E120500EFA49C /* SymbolMenuDefaultData.swift in Sources */,
+				5B0A21042F9A0001000000A4 /* ResourceProvision.swift in Sources */,
 				5BE5A4F1294E057F00EFA49C /* AppKitImpl_Misc.swift in Sources */,
 				5BE5A540294E0CEF00EFA49C /* IMEStateProtocolAndData.swift in Sources */,
 				5BE5A53F294E0CEF00EFA49C /* CandidateNode.swift in Sources */,
@@ -1480,6 +1487,7 @@
 				5BF5BAE1294DFFC9006011AD /* AppDelegate.swift in Sources */,
 				5B47F73F2F4AEBE000774728 /* OIDR_Shared.swift in Sources */,
 				5B3B0ED22B98170E000B2A25 /* SwiftFoundationImpl.swift in Sources */,
+				5B0A21022F9A0001000000A2 /* ResourceLocator.swift in Sources */,
 				5BE5A53C294E0CEF00EFA49C /* CtlCandidateProtocol.swift in Sources */,
 				5B98203E2B8D9A4200E183D8 /* CandidateNode_ServiceImpl.swift in Sources */,
 				5B81BD132B72984E0092819A /* UserDefRenderableCocoa.swift in Sources */,
