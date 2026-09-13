@@ -191,7 +191,6 @@
 		5BE5A56C294E127B00EFA49C /* PhraseEditorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A56B294E127B00EFA49C /* PhraseEditorDelegate.swift */; };
 		5BE5A596294E1DFB00EFA49C /* ChineseConverterBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A595294E1DFB00EFA49C /* ChineseConverterBridge.swift */; };
 		5BE9FA7B2EF549230048D81F /* MainSputnik4Installer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE9FA792EF549230048D81F /* MainSputnik4Installer.swift */; };
-		5BE9FA7C2EF549230048D81F /* RelocationDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE9FA7A2EF549230048D81F /* RelocationDetector.swift */; };
 		5BE9FA7D2EF549230048D81F /* CtlAppInstaller4Cocoa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE9FA752EF549230048D81F /* CtlAppInstaller4Cocoa.swift */; };
 		5BE9FA7E2EF549230048D81F /* VwrAppInstaller4Cocoa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE9FA762EF549230048D81F /* VwrAppInstaller4Cocoa.swift */; };
 		5BE9FA7F2EF549230048D81F /* InstallerShared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE9FA772EF549230048D81F /* InstallerShared.swift */; };
@@ -482,7 +481,6 @@
 		5BE9FA772EF549230048D81F /* InstallerShared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallerShared.swift; sourceTree = "<group>"; };
 		5BE9FA782EF549230048D81F /* InstallerVMProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallerVMProtocol.swift; sourceTree = "<group>"; };
 		5BE9FA792EF549230048D81F /* MainSputnik4Installer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSputnik4Installer.swift; sourceTree = "<group>"; };
-		5BE9FA7A2EF549230048D81F /* RelocationDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelocationDetector.swift; sourceTree = "<group>"; };
 		5BE9FA842EF54A0D0048D81F /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		5BF1209E2B8C8D7E00C83A24 /* PrefMgr_Singleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefMgr_Singleton.swift; sourceTree = "<group>"; };
 		5BF120A02B8C8E1700C83A24 /* IMEApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMEApp.swift; sourceTree = "<group>"; };
@@ -1085,7 +1083,6 @@
 				5BE9FA772EF549230048D81F /* InstallerShared.swift */,
 				5BE9FA782EF549230048D81F /* InstallerVMProtocol.swift */,
 				5BE9FA792EF549230048D81F /* MainSputnik4Installer.swift */,
-				5BE9FA7A2EF549230048D81F /* RelocationDetector.swift */,
 				5BE9FA762EF549230048D81F /* VwrAppInstaller4Cocoa.swift */,
 			);
 			path = Modules;
@@ -1350,7 +1347,6 @@
 				5B3B0ED32B981C95000B2A25 /* SwiftFoundationImpl.swift in Sources */,
 				5BB5158D2B729E7800874257 /* AppKitImpl_Misc.swift in Sources */,
 				5BE9FA7B2EF549230048D81F /* MainSputnik4Installer.swift in Sources */,
-				5BE9FA7C2EF549230048D81F /* RelocationDetector.swift in Sources */,
 				5BE9FA832EF549C70048D81F /* AppKitImpl_NSWindowController.swift in Sources */,
 				5BE9FA7D2EF549230048D81F /* CtlAppInstaller4Cocoa.swift in Sources */,
 				5BE9FA7E2EF549230048D81F /* VwrAppInstaller4Cocoa.swift in Sources */,
