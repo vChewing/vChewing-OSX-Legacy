@@ -121,22 +121,22 @@ extension IMEMenuSputnik {
         .state(PrefMgr.shared.associatedPhrasesEnabled)
         .hotkey(PrefMgr.shared.usingHotKeyAssociates ? "O" : "", mask: [.command, .control])
       NSMenu.Item("i18n:Menu.EditAssociatedPhrases")?
-        .act(register { LMMgr.openUserDictFile(type: .theAssociates, dual: optionKeyPressed, alt: optionKeyPressed) })
+        .act(register { LXMgr.openUserDictFile(type: .theAssociates, dual: optionKeyPressed, alt: optionKeyPressed) })
         .alternated()
         .hotkey(PrefMgr.shared.usingHotKeyAssociates ? "O" : "", mask: [.command, .option, .control])
         .nulled(silentMode)
       NSMenu.Item("i18n:UserDef.kUsingHotKeyCassette.shortTitle")?
         .act(register {
           self.core?.resetInputHandler(forceComposerCleanup: true)
-          if !PrefMgr.shared.cassetteEnabled, LMMgr.cassettePath().isEmpty {
+          if !PrefMgr.shared.cassetteEnabled, LXMgr.cassettePath().isEmpty {
             asyncOnMain(bypassAsync: UserDefaults.pendingUnitTests) {
               IMEApp.buzz()
-              let alert = NSAlert(error: "i18n:LMMgr.accessFailure.cassette.title".i18n)
-              alert.informativeText = LMMgr.cassetteAccessFailureDescription(path: PrefMgr.shared.cassettePath)
+              let alert = NSAlert(error: "i18n:LXMgr.accessFailure.cassette.title".i18n)
+              alert.informativeText = LXMgr.cassetteAccessFailureDescription(path: PrefMgr.shared.cassettePath)
               let result = alert.runModal()
               NSApp.popup()
               if result == NSApplication.ModalResponse.alertFirstButtonReturn {
-                LMMgr.resetCassettePath(); PrefMgr.shared.cassetteEnabled = false
+                LXMgr.resetCassettePath(); PrefMgr.shared.cassetteEnabled = false
               }
             }
             return
@@ -150,7 +150,7 @@ extension IMEMenuSputnik {
                     .i18n : "i18n:NotificationSwitch.Off".i18n
                 )
             )
-          if let loaded = self.core?.inputMode.langModel.isCassetteDataLoaded, !loaded { LMMgr.loadCassetteData() }
+          if let loaded = self.core?.inputMode.lexicon.isCassetteDataLoaded, !loaded { LXMgr.loadCassetteData() }
         })
         .state(PrefMgr.shared.cassetteEnabled)
         .hotkey(PrefMgr.shared.usingHotKeyCassette ? "I" : "", mask: [.command, .control])
@@ -260,7 +260,7 @@ extension IMEMenuSputnik {
         })
         .state(PrefMgr.shared.phraseReplacementEnabled)
       NSMenu.Item("i18n:Menu.EditPhraseReplacementTable")?
-        .act(register { LMMgr.openUserDictFile(type: .theReplacements, dual: optionKeyPressed, alt: optionKeyPressed) })
+        .act(register { LXMgr.openUserDictFile(type: .theReplacements, dual: optionKeyPressed, alt: optionKeyPressed) })
         .alternated().nulled(silentMode)
       NSMenu.Item("i18n:Menu.SymbolEmojiInput")?
         .act(register {
@@ -277,39 +277,39 @@ extension IMEMenuSputnik {
         })
         .state(PrefMgr.shared.symbolInputEnabled)
       NSMenu.Item("i18n:Menu.EditUserSymbolEmojiData")?
-        .act(register { LMMgr.openUserDictFile(type: .theSymbols, dual: optionKeyPressed, alt: optionKeyPressed) })
+        .act(register { LXMgr.openUserDictFile(type: .theSymbols, dual: optionKeyPressed, alt: optionKeyPressed) })
         .alternated().nulled(silentMode)
 
       NSMenu.Item.separator()
       NSMenu.Item("i18n:Menu.OpenUserDictionaryFolder")?
         .act(register {
-          guard LMMgr.userDataFolderExists else { return }
-          FileOpenMethod.finder.open(url: URL(fileURLWithPath: LMMgr.dataFolderPath(isDefaultFolder: false)))
+          guard LXMgr.userDataFolderExists else { return }
+          FileOpenMethod.finder.open(url: URL(fileURLWithPath: LXMgr.dataFolderPath(isDefaultFolder: false)))
         })
         .nulled(silentMode)
       NSMenu.Item("i18n:Menu.OpenAppSupportFolder")?
-        .act(register { FileOpenMethod.finder.open(url: LMMgr.appSupportURL) })
+        .act(register { FileOpenMethod.finder.open(url: LXMgr.appSupportURL) })
         .alternated().nulled(silentMode)
       NSMenu.Item("i18n:Menu.EditVChewingUserPhrases")?
-        .act(register { LMMgr.openUserDictFile(type: .thePhrases, dual: optionKeyPressed, alt: optionKeyPressed) })
+        .act(register { LXMgr.openUserDictFile(type: .thePhrases, dual: optionKeyPressed, alt: optionKeyPressed) })
         .nulled(silentMode)
       NSMenu.Item("i18n:Menu.ReloadUserPhrases")?
-        .act(register { LMMgr.initUserLangModels() })
+        .act(register { LXMgr.initUserLexicons() })
       NSMenu.Item("i18n:Menu.EditExcludedPhrases")?
-        .act(register { LMMgr.openUserDictFile(type: .theFilter, dual: optionKeyPressed, alt: optionKeyPressed) })
+        .act(register { LXMgr.openUserDictFile(type: .theFilter, dual: optionKeyPressed, alt: optionKeyPressed) })
         .alternated().nulled(silentMode)
       NSMenu.Item(verbatim: "i18n:UserDef.kUsingHotKeyRevLookup.shortTitle".i18n.withEllipsis)?
         .act(register { CtlRevLookupWindow.show() })
         .hotkey(PrefMgr.shared.usingHotKeyRevLookup ? "/" : "", mask: [.command, .control])
       NSMenu.Item("i18n:Menu.OptimizeMemorizedPhrases")?
         .act(register {
-          LMMgr.removeUnigramsFromPerceptionOverrideModel(IMEApp.currentInputMode)
-          LMMgr.removeUnigramsFromPerceptionOverrideModel(IMEApp.currentInputMode.reversed)
+          LXMgr.removeUnigramsFromPerceptionOverrideModel(IMEApp.currentInputMode)
+          LXMgr.removeUnigramsFromPerceptionOverrideModel(IMEApp.currentInputMode.reversed)
         })
       NSMenu.Item("i18n:Menu.ClearMemorizedPhrases")?
         .act(register {
-          LMMgr.clearPerceptionOverrideModelData(IMEApp.currentInputMode)
-          LMMgr.clearPerceptionOverrideModelData(IMEApp.currentInputMode.reversed)
+          LXMgr.clearPerceptionOverrideModelData(IMEApp.currentInputMode)
+          LXMgr.clearPerceptionOverrideModelData(IMEApp.currentInputMode.reversed)
         })
         .alternated()
 

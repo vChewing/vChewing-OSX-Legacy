@@ -11,12 +11,12 @@ extension PrefMgr {
     var result = PrefMgr(
       didAskForSyncingLMPrefs: {
         if PrefMgr.shared.phraseReplacementEnabled {
-          LMMgr.loadUserPhraseReplacement()
+          LXMgr.loadUserPhraseReplacement()
         }
         if PrefMgr.shared.associatedPhrasesEnabled {
-          LMMgr.loadUserAssociatesData()
+          LXMgr.loadUserAssociatesData()
         }
-        LMMgr.syncLMPrefs()
+        LXMgr.syncLMPrefs()
       },
       didAskForRefreshingSpeechSputnik: SpeechSputnik.shared.refreshStatus,
       didAskForSyncingShiftKeyDetectorPrefs: {
