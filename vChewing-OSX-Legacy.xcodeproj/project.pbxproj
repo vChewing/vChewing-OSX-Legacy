@@ -162,6 +162,10 @@
 		5BE5A523294E0C2900EFA49C /* LXConsolidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A51B294E0BEE00EFA49C /* LXConsolidator.swift */; };
 		5BE5A524294E0C2900EFA49C /* vChewingLXAssembly_Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A51F294E0BEE00EFA49C /* vChewingLXAssembly_Common.swift */; };
 		5BE5A525294E0C2900EFA49C /* LXFacade_CassetteExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A51C294E0BEE00EFA49C /* LXFacade_CassetteExtension.swift */; };
+		5C212F202F9E1001C0A42000 /* LexiconGramSupplier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C212F102F9E1001C0A81000 /* LexiconGramSupplier.swift */; };
+		5C212F212F9E1001C0A52100 /* LX_GramConcatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C212F112F9E1001C0A91100 /* LX_GramConcatAPI.swift */; };
+		5C212F222F9E1001C0A62200 /* LXFacade_GramSupplierMounting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C212F122F9E1001C0A01200 /* LXFacade_GramSupplierMounting.swift */; };
+		5C212F232F9E1001C0A72300 /* LXGramSupplyHub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C212F132F9E1001C0A11300 /* LXGramSupplyHub.swift */; };
 		5BE5A526294E0C2900EFA49C /* LXFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A51D294E0BEE00EFA49C /* LXFacade.swift */; };
 		5BE5A527294E0C2900EFA49C /* LXFacade_DateTimeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A51E294E0BEE00EFA49C /* LXFacade_DateTimeExtension.swift */; };
 		5BE5A528294E0C2B00EFA49C /* lxReplacements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5A514294E0BE800EFA49C /* lxReplacements.swift */; };
@@ -448,6 +452,10 @@
 		5BE5A51A294E0BE900EFA49C /* LXPerceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LXPerceptor.swift; sourceTree = "<group>"; };
 		5BE5A51B294E0BEE00EFA49C /* LXConsolidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LXConsolidator.swift; sourceTree = "<group>"; };
 		5BE5A51C294E0BEE00EFA49C /* LXFacade_CassetteExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LXFacade_CassetteExtension.swift; sourceTree = "<group>"; };
+		5C212F102F9E1001C0A81000 /* LexiconGramSupplier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LexiconGramSupplier.swift; sourceTree = "<group>"; };
+		5C212F112F9E1001C0A91100 /* LX_GramConcatAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LX_GramConcatAPI.swift; sourceTree = "<group>"; };
+		5C212F122F9E1001C0A01200 /* LXFacade_GramSupplierMounting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LXFacade_GramSupplierMounting.swift; sourceTree = "<group>"; };
+		5C212F132F9E1001C0A11300 /* LXGramSupplyHub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LXGramSupplyHub.swift; sourceTree = "<group>"; };
 		5BE5A51D294E0BEE00EFA49C /* LXFacade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LXFacade.swift; sourceTree = "<group>"; };
 		5BE5A51E294E0BEE00EFA49C /* LXFacade_DateTimeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LXFacade_DateTimeExtension.swift; sourceTree = "<group>"; };
 		5BE5A51F294E0BEE00EFA49C /* vChewingLXAssembly_Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vChewingLXAssembly_Common.swift; sourceTree = "<group>"; };
@@ -961,6 +969,10 @@
 				5B09126B2B134927000166DB /* LXFacade_TextMapExtension.swift */,
 				5BA379B62B8278DA00D82E16 /* LXFacade_POMRepresentable.swift */,
 				5B79A3FB2BB850E6003F449E /* LXFacade_UserDictionarySummarized.swift */,
+				5C212F102F9E1001C0A81000 /* LexiconGramSupplier.swift */,
+				5C212F112F9E1001C0A91100 /* LX_GramConcatAPI.swift */,
+				5C212F122F9E1001C0A01200 /* LXFacade_GramSupplierMounting.swift */,
+				5C212F132F9E1001C0A11300 /* LXGramSupplyHub.swift */,
 				5BE5A51D294E0BEE00EFA49C /* LXFacade.swift */,
 				5B30BC2C2F979F2C00B49F70 /* PhonabetCipher.swift */,
 				5BE5A531294E0C9F00EFA49C /* PinyinPhonaConverter.swift */,
@@ -1449,6 +1461,10 @@
 				5BE5A532294E0C9F00EFA49C /* PinyinPhonaConverter.swift in Sources */,
 				5B7EEAE32AE5002C006C30A3 /* SecureEventInputSputnik.swift in Sources */,
 				5BE5A562294E10C800EFA49C /* Uninstaller.swift in Sources */,
+				5C212F202F9E1001C0A42000 /* LexiconGramSupplier.swift in Sources */,
+				5C212F212F9E1001C0A52100 /* LX_GramConcatAPI.swift in Sources */,
+				5C212F222F9E1001C0A62200 /* LXFacade_GramSupplierMounting.swift in Sources */,
+				5C212F232F9E1001C0A72300 /* LXGramSupplyHub.swift in Sources */,
 				5BE5A526294E0C2900EFA49C /* LXFacade.swift in Sources */,
 				5BE5A52E294E0C2B00EFA49C /* lxCassette.swift in Sources */,
 				5BE5A525294E0C2900EFA49C /* LXFacade_CassetteExtension.swift in Sources */,

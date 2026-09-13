@@ -89,6 +89,12 @@ extension LXAssembly {
 
       // MARK: Public
 
+      /// 目前已掛載的「額外」語言模組來源，依掛載順序。
+      /// 原廠辭典與各使用者子模組不在此列——它們由 `LXFacade` 自身直接供給。
+      public var mountedGramSuppliers: [any LexiconGramSupplierProtocol] {
+        lxFacade.mountedGramSuppliers
+      }
+
       public func associatedCandidates(forPairs pairs: [Homa.CandidatePair]) -> [Homa.CandidatePairRAW] {
         var inserted = Set<String>()
         var result: [Homa.CandidatePairRAW] = []
@@ -164,6 +170,16 @@ extension LXAssembly {
       /// 完整版存在性檢查：走完整查詢管線（含濾除表與語彙置換）。
       public func hasUnigrams(for keyArray: [String]) -> Bool {
         lxFacade.hasUnigramsFor(keyArray: keyArray)
+      }
+
+      /// 掛載額外的語言模組來源（多來源掛載）；其元圖會併入一般查詢結果。
+      public func mountGramSupplier(_ supplier: any LexiconGramSupplierProtocol) {
+        lxFacade.mountGramSupplier(supplier)
+      }
+
+      /// 卸載所有額外掛載的語言模組來源。
+      public func unmountAllGramSuppliers() {
+        lxFacade.unmountAllGramSuppliers()
       }
 
       // MARK: 使用者資料查詢
@@ -615,6 +631,10 @@ extension LXAssembly {
     var lxReplacements = LXReplacements()
     var lxAssociates = LXAssociates()
 
+    /// 額外掛載的語言模組來源中樞（多來源掛載）。
+    /// 預設為空，故對既有行為零影響；宿主可經由 `mountGramSupplier(_:)` 追加來源。
+    let gramSupplyHub = LXGramSupplyHub()
+
     // LXPerceptor（NSMutex 保證執行緒安全，故標記 nonisolated）
     nonisolated var lxPerceptor: LXPerceptor {
       get { mtxLXPerceptor.value }
@@ -707,6 +727,11 @@ extension LXAssembly {
            hasFactoryChoppedUnigramsFor(keyArray: keyArray, entryType: .symbolPhrases) {
           return true
         }
+
+        // 額外掛載的語言模組來源（多來源掛載）：預設為空，故對既有行為零影響。
+        if mountedSuppliersHasGrams(keyArray: keyArray, partiallyMatch: config.partialMatchEnabled) {
+          return true
+        }
       }
 
       // MARK: User data / cassette 檢查
@@ -789,6 +814,7 @@ extension LXAssembly {
       hasher.combine(config)
       hasher.combine(Self.mtxFactoryGeneration.value)
       hasher.combine(Self.mtxPOMGeneration.value)
+      hasher.combine(gramSupplyHub.generation)
       let fingerprint = hasher.finalize()
       if fingerprint != unigramCacheFingerprint {
         unigramLRUCache.removeAll(keepingCapacity: true)
@@ -866,6 +892,8 @@ extension LXAssembly {
             keyArray: flatKeyArray
           )
         }
+        // 額外掛載的語言模組來源（多來源掛載）：預設為空，故對既有行為零影響。
+        rawAllUnigrams += mountedSupplierGrams(keyArray: flatKeyArray, partiallyMatch: partiallyMatch)
       }
 
       if !config.bypassUserPhrasesData, config.isSymbolEnabled {
@@ -1191,6 +1219,7 @@ extension LXAssembly {
       hasher.combine(config)
       hasher.combine(Self.mtxFactoryGeneration.value)
       hasher.combine(Self.mtxPOMGeneration.value)
+      hasher.combine(gramSupplyHub.generation)
       let fingerprint = hasher.finalize()
       if fingerprint != unigramCacheFingerprint {
         unigramLRUCache.removeAll(keepingCapacity: true)
@@ -1253,6 +1282,9 @@ extension LXAssembly {
         if config.isCNSEnabled {
           rawAllUnigrams += supplementalChoppedCNSAndGBEXUnigramsFor(keyArray: choppedKeyArray)
         }
+        // 額外掛載的語言模組來源（多來源掛載）：預設為空，故對既有行為零影響。
+        // 替代讀音路徑以 "&" 連讀鍵詢問，與原廠辭典的 chopped 路徑一致。
+        rawAllUnigrams += mountedSupplierGrams(keyArray: choppedKeyArray, partiallyMatch: partiallyMatch)
       }
 
       if !config.bypassUserPhrasesData, config.isSymbolEnabled {
