@@ -66,7 +66,7 @@
 		5B70C0A92EA427C700BC8273 /* SpeechNarratorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B70C0A82EA427C700BC8273 /* SpeechNarratorProtocol.swift */; };
 		5B70C0AB2EA428B500BC8273 /* FileOpenMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B70C0AA2EA428B500BC8273 /* FileOpenMethod.swift */; };
 		5B70C0AD2EA428C000BC8273 /* IMEApp_DarwinImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B70C0AC2EA428C000BC8273 /* IMEApp_DarwinImpl.swift */; };
-		5B72F6672B885AF00051B7A9 /* lxPlainBopomopo_RawData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B72F6662B885AF00051B7A9 /* lxPlainBopomopo_RawData.swift */; };
+		5B72F6672B885AF00051B7A9 /* lxPlainBopomofo_RawData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B72F6662B885AF00051B7A9 /* lxPlainBopomofo_RawData.swift */; };
 		5B751DB9294EE27C0031CF70 /* CtlRevLookupWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DB5294EE27C0031CF70 /* CtlRevLookupWindow.swift */; };
 		5B751DBD294EE44F0031CF70 /* UpdateSputnik.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DBC294EE44F0031CF70 /* UpdateSputnik.swift */; };
 		5B751DCE294EE57D0031CF70 /* InputHandler_HandleStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B751DBF294EE57C0031CF70 /* InputHandler_HandleStates.swift */; };
@@ -343,7 +343,7 @@
 		5B70C0A82EA427C700BC8273 /* SpeechNarratorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechNarratorProtocol.swift; sourceTree = "<group>"; };
 		5B70C0AA2EA428B500BC8273 /* FileOpenMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileOpenMethod.swift; sourceTree = "<group>"; };
 		5B70C0AC2EA428C000BC8273 /* IMEApp_DarwinImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMEApp_DarwinImpl.swift; sourceTree = "<group>"; };
-		5B72F6662B885AF00051B7A9 /* lxPlainBopomopo_RawData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lxPlainBopomopo_RawData.swift; sourceTree = "<group>"; };
+		5B72F6662B885AF00051B7A9 /* lxPlainBopomofo_RawData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lxPlainBopomofo_RawData.swift; sourceTree = "<group>"; };
 		5B751D86294EC30D0031CF70 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5B751D88294EC30E0031CF70 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		5B751D89294EC3110031CF70 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -973,7 +973,7 @@
 				5BE5A515294E0BE800EFA49C /* lxAssociates.swift */,
 				5BE5A518294E0BE900EFA49C /* lxCassette.swift */,
 				5BE5A517294E0BE800EFA49C /* lxCoreEX.swift */,
-				5B72F6662B885AF00051B7A9 /* lxPlainBopomopo_RawData.swift */,
+				5B72F6662B885AF00051B7A9 /* lxPlainBopomofo_RawData.swift */,
 				5BE5A516294E0BE800EFA49C /* lxPlainBopomofo.swift */,
 				5BE5A514294E0BE800EFA49C /* lxReplacements.swift */,
 				F1A26001294E0BE900EFA49C /* lxPerceptionPersistor.swift */,
@@ -1524,7 +1524,7 @@
 				5BE5A522294E0C2500EFA49C /* NotifierUI.swift in Sources */,
 				9D4E5C0F2A1B3C4D5E607182 /* NotifierViewModel.swift in Sources */,
 				5B7B4D242AA1BB7600FE6B63 /* ShiftKeyUpChecker.swift in Sources */,
-				5B72F6672B885AF00051B7A9 /* lxPlainBopomopo_RawData.swift in Sources */,
+				5B72F6672B885AF00051B7A9 /* lxPlainBopomofo_RawData.swift in Sources */,
 				5BDA204E2EEABDDF00377085 /* MainSputnik.swift in Sources */,
 				5B70C0AB2EA428B500BC8273 /* FileOpenMethod.swift in Sources */,
 				5BE5A505294E097C00EFA49C /* vChewing_FolderMonitor.swift in Sources */,
