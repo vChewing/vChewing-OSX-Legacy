@@ -15,9 +15,6 @@ protocol InstallerVMProtocol: AnyObject {
 
   // 實作所需的計時器儲存欄位
   var installRetryTimer: DispatchSourceTimer? { get set }
-
-  // DispatchQueue
-  var taskQueue: DispatchQueue { get }
 }
 
 extension InstallerVMProtocol {
@@ -99,7 +96,11 @@ extension InstallerVMProtocol {
     config.timeRemaining = kInstallRetryTimeout
     config.retryDeadline = nil
 
-    let timer = DispatchSource.makeTimerSource(queue: taskQueue)
+    // 計時器必須直接建在主佇列上：單次安裝會碰 TIS 系列 API，而 HIToolbox 對呼叫端斷言
+    // 主佇列（`dispatch_assert_queue` 失敗即 SIGTRAP），故所有安裝嘗試都必須在主執行緒上跑。
+    // 本倉為 Swift 5 模式、沒有 `defaultIsolation(MainActor.self)`，故改動本身不涉執行期
+    // 隔離檢查；此處與 macOS 倉同構只是為了讓兩份安裝器維持一致。
+    let timer = DispatchSource.makeTimerSource(queue: .main)
     timer.schedule(deadline: .now(), repeating: kInstallRetryInterval)
     timer.setEventHandler { [weak self] in
       self?.installInputMethod()
