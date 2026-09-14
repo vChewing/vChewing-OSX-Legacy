@@ -834,7 +834,7 @@
 				5B2CD0042E9A18EB00F6A9FE /* LibVanguard */,
 				5BDC327D3057B19900890549 /* ResourceLocator */,
 				5BDC327E3057B1B700890549 /* Shared */,
-				5BDC327F3057B1BB00890549 /* SwiftExtension */,
+				5BDC327F3057B1BB00890549 /* VanguardSwiftExtension */,
 				5BE5A4EF294E056D00EFA49C /* Tekkon */,
 				5C34A0212F9C100100C0A001 /* TrieKit */,
 			);
@@ -876,14 +876,14 @@
 			path = Shared;
 			sourceTree = "<group>";
 		};
-		5BDC327F3057B1BB00890549 /* SwiftExtension */ = {
+		5BDC327F3057B1BB00890549 /* VanguardSwiftExtension */ = {
 			isa = PBXGroup;
 			children = (
 				5B572A7929FB76B900ED5066 /* LatinKeyboardMappings.swift */,
 				5BE5A4F2294E058F00EFA49C /* SwiftExtension.swift */,
 				5B3B0ED12B981579000B2A25 /* SwiftFoundationImpl.swift */,
 			);
-			path = SwiftExtension;
+			path = VanguardSwiftExtension;
 			sourceTree = "<group>";
 		};
 		5BDC32803057B24900890549 /* UserDef */ = {
