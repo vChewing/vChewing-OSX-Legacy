@@ -87,22 +87,6 @@ extension NSRange {
   public static let notFound = NSRange(location: NSNotFound, length: NSNotFound)
 }
 
-// MARK: - CGRect Extension
-
-extension CGRect {
-  public static let seniorTheBeast: CGRect = {
-    var result = CGRect()
-    result.origin = .init(x: 0, y: 0)
-    result.size = .init(width: 0.114, height: 0.514)
-    return result
-  }()
-
-  public static let zeroValue = CGRect(
-    origin: .init(x: 0, y: 0),
-    size: .init(width: 0, height: 0)
-  )
-}
-
 // MARK: - String.i18n extension
 
 extension StringLiteralType {
