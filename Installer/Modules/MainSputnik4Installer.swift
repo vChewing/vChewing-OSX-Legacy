@@ -15,10 +15,10 @@ public final class MainSputnik4Installer {
 
   // MARK: Public
 
-  public func runNSApp(isLegacyDistro: Bool? = nil) {
-    if let isLegacyDistro {
-      AppInstallerDelegate.shared.isLegacyDistro = isLegacyDistro
-    }
+  /// `isLegacyDistro` **只認 `@main` 階段（`Installer/main.swift`）在此明示傳入的值**：
+  /// 同一份安裝程式既可能出成現代發行版、也可能出成 legacy 發行版，故不由 bundle ID 之類的線索猜測。
+  public func runNSApp(isLegacyDistro: Bool) {
+    AppInstallerDelegate.shared.isLegacyDistro = isLegacyDistro
     NSApplication.shared.delegate = AppInstallerDelegate.shared
     CtlAppInstaller4Cocoa.show()
     NSApplication.shared.setValue(
@@ -34,11 +34,10 @@ public final class MainSputnik4Installer {
 
 @objc(AppDelegate)
 final class AppInstallerDelegate: NSObject, NSApplicationDelegate {
-  // MARK: Internal
-
   static let shared = AppInstallerDelegate()
 
-  var isLegacyDistro = isMainBundleMarkedAsLegacy()
+  /// 由 `@main` 階段以 `runNSApp(isLegacyDistro:)` 明示填入；此處僅為合法初值。
+  var isLegacyDistro = false
 
   /// 以此取代 `MainMenu.xib`。
   func buildNSAppMainMenu() -> NSMenu {
@@ -72,11 +71,5 @@ final class AppInstallerDelegate: NSObject, NSApplicationDelegate {
         NSMenu.Item.separator()
       }
     }
-  }
-
-  // MARK: Private
-
-  private static func isMainBundleMarkedAsLegacy() -> Bool {
-    Bundle.main.bundleIdentifier?.lowercased().contains("legacy") ?? false
   }
 }

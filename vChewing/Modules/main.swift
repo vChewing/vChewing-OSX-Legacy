@@ -2,4 +2,4 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `MulanPSL-2.0`.
 
-MainSputnik4IME().runNSApp()
+MainSputnik4IME().runNSApp(isLegacyDistro: true)

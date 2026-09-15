@@ -27,7 +27,12 @@ public final class MainSputnik4IME {
 
   public let theServer: IMKServer
 
-  public func runNSApp() {
+  /// `isLegacyDistro` **只認 `@main` 階段（`vChewing/Modules/main.swift`）在此明示傳入的值**：
+  /// 它同時驅動 `UpdateSputnik.isMainStreamRelease` 與 `AppDelegate` 挑選的更新資訊 feed 鍵，
+  /// 故不由 bundle ID 之類的線索猜測。
+  public func runNSApp(isLegacyDistro: Bool) {
+    AppDelegate.shared.isLegacyDistro = isLegacyDistro
+    UpdateSputnik.isMainStreamRelease = !isLegacyDistro
     // 下述内容取代 RunLoop.main.run()
     NSApplication.shared.delegate = AppDelegate.shared
     NSApplication.shared.setValue(nil, forKey: "mainWindow") // 輸入法不需要主視窗。
