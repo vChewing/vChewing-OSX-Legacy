@@ -323,9 +323,38 @@ public func asyncOnMain(
   }
 }
 
+// MARK: - Main-queue identity
+
+/// 呼叫端是否已在主佇列上（無論驅動該佇列者是否為主執行緒）。
+///
+/// 為何不能只看 `Thread.isMainThread`：在 swift-corelibs 平台（Linux／Windows）上，主佇列的工作可能由
+/// dispatch worker 執行——此時 `Thread.isMainThread` 為假，但該執行緒已持有主佇列之 drain 鎖；再對主佇列
+/// 下一次 `sync` 即構成遞迴 sync，libdispatch 視為用戶端錯誤而直接崩潰（`__DISPATCH_WAIT_FOR_QUEUE__`
+/// 之「`dispatch_sync called on queue already owned by current thread`」；Darwin 上編成 SIGTRAP、
+/// Linux／Windows 上編成 ud2＝SIGILL）。`getSpecific` 問的是「當前正在執行的佇列」而非執行緒身分，
+/// 故兩平台皆能正確命中；本倉只跑 macOS（主佇列恆跑在主執行緒），故該查詢幾乎不會被走到。
+///
+/// `DispatchSpecificKey` 與其註冊動作刻意收進函式內之區域型別，以與 `vChewing-macOS` 側之寫法同形。
+///
+/// 另兩倉把本函式公開，供 `LXAssembly.withFileHandleQueueSync` 在進入 `fileHandleQueue.sync` 之前自查；
+/// 本倉之 `withFileHandleQueueSync` 不 hop `mainSync`（見該處），故本函式於本倉僅服務 `mainSync`。
+public func isOnMainQueue() -> Bool {
+  enum MainQueueIdentity {
+    static let key = DispatchSpecificKey<UInt8>()
+    /// 註冊僅需一次；`static let` 之延遲初始化自帶執行緒安全。回傳 `Bool` 僅為避開
+    /// 「型別標註寫 `Void`」與「不標註而被推為 `()`」兩種噪音——此值本身無語意。
+    static let registration = {
+      DispatchQueue.main.setSpecific(key: key, value: 1)
+      return true
+    }()
+  }
+  _ = MainQueueIdentity.registration
+  return Thread.isMainThread || DispatchQueue.getSpecific(key: MainQueueIdentity.key) != nil
+}
+
 @discardableResult
 public func mainSync<T>(execute work: () throws -> T) rethrows -> T {
-  if Thread.isMainThread {
+  if isOnMainQueue() {
     return try work()
   }
   return try DispatchQueue.main.sync(execute: work)

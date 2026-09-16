@@ -39,6 +39,12 @@ public enum LXAssembly {
     return queue
   }()
 
+  /// 經 fileHandleQueue 調度、同步執行閉包（可重入）。
+  /// - Note: 呼叫方若已身處 fileHandleQueue 之上，則就地執行——再 `sync` 同一條序列佇列即構成
+  ///   遞迴 sync，libdispatch 會視為用戶端錯誤而直接崩潰（Darwin 上編成 SIGTRAP）。
+  /// - Important: 本倉之任務本體**不 hop 回主佇列**（`vChewing-macOS` 側會內嵌一層 `mainSync`），
+  ///   故本倉不需要、也不應加掛「已在主佇列則就地執行」那一關——`fileHandleQueue.sync` 於未受競爭時
+  ///   就地在呼叫端執行，本倉之呼叫端皆在主執行緒上，任務本體自然就在主執行緒上跑。
   @discardableResult
   public static func withFileHandleQueueSync<T>(_ execute: () throws -> T) rethrows -> T {
     if DispatchQueue.getSpecific(key: fileHandleQueueKey) == fileHandleQueueIdentifier {
