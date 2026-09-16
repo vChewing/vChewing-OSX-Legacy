@@ -1,5 +1,11 @@
 有關唯音輸入法的最新資訊，請洽產品主頁：[https://vchewing.github.io/](https://vchewing.github.io/)
 
+# 倉庫廢棄公告
+
+> ⚠️ 自 v4.8.0 版起，主流發行版的倉庫已具備直接建置 Aqua 紀念版之能力，請前往 [主流發行版倉庫](https://github.com/vChewing/vChewing-macOS/)。當前倉庫封存但仍公開，以便舊版軟體可以讀取到該倉庫。
+
+-------
+
 # vChewing Aqua Edition 唯音輸入法 Aqua 版
 
 ⚠️**注意**：該版本主要針對 macOS 10.9 至 macOS 12 這幾版作業系統而設計。macOS 13 開始的系統的使用者請洽上文網址下載目前的主流版本的唯音輸入法。該倉庫不接受外來 PR，直接封存。有功能問題或故障的話，請在上文提到的產品主頁內尋找故障提報方式、或者直接在[主倉庫的工單區](https://github.com/vChewing/vChewing-macOS/issues)內開工單。
